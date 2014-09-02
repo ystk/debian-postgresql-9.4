@@ -1,0 +1,365 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>ALTER SYSTEM</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REV="MADE"
+HREF="mailto:pgsql-docs@postgresql.org"><LINK
+REL="HOME"
+TITLE="PostgreSQL 9.4beta2 Documentation"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="SQL Commands"
+HREF="sql-commands.html"><LINK
+REL="PREVIOUS"
+TITLE="ALTER SERVER"
+HREF="sql-alterserver.html"><LINK
+REL="NEXT"
+TITLE="ALTER TABLE"
+HREF="sql-altertable.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="stylesheet.css"><META
+HTTP-EQUIV="Content-Type"
+CONTENT="text/html; charset=ISO-8859-1"><META
+NAME="creation"
+CONTENT="2014-07-21T19:22:19"></HEAD
+><BODY
+CLASS="REFENTRY"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="4"
+ALIGN="center"
+VALIGN="bottom"
+><A
+HREF="index.html"
+>PostgreSQL 9.4beta2 Documentation</A
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="top"
+><A
+TITLE="ALTER SERVER"
+HREF="sql-alterserver.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="sql-commands.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="60%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="20%"
+ALIGN="right"
+VALIGN="top"
+><A
+TITLE="ALTER TABLE"
+HREF="sql-altertable.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="SQL-ALTERSYSTEM"
+></A
+>ALTER SYSTEM</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN69056"
+></A
+><H2
+>Name</H2
+>ALTER SYSTEM&nbsp;--&nbsp;change a server configuration parameter</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN69059"
+></A
+><H2
+>Synopsis</H2
+><PRE
+CLASS="SYNOPSIS"
+>ALTER SYSTEM SET <TT
+CLASS="REPLACEABLE"
+><I
+>configuration_parameter</I
+></TT
+> { TO | = } { <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+> | '<TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>' | DEFAULT }</PRE
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN69064"
+></A
+><H2
+>Description</H2
+><P
+>   <TT
+CLASS="COMMAND"
+>ALTER SYSTEM</TT
+> writes the configuration parameter
+   values to the <TT
+CLASS="FILENAME"
+>postgresql.auto.conf</TT
+> file. With
+   <TT
+CLASS="LITERAL"
+>DEFAULT</TT
+>, it removes a configuration entry from
+   <TT
+CLASS="FILENAME"
+>postgresql.auto.conf</TT
+> file. The values will be
+   effective after reload of server configuration (SIGHUP) or in next
+   server start based on the type of configuration parameter modified.
+  </P
+><P
+>   This command is not allowed inside transaction block or function.
+  </P
+><P
+>   See <A
+HREF="config-setting.html"
+>Section 18.1</A
+> for other ways to set the parameters and
+   how they become effective.
+  </P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN69074"
+></A
+><H2
+>Parameters</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+><TT
+CLASS="REPLACEABLE"
+><I
+>configuration_parameter</I
+></TT
+></DT
+><DD
+><P
+>      Name of a settable run-time parameter.  Available parameters are
+      documented in <A
+HREF="runtime-config.html"
+>Chapter 18</A
+>.
+     </P
+></DD
+><DT
+><TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+></DT
+><DD
+><P
+>      New value of parameter.  Values can be specified as string
+      constants, identifiers, numbers, or comma-separated lists of
+      these, as appropriate for the particular parameter.
+      <TT
+CLASS="LITERAL"
+>DEFAULT</TT
+> can be written to specify to remove the
+      parameter and its value from <TT
+CLASS="FILENAME"
+>postgresql.auto.conf</TT
+>
+     </P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN69090"
+></A
+><H2
+>Notes</H2
+><P
+>    This command can't be used to set <A
+HREF="runtime-config-file-locations.html#GUC-DATA-DIRECTORY"
+>data_directory</A
+>
+    and any parameters (e.g., <A
+HREF="runtime-config-preset.html"
+>preset options</A
+>)
+    that are not allowed in <TT
+CLASS="FILENAME"
+>postgresql.conf</TT
+>.
+  </P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN69096"
+></A
+><H2
+>Examples</H2
+><P
+>   Set the <TT
+CLASS="LITERAL"
+>wal_level</TT
+>:
+</P><PRE
+CLASS="PROGRAMLISTING"
+>ALTER SYSTEM SET wal_level = hot_standby;</PRE
+><P>
+  </P
+><P
+>   Set the <TT
+CLASS="LITERAL"
+>authentication_timeout</TT
+>:
+</P><PRE
+CLASS="PROGRAMLISTING"
+>ALTER SYSTEM SET authentication_timeout = 10;</PRE
+><P></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN69104"
+></A
+><H2
+>Compatibility</H2
+><P
+>   The <TT
+CLASS="COMMAND"
+>ALTER SYSTEM</TT
+> statement is a
+   <SPAN
+CLASS="PRODUCTNAME"
+>PostgreSQL</SPAN
+> extension.
+  </P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN69109"
+></A
+><H2
+>See Also</H2
+><A
+HREF="sql-set.html"
+>SET</A
+>, <A
+HREF="sql-show.html"
+>SHOW</A
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="sql-alterserver.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="sql-altertable.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>ALTER SERVER</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="sql-commands.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>ALTER TABLE</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

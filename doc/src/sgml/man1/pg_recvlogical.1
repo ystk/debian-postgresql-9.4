@@ -1,0 +1,248 @@
+'\" t
+.\"     Title: pg_recvlogical
+.\"    Author: The PostgreSQL Global Development Group
+.\" Generator: DocBook XSL Stylesheets v1.76.1 <http://docbook.sf.net/>
+.\"      Date: 2014
+.\"    Manual: PostgreSQL 9.4beta2 Documentation
+.\"    Source: PostgreSQL 9.4beta2
+.\"  Language: English
+.\"
+.TH "PG_RECVLOGICAL" "1" "2014" "PostgreSQL 9.4beta2" "PostgreSQL 9.4beta2 Documentation"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.\" pg_recvlogical
+.SH "NAME"
+pg_recvlogical \- Control logical decoding (see Chapter 46, Logical Decoding, in the documentation) streams over a walsender connection\&.
+.SH "SYNOPSIS"
+.HP \w'\fBpg_recvlogical\fR\ 'u
+\fBpg_recvlogical\fR [\fBoption\fR...]
+.SH "DESCRIPTION"
+.PP
+
+\fBpg_recvlogical\fR
+controls logical decoding replication slots and streams data from such replication slots\&.
+.PP
+It creates a replication\-mode connection, so it is subject to the same constraints as
+pg_receivexlog, plus those for logical replication (see
+Chapter 46, Logical Decoding, in the documentation)\&.
+.SH "OPTIONS"
+.PP
+
+pg_recvlogical
+runs in one of three modes, which control its primary action:
+.PP
+\fB\-\-create\fR
+.RS 4
+Create a new logical replication slot with the name specified in
+\fB\-\-slot\fR, using the output plugin
+\fB\-\-plugin\fR, then exit\&. The slot is created for the database given in
+\fB\-\-dbname\fR\&.
+.RE
+.PP
+\fB\-\-start\fR
+.RS 4
+Begin streaming changes from the logical replication slot with the name specified in
+\fB\-\-slot\fR, continuing until terminated with a signal\&. If the server side change stream ends with a server shutdown or disconnect, retry in a loop unless
+\fB\-\-no\-loop\fR
+is specified\&. The stream format is determined by the output plugin specified when the slot was created\&.
+.sp
+You must connect to the same database used to create the slot\&.
+.RE
+.PP
+\fB\-\-drop\fR
+.RS 4
+Drop the replication slot with the name specified in
+\fB\-\-slot\fR, then exit\&.
+.RE
+.PP
+
+pg_recvlogical
+supports all the usual
+libpq\-based options\&. These are explained in detail in the documentation for
+psql
+and for
+libpq\&.
+.PP
+\fB\-U \fR\fB\fIuser\fR\fR
+.br
+\fB\-\-username \fR\fB\fIuser\fR\fR
+.RS 4
+Username to connect as\&. Must have a suitable
+pg_hba\&.conf
+entry allowing
+replication
+connections\&. Defaults to current operating system user name\&.
+.RE
+.PP
+\fB\-d \fR\fB\fIdatabase\fR\fR
+.br
+\fB\-\-dbname \fR\fB\fIdatabase\fR\fR
+.RS 4
+The database to connect to in
+replication
+mode; see mode descriptions for details\&. May be a
+libpq connstring
+instead\&. Defaults to user name\&.
+.RE
+.PP
+\fB\-h \fR\fB\fIhostname\-or\-ip\fR\fR
+.br
+\fB\-\-host \fR\fB\fIhostname\-or\-ip\fR\fR
+.RS 4
+Host or socket to connect to\&. See
+psql
+and
+libpq
+documentation\&.
+.RE
+.PP
+\fB\-p \fR\fB\fIport\fR\fR
+.br
+\fB\-\-port \fR\fB\fIport\fR\fR
+.RS 4
+Port number to connect to\&. See
+psql
+for an explanation of default port choices when this is not specified\&.
+.RE
+.PP
+\fB\-w\fR
+.br
+\fB\-\-no\-password\fR
+.RS 4
+Prevent prompting for a password\&. Will exit with an error code if a password is required but not available\&.
+.RE
+.PP
+\fB\-W\fR
+.br
+\fB\-\-password\fR
+.RS 4
+Provide a password for this connection\&. Please use the pgservice file (see
+Section 31.16, \(lqThe Connection Service File\(rq, in the documentation) or an environment variable instead of this option\&.
+.RE
+.PP
+The following command\-line options control the location and format of the output and other replication behavior:
+.PP
+\fB\-f \fR\fB\fIfilename\fR\fR
+.br
+\fB\-\-file=\fR\fB\fIfilename\fR\fR
+.RS 4
+Write received and decoded transaction data into this file\&. Use
+\-
+for stdout\&.
+.RE
+.PP
+\fB\-n\fR
+.br
+\fB\-\-no\-loop\fR
+.RS 4
+When the connection to the server is lost, do not retry in a loop, just exit\&.
+.RE
+.PP
+\fB\-o \fR\fB\fINAME\fR\fR\fB[=\fR\fB\fIVALUE\fR\fR\fB]\fR
+.br
+\fB\-\-option=\fR\fB\fINAME\fR\fR\fB[=\fR\fB\fIVALUE\fR\fR\fB]\fR
+.RS 4
+Pass the option
+\fINAME\fR
+to the output plugin with, if specified, the option value
+\fINAME\fR\&. Which options exist and their effects depends on the used output plugin\&.
+.RE
+.PP
+\fB\-F \fR\fB\fIinterval_seconds\fR\fR
+.br
+\fB\-\-fsync\-interval=\fR\fB\fIinterval_seconds\fR\fR
+.RS 4
+How often should
+pg_recvlogical
+issue sync commands to ensure the
+\fI\-\-outputfile\fR
+is safely flushed to disk without being asked by the server to do so\&. Specifying an interval of
+0
+disables issuing fsyncs altogether, while still reporting progress the server\&. In this case, data may be lost in the event of a crash\&.
+.RE
+.PP
+\fB\-P \fR\fB\fIplugin\fR\fR
+.br
+\fB\-\-plugin=\fR\fB\fIplugin\fR\fR
+.RS 4
+When creating a slot, use the logical decoding output plugin\&. See
+Chapter 46, Logical Decoding, in the documentation\&. This option has no effect if the slot already exists\&.
+.RE
+.PP
+\fB\-s \fR\fB\fIinterval_seconds\fR\fR
+.br
+\fB\-\-status\-interval=\fR\fB\fIinterval_seconds\fR\fR
+.RS 4
+This option has the same effect as the option of the same name in
+pg_receivexlog\&. See the description there\&.
+.RE
+.PP
+\fB\-S \fR\fB\fIslot_name\fR\fR
+.br
+\fB\-\-slot=\fR\fB\fIslot_name\fR\fR
+.RS 4
+In
+\fB\-\-start\fR
+mode, use the existing logical replication slot named
+\fIslot_name\fR\&. In
+\fB\-\-create\fR
+mode, create the slot with this name\&. In
+\fB\-\-drop\fR
+mode, delete the slot with this name\&.
+.RE
+.PP
+\fB\-I \fR\fB\fIlsn\fR\fR
+.br
+\fB\-\-startpos=\fR\fB\fIlsn\fR\fR
+.RS 4
+In
+\fB\-\-start\fR
+mode, start replication from the given LSN\&. For details on the effect of this, see the documentation in
+Chapter 46, Logical Decoding, in the documentation
+and
+Section 49.3, \(lqStreaming Replication Protocol\(rq, in the documentation\&. Ignored in other modes\&.
+.RE
+.PP
+The following additional options are available:
+.PP
+\fB\-v\fR
+.br
+\fB\-\-verbose\fR
+.RS 4
+Enables verbose mode\&.
+.RE
+.PP
+\fB\-V\fR
+.br
+\fB\-\-version\fR
+.RS 4
+Print the
+pg_recvlogical
+version and exit\&.
+.RE
+.PP
+\fB\-?\fR
+.br
+\fB\-\-help\fR
+.RS 4
+Show help about
+pg_recvlogical
+command line arguments, and exit\&.
+.RE

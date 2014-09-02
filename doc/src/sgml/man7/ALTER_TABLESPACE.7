@@ -1,0 +1,143 @@
+'\" t
+.\"     Title: ALTER TABLESPACE
+.\"    Author: The PostgreSQL Global Development Group
+.\" Generator: DocBook XSL Stylesheets v1.76.1 <http://docbook.sf.net/>
+.\"      Date: 2014
+.\"    Manual: PostgreSQL 9.4beta2 Documentation
+.\"    Source: PostgreSQL 9.4beta2
+.\"  Language: English
+.\"
+.TH "ALTER TABLESPACE" "7" "2014" "PostgreSQL 9.4beta2" "PostgreSQL 9.4beta2 Documentation"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.\" ALTER TABLESPACE
+.SH "NAME"
+ALTER_TABLESPACE \- change the definition of a tablespace or affect objects of a tablespace
+.SH "SYNOPSIS"
+.sp
+.nf
+ALTER TABLESPACE \fIname\fR RENAME TO \fInew_name\fR
+ALTER TABLESPACE \fIname\fR OWNER TO \fInew_owner\fR
+ALTER TABLESPACE \fIname\fR SET ( \fItablespace_option\fR = \fIvalue\fR [, \&.\&.\&. ] )
+ALTER TABLESPACE \fIname\fR RESET ( \fItablespace_option\fR [, \&.\&.\&. ] )
+ALTER TABLESPACE \fIname\fR MOVE { ALL | TABLES | INDEXES | MATERIALIZED VIEWS } [ OWNED BY \fIrole_name\fR [, \&.\&.\&.] ] TO \fInew_tablespace\fR [ NOWAIT ]
+.fi
+.SH "DESCRIPTION"
+.PP
+
+\fBALTER TABLESPACE\fR
+can be used to change the definition of a tablespace or to migrate objects in the current database between tablespaces\&.
+.PP
+You must own the tablespace to change the definition of a tablespace\&. To alter the owner, you must also be a direct or indirect member of the new owning role\&. (Note that superusers have these privileges automatically\&.) Users may use ALTER TABLESPACE \&.\&.\&. MOVE to move objects between tablespaces\&. ALL will move all tables, indexes and materialized views while specifying TABLES will move only tables (but not their indexes), INDEXES will only move indexes (including those underneath materialized views, but not tables) and MATERIALIZED VIEWS will only move the table relation of the materialized view (but no indexes associated with it)\&. Users may also specify a list of roles whose objects are to be moved using OWNED BY\&. Users must have CREATE rights on the new tablespace and be considered an owner (either directly or indirectly) on all objects to be moved\&. Note that the superuser is considered an owner of all objects and therefore an ALTER TABLESPACE \&.\&.\&. MOVE ALL issued by the superuser will move all objects in the current database which are in the tablespace\&. All objects to be moved will be locked immediately by the command\&. The NOWAIT option, if specified, will cause the command to fail if it is unable to acquire the locks\&. System catalogs will not be moved by this command\- individuals wishing to move a whole database should use ALTER DATABASE, or call ALTER TABLE on the individual system catalogs\&. Note that relations in
+information_schema
+will be moved, just as any other normal database objects, if the user is the superuser or considered an owner of the relations in
+information_schema\&.
+.SH "PARAMETERS"
+.PP
+\fIname\fR
+.RS 4
+The name of an existing tablespace\&.
+.RE
+.PP
+\fInew_name\fR
+.RS 4
+The new name of the tablespace\&. The new name cannot begin with
+pg_, as such names are reserved for system tablespaces\&.
+.RE
+.PP
+\fInew_owner\fR
+.RS 4
+The new owner of the tablespace\&.
+.RE
+.PP
+\fItablespace_option\fR
+.RS 4
+A tablespace parameter to be set or reset\&. Currently, the only available parameters are
+\fIseq_page_cost\fR
+and
+\fIrandom_page_cost\fR\&. Setting either value for a particular tablespace will override the planner\*(Aqs usual estimate of the cost of reading pages from tables in that tablespace, as established by the configuration parameters of the same name (see
+seq_page_cost,
+random_page_cost)\&. This may be useful if one tablespace is located on a disk which is faster or slower than the remainder of the I/O subsystem\&.
+.RE
+.PP
+\fIrole_name\fR
+.RS 4
+Role(s) whose objects are to be moved\&.
+.RE
+.PP
+\fInew_tablespace\fR
+.RS 4
+The name of the tablespace to move objects into\&. The user must have CREATE rights on the new tablespace to move objects into that tablespace, unless the tablespace being moved into is the default tablespace for the database connected to\&.
+.RE
+.PP
+\fINOWAIT\fR
+.RS 4
+The NOWAIT option causes the ALTER TABLESPACE command to fail immediately if it is unable to acquire the necessary lock on all of the objects being move\&.
+.RE
+.SH "EXAMPLES"
+.PP
+Rename tablespace
+index_space
+to
+fast_raid:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+ALTER TABLESPACE index_space RENAME TO fast_raid;
+.fi
+.if n \{\
+.RE
+.\}
+.PP
+Change the owner of tablespace
+index_space:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+ALTER TABLESPACE index_space OWNER TO mary;
+.fi
+.if n \{\
+.RE
+.\}
+.PP
+Move all of the objects which I own from the default tablespace to the
+fast_raid
+tablespace:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+ALTER TABLESPACE pg_default MOVE ALL TO fast_raid;
+.fi
+.if n \{\
+.RE
+.\}
+.SH "COMPATIBILITY"
+.PP
+There is no
+\fBALTER TABLESPACE\fR
+statement in the SQL standard\&.
+.SH "SEE ALSO"
+CREATE TABLESPACE (\fBCREATE_TABLESPACE\fR(7)), DROP TABLESPACE (\fBDROP_TABLESPACE\fR(7))
