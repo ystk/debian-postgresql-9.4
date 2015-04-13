@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4beta2 Documentation"
+TITLE="PostgreSQL 9.4.1 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="Frontend/Backend Protocol"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2014-07-21T19:22:19"></HEAD
+CONTENT="2015-02-02T20:51:01"></HEAD
 ><BODY
 CLASS="SECT1"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4beta2 Documentation</A
+>PostgreSQL 9.4.1 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -151,7 +151,8 @@ CLASS="APPLICATION"
 CLASS="VARIABLELIST"
 ><DL
 ><DT
->IDENTIFY_SYSTEM</DT
+>IDENTIFY_SYSTEM
+     </DT
 ><DD
 ><P
 >      Requests the server to identify itself. Server replies with a result
@@ -206,7 +207,8 @@ CLASS="REPLACEABLE"
 ><I
 >tli</I
 ></TT
-></DT
+>
+     </DT
 ><DD
 ><P
 >      Requests the server to send over the timeline history file for timeline
@@ -228,7 +230,10 @@ CLASS="VARIABLELIST"
 >filename</DT
 ><DD
 ><P
->       Filename of the timeline history file, e.g 00000002.history.
+>       Filename of the timeline history file, e.g <TT
+CLASS="FILENAME"
+>00000002.history</TT
+>.
       </P
 ></DD
 ><DT
@@ -260,7 +265,8 @@ CLASS="REPLACEABLE"
 ><I
 >output_plugin</I
 ></TT
-> } </DT
+> }
+     </DT
 ><DD
 ><P
 >      Create a physical or logical replication
@@ -335,7 +341,8 @@ CLASS="REPLACEABLE"
 ><I
 >tli</I
 ></TT
->]</DT
+>]
+     </DT
 ><DD
 ><P
 >      Instructs server to start streaming WAL, starting at
@@ -359,6 +366,21 @@ CLASS="REPLACEABLE"
       reply with an error, e.g. if the requested section of WAL has already
       been recycled. On success, server responds with a CopyBothResponse
       message, and then starts to stream WAL to the frontend.
+     </P
+><P
+>      If a slot's name is provided
+      via <TT
+CLASS="REPLACEABLE"
+><I
+>slot_name</I
+></TT
+>, it will be updated
+      as replication progresses so that the server knows which WAL segments,
+      and if <TT
+CLASS="VARNAME"
+>hot_standby_feedback</TT
+> is on which transactions,
+      are still needed by the standby.
      </P
 ><P
 >      If the client requests a timeline that's not the latest, but is part of
@@ -387,21 +409,6 @@ CLASS="REPLACEABLE"
       an ErrorResponse message if it encounters a failure after beginning
       to stream.)  The payload of each CopyData message from server to the
       client contains a message of one of the following formats:
-     </P
-><P
->      If a slot's name is provided
-      via <TT
-CLASS="REPLACEABLE"
-><I
->slot_name</I
-></TT
->, it will be updated
-      as replication progresses so that the server knows which WAL segments -
-      and if <TT
-CLASS="VARNAME"
->hot_standby_feedback</TT
-> is on which transactions -
-      are still needed by the standby.
      </P
 ><P
 >      <P
@@ -779,7 +786,8 @@ CLASS="REPLACEABLE"
 ><I
 >slot_name</I
 ></TT
-></DT
+>
+     </DT
 ><DD
 ><P
 >      Drops a replication slot, freeing any reserved server-side resources. If
@@ -834,7 +842,8 @@ CLASS="REPLACEABLE"
 ><I
 >rate</I
 ></TT
->]</DT
+>]
+     </DT
 ><DD
 ><P
 >      Instructs the server to start streaming a base backup.

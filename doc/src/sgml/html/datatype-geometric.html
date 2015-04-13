@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4beta2 Documentation"
+TITLE="PostgreSQL 9.4.1 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="Data Types"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2014-07-21T19:22:19"></HEAD
+CONTENT="2015-02-02T20:51:01"></HEAD
 ><BODY
 CLASS="SECT1"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4beta2 Documentation</A
+>PostgreSQL 9.4.1 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -251,7 +251,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN6666"
+NAME="AEN6730"
 >8.8.1. Points</A
 ></H2
 ><P
@@ -314,15 +314,38 @@ NAME="DATATYPE-LINE"
 >8.8.2. Lines</A
 ></H2
 ><P
->     Lines (<TT
+>     Lines are represented by the linear
+     equation <TT
+CLASS="REPLACEABLE"
+><I
+>A</I
+></TT
+>x + <TT
+CLASS="REPLACEABLE"
+><I
+>B</I
+></TT
+>y + <TT
+CLASS="REPLACEABLE"
+><I
+>C</I
+></TT
+> = 0,
+     where <TT
+CLASS="REPLACEABLE"
+><I
+>A</I
+></TT
+> and <TT
+CLASS="REPLACEABLE"
+><I
+>B</I
+></TT
+> are not both zero.  Values
+     of type <TT
 CLASS="TYPE"
 >line</TT
->) are represented by the linear equation Ax + By
-     + C = 0, where A and B are not both zero.  Values of
-     type <TT
-CLASS="TYPE"
->line</TT
-> is input and output in the following form:
+> are input and output in the following form:
 </P><PRE
 CLASS="SYNOPSIS"
 >{ <TT
@@ -463,7 +486,7 @@ CLASS="REPLACEABLE"
 ></TT
 >)</TT
 >
-     are two (different) points on the line.
+     are two different points on the line.
     </P
 ></DIV
 ><DIV
@@ -475,15 +498,12 @@ NAME="DATATYPE-LSEG"
 >8.8.3. Line Segments</A
 ></H2
 ><P
->     Line segments (<TT
+>     Line segments are represented by pairs of points that are the endpoints
+     of the segment.  Values of type <TT
 CLASS="TYPE"
 >lseg</TT
->) are represented by pairs of points.
-     Values of type <TT
-CLASS="TYPE"
->lseg</TT
-> are specified using any of the following
-     syntaxes:
+> are specified using any
+     of the following syntaxes:
 
 </P><PRE
 CLASS="SYNOPSIS"
@@ -614,7 +634,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN6747"
+NAME="AEN6814"
 >8.8.4. Boxes</A
 ></H2
 ><P
@@ -739,7 +759,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN6776"
+NAME="AEN6843"
 >8.8.5. Paths</A
 ></H2
 ><P

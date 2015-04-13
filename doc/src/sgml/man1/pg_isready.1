@@ -2,12 +2,12 @@
 .\"     Title: pg_isready
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets v1.76.1 <http://docbook.sf.net/>
-.\"      Date: 2014
-.\"    Manual: PostgreSQL 9.4beta2 Documentation
-.\"    Source: PostgreSQL 9.4beta2
+.\"      Date: 2015
+.\"    Manual: PostgreSQL 9.4.1 Documentation
+.\"    Source: PostgreSQL 9.4.1
 .\"  Language: English
 .\"
-.TH "PG_ISREADY" "1" "2014" "PostgreSQL 9.4beta2" "PostgreSQL 9.4beta2 Documentation"
+.TH "PG_ISREADY" "1" "2015" "PostgreSQL 9.4.1" "PostgreSQL 9.4.1 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -27,7 +27,6 @@
 .\" -----------------------------------------------------------------
 .\" * MAIN CONTENT STARTS HERE *
 .\" -----------------------------------------------------------------
-.\" pg_isready
 .SH "NAME"
 pg_isready \- check the connection status of a PostgreSQL server
 .SH "SYNOPSIS"
@@ -141,11 +140,7 @@ libpq
 Section 31.14, \(lqEnvironment Variables\(rq, in the documentation)\&.
 .SH "NOTES"
 .PP
-The options
-\fB\-\-dbname\fR
-and
-\fB\-\-username\fR
-can be used to avoid gratuitous error messages in the logs, but are not necessary for proper functionality\&.
+It is not necessary to supply correct user name, password, or database name values to obtain the server status; however, if incorrect values are provided, the server will log a failed connection attempt\&.
 .SH "EXAMPLES"
 .PP
 Standard Usage:

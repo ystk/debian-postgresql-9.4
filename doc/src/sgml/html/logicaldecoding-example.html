@@ -2,14 +2,14 @@
 <HTML
 ><HEAD
 ><TITLE
->Logical Decoding Example</TITLE
+>Logical Decoding Examples</TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4beta2 Documentation"
+TITLE="PostgreSQL 9.4.1 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="Logical Decoding"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2014-07-21T19:22:19"></HEAD
+CONTENT="2015-02-02T20:51:01"></HEAD
 ><BODY
 CLASS="SECT1"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4beta2 Documentation</A
+>PostgreSQL 9.4.1 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -93,10 +93,11 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="LOGICALDECODING-EXAMPLE"
->46.1. Logical Decoding Example</A
+>46.1. Logical Decoding Examples</A
 ></H1
 ><P
->    The following example demonstrates the SQL interface.
+>    The following example demonstrates controlling logical decoding using the
+    SQL interface.
    </P
 ><P
 >    Before you can use logical decoding, you must set
@@ -110,8 +111,8 @@ CLASS="LITERAL"
     <A
 HREF="runtime-config-replication.html#GUC-MAX-REPLICATION-SLOTS"
 >max_replication_slots</A
-> to at least 1.
-    Then, you should connect to the target database (in the example
+> to at least 1.  Then, you
+    should connect to the target database (in the example
     below, <TT
 CLASS="LITERAL"
 >postgres</TT
@@ -181,7 +182,7 @@ postgres=# SELECT * FROM pg_logical_slot_peek_changes('regression_slot', NULL, N
  0/16E0B90 | 690 | COMMIT 690
 (3 rows)
 
-postgres=# -- You can also peek ahead in the change stream without consuming changes
+postgres=# -- The next call to pg_logical_slot_peek_changes() returns the same changes again
 postgres=# SELECT * FROM pg_logical_slot_peek_changes('regression_slot', NULL, NULL);
  location  | xid |                     data
 -----------+-----+-----------------------------------------------
@@ -207,37 +208,51 @@ postgres=# SELECT pg_drop_replication_slot('regression_slot');
 
 (1 row)</PRE
 ><P
->    The following example shows usage of the walsender interface using
-    the <A
+>    The following example shows how logical decoding is controlled over the
+    streaming replication protocol, using the
+    program <A
 HREF="app-pgrecvlogical.html"
-><TT
-CLASS="COMMAND"
->pg_recvlogical</TT
+><SPAN
+CLASS="APPLICATION"
+>pg_recvlogical</SPAN
 ></A
->
-    shell command. It requires the replication configurations to be allowed
+> included in the PostgreSQL
+    distribution.  This requires that client authentication is set up to allow
+    replication connections
     (see <A
 HREF="warm-standby.html#STREAMING-REPLICATION-AUTHENTICATION"
 >Section 25.2.5.1</A
->)
-    and <TT
+>) and
+    that <TT
 CLASS="VARNAME"
 >max_wal_senders</TT
-> to be set sufficiently high for
-    another connection.
+> is set sufficiently high to an
+    additional connection.
    </P
 ><PRE
 CLASS="PROGRAMLISTING"
-># pg_recvlogical -d postgres --slot test --create
-# pg_recvlogical -d postgres --slot test --start -f -
-CTRL-Z
-# psql -d postgres -c "INSERT INTO data(data) VALUES('4');"
-# fg
+>$ pg_recvlogical -d postgres --slot test --create-slot
+$ pg_recvlogical -d postgres --slot test --start -f -
+<B
+CLASS="KEYCAP"
+>Control</B
+>+<B
+CLASS="KEYCAP"
+>Z</B
+>
+$ psql -d postgres -c "INSERT INTO data(data) VALUES('4');"
+$ fg
 BEGIN 693
 table public.data: INSERT: id[integer]:4 data[text]:'4'
 COMMIT 693
-CTRL-C
-# pg_recvlogical -d postgres --slot test --drop</PRE
+<B
+CLASS="KEYCAP"
+>Control</B
+>+<B
+CLASS="KEYCAP"
+>C</B
+>
+$ pg_recvlogical -d postgres --slot test --drop-slot</PRE
 ></DIV
 ><DIV
 CLASS="NAVFOOTER"

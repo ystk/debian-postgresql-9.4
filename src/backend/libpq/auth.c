@@ -625,6 +625,7 @@ recv_password_packet(Port *port)
 {
 	StringInfoData buf;
 
+	pq_startmsgread();
 	if (PG_PROTOCOL_MAJOR(port->proto) >= 3)
 	{
 		/* Expect 'p' message type */
@@ -849,6 +850,7 @@ pg_GSS_recvauth(Port *port)
 	 */
 	do
 	{
+		pq_startmsgread();
 		mtype = pq_getbyte();
 		if (mtype != 'p')
 		{
@@ -1083,6 +1085,7 @@ pg_SSPI_recvauth(Port *port)
 	 */
 	do
 	{
+		pq_startmsgread();
 		mtype = pq_getbyte();
 		if (mtype != 'p')
 		{
@@ -1590,8 +1593,9 @@ auth_peer(hbaPort *port)
 	if (!pw)
 	{
 		ereport(LOG,
-				(errmsg("failed to look up local user id %ld: %s",
-		   (long) uid, errno ? strerror(errno) : _("user does not exist"))));
+				(errmsg("could not look up local user ID %ld: %s",
+						(long) uid,
+						errno ? strerror(errno) : _("user does not exist"))));
 		return STATUS_ERROR;
 	}
 

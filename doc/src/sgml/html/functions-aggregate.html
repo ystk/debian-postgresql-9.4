@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4beta2 Documentation"
+TITLE="PostgreSQL 9.4.1 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="Functions and Operators"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2014-07-21T19:22:19"></HEAD
+CONTENT="2015-02-02T20:51:01"></HEAD
 ><BODY
 CLASS="SECT1"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4beta2 Documentation</A
+>PostgreSQL 9.4.1 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -441,7 +441,7 @@ CLASS="FUNCTION"
 >json_agg(<TT
 CLASS="REPLACEABLE"
 ><I
->record</I
+>expression</I
 ></TT
 >)</CODE
 >
@@ -449,7 +449,7 @@ CLASS="REPLACEABLE"
 ><TD
 >       <TT
 CLASS="TYPE"
->record</TT
+>any</TT
 >
       </TD
 ><TD
@@ -459,7 +459,7 @@ CLASS="TYPE"
 >
       </TD
 ><TD
->aggregates records as a JSON array of objects</TD
+>aggregates values as a JSON array</TD
 ></TR
 ><TR
 ><TD
@@ -482,7 +482,7 @@ CLASS="REPLACEABLE"
 ><TD
 >       <TT
 CLASS="TYPE"
->("any", "any")</TT
+>(any, any)</TT
 >
       </TD
 ><TD
@@ -623,10 +623,13 @@ CLASS="TYPE"
 >, <TT
 CLASS="TYPE"
 >numeric</TT
->, or
+>,
        <TT
 CLASS="TYPE"
 >interval</TT
+>, or <TT
+CLASS="TYPE"
+>money</TT
 >
       </TD
 ><TD
@@ -647,11 +650,7 @@ CLASS="TYPE"
        <TT
 CLASS="TYPE"
 >bigint</TT
-> arguments, <TT
-CLASS="TYPE"
->double precision</TT
->
-       for floating-point arguments, otherwise the same as the
+> arguments, otherwise the same as the
        argument data type
       </TD
 ><TD

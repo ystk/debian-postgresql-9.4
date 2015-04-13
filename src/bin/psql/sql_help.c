@@ -387,6 +387,10 @@ sql_help_ALTER_FOREIGN_TABLE(PQExpBuffer buf)
 					  "    ALTER [ COLUMN ] %s SET ( %s = %s [, ... ] )\n"
 					  "    ALTER [ COLUMN ] %s RESET ( %s [, ... ] )\n"
 					  "    ALTER [ COLUMN ] %s OPTIONS ( [ ADD | SET | DROP ] %s ['%s'] [, ... ])\n"
+					  "    DISABLE TRIGGER [ %s | ALL | USER ]\n"
+					  "    ENABLE TRIGGER [ %s | ALL | USER ]\n"
+					  "    ENABLE REPLICA TRIGGER %s\n"
+					  "    ENABLE ALWAYS TRIGGER %s\n"
 					  "    OWNER TO %s\n"
 					  "    OPTIONS ( [ ADD | SET | DROP ] %s ['%s'] [, ... ])",
 					  _("name"),
@@ -420,6 +424,10 @@ sql_help_ALTER_FOREIGN_TABLE(PQExpBuffer buf)
 					  _("column_name"),
 					  _("option"),
 					  _("value"),
+					  _("trigger_name"),
+					  _("trigger_name"),
+					  _("trigger_name"),
+					  _("trigger_name"),
 					  _("new_owner"),
 					  _("option"),
 					  _("value"));
@@ -501,7 +509,9 @@ sql_help_ALTER_INDEX(PQExpBuffer buf)
 					  "ALTER INDEX [ IF EXISTS ] %s RENAME TO %s\n"
 					  "ALTER INDEX [ IF EXISTS ] %s SET TABLESPACE %s\n"
 					  "ALTER INDEX [ IF EXISTS ] %s SET ( %s = %s [, ... ] )\n"
-					  "ALTER INDEX [ IF EXISTS ] %s RESET ( %s [, ... ] )",
+					  "ALTER INDEX [ IF EXISTS ] %s RESET ( %s [, ... ] )\n"
+					  "ALTER INDEX ALL IN TABLESPACE %s [ OWNED BY %s [, ... ] ]\n"
+					  "    SET TABLESPACE %s [ NOWAIT ]",
 					  _("name"),
 					  _("new_name"),
 					  _("name"),
@@ -510,7 +520,10 @@ sql_help_ALTER_INDEX(PQExpBuffer buf)
 					  _("storage_parameter"),
 					  _("value"),
 					  _("name"),
-					  _("storage_parameter"));
+					  _("storage_parameter"),
+					  _("name"),
+					  _("role_name"),
+					  _("new_tablespace"));
 }
 
 void
@@ -546,6 +559,8 @@ sql_help_ALTER_MATERIALIZED_VIEW(PQExpBuffer buf)
 					  "    RENAME TO %s\n"
 					  "ALTER MATERIALIZED VIEW [ IF EXISTS ] %s\n"
 					  "    SET SCHEMA %s\n"
+					  "ALTER MATERIALIZED VIEW ALL IN TABLESPACE %s [ OWNED BY %s [, ... ] ]\n"
+					  "    SET TABLESPACE %s [ NOWAIT ]\n"
 					  "\n"
 					  "%s\n"
 					  "\n"
@@ -568,6 +583,9 @@ sql_help_ALTER_MATERIALIZED_VIEW(PQExpBuffer buf)
 					  _("new_name"),
 					  _("name"),
 					  _("new_schema"),
+					  _("name"),
+					  _("role_name"),
+					  _("new_tablespace"),
 					  _("where action is one of:"),
 					  _("column_name"),
 					  _("integer"),
@@ -786,10 +804,14 @@ void
 sql_help_ALTER_SYSTEM(PQExpBuffer buf)
 {
 	appendPQExpBuffer(buf,
-					  "ALTER SYSTEM SET %s { TO | = } { %s | '%s' | DEFAULT }",
+					  "ALTER SYSTEM SET %s { TO | = } { %s | '%s' | DEFAULT }\n"
+					  "\n"
+					  "ALTER SYSTEM RESET %s\n"
+					  "ALTER SYSTEM RESET ALL",
 					  _("configuration_parameter"),
 					  _("value"),
-					  _("value"));
+					  _("value"),
+					  _("configuration_parameter"));
 }
 
 void
@@ -806,6 +828,8 @@ sql_help_ALTER_TABLE(PQExpBuffer buf)
 					  "    RENAME TO %s\n"
 					  "ALTER TABLE [ IF EXISTS ] %s\n"
 					  "    SET SCHEMA %s\n"
+					  "ALTER TABLE ALL IN TABLESPACE %s [ OWNED BY %s [, ... ] ]\n"
+					  "    SET TABLESPACE %s [ NOWAIT ]\n"
 					  "\n"
 					  "%s\n"
 					  "\n"
@@ -863,6 +887,9 @@ sql_help_ALTER_TABLE(PQExpBuffer buf)
 					  _("new_name"),
 					  _("name"),
 					  _("new_schema"),
+					  _("name"),
+					  _("role_name"),
+					  _("new_tablespace"),
 					  _("where action is one of:"),
 					  _("column_name"),
 					  _("data_type"),
@@ -920,8 +947,7 @@ sql_help_ALTER_TABLESPACE(PQExpBuffer buf)
 					  "ALTER TABLESPACE %s RENAME TO %s\n"
 					  "ALTER TABLESPACE %s OWNER TO %s\n"
 					  "ALTER TABLESPACE %s SET ( %s = %s [, ... ] )\n"
-					  "ALTER TABLESPACE %s RESET ( %s [, ... ] )\n"
-					  "ALTER TABLESPACE %s MOVE { ALL | TABLES | INDEXES | MATERIALIZED VIEWS } [ OWNED BY %s [, ...] ] TO %s [ NOWAIT ]",
+					  "ALTER TABLESPACE %s RESET ( %s [, ... ] )",
 					  _("name"),
 					  _("new_name"),
 					  _("name"),
@@ -930,10 +956,7 @@ sql_help_ALTER_TABLESPACE(PQExpBuffer buf)
 					  _("tablespace_option"),
 					  _("value"),
 					  _("name"),
-					  _("tablespace_option"),
-					  _("name"),
-					  _("role_name"),
-					  _("new_tablespace"));
+					  _("tablespace_option"));
 }
 
 void
@@ -1137,12 +1160,7 @@ sql_help_ALTER_VIEW(PQExpBuffer buf)
 					  "ALTER VIEW [ IF EXISTS ] %s RENAME TO %s\n"
 					  "ALTER VIEW [ IF EXISTS ] %s SET SCHEMA %s\n"
 					  "ALTER VIEW [ IF EXISTS ] %s SET ( %s [= %s] [, ... ] )\n"
-					  "ALTER VIEW [ IF EXISTS ] %s RESET ( %s [, ... ] )\n"
-					  "\n"
-					  "%s\n"
-					  "\n"
-					  "    security_barrier [ %s ]\n"
-					  "    check_option [ %s (%s or %s) ]",
+					  "ALTER VIEW [ IF EXISTS ] %s RESET ( %s [, ... ] )",
 					  _("name"),
 					  _("column_name"),
 					  _("expression"),
@@ -1158,12 +1176,7 @@ sql_help_ALTER_VIEW(PQExpBuffer buf)
 					  _("view_option_name"),
 					  _("view_option_value"),
 					  _("name"),
-					  _("view_option_name"),
-					  _("where view_option_name can be one of:"),
-					  _("boolean"),
-					  _("text"),
-					  _("local"),
-					  _("cascaded"));
+					  _("view_option_name"));
 }
 
 void
@@ -1476,12 +1489,12 @@ sql_help_CREATE_AGGREGATE(PQExpBuffer buf)
 					  _("state_data_size"),
 					  _("ffunc"),
 					  _("initial_condition"),
-					  _("sfunc"),
-					  _("invfunc"),
-					  _("state_data_type"),
-					  _("state_data_size"),
-					  _("ffunc"),
-					  _("initial_condition"),
+					  _("msfunc"),
+					  _("minvfunc"),
+					  _("mstate_data_type"),
+					  _("mstate_data_size"),
+					  _("mffunc"),
+					  _("minitial_condition"),
 					  _("sort_operator"));
 }
 
@@ -2328,22 +2341,12 @@ sql_help_CREATE_VIEW(PQExpBuffer buf)
 					  "CREATE [ OR REPLACE ] [ TEMP | TEMPORARY ] [ RECURSIVE ] VIEW %s [ ( %s [, ...] ) ]\n"
 					  "    [ WITH ( %s [= %s] [, ... ] ) ]\n"
 					  "    AS %s\n"
-					  "    [ WITH [ CASCADED | LOCAL ] CHECK OPTION ]\n"
-					  "\n"
-					  "%s\n"
-					  "\n"
-					  "    security_barrier [ %s ]\n"
-					  "    check_option [ %s (%s or %s) ]",
+					  "    [ WITH [ CASCADED | LOCAL ] CHECK OPTION ]",
 					  _("name"),
 					  _("column_name"),
 					  _("view_option_name"),
 					  _("view_option_value"),
-					  _("query"),
-					  _("where view_option_name can be one of:"),
-					  _("boolean"),
-					  _("text"),
-					  _("local"),
-					  _("cascaded"));
+					  _("query"));
 }
 
 void

@@ -2,12 +2,12 @@
 .\"     Title: CREATE SEQUENCE
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets v1.76.1 <http://docbook.sf.net/>
-.\"      Date: 2014
-.\"    Manual: PostgreSQL 9.4beta2 Documentation
-.\"    Source: PostgreSQL 9.4beta2
+.\"      Date: 2015
+.\"    Manual: PostgreSQL 9.4.1 Documentation
+.\"    Source: PostgreSQL 9.4.1
 .\"  Language: English
 .\"
-.TH "CREATE SEQUENCE" "7" "2014" "PostgreSQL 9.4beta2" "PostgreSQL 9.4beta2 Documentation"
+.TH "CREATE SEQUENCE" "7" "2015" "PostgreSQL 9.4.1" "PostgreSQL 9.4.1 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -27,7 +27,6 @@
 .\" -----------------------------------------------------------------
 .\" * MAIN CONTENT STARTS HERE *
 .\" -----------------------------------------------------------------
-.\" CREATE SEQUENCE
 .SH "NAME"
 CREATE_SEQUENCE \- define a new sequence generator
 .SH "SYNOPSIS"
@@ -175,9 +174,7 @@ to remove a sequence\&.
 .PP
 Sequences are based on
 bigint
-arithmetic, so the range cannot exceed the range of an eight\-byte integer (\-9223372036854775808 to 9223372036854775807)\&. On some older platforms, there might be no compiler support for eight\-byte integers, in which case sequences use regular
-integer
-arithmetic (range \-2147483648 to +2147483647)\&.
+arithmetic, so the range cannot exceed the range of an eight\-byte integer (\-9223372036854775808 to 9223372036854775807)\&.
 .PP
 Unexpected results might be obtained if a
 \fIcache\fR

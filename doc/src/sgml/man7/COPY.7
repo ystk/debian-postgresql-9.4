@@ -2,12 +2,12 @@
 .\"     Title: COPY
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets v1.76.1 <http://docbook.sf.net/>
-.\"      Date: 2014
-.\"    Manual: PostgreSQL 9.4beta2 Documentation
-.\"    Source: PostgreSQL 9.4beta2
+.\"      Date: 2015
+.\"    Manual: PostgreSQL 9.4.1 Documentation
+.\"    Source: PostgreSQL 9.4.1
 .\"  Language: English
 .\"
-.TH "COPY" "7" "2014" "PostgreSQL 9.4beta2" "PostgreSQL 9.4beta2 Documentation"
+.TH "COPY" "7" "2015" "PostgreSQL 9.4.1" "PostgreSQL 9.4.1 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -27,7 +27,6 @@
 .\" -----------------------------------------------------------------
 .\" * MAIN CONTENT STARTS HERE *
 .\" -----------------------------------------------------------------
-.\" COPY
 .SH "NAME"
 COPY \- copy data between a file and a table
 .SH "SYNOPSIS"
@@ -86,10 +85,12 @@ will insert the default values for those columns\&.
 \fBCOPY\fR
 with a file name instructs the
 PostgreSQL
-server to directly read from or write to a file\&. The file must be accessible to the server and the name must be specified from the viewpoint of the server\&. When
+server to directly read from or write to a file\&. The file must be accessible by the
+PostgreSQL
+user (the user ID the server runs as) and the name must be specified from the viewpoint of the server\&. When
 PROGRAM
-is specified, the server executes the given command, and reads from its standard input, or writes to its standard output\&. The command must be specified from the viewpoint of the server, and be executable by the
-postgres
+is specified, the server executes the given command and reads from the standard output of the program, or writes to the standard input of the program\&. The command must be specified from the viewpoint of the server, and be executable by the
+PostgreSQL
 user\&. When
 STDIN
 or

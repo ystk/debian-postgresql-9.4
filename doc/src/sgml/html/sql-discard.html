@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4beta2 Documentation"
+TITLE="PostgreSQL 9.4.1 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="SQL Commands"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2014-07-21T19:22:19"></HEAD
+CONTENT="2015-02-02T20:51:01"></HEAD
 ><BODY
 CLASS="REFENTRY"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4beta2 Documentation</A
+>PostgreSQL 9.4.1 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -95,7 +95,7 @@ NAME="SQL-DISCARD"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN78097"
+NAME="AEN78472"
 ></A
 ><H2
 >Name</H2
@@ -103,7 +103,7 @@ NAME="AEN78097"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN78100"
+NAME="AEN78475"
 ></A
 ><H2
 >Synopsis</H2
@@ -114,7 +114,7 @@ CLASS="SYNOPSIS"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN78102"
+NAME="AEN78477"
 ></A
 ><H2
 >Description</H2
@@ -123,30 +123,19 @@ NAME="AEN78102"
 CLASS="COMMAND"
 >DISCARD</TT
 > releases internal resources associated with a
-   database session. These resources are normally released at the end
-   of the session.
-  </P
-><P
->   <TT
-CLASS="COMMAND"
->DISCARD TEMP</TT
-> drops all temporary tables created in the
-   current session.  <TT
-CLASS="COMMAND"
->DISCARD PLANS</TT
-> releases all internally
-   cached query plans.  <TT
+   database session.  This command is useful for partially or fully
+   resetting the session's state.  There are several subcommands to
+   release different types of resources; the <TT
 CLASS="COMMAND"
 >DISCARD ALL</TT
-> resets a session to
-   its original state, discarding temporary resources and resetting
-   session-local configuration changes.
+>
+   variant subsumes all the others, and also resets additional state.
   </P
 ></DIV
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN78110"
+NAME="AEN78482"
 ></A
 ><H2
 >Parameters</H2
@@ -158,24 +147,12 @@ CLASS="VARIABLELIST"
 ><DT
 ><TT
 CLASS="LITERAL"
->TEMPORARY</TT
-> or <TT
-CLASS="LITERAL"
->TEMP</TT
-></DT
-><DD
-><P
->      Drops all temporary tables created in the current session.
-     </P
-></DD
-><DT
-><TT
-CLASS="LITERAL"
 >PLANS</TT
 ></DT
 ><DD
 ><P
->      Releases all cached query plans.
+>      Releases all cached query plans, forcing re-planning to occur
+      the next time the associated prepared statement is used.
      </P
 ></DD
 ><DT
@@ -185,7 +162,37 @@ CLASS="LITERAL"
 ></DT
 ><DD
 ><P
->      Discards all cached sequence values.
+>      Discards all cached sequence-related state,
+      including <CODE
+CLASS="FUNCTION"
+>currval()</CODE
+>/<CODE
+CLASS="FUNCTION"
+>lastval()</CODE
+>
+      information and any preallocated sequence values that have not
+      yet been returned by <CODE
+CLASS="FUNCTION"
+>nextval()</CODE
+>.
+      (See <A
+HREF="sql-createsequence.html"
+>CREATE SEQUENCE</A
+> for a description of
+      preallocated sequence values.)
+     </P
+></DD
+><DT
+><TT
+CLASS="LITERAL"
+>TEMPORARY</TT
+> or <TT
+CLASS="LITERAL"
+>TEMP</TT
+></DT
+><DD
+><P
+>      Drops all temporary tables created in the current session.
      </P
 ></DD
 ><DT
@@ -208,8 +215,8 @@ CLOSE ALL;
 UNLISTEN *;
 SELECT pg_advisory_unlock_all();
 DISCARD PLANS;
-DISCARD TEMP;
-DISCARD SEQUENCES;</PRE
+DISCARD SEQUENCES;
+DISCARD TEMP;</PRE
 ><P></P
 ></DD
 ></DL
@@ -218,7 +225,7 @@ DISCARD SEQUENCES;</PRE
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN78135"
+NAME="AEN78511"
 ></A
 ><H2
 >Notes</H2
@@ -232,7 +239,7 @@ CLASS="COMMAND"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN78139"
+NAME="AEN78515"
 ></A
 ><H2
 >Compatibility</H2

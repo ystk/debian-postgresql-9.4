@@ -62,7 +62,6 @@
 #include "replication/slot.h"
 #include "replication/snapbuild.h"
 #include "replication/syncrep.h"
-#include "replication/slot.h"
 #include "replication/walreceiver.h"
 #include "replication/walsender.h"
 #include "replication/walsender_private.h"
@@ -938,7 +937,7 @@ StartLogicalReplication(StartReplicationCmd *cmd)
 
 	/*
 	 * Force a disconnect, so that the decoding code doesn't need to care
-	 * about a eventual switch from running in recovery, to running in a
+	 * about an eventual switch from running in recovery, to running in a
 	 * normal environment. Client code is expected to handle reconnects.
 	 */
 	if (am_cascading_walsender && !RecoveryInProgress())
@@ -1203,9 +1202,11 @@ WalSndWaitForWal(XLogRecPtr loc)
 		 * possibly are waiting for a later location. So we send pings
 		 * containing the flush location every now and then.
 		 */
-		if (MyWalSnd->flush < sentPtr && !waiting_for_ping_response)
+		if (MyWalSnd->flush < sentPtr &&
+			MyWalSnd->write < sentPtr &&
+			!waiting_for_ping_response)
 		{
-			WalSndKeepalive(true);
+			WalSndKeepalive(false);
 			waiting_for_ping_response = true;
 		}
 
@@ -1351,6 +1352,7 @@ ProcessRepliesIfAny(void)
 
 	for (;;)
 	{
+		pq_startmsgread();
 		r = pq_getbyte_if_available(&firstchar);
 		if (r < 0)
 		{
@@ -1363,7 +1365,18 @@ ProcessRepliesIfAny(void)
 		if (r == 0)
 		{
 			/* no data available without blocking */
+			pq_endmsgread();
 			break;
+		}
+
+		/* Read the message contents */
+		resetStringInfo(&reply_message);
+		if (pq_getmessage(&reply_message, 0))
+		{
+			ereport(COMMERROR,
+					(errcode(ERRCODE_PROTOCOL_VIOLATION),
+					 errmsg("unexpected EOF on standby connection")));
+			proc_exit(0);
 		}
 
 		/*
@@ -1401,16 +1414,6 @@ ProcessRepliesIfAny(void)
 					streamingDoneSending = true;
 				}
 
-				/* consume the CopyData message */
-				resetStringInfo(&reply_message);
-				if (pq_getmessage(&reply_message, 0))
-				{
-					ereport(COMMERROR,
-							(errcode(ERRCODE_PROTOCOL_VIOLATION),
-							 errmsg("unexpected EOF on standby connection")));
-					proc_exit(0);
-				}
-
 				streamingDoneReceiving = true;
 				received = true;
 				break;
@@ -1446,19 +1449,6 @@ static void
 ProcessStandbyMessage(void)
 {
 	char		msgtype;
-
-	resetStringInfo(&reply_message);
-
-	/*
-	 * Read the message contents.
-	 */
-	if (pq_getmessage(&reply_message, 0))
-	{
-		ereport(COMMERROR,
-				(errcode(ERRCODE_PROTOCOL_VIOLATION),
-				 errmsg("unexpected EOF on standby connection")));
-		proc_exit(0);
-	}
 
 	/*
 	 * Check message type from the first byte.

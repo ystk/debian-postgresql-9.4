@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4beta2 Documentation"
+TITLE="PostgreSQL 9.4.1 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="Server Setup and Operation"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2014-07-21T19:22:19"></HEAD
+CONTENT="2015-02-02T20:51:01"></HEAD
 ><BODY
 CLASS="SECT1"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4beta2 Documentation</A
+>PostgreSQL 9.4.1 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -580,23 +580,16 @@ CLASS="PROMPT"
 > <KBD
 CLASS="USERINPUT"
 >sysctl kern.ipc.shmmax=134217728</KBD
->
-<SAMP
-CLASS="PROMPT"
->#</SAMP
-> <KBD
-CLASS="USERINPUT"
->sysctl kern.ipc.semmap=256</KBD
 ></PRE
 ><P>
-        To have these settings persist over reboots, modify
+        To make these settings persist over reboots, modify
         <TT
 CLASS="FILENAME"
 >/etc/sysctl.conf</TT
 >.
        </P
 ><P
->        The remaining semaphore settings are read-only as far as
+>        These semaphore-related settings are read-only as far as
         <TT
 CLASS="COMMAND"
 >sysctl</TT
@@ -612,7 +605,16 @@ kern.ipc.semmns=512
 kern.ipc.semmnu=256</PRE
 ><P>
         After modifying these values a reboot is required for the new
-        settings to take affect.
+        settings to take effect.
+        (Note: FreeBSD does not use <TT
+CLASS="VARNAME"
+>SEMMAP</TT
+>.  Older versions
+        would accept but ignore a setting for <TT
+CLASS="LITERAL"
+>kern.ipc.semmap</TT
+>;
+        newer versions reject it altogether.)
        </P
 ><P
 >        You might also want to configure your kernel to lock shared
@@ -900,7 +902,7 @@ CLASS="USERINPUT"
 ><DT
 ><SPAN
 CLASS="SYSTEMITEM"
->Mac OS X</SPAN
+>OS X</SPAN
 >
       </DT
 ><DD
@@ -1240,7 +1242,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN28523"
+NAME="AEN28762"
 >17.4.2. Resource Limits</A
 ></H2
 ><P

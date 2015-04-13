@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4beta2 Documentation"
+TITLE="PostgreSQL 9.4.1 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="Performance Tips"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2014-07-21T19:22:19"></HEAD
+CONTENT="2015-02-02T20:51:01"></HEAD
 ><BODY
 CLASS="SECT1"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4beta2 Documentation</A
+>PostgreSQL 9.4.1 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -205,8 +205,7 @@ CLASS="SCREEN"
 
                          QUERY PLAN
 -------------------------------------------------------------
- Seq Scan on tenk1  (cost=0.00..458.00 rows=10000 width=244)
- Planning time: 0.113 ms</PRE
+ Seq Scan on tenk1  (cost=0.00..458.00 rows=10000 width=244)</PRE
 ><P>
    </P
 ><P
@@ -296,14 +295,6 @@ CLASS="LITERAL"
     actually returned, updated, or deleted by the query.
    </P
 ><P
->    The <TT
-CLASS="LITERAL"
->Planning time</TT
-> shown is the time it took to generate
-    the query plan from the parsed query and optimize it. It does not include
-    rewriting and parsing.
-   </P
-><P
 >    Returning to our example:
 
 </P><PRE
@@ -312,8 +303,7 @@ CLASS="SCREEN"
 
                          QUERY PLAN
 -------------------------------------------------------------
- Seq Scan on tenk1  (cost=0.00..458.00 rows=10000 width=244)
- Planning time: 0.113 ms</PRE
+ Seq Scan on tenk1  (cost=0.00..458.00 rows=10000 width=244)</PRE
 ><P>
    </P
 ><P
@@ -359,8 +349,7 @@ CLASS="SCREEN"
                          QUERY PLAN
 ------------------------------------------------------------
  Seq Scan on tenk1  (cost=0.00..483.00 rows=7001 width=244)
-   Filter: (unique1 &lt; 7000)
- Planning time: 0.104 ms</PRE
+   Filter: (unique1 &lt; 7000)</PRE
 ><P>
 
     Notice that the <TT
@@ -421,8 +410,7 @@ CLASS="SCREEN"
  Bitmap Heap Scan on tenk1  (cost=5.07..229.20 rows=101 width=244)
    Recheck Cond: (unique1 &lt; 100)
    -&gt;  Bitmap Index Scan on tenk1_unique1  (cost=0.00..5.04 rows=101 width=0)
-         Index Cond: (unique1 &lt; 100)
- Planning time: 0.093 ms</PRE
+         Index Cond: (unique1 &lt; 100)</PRE
 ><P>
 
     Here the planner has decided to use a two-step plan: the child plan
@@ -456,8 +444,7 @@ CLASS="SCREEN"
    Recheck Cond: (unique1 &lt; 100)
    Filter: (stringu1 = 'xxx'::name)
    -&gt;  Bitmap Index Scan on tenk1_unique1  (cost=0.00..5.04 rows=101 width=0)
-         Index Cond: (unique1 &lt; 100)
- Planning time: 0.089 ms</PRE
+         Index Cond: (unique1 &lt; 100)</PRE
 ><P>
 
     The added condition <TT
@@ -490,8 +477,7 @@ CLASS="SCREEN"
                                  QUERY PLAN
 -----------------------------------------------------------------------------
  Index Scan using tenk1_unique1 on tenk1  (cost=0.29..8.30 rows=1 width=244)
-   Index Cond: (unique1 = 42)
- Planning time: 0.076 ms</PRE
+   Index Cond: (unique1 = 42)</PRE
 ><P>
 
     In this type of plan the table rows are fetched in index order, which
@@ -528,8 +514,7 @@ CLASS="SCREEN"
          -&gt;  Bitmap Index Scan on tenk1_unique1  (cost=0.00..5.04 rows=101 width=0)
                Index Cond: (unique1 &lt; 100)
          -&gt;  Bitmap Index Scan on tenk1_unique2  (cost=0.00..19.78 rows=999 width=0)
-               Index Cond: (unique2 &gt; 9000)
- Planning time: 0.094 ms</PRE
+               Index Cond: (unique2 &gt; 9000)</PRE
 ><P>
 
     But this requires visiting both indexes, so it's not necessarily a win
@@ -552,8 +537,7 @@ CLASS="SCREEN"
  Limit  (cost=0.29..14.48 rows=2 width=244)
    -&gt;  Index Scan using tenk1_unique2 on tenk1  (cost=0.29..71.27 rows=10 width=244)
          Index Cond: (unique2 &gt; 9000)
-         Filter: (unique1 &lt; 100)
- Planning time: 0.087 ms</PRE
+         Filter: (unique1 &lt; 100)</PRE
 ><P>
    </P
 ><P
@@ -588,8 +572,7 @@ WHERE t1.unique1 &lt; 10 AND t1.unique2 = t2.unique2;
          -&gt;  Bitmap Index Scan on tenk1_unique1  (cost=0.00..4.36 rows=10 width=0)
                Index Cond: (unique1 &lt; 10)
    -&gt;  Index Scan using tenk2_unique2 on tenk2 t2  (cost=0.29..7.91 rows=1 width=244)
-         Index Cond: (unique2 = t1.unique2)
- Planning time: 0.117 ms</PRE
+         Index Cond: (unique2 = t1.unique2)</PRE
 ><P>
    </P
 ><P
@@ -674,8 +657,7 @@ WHERE t1.unique1 &lt; 10 AND t2.unique2 &lt; 10 AND t1.hundred &lt; t2.hundred;
                Index Cond: (unique1 &lt; 10)
    -&gt;  Materialize  (cost=0.29..8.51 rows=10 width=244)
          -&gt;  Index Scan using tenk2_unique2 on tenk2 t2  (cost=0.29..8.46 rows=10 width=244)
-               Index Cond: (unique2 &lt; 10)
- Planning time: 0.119 ms</PRE
+               Index Cond: (unique2 &lt; 10)</PRE
 ><P>
 
     The condition <TT
@@ -741,8 +723,7 @@ WHERE t1.unique1 &lt; 100 AND t1.unique2 = t2.unique2;
          -&gt;  Bitmap Heap Scan on tenk1 t1  (cost=5.07..229.20 rows=101 width=244)
                Recheck Cond: (unique1 &lt; 100)
                -&gt;  Bitmap Index Scan on tenk1_unique1  (cost=0.00..5.04 rows=101 width=0)
-                     Index Cond: (unique1 &lt; 100)
- Planning time: 0.182 ms</PRE
+                     Index Cond: (unique1 &lt; 100)</PRE
 ><P>
    </P
 ><P
@@ -774,8 +755,7 @@ WHERE t1.unique1 &lt; 100 AND t1.unique2 = t2.unique2;
          Filter: (unique1 &lt; 100)
    -&gt;  Sort  (cost=197.83..200.33 rows=1000 width=244)
          Sort Key: t2.unique2
-         -&gt;  Seq Scan on onek t2  (cost=0.00..148.00 rows=1000 width=244)
- Planning time: 0.195 ms</PRE
+         -&gt;  Seq Scan on onek t2  (cost=0.00..148.00 rows=1000 width=244)</PRE
 ><P>
    </P
 ><P
@@ -825,8 +805,7 @@ WHERE t1.unique1 &lt; 100 AND t1.unique2 = t2.unique2;
    Merge Cond: (t1.unique2 = t2.unique2)
    -&gt;  Index Scan using tenk1_unique2 on tenk1 t1  (cost=0.29..656.28 rows=101 width=244)
          Filter: (unique1 &lt; 100)
-   -&gt;  Index Scan using onek_unique2 on onek t2  (cost=0.28..224.79 rows=1000 width=244)
- Planning time: 0.176 ms</PRE
+   -&gt;  Index Scan using onek_unique2 on onek t2  (cost=0.28..224.79 rows=1000 width=244)</PRE
 ><P>
 
     which shows that the planner thinks that sorting <TT
@@ -1136,6 +1115,17 @@ CLASS="COMMAND"
     estimates to account for that work.  That's because the work to be done is
     the same for every correct query plan, so it doesn't affect planning
     decisions.
+   </P
+><P
+>    The <TT
+CLASS="LITERAL"
+>Planning time</TT
+> shown by <TT
+CLASS="COMMAND"
+>EXPLAIN
+    ANALYZE</TT
+> is the time it took to generate the query plan from the
+    parsed query and optimize it. It does not include parsing or rewriting.
    </P
 ><P
 >    The <TT

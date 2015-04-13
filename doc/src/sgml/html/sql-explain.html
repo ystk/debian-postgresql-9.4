@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4beta2 Documentation"
+TITLE="PostgreSQL 9.4.1 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="SQL Commands"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2014-07-21T19:22:19"></HEAD
+CONTENT="2015-02-02T20:51:01"></HEAD
 ><BODY
 CLASS="REFENTRY"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4beta2 Documentation</A
+>PostgreSQL 9.4.1 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -95,7 +95,7 @@ NAME="SQL-EXPLAIN"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN80442"
+NAME="AEN80818"
 ></A
 ><H2
 >Name</H2
@@ -103,7 +103,7 @@ NAME="AEN80442"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN80445"
+NAME="AEN80821"
 ></A
 ><H2
 >Synopsis</H2
@@ -175,7 +175,7 @@ CLASS="REPLACEABLE"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN80457"
+NAME="AEN80833"
 ></A
 ><H2
 >Description</H2
@@ -295,7 +295,7 @@ CLASS="PRODUCTNAME"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN80482"
+NAME="AEN80858"
 ></A
 ><H2
 >Parameters</H2
@@ -345,8 +345,8 @@ CLASS="LITERAL"
 ><P
 >      Include information on the estimated startup and total cost of each
       plan node, as well as the estimated number of rows and the estimated
-      width of each row.  Also, include the time spent planning the query,
-      if available.  This parameter defaults to <TT
+      width of each row.
+      This parameter defaults to <TT
 CLASS="LITERAL"
 >TRUE</TT
 >.
@@ -540,7 +540,7 @@ CLASS="COMMAND"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN80554"
+NAME="AEN80930"
 ></A
 ><H2
 >Outputs</H2
@@ -562,7 +562,7 @@ HREF="using-explain.html"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN80559"
+NAME="AEN80935"
 ></A
 ><H2
 >Notes</H2
@@ -614,7 +614,7 @@ CLASS="COMMAND"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN80570"
+NAME="AEN80946"
 ></A
 ><H2
 >Examples</H2
@@ -632,8 +632,7 @@ CLASS="PROGRAMLISTING"
                        QUERY PLAN
 ---------------------------------------------------------
  Seq Scan on foo  (cost=0.00..155.00 rows=10000 width=4)
- Planning time: 0.114 ms
-(2 rows)</PRE
+(1 row)</PRE
 ><P>
   </P
 ><P
@@ -653,8 +652,7 @@ CLASS="PROGRAMLISTING"
        "Total Cost": 155.00,   +
        "Plan Rows": 10000,     +
        "Plan Width": 4         +
-     }.                        +
-     "Planning Time": 0.114    +
+     }                         +
    }                           +
  ]
 (1 row)</PRE
@@ -679,8 +677,7 @@ CLASS="PROGRAMLISTING"
 --------------------------------------------------------------
  Index Scan using fi on foo  (cost=0.00..5.98 rows=1 width=4)
    Index Cond: (i = 4)
- Planning time: 0.073 ms
-(3 rows)</PRE
+(2 rows)</PRE
 ><P>
   </P
 ><P
@@ -700,8 +697,7 @@ CLASS="PROGRAMLISTING"
      Total Cost: 5.98         +
      Plan Rows: 1             +
      Plan Width: 4            +
-     Index Cond: "(i = 4)"    +
-   Planning Time: 0.073
+     Index Cond: "(i = 4)"    
 (1 row)</PRE
 ><P>
 
@@ -734,7 +730,6 @@ CLASS="PROGRAMLISTING"
  Aggregate  (cost=23.93..23.93 rows=1 width=4)
    -&gt;  Index Scan using fi on foo  (cost=0.00..23.92 rows=6 width=4)
          Index Cond: (i &lt; 10)
- Planning time: 0.088 ms
 (3 rows)</PRE
 ><P>
   </P
@@ -761,7 +756,7 @@ EXPLAIN ANALYZE EXECUTE query(100, 200);
          Index Cond: ((id &gt; $1) AND (id &lt; $2))
  Planning time: 0.197 ms
  Execution time: 0.225 ms
-(5 rows)</PRE
+(6 rows)</PRE
 ><P>
   </P
 ><P
@@ -788,7 +783,7 @@ CLASS="COMMAND"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN80594"
+NAME="AEN80970"
 ></A
 ><H2
 >Compatibility</H2
@@ -802,7 +797,7 @@ CLASS="COMMAND"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN80598"
+NAME="AEN80974"
 ></A
 ><H2
 >See Also</H2

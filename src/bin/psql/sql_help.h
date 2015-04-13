@@ -240,7 +240,7 @@ static const struct _helpStruct QL_HELP[] = {
     { "ALTER FOREIGN TABLE",
       N_("change the definition of a foreign table"),
       sql_help_ALTER_FOREIGN_TABLE,
-      22 },
+      26 },
 
     { "ALTER FUNCTION",
       N_("change the definition of a function"),
@@ -255,7 +255,7 @@ static const struct _helpStruct QL_HELP[] = {
     { "ALTER INDEX",
       N_("change the definition of an index"),
       sql_help_ALTER_INDEX,
-      3 },
+      5 },
 
     { "ALTER LANGUAGE",
       N_("change the definition of a procedural language"),
@@ -270,7 +270,7 @@ static const struct _helpStruct QL_HELP[] = {
     { "ALTER MATERIALIZED VIEW",
       N_("change the definition of a materialized view"),
       sql_help_ALTER_MATERIALIZED_VIEW,
-      20 },
+      22 },
 
     { "ALTER OPERATOR",
       N_("change the definition of an operator"),
@@ -315,17 +315,17 @@ static const struct _helpStruct QL_HELP[] = {
     { "ALTER SYSTEM",
       N_("change a server configuration parameter"),
       sql_help_ALTER_SYSTEM,
-      0 },
+      3 },
 
     { "ALTER TABLE",
       N_("change the definition of a table"),
       sql_help_ALTER_TABLE,
-      54 },
+      56 },
 
     { "ALTER TABLESPACE",
-      N_("change the definition of a tablespace or affect objects of a tablespace"),
+      N_("change the definition of a tablespace"),
       sql_help_ALTER_TABLESPACE,
-      4 },
+      3 },
 
     { "ALTER TEXT SEARCH CONFIGURATION",
       N_("change the definition of a text search configuration"),
@@ -370,7 +370,7 @@ static const struct _helpStruct QL_HELP[] = {
     { "ALTER VIEW",
       N_("change the definition of a view"),
       sql_help_ALTER_VIEW,
-      11 },
+      6 },
 
     { "ANALYZE",
       N_("collect statistics about a database"),
@@ -590,7 +590,7 @@ static const struct _helpStruct QL_HELP[] = {
     { "CREATE VIEW",
       N_("define a new view"),
       sql_help_CREATE_VIEW,
-      8 },
+      3 },
 
     { "DEALLOCATE",
       N_("deallocate a prepared statement"),

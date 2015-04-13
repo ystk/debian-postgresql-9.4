@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4beta2 Documentation"
+TITLE="PostgreSQL 9.4.1 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="Recovery Configuration"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2014-07-21T19:22:19"></HEAD
+CONTENT="2015-02-02T20:51:01"></HEAD
 ><BODY
 CLASS="SECT1"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4beta2 Documentation</A
+>PostgreSQL 9.4.1 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -112,7 +112,8 @@ CLASS="VARNAME"
       <TT
 CLASS="VARNAME"
 >recovery_target_xid</TT
-> can be specified.
+> can be used; if more than one of these
+      is specified in the configuration file, the last entry will be used.
      </P
 ><P
 ></P
@@ -160,11 +161,11 @@ CLASS="TYPE"
       </DT
 ><DD
 ><P
->        This parameter specifies the named restore point, created with
+>        This parameter specifies the named restore point (created with
         <CODE
 CLASS="FUNCTION"
 >pg_create_restore_point()</CODE
-> to which recovery will proceed.
+>) to which recovery will proceed.
        </P
 ></DD
 ><DT
@@ -242,7 +243,7 @@ CLASS="TYPE"
       </DT
 ><DD
 ><P
->        Specifies whether we stop just after the specified recovery target
+>        Specifies whether to stop just after the specified recovery target
         (<TT
 CLASS="LITERAL"
 >true</TT
@@ -251,15 +252,15 @@ CLASS="LITERAL"
 CLASS="LITERAL"
 >false</TT
 >).
-        Applies to both <A
+        Applies when either <A
 HREF="recovery-target-settings.html#RECOVERY-TARGET-TIME"
 >recovery_target_time</A
 >
-        and <A
+        or <A
 HREF="recovery-target-settings.html#RECOVERY-TARGET-XID"
 >recovery_target_xid</A
->, whichever one is
-        specified for this recovery.  This indicates whether transactions
+> is specified.
+        This setting controls whether transactions
         having exactly the target commit time or ID, respectively, will
         be included in the recovery.  Default is <TT
 CLASS="LITERAL"
@@ -319,13 +320,13 @@ CLASS="TYPE"
         <CODE
 CLASS="FUNCTION"
 >pg_xlog_replay_resume()</CODE
-> (See
+> (see
         <A
 HREF="functions-admin.html#FUNCTIONS-RECOVERY-CONTROL-TABLE"
 >Table 9-67</A
 >), which then
         causes recovery to end. If this recovery target is not the
-        desired stopping point, then shutdown the server, change the
+        desired stopping point, then shut down the server, change the
         recovery target settings to a later target and restart to
         continue recovery.
        </P

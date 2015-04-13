@@ -17,7 +17,7 @@ dnl Read the Autoconf manual for details.
 dnl
 m4_pattern_forbid(^PGAC_)dnl to catch undefined macros
 
-AC_INIT([PostgreSQL], [9.4beta2], [pgsql-bugs@postgresql.org])
+AC_INIT([PostgreSQL], [9.4.1], [pgsql-bugs@postgresql.org])
 
 m4_if(m4_defn([m4_PACKAGE_VERSION]), [2.69], [], [m4_fatal([Autoconf version 2.69 is required.
 Untested combinations of 'autoconf' and PostgreSQL versions are not
@@ -224,6 +224,13 @@ AC_SUBST(DTRACEFLAGS)])
 AC_SUBST(enable_dtrace)
 
 #
+# TAP tests
+#
+PGAC_ARG_BOOL(enable, tap-tests, no,
+              [enable TAP tests (requires Perl and IPC::Run)])
+AC_SUBST(enable_tap_tests)
+
+#
 # Block size
 #
 AC_MSG_CHECKING([for block size])
@@ -402,6 +409,10 @@ else
   fi
 fi
 
+# CFLAGS we determined above will be added back at the end
+user_CFLAGS=$CFLAGS
+CFLAGS=""
+
 # set CFLAGS_VECTOR from the environment, if available
 if test "$ac_env_CFLAGS_VECTOR_set" = set; then
   CFLAGS_VECTOR=$ac_env_CFLAGS_VECTOR_value
@@ -413,7 +424,7 @@ fi
 # but has its own.  Also check other compiler-specific flags here.
 
 if test "$GCC" = yes -a "$ICC" = no; then
-  CFLAGS="$CFLAGS -Wall -Wmissing-prototypes -Wpointer-arith"
+  CFLAGS="-Wall -Wmissing-prototypes -Wpointer-arith"
   # These work in some but not all gcc versions
   PGAC_PROG_CC_CFLAGS_OPT([-Wdeclaration-after-statement])
   PGAC_PROG_CC_CFLAGS_OPT([-Wendif-labels])
@@ -476,7 +487,12 @@ if test "$PORTNAME" = "win32"; then
   CPPFLAGS="$CPPFLAGS -I$srcdir/src/include/port/win32 -DEXEC_BACKEND"
 fi
 
-# Check if the compiler still works with the template settings
+# Now that we're done automatically adding stuff to CFLAGS, put back the
+# user-specified flags (if any) at the end.  This lets users override
+# the automatic additions.
+CFLAGS="$CFLAGS $user_CFLAGS"
+
+# Check if the compiler still works with the final flag settings
 AC_MSG_CHECKING([whether the C compiler still works])
 AC_TRY_LINK([], [return 0;],
   [AC_MSG_RESULT(yes)],
@@ -1098,10 +1114,39 @@ if test "$with_libxslt" = yes ; then
   AC_CHECK_HEADER(libxslt/xslt.h, [], [AC_MSG_ERROR([header file <libxslt/xslt.h> is required for XSLT support])])
 fi
 
+# PGAC_LDAP_SAFE
+# --------------
+# PostgreSQL sometimes loads libldap_r and plain libldap into the same
+# process.  Check for OpenLDAP versions known not to tolerate doing so; assume
+# non-OpenLDAP implementations are safe.  The dblink test suite exercises the
+# hazardous interaction directly.
+
+AC_DEFUN([PGAC_LDAP_SAFE],
+[AC_CACHE_CHECK([for compatible LDAP implementation], [pgac_cv_ldap_safe],
+[AC_COMPILE_IFELSE([AC_LANG_PROGRAM(
+[#include <ldap.h>
+#if !defined(LDAP_VENDOR_VERSION) || \
+     (defined(LDAP_API_FEATURE_X_OPENLDAP) && \
+      LDAP_VENDOR_VERSION >= 20424 && LDAP_VENDOR_VERSION <= 20431)
+choke me
+#endif], [])],
+[pgac_cv_ldap_safe=yes],
+[pgac_cv_ldap_safe=no])])
+
+if test "$pgac_cv_ldap_safe" != yes; then
+  AC_MSG_WARN([
+*** With OpenLDAP versions 2.4.24 through 2.4.31, inclusive, each backend
+*** process that loads libpq (via WAL receiver, dblink, or postgres_fdw) and
+*** also uses LDAP will crash on exit.])
+fi])
+
+
+
 if test "$with_ldap" = yes ; then
   if test "$PORTNAME" != "win32"; then
      AC_CHECK_HEADERS(ldap.h, [],
                       [AC_MSG_ERROR([header file <ldap.h> is required for LDAP])])
+     PGAC_LDAP_SAFE
   else
      AC_CHECK_HEADERS(winldap.h, [],
                       [AC_MSG_ERROR([header file <winldap.h> is required for LDAP])],
@@ -1244,7 +1289,7 @@ PGAC_FUNC_GETTIMEOFDAY_1ARG
 LIBS_including_readline="$LIBS"
 LIBS=`echo "$LIBS" | sed -e 's/-ledit//g' -e 's/-lreadline//g'`
 
-AC_CHECK_FUNCS([cbrt dlopen fdatasync getifaddrs getpeerucred getrlimit mbstowcs_l memmove poll pstat readlink setproctitle setsid shm_open sigprocmask symlink sync_file_range towlower utime utimes wcstombs wcstombs_l])
+AC_CHECK_FUNCS([cbrt dlopen fdatasync getifaddrs getpeerucred getrlimit mbstowcs_l memmove poll pstat pthread_is_threaded_np readlink setproctitle setsid shm_open sigprocmask symlink sync_file_range towlower utime utimes wcstombs wcstombs_l])
 
 AC_REPLACE_FUNCS(fseeko)
 case $host_os in
@@ -1879,7 +1924,15 @@ AC_CHECK_PROGS(OSX, [osx sgml2xml sx])
 #
 # Check for test tools
 #
-AC_CHECK_PROGS(PROVE, prove)
+if test "$enable_tap_tests" = yes; then
+  AC_CHECK_PROGS(PROVE, prove)
+  if test -z "$PROVE"; then
+    AC_MSG_ERROR([prove not found])
+  fi
+  if test -z "$PERL"; then
+    AC_MSG_ERROR([Perl not found])
+  fi
+fi
 
 # Thread testing
 

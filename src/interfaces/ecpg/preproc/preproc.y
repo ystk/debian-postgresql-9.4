@@ -655,6 +655,8 @@ add_typedef(char *name, char *dimension, char *length, enum ECPGttype type_enum,
 %type <str> opt_encoding
 %type <str> NonReservedWord_or_Sconst
 %type <str> VariableResetStmt
+%type <str> reset_rest
+%type <str> generic_reset
 %type <str> SetResetClause
 %type <str> FunctionSetResetClause
 %type <str> VariableShowStmt
@@ -2449,25 +2451,41 @@ ECPGColId
 
 
  VariableResetStmt:
- RESET var_name
+ RESET reset_rest
  { 
  $$ = cat_str(2,mm_strdup("reset"),$2);
 }
-|  RESET TIME ZONE
+;
+
+
+ reset_rest:
+ generic_reset
  { 
- $$ = mm_strdup("reset time zone");
+ $$ = $1;
 }
-|  RESET TRANSACTION ISOLATION LEVEL
+|  TIME ZONE
  { 
- $$ = mm_strdup("reset transaction isolation level");
+ $$ = mm_strdup("time zone");
 }
-|  RESET SESSION AUTHORIZATION
+|  TRANSACTION ISOLATION LEVEL
  { 
- $$ = mm_strdup("reset session authorization");
+ $$ = mm_strdup("transaction isolation level");
 }
-|  RESET ALL
+|  SESSION AUTHORIZATION
  { 
- $$ = mm_strdup("reset all");
+ $$ = mm_strdup("session authorization");
+}
+;
+
+
+ generic_reset:
+ var_name
+ { 
+ $$ = $1;
+}
+|  ALL
+ { 
+ $$ = mm_strdup("all");
 }
 ;
 
@@ -2594,6 +2612,14 @@ SHOW var_name ecpg_into
  { 
  $$ = cat_str(3,mm_strdup("alter table if exists"),$5,$6);
 }
+|  ALTER TABLE ALL IN_P TABLESPACE name SET TABLESPACE name opt_nowait
+ { 
+ $$ = cat_str(5,mm_strdup("alter table all in tablespace"),$6,mm_strdup("set tablespace"),$9,$10);
+}
+|  ALTER TABLE ALL IN_P TABLESPACE name OWNED BY role_list SET TABLESPACE name opt_nowait
+ { 
+ $$ = cat_str(7,mm_strdup("alter table all in tablespace"),$6,mm_strdup("owned by"),$9,mm_strdup("set tablespace"),$12,$13);
+}
 |  ALTER INDEX qualified_name alter_table_cmds
  { 
  $$ = cat_str(3,mm_strdup("alter index"),$3,$4);
@@ -2601,6 +2627,14 @@ SHOW var_name ecpg_into
 |  ALTER INDEX IF_P EXISTS qualified_name alter_table_cmds
  { 
  $$ = cat_str(3,mm_strdup("alter index if exists"),$5,$6);
+}
+|  ALTER INDEX ALL IN_P TABLESPACE name SET TABLESPACE name opt_nowait
+ { 
+ $$ = cat_str(5,mm_strdup("alter index all in tablespace"),$6,mm_strdup("set tablespace"),$9,$10);
+}
+|  ALTER INDEX ALL IN_P TABLESPACE name OWNED BY role_list SET TABLESPACE name opt_nowait
+ { 
+ $$ = cat_str(7,mm_strdup("alter index all in tablespace"),$6,mm_strdup("owned by"),$9,mm_strdup("set tablespace"),$12,$13);
 }
 |  ALTER SEQUENCE qualified_name alter_table_cmds
  { 
@@ -2625,6 +2659,14 @@ SHOW var_name ecpg_into
 |  ALTER MATERIALIZED VIEW IF_P EXISTS qualified_name alter_table_cmds
  { 
  $$ = cat_str(3,mm_strdup("alter materialized view if exists"),$6,$7);
+}
+|  ALTER MATERIALIZED VIEW ALL IN_P TABLESPACE name SET TABLESPACE name opt_nowait
+ { 
+ $$ = cat_str(5,mm_strdup("alter materialized view all in tablespace"),$7,mm_strdup("set tablespace"),$10,$11);
+}
+|  ALTER MATERIALIZED VIEW ALL IN_P TABLESPACE name OWNED BY role_list SET TABLESPACE name opt_nowait
+ { 
+ $$ = cat_str(7,mm_strdup("alter materialized view all in tablespace"),$7,mm_strdup("owned by"),$10,mm_strdup("set tablespace"),$13,$14);
 }
 ;
 
@@ -6957,39 +6999,7 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 
 
  AlterTblSpcStmt:
- ALTER TABLESPACE name MOVE ALL TO name opt_nowait
- { 
- $$ = cat_str(5,mm_strdup("alter tablespace"),$3,mm_strdup("move all to"),$7,$8);
-}
-|  ALTER TABLESPACE name MOVE TABLES TO name opt_nowait
- { 
- $$ = cat_str(5,mm_strdup("alter tablespace"),$3,mm_strdup("move tables to"),$7,$8);
-}
-|  ALTER TABLESPACE name MOVE INDEXES TO name opt_nowait
- { 
- $$ = cat_str(5,mm_strdup("alter tablespace"),$3,mm_strdup("move indexes to"),$7,$8);
-}
-|  ALTER TABLESPACE name MOVE MATERIALIZED VIEWS TO name opt_nowait
- { 
- $$ = cat_str(5,mm_strdup("alter tablespace"),$3,mm_strdup("move materialized views to"),$8,$9);
-}
-|  ALTER TABLESPACE name MOVE ALL OWNED BY role_list TO name opt_nowait
- { 
- $$ = cat_str(7,mm_strdup("alter tablespace"),$3,mm_strdup("move all owned by"),$8,mm_strdup("to"),$10,$11);
-}
-|  ALTER TABLESPACE name MOVE TABLES OWNED BY role_list TO name opt_nowait
- { 
- $$ = cat_str(7,mm_strdup("alter tablespace"),$3,mm_strdup("move tables owned by"),$8,mm_strdup("to"),$10,$11);
-}
-|  ALTER TABLESPACE name MOVE INDEXES OWNED BY role_list TO name opt_nowait
- { 
- $$ = cat_str(7,mm_strdup("alter tablespace"),$3,mm_strdup("move indexes owned by"),$8,mm_strdup("to"),$10,$11);
-}
-|  ALTER TABLESPACE name MOVE MATERIALIZED VIEWS OWNED BY role_list TO name opt_nowait
- { 
- $$ = cat_str(7,mm_strdup("alter tablespace"),$3,mm_strdup("move materialized views owned by"),$9,mm_strdup("to"),$11,$12);
-}
-|  ALTER TABLESPACE name SET reloptions
+ ALTER TABLESPACE name SET reloptions
  { 
  $$ = cat_str(4,mm_strdup("alter tablespace"),$3,mm_strdup("set"),$5);
 }
@@ -7871,6 +7881,10 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
  ALTER SYSTEM_P SET generic_set
  { 
  $$ = cat_str(2,mm_strdup("alter system set"),$4);
+}
+|  ALTER SYSTEM_P RESET generic_reset
+ { 
+ $$ = cat_str(2,mm_strdup("alter system reset"),$4);
 }
 ;
 

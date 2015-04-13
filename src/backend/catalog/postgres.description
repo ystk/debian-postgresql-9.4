@@ -1527,8 +1527,8 @@
 3199	pg_proc	0	build an empty json array
 3200	pg_proc	0	build a json object from pairwise key/value inputs
 3201	pg_proc	0	build an empty json object
-3202	pg_proc	0	map text arrayof key value pais to json object
-3203	pg_proc	0	map text arrayof key value pais to json object
+3202	pg_proc	0	map text array of key value pairs to json object
+3203	pg_proc	0	map text arrays of keys and values to json object
 3176	pg_proc	0	map input to json
 3951	pg_proc	0	get value from json with path elements
 3953	pg_proc	0	get value from json as text with path elements
@@ -2687,13 +2687,13 @@
 3241	pg_operator	0	not equal
 3242	pg_operator	0	less than
 3243	pg_operator	0	greater than
-3244	pg_operator	0	less than or equal to
-3245	pg_operator	0	greater than or equal to
+3244	pg_operator	0	less than or equal
+3245	pg_operator	0	greater than or equal
 3246	pg_operator	0	contains
 3247	pg_operator	0	exists
 3248	pg_operator	0	exists any
 3249	pg_operator	0	exists all
-3250	pg_operator	0	contained
+3250	pg_operator	0	is contained by
 403	pg_am	0	b-tree index access method
 405	pg_am	0	hash index access method
 783	pg_am	0	GiST index access method

@@ -2,12 +2,12 @@
 .\"     Title: EXPLAIN
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets v1.76.1 <http://docbook.sf.net/>
-.\"      Date: 2014
-.\"    Manual: PostgreSQL 9.4beta2 Documentation
-.\"    Source: PostgreSQL 9.4beta2
+.\"      Date: 2015
+.\"    Manual: PostgreSQL 9.4.1 Documentation
+.\"    Source: PostgreSQL 9.4.1
 .\"  Language: English
 .\"
-.TH "EXPLAIN" "7" "2014" "PostgreSQL 9.4beta2" "PostgreSQL 9.4beta2 Documentation"
+.TH "EXPLAIN" "7" "2015" "PostgreSQL 9.4.1" "PostgreSQL 9.4.1 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -27,9 +27,6 @@
 .\" -----------------------------------------------------------------
 .\" * MAIN CONTENT STARTS HERE *
 .\" -----------------------------------------------------------------
-.\" EXPLAIN
-.\" prepared statements: showing the query plan
-.\" cursor: showing the query plan
 .SH "NAME"
 EXPLAIN \- show the execution plan of a statement
 .SH "SYNOPSIS"
@@ -127,7 +124,7 @@ FALSE\&.
 .PP
 COSTS
 .RS 4
-Include information on the estimated startup and total cost of each plan node, as well as the estimated number of rows and the estimated width of each row\&. Also, include the time spent planning the query, if available\&. This parameter defaults to
+Include information on the estimated startup and total cost of each plan node, as well as the estimated number of rows and the estimated width of each row\&. This parameter defaults to
 TRUE\&.
 .RE
 .PP
@@ -230,8 +227,7 @@ EXPLAIN SELECT * FROM foo;
                        QUERY PLAN
 \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-
  Seq Scan on foo  (cost=0\&.00\&.\&.155\&.00 rows=10000 width=4)
- Planning time: 0\&.114 ms
-(2 rows)
+(1 row)
 .fi
 .if n \{\
 .RE
@@ -256,8 +252,7 @@ EXPLAIN (FORMAT JSON) SELECT * FROM foo;
        "Total Cost": 155\&.00,   +
        "Plan Rows": 10000,     +
        "Plan Width": 4         +
-     }\&.                        +
-     "Planning Time": 0\&.114    +
+     }                         +
    }                           +
  ]
 (1 row)
@@ -282,8 +277,7 @@ EXPLAIN SELECT * FROM foo WHERE i = 4;
 \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-
  Index Scan using fi on foo  (cost=0\&.00\&.\&.5\&.98 rows=1 width=4)
    Index Cond: (i = 4)
- Planning time: 0\&.073 ms
-(3 rows)
+(2 rows)
 .fi
 .if n \{\
 .RE
@@ -308,8 +302,7 @@ EXPLAIN (FORMAT YAML) SELECT * FROM foo WHERE i=\*(Aq4\*(Aq;
      Total Cost: 5\&.98         +
      Plan Rows: 1             +
      Plan Width: 4            +
-     Index Cond: "(i = 4)"    +
-   Planning Time: 0\&.073
+     Index Cond: "(i = 4)"    
 (1 row)
 .fi
 .if n \{\
@@ -349,7 +342,6 @@ EXPLAIN SELECT sum(i) FROM foo WHERE i < 10;
  Aggregate  (cost=23\&.93\&.\&.23\&.93 rows=1 width=4)
    \->  Index Scan using fi on foo  (cost=0\&.00\&.\&.23\&.92 rows=6 width=4)
          Index Cond: (i < 10)
- Planning time: 0\&.088 ms
 (3 rows)
 .fi
 .if n \{\
@@ -378,7 +370,7 @@ EXPLAIN ANALYZE EXECUTE query(100, 200);
          Index Cond: ((id > $1) AND (id < $2))
  Planning time: 0\&.197 ms
  Execution time: 0\&.225 ms
-(5 rows)
+(6 rows)
 .fi
 .if n \{\
 .RE

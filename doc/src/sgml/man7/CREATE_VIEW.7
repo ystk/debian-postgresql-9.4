@@ -2,12 +2,12 @@
 .\"     Title: CREATE VIEW
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets v1.76.1 <http://docbook.sf.net/>
-.\"      Date: 2014
-.\"    Manual: PostgreSQL 9.4beta2 Documentation
-.\"    Source: PostgreSQL 9.4beta2
+.\"      Date: 2015
+.\"    Manual: PostgreSQL 9.4.1 Documentation
+.\"    Source: PostgreSQL 9.4.1
 .\"  Language: English
 .\"
-.TH "CREATE VIEW" "7" "2014" "PostgreSQL 9.4beta2" "PostgreSQL 9.4beta2 Documentation"
+.TH "CREATE VIEW" "7" "2015" "PostgreSQL 9.4.1" "PostgreSQL 9.4.1 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -27,7 +27,6 @@
 .\" -----------------------------------------------------------------
 .\" * MAIN CONTENT STARTS HERE *
 .\" -----------------------------------------------------------------
-.\" CREATE VIEW
 .SH "NAME"
 CREATE_VIEW \- define a new view
 .SH "SYNOPSIS"
@@ -37,11 +36,6 @@ CREATE [ OR REPLACE ] [ TEMP | TEMPORARY ] [ RECURSIVE ] VIEW \fIname\fR [ ( \fI
     [ WITH ( \fIview_option_name\fR [= \fIview_option_value\fR] [, \&.\&.\&. ] ) ]
     AS \fIquery\fR
     [ WITH [ CASCADED | LOCAL ] CHECK OPTION ]
-
-where \fIview_option_name\fR can be one of:
-
-    security_barrier [ \fIboolean\fR ]
-    check_option [ \fItext\fR (local or cascaded) ]
 .fi
 .SH "DESCRIPTION"
 .PP
@@ -111,14 +105,7 @@ WITH ( \fIview_option_name\fR [= \fIview_option_value\fR] [, \&.\&.\&. ] )
 .RS 4
 This clause specifies optional parameters for a view; the following parameters are supported:
 .PP
-security_barrier(boolean)
-.RS 4
-This should be used if the view is intended to provide row\-level security\&. See
-Section 38.5, \(lqRules and Privileges\(rq, in the documentation
-for full details\&.
-.RE
-.PP
-check_option(text)
+check_option (string)
 .RS 4
 This parameter may be either
 local
@@ -127,6 +114,13 @@ cascaded, and is equivalent to specifying
 WITH [ CASCADED | LOCAL ] CHECK OPTION
 (see below)\&. This option can be changed on existing views using
 ALTER VIEW (\fBALTER_VIEW\fR(7))\&.
+.RE
+.PP
+security_barrier (string)
+.RS 4
+This should be used if the view is intended to provide row\-level security\&. See
+Section 38.5, \(lqRules and Privileges\(rq, in the documentation
+for full details\&.
 .RE
 .sp
 .RE
@@ -142,8 +136,9 @@ command which will provide the columns and rows of the view\&.
 .PP
 WITH [ CASCADED | LOCAL ] CHECK OPTION
 .RS 4
-.\" CHECK OPTION
-.\" WITH CHECK OPTION
+
+
+
 This option controls the behavior of automatically updatable views\&. When this option is specified,
 \fBINSERT\fR
 and
@@ -243,7 +238,6 @@ When
 \fBCREATE OR REPLACE VIEW\fR
 is used on an existing view, only the view\*(Aqs defining SELECT rule is changed\&. Other view properties, including ownership, permissions, and non\-SELECT rules, remain unchanged\&. You must own the view to replace it (this includes being a member of the owning role)\&.
 .SS "Updatable Views"
-.\" updatable views
 .PP
 Simple views are automatically updatable: the system will allow
 \fBINSERT\fR,

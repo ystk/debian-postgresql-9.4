@@ -17,12 +17,13 @@ static void set_locale_and_encoding(ClusterInfo *cluster);
 static void check_new_cluster_is_empty(void);
 static void check_locale_and_encoding(ControlData *oldctrl,
 						  ControlData *newctrl);
-static bool equivalent_locale(const char *loca, const char *locb);
+static bool equivalent_locale(int category, const char *loca, const char *locb);
 static bool equivalent_encoding(const char *chara, const char *charb);
 static void check_is_super_user(ClusterInfo *cluster);
 static void check_for_prepared_transactions(ClusterInfo *cluster);
 static void check_for_isn_and_int8_passing_mismatch(ClusterInfo *cluster);
 static void check_for_reg_data_type_usage(ClusterInfo *cluster);
+static void check_for_jsonb_9_4_usage(ClusterInfo *cluster);
 static void get_bin_version(ClusterInfo *cluster);
 static char *get_canonical_locale_name(int category, const char *locale);
 
@@ -98,6 +99,10 @@ check_and_dump_old_cluster(bool live_check, char **sequence_script_file_name)
 	check_for_prepared_transactions(&old_cluster);
 	check_for_reg_data_type_usage(&old_cluster);
 	check_for_isn_and_int8_passing_mismatch(&old_cluster);
+
+	if (GET_MAJOR_VERSION(old_cluster.major_version) == 904 &&
+		old_cluster.controldata.cat_ver < JSONB_FORMAT_CHANGE_CAT_VER)
+		check_for_jsonb_9_4_usage(&old_cluster);
 
 	/* old = PG 8.3 checks? */
 	if (GET_MAJOR_VERSION(old_cluster.major_version) <= 803)
@@ -365,23 +370,8 @@ set_locale_and_encoding(ClusterInfo *cluster)
 		i_datcollate = PQfnumber(res, "datcollate");
 		i_datctype = PQfnumber(res, "datctype");
 
-		if (GET_MAJOR_VERSION(cluster->major_version) < 902)
-		{
-			/*
-			 * Pre-9.2 did not canonicalize the supplied locale names to match
-			 * what the system returns, while 9.2+ does, so convert pre-9.2 to
-			 * match.
-			 */
-			ctrl->lc_collate = get_canonical_locale_name(LC_COLLATE,
-								pg_strdup(PQgetvalue(res, 0, i_datcollate)));
-			ctrl->lc_ctype = get_canonical_locale_name(LC_CTYPE,
-								  pg_strdup(PQgetvalue(res, 0, i_datctype)));
-		}
-		else
-		{
-			ctrl->lc_collate = pg_strdup(PQgetvalue(res, 0, i_datcollate));
-			ctrl->lc_ctype = pg_strdup(PQgetvalue(res, 0, i_datctype));
-		}
+		ctrl->lc_collate = pg_strdup(PQgetvalue(res, 0, i_datcollate));
+		ctrl->lc_ctype = pg_strdup(PQgetvalue(res, 0, i_datctype));
 
 		PQclear(res);
 	}
@@ -413,10 +403,10 @@ static void
 check_locale_and_encoding(ControlData *oldctrl,
 						  ControlData *newctrl)
 {
-	if (!equivalent_locale(oldctrl->lc_collate, newctrl->lc_collate))
+	if (!equivalent_locale(LC_COLLATE, oldctrl->lc_collate, newctrl->lc_collate))
 		pg_fatal("lc_collate cluster values do not match:  old \"%s\", new \"%s\"\n",
 				 oldctrl->lc_collate, newctrl->lc_collate);
-	if (!equivalent_locale(oldctrl->lc_ctype, newctrl->lc_ctype))
+	if (!equivalent_locale(LC_CTYPE, oldctrl->lc_ctype, newctrl->lc_ctype))
 		pg_fatal("lc_ctype cluster values do not match:  old \"%s\", new \"%s\"\n",
 				 oldctrl->lc_ctype, newctrl->lc_ctype);
 	if (!equivalent_encoding(oldctrl->encoding, newctrl->encoding))
@@ -429,39 +419,46 @@ check_locale_and_encoding(ControlData *oldctrl,
  *
  * Best effort locale-name comparison.  Return false if we are not 100% sure
  * the locales are equivalent.
+ *
+ * Note: The encoding parts of the names are ignored. This function is
+ * currently used to compare locale names stored in pg_database, and
+ * pg_database contains a separate encoding field. That's compared directly
+ * in check_locale_and_encoding().
  */
 static bool
-equivalent_locale(const char *loca, const char *locb)
+equivalent_locale(int category, const char *loca, const char *locb)
 {
-	const char *chara = strrchr(loca, '.');
-	const char *charb = strrchr(locb, '.');
-	int			lencmp;
-
-	/* If they don't both contain an encoding part, just do strcasecmp(). */
-	if (!chara || !charb)
-		return (pg_strcasecmp(loca, locb) == 0);
-
-	/*
-	 * Compare the encoding parts.  Windows tends to use code page numbers for
-	 * the encoding part, which equivalent_encoding() won't like, so accept if
-	 * the strings are case-insensitive equal; otherwise use
-	 * equivalent_encoding() to compare.
-	 */
-	if (pg_strcasecmp(chara + 1, charb + 1) != 0 &&
-		!equivalent_encoding(chara + 1, charb + 1))
-		return false;
+	const char *chara;
+	const char *charb;
+	char	   *canona;
+	char	   *canonb;
+	int			lena;
+	int			lenb;
 
 	/*
-	 * OK, compare the locale identifiers (e.g. en_US part of en_US.utf8).
-	 *
-	 * It's tempting to ignore non-alphanumeric chars here, but for now it's
-	 * not clear that that's necessary; just do case-insensitive comparison.
+	 * If the names are equal, the locales are equivalent. Checking this
+	 * first avoids calling setlocale() in the common case that the names
+	 * are equal. That's a good thing, if setlocale() is buggy, for example.
 	 */
-	lencmp = chara - loca;
-	if (lencmp != charb - locb)
-		return false;
+	if (pg_strcasecmp(loca, locb) == 0)
+		return true;
 
-	return (pg_strncasecmp(loca, locb, lencmp) == 0);
+	/*
+	 * Not identical. Canonicalize both names, remove the encoding parts,
+	 * and try again.
+	 */
+	canona = get_canonical_locale_name(category, loca);
+	chara = strrchr(canona, '.');
+	lena = chara ? (chara - canona) : strlen(canona);
+
+	canonb = get_canonical_locale_name(category, locb);
+	charb = strrchr(canonb, '.');
+	lenb = charb ? (charb - canonb) : strlen(canonb);
+
+	if (lena == lenb && pg_strncasecmp(canona, canonb, lena) == 0)
+		return true;
+
+	return false;
 }
 
 /*
@@ -957,6 +954,96 @@ check_for_reg_data_type_usage(ClusterInfo *cluster)
 		"pg_upgrade, so this cluster cannot currently be upgraded.  You can\n"
 				 "remove the problem tables and restart the upgrade.  A list of the problem\n"
 				 "columns is in the file:\n"
+				 "    %s\n\n", output_path);
+	}
+	else
+		check_ok();
+}
+
+
+/*
+ * check_for_jsonb_9_4_usage()
+ *
+ *	JSONB changed its storage format during 9.4 beta, so check for it.
+ */
+static void
+check_for_jsonb_9_4_usage(ClusterInfo *cluster)
+{
+	int			dbnum;
+	FILE	   *script = NULL;
+	bool		found = false;
+	char		output_path[MAXPGPATH];
+
+	prep_status("Checking for JSONB user data types");
+
+	snprintf(output_path, sizeof(output_path), "tables_using_jsonb.txt");
+
+	for (dbnum = 0; dbnum < cluster->dbarr.ndbs; dbnum++)
+	{
+		PGresult   *res;
+		bool		db_used = false;
+		int			ntups;
+		int			rowno;
+		int			i_nspname,
+					i_relname,
+					i_attname;
+		DbInfo	   *active_db = &cluster->dbarr.dbs[dbnum];
+		PGconn	   *conn = connectToServer(cluster, active_db->db_name);
+
+		/*
+		 * While several relkinds don't store any data, e.g. views, they can
+		 * be used to define data types of other columns, so we check all
+		 * relkinds.
+		 */
+		res = executeQueryOrDie(conn,
+								"SELECT n.nspname, c.relname, a.attname "
+								"FROM	pg_catalog.pg_class c, "
+								"		pg_catalog.pg_namespace n, "
+								"		pg_catalog.pg_attribute a "
+								"WHERE	c.oid = a.attrelid AND "
+								"		NOT a.attisdropped AND "
+								"		a.atttypid = 'pg_catalog.jsonb'::pg_catalog.regtype AND "
+								"		c.relnamespace = n.oid AND "
+		/* exclude possible orphaned temp tables */
+								"  		n.nspname !~ '^pg_temp_' AND "
+							  "		n.nspname NOT IN ('pg_catalog', 'information_schema')");
+
+		ntups = PQntuples(res);
+		i_nspname = PQfnumber(res, "nspname");
+		i_relname = PQfnumber(res, "relname");
+		i_attname = PQfnumber(res, "attname");
+		for (rowno = 0; rowno < ntups; rowno++)
+		{
+			found = true;
+			if (script == NULL && (script = fopen_priv(output_path, "w")) == NULL)
+				pg_fatal("Could not open file \"%s\": %s\n",
+						 output_path, getErrorText(errno));
+			if (!db_used)
+			{
+				fprintf(script, "Database: %s\n", active_db->db_name);
+				db_used = true;
+			}
+			fprintf(script, "  %s.%s.%s\n",
+					PQgetvalue(res, rowno, i_nspname),
+					PQgetvalue(res, rowno, i_relname),
+					PQgetvalue(res, rowno, i_attname));
+		}
+
+		PQclear(res);
+
+		PQfinish(conn);
+	}
+
+	if (script)
+		fclose(script);
+
+	if (found)
+	{
+		pg_log(PG_REPORT, "fatal\n");
+		pg_fatal("Your installation contains one of the JSONB data types in user tables.\n"
+		 "The internal format of JSONB changed during 9.4 beta so this cluster cannot currently\n"
+				 "be upgraded.  You can remove the problem tables and restart the upgrade.  A list\n"
+				 "of the problem columns is in the file:\n"
 				 "    %s\n\n", output_path);
 	}
 	else
