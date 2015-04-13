@@ -9,13 +9,13 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4beta2 Documentation"
+TITLE="PostgreSQL 9.4.1 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="Logical Decoding"
 HREF="logicaldecoding.html"><LINK
 REL="PREVIOUS"
-TITLE="System catalogs related to logical decoding"
+TITLE="System Catalogs Related to Logical Decoding"
 HREF="logicaldecoding-catalogs.html"><LINK
 REL="NEXT"
 TITLE="Logical Decoding Output Writers"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2014-07-21T19:22:19"></HEAD
+CONTENT="2015-02-02T20:51:01"></HEAD
 ><BODY
 CLASS="SECT1"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4beta2 Documentation</A
+>PostgreSQL 9.4.1 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -53,7 +53,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="top"
 ><A
-TITLE="System catalogs related to logical decoding"
+TITLE="System Catalogs Related to Logical Decoding"
 HREF="logicaldecoding-catalogs.html"
 ACCESSKEY="P"
 >Prev</A
@@ -187,8 +187,8 @@ CLASS="PROGRAMLISTING"
 >ALTER TABLE user_catalog_table SET (user_catalog_table = true);
 CREATE TABLE another_catalog_table(data text) WITH (user_catalog_table = true);</PRE
 ><P>
-     Any actions leading to xid assignment are prohibited. That, among others,
-     includes writing to tables, performing DDL changes and
+     Any actions leading to transaction ID assignment are prohibited. That, among others,
+     includes writing to tables, performing DDL changes, and
      calling <TT
 CLASS="LITERAL"
 >txid_current()</TT
@@ -200,8 +200,49 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
+NAME="LOGICALDECODING-OUTPUT-MODE"
+>46.6.3. Output Modes</A
+></H2
+><P
+>     Output plugin callbacks can pass data to the consumer in nearly arbitrary
+     formats. For some use cases, like viewing the changes via SQL, returning
+     data in a data type that can contain arbitrary data (e.g., <TT
+CLASS="TYPE"
+>bytea</TT
+>) is
+     cumbersome. If the output plugin only outputs textual data in the
+     server's encoding, it can declare that by
+     setting <TT
+CLASS="LITERAL"
+>OutputPluginOptions.output_mode</TT
+>
+     to <TT
+CLASS="LITERAL"
+>OUTPUT_PLUGIN_TEXTUAL_OUTPUT</TT
+> instead
+     of <TT
+CLASS="LITERAL"
+>OUTPUT_PLUGIN_BINARY_OUTPUT</TT
+> in
+     the <A
+HREF="logicaldecoding-output-plugin.html#LOGICALDECODING-OUTPUT-PLUGIN-STARTUP"
+>startup
+     callback</A
+>. In that case, all the data has to be in the server's encoding
+     so that a <TT
+CLASS="TYPE"
+>text</TT
+> datum can contain it. This is checked in assertion-enabled
+     builds.
+    </P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
 NAME="LOGICALDECODING-OUTPUT-PLUGIN-CALLBACKS"
->46.6.3. Output Plugin Callbacks</A
+>46.6.4. Output Plugin Callbacks</A
 ></H2
 ><P
 >     An output plugin gets notified about changes that are happening via
@@ -219,10 +260,7 @@ CLASS="LITERAL"
 >
      callbacks. Transactions that were rolled back explicitly or implicitly
      never get
-     decoded. Successful <A
-HREF="sql-savepoint.html"
->SAVEPOINTs</A
-> are
+     decoded. Successful savepoints are
      folded into the transaction containing them in the order they were
      executed within that transaction.
     </P
@@ -234,7 +272,10 @@ CLASS="NOTE"
 ><B
 >Note: </B
 >      Only transactions that have already safely been flushed to disk will be
-      decoded. That can lead to a COMMIT not immediately being decoded in a
+      decoded. That can lead to a <TT
+CLASS="COMMAND"
+>COMMIT</TT
+> not immediately being decoded in a
       directly following <TT
 CLASS="LITERAL"
 >pg_logical_slot_get_changes()</TT
@@ -256,7 +297,7 @@ CLASS="SECT3"
 CLASS="SECT3"
 ><A
 NAME="LOGICALDECODING-OUTPUT-PLUGIN-STARTUP"
->46.6.3.1. Startup Callback</A
+>46.6.4.1. Startup Callback</A
 ></H3
 ><P
 >      The optional <CODE
@@ -301,7 +342,11 @@ CLASS="LITERAL"
       or <TT
 CLASS="LITERAL"
 >OUTPUT_PLUGIN_BINARY_OUTPUT</TT
->.
+>. See also
+      <A
+HREF="logicaldecoding-output-plugin.html#LOGICALDECODING-OUTPUT-MODE"
+>Section 46.6.3</A
+>&#62;.
      </P
 ><P
 >      The startup callback should validate the options present in
@@ -322,7 +367,7 @@ CLASS="SECT3"
 CLASS="SECT3"
 ><A
 NAME="LOGICALDECODING-OUTPUT-PLUGIN-SHUTDOWN"
->46.6.3.2. Shutdown Callback</A
+>46.6.4.2. Shutdown Callback</A
 ></H3
 ><P
 >      The optional <CODE
@@ -346,7 +391,7 @@ CLASS="SECT3"
 CLASS="SECT3"
 ><A
 NAME="LOGICALDECODING-OUTPUT-PLUGIN-BEGIN"
->46.6.3.3. Transaction Begin Callback</A
+>46.6.4.3. Transaction Begin Callback</A
 ></H3
 ><P
 >      The required <CODE
@@ -376,7 +421,7 @@ CLASS="SECT3"
 CLASS="SECT3"
 ><A
 NAME="LOGICALDECODING-OUTPUT-PLUGIN-COMMIT"
->46.6.3.4. Transaction End Callback</A
+>46.6.4.4. Transaction End Callback</A
 ></H3
 ><P
 >      The required <CODE
@@ -405,8 +450,7 @@ CLASS="SECT3"
 CLASS="SECT3"
 ><A
 NAME="LOGICALDECODING-OUTPUT-PLUGIN-CHANGE"
->46.6.3.5. Callback called for each individual change in a
-     transaction</A
+>46.6.4.5. Change Callback</A
 ></H3
 ><P
 >      The required <CODE
@@ -420,7 +464,7 @@ CLASS="COMMAND"
 >, <TT
 CLASS="COMMAND"
 >UPDATE</TT
->
+>,
       or <TT
 CLASS="COMMAND"
 >DELETE</TT
@@ -505,7 +549,7 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="LOGICALDECODING-OUTPUT-PLUGIN-OUTPUT"
->46.6.4. Functions for producing output from an output plugin</A
+>46.6.5. Functions for Producing Output</A
 ></H2
 ><P
 >     To actually produce output, output plugins can write data to
@@ -523,17 +567,17 @@ CLASS="FUNCTION"
 >, <CODE
 CLASS="FUNCTION"
 >commit_cb</CODE
->
+>,
      or <CODE
 CLASS="FUNCTION"
 >change_cb</CODE
 > callbacks. Before writing to the output
-     buffer <CODE
+     buffer, <CODE
 CLASS="FUNCTION"
 >OutputPluginPrepareWrite(ctx, last_write)</CODE
 > has
      to be called, and after finishing writing to the
-     buffer <CODE
+     buffer, <CODE
 CLASS="FUNCTION"
 >OutputPluginWrite(ctx, last_write)</CODE
 > has to be
@@ -599,7 +643,7 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->System catalogs related to logical decoding</TD
+>System Catalogs Related to Logical Decoding</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"

@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4beta2 Documentation"
+TITLE="PostgreSQL 9.4.1 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="PL/pgSQL - SQL Procedural Language"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2014-07-21T19:22:19"></HEAD
+CONTENT="2015-02-02T20:51:01"></HEAD
 ><BODY
 CLASS="SECT1"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4beta2 Documentation</A
+>PostgreSQL 9.4.1 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -620,39 +620,6 @@ CLASS="LITERAL"
 > to true.
     </P
 ><P
->     If <TT
-CLASS="LITERAL"
->print_strict_params</TT
-> is enabled for the function,
-     you will get information about the parameters passed to the
-     query in the <TT
-CLASS="LITERAL"
->DETAIL</TT
-> part of the error message produced
-     when the requirements of STRICT are not met.  You can change this
-     setting on a system-wide basis by setting
-     <TT
-CLASS="VARNAME"
->plpgsql.print_strict_params</TT
->, though only subsequent
-     function compilations will be affected.  You can also enable it
-     on a per-function basis by using a compiler option:
-</P><PRE
-CLASS="PROGRAMLISTING"
->CREATE FUNCTION get_userid(username text) RETURNS int
-AS $$
-#print_strict_params on
-DECLARE
-userid int;
-BEGIN
-    SELECT users.userid INTO STRICT userid
-        FROM users WHERE users.username = get_userid.username;
-    RETURN userid;
-END
-$$ LANGUAGE plpgsql;</PRE
-><P>
-    </P
-><P
 >     For <TT
 CLASS="COMMAND"
 >INSERT</TT
@@ -680,6 +647,54 @@ CLASS="LITERAL"
 >ORDER BY</TT
 > with which to determine
      which affected row should be returned.
+    </P
+><P
+>     If <TT
+CLASS="LITERAL"
+>print_strict_params</TT
+> is enabled for the function,
+     then when an error is thrown because the requirements
+     of <TT
+CLASS="LITERAL"
+>STRICT</TT
+> are not met, the <TT
+CLASS="LITERAL"
+>DETAIL</TT
+> part of
+     the error message will include information about the parameters
+     passed to the query.
+     You can change the <TT
+CLASS="LITERAL"
+>print_strict_params</TT
+>
+     setting for all functions by setting
+     <TT
+CLASS="VARNAME"
+>plpgsql.print_strict_params</TT
+>, though only subsequent
+     function compilations will be affected.  You can also enable it
+     on a per-function basis by using a compiler option, for example:
+</P><PRE
+CLASS="PROGRAMLISTING"
+>CREATE FUNCTION get_userid(username text) RETURNS int
+AS $$
+#print_strict_params on
+DECLARE
+userid int;
+BEGIN
+    SELECT users.userid INTO STRICT userid
+        FROM users WHERE users.username = get_userid.username;
+    RETURN userid;
+END
+$$ LANGUAGE plpgsql;</PRE
+><P>
+     On failure, this function might produce an error message such as
+</P><PRE
+CLASS="PROGRAMLISTING"
+>ERROR:  query returned no rows
+DETAIL:  parameters: $1 = 'nosuchuser'
+CONTEXT:  PL/pgSQL function get_userid(text) line 6 at SQL statement</PRE
+><P>
     </P
 ><DIV
 CLASS="NOTE"

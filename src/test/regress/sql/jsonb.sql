@@ -10,7 +10,8 @@ SELECT '"\v"'::jsonb;			-- ERROR, not a valid JSON escape
 SELECT '"\u"'::jsonb;			-- ERROR, incomplete escape
 SELECT '"\u00"'::jsonb;			-- ERROR, incomplete escape
 SELECT '"\u000g"'::jsonb;		-- ERROR, g is not a hex digit
-SELECT '"\u0000"'::jsonb;		-- OK, legal escape
+SELECT '"\u0045"'::jsonb;		-- OK, legal escape
+SELECT '"\u0000"'::jsonb;		-- ERROR, we don't support U+0000
 -- use octet_length here so we don't get an odd unicode char in the
 -- output
 SELECT octet_length('"\uaBcD"'::jsonb::text); -- OK, uppercase and lower case both OK
@@ -108,6 +109,31 @@ SELECT (test_json->>'field3') IS NULL AS expect_true FROM test_jsonb WHERE json_
 SELECT (test_json->3) IS NULL AS expect_false FROM test_jsonb WHERE json_type = 'array';
 SELECT (test_json->>3) IS NULL AS expect_true FROM test_jsonb WHERE json_type = 'array';
 
+-- corner cases
+select '{"a": [{"b": "c"}, {"b": "cc"}]}'::jsonb -> null::text;
+select '{"a": [{"b": "c"}, {"b": "cc"}]}'::jsonb -> null::int;
+select '{"a": [{"b": "c"}, {"b": "cc"}]}'::jsonb -> 1;
+select '{"a": [{"b": "c"}, {"b": "cc"}]}'::jsonb -> 'z';
+select '{"a": [{"b": "c"}, {"b": "cc"}]}'::jsonb -> '';
+select '[{"b": "c"}, {"b": "cc"}]'::jsonb -> 1;
+select '[{"b": "c"}, {"b": "cc"}]'::jsonb -> 3;
+select '[{"b": "c"}, {"b": "cc"}]'::jsonb -> 'z';
+select '{"a": "c", "b": null}'::jsonb -> 'b';
+select '"foo"'::jsonb -> 1;
+select '"foo"'::jsonb -> 'z';
+
+select '{"a": [{"b": "c"}, {"b": "cc"}]}'::jsonb ->> null::text;
+select '{"a": [{"b": "c"}, {"b": "cc"}]}'::jsonb ->> null::int;
+select '{"a": [{"b": "c"}, {"b": "cc"}]}'::jsonb ->> 1;
+select '{"a": [{"b": "c"}, {"b": "cc"}]}'::jsonb ->> 'z';
+select '{"a": [{"b": "c"}, {"b": "cc"}]}'::jsonb ->> '';
+select '[{"b": "c"}, {"b": "cc"}]'::jsonb ->> 1;
+select '[{"b": "c"}, {"b": "cc"}]'::jsonb ->> 3;
+select '[{"b": "c"}, {"b": "cc"}]'::jsonb ->> 'z';
+select '{"a": "c", "b": null}'::jsonb ->> 'b';
+select '"foo"'::jsonb ->> 1;
+select '"foo"'::jsonb ->> 'z';
+
 -- equality and inequality
 SELECT '{"x":"y"}'::jsonb = '{"x":"y"}'::jsonb;
 SELECT '{"x":"y"}'::jsonb = '{"x":"z"}'::jsonb;
@@ -130,6 +156,13 @@ SELECT '{"a":"b", "b":1, "c":null}'::jsonb @> '{"g":null}';
 SELECT '{"a":"b", "b":1, "c":null}'::jsonb @> '{"a":"c"}';
 SELECT '{"a":"b", "b":1, "c":null}'::jsonb @> '{"a":"b"}';
 SELECT '{"a":"b", "b":1, "c":null}'::jsonb @> '{"a":"b", "c":"q"}';
+
+SELECT '[1,2]'::jsonb @> '[1,2,2]'::jsonb;
+SELECT '[1,1,2]'::jsonb @> '[1,2,2]'::jsonb;
+SELECT '[[1,2]]'::jsonb @> '[[1,2,2]]'::jsonb;
+SELECT '[1,2,2]'::jsonb <@ '[1,2]'::jsonb;
+SELECT '[1,2,2]'::jsonb <@ '[1,1,2]'::jsonb;
+SELECT '[[1,2,2]]'::jsonb <@ '[[1,2]]'::jsonb;
 
 SELECT jsonb_contained('{"a":"b"}', '{"a":"b", "b":1, "c":null}');
 SELECT jsonb_contained('{"a":"b", "c":null}', '{"a":"b", "b":1, "c":null}');
@@ -252,26 +285,54 @@ SELECT '{"f2":{"f3":1},"f4":{"f5":99,"f6":"stringy"}}'::jsonb#>array['f4','f6'];
 SELECT '{"f2":{"f3":1},"f4":{"f5":99,"f6":"stringy"}}'::jsonb#>array['f2'];
 SELECT '{"f2":["f3",1],"f4":{"f5":99,"f6":"stringy"}}'::jsonb#>array['f2','0'];
 SELECT '{"f2":["f3",1],"f4":{"f5":99,"f6":"stringy"}}'::jsonb#>array['f2','1'];
+
 SELECT '{"f2":{"f3":1},"f4":{"f5":99,"f6":"stringy"}}'::jsonb#>>array['f4','f6'];
 SELECT '{"f2":{"f3":1},"f4":{"f5":99,"f6":"stringy"}}'::jsonb#>>array['f2'];
 SELECT '{"f2":["f3",1],"f4":{"f5":99,"f6":"stringy"}}'::jsonb#>>array['f2','0'];
 SELECT '{"f2":["f3",1],"f4":{"f5":99,"f6":"stringy"}}'::jsonb#>>array['f2','1'];
 
--- same using array literals
-SELECT '{"f2":{"f3":1},"f4":{"f5":99,"f6":"stringy"}}'::jsonb#>'{f4,f6}';
-SELECT '{"f2":{"f3":1},"f4":{"f5":99,"f6":"stringy"}}'::jsonb#>'{f2}';
-SELECT '{"f2":["f3",1],"f4":{"f5":99,"f6":"stringy"}}'::jsonb#>'{f2,0}';
-SELECT '{"f2":["f3",1],"f4":{"f5":99,"f6":"stringy"}}'::jsonb#>'{f2,1}';
-SELECT '{"f2":{"f3":1},"f4":{"f5":99,"f6":"stringy"}}'::jsonb#>>'{f4,f6}';
-SELECT '{"f2":{"f3":1},"f4":{"f5":99,"f6":"stringy"}}'::jsonb#>>'{f2}';
-SELECT '{"f2":["f3",1],"f4":{"f5":99,"f6":"stringy"}}'::jsonb#>>'{f2,0}';
-SELECT '{"f2":["f3",1],"f4":{"f5":99,"f6":"stringy"}}'::jsonb#>>'{f2,1}';
+-- corner cases for same
+select '{"a": {"b":{"c": "foo"}}}'::jsonb #> '{}';
+select '[1,2,3]'::jsonb #> '{}';
+select '"foo"'::jsonb #> '{}';
+select '42'::jsonb #> '{}';
+select 'null'::jsonb #> '{}';
+select '{"a": {"b":{"c": "foo"}}}'::jsonb #> array['a'];
+select '{"a": {"b":{"c": "foo"}}}'::jsonb #> array['a', null];
+select '{"a": {"b":{"c": "foo"}}}'::jsonb #> array['a', ''];
+select '{"a": {"b":{"c": "foo"}}}'::jsonb #> array['a','b'];
+select '{"a": {"b":{"c": "foo"}}}'::jsonb #> array['a','b','c'];
+select '{"a": {"b":{"c": "foo"}}}'::jsonb #> array['a','b','c','d'];
+select '{"a": {"b":{"c": "foo"}}}'::jsonb #> array['a','z','c'];
+select '{"a": [{"b": "c"}, {"b": "cc"}]}'::jsonb #> array['a','1','b'];
+select '{"a": [{"b": "c"}, {"b": "cc"}]}'::jsonb #> array['a','z','b'];
+select '[{"b": "c"}, {"b": "cc"}]'::jsonb #> array['1','b'];
+select '[{"b": "c"}, {"b": "cc"}]'::jsonb #> array['z','b'];
+select '[{"b": "c"}, {"b": null}]'::jsonb #> array['1','b'];
+select '"foo"'::jsonb #> array['z'];
+select '42'::jsonb #> array['f2'];
+select '42'::jsonb #> array['0'];
 
--- same on jsonb scalars (expecting errors)
-SELECT '42'::jsonb#>array['f2'];
-SELECT '42'::jsonb#>array['0'];
-SELECT '42'::jsonb#>>array['f2'];
-SELECT '42'::jsonb#>>array['0'];
+select '{"a": {"b":{"c": "foo"}}}'::jsonb #>> '{}';
+select '[1,2,3]'::jsonb #>> '{}';
+select '"foo"'::jsonb #>> '{}';
+select '42'::jsonb #>> '{}';
+select 'null'::jsonb #>> '{}';
+select '{"a": {"b":{"c": "foo"}}}'::jsonb #>> array['a'];
+select '{"a": {"b":{"c": "foo"}}}'::jsonb #>> array['a', null];
+select '{"a": {"b":{"c": "foo"}}}'::jsonb #>> array['a', ''];
+select '{"a": {"b":{"c": "foo"}}}'::jsonb #>> array['a','b'];
+select '{"a": {"b":{"c": "foo"}}}'::jsonb #>> array['a','b','c'];
+select '{"a": {"b":{"c": "foo"}}}'::jsonb #>> array['a','b','c','d'];
+select '{"a": {"b":{"c": "foo"}}}'::jsonb #>> array['a','z','c'];
+select '{"a": [{"b": "c"}, {"b": "cc"}]}'::jsonb #>> array['a','1','b'];
+select '{"a": [{"b": "c"}, {"b": "cc"}]}'::jsonb #>> array['a','z','b'];
+select '[{"b": "c"}, {"b": "cc"}]'::jsonb #>> array['1','b'];
+select '[{"b": "c"}, {"b": "cc"}]'::jsonb #>> array['z','b'];
+select '[{"b": "c"}, {"b": null}]'::jsonb #>> array['1','b'];
+select '"foo"'::jsonb #>> array['z'];
+select '42'::jsonb #>> array['f2'];
+select '42'::jsonb #>> array['0'];
 
 -- array_elements
 SELECT jsonb_array_elements('[1,true,[1,[2,3]],null,{"f1":1,"f2":[7,8,9]},false]');
@@ -313,9 +374,18 @@ SELECT jsonb '{ "a":  "\ud83dX" }' -> 'a'; -- orphan high surrogate
 SELECT jsonb '{ "a":  "\ude04X" }' -> 'a'; -- orphan low surrogate
 
 -- handling of simple unicode escapes
-SELECT jsonb '{ "a":  "the Copyright \u00a9 sign" }' ->> 'a' AS correct_in_utf8;
-SELECT jsonb '{ "a":  "dollar \u0024 character" }' ->> 'a' AS correct_everyWHERE;
-SELECT jsonb '{ "a":  "null \u0000 escape" }' ->> 'a' AS not_unescaped;
+
+SELECT jsonb '{ "a":  "the Copyright \u00a9 sign" }' as correct_in_utf8;
+SELECT jsonb '{ "a":  "dollar \u0024 character" }' as correct_everywhere;
+SELECT jsonb '{ "a":  "dollar \\u0024 character" }' as not_an_escape;
+SELECT jsonb '{ "a":  "null \u0000 escape" }' as fails;
+SELECT jsonb '{ "a":  "null \\u0000 escape" }' as not_an_escape;
+
+SELECT jsonb '{ "a":  "the Copyright \u00a9 sign" }' ->> 'a' as correct_in_utf8;
+SELECT jsonb '{ "a":  "dollar \u0024 character" }' ->> 'a' as correct_everywhere;
+SELECT jsonb '{ "a":  "dollar \\u0024 character" }' ->> 'a' as not_an_escape;
+SELECT jsonb '{ "a":  "null \u0000 escape" }' ->> 'a' as fails;
+SELECT jsonb '{ "a":  "null \\u0000 escape" }' ->> 'a' as not_an_escape;
 
 -- jsonb_to_record and jsonb_to_recordset
 

@@ -3,11 +3,12 @@ Section: database
 Priority: optional
 Maintainer: Debian PostgreSQL Maintainers <pkg-postgresql-public@lists.alioth.debian.org>
 Uploaders: Martin Pitt <mpitt@debian.org>, Peter Eisentraut <petere@debian.org>, Christoph Berg <myon@debian.org>
-Standards-Version: 3.9.5
+Standards-Version: 3.9.6
 Build-Depends: debhelper (>= 9~),
  dpkg-dev (>= 1.16.1~) | hardening-wrapper,
  perl (>= 5.8),
  libperl-dev,
+ libipc-run-perl,
  tcl8.6-dev | tcl8.5-dev,
  libedit-dev,
  libssl-dev,
@@ -167,6 +168,7 @@ Description: debug symbols for postgresql-9.4
 
 Package: postgresql-client-9.4
 Architecture: any
+Multi-Arch: foreign
 Depends: ${misc:Depends},
  ${shlibs:Depends},
  libpq5 (>= ${source:Upstream-Version}),
@@ -205,6 +207,7 @@ Description: development files for PostgreSQL 9.4 server-side programming
 
 Package: postgresql-doc-9.4
 Architecture: all
+Multi-Arch: foreign
 Section: doc
 Depends: ${misc:Depends}
 Description: documentation for the PostgreSQL database management system
@@ -252,7 +255,7 @@ Description: additional facilities for PostgreSQL
   pgrowlocks     - A function to return row locking information
   pgstattuple    - Returns the percentage of dead tuples in a table; this
                    indicates whether a vacuum is required.
-  postgresql_fwd - foreign data wrapper for PostgreSQL
+  postgresql_fdw - foreign data wrapper for PostgreSQL
   seg            - Confidence-interval datatype (GiST indexing example)
   sepgsql        - mandatory access control (MAC) based on SELinux
   spi            - PostgreSQL Server Programming Interface; 4 examples of

@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4beta2 Documentation"
+TITLE="PostgreSQL 9.4.1 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="SQL Commands"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2014-07-21T19:22:19"></HEAD
+CONTENT="2015-02-02T20:51:01"></HEAD
 ><BODY
 CLASS="REFENTRY"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4beta2 Documentation</A
+>PostgreSQL 9.4.1 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -95,7 +95,7 @@ NAME="SQL-ALTERTABLE"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN69123"
+NAME="AEN69503"
 ></A
 ><H2
 >Name</H2
@@ -103,7 +103,7 @@ NAME="AEN69123"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN69126"
+NAME="AEN69506"
 ></A
 ><H2
 >Synopsis</H2
@@ -179,6 +179,23 @@ CLASS="REPLACEABLE"
 >new_schema</I
 ></TT
 >
+ALTER TABLE ALL IN TABLESPACE <TT
+CLASS="REPLACEABLE"
+><I
+>name</I
+></TT
+> [ OWNED BY <TT
+CLASS="REPLACEABLE"
+><I
+>role_name</I
+></TT
+> [, ... ] ]
+    SET TABLESPACE <TT
+CLASS="REPLACEABLE"
+><I
+>new_tablespace</I
+></TT
+> [ NOWAIT ]
 
 <SPAN
 CLASS="phrase"
@@ -480,7 +497,7 @@ CLASS="REPLACEABLE"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN69190"
+NAME="AEN69573"
 ></A
 ><H2
 >Description</H2
@@ -1403,6 +1420,35 @@ CLASS="LITERAL"
 CLASS="LITERAL"
 >SET TABLESPACE</TT
 > commands.
+      All tables in the current database in a tablespace can be moved by using
+      the <TT
+CLASS="LITERAL"
+>ALL IN TABLESPACE</TT
+> form, which will lock all tables
+      to be moved first and then move each one.  This form also supports
+      <TT
+CLASS="LITERAL"
+>OWNED BY</TT
+>, which will only move tables owned by the
+      roles specified.  If the <TT
+CLASS="LITERAL"
+>NOWAIT</TT
+> option is specified
+      then the command will fail if it is unable to acquire all of the locks
+      required immediately.  Note that system catalogs are not moved by this
+      command, use <TT
+CLASS="COMMAND"
+>ALTER DATABASE</TT
+> or explicit
+      <TT
+CLASS="COMMAND"
+>ALTER TABLE</TT
+> invocations instead if desired.  The
+      <TT
+CLASS="LITERAL"
+>information_schema</TT
+> relations are not considered part
+      of the system catalogs and will be moved.
       See also
       <A
 HREF="sql-createtablespace.html"
@@ -1484,6 +1530,10 @@ CLASS="LITERAL"
 >   All the actions except <TT
 CLASS="LITERAL"
 >RENAME</TT
+>,
+   <TT
+CLASS="LITERAL"
+>SET TABLESPACE</TT
 > and <TT
 CLASS="LITERAL"
 >SET SCHEMA</TT
@@ -1499,11 +1549,11 @@ CLASS="LITERAL"
 CLASS="COMMAND"
 >ALTER TABLE</TT
 >.
-   To change the schema of a table, you must also have
+   To change the schema or tablespace of a table, you must also have
    <TT
 CLASS="LITERAL"
 >CREATE</TT
-> privilege on the new schema.
+> privilege on the new schema or tablespace.
    To add the table as a new child of a parent table, you must own the
    parent table as well.
    To alter the owner, you must also be a direct or indirect member of the new
@@ -1528,7 +1578,7 @@ CLASS="LITERAL"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN69501"
+NAME="AEN69891"
 ></A
 ><H2
 >Parameters</H2
@@ -1788,7 +1838,7 @@ CLASS="REPLACEABLE"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN69602"
+NAME="AEN69992"
 ></A
 ><H2
 >Notes</H2
@@ -2003,7 +2053,7 @@ HREF="ddl.html"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN69653"
+NAME="AEN70043"
 ></A
 ><H2
 >Examples</H2
@@ -2183,7 +2233,7 @@ ALTER TABLE distributors DROP CONSTRAINT distributors_pkey,
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN69699"
+NAME="AEN70089"
 ></A
 ><H2
 >Compatibility</H2
@@ -2232,7 +2282,7 @@ CLASS="COMMAND"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN69712"
+NAME="AEN70102"
 ></A
 ><H2
 >See Also</H2

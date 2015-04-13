@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4beta2 Documentation"
+TITLE="PostgreSQL 9.4.1 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="Extending SQL"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2014-07-21T19:22:19"></HEAD
+CONTENT="2015-02-02T20:51:01"></HEAD
 ><BODY
 CLASS="SECT1"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4beta2 Documentation</A
+>PostgreSQL 9.4.1 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -1091,6 +1091,29 @@ CLASS="LITERAL"
      actual argument of a function call.
     </P
 ><P
+>     Specifying <TT
+CLASS="LITERAL"
+>VARIADIC</TT
+> in the call is also the only way to
+     pass an empty array to a variadic function, for example:
+
+</P><PRE
+CLASS="SCREEN"
+>SELECT mleast(VARIADIC ARRAY[]::numeric[]);</PRE
+><P>
+
+     Simply writing <TT
+CLASS="LITERAL"
+>SELECT mleast()</TT
+> does not work because a
+     variadic parameter must match at least one actual argument.
+     (You could define a second function also named <TT
+CLASS="LITERAL"
+>mleast</TT
+>,
+     with no parameters, if you wanted to allow such calls.)
+    </P
+><P
 >     The array element parameters generated from a variadic parameter are
      treated as not having any names of their own.  This means it is not
      possible to call a variadic function using named arguments (<A
@@ -1571,7 +1594,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN54901"
+NAME="AEN55205"
 >35.4.10. Polymorphic <ACRONYM
 CLASS="ACRONYM"
 >SQL</ACRONYM
@@ -1725,7 +1748,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN54927"
+NAME="AEN55231"
 >35.4.11. <ACRONYM
 CLASS="ACRONYM"
 >SQL</ACRONYM

@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4beta2 Documentation"
+TITLE="PostgreSQL 9.4.1 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="SQL Commands"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2014-07-21T19:22:19"></HEAD
+CONTENT="2015-02-02T20:51:01"></HEAD
 ><BODY
 CLASS="REFENTRY"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4beta2 Documentation</A
+>PostgreSQL 9.4.1 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -95,7 +95,7 @@ NAME="SQL-ALTERSYSTEM"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN69056"
+NAME="AEN69425"
 ></A
 ><H2
 >Name</H2
@@ -103,7 +103,7 @@ NAME="AEN69056"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN69059"
+NAME="AEN69428"
 ></A
 ><H2
 >Synopsis</H2
@@ -124,12 +124,20 @@ CLASS="REPLACEABLE"
 ><I
 >value</I
 ></TT
->' | DEFAULT }</PRE
+>' | DEFAULT }
+
+ALTER SYSTEM RESET <TT
+CLASS="REPLACEABLE"
+><I
+>configuration_parameter</I
+></TT
+>
+ALTER SYSTEM RESET ALL</PRE
 ></DIV
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN69064"
+NAME="AEN69434"
 ></A
 ><H2
 >Description</H2
@@ -137,37 +145,70 @@ NAME="AEN69064"
 >   <TT
 CLASS="COMMAND"
 >ALTER SYSTEM</TT
-> writes the configuration parameter
-   values to the <TT
+> is used for changing server configuration
+   parameters across the entire database cluster.  It can be more convenient
+   than the traditional method of manually editing
+   the <TT
+CLASS="FILENAME"
+>postgresql.conf</TT
+> file.
+   <TT
+CLASS="COMMAND"
+>ALTER SYSTEM</TT
+> writes the given parameter setting to
+   the <TT
 CLASS="FILENAME"
 >postgresql.auto.conf</TT
-> file. With
-   <TT
+> file, which is read in
+   addition to <TT
+CLASS="FILENAME"
+>postgresql.conf</TT
+>.
+   Setting a parameter to <TT
 CLASS="LITERAL"
 >DEFAULT</TT
->, it removes a configuration entry from
+>, or using the
+   <TT
+CLASS="COMMAND"
+>RESET</TT
+> variant, removes that configuration entry from the
    <TT
 CLASS="FILENAME"
 >postgresql.auto.conf</TT
-> file. The values will be
-   effective after reload of server configuration (SIGHUP) or in next
-   server start based on the type of configuration parameter modified.
+> file. Use <TT
+CLASS="LITERAL"
+>RESET
+   ALL</TT
+> to remove all such configuration entries.
   </P
 ><P
->   This command is not allowed inside transaction block or function.
+>   Values set with <TT
+CLASS="COMMAND"
+>ALTER SYSTEM</TT
+> will be effective after
+   the next server configuration reload (<SPAN
+CLASS="SYSTEMITEM"
+>SIGHUP</SPAN
+>
+   or <TT
+CLASS="LITERAL"
+>pg_ctl reload</TT
+>), or after the next server restart in the
+   case of parameters that can only be changed at server start.
   </P
 ><P
->   See <A
-HREF="config-setting.html"
->Section 18.1</A
-> for other ways to set the parameters and
-   how they become effective.
+>   Only superusers can use <TT
+CLASS="COMMAND"
+>ALTER SYSTEM</TT
+>.  Also, since
+   this command acts directly on the file system and cannot be rolled back,
+   it is not allowed inside a transaction block or function.
   </P
 ></DIV
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN69074"
+NAME="AEN69452"
 ></A
 ><H2
 >Parameters</H2
@@ -185,7 +226,7 @@ CLASS="REPLACEABLE"
 ></DT
 ><DD
 ><P
->      Name of a settable run-time parameter.  Available parameters are
+>      Name of a settable configuration parameter.  Available parameters are
       documented in <A
 HREF="runtime-config.html"
 >Chapter 18</A
@@ -201,17 +242,17 @@ CLASS="REPLACEABLE"
 ></DT
 ><DD
 ><P
->      New value of parameter.  Values can be specified as string
+>      New value of the parameter.  Values can be specified as string
       constants, identifiers, numbers, or comma-separated lists of
       these, as appropriate for the particular parameter.
       <TT
 CLASS="LITERAL"
 >DEFAULT</TT
-> can be written to specify to remove the
+> can be written to specify removing the
       parameter and its value from <TT
 CLASS="FILENAME"
 >postgresql.auto.conf</TT
->
+>.
      </P
 ></DD
 ></DL
@@ -220,29 +261,35 @@ CLASS="FILENAME"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN69090"
+NAME="AEN69468"
 ></A
 ><H2
 >Notes</H2
 ><P
->    This command can't be used to set <A
+>   This command can't be used to set <A
 HREF="runtime-config-file-locations.html#GUC-DATA-DIRECTORY"
 >data_directory</A
->
-    and any parameters (e.g., <A
-HREF="runtime-config-preset.html"
->preset options</A
->)
-    that are not allowed in <TT
+>,
+   nor parameters that are not allowed in <TT
 CLASS="FILENAME"
 >postgresql.conf</TT
->.
+>
+   (e.g., <A
+HREF="runtime-config-preset.html"
+>preset options</A
+>).
+  </P
+><P
+>   See <A
+HREF="config-setting.html"
+>Section 18.1</A
+> for other ways to set the parameters.
   </P
 ></DIV
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN69096"
+NAME="AEN69476"
 ></A
 ><H2
 >Examples</H2
@@ -257,19 +304,21 @@ CLASS="PROGRAMLISTING"
 ><P>
   </P
 ><P
->   Set the <TT
-CLASS="LITERAL"
->authentication_timeout</TT
+>   Undo that, restoring whatever setting was effective
+   in <TT
+CLASS="FILENAME"
+>postgresql.conf</TT
 >:
 </P><PRE
 CLASS="PROGRAMLISTING"
->ALTER SYSTEM SET authentication_timeout = 10;</PRE
-><P></P
+>ALTER SYSTEM RESET wal_level;</PRE
+><P>
+  </P
 ></DIV
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN69104"
+NAME="AEN69484"
 ></A
 ><H2
 >Compatibility</H2
@@ -287,7 +336,7 @@ CLASS="PRODUCTNAME"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN69109"
+NAME="AEN69489"
 ></A
 ><H2
 >See Also</H2

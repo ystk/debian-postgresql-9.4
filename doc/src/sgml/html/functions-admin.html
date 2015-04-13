@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4beta2 Documentation"
+TITLE="PostgreSQL 9.4.1 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="Functions and Operators"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2014-07-21T19:22:19"></HEAD
+CONTENT="2015-02-02T20:51:01"></HEAD
 ><BODY
 CLASS="SECT1"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4beta2 Documentation</A
+>PostgreSQL 9.4.1 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -1135,7 +1135,7 @@ CLASS="TYPE"
 >void</TT
 ></TD
 ><TD
->Pauses recovery immediately.
+>Pauses recovery immediately (restricted to superusers).
        </TD
 ></TR
 ><TR
@@ -1154,7 +1154,7 @@ CLASS="TYPE"
 >void</TT
 ></TD
 ><TD
->Restarts recovery if it was paused.
+>Restarts recovery if it was paused (restricted to superusers).
        </TD
 ></TR
 ></TBODY
@@ -1337,7 +1337,7 @@ HREF="warm-standby.html#STREAMING-REPLICATION"
 HREF="warm-standby.html#STREAMING-REPLICATION-SLOTS"
 >Section 25.2.6</A
 > for information about the
-    underlying features.
+    underlying features.  Use of these functions is restricted to superusers.
    </P
 ><P
 >    Many of these functions have equivalent commands in the replication
@@ -2223,44 +2223,68 @@ CLASS="LITERAL"
 >    <CODE
 CLASS="FUNCTION"
 >pg_relation_size</CODE
-> accepts the OID or name of a table, index or
-    toast table, and returns the on-disk size in bytes.
-    Specifying <TT
+> accepts the OID or name of a table, index
+    or toast table, and returns the on-disk size in bytes of one fork of
+    that relation.  (Note that for most purposes it is more convenient to
+    use the higher-level functions <CODE
+CLASS="FUNCTION"
+>pg_total_relation_size</CODE
+>
+    or <CODE
+CLASS="FUNCTION"
+>pg_table_size</CODE
+>, which sum the sizes of all forks.)
+    With one argument, it returns the size of the main data fork of the
+    relation.  The second argument can be provided to specify which fork
+    to examine:
+    <P
+></P
+></P><UL
+COMPACT="COMPACT"
+><LI
+><P
+>       <TT
 CLASS="LITERAL"
 >'main'</TT
-> or leaving out the second argument
-    returns the size of the main data fork of the relation.
-    Specifying <TT
+> returns the size of the main
+       data fork of the relation.
+      </P
+></LI
+><LI
+><P
+>       <TT
 CLASS="LITERAL"
 >'fsm'</TT
-> returns the size of the Free Space
-    Map (see <A
+> returns the size of the Free Space Map
+       (see <A
 HREF="storage-fsm.html"
 >Section 59.3</A
 >) associated with the relation.
-    Specifying <TT
+      </P
+></LI
+><LI
+><P
+>       <TT
 CLASS="LITERAL"
 >'vm'</TT
-> returns the size of the Visibility
-    Map (see <A
+> returns the size of the Visibility Map
+       (see <A
 HREF="storage-vm.html"
 >Section 59.4</A
 >) associated with the relation.
-    Specifying <TT
+      </P
+></LI
+><LI
+><P
+>       <TT
 CLASS="LITERAL"
 >'init'</TT
-> returns the size of the
-    initialization fork, if any, associated with the relation.
-    Note that this function shows the size of only one fork;
-    for most purposes it is more convenient to use the higher-level
-    functions <CODE
-CLASS="FUNCTION"
->pg_total_relation_size</CODE
-> or
-    <CODE
-CLASS="FUNCTION"
->pg_table_size</CODE
->.
+> returns the size of the initialization
+       fork, if any, associated with the relation.
+      </P
+></LI
+></UL
+><P>
    </P
 ><P
 >    <CODE
@@ -2751,7 +2775,7 @@ HREF="functions-admin.html#FUNCTIONS-ADVISORY-LOCKS-TABLE"
     manage advisory locks.  For details about proper use of these functions,
     see <A
 HREF="explicit-locking.html#ADVISORY-LOCKS"
->Section 13.3.4</A
+>Section 13.3.5</A
 >.
    </P
 ><DIV

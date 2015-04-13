@@ -33,6 +33,10 @@
 #include "utils/xml.h"
 
 
+/* Crude hack to avoid changing sizeof(ExplainState) in released branches */
+#define grouping_stack extra->groupingstack
+#define deparse_cxt extra->deparsecxt
+
 /* Hook for plugins to get control in ExplainOneQuery() */
 ExplainOneQuery_hook_type ExplainOneQuery_hook = NULL;
 
@@ -190,6 +194,9 @@ ExplainQuery(ExplainStmt *stmt, const char *queryString,
 				(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
 				 errmsg("EXPLAIN option TIMING requires ANALYZE")));
 
+	/* currently, summary option is not exposed to users; just set it */
+	es.summary = es.analyze;
+
 	/*
 	 * Parse analysis was done already, but we still have to run the rule
 	 * rewriter.  We do not do AcquireRewriteLocks: we assume the query either
@@ -259,6 +266,8 @@ ExplainInitState(ExplainState *es)
 	es->costs = true;
 	/* Prepare output buffer. */
 	es->str = makeStringInfo();
+	/* Kluge to avoid changing sizeof(ExplainState) in released branches. */
+	es->extra = (ExplainStateExtra *) palloc0(sizeof(ExplainStateExtra));
 }
 
 /*
@@ -430,7 +439,8 @@ ExplainOnePlan(PlannedStmt *plannedstmt, IntoClause *into, ExplainState *es,
 
 	/*
 	 * We always collect timing for the entire statement, even when node-level
-	 * timing is off, so we don't look at es->timing here.
+	 * timing is off, so we don't look at es->timing here.  (We could skip
+	 * this if !es->summary, but it's hardly worth the complication.)
 	 */
 	INSTR_TIME_SET_CURRENT(starttime);
 
@@ -492,7 +502,7 @@ ExplainOnePlan(PlannedStmt *plannedstmt, IntoClause *into, ExplainState *es,
 	/* Create textual dump of plan tree */
 	ExplainPrintPlan(es, queryDesc);
 
-	if (es->costs && planduration)
+	if (es->summary && planduration)
 	{
 		double		plantime = INSTR_TIME_GET_DOUBLE(*planduration);
 
@@ -525,7 +535,7 @@ ExplainOnePlan(PlannedStmt *plannedstmt, IntoClause *into, ExplainState *es,
 
 	totaltime += elapsed_time(&starttime);
 
-	if (es->analyze)
+	if (es->summary)
 	{
 		if (es->format == EXPLAIN_FORMAT_TEXT)
 			appendStringInfo(es->str, "Execution time: %.3f ms\n",
@@ -558,6 +568,8 @@ ExplainPrintPlan(ExplainState *es, QueryDesc *queryDesc)
 	es->rtable = queryDesc->plannedstmt->rtable;
 	ExplainPreScanNode(queryDesc->planstate, &rels_used);
 	es->rtable_names = select_rtable_names_for_explain(es->rtable, rels_used);
+	es->deparse_cxt = deparse_context_for_plan_rtable(es->rtable,
+													  es->rtable_names);
 	ExplainNode(queryDesc->planstate, NIL, NULL, NULL, es);
 }
 
@@ -1649,10 +1661,9 @@ show_plan_tlist(PlanState *planstate, List *ancestors, ExplainState *es)
 		return;
 
 	/* Set up deparsing context */
-	context = deparse_context_for_planstate((Node *) planstate,
-											ancestors,
-											es->rtable,
-											es->rtable_names);
+	context = set_deparse_context_planstate(es->deparse_cxt,
+											(Node *) planstate,
+											ancestors);
 	useprefix = list_length(es->rtable) > 1;
 
 	/* Deparse each result column (we now include resjunk ones) */
@@ -1681,10 +1692,9 @@ show_expression(Node *node, const char *qlabel,
 	char	   *exprstr;
 
 	/* Set up deparsing context */
-	context = deparse_context_for_planstate((Node *) planstate,
-											ancestors,
-											es->rtable,
-											es->rtable_names);
+	context = set_deparse_context_planstate(es->deparse_cxt,
+											(Node *) planstate,
+											ancestors);
 
 	/* Deparse the expression */
 	exprstr = deparse_expression(node, context, useprefix, false);
@@ -1826,10 +1836,9 @@ show_sort_group_keys(PlanState *planstate, const char *qlabel,
 		return;
 
 	/* Set up deparsing context */
-	context = deparse_context_for_planstate((Node *) planstate,
-											ancestors,
-											es->rtable,
-											es->rtable_names);
+	context = set_deparse_context_planstate(es->deparse_cxt,
+											(Node *) planstate,
+											ancestors);
 	useprefix = (list_length(es->rtable) > 1 || es->verbose);
 
 	for (keyno = 0; keyno < nkeys; keyno++)

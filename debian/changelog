@@ -1,3 +1,68 @@
+postgresql-9.4 (9.4.1-1) unstable; urgency=medium
+
+  * New upstream version.
+    + libpq5: Name lookups fixed in minimal chroots (Closes: #756627)
+    + Fix buffer overruns in to_char() (CVE-2015-0241)
+    + Fix buffer overruns in contrib/pgcrypto (CVE-2015-0243)
+    + Fix possible loss of frontend/backend protocol synchronization after an
+      error (CVE-2015-0244)
+    + Fix information leak via constraint-violation error messages
+      (CVE-2014-8161)
+
+ -- Christoph Berg <myon@debian.org>  Wed, 04 Feb 2015 17:55:28 +0100
+
+postgresql-9.4 (9.4.0-1) unstable; urgency=medium
+
+  * 9.4 released.
+  * libpq5.symbols: PQhostaddr removed; it was new in 9.4.
+
+ -- Christoph Berg <myon@debian.org>  Wed, 17 Dec 2014 22:21:22 +0100
+
+postgresql-9.4 (9.4~rc1-1) unstable; urgency=medium
+
+  * First 9.4 RC release.
+  * Update psql call in dump-reload instructions.
+  * Reenable 010_pg_basebackup.t tests, fixed upstream.
+
+ -- Christoph Berg <myon@debian.org>  Tue, 18 Nov 2014 09:49:04 +0100
+
+postgresql-9.4 (9.4~beta3-3) unstable; urgency=medium
+
+  * Temporarily disable failing test in 010_pg_basebackup.t.
+
+ -- Christoph Berg <myon@debian.org>  Thu, 16 Oct 2014 09:32:06 +0200
+
+postgresql-9.4 (9.4~beta3-2) unstable; urgency=medium
+
+  * postgresql-9.4.preinst: Output detailed dump-reload instructions when
+    refusing the package upgrade, and also add a NEWS item about it.
+    (Closes: #764705)
+  * Add libipc-run-perl for the regression tests which otherwise skip large
+    parts.
+  * Update Standards-Version.
+
+ -- Christoph Berg <myon@debian.org>  Wed, 15 Oct 2014 19:44:43 +0200
+
+postgresql-9.4 (9.4~beta3-1) unstable; urgency=medium
+
+  * New upstream beta version.
+    + Catalog version number changed, older 9.4 clusters need to be dumped and
+      reloaded.
+    + Regexp regression fixed. (Closes: #760564)
+    + CACHE_LINE_SIZE definition renamed to mitigate conflict on *BSD.
+      (Closes: #763098)
+
+  [ Martin Pitt ]
+  * Add missing logrotate test dependency.
+
+  [ Christoph Berg ]
+  * Set Multi-Arch: foreign in postgresql-client-9.4 and postgresql-doc-9.4.
+    (Closes: #757520; do it even on non-multiarch dists, it doesn't hurt.)
+  * Fix postgresql_fdw in description, spotted by Zack Weinberg, thanks!
+    (Closes: #762389)
+
+ -- Christoph Berg <myon@debian.org>  Tue, 07 Oct 2014 20:39:57 +0200
+
 postgresql-9.4 (9.4~beta2-1) unstable; urgency=low
 
   * New upstream beta version.

@@ -82,11 +82,22 @@ static void ExecutePlan(EState *estate, PlanState *planstate,
 			DestReceiver *dest);
 static bool ExecCheckRTEPerms(RangeTblEntry *rte);
 static void ExecCheckXactReadOnly(PlannedStmt *plannedstmt);
-static char *ExecBuildSlotValueDescription(TupleTableSlot *slot,
+static char *ExecBuildSlotValueDescription(Oid reloid,
+							  TupleTableSlot *slot,
 							  TupleDesc tupdesc,
+							  Bitmapset *modifiedCols,
 							  int maxfieldlen);
 static void EvalPlanQualStart(EPQState *epqstate, EState *parentestate,
 				  Plan *planTree);
+
+/*
+ * Note that this macro also exists in commands/trigger.c.  There does not
+ * appear to be any good header to put it into, given the structures that
+ * it uses, so we let them be duplicated.  Be sure to update both if one needs
+ * to be changed, however.
+ */
+#define GetModifiedColumns(relinfo, estate) \
+	(rt_fetch((relinfo)->ri_RangeTableIndex, (estate)->es_range_table)->modifiedCols)
 
 /* end of local decls */
 
@@ -1602,15 +1613,24 @@ ExecConstraints(ResultRelInfo *resultRelInfo,
 		{
 			if (tupdesc->attrs[attrChk - 1]->attnotnull &&
 				slot_attisnull(slot, attrChk))
+			{
+				char	   *val_desc;
+				Bitmapset  *modifiedCols;
+
+				modifiedCols = GetModifiedColumns(resultRelInfo, estate);
+				val_desc = ExecBuildSlotValueDescription(RelationGetRelid(rel),
+														 slot,
+														 tupdesc,
+														 modifiedCols,
+														 64);
+
 				ereport(ERROR,
 						(errcode(ERRCODE_NOT_NULL_VIOLATION),
 						 errmsg("null value in column \"%s\" violates not-null constraint",
 							  NameStr(tupdesc->attrs[attrChk - 1]->attname)),
-						 errdetail("Failing row contains %s.",
-								   ExecBuildSlotValueDescription(slot,
-																 tupdesc,
-																 64)),
+						 val_desc ? errdetail("Failing row contains %s.", val_desc) : 0,
 						 errtablecol(rel, attrChk)));
+			}
 		}
 	}
 
@@ -1619,15 +1639,23 @@ ExecConstraints(ResultRelInfo *resultRelInfo,
 		const char *failed;
 
 		if ((failed = ExecRelCheck(resultRelInfo, slot, estate)) != NULL)
+		{
+			char	   *val_desc;
+			Bitmapset  *modifiedCols;
+
+			modifiedCols = GetModifiedColumns(resultRelInfo, estate);
+			val_desc = ExecBuildSlotValueDescription(RelationGetRelid(rel),
+													 slot,
+													 tupdesc,
+													 modifiedCols,
+													 64);
 			ereport(ERROR,
 					(errcode(ERRCODE_CHECK_VIOLATION),
 					 errmsg("new row for relation \"%s\" violates check constraint \"%s\"",
 							RelationGetRelationName(rel), failed),
-					 errdetail("Failing row contains %s.",
-							   ExecBuildSlotValueDescription(slot,
-															 tupdesc,
-															 64)),
+					 val_desc ? errdetail("Failing row contains %s.", val_desc) : 0,
 					 errtableconstraint(rel, failed)));
+		}
 	}
 }
 
@@ -1638,6 +1666,8 @@ void
 ExecWithCheckOptions(ResultRelInfo *resultRelInfo,
 					 TupleTableSlot *slot, EState *estate)
 {
+	Relation	rel = resultRelInfo->ri_RelationDesc;
+	TupleDesc	tupdesc = RelationGetDescr(rel);
 	ExprContext *econtext;
 	ListCell   *l1,
 			   *l2;
@@ -1666,14 +1696,24 @@ ExecWithCheckOptions(ResultRelInfo *resultRelInfo,
 		 * above for CHECK constraints).
 		 */
 		if (!ExecQual((List *) wcoExpr, econtext, false))
+		{
+			char	   *val_desc;
+			Bitmapset  *modifiedCols;
+
+			modifiedCols = GetModifiedColumns(resultRelInfo, estate);
+			val_desc = ExecBuildSlotValueDescription(RelationGetRelid(rel),
+													 slot,
+													 tupdesc,
+													 modifiedCols,
+													 64);
+
 			ereport(ERROR,
 					(errcode(ERRCODE_WITH_CHECK_OPTION_VIOLATION),
 				 errmsg("new row violates WITH CHECK OPTION for view \"%s\"",
 						wco->viewname),
-					 errdetail("Failing row contains %s.",
-							   ExecBuildSlotValueDescription(slot,
-							RelationGetDescr(resultRelInfo->ri_RelationDesc),
-															 64))));
+					val_desc ? errdetail("Failing row contains %s.", val_desc) :
+							   0));
+		}
 	}
 }
 
@@ -1689,25 +1729,56 @@ ExecWithCheckOptions(ResultRelInfo *resultRelInfo,
  * dropped columns.  We used to use the slot's tuple descriptor to decode the
  * data, but the slot's descriptor doesn't identify dropped columns, so we
  * now need to be passed the relation's descriptor.
+ *
+ * Note that, like BuildIndexValueDescription, if the user does not have
+ * permission to view any of the columns involved, a NULL is returned.  Unlike
+ * BuildIndexValueDescription, if the user has access to view a subset of the
+ * column involved, that subset will be returned with a key identifying which
+ * columns they are.
  */
 static char *
-ExecBuildSlotValueDescription(TupleTableSlot *slot,
+ExecBuildSlotValueDescription(Oid reloid,
+							  TupleTableSlot *slot,
 							  TupleDesc tupdesc,
+							  Bitmapset *modifiedCols,
 							  int maxfieldlen)
 {
 	StringInfoData buf;
+	StringInfoData collist;
 	bool		write_comma = false;
+	bool		write_comma_collist = false;
 	int			i;
-
-	/* Make sure the tuple is fully deconstructed */
-	slot_getallattrs(slot);
+	AclResult	aclresult;
+	bool		table_perm = false;
+	bool		any_perm = false;
 
 	initStringInfo(&buf);
 
 	appendStringInfoChar(&buf, '(');
 
+	/*
+	 * Check if the user has permissions to see the row.  Table-level SELECT
+	 * allows access to all columns.  If the user does not have table-level
+	 * SELECT then we check each column and include those the user has SELECT
+	 * rights on.  Additionally, we always include columns the user provided
+	 * data for.
+	 */
+	aclresult = pg_class_aclcheck(reloid, GetUserId(), ACL_SELECT);
+	if (aclresult != ACLCHECK_OK)
+	{
+		/* Set up the buffer for the column list */
+		initStringInfo(&collist);
+		appendStringInfoChar(&collist, '(');
+	}
+	else
+		table_perm = any_perm = true;
+
+	/* Make sure the tuple is fully deconstructed */
+	slot_getallattrs(slot);
+
 	for (i = 0; i < tupdesc->natts; i++)
 	{
+		bool		column_perm = false;
 		char	   *val;
 		int			vallen;
 
@@ -1715,36 +1786,75 @@ ExecBuildSlotValueDescription(TupleTableSlot *slot,
 		if (tupdesc->attrs[i]->attisdropped)
 			continue;
 
-		if (slot->tts_isnull[i])
-			val = "null";
-		else
+		if (!table_perm)
 		{
-			Oid			foutoid;
-			bool		typisvarlena;
+			/*
+			 * No table-level SELECT, so need to make sure they either have
+			 * SELECT rights on the column or that they have provided the
+			 * data for the column.  If not, omit this column from the error
+			 * message.
+			 */
+			aclresult = pg_attribute_aclcheck(reloid, tupdesc->attrs[i]->attnum,
+											  GetUserId(), ACL_SELECT);
+			if (bms_is_member(tupdesc->attrs[i]->attnum - FirstLowInvalidHeapAttributeNumber,
+							  modifiedCols) || aclresult == ACLCHECK_OK)
+			{
+				column_perm = any_perm = true;
 
-			getTypeOutputInfo(tupdesc->attrs[i]->atttypid,
-							  &foutoid, &typisvarlena);
-			val = OidOutputFunctionCall(foutoid, slot->tts_values[i]);
+				if (write_comma_collist)
+					appendStringInfoString(&collist, ", ");
+				else
+					write_comma_collist = true;
+
+				appendStringInfoString(&collist, NameStr(tupdesc->attrs[i]->attname));
+			}
 		}
 
-		if (write_comma)
-			appendStringInfoString(&buf, ", ");
-		else
-			write_comma = true;
-
-		/* truncate if needed */
-		vallen = strlen(val);
-		if (vallen <= maxfieldlen)
-			appendStringInfoString(&buf, val);
-		else
+		if (table_perm || column_perm)
 		{
-			vallen = pg_mbcliplen(val, vallen, maxfieldlen);
-			appendBinaryStringInfo(&buf, val, vallen);
-			appendStringInfoString(&buf, "...");
+			if (slot->tts_isnull[i])
+				val = "null";
+			else
+			{
+				Oid			foutoid;
+				bool		typisvarlena;
+
+				getTypeOutputInfo(tupdesc->attrs[i]->atttypid,
+								  &foutoid, &typisvarlena);
+				val = OidOutputFunctionCall(foutoid, slot->tts_values[i]);
+			}
+
+			if (write_comma)
+				appendStringInfoString(&buf, ", ");
+			else
+				write_comma = true;
+
+			/* truncate if needed */
+			vallen = strlen(val);
+			if (vallen <= maxfieldlen)
+				appendStringInfoString(&buf, val);
+			else
+			{
+				vallen = pg_mbcliplen(val, vallen, maxfieldlen);
+				appendBinaryStringInfo(&buf, val, vallen);
+				appendStringInfoString(&buf, "...");
+			}
 		}
 	}
 
+	/* If we end up with zero columns being returned, then return NULL. */
+	if (!any_perm)
+		return NULL;
+
 	appendStringInfoChar(&buf, ')');
+
+	if (!table_perm)
+	{
+		appendStringInfoString(&collist, ") = ");
+		appendStringInfoString(&collist, buf.data);
+
+		return collist.data;
+	}
 
 	return buf.data;
 }
@@ -1863,7 +1973,7 @@ EvalPlanQual(EState *estate, EPQState *epqstate,
 	/*
 	 * Get and lock the updated version of the row; if fail, return NULL.
 	 */
-	copyTuple = EvalPlanQualFetch(estate, relation, lockmode,
+	copyTuple = EvalPlanQualFetch(estate, relation, lockmode, false /* wait */,
 								  tid, priorXmax);
 
 	if (copyTuple == NULL)
@@ -1922,6 +2032,7 @@ EvalPlanQual(EState *estate, EPQState *epqstate,
  *	estate - executor state data
  *	relation - table containing tuple
  *	lockmode - requested tuple lock mode
+ *	noWait - wait mode to pass to heap_lock_tuple
  *	*tid - t_ctid from the outdated tuple (ie, next updated version)
  *	priorXmax - t_xmax from the outdated tuple
  *
@@ -1934,7 +2045,7 @@ EvalPlanQual(EState *estate, EPQState *epqstate,
  * but we use "int" to avoid having to include heapam.h in executor.h.
  */
 HeapTuple
-EvalPlanQualFetch(EState *estate, Relation relation, int lockmode,
+EvalPlanQualFetch(EState *estate, Relation relation, int lockmode, bool noWait,
 				  ItemPointer tid, TransactionId priorXmax)
 {
 	HeapTuple	copyTuple = NULL;
@@ -1978,14 +2089,23 @@ EvalPlanQualFetch(EState *estate, Relation relation, int lockmode,
 
 			/*
 			 * If tuple is being updated by other transaction then we have to
-			 * wait for its commit/abort.
+			 * wait for its commit/abort, or die trying.
 			 */
 			if (TransactionIdIsValid(SnapshotDirty.xmax))
 			{
 				ReleaseBuffer(buffer);
-				XactLockTableWait(SnapshotDirty.xmax,
-								  relation, &tuple.t_data->t_ctid,
-								  XLTW_FetchUpdated);
+				if (noWait)
+				{
+					if (!ConditionalXactLockTableWait(SnapshotDirty.xmax))
+						ereport(ERROR,
+								(errcode(ERRCODE_LOCK_NOT_AVAILABLE),
+								 errmsg("could not obtain lock on row in relation \"%s\"",
+										RelationGetRelationName(relation))));
+				}
+				else
+					XactLockTableWait(SnapshotDirty.xmax,
+									  relation, &tuple.t_data->t_ctid,
+									  XLTW_FetchUpdated);
 				continue;		/* loop back to repeat heap_fetch */
 			}
 
@@ -2012,7 +2132,7 @@ EvalPlanQualFetch(EState *estate, Relation relation, int lockmode,
 			 */
 			test = heap_lock_tuple(relation, &tuple,
 								   estate->es_output_cid,
-								   lockmode, false /* wait */ ,
+								   lockmode, noWait,
 								   false, &buffer, &hufd);
 			/* We now have two pins on the buffer, get rid of one */
 			ReleaseBuffer(buffer);
@@ -2387,6 +2507,14 @@ EvalPlanQualStart(EPQState *epqstate, EState *parentestate, Plan *planTree)
 	 * the snapshot, rangetable, result-rel info, and external Param info.
 	 * They need their own copies of local state, including a tuple table,
 	 * es_param_exec_vals, etc.
+	 *
+	 * The ResultRelInfo array management is trickier than it looks.  We
+	 * create a fresh array for the child but copy all the content from the
+	 * parent.  This is because it's okay for the child to share any
+	 * per-relation state the parent has already created --- but if the child
+	 * sets up any ResultRelInfo fields, such as its own junkfilter, that
+	 * state must *not* propagate back to the parent.  (For one thing, the
+	 * pointed-to data is in a memory context that won't last long enough.)
 	 */
 	estate->es_direction = ForwardScanDirection;
 	estate->es_snapshot = parentestate->es_snapshot;
@@ -2395,9 +2523,19 @@ EvalPlanQualStart(EPQState *epqstate, EState *parentestate, Plan *planTree)
 	estate->es_plannedstmt = parentestate->es_plannedstmt;
 	estate->es_junkFilter = parentestate->es_junkFilter;
 	estate->es_output_cid = parentestate->es_output_cid;
-	estate->es_result_relations = parentestate->es_result_relations;
-	estate->es_num_result_relations = parentestate->es_num_result_relations;
-	estate->es_result_relation_info = parentestate->es_result_relation_info;
+	if (parentestate->es_num_result_relations > 0)
+	{
+		int			numResultRelations = parentestate->es_num_result_relations;
+		ResultRelInfo *resultRelInfos;
+
+		resultRelInfos = (ResultRelInfo *)
+			palloc(numResultRelations * sizeof(ResultRelInfo));
+		memcpy(resultRelInfos, parentestate->es_result_relations,
+			   numResultRelations * sizeof(ResultRelInfo));
+		estate->es_result_relations = resultRelInfos;
+		estate->es_num_result_relations = numResultRelations;
+	}
+	/* es_result_relation_info must NOT be copied */
 	/* es_trig_target_relations must NOT be copied */
 	estate->es_rowMarks = parentestate->es_rowMarks;
 	estate->es_top_eflags = parentestate->es_top_eflags;

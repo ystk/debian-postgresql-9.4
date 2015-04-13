@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4beta2 Documentation"
+TITLE="PostgreSQL 9.4.1 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="Functions and Operators"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2014-07-21T19:22:19"></HEAD
+CONTENT="2015-02-02T20:51:01"></HEAD
 ><BODY
 CLASS="SECT1"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4beta2 Documentation</A
+>PostgreSQL 9.4.1 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -577,7 +577,7 @@ CLASS="LITERAL"
 >Y,YYY</TT
 ></TD
 ><TD
->year (4 and more digits) with comma</TD
+>year (4 or more digits) with comma</TD
 ></TR
 ><TR
 ><TD
@@ -586,7 +586,7 @@ CLASS="LITERAL"
 >YYYY</TT
 ></TD
 ><TD
->year (4 and more digits)</TD
+>year (4 or more digits)</TD
 ></TR
 ><TR
 ><TD
@@ -622,7 +622,7 @@ CLASS="LITERAL"
 >IYYY</TT
 ></TD
 ><TD
->ISO year (4 and more digits)</TD
+>ISO 8601 week-numbering year (4 or more digits)</TD
 ></TR
 ><TR
 ><TD
@@ -631,7 +631,7 @@ CLASS="LITERAL"
 >IYY</TT
 ></TD
 ><TD
->last 3 digits of ISO year</TD
+>last 3 digits of ISO 8601 week-numbering year</TD
 ></TR
 ><TR
 ><TD
@@ -640,7 +640,7 @@ CLASS="LITERAL"
 >IY</TT
 ></TD
 ><TD
->last 2 digits of ISO year</TD
+>last 2 digits of ISO 8601 week-numbering year</TD
 ></TR
 ><TR
 ><TD
@@ -649,7 +649,7 @@ CLASS="LITERAL"
 >I</TT
 ></TD
 ><TD
->last digit of ISO year</TD
+>last digit of ISO 8601 week-numbering year</TD
 ></TR
 ><TR
 ><TD
@@ -822,7 +822,7 @@ CLASS="LITERAL"
 >IDDD</TT
 ></TD
 ><TD
->ISO day of year (001-371; day 1 of the year is Monday of the first ISO week.)</TD
+>day of ISO 8601 week-numbering year (001-371; day 1 of the year is Monday of the first ISO week)</TD
 ></TR
 ><TR
 ><TD
@@ -840,10 +840,10 @@ CLASS="LITERAL"
 >D</TT
 ></TD
 ><TD
->day of the week, Sunday(<TT
+>day of the week, Sunday (<TT
 CLASS="LITERAL"
 >1</TT
->) to Saturday(<TT
+>) to Saturday (<TT
 CLASS="LITERAL"
 >7</TT
 >)</TD
@@ -855,10 +855,10 @@ CLASS="LITERAL"
 >ID</TT
 ></TD
 ><TD
->ISO day of the week, Monday(<TT
+>ISO 8601 day of the week, Monday (<TT
 CLASS="LITERAL"
 >1</TT
->) to Sunday(<TT
+>) to Sunday (<TT
 CLASS="LITERAL"
 >7</TT
 >)</TD
@@ -870,7 +870,7 @@ CLASS="LITERAL"
 >W</TT
 ></TD
 ><TD
->week of month (1-5) (The first week starts on the first day of the month.)</TD
+>week of month (1-5) (the first week starts on the first day of the month)</TD
 ></TR
 ><TR
 ><TD
@@ -879,7 +879,7 @@ CLASS="LITERAL"
 >WW</TT
 ></TD
 ><TD
->week number of year (1-53) (The first week starts on the first day of the year.)</TD
+>week number of year (1-53) (the first week starts on the first day of the year)</TD
 ></TR
 ><TR
 ><TD
@@ -888,7 +888,7 @@ CLASS="LITERAL"
 >IW</TT
 ></TD
 ><TD
->ISO week number of year (01 - 53; the first Thursday of the new year is in week 1.)</TD
+>week number of ISO 8601 week-numbering year (01-53; the first Thursday of the year is in week 1)</TD
 ></TR
 ><TR
 ><TD
@@ -897,7 +897,7 @@ CLASS="LITERAL"
 >CC</TT
 ></TD
 ><TD
->century (2 digits) (The twenty-first century starts on 2001-01-01.)</TD
+>century (2 digits) (the twenty-first century starts on 2001-01-01)</TD
 ></TR
 ><TR
 ><TD
@@ -1350,8 +1350,8 @@ CLASS="LITERAL"
 ></LI
 ><LI
 ><P
->       An ISO week date (as distinct from a Gregorian date) can be
-       specified to <CODE
+>       An ISO 8601 week-numbering date (as distinct from a Gregorian date)
+       can be specified to <CODE
 CLASS="FUNCTION"
 >to_timestamp</CODE
 > and
@@ -1364,16 +1364,16 @@ CLASS="FUNCTION"
 ></P><UL
 ><LI
 ><P
->          Year, week, and weekday:  for example <TT
+>          Year, week number, and weekday:  for
+          example <TT
 CLASS="LITERAL"
->to_date('2006-42-4',
-          'IYYY-IW-ID')</TT
-> returns the date
-          <TT
+>to_date('2006-42-4', 'IYYY-IW-ID')</TT
+>
+          returns the date <TT
 CLASS="LITERAL"
 >2006-10-19</TT
->.  If you omit the weekday it
-          is assumed to be 1 (Monday).
+>.
+          If you omit the weekday it is assumed to be 1 (Monday).
          </P
 ></LI
 ><LI
@@ -1392,19 +1392,66 @@ CLASS="LITERAL"
 ><P>
       </P
 ><P
->       Attempting to construct a date using a mixture of ISO week and
-       Gregorian date fields is nonsensical, and will cause an error.  In the
-       context of an ISO year, the concept of a <SPAN
+>       Attempting to enter a date using a mixture of ISO 8601 week-numbering
+       fields and Gregorian date fields is nonsensical, and will cause an
+       error.  In the context of an ISO 8601 week-numbering year, the
+       concept of a <SPAN
 CLASS="QUOTE"
 >"month"</SPAN
 > or <SPAN
 CLASS="QUOTE"
->"day
-       of month"</SPAN
-> has no meaning.  In the context of a Gregorian year, the
-       ISO week has no meaning.  Users should avoid mixing Gregorian and
-       ISO date specifications.
+>"day of month"</SPAN
+> has no
+       meaning.  In the context of a Gregorian year, the ISO week has no
+       meaning.
       </P
+><DIV
+CLASS="CAUTION"
+><P
+></P
+><TABLE
+CLASS="CAUTION"
+BORDER="1"
+WIDTH="90%"
+><TR
+><TD
+ALIGN="CENTER"
+><B
+>Caution</B
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+><P
+>        While <CODE
+CLASS="FUNCTION"
+>to_date</CODE
+> will reject a mixture of
+        Gregorian and ISO week-numbering date
+        fields, <CODE
+CLASS="FUNCTION"
+>to_char</CODE
+> will not, since output format
+        specifications like <TT
+CLASS="LITERAL"
+>YYYY-MM-DD (IYYY-IDDD)</TT
+> can be
+        useful.  But avoid writing something like <TT
+CLASS="LITERAL"
+>IYYY-MM-DD</TT
+>;
+        that would yield surprising results near the start of the year.
+        (See <A
+HREF="functions-datetime.html#FUNCTIONS-DATETIME-EXTRACT"
+>Section 9.9.1</A
+> for more
+        information.)
+       </P
+></TD
+></TR
+></TABLE
+></DIV
 ></LI
 ><LI
 ><P

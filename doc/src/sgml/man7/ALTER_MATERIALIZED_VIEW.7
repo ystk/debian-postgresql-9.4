@@ -2,12 +2,12 @@
 .\"     Title: ALTER MATERIALIZED VIEW
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets v1.76.1 <http://docbook.sf.net/>
-.\"      Date: 2014
-.\"    Manual: PostgreSQL 9.4beta2 Documentation
-.\"    Source: PostgreSQL 9.4beta2
+.\"      Date: 2015
+.\"    Manual: PostgreSQL 9.4.1 Documentation
+.\"    Source: PostgreSQL 9.4.1
 .\"  Language: English
 .\"
-.TH "ALTER MATERIALIZED VIEW" "7" "2014" "PostgreSQL 9.4beta2" "PostgreSQL 9.4beta2 Documentation"
+.TH "ALTER MATERIALIZED VIEW" "7" "2015" "PostgreSQL 9.4.1" "PostgreSQL 9.4.1 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -27,7 +27,6 @@
 .\" -----------------------------------------------------------------
 .\" * MAIN CONTENT STARTS HERE *
 .\" -----------------------------------------------------------------
-.\" ALTER MATERIALIZED VIEW
 .SH "NAME"
 ALTER_MATERIALIZED_VIEW \- change the definition of a materialized view
 .SH "SYNOPSIS"
@@ -41,6 +40,8 @@ ALTER MATERIALIZED VIEW [ IF EXISTS ] \fIname\fR
     RENAME TO \fInew_name\fR
 ALTER MATERIALIZED VIEW [ IF EXISTS ] \fIname\fR
     SET SCHEMA \fInew_schema\fR
+ALTER MATERIALIZED VIEW ALL IN TABLESPACE \fIname\fR [ OWNED BY \fIrole_name\fR [, \&.\&.\&. ] ]
+    SET TABLESPACE \fInew_tablespace\fR [ NOWAIT ]
 
 where \fIaction\fR is one of:
 

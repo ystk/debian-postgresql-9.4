@@ -2,12 +2,12 @@
 .\"     Title: DISCARD
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets v1.76.1 <http://docbook.sf.net/>
-.\"      Date: 2014
-.\"    Manual: PostgreSQL 9.4beta2 Documentation
-.\"    Source: PostgreSQL 9.4beta2
+.\"      Date: 2015
+.\"    Manual: PostgreSQL 9.4.1 Documentation
+.\"    Source: PostgreSQL 9.4.1
 .\"  Language: English
 .\"
-.TH "DISCARD" "7" "2014" "PostgreSQL 9.4beta2" "PostgreSQL 9.4beta2 Documentation"
+.TH "DISCARD" "7" "2015" "PostgreSQL 9.4.1" "PostgreSQL 9.4.1 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -27,7 +27,6 @@
 .\" -----------------------------------------------------------------
 .\" * MAIN CONTENT STARTS HERE *
 .\" -----------------------------------------------------------------
-.\" DISCARD
 .SH "NAME"
 DISCARD \- discard session state
 .SH "SYNOPSIS"
@@ -39,30 +38,29 @@ DISCARD { ALL | PLANS | SEQUENCES | TEMPORARY | TEMP }
 .PP
 
 \fBDISCARD\fR
-releases internal resources associated with a database session\&. These resources are normally released at the end of the session\&.
-.PP
-
-\fBDISCARD TEMP\fR
-drops all temporary tables created in the current session\&.
-\fBDISCARD PLANS\fR
-releases all internally cached query plans\&.
+releases internal resources associated with a database session\&. This command is useful for partially or fully resetting the session\*(Aqs state\&. There are several subcommands to release different types of resources; the
 \fBDISCARD ALL\fR
-resets a session to its original state, discarding temporary resources and resetting session\-local configuration changes\&.
+variant subsumes all the others, and also resets additional state\&.
 .SH "PARAMETERS"
-.PP
-TEMPORARY or TEMP
-.RS 4
-Drops all temporary tables created in the current session\&.
-.RE
 .PP
 PLANS
 .RS 4
-Releases all cached query plans\&.
+Releases all cached query plans, forcing re\-planning to occur the next time the associated prepared statement is used\&.
 .RE
 .PP
 SEQUENCES
 .RS 4
-Discards all cached sequence values\&.
+Discards all cached sequence\-related state, including
+\fBcurrval()\fR/\fBlastval()\fR
+information and any preallocated sequence values that have not yet been returned by
+\fBnextval()\fR\&. (See
+CREATE SEQUENCE (\fBCREATE_SEQUENCE\fR(7))
+for a description of preallocated sequence values\&.)
+.RE
+.PP
+TEMPORARY or TEMP
+.RS 4
+Drops all temporary tables created in the current session\&.
 .RE
 .PP
 ALL
@@ -80,8 +78,8 @@ CLOSE ALL;
 UNLISTEN *;
 SELECT pg_advisory_unlock_all();
 DISCARD PLANS;
-DISCARD TEMP;
 DISCARD SEQUENCES;
+DISCARD TEMP;
 .fi
 .if n \{\
 .RE

@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4beta2 Documentation"
+TITLE="PostgreSQL 9.4.1 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="PostgreSQL Client Applications"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2014-07-21T19:22:19"></HEAD
+CONTENT="2015-02-02T20:51:01"></HEAD
 ><BODY
 CLASS="REFENTRY"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4beta2 Documentation</A
+>PostgreSQL 9.4.1 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -98,7 +98,7 @@ CLASS="APPLICATION"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN89794"
+NAME="AEN90143"
 ></A
 ><H2
 >Name</H2
@@ -113,7 +113,7 @@ CLASS="PRODUCTNAME"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN89799"
+NAME="AEN90148"
 ></A
 ><H2
 >Synopsis</H2
@@ -142,7 +142,7 @@ CLASS="REPLACEABLE"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN89808"
+NAME="AEN90157"
 ></A
 ><H2
 >Description</H2
@@ -187,8 +187,8 @@ CLASS="OPTION"
 ></DT
 ><DD
 ><P
->      Print all input lines to standard output as they are read. This is more
-      useful for script processing than interactive mode. This is
+>      Print all nonempty input lines to standard output as they are read.
+      (This does not apply to lines read interactively.) This is
       equivalent to setting the variable <TT
 CLASS="VARNAME"
 >ECHO</TT
@@ -428,10 +428,9 @@ CLASS="APPLICATION"
       setting the variable <TT
 CLASS="VARNAME"
 >ECHO_HIDDEN</TT
-> from within
-      <SPAN
-CLASS="APPLICATION"
->psql</SPAN
+> to <TT
+CLASS="LITERAL"
+>on</TT
 >.
       </P
 ></DD
@@ -652,8 +651,9 @@ CLASS="OPTION"
 ><P
 >       Do not use <SPAN
 CLASS="APPLICATION"
->readline</SPAN
-> for line editing and do not use the history.
+>Readline</SPAN
+> for line editing and do
+       not use the command history.
        This can be useful to turn off tab expansion when cutting and pasting.
       </P
 ></DD
@@ -775,14 +775,14 @@ CLASS="APPLICATION"
 CLASS="OPTION"
 >-c</TT
 > option.
-      Within <SPAN
-CLASS="APPLICATION"
->psql</SPAN
-> you can also set the
-      <TT
+      This is equivalent to setting the variable <TT
 CLASS="VARNAME"
 >QUIET</TT
-> variable to achieve the same effect.
+>
+      to <TT
+CLASS="LITERAL"
+>on</TT
+>.
       </P
 ></DD
 ><DT
@@ -1204,7 +1204,7 @@ CLASS="APPLICATION"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN90177"
+NAME="AEN90526"
 ></A
 ><H2
 >Exit Status</H2
@@ -1225,7 +1225,7 @@ CLASS="VARNAME"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN90182"
+NAME="AEN90531"
 ></A
 ><H2
 >Usage</H2
@@ -1281,7 +1281,8 @@ CLASS="LITERAL"
     determined at compile time.
     Since the database server uses the same default, you will not have
     to specify the port in most cases. The default user name is your
-    Unix user name, as is the default database name. Note that you cannot
+    operating-system user name, as is the default database name.
+    Note that you cannot
     just connect to any database under any user name. Your database
     administrator should have informed you about your access rights.
     </P
@@ -1410,7 +1411,7 @@ CLASS="PROGRAMLISTING"
 CLASS="USERINPUT"
 >psql testdb</KBD
 >
-psql (9.4beta2)
+psql (9.4.1)
 Type "help" for help.
 
 testdb=&gt;</PRE
@@ -3598,31 +3599,31 @@ CLASS="COMMAND"
 ><DT
 ><TT
 CLASS="LITERAL"
->\g</TT
-> [ { <TT
+>\g [ <TT
 CLASS="REPLACEABLE"
 ><I
 >filename</I
 ></TT
-> | <TT
+> ]</TT
+><BR><TT
 CLASS="LITERAL"
->|</TT
-><TT
+>\g [ |<TT
 CLASS="REPLACEABLE"
 ><I
 >command</I
 ></TT
-> } ]</DT
+> ]</TT
+></DT
 ><DD
 ><P
->        Sends the current query input buffer to the server and
+>        Sends the current query input buffer to the server, and
         optionally stores the query's output in <TT
 CLASS="REPLACEABLE"
 ><I
 >filename</I
 ></TT
 > or pipes the output
-        into a separate Unix shell executing <TT
+        to the shell command <TT
 CLASS="REPLACEABLE"
 ><I
 >command</I
@@ -3652,13 +3653,13 @@ CLASS="COMMAND"
 ><DT
 ><TT
 CLASS="LITERAL"
->\gset</TT
-> [ <TT
+>\gset [ <TT
 CLASS="REPLACEABLE"
 ><I
 >prefix</I
 ></TT
-> ]</DT
+> ]</TT
+></DT
 ><DD
 ><P
 >         Sends the current query input buffer to the server and stores the
@@ -3795,6 +3796,9 @@ CLASS="USERINPUT"
 ><TT
 CLASS="LITERAL"
 >\H</TT
+> or <TT
+CLASS="LITERAL"
+>\html</TT
 ></DT
 ><DD
 ><P
@@ -3817,11 +3821,14 @@ CLASS="COMMAND"
 ><DT
 ><TT
 CLASS="LITERAL"
->\i <TT
+>\i</TT
+> or <TT
+CLASS="LITERAL"
+>\include</TT
+> <TT
 CLASS="REPLACEABLE"
 ><I
 >filename</I
-></TT
 ></TT
 ></DT
 ><DD
@@ -3857,11 +3864,14 @@ CLASS="LITERAL"
 ><DT
 ><TT
 CLASS="LITERAL"
->\ir <TT
+>\ir</TT
+> or <TT
+CLASS="LITERAL"
+>\include_relative</TT
+> <TT
 CLASS="REPLACEABLE"
 ><I
 >filename</I
-></TT
 ></TT
 ></DT
 ><DD
@@ -4091,35 +4101,41 @@ CLASS="ACRONYM"
 ><TT
 CLASS="LITERAL"
 >\o</TT
-> [ {<TT
+> or <TT
+CLASS="LITERAL"
+>\out [ <TT
 CLASS="REPLACEABLE"
 ><I
 >filename</I
 ></TT
-> | <TT
+> ]</TT
+><BR><TT
 CLASS="LITERAL"
->|</TT
-><TT
+>\o</TT
+> or <TT
+CLASS="LITERAL"
+>\out [ |<TT
 CLASS="REPLACEABLE"
 ><I
 >command</I
 ></TT
->} ]</DT
+> ]</TT
+></DT
 ><DD
 ><P
->        Saves future query results to the file <TT
+>        Arranges to save future query results to the file <TT
 CLASS="REPLACEABLE"
 ><I
 >filename</I
 ></TT
-> or pipes future results
-        into a separate Unix shell to execute <TT
+> or pipe future results
+        to the shell command <TT
 CLASS="REPLACEABLE"
 ><I
 >command</I
 ></TT
->. If no arguments are
-        specified, the query output will be reset to the standard output.
+>. If no argument is
+        specified, the query output is reset to the standard output.
         </P
 ><P
 ><SPAN
@@ -4154,6 +4170,9 @@ CLASS="COMMAND"
 ><TT
 CLASS="LITERAL"
 >\p</TT
+> or <TT
+CLASS="LITERAL"
+>\print</TT
 ></DT
 ><DD
 ><P
@@ -4232,7 +4251,7 @@ CLASS="LITERAL"
 ><DT
 ><TT
 CLASS="LITERAL"
->\pset <TT
+>\pset [ <TT
 CLASS="REPLACEABLE"
 ><I
 >option</I
@@ -4242,7 +4261,7 @@ CLASS="REPLACEABLE"
 ><I
 >value</I
 ></TT
-> ]</TT
+> ] ]</TT
 ></DT
 ><DD
 ><P
@@ -4275,6 +4294,13 @@ CLASS="REPLACEABLE"
 ></TT
 > just results in
         the current setting being displayed.
+        </P
+><P
+>        <TT
+CLASS="COMMAND"
+>\pset</TT
+> without any arguments displays the current status
+        of all printing options.
         </P
 ><P
 >        Adjustable printing options are:
@@ -5001,13 +5027,6 @@ CLASS="COMMAND"
         </P
 ></BLOCKQUOTE
 ></DIV
-><P
->        <TT
-CLASS="COMMAND"
->\pset</TT
-> without any arguments displays the current status
-        of all printing options.
-        </P
 ></DD
 ><DT
 ><TT
@@ -5053,6 +5072,9 @@ CLASS="COMMAND"
 ><TT
 CLASS="LITERAL"
 >\r</TT
+> or <TT
+CLASS="LITERAL"
+>\reset</TT
 ></DT
 ><DD
 ><P
@@ -5071,29 +5093,32 @@ CLASS="REPLACEABLE"
 ></DT
 ><DD
 ><P
->        Print or save the command line history to <TT
+>        Print <SPAN
+CLASS="APPLICATION"
+>psql</SPAN
+>'s command line history
+        to <TT
 CLASS="REPLACEABLE"
 ><I
 >filename</I
 ></TT
->. If <TT
+>.
+        If <TT
 CLASS="REPLACEABLE"
 ><I
 >filename</I
 ></TT
-> is omitted, the history
-        is written to the standard output. This option is only available
+> is omitted,
+        the history is written to the standard output (using the pager if
+        appropriate).  This command is not available
         if <SPAN
 CLASS="APPLICATION"
 >psql</SPAN
-> is configured to use the
-        <ACRONYM
-CLASS="ACRONYM"
->GNU</ACRONYM
-> <SPAN
+> was built
+        without <SPAN
 CLASS="APPLICATION"
 >Readline</SPAN
-> library.
+> support.
         </P
 ></DD
 ><DT
@@ -5184,7 +5209,7 @@ HREF="sql-set.html"
 ><DT
 ><TT
 CLASS="LITERAL"
->\setenv [ <TT
+>\setenv <TT
 CLASS="REPLACEABLE"
 ><I
 >name</I
@@ -5194,7 +5219,7 @@ CLASS="REPLACEABLE"
 ><I
 >value</I
 ></TT
-> ] ]</TT
+> ]</TT
 ></DT
 ><DD
 ><P
@@ -5364,6 +5389,9 @@ CLASS="REPLACEABLE"
 ><TT
 CLASS="LITERAL"
 >\w</TT
+> or <TT
+CLASS="LITERAL"
+>\write</TT
 > <TT
 CLASS="REPLACEABLE"
 ><I
@@ -5372,6 +5400,9 @@ CLASS="REPLACEABLE"
 ><BR><TT
 CLASS="LITERAL"
 >\w</TT
+> or <TT
+CLASS="LITERAL"
+>\write</TT
 > <TT
 CLASS="LITERAL"
 >|</TT
@@ -5388,7 +5419,7 @@ CLASS="REPLACEABLE"
 ><I
 >filename</I
 ></TT
-> or pipes it to the Unix
+> or pipes it to the shell
         command <TT
 CLASS="REPLACEABLE"
 ><I
@@ -5495,7 +5526,7 @@ CLASS="REPLACEABLE"
 ></DT
 ><DD
 ><P
->        Escapes to a separate Unix shell or executes the Unix command
+>        Escapes to a separate shell or executes the shell command
         <TT
 CLASS="REPLACEABLE"
 ><I
@@ -5757,7 +5788,7 @@ CLASS="LITERAL"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN91428"
+NAME="AEN91788"
 ></A
 ><H3
 >Advanced Features</H3
@@ -6048,9 +6079,9 @@ CLASS="VARNAME"
 >        If set to <TT
 CLASS="LITERAL"
 >all</TT
->, all lines
-        entered from the keyboard or from a script are written to the standard output
-        before they are parsed or executed. To select this behavior on program
+>, all nonempty input lines are printed
+        to standard output as they are read.  (This does not apply to lines
+        read interactively.)  To select this behavior on program
         start-up, use the switch <TT
 CLASS="OPTION"
 >-a</TT
@@ -6062,8 +6093,8 @@ CLASS="LITERAL"
         <SPAN
 CLASS="APPLICATION"
 >psql</SPAN
-> merely prints all queries as
-        they are sent to the server. The switch for this is
+> prints each query to standard output
+        as it is sent to the server. The switch for this is
         <TT
 CLASS="OPTION"
 >-e</TT
@@ -6077,8 +6108,12 @@ CLASS="VARNAME"
 ></DT
 ><DD
 ><P
->        When this variable is set and a backslash command queries the
-        database, the query is first shown. This way you can study the
+>        When this variable is set to <TT
+CLASS="LITERAL"
+>on</TT
+> and a backslash command
+        queries the database, the query is first shown.
+        This feature helps you to study
         <SPAN
 CLASS="PRODUCTNAME"
 >PostgreSQL</SPAN
@@ -6345,28 +6380,28 @@ CLASS="VARNAME"
        </DT
 ><DD
 ><P
->        When <TT
+>        When set to <TT
 CLASS="LITERAL"
 >on</TT
 >, if a statement in a transaction block
         generates an error, the error is ignored and the transaction
-        continues. When <TT
+        continues. When set to <TT
 CLASS="LITERAL"
 >interactive</TT
 >, such errors are only
         ignored in interactive sessions, and not when reading script
-        files. When <TT
+        files. When unset or set to <TT
 CLASS="LITERAL"
 >off</TT
-> (the default), a statement in a
+>, a statement in a
         transaction block that generates an error aborts the entire
-        transaction. The on_error_rollback-on mode works by issuing an
+        transaction. The error rollback mode works by issuing an
         implicit <TT
 CLASS="COMMAND"
 >SAVEPOINT</TT
 > for you, just before each command
-        that is in a transaction block, and rolls back to the savepoint
-        on error.
+        that is in a transaction block, and then rolling back to the
+        savepoint if the command fails.
         </P
 ></DD
 ><DT
@@ -6377,7 +6412,11 @@ CLASS="VARNAME"
 ><DD
 ><P
 >        By default, command processing continues after an error.  When this
-        variable is set, it will instead stop immediately.  In interactive mode,
+        variable is set to <TT
+CLASS="LITERAL"
+>on</TT
+>, processing will instead stop
+        immediately.  In interactive mode,
         <SPAN
 CLASS="APPLICATION"
 >psql</SPAN
@@ -6438,8 +6477,11 @@ CLASS="VARNAME"
 ></DT
 ><DD
 ><P
->        This variable is equivalent to the command line option
-        <TT
+>        Setting this variable to <TT
+CLASS="LITERAL"
+>on</TT
+> is equivalent to the command
+        line option <TT
 CLASS="OPTION"
 >-q</TT
 >. It is probably not too useful in
@@ -6453,8 +6495,11 @@ CLASS="VARNAME"
 ></DT
 ><DD
 ><P
->        This variable is equivalent to the command line option
-        <TT
+>        Setting this variable to <TT
+CLASS="LITERAL"
+>on</TT
+> is equivalent to the command
+        line option <TT
 CLASS="OPTION"
 >-S</TT
 >.
@@ -6467,8 +6512,11 @@ CLASS="VARNAME"
 ></DT
 ><DD
 ><P
->        This variable is equivalent to the command line option
-        <TT
+>        Setting this variable to <TT
+CLASS="LITERAL"
+>on</TT
+> is equivalent to the command
+        line option <TT
 CLASS="OPTION"
 >-s</TT
 >.
@@ -7051,7 +7099,7 @@ CLASS="APPLICATION"
 ><DIV
 CLASS="REFSECT3"
 ><A
-NAME="AEN91816"
+NAME="AEN92181"
 ></A
 ><H4
 >Command-Line Editing</H4
@@ -7339,7 +7387,7 @@ HREF="libpq-envars.html"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN91915"
+NAME="AEN92280"
 ></A
 ><H2
 >Files</H2
@@ -7487,7 +7535,7 @@ CLASS="ENVAR"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN91956"
+NAME="AEN92321"
 ></A
 ><H2
 >Notes</H2
@@ -7557,7 +7605,7 @@ CLASS="APPLICATION"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN91973"
+NAME="AEN92338"
 ></A
 ><H2
 >Notes for Windows Users</H2

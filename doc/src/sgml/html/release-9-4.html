@@ -9,24 +9,24 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4beta2 Documentation"
+TITLE="PostgreSQL 9.4.1 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="Release Notes"
 HREF="release.html"><LINK
 REL="PREVIOUS"
-TITLE="Release Notes"
-HREF="release.html"><LINK
+TITLE="Release 9.4.1"
+HREF="release-9-4-1.html"><LINK
 REL="NEXT"
-TITLE="Release 9.3.5"
-HREF="release-9-3-5.html"><LINK
+TITLE="Release 9.3.6"
+HREF="release-9-3-6.html"><LINK
 REL="STYLESHEET"
 TYPE="text/css"
 HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2014-07-21T19:22:19"></HEAD
+CONTENT="2015-02-02T20:51:01"></HEAD
 ><BODY
 CLASS="SECT1"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4beta2 Documentation</A
+>PostgreSQL 9.4.1 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -53,8 +53,8 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="top"
 ><A
-TITLE="Release Notes"
-HREF="release.html"
+TITLE="Release 9.4.1"
+HREF="release-9-4-1.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -77,8 +77,8 @@ WIDTH="20%"
 ALIGN="right"
 VALIGN="top"
 ><A
-TITLE="Release 9.3.5"
-HREF="release-9-3-5.html"
+TITLE="Release 9.3.6"
+HREF="release-9-3-6.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -93,7 +93,7 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="RELEASE-9-4"
->E.1. Release 9.4</A
+>E.2. Release 9.4</A
 ></H1
 ><DIV
 CLASS="NOTE"
@@ -102,9 +102,7 @@ CLASS="NOTE"
 ><P
 ><B
 >Release Date: </B
->2014-??-??</P
-><P
->Current as of 2014-05-10</P
+>2014-12-18</P
 ></BLOCKQUOTE
 ></DIV
 ><DIV
@@ -112,8 +110,8 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN118441"
->E.1.1. Overview</A
+NAME="AEN119021"
+>E.2.1. Overview</A
 ></H2
 ><P
 >    Major enhancements in <SPAN
@@ -126,69 +124,69 @@ CLASS="PRODUCTNAME"
 ><UL
 ><LI
 ><P
->       Allow materialized views to be refreshed without blocking reads
+>       Add <A
+HREF="datatype-json.html"
+><TT
+CLASS="TYPE"
+>jsonb</TT
+></A
+>, a more
+       capable and efficient data type for storing <ACRONYM
+CLASS="ACRONYM"
+>JSON</ACRONYM
+> data
       </P
 ></LI
 ><LI
 ><P
->       <A
+>       Add new <ACRONYM
+CLASS="ACRONYM"
+>SQL</ACRONYM
+> command <A
+HREF="sql-altersystem.html"
+>ALTER SYSTEM</A
+>
+       for changing <TT
+CLASS="FILENAME"
+>postgresql.conf</TT
+> configuration file entries
+      </P
+></LI
+><LI
+><P
+>       Reduce lock strength for some <A
+HREF="sql-altertable.html"
+>ALTER TABLE</A
+>
+       commands
+      </P
+></LI
+><LI
+><P
+>       Allow <A
+HREF="rules-materializedviews.html"
+>materialized views</A
+>
+       to be refreshed without blocking concurrent reads
+      </P
+></LI
+><LI
+><P
+>       Add support for <A
 HREF="logicaldecoding.html"
->Logical decoding</A
-> allows database
-       changes to be streamed out in a customizable format
+>logical decoding</A
+>
+       of WAL data, to allow database changes to be streamed out in a
+       customizable format
       </P
 ></LI
 ><LI
 ><P
 >        Allow <A
 HREF="bgworker.html"
->background workers</A
+>background worker processes</A
 >
         to be dynamically registered, started and terminated
-      </P
-></LI
-><LI
-><P
->       Add structured (non-text) data type (<A
-HREF="datatype-json.html"
-><TT
-CLASS="TYPE"
->JSONB</TT
-></A
->) for storing
-       <TT
-CLASS="TYPE"
->JSON</TT
-> data
-      </P
-></LI
-><LI
-><P
->       Add <ACRONYM
-CLASS="ACRONYM"
->SQL</ACRONYM
->-level command <A
-HREF="sql-altersystem.html"
-><TT
-CLASS="COMMAND"
->ALTER SYSTEM</TT
-></A
->
-       to edit the <TT
-CLASS="FILENAME"
->postgresql.conf</TT
-> configuration file
-      </P
-></LI
-><LI
-><P
->       Reduce lock levels of some <A
-HREF="sql-altertable.html"
-><TT
-CLASS="COMMAND"
->ALTER TABLE</TT
-></A
-> commands
       </P
 ></LI
 ></UL
@@ -201,8 +199,8 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN118470"
->E.1.2. Migration to Version 9.4</A
+NAME="AEN119049"
+>E.2.2. Migration to Version 9.4</A
 ></H2
 ><P
 >    A dump/restore using <A
@@ -218,8 +216,8 @@ HREF="pgupgrade.html"
 CLASS="APPLICATION"
 >pg_upgrade</SPAN
 ></A
->, is
-    required for those wishing to migrate data from any previous release.
+>, is required for those wishing to migrate
+    data from any previous release.
    </P
 ><P
 >    Version 9.4 contains a number of changes that may affect compatibility
@@ -228,6 +226,118 @@ CLASS="APPLICATION"
 ><P
 ></P
 ><UL
+><LI
+><P
+>      Tighten checks for multidimensional <A
+HREF="arrays.html"
+>array</A
+> input (Bruce Momjian)
+     </P
+><P
+>      Previously, an input array string that started with a single-element
+      sub-array could later contain multi-element sub-arrays,
+      e.g. <TT
+CLASS="LITERAL"
+>'{{1}, {2,3}}'::int[]</TT
+> would be accepted.
+     </P
+></LI
+><LI
+><P
+>      When converting values of type <TT
+CLASS="TYPE"
+>date</TT
+>, <TT
+CLASS="TYPE"
+>timestamp</TT
+>
+      or <TT
+CLASS="TYPE"
+>timestamptz</TT
+>
+      to <A
+HREF="datatype-json.html"
+><TT
+CLASS="TYPE"
+>JSON</TT
+></A
+>, render the
+      values in a format compliant with ISO 8601 (Andrew Dunstan)
+     </P
+><P
+>      Previously such values were rendered according to the current
+      <A
+HREF="runtime-config-client.html#GUC-DATESTYLE"
+>DateStyle</A
+> setting; but many JSON processors
+      require timestamps to be in ISO 8601 format.  If necessary, the
+      previous behavior can be obtained by explicitly casting the datetime
+      value to <TT
+CLASS="TYPE"
+>text</TT
+> before passing it to the JSON conversion
+      function.
+     </P
+></LI
+><LI
+><P
+>      The <A
+HREF="functions-json.html#FUNCTIONS-JSON-OP-TABLE"
+><TT
+CLASS="TYPE"
+>json</TT
+>
+      <TT
+CLASS="LITERAL"
+>#&gt;</TT
+> <TT
+CLASS="TYPE"
+>text[]</TT
+></A
+> path extraction operator now
+      returns its lefthand input, not NULL, if the array is empty (Tom Lane)
+     </P
+><P
+>      This is consistent with the notion that this represents zero
+      applications of the simple field/element extraction
+      operator <TT
+CLASS="LITERAL"
+>-&gt;</TT
+>.  Similarly, <TT
+CLASS="TYPE"
+>json</TT
+>
+      <TT
+CLASS="LITERAL"
+>#&gt;&gt;</TT
+> <TT
+CLASS="TYPE"
+>text[]</TT
+> with an empty array merely
+      coerces its lefthand input to text.
+     </P
+></LI
+><LI
+><P
+>      Corner cases in
+      the <A
+HREF="functions-json.html#FUNCTIONS-JSON-OP-TABLE"
+><TT
+CLASS="TYPE"
+>JSON</TT
+>
+      field/element/path extraction operators</A
+> now return NULL rather
+      than raising an error (Tom Lane)
+     </P
+><P
+>      For example, applying field extraction to a JSON array now yields NULL
+      not an error.  This is more consistent (since some comparable cases such
+      as no-such-field already returned NULL), and it makes it safe to create
+      expression indexes that use these operators, since they will now not
+      throw errors for any valid JSON input.
+     </P
+></LI
 ><LI
 ><P
 >      Cause consecutive whitespace in <A
@@ -249,170 +359,17 @@ CLASS="LITERAL"
       mode (Jeevan Chalke)
      </P
 ><P
->      Previously consecutive whitespace characters in a non-<TT
+>      Previously, consecutive whitespace characters in a non-<TT
 CLASS="LITERAL"
 >FX</TT
 >
       format string behaved like a single whitespace character and consumed
       all adjacent whitespace in the input string.  For example, previously
-      format string space-space-space would consume only the first space in
-      ' 12', while it will now consume all three characters.
-     </P
-></LI
-><LI
-><P
->      Tighten checks for multidimensional <A
-HREF="arrays.html"
->array</A
-> input (Bruce Momjian)
-     </P
-><P
->      Previously an input array string that started with a single-element
-      array dimension could later contain multidimensional segments,
-      e.g. <TT
+      a format string of three spaces would consume only the first space in
+      <TT
 CLASS="LITERAL"
->'{{1}, {2,3}}'::int[]</TT
->.
-     </P
-></LI
-><LI
-><P
->      Change empty arrays returned by <SPAN
-CLASS="APPLICATION"
->intarray</SPAN
-> to be
-      zero-dimensional arrays (Bruce Momjian)
-     </P
-><P
->      Previously, empty arrays were returned as one-dimensional empty arrays
-      whose text representation looked the same as zero-dimensional arrays
-      (<TT
-CLASS="LITERAL"
->{}</TT
->).  <SPAN
-CLASS="APPLICATION"
->intarray</SPAN
->'s behavior in this area
-      now matches the built-in array operators.
-     </P
-></LI
-><LI
-><P
->      Disallow NULL <A
-HREF="xfunc-sql.html#XFUNC-SQL-VARIADIC-FUNCTIONS"
-><TT
-CLASS="LITERAL"
->VARIADIC</TT
-></A
->
-      function arguments (Pavel Stehule)
-     </P
-><P
->      Such arguments must be cast to an array data type.
-     </P
-></LI
-><LI
-><P
->      <A
-HREF="sql-show.html"
-><TT
-CLASS="COMMAND"
->SHOW TIME ZONE</TT
-></A
-> now
-      outputs constant time zone offsets in <ACRONYM
-CLASS="ACRONYM"
->POSIX</ACRONYM
->-style zone
-      format (Tom Lane)
-     </P
-><P
->      Previously it was returned in <A
-HREF="datatype-datetime.html#DATATYPE-INTERVAL-OUTPUT"
-><TT
-CLASS="TYPE"
->INTERVAL</TT
-></A
-> format.
-      The new format can be passed to <TT
-CLASS="COMMAND"
->SET TIME ZONE</TT
->.
-     </P
-></LI
-><LI
-><P
->      Values of type
-      <A
-HREF="datatype-datetime.html"
-><TT
-CLASS="TYPE"
->timestamp</TT
-></A
->  and
-      <A
-HREF="datatype-datetime.html"
-><TT
-CLASS="TYPE"
->timestamptz</TT
-></A
-> are now
-      rendered in a string format compliant with ISO 8601 rather than the
-      default output format when converting to or used in
-      <A
-HREF="datatype-json.html"
-><TT
-CLASS="TYPE"
->JSON</TT
-></A
->.
-      (Andrew Dunstan)
-     </P
-><P
->      Previously these were rendered in the default text output format
-      for the type, but many JSON processors require timestamps in ISO 8601
-      format.
-     </P
-></LI
-><LI
-><P
->      Unicode escapes in <A
-HREF="datatype-json.html"
-><TT
-CLASS="TYPE"
->JSON</TT
-></A
->
-      text values are no longer rendered with the backslash escaped.
-      (Andrew Dunstan)
-     </P
-><P
->      Previously all backslashes in text values being formed into JSON were
-      escaped. Now a backslash followed by "u" and four hexadecimal digits is
-      not escaped, as this is a legal sequence in a JSON string value, and
-      escaping the backslash led to some perverse results.
-     </P
-></LI
-><LI
-><P
->      Rename <A
-HREF="sql-explain.html"
-><TT
-CLASS="COMMAND"
->EXPLAIN
-      ANALYZE</TT
-></A
->'s <SPAN
-CLASS="QUOTE"
->"total runtime"</SPAN
-> output to <SPAN
-CLASS="QUOTE"
->"execution time"</SPAN
->
-      (Tom Lane)
-     </P
-><P
->      This was required now that planning time is also reported.
+>' 12'</TT
+>, but it will now consume all three characters.
      </P
 ></LI
 ><LI
@@ -427,8 +384,143 @@ CLASS="FUNCTION"
       to ignore stripped lexemes (Alex Hill)
      </P
 ><P
->      Previously stripped lexemes got a default location and could be
-      considered if mixed with non-stripped lexemes.
+>      Previously, stripped lexemes were treated as if they had a default
+      location, producing a rank of dubious usefulness.
+     </P
+></LI
+><LI
+><P
+>      For functions declared to
+      take <A
+HREF="xfunc-sql.html#XFUNC-SQL-VARIADIC-FUNCTIONS"
+><TT
+CLASS="LITERAL"
+>VARIADIC
+      "any"</TT
+></A
+>, an actual parameter marked as <TT
+CLASS="LITERAL"
+>VARIADIC</TT
+>
+      must be of a determinable array type (Pavel Stehule)
+     </P
+><P
+>      Such parameters can no longer be written as an undecorated string
+      literal or <TT
+CLASS="LITERAL"
+>NULL</TT
+>; a cast to an appropriate array data type
+      will now be required.  Note that this does not affect parameters not
+      marked <TT
+CLASS="LITERAL"
+>VARIADIC</TT
+>.
+     </P
+></LI
+><LI
+><P
+>      Ensure that whole-row variables expose the expected column names
+      to functions that pay attention to column names within composite
+      arguments (Tom Lane)
+     </P
+><P
+>      Constructs like <TT
+CLASS="LITERAL"
+>row_to_json(tab.*)</TT
+> now always emit column
+      names that match the column aliases visible for table <TT
+CLASS="LITERAL"
+>tab</TT
+>
+      at the point of the call.  In previous releases the emitted column
+      names would sometimes be the table's actual column names regardless
+      of any aliases assigned in the query.
+     </P
+></LI
+><LI
+><P
+>      <A
+HREF="sql-discard.html"
+>DISCARD</A
+> now also discards sequence-related state
+      (Fabr&iacute;zio de Royes Mello, Robert Haas)
+     </P
+></LI
+><LI
+><P
+>      Rename <A
+HREF="sql-explain.html"
+><TT
+CLASS="COMMAND"
+>EXPLAIN
+      ANALYZE</TT
+></A
+>'s <SPAN
+CLASS="QUOTE"
+>"total runtime"</SPAN
+> output
+      to <SPAN
+CLASS="QUOTE"
+>"execution time"</SPAN
+> (Tom Lane)
+     </P
+><P
+>      Now that planning time is also reported, the previous name was
+      confusing.
+     </P
+></LI
+><LI
+><P
+>      <A
+HREF="sql-show.html"
+><TT
+CLASS="COMMAND"
+>SHOW TIME ZONE</TT
+></A
+> now
+      outputs simple numeric UTC offsets in <ACRONYM
+CLASS="ACRONYM"
+>POSIX</ACRONYM
+> timezone
+      format (Tom Lane)
+     </P
+><P
+>      Previously, such timezone settings were displayed as <A
+HREF="datatype-datetime.html#DATATYPE-INTERVAL-OUTPUT"
+><TT
+CLASS="TYPE"
+>interval</TT
+></A
+> values.
+      The new output is properly interpreted by <TT
+CLASS="COMMAND"
+>SET TIME ZONE</TT
+>
+      when passed as a simple string, whereas the old output required
+      special treatment to be re-parsed correctly.
+     </P
+></LI
+><LI
+><P
+>      Foreign data wrappers that support updating foreign tables must
+      consider the possible presence of <TT
+CLASS="LITERAL"
+>AFTER ROW</TT
+> triggers
+      (Noah Misch)
+     </P
+><P
+>      When an <TT
+CLASS="LITERAL"
+>AFTER ROW</TT
+> trigger is present, all columns of the
+      table must be returned by updating actions, since the trigger might
+      inspect any or all of them.  Previously, foreign tables never had
+      triggers, so the FDW might optimize away fetching columns not mentioned
+      in the <TT
+CLASS="LITERAL"
+>RETURNING</TT
+> clause (if any).
      </P
 ></LI
 ><LI
@@ -447,19 +539,30 @@ CLASS="STRUCTFIELD"
 > (Amit Kapila)
      </P
 ><P
->      Restoring such check constraints will lead to restore errors.
+>      Previously such check constraints were allowed, but they would often
+      cause errors during restores.
      </P
 ></LI
 ><LI
 ><P
 >      Use the last specified <A
-HREF="recovery-target-settings.html#RECOVERY-TARGET"
-><TT
-CLASS="VARNAME"
->recovery_target</TT
-></A
-> if
-      multiple are specified (Heikki Linnakangas)
+HREF="recovery-target-settings.html"
+>recovery
+      target parameter</A
+> if multiple target parameters are specified
+      (Heikki Linnakangas)
+     </P
+><P
+>      Previously, there was an undocumented precedence order among
+      the <TT
+CLASS="LITERAL"
+>recovery_target_<TT
+CLASS="REPLACEABLE"
+><I
+>xxx</I
+></TT
+></TT
+> parameters.
      </P
 ></LI
 ><LI
@@ -469,22 +572,26 @@ CLASS="VARNAME"
      </P
 ><P
 >      User commands that did their own quote preservation might need
-      adjustment, e.g.  <A
+      adjustment.  This is likely to be an issue for commands used in
+      <A
 HREF="runtime-config-wal.html#GUC-ARCHIVE-COMMAND"
 >archive_command</A
 >, <A
 HREF="archive-recovery-settings.html#RESTORE-COMMAND"
 >restore_command</A
->, <TT
+>,
+      and <A
+HREF="sql-copy.html"
+><TT
 CLASS="COMMAND"
->COPY TO/FROM
-      PROGRAM</TT
+>COPY TO/FROM PROGRAM</TT
+></A
 >.
      </P
 ></LI
 ><LI
 ><P
->      Remove system column <A
+>      Remove catalog column <A
 HREF="catalog-pg-class.html"
 ><TT
 CLASS="STRUCTFIELD"
@@ -496,59 +603,7 @@ CLASS="STRUCTFIELD"
 ></LI
 ><LI
 ><P
->      Remove support for native <SPAN
-CLASS="APPLICATION"
->krb5</SPAN
-> authentication
-      (Magnus Hagander)
-     </P
-><P
->      The proper way to use <SPAN
-CLASS="APPLICATION"
->Kerberos</SPAN
-> authentication is
-      with <ACRONYM
-CLASS="ACRONYM"
->GSSAPI</ACRONYM
->.
-     </P
-></LI
-><LI
-><P
->      Handle domains over arrays like plain arrays in PL/Python
-      (Rodolfo Campero)
-     </P
-><P
->      Previously they were treated as strings.
-     </P
-></LI
-><LI
-><P
->      Have libpq's <A
-HREF="libpq-connect.html#LIBPQ-PQCONNECTDBPARAMS"
-><CODE
-CLASS="FUNCTION"
->PQconnectdbParams()</CODE
-></A
->
-      and <A
-HREF="libpq-connect.html#LIBPQ-PQPINGPARAMS"
-><CODE
-CLASS="FUNCTION"
->PQpingParams()</CODE
-></A
->
-      functions process zero-length strings as defaults (Adrian
-      Vondendriesch)
-     </P
-><P
->      Previously, these functions treated zero-length string values as
-      defaults only in some cases.
-     </P
-></LI
-><LI
-><P
->      Remove system column <A
+>      Remove catalog column <A
 HREF="catalog-pg-rewrite.html"
 ><TT
 CLASS="STRUCTFIELD"
@@ -567,73 +622,115 @@ CLASS="APPLICATION"
 ></LI
 ><LI
 ><P
+>      Remove native support for <SPAN
+CLASS="APPLICATION"
+>Kerberos</SPAN
+> authentication
+      (<TT
+CLASS="OPTION"
+>--with-krb5</TT
+>, etc)
+      (Magnus Hagander)
+     </P
+><P
+>      The supported way to use <SPAN
+CLASS="APPLICATION"
+>Kerberos</SPAN
+> authentication is
+      with <ACRONYM
+CLASS="ACRONYM"
+>GSSAPI</ACRONYM
+>.  The native code has been deprecated since
+      <SPAN
+CLASS="PRODUCTNAME"
+>PostgreSQL</SPAN
+> 8.3.
+     </P
+></LI
+><LI
+><P
+>      In <SPAN
+CLASS="APPLICATION"
+>PL/Python</SPAN
+>, handle domains over arrays like the
+      underlying array type (Rodolfo Campero)
+     </P
+><P
+>      Previously such values were treated as strings.
+     </P
+></LI
+><LI
+><P
+>      Make libpq's <A
+HREF="libpq-connect.html#LIBPQ-PQCONNECTDBPARAMS"
+><CODE
+CLASS="FUNCTION"
+>PQconnectdbParams()</CODE
+></A
+>
+      and <A
+HREF="libpq-connect.html#LIBPQ-PQPINGPARAMS"
+><CODE
+CLASS="FUNCTION"
+>PQpingParams()</CODE
+></A
+>
+      functions process zero-length strings as defaults (Adrian
+      Vondendriesch)
+     </P
+><P
+>      Previously, these functions treated zero-length string values as
+      selecting the default in only some cases.
+     </P
+></LI
+><LI
+><P
+>      Change empty arrays returned by the <A
+HREF="intarray.html"
+>intarray</A
+> module
+      to be zero-dimensional arrays (Bruce Momjian)
+     </P
+><P
+>      Previously, empty arrays were returned as zero-length one-dimensional
+      arrays, whose text representation looked the same as zero-dimensional
+      arrays (<TT
+CLASS="LITERAL"
+>{}</TT
+>), but they acted differently in array
+      operations.  <SPAN
+CLASS="APPLICATION"
+>intarray</SPAN
+>'s behavior in this area now
+      matches the built-in array operators.
+     </P
+></LI
+><LI
+><P
 >      <A
 HREF="pgupgrade.html"
 ><SPAN
 CLASS="APPLICATION"
 >pg_upgrade</SPAN
 ></A
-> now
-      uses <TT
+> now uses <TT
 CLASS="OPTION"
 >-U</TT
+>
+      or <TT
+CLASS="OPTION"
+>--username</TT
 > to specify the user name (Bruce Momjian)
      </P
 ><P
->      Previously <TT
+>      Previously this option was spelled <TT
 CLASS="OPTION"
 >-u</TT
-> was used to specify the user name.
-      Also spell the long option as <TT
+> or <TT
 CLASS="OPTION"
->--username</TT
->, again for
-      consistency with other tools.
-     </P
-></LI
-><LI
-><P
->      The maximum number of <A
-HREF="bgworker.html"
->background workers</A
->
-      that can be registered
-      by <CODE
-CLASS="FUNCTION"
->RegisterBackgroundWorker()</CODE
-> is now limited to
-      <A
-HREF="runtime-config-resource.html#GUC-MAX-WORKER-PROCESSES"
-><TT
-CLASS="VARNAME"
->max_worker_processes</TT
-></A
->
-     </P
-></LI
-><LI
-><P
->      <A
-HREF="bgworker.html"
->background workers</A
-> registered at
-      postmaster startup time should set
-      <TT
-CLASS="STRUCTFIELD"
->bgw_notify_pid</TT
-> to 0.
-      <TT
-CLASS="COMMAND"
-></TT
->
-     </P
-></LI
-><LI
-><P
->      <TT
-CLASS="COMMAND"
->DISCARD ALL</TT
-> now also discards sequence state.
+>--user</TT
+>,
+      but that was inconsistent with other tools.
      </P
 ></LI
 ></UL
@@ -643,8 +740,8 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN118602"
->E.1.3. Changes</A
+NAME="AEN119201"
+>E.2.3. Changes</A
 ></H2
 ><P
 >    Below you will find a detailed account of the changes between
@@ -659,45 +756,26 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN118606"
->E.1.3.1. Server</A
+NAME="AEN119205"
+>E.2.3.1. Server</A
 ></H3
 ><P
 ></P
 ><UL
 ><LI
 ><P
->        Have <A
-HREF="sql-vacuum.html"
-><TT
-CLASS="COMMAND"
->VACUUM</TT
-></A
-> properly
-        report dead but not removable rows to the statistics collector
-        (Hari Babu)
-       </P
-><P
->        Previously these were reported as live rows.
-       </P
-></LI
-><LI
-><P
 >        Allow <A
 HREF="bgworker.html"
->background workers</A
-> to be
-        dynamically registered, started and terminated (Robert Haas)
+>background worker processes</A
+>
+        to be dynamically registered, started and terminated (Robert Haas)
        </P
 ><P
->        <CODE
-CLASS="FUNCTION"
->worker_spi_launch()</CODE
-> in <SPAN
-CLASS="APPLICATION"
->worker_spi</SPAN
->
-        shows an example of its use.
+>        The new <TT
+CLASS="FILENAME"
+>worker_spi</TT
+> module shows an example of use
+        of this feature.
        </P
 ></LI
 ><LI
@@ -706,45 +784,53 @@ CLASS="APPLICATION"
         Amit Kapila)
        </P
 ><P
->        This is illustrated in <A
-HREF="test-shm-mq.html"
-><SPAN
-CLASS="APPLICATION"
->test_shm_mq</SPAN
-></A
->.
+>        This feature is illustrated in the <TT
+CLASS="FILENAME"
+>test_shm_mq</TT
+>
+        module.
        </P
 ></LI
 ><LI
 ><P
->        Improve <ACRONYM
-CLASS="ACRONYM"
->SSL</ACRONYM
-> renegotiation handling (&Aacute;lvaro
-        Herrera)
-       </P
-></LI
-><LI
-><P
->        During immediate shutdown send uncatchable termination signals
-        to child processes that have not already shutdown (MauMau,
-        &Aacute;lvaro Herrera)
+>        During crash recovery or immediate shutdown, send uncatchable
+        termination signals (<SPAN
+CLASS="SYSTEMITEM"
+>SIGKILL</SPAN
+>) to child processes
+        that do not shut down promptly (MauMau, &Aacute;lvaro Herrera)
        </P
 ><P
->        This reduces the likelihood of orphaned child processes after
-        <A
+>        This reduces the likelihood of leaving orphaned child processes
+        behind after <A
 HREF="app-postmaster.html"
 ><SPAN
 CLASS="APPLICATION"
 >postmaster</SPAN
 ></A
->
-        shutdown.
+> shutdown, as well
+        as ensuring that crash recovery can proceed if some child processes
+        have become <SPAN
+CLASS="QUOTE"
+>"stuck"</SPAN
+>.
        </P
 ></LI
 ><LI
 ><P
 >        Improve randomness of the database system identifier (Tom Lane)
+       </P
+></LI
+><LI
+><P
+>        Make <A
+HREF="sql-vacuum.html"
+>VACUUM</A
+> properly report dead but
+        not-yet-removable rows to the statistics collector (Hari Babu)
+       </P
+><P
+>        Previously these were reported as live rows.
        </P
 ></LI
 ></UL
@@ -753,24 +839,12 @@ CLASS="SECT4"
 ><H4
 CLASS="SECT4"
 ><A
-NAME="AEN118635"
->E.1.3.1.1. Indexes</A
+NAME="AEN119229"
+>E.2.3.1.1. Indexes</A
 ></H4
 ><P
 ></P
 ><UL
-><LI
-><P
->        Improve speed of multi-key <A
-HREF="gin.html"
-><ACRONYM
-CLASS="ACRONYM"
->GIN</ACRONYM
-></A
-> lookups (Alexander Korotkov,
-        Heikki Linnakangas)
-       </P
-></LI
 ><LI
 ><P
 >        Reduce <A
@@ -789,18 +863,28 @@ HREF="pgupgrade.html"
 CLASS="APPLICATION"
 >pg_upgrade</SPAN
 ></A
-> will work
-        fine but will use the old larger <ACRONYM
+> will work fine
+        but will still be in the old, larger <ACRONYM
 CLASS="ACRONYM"
 >GIN</ACRONYM
-> format; <A
+> format.
+        Use <A
 HREF="sql-reindex.html"
-><TT
-CLASS="COMMAND"
->REINDEX</TT
+>REINDEX</A
+> to recreate old GIN indexes in the
+        new format.
+       </P
+></LI
+><LI
+><P
+>        Improve speed of multi-key <A
+HREF="gin.html"
+><ACRONYM
+CLASS="ACRONYM"
+>GIN</ACRONYM
 ></A
-> will recreate
-        the index in the new format.
+> lookups (Alexander Korotkov,
+        Heikki Linnakangas)
        </P
 ></LI
 ><LI
@@ -816,14 +900,14 @@ CLASS="ACRONYM"
 HREF="datatype-net-types.html#DATATYPE-INET"
 ><TT
 CLASS="TYPE"
->INET</TT
+>inet</TT
 ></A
 > and
         <A
 HREF="datatype-net-types.html#DATATYPE-CIDR"
 ><TT
 CLASS="TYPE"
->CIDR</TT
+>cidr</TT
 ></A
 > data types
         (Emre Hasegeli)
@@ -831,14 +915,14 @@ CLASS="TYPE"
 ><P
 >        Such indexes improve <A
 HREF="functions-net.html#CIDR-INET-OPERATORS-TABLE"
->subnet</A
-> and supernet
+>subnet and supernet</A
+>
         lookups and ordering comparisons.
        </P
 ></LI
 ><LI
 ><P
->        Fix race condition in B-tree page deletion (Heikki Linnakangas)
+>        Fix rare race condition in B-tree page deletion (Heikki Linnakangas)
        </P
 ></LI
 ><LI
@@ -854,21 +938,23 @@ CLASS="SECT4"
 ><H4
 CLASS="SECT4"
 ><A
-NAME="AEN118666"
->E.1.3.1.2. General Performance</A
+NAME="AEN119258"
+>E.2.3.1.2. General Performance</A
 ></H4
 ><P
 ></P
 ><UL
 ><LI
 ><P
->        Allow multiple backends to simultaneously insert into <A
+>        Allow multiple backends to insert
+        into <A
 HREF="wal.html"
 ><ACRONYM
 CLASS="ACRONYM"
 >WAL</ACRONYM
 ></A
-> buffers (Heikki Linnakangas)
+> buffers
+        concurrently (Heikki Linnakangas)
        </P
 ><P
 >        This improves parallel write performance.
@@ -888,45 +974,24 @@ CLASS="ACRONYM"
 ></LI
 ><LI
 ><P
->        Improve performance of <A
+>        Improve performance of aggregate functions used as <A
 HREF="sql-expressions.html#SYNTAX-WINDOW-FUNCTIONS"
-><TT
-CLASS="LITERAL"
->WINDOW</TT
-></A
+>window functions</A
 >
-        aggregate functions (David Rowley, Florian Pflug, Tom Lane)
+        (David Rowley, Florian Pflug, Tom Lane)
        </P
 ></LI
 ><LI
 ><P
->        Improve speed of aggregates which use <A
+>        Improve speed of aggregates that
+        use <A
 HREF="datatype-numeric.html"
 ><TT
 CLASS="TYPE"
->NUMERIC</TT
+>numeric</TT
 ></A
->s (Hadi
-        Moshayedi)
-       </P
-><P
->        These include <CODE
-CLASS="FUNCTION"
->SUM()</CODE
->, <CODE
-CLASS="FUNCTION"
->AVG()</CODE
->, <A
-HREF="functions-aggregate.html#FUNCTIONS-AGGREGATE-STATISTICS-TABLE"
-><CODE
-CLASS="FUNCTION"
->STDDEV()</CODE
-></A
->,
-        and <CODE
-CLASS="FUNCTION"
->VARIANCE()</CODE
->.
+> state
+        values (Hadi Moshayedi)
        </P
 ></LI
 ><LI
@@ -937,10 +1002,7 @@ HREF="routine-vacuuming.html#VACUUM-FOR-WRAPAROUND"
 >
         tuples when tables are rewritten with <A
 HREF="sql-cluster.html"
-><TT
-CLASS="COMMAND"
->CLUSTER</TT
-></A
+>CLUSTER</A
 > or <A
 HREF="sql-vacuum.html"
 ><TT
@@ -958,15 +1020,8 @@ CLASS="COMMAND"
 ><P
 >        Improve speed of <A
 HREF="sql-copy.html"
-><TT
-CLASS="COMMAND"
->COPY</TT
-></A
->
-        with <TT
-CLASS="LITERAL"
->DEFAULT</TT
-> <A
+>COPY</A
+> with default <A
 HREF="functions-sequence.html#FUNCTIONS-SEQUENCE-TABLE"
 ><CODE
 CLASS="FUNCTION"
@@ -988,27 +1043,24 @@ HREF="sql-createsequence.html"
 ><LI
 ><P
 >        Raise hard limit on the number of tuples held in memory during sorting
-        and B-tree <A
-HREF="sql-createindex.html"
->index builds</A
-> (Noah
-        Misch)
+        and B-tree index builds (Noah Misch)
        </P
 ></LI
 ><LI
 ><P
->        Reduce memory allocated by <A
+>        Reduce memory allocated by <SPAN
+CLASS="APPLICATION"
+>PL/pgSQL</SPAN
+>
+        <A
 HREF="sql-do.html"
-><TT
-CLASS="LITERAL"
->DO</TT
-></A
+>DO</A
 > blocks (Tom Lane)
        </P
 ></LI
 ><LI
 ><P
->        Have the optimizer be more aggressive in creating restrictions
+>        Make the planner more aggressive about extracting restriction clauses
         from mixed <TT
 CLASS="LITERAL"
 >AND</TT
@@ -1020,11 +1072,32 @@ CLASS="LITERAL"
 ></LI
 ><LI
 ><P
->        Auto-resize the catalog cache (Heikki Linnakangas)
+>        Disallow pushing volatile <TT
+CLASS="LITERAL"
+>WHERE</TT
+> clauses down
+        into <TT
+CLASS="LITERAL"
+>DISTINCT</TT
+> subqueries (Tom Lane)
        </P
 ><P
->        This reduces memory consumption for backends accessing only a few
-        tables, and improves performance for backend accessing many tables.
+>        Pushing down a <TT
+CLASS="LITERAL"
+>WHERE</TT
+> clause can produce a more
+        efficient plan overall, but at the cost of evaluating the clause
+        more often than is implied by the text of the query; so don't do it
+        if the clause contains any volatile functions.
+       </P
+></LI
+><LI
+><P
+>        Auto-resize the catalog caches (Heikki Linnakangas)
+       </P
+><P
+>        This reduces memory consumption for sessions accessing only a few
+        tables, and improves performance for sessions accessing many tables.
        </P
 ></LI
 ></UL
@@ -1034,75 +1107,70 @@ CLASS="SECT4"
 ><H4
 CLASS="SECT4"
 ><A
-NAME="AEN118724"
->E.1.3.1.3. Monitoring</A
+NAME="AEN119311"
+>E.2.3.1.3. Monitoring</A
 ></H4
 ><P
 ></P
 ><UL
 ><LI
 ><P
->        Expose the estimation of number of changed tuples since last <A
-HREF="routine-vacuuming.html#VACUUM-FOR-STATISTICS"
->ANALYZE</A
-> (Mark Kirkwood)
-       </P
-><P
->        This appears in <A
-HREF="monitoring-stats.html#PG-STAT-ALL-TABLES-VIEW"
-><TT
-CLASS="STRUCTFIELD"
->pg_stat_all_tables.n_mod_since_analyze</TT
-></A
->.
-       </P
-></LI
-><LI
-><P
 >        Add <A
 HREF="monitoring-stats.html#PG-STAT-ARCHIVER-VIEW"
-><TT
-CLASS="STRUCTNAME"
->pg_stat_archiver</TT
-></A
->
-        system view to report <A
+>pg_stat_archiver</A
+> system view to
+        report <A
 HREF="wal.html"
 ><ACRONYM
 CLASS="ACRONYM"
 >WAL</ACRONYM
 ></A
->
-        archiver activity (Gabriele Bartolini)
+> archiver activity
+        (Gabriele Bartolini)
        </P
 ></LI
 ><LI
 ><P
 >        Add <TT
-CLASS="VARNAME"
+CLASS="STRUCTFIELD"
+>n_mod_since_analyze</TT
+> columns to
+        <A
+HREF="monitoring-stats.html#PG-STAT-ALL-TABLES-VIEW"
+>pg_stat_all_tables</A
+> and related system views
+        (Mark Kirkwood)
+       </P
+><P
+>        These columns expose the system's estimate of the number of changed
+        tuples since the table's last <A
+HREF="sql-analyze.html"
+>ANALYZE</A
+>.  This
+        estimate drives decisions about when to auto-analyze.
+       </P
+></LI
+><LI
+><P
+>        Add <TT
+CLASS="STRUCTFIELD"
 >backend_xid</TT
 > and <TT
-CLASS="VARNAME"
+CLASS="STRUCTFIELD"
 >backend_xmin</TT
-> columns to
-        the system view <A
+>
+        columns to the system view <A
 HREF="monitoring-stats.html#PG-STAT-ACTIVITY-VIEW"
-><TT
-CLASS="STRUCTNAME"
->pg_stat_activity</TT
-></A
->
-        and <TT
-CLASS="VARNAME"
+>pg_stat_activity</A
+>,
+        and a <TT
+CLASS="STRUCTFIELD"
 >backend_xmin</TT
-> to <A
+> column to
+        <A
 HREF="monitoring-stats.html#PG-STAT-REPLICATION-VIEW"
-><TT
-CLASS="STRUCTNAME"
->pg_stat_replication</TT
-></A
->
-        (Christian Kruse)
+>pg_stat_replication</A
+> (Christian Kruse)
        </P
 ></LI
 ></UL
@@ -1112,8 +1180,8 @@ CLASS="SECT4"
 ><H4
 CLASS="SECT4"
 ><A
-NAME="AEN118748"
->E.1.3.1.4. <ACRONYM
+NAME="AEN119332"
+>E.2.3.1.4. <ACRONYM
 CLASS="ACRONYM"
 >SSL</ACRONYM
 ></A
@@ -1134,17 +1202,14 @@ CLASS="ACRONYM"
        </P
 ><P
 >        This allows use of Elliptic Curve keys for server authentication.
-        Such keys are faster and have improved security over <ACRONYM
+        Such keys are faster and have better security than <ACRONYM
 CLASS="ACRONYM"
 >RSA</ACRONYM
-> keys.
-        The new configuration parameter
+>
+        keys. The new configuration parameter
         <A
 HREF="runtime-config-connection.html#GUC-SSL-ECDH-CURVE"
-><TT
-CLASS="VARNAME"
->ssl_ecdh_curve</TT
-></A
+>ssl_ecdh_curve</A
 >
         controls which curve is used for <ACRONYM
 CLASS="ACRONYM"
@@ -1156,45 +1221,56 @@ CLASS="ACRONYM"
 ><P
 >        Improve the default <A
 HREF="runtime-config-connection.html#GUC-SSL-CIPHERS"
-><TT
-CLASS="VARNAME"
->ssl_ciphers</TT
-></A
-> value
+>ssl_ciphers</A
+> setting
         (Marko Kreen)
        </P
 ></LI
 ><LI
 ><P
->        Allow the server to specify the preferred <ACRONYM
+>        By default, the server not the client now controls the preference
+        order of <ACRONYM
 CLASS="ACRONYM"
 >SSL</ACRONYM
-> cipher
-        order (Marko Kreen)
+> ciphers
+        (Marko Kreen)
        </P
 ><P
->        This is controlled by the new configuration parameter <A
+>        Previously, the order specified by <A
+HREF="runtime-config-connection.html#GUC-SSL-CIPHERS"
+>ssl_ciphers</A
+>
+        was usually ignored in favor of client-side defaults, which are not
+        configurable in most <SPAN
+CLASS="PRODUCTNAME"
+>PostgreSQL</SPAN
+> clients.  If
+        desired, the old behavior can be restored via the new configuration
+        parameter <A
 HREF="runtime-config-connection.html#GUC-SSL-PREFER-SERVER-CIPHERS"
-><TT
-CLASS="VARNAME"
->ssl_prefer_server_ciphers</TT
-></A
+>ssl_prefer_server_ciphers</A
 >.
        </P
 ></LI
 ><LI
 ><P
->        Have <A
+>        Make <A
 HREF="runtime-config-logging.html#GUC-LOG-CONNECTIONS"
-><TT
-CLASS="VARNAME"
->log_connections</TT
-></A
->
-        show <ACRONYM
+>log_connections</A
+> show <ACRONYM
 CLASS="ACRONYM"
 >SSL</ACRONYM
-> encryption information (Andreas Kunert)
+>
+        encryption information (Andreas Kunert)
+       </P
+></LI
+><LI
+><P
+>        Improve <ACRONYM
+CLASS="ACRONYM"
+>SSL</ACRONYM
+> renegotiation handling (&Aacute;lvaro
+        Herrera)
        </P
 ></LI
 ></UL
@@ -1204,75 +1280,41 @@ CLASS="SECT4"
 ><H4
 CLASS="SECT4"
 ><A
-NAME="AEN118776"
->E.1.3.1.5. Server Settings</A
+NAME="AEN119361"
+>E.2.3.1.5. Server Settings</A
 ></H4
 ><P
 ></P
 ><UL
 ><LI
 ><P
->        Add <ACRONYM
+>        Add new <ACRONYM
 CLASS="ACRONYM"
 >SQL</ACRONYM
->-level <A
+> command <A
 HREF="sql-altersystem.html"
-><TT
-CLASS="COMMAND"
->ALTER SYSTEM</TT
-></A
-> command
-        to adjust server-wide settings (Amit Kapila)
+>ALTER SYSTEM</A
+>
+        for changing <TT
+CLASS="FILENAME"
+>postgresql.conf</TT
+> configuration file entries
+        (Amit Kapila)
        </P
 ><P
->        Previously such settings could only be changed by
+>        Previously such settings could only be changed by manually
         editing <TT
 CLASS="FILENAME"
 >postgresql.conf</TT
-> at the file system level.
+>.
        </P
 ></LI
 ><LI
 ><P
 >        Add <A
-HREF="runtime-config-resource.html#GUC-HUGE-PAGES"
-><TT
-CLASS="VARNAME"
->huge_pages</TT
-></A
->
-        configuration parameter to use huge memory pages on Linux
-        (Christian Kruse, Richard Poole, Abhijit Menon-Sen)
-       </P
-><P
->        This can improve performance on large memory systems.
-       </P
-></LI
-><LI
-><P
->        Show <ACRONYM
-CLASS="ACRONYM"
->PID</ACRONYM
->s of lock holders and
-        waiters and improve relation information in <A
-HREF="runtime-config-logging.html#GUC-LOG-LOCK-WAITS"
-><TT
-CLASS="VARNAME"
->log_lock_waits</TT
-></A
->
-        log messages (Christian Kruse)
-       </P
-></LI
-><LI
-><P
->        Add parameter <A
 HREF="runtime-config-resource.html#GUC-AUTOVACUUM-WORK-MEM"
-><TT
-CLASS="VARNAME"
->autovacuum_work_mem</TT
-></A
->
+>autovacuum_work_mem</A
+> configuration parameter
         to control the amount of memory used by autovacuum workers
         (Peter Geoghegan)
        </P
@@ -1280,33 +1322,61 @@ CLASS="VARNAME"
 ><LI
 ><P
 >        Add <A
-HREF="runtime-config-resource.html#GUC-MAX-WORKER-PROCESSES"
-><TT
-CLASS="VARNAME"
->max_worker_processes</TT
-></A
->
-        to limit the number of background workers (Robert Haas)
+HREF="runtime-config-resource.html#GUC-HUGE-PAGES"
+>huge_pages</A
+> parameter to allow using huge
+        memory pages on Linux (Christian Kruse, Richard Poole, Abhijit
+        Menon-Sen)
        </P
 ><P
->        This is helpful in configuring the standby server to have the
-        required same number of worker processes as the primary.
+>        This can improve performance on large-memory systems.
        </P
 ></LI
 ><LI
 ><P
->        Add configuration parameter <A
-HREF="runtime-config-wal.html#GUC-WAL-LOG-HINTS"
-><TT
-CLASS="VARNAME"
->wal_log_hints</TT
-></A
->
-        to enable logging of hint bits (Sawada Masahiko)
+>        Add <A
+HREF="runtime-config-resource.html#GUC-MAX-WORKER-PROCESSES"
+>max_worker_processes</A
+> parameter
+        to limit the number of background workers (Robert Haas)
        </P
 ><P
->        Hint bits are not normally logged, except when checksums are enabled.
-        This is useful for external tools like <SPAN
+>        This is helpful in configuring a standby server to have the
+        required number of worker processes (the same as the primary).
+       </P
+></LI
+><LI
+><P
+>        Add superuser-only <A
+HREF="runtime-config-client.html#GUC-SESSION-PRELOAD-LIBRARIES"
+>session_preload_libraries</A
+>
+        parameter to load libraries at session start (Peter Eisentraut)
+       </P
+><P
+>        In contrast to <A
+HREF="runtime-config-client.html#GUC-LOCAL-PRELOAD-LIBRARIES"
+>local_preload_libraries</A
+>, this
+        parameter can load any shared library, not just those in
+        the <TT
+CLASS="FILENAME"
+>$libdir/plugins</TT
+> directory.
+       </P
+></LI
+><LI
+><P
+>        Add <A
+HREF="runtime-config-wal.html#GUC-WAL-LOG-HINTS"
+>wal_log_hints</A
+> parameter to enable WAL
+        logging of hint-bit changes (Sawada Masahiko)
+       </P
+><P
+>        Hint bit changes are not normally logged, except when checksums are
+        enabled.  This is useful for external tools
+        like <SPAN
 CLASS="APPLICATION"
 >pg_rewind</SPAN
 >.
@@ -1314,45 +1384,61 @@ CLASS="APPLICATION"
 ></LI
 ><LI
 ><P
->        Allow <CODE
-CLASS="FUNCTION"
->printf</CODE
->-style space padding to be specified in <A
-HREF="runtime-config-logging.html#GUC-LOG-LINE-PREFIX"
-><TT
-CLASS="VARNAME"
->log_line_prefix</TT
-></A
+>        Increase the default settings of <A
+HREF="runtime-config-resource.html#GUC-WORK-MEM"
+>work_mem</A
 >
-        (David Rowley)
+        and <A
+HREF="runtime-config-resource.html#GUC-MAINTENANCE-WORK-MEM"
+>maintenance_work_mem</A
+> by four times (Bruce
+        Momjian)
+       </P
+><P
+>        The new defaults are 4MB and 64MB respectively.
        </P
 ></LI
 ><LI
 ><P
->        Add superuser-only <A
-HREF="runtime-config-client.html#GUC-SESSION-PRELOAD-LIBRARIES"
-><TT
-CLASS="VARNAME"
->session_preload_libraries</TT
-></A
+>        Increase the default setting of <A
+HREF="runtime-config-query.html#GUC-EFFECTIVE-CACHE-SIZE"
+>effective_cache_size</A
 >
-        configuration parameter to load libraries at session start
-        (Peter Eisentraut)
+        to 4GB (Bruce Momjian, Tom Lane)
        </P
+></LI
+><LI
 ><P
->        In contrast
-        to <A
-HREF="runtime-config-client.html#GUC-LOCAL-PRELOAD-LIBRARIES"
-><TT
-CLASS="VARNAME"
->local_preload_libraries</TT
-></A
+>        Allow <CODE
+CLASS="FUNCTION"
+>printf</CODE
+>-style space padding to be
+        specified in <A
+HREF="runtime-config-logging.html#GUC-LOG-LINE-PREFIX"
+>log_line_prefix</A
+> (David Rowley)
+       </P
+></LI
+><LI
+><P
+>        Allow terabyte units (<TT
+CLASS="LITERAL"
+>TB</TT
+>) to be used when specifying
+        configuration variable values (Simon Riggs)
+       </P
+></LI
+><LI
+><P
+>        Show <ACRONYM
+CLASS="ACRONYM"
+>PID</ACRONYM
+>s of lock holders and waiters and improve
+        information about relations in <A
+HREF="runtime-config-logging.html#GUC-LOG-LOCK-WAITS"
+>log_lock_waits</A
 >
-        this parameter can load any shared library, not just those in
-        the <TT
-CLASS="FILENAME"
->$libdir/plugins</TT
-> directory.
+        log messages (Christian Kruse)
        </P
 ></LI
 ><LI
@@ -1365,59 +1451,23 @@ CLASS="FILENAME"
 CLASS="LITERAL"
 >LOG</TT
 >, which was too verbose
-        for per-session libraries.
+        for libraries loaded per-session.
        </P
 ></LI
 ><LI
 ><P
->        Increase <A
-HREF="runtime-config-resource.html#GUC-WORK-MEM"
-><TT
-CLASS="VARNAME"
->work_mem</TT
-></A
-> and <A
-HREF="runtime-config-resource.html#GUC-MAINTENANCE-WORK-MEM"
-><TT
-CLASS="VARNAME"
->maintenance_work_mem</TT
-></A
->
-        defaults by four times (Bruce Momjian)
-       </P
-><P
->        The new defaults are 4MB and 64MB respectively.
-       </P
-></LI
-><LI
-><P
->        Increase the default setting of <A
-HREF="runtime-config-query.html#GUC-EFFECTIVE-CACHE-SIZE"
-><TT
-CLASS="VARNAME"
->effective_cache_size</TT
-></A
->
-        to 4GB (Bruce Momjian, Tom Lane)
-       </P
-></LI
-><LI
-><P
->        Allow terabyte units to be specified for configuration variable
-        values (Simon Riggs)
-       </P
-></LI
-><LI
-><P
->        Have Windows <TT
+>        On Windows, make <TT
 CLASS="LITERAL"
 >SQL_ASCII</TT
 >-encoded databases and server
-        process (e.g.  <A
+        processes (e.g., <A
 HREF="app-postmaster.html"
->postmaster</A
->) emit
-        messages in the character encoding of the server's Windows user locale
+><SPAN
+CLASS="APPLICATION"
+>postmaster</SPAN
+></A
+>) emit messages in
+        the character encoding of the server's Windows user locale
         (Alexander Law, Noah Misch)
        </P
 ><P
@@ -1436,8 +1486,8 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN118847"
->E.1.3.2. Replication and Recovery</A
+NAME="AEN119422"
+>E.2.3.2. Replication and Recovery</A
 ></H3
 ><P
 ></P
@@ -1445,35 +1495,40 @@ NAME="AEN118847"
 ><LI
 ><P
 >        Add <A
-HREF="recovery-config.html"
-><TT
-CLASS="FILENAME"
->recovery.conf</TT
-></A
->
-        parameter <A
+HREF="warm-standby.html#STREAMING-REPLICATION-SLOTS"
+>replication
+        slots</A
+> to coordinate activity on streaming standbys with the
+        node they are streaming from (Andres Freund, Robert Haas)
+       </P
+><P
+>        Replication slots allow preservation of resources like
+        <ACRONYM
+CLASS="ACRONYM"
+>WAL</ACRONYM
+> files on the primary until they are no longer
+        needed by standby servers.
+       </P
+></LI
+><LI
+><P
+>        Add recovery parameter <A
 HREF="standby-settings.html#RECOVERY-MIN-APPLY-DELAY"
-><TT
-CLASS="VARNAME"
->recovery_min_apply_delay</TT
-></A
+>recovery_min_apply_delay</A
 >
         to delay replication (Robert Haas, Fabr&iacute;zio de Royes Mello,
         Simon Riggs)
        </P
 ><P
->        This is useful for delaying the replay of user errors on standby
-        servers.
+>        Delaying replay on standby servers can be useful for recovering
+        from user errors.
        </P
 ></LI
 ><LI
 ><P
 >        Add <A
 HREF="recovery-target-settings.html#RECOVERY-TARGET"
-><TT
-CLASS="VARNAME"
->recovery_target</TT
-></A
+>recovery_target</A
 >
         option <TT
 CLASS="OPTION"
@@ -1501,9 +1556,9 @@ CLASS="FUNCTION"
 >pg_last_xact_replay_timestamp()</CODE
 ></A
 >
-        now shows information about already-committed records, not of transactions
-        about to be committed. Recovering to a restore point now replays the
-        restore point, rather than stopping just before the restore point.
+        now reflects already-committed records, not transactions about to
+        be committed. Recovering to a restore point now replays the restore
+        point, rather than stopping just before the restore point.
        </P
 ></LI
 ><LI
@@ -1515,7 +1570,7 @@ CLASS="FUNCTION"
 >pg_switch_xlog()</CODE
 ></A
 >
-        now clears the trailing unused space in the <ACRONYM
+        now clears any unused trailing space in the old <ACRONYM
 CLASS="ACRONYM"
 >WAL</ACRONYM
 > file
@@ -1530,20 +1585,11 @@ CLASS="ACRONYM"
 ></LI
 ><LI
 ><P
->        Add <A
-HREF="warm-standby.html#STREAMING-REPLICATION-SLOTS"
->replication
-        slots</A
-> to coordinate activity on streaming standbys with the
-        node they are streaming from (Andres Freund, Robert Haas)
-       </P
-><P
->        Replication slots allow preservation of resources like
-        <ACRONYM
-CLASS="ACRONYM"
->WAL</ACRONYM
-> files on the primary that are needed by standby
-        servers.
+>        Report failure return codes from <A
+HREF="archive-recovery-settings.html"
+>external recovery commands</A
+>
+        (Peter Eisentraut)
        </P
 ></LI
 ><LI
@@ -1557,15 +1603,6 @@ CLASS="ACRONYM"
 ></LI
 ><LI
 ><P
->        Report failure return codes from <A
-HREF="archive-recovery-settings.html"
->external recovery commands</A
->
-        (Peter Eisentraut)
-       </P
-></LI
-><LI
-><P
 >        Write <ACRONYM
 CLASS="ACRONYM"
 >WAL</ACRONYM
@@ -1573,7 +1610,7 @@ CLASS="ACRONYM"
         frequently (Andres Freund)
        </P
 ><P
->        This allows standby servers to start faster and cleanup resources
+>        This allows standby servers to start faster and clean up resources
         more aggressively.
        </P
 ></LI
@@ -1583,14 +1620,14 @@ CLASS="SECT4"
 ><H4
 CLASS="SECT4"
 ><A
-NAME="AEN118891"
->E.1.3.2.1. <A
+NAME="AEN119462"
+>E.2.3.2.1. <A
 HREF="logicaldecoding.html"
 >Logical Decoding</A
 ></A
 ></H4
 ><P
->       Logical decoding allows database changes to be optionally streamed in a
+>       Logical decoding allows database changes to be streamed in a
        configurable format. The data is read from
        the <A
 HREF="wal.html"
@@ -1607,62 +1644,28 @@ CLASS="ACRONYM"
 ><UL
 ><LI
 ><P
->         Add new <TT
+>         Add support for <A
+HREF="logicaldecoding.html"
+>logical decoding</A
+>
+         of WAL data, to allow database changes to be streamed out in a
+         customizable format
+         (Andres Freund)
+        </P
+></LI
+><LI
+><P
+>         Add new <A
+HREF="runtime-config-wal.html#GUC-WAL-LEVEL"
+>wal_level</A
+> setting <TT
 CLASS="OPTION"
 >logical</TT
-> <A
-HREF="runtime-config-wal.html#GUC-WAL-LEVEL"
-><TT
-CLASS="VARNAME"
->wal_level</TT
-></A
-> to enable
-         logical change-set encoding in <ACRONYM
+>
+         to enable logical change-set encoding in <ACRONYM
 CLASS="ACRONYM"
 >WAL</ACRONYM
-> (Andres Freund)
-        </P
-><P
->         This interacts with <A
-HREF="catalog-pg-class.html"
-><TT
-CLASS="LITERAL"
->REPLICA IDENTITY</TT
-></A
->.
-        </P
-></LI
-><LI
-><P
->         Allow <A
-HREF="app-pgrecvlogical.html"
-><SPAN
-CLASS="APPLICATION"
->pg_recvlogical</SPAN
-></A
->
-         to receive logical decoding data (Andres Freund)
-        </P
-></LI
-><LI
-><P
->         Add <A
-HREF="test-decoding.html"
-><SPAN
-CLASS="APPLICATION"
->test_decoding</SPAN
-></A
->
-         module to illustrate logical decoding at the <ACRONYM
-CLASS="ACRONYM"
->SQL</ACRONYM
->
-         level (Andres Freund)
-        </P
-></LI
-><LI
-><P
->         Allow logical decoding via the walsender interface ? (Andres
+> (Andres
          Freund)
         </P
 ></LI
@@ -1691,6 +1694,30 @@ CLASS="OPTION"
          encoding (Andres Freund)
         </P
 ></LI
+><LI
+><P
+>         Add <A
+HREF="app-pgrecvlogical.html"
+><SPAN
+CLASS="APPLICATION"
+>pg_recvlogical</SPAN
+></A
+> application to receive
+         logical-decoding data (Andres Freund)
+        </P
+></LI
+><LI
+><P
+>         Add <A
+HREF="test-decoding.html"
+>test_decoding</A
+> module to illustrate logical
+         decoding at the <ACRONYM
+CLASS="ACRONYM"
+>SQL</ACRONYM
+> level (Andres Freund)
+        </P
+></LI
 ></UL
 ></DIV
 ></DIV
@@ -1699,12 +1726,36 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN118926"
->E.1.3.3. Queries</A
+NAME="AEN119492"
+>E.2.3.3. Queries</A
 ></H3
 ><P
 ></P
 ><UL
+><LI
+><P
+>        Add <A
+HREF="queries-table-expressions.html#QUERIES-TABLEFUNCTIONS"
+><TT
+CLASS="LITERAL"
+>WITH
+        ORDINALITY</TT
+></A
+> syntax to number the rows returned from a
+        set-returning function in the <TT
+CLASS="LITERAL"
+>FROM</TT
+> clause
+        (Andrew Gierth, David Fetter)
+       </P
+><P
+>        This is particularly useful for functions like
+        <CODE
+CLASS="FUNCTION"
+>unnest()</CODE
+>.
+       </P
+></LI
 ><LI
 ><P
 >        Add <A
@@ -1718,46 +1769,33 @@ CLASS="LITERAL"
         set-returning functions in the <TT
 CLASS="LITERAL"
 >FROM</TT
->-clause (Andrew Gierth)
-       </P
-></LI
-><LI
-><P
->        Add <A
-HREF="queries-table-expressions.html#QUERIES-TABLEFUNCTIONS"
-><TT
-CLASS="LITERAL"
->WITH
-        ORDINALITY</TT
-></A
-> syntax to number rows returned from
-        <TT
-CLASS="LITERAL"
->FROM</TT
->-clause functions (Andrew Gierth, David Fetter)
-       </P
-><P
->        This is particularly useful for functions like
-        <CODE
-CLASS="FUNCTION"
->unnest()</CODE
->.
+> clause (Andrew Gierth)
        </P
 ></LI
 ><LI
 ><P
 >        Allow <A
 HREF="sql-select.html"
-><TT
-CLASS="COMMAND"
->SELECT</TT
-></A
-> with
+>SELECT</A
+> to have
         an empty target list (Tom Lane)
        </P
 ><P
->        This was added so views that select from a table with zero columns
-        can be dumped correctly.
+>        This was added so that views that select from a table with zero
+        columns can be dumped and restored correctly.
+       </P
+></LI
+><LI
+><P
+>        Ensure that <A
+HREF="sql-select.html"
+><TT
+CLASS="LITERAL"
+>SELECT ... FOR UPDATE
+        NOWAIT</TT
+></A
+> does not wait in corner cases involving
+        already-concurrently-updated tuples (Craig Ringer and Thomas Munro)
        </P
 ></LI
 ></UL
@@ -1767,8 +1805,8 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN118946"
->E.1.3.4. Utility Commands</A
+NAME="AEN119515"
+>E.2.3.4. Utility Commands</A
 ></H3
 ><P
 ></P
@@ -1782,7 +1820,7 @@ CLASS="COMMAND"
 >DISCARD
         SEQUENCES</TT
 ></A
-> command to discard cached sequence information
+> command to discard cached sequence-related state
         (Fabr&iacute;zio de Royes Mello, Robert Haas)
        </P
 ><P
@@ -1795,7 +1833,7 @@ CLASS="COMMAND"
 ><LI
 ><P
 >         Add <TT
-CLASS="COMMAND"
+CLASS="LITERAL"
 >FORCE NULL</TT
 > option
          to <A
@@ -1804,39 +1842,40 @@ HREF="sql-copy.html"
 CLASS="COMMAND"
 >COPY FROM</TT
 ></A
-> which causes
-         quoted strings matching the null string to be converted to NULL in
-         <TT
+>, which
+         causes quoted strings matching the specified null string to be
+         converted to NULLs in <TT
 CLASS="LITERAL"
 >CSV</TT
-> mode (Ian Barwick, Michael Paquier)
+> mode (Ian Barwick, Michael
+         Paquier)
         </P
 ><P
->         Previously only unquoted matching strings would be imported
+>         Without this option, only unquoted matching strings will be imported
          as null values.
         </P
 ></LI
 ><LI
 ><P
 >        Issue warnings for commands used outside of transaction blocks
-        because they have no effect (Bruce Momjian)
+        when they can have no effect (Bruce Momjian)
        </P
 ><P
->        The cases are <TT
-CLASS="LITERAL"
+>        New warnings are issued for <TT
+CLASS="COMMAND"
 >SET
         LOCAL</TT
 >, <TT
-CLASS="LITERAL"
+CLASS="COMMAND"
 >SET CONSTRAINTS</TT
 >, <TT
-CLASS="LITERAL"
+CLASS="COMMAND"
 >SET TRANSACTION</TT
 > and
         <TT
-CLASS="LITERAL"
+CLASS="COMMAND"
 >ABORT</TT
->.
+> when used outside a transaction block.
        </P
 ></LI
 ></UL
@@ -1845,13 +1884,10 @@ CLASS="SECT4"
 ><H4
 CLASS="SECT4"
 ><A
-NAME="AEN118969"
->E.1.3.4.1. <A
+NAME="AEN119538"
+>E.2.3.4.1. <A
 HREF="sql-explain.html"
-><TT
-CLASS="COMMAND"
->EXPLAIN</TT
-></A
+>EXPLAIN</A
 ></A
 ></H4
 ><P
@@ -1859,29 +1895,29 @@ CLASS="COMMAND"
 ><UL
 ><LI
 ><P
->         Have <TT
+>         Make <TT
 CLASS="COMMAND"
 >EXPLAIN ANALYZE</TT
-> output planning time (Andreas
+> show planning time (Andreas
          Karlsson)
         </P
 ></LI
 ><LI
 ><P
->         Have <TT
+>         Make <TT
 CLASS="COMMAND"
 >EXPLAIN</TT
-> print the grouping columns in Agg and
+> show the grouping columns in Agg and
          Group nodes (Tom Lane)
         </P
 ></LI
 ><LI
 ><P
->         Have <TT
+>         Make <TT
 CLASS="COMMAND"
 >EXPLAIN ANALYZE</TT
-> show bitmap heap scan exact/lossy
-         block information (Etsuro Fujita)
+> show exact and lossy
+         block counts in bitmap heap scans (Etsuro Fujita)
         </P
 ></LI
 ></UL
@@ -1891,16 +1927,20 @@ CLASS="SECT4"
 ><H4
 CLASS="SECT4"
 ><A
-NAME="AEN118983"
->E.1.3.4.2. Views</A
+NAME="AEN119551"
+>E.2.3.4.2. Views</A
 ></H4
 ><P
 ></P
 ><UL
 ><LI
 ><P
->        Allow materialized views to be refreshed without blocking reads
-         (Kevin Grittner)
+>        Allow a <A
+HREF="rules-materializedviews.html"
+>materialized view</A
+>
+        to be refreshed without blocking other sessions from reading the view
+        meanwhile (Kevin Grittner)
        </P
 ><P
 >        This is done with <A
@@ -1923,7 +1963,7 @@ HREF="sql-createview.html#SQL-CREATEVIEW-UPDATABLE-VIEWS"
         (Dean Rasheed)
        </P
 ><P
->        Previously the presence of non-updatable columns such as
+>        Previously the presence of non-updatable output columns such as
         expressions, literals, and function calls prevented automatic
         updates.  Now <TT
 CLASS="COMMAND"
@@ -1949,15 +1989,16 @@ CLASS="COMMAND"
 CLASS="COMMAND"
 >UPDATE</TT
 >s can add rows to an auto-updatable view that
-        would no longer appear in the view (Dean Rasheed)
+        would not appear in the view (Dean Rasheed)
        </P
 ><P
 >        This is controlled with the new <A
 HREF="sql-createview.html"
-><TT
+>CREATE VIEW</A
+>
+        clause <TT
 CLASS="LITERAL"
 >WITH CHECK OPTION</TT
-></A
 >.
        </P
 ></LI
@@ -1978,15 +2019,15 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN119008"
->E.1.3.5. Object Manipulation</A
+NAME="AEN119577"
+>E.2.3.5. Object Manipulation</A
 ></H3
 ><P
 ></P
 ><UL
 ><LI
 ><P
->        Allow triggers on <A
+>        Support triggers on <A
 HREF="sql-createforeigntable.html"
 >foreign
         tables</A
@@ -1995,114 +2036,44 @@ HREF="sql-createforeigntable.html"
 ></LI
 ><LI
 ><P
->        Fix <TT
-CLASS="COMMAND"
->DROP IF EXISTS</TT
-> to more consistently not error
-        for non-existent objects (Pavel Stehule,  Dean Rasheed)
-       </P
-></LI
-><LI
-><P
->        Improve how system-level relations are designated (Andres Freund,
-        Robert Haas)
-       </P
-><P
->        Previously, relations once moved into the system catalog schema could
-        no longer be modified or dropped.
-       </P
-></LI
-><LI
-><P
->        Allow <A
-HREF="sql-altertablespace.html"
-><TT
-CLASS="COMMAND"
->ALTER
-        TABLESPACE</TT
-></A
-> options to be also set by <A
-HREF="sql-createtablespace.html"
-><TT
-CLASS="COMMAND"
->CREATE TABLESPACE</TT
-></A
->
-        (Vik Fearing)
-       </P
-></LI
-><LI
-><P
->        Allow <A
-HREF="sql-createaggregate.html"
-><TT
-CLASS="COMMAND"
->CREATE
-        AGGREGATE</TT
-></A
-> to supply the size of the aggregate's
-        transition state data (Hadi Moshayedi)
-       </P
-><P
->        This allows the optimizer to better estimate how much memory will be
-        used by aggregates.
-       </P
-></LI
-></UL
-><DIV
-CLASS="SECT4"
-><H4
-CLASS="SECT4"
-><A
-NAME="AEN119031"
->E.1.3.5.1. <TT
-CLASS="COMMAND"
->ALTER</TT
-></A
-></H4
-><P
-></P
-><UL
-><LI
-><P
 >        Allow moving groups of objects from one tablespace to another
-        using <A
-HREF="sql-altertablespace.html"
-><TT
-CLASS="COMMAND"
->ALTER
-        TABLESPACE</TT
-></A
-> ... <TT
+        using the <TT
 CLASS="LITERAL"
->MOVE</TT
+>ALL IN TABLESPACE ... SET TABLESPACE</TT
+> form of
+        <A
+HREF="sql-altertable.html"
+>ALTER TABLE</A
+>, <A
+HREF="sql-alterindex.html"
+>ALTER INDEX</A
+>, or
+        <A
+HREF="sql-altermaterializedview.html"
+>ALTER MATERIALIZED VIEW</A
 > (Stephen Frost)
        </P
 ></LI
 ><LI
 ><P
->        Allow changing foreign key constraint deferrability via <A
+>        Allow changing foreign key constraint deferrability
+        via <A
 HREF="sql-altertable.html"
-><TT
-CLASS="COMMAND"
->ALTER TABLE</TT
-></A
->
-        ... <TT
+>ALTER TABLE</A
+> ... <TT
 CLASS="LITERAL"
->ALTER CONSTRAINT</TT
+>ALTER
+        CONSTRAINT</TT
 > (Simon Riggs)
        </P
 ></LI
 ><LI
 ><P
->        Reduce lock levels of some <A
+>        Reduce lock strength for some <A
 HREF="sql-altertable.html"
-><TT
-CLASS="COMMAND"
->ALTER TABLE</TT
-></A
-> commands
+>ALTER TABLE</A
+>
+        commands
         (Simon Riggs, Noah Misch, Robert Haas)
        </P
 ><P
@@ -2144,16 +2115,66 @@ CLASS="LITERAL"
 > locks.
        </P
 ></LI
+><LI
+><P
+>        Allow tablespace options to be set
+        in <A
+HREF="sql-createtablespace.html"
+>CREATE TABLESPACE</A
+> (Vik Fearing)
+       </P
+><P
+>        Formerly these options could only be set
+        via <A
+HREF="sql-altertablespace.html"
+>ALTER TABLESPACE</A
+>.
+       </P
+></LI
+><LI
+><P
+>        Allow <A
+HREF="sql-createaggregate.html"
+>CREATE AGGREGATE</A
+> to define the estimated
+        size of the aggregate's transition state data (Hadi Moshayedi)
+       </P
+><P
+>        Proper use of this feature allows the planner to better estimate
+        how much memory will be used by aggregates.
+       </P
+></LI
+><LI
+><P
+>        Fix <TT
+CLASS="COMMAND"
+>DROP IF EXISTS</TT
+> to avoid errors for non-existent
+        objects in more cases (Pavel Stehule, Dean Rasheed)
+       </P
+></LI
+><LI
+><P
+>        Improve how system relations are identified (Andres Freund,
+        Robert Haas)
+       </P
+><P
+>        Previously, relations once moved into the <TT
+CLASS="LITERAL"
+>pg_catalog</TT
+>
+        schema could no longer be modified or dropped.
+       </P
+></LI
 ></UL
-></DIV
 ></DIV
 ><DIV
 CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN119060"
->E.1.3.6. Data Types</A
+NAME="AEN119623"
+>E.2.3.6. Data Types</A
 ></H3
 ><P
 ></P
@@ -2180,14 +2201,15 @@ CLASS="EMPHASIS"
 HREF="datatype-geometric.html#DATATYPE-LSEG"
 ><TT
 CLASS="TYPE"
->LSEG</TT
+>lseg</TT
 ></A
 >) has always been
         fully supported.  The previous <TT
 CLASS="TYPE"
 >line</TT
-> data type (enabled
-        only via a compile-time option) is not binary or dump-compatible.
+> data type (which was
+        enabled only via a compile-time option) is not binary or
+        dump-compatible with the new implementation.
        </P
 ></LI
 ><LI
@@ -2196,7 +2218,7 @@ CLASS="TYPE"
 HREF="datatype-pg-lsn.html"
 ><TT
 CLASS="TYPE"
->PG_LSN</TT
+>pg_lsn</TT
 ></A
 >
         data type to represent a <ACRONYM
@@ -2215,17 +2237,44 @@ CLASS="ACRONYM"
 HREF="datatype-geometric.html#DATATYPE-POLYGON"
 ><TT
 CLASS="TYPE"
->POLYGON</TT
+>polygon</TT
 ></A
 >s to be converted
         to <A
 HREF="datatype-geometric.html#DATATYPE-CIRCLE"
 ><TT
 CLASS="TYPE"
->CIRCLE</TT
+>circle</TT
 ></A
 >s
         (Bruce Momjian)
+       </P
+></LI
+><LI
+><P
+>        Support time zone abbreviations that change UTC offset from time to
+        time (Tom Lane)
+       </P
+><P
+>        Previously, <SPAN
+CLASS="PRODUCTNAME"
+>PostgreSQL</SPAN
+> assumed that the UTC offset
+        associated with a time zone abbreviation (such as <TT
+CLASS="LITERAL"
+>EST</TT
+>)
+        never changes in the usage of any particular locale.  However this
+        assumption fails in the real world, so introduce the ability for a
+        zone abbreviation to represent a UTC offset that sometimes changes.
+        Update the zone abbreviation definition files to make use of this
+        feature in timezone locales that have changed the UTC offset of their
+        abbreviations since 1970 (according to the IANA timezone database).
+        In such timezones, <SPAN
+CLASS="PRODUCTNAME"
+>PostgreSQL</SPAN
+> will now associate the
+        correct UTC offset with the abbreviation depending on the given date.
        </P
 ></LI
 ><LI
@@ -2237,12 +2286,12 @@ CLASS="ACRONYM"
 HREF="datatype-datetime.html"
 ><TT
 CLASS="TYPE"
->TIMESTAMP</TT
+>timestamp</TT
 ></A
 > and
         <TT
 CLASS="TYPE"
->DATE</TT
+>date</TT
 > strings, where appropriate (Bruce Momjian)
        </P
 ></LI
@@ -2252,7 +2301,7 @@ CLASS="TYPE"
 HREF="datatype-datetime.html"
 ><TT
 CLASS="TYPE"
->INTERVAL</TT
+>interval</TT
 ></A
 > values
         (Bruce Momjian)
@@ -2264,12 +2313,12 @@ CLASS="SECT4"
 ><H4
 CLASS="SECT4"
 ><A
-NAME="AEN119094"
->E.1.3.6.1. <A
+NAME="AEN119663"
+>E.2.3.6.1. <A
 HREF="datatype-json.html"
-><TT
-CLASS="TYPE"
->JSON</TT
+><ACRONYM
+CLASS="ACRONYM"
+>JSON</ACRONYM
 ></A
 ></A
 ></H4
@@ -2278,24 +2327,33 @@ CLASS="TYPE"
 ><UL
 ><LI
 ><P
->         Add structured (non-text) data type (<A
+>         Add <A
 HREF="datatype-json.html"
 ><TT
 CLASS="TYPE"
 >jsonb</TT
 ></A
->) for storing
-         JSON data (Oleg Bartunov, Teodor Sigaev, Alexander
-         Korotkov, Peter Geoghegan, and Andrew Dunstan)
+>, a more
+         capable and efficient data type for storing <ACRONYM
+CLASS="ACRONYM"
+>JSON</ACRONYM
+> data
+         (Oleg Bartunov, Teodor Sigaev, Alexander
+         Korotkov, Peter Geoghegan, Andrew Dunstan)
         </P
 ><P
->         This allows for faster access to values in the JSON
-         document and faster and more useful indexing of JSON.
+>         This new type allows faster access to values within a JSON
+         document, and faster and more useful indexing of JSON columns.
          Scalar values in <TT
 CLASS="TYPE"
 >jsonb</TT
-> documents are typed as appropriate
-         scalar SQL types.
+> documents are stored as appropriate
+         scalar SQL types, and the JSON document structure is pre-parsed
+         rather than being stored as text as in the original <TT
+CLASS="TYPE"
+>json</TT
+>
+         data type.
         </P
 ></LI
 ><LI
@@ -2354,8 +2412,8 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN119120"
->E.1.3.7. Functions</A
+NAME="AEN119691"
+>E.2.3.7. Functions</A
 ></H3
 ><P
 ></P
@@ -2372,14 +2430,15 @@ CLASS="FUNCTION"
         and <CODE
 CLASS="FUNCTION"
 >pg_sleep_until(timestamp)</CODE
-> to specify sophisticated
-        delays (Vik Fearing, Julien Rouhaud)
+> to specify
+        delays more flexibly (Vik Fearing, Julien Rouhaud)
        </P
 ><P
->        <CODE
+>        The existing <CODE
 CLASS="FUNCTION"
 >pg_sleep()</CODE
-> only supports delays specified in seconds.
+> function only supports delays
+        specified in seconds.
        </P
 ></LI
 ><LI
@@ -2445,7 +2504,7 @@ CLASS="TYPE"
         from individual values, rather than strings (Pavel Stehule)
        </P
 ><P
->        These functions are prefixed with <TT
+>        These functions' names are prefixed with <TT
 CLASS="LITERAL"
 >make_</TT
 >,
@@ -2460,28 +2519,29 @@ CLASS="FUNCTION"
 ></LI
 ><LI
 ><P
->        Have <A
+>        Make <A
 HREF="functions-formatting.html#FUNCTIONS-FORMATTING-TABLE"
 ><CODE
 CLASS="FUNCTION"
->to_char(<TT
+>to_char()</CODE
+></A
+>'s
+        <TT
 CLASS="LITERAL"
 >TZ</TT
->)</CODE
-></A
->
-        return the proper value for constant time zone offsets (Tom Lane)
+> format specifier return a useful value for simple
+        numeric time zone offsets (Tom Lane)
        </P
 ><P
 >        Previously, <TT
 CLASS="LITERAL"
 >to_char(CURRENT_TIMESTAMP, 'TZ')</TT
 > returned
-        NULL if the <TT
+        an empty string if the <TT
 CLASS="LITERAL"
->TIME ZONE</TT
-> was set to a constant like
-        <TT
+>timezone</TT
+> was set to a constant
+        like <TT
 CLASS="LITERAL"
 >-4</TT
 >.
@@ -2489,7 +2549,7 @@ CLASS="LITERAL"
 ></LI
 ><LI
 ><P
->        Add timezone offset output option <TT
+>        Add timezone offset format specifier <TT
 CLASS="LITERAL"
 >OF</TT
 > to <A
@@ -2514,14 +2574,30 @@ CLASS="FUNCTION"
         (Honza Horak)
        </P
 ></LI
+><LI
+><P
+>        Tighten validity checking for Unicode code points in <A
+HREF="functions-string.html#FUNCTIONS-STRING-OTHER"
+><CODE
+CLASS="FUNCTION"
+>chr(int)</CODE
+></A
+>
+        (Tom Lane)
+       </P
+><P
+>        This function now only accepts values that are valid UTF8 characters
+        according to RFC 3629.
+       </P
+></LI
 ></UL
 ><DIV
 CLASS="SECT4"
 ><H4
 CLASS="SECT4"
 ><A
-NAME="AEN119172"
->E.1.3.7.1. System Information Functions</A
+NAME="AEN119748"
+>E.2.3.7.1. System Information Functions</A
 ></H4
 ><P
 ></P
@@ -2542,7 +2618,7 @@ CLASS="STRUCTNAME"
         <TT
 CLASS="STRUCTNAME"
 >pg_operator</TT
-> which do not generate errors for
+> that do not generate errors for
         non-existent objects (Yugo Nagata, Nozomi Anzai,
         Robert Haas)
        </P
@@ -2554,11 +2630,15 @@ CLASS="FUNCTION"
 >to_regclass()</CODE
 ></A
 >
-        does lookups of <TT
+        does a lookup in <TT
 CLASS="STRUCTNAME"
 >pg_class</TT
-> and returns NULL for
-        non-existent objects.
+> similarly to
+        the <TT
+CLASS="TYPE"
+>regclass</TT
+> input function, but it returns NULL for a
+        non-existent object instead of failing.
        </P
 ></LI
 ><LI
@@ -2570,48 +2650,38 @@ CLASS="FUNCTION"
 >pg_filenode_relation()</CODE
 ></A
 >
-        to allow for more efficient lookup of relation names from filenodes (Andres
-        Freund)
+        to allow for more efficient lookup of relation names from filenodes
+        (Andres Freund)
        </P
 ></LI
 ><LI
 ><P
->        Add <A
-HREF="information-schema.html"
-><TT
-CLASS="STRUCTNAME"
->information_schema</TT
-></A
->
-        column <A
+>        Add <TT
+CLASS="STRUCTFIELD"
+>parameter_default</TT
+> column to <A
 HREF="infoschema-parameters.html"
 ><TT
-CLASS="STRUCTFIELD"
->parameters.parameter_default</TT
+CLASS="STRUCTNAME"
+>information_schema.parameters</TT
 ></A
 >
-        (Peter Eisentraut)
+        view (Peter Eisentraut)
        </P
 ></LI
 ><LI
 ><P
->        Have <A
+>        Make <A
 HREF="infoschema-schemata.html"
 ><TT
-CLASS="STRUCTFIELD"
+CLASS="STRUCTNAME"
 >information_schema.schemata</TT
 ></A
 >
-        show all accessible schema (Peter Eisentraut)
+        show all accessible schemas (Peter Eisentraut)
        </P
 ><P
->        Previously it only showed <SPAN
-CLASS="emphasis"
-><I
-CLASS="EMPHASIS"
->owned</I
-></SPAN
-> schemas.
+>        Previously it only showed schemas owned by the current user.
        </P
 ></LI
 ></UL
@@ -2621,55 +2691,16 @@ CLASS="SECT4"
 ><H4
 CLASS="SECT4"
 ><A
-NAME="AEN119201"
->E.1.3.7.2. Aggregates</A
+NAME="AEN119776"
+>E.2.3.7.2. Aggregates</A
 ></H4
 ><P
 ></P
 ><UL
 ><LI
 ><P
->        Add aggregates <A
-HREF="functions-aggregate.html#FUNCTIONS-ORDEREDSET-TABLE"
-><CODE
-CLASS="FUNCTION"
->percentile_cont()</CODE
-></A
->,
-        <CODE
-CLASS="FUNCTION"
->percentile_disc()</CODE
->, <A
-HREF="functions-aggregate.html#FUNCTIONS-HYPOTHETICAL-TABLE"
-><CODE
-CLASS="FUNCTION"
->rank()</CODE
-></A
->,
-        <CODE
-CLASS="FUNCTION"
->dense_rank()</CODE
->, <CODE
-CLASS="FUNCTION"
->percent_rank()</CODE
->,
-        <CODE
-CLASS="FUNCTION"
->cume_dist()</CODE
->, and <A
-HREF="functions-aggregate.html#FUNCTIONS-ORDEREDSET-TABLE"
-><CODE
-CLASS="FUNCTION"
->mode()</CODE
-></A
->
-        (Atri Sharma, Andrew Gierth)
-       </P
-></LI
-><LI
-><P
->        Add control over which values are passed
-        into aggregate functions using the <A
+>        Add control over which rows are passed
+        into aggregate functions via the <A
 HREF="sql-expressions.html#SYNTAX-AGGREGATES"
 ><TT
 CLASS="LITERAL"
@@ -2690,8 +2721,53 @@ CLASS="LITERAL"
 >)
         aggregates (Atri Sharma, Andrew Gierth, Tom Lane)
        </P
+></LI
+><LI
 ><P
->        This allows aggregates that require sorted input.
+>        Add standard ordered-set aggregates <A
+HREF="functions-aggregate.html#FUNCTIONS-ORDEREDSET-TABLE"
+><CODE
+CLASS="FUNCTION"
+>percentile_cont()</CODE
+></A
+>,
+        <CODE
+CLASS="FUNCTION"
+>percentile_disc()</CODE
+>, <CODE
+CLASS="FUNCTION"
+>mode()</CODE
+>, <A
+HREF="functions-aggregate.html#FUNCTIONS-HYPOTHETICAL-TABLE"
+><CODE
+CLASS="FUNCTION"
+>rank()</CODE
+></A
+>,
+        <CODE
+CLASS="FUNCTION"
+>dense_rank()</CODE
+>, <CODE
+CLASS="FUNCTION"
+>percent_rank()</CODE
+>, and
+        <CODE
+CLASS="FUNCTION"
+>cume_dist()</CODE
+>
+        (Atri Sharma, Andrew Gierth)
+       </P
+></LI
+><LI
+><P
+>        Support <A
+HREF="xfunc-sql.html#XFUNC-SQL-VARIADIC-FUNCTIONS"
+><TT
+CLASS="LITERAL"
+>VARIADIC</TT
+></A
+>
+        aggregate functions (Tom Lane)
        </P
 ></LI
 ><LI
@@ -2700,23 +2776,11 @@ CLASS="LITERAL"
         types (Tom Lane)
        </P
 ><P
->        This allows the declaration of aggregates like the built-in
+>        This allows proper declaration in SQL of aggregates like the built-in
         aggregate <CODE
 CLASS="FUNCTION"
 >array_agg()</CODE
-> in SQL.
-       </P
-></LI
-><LI
-><P
->        Allow <A
-HREF="xfunc-sql.html#XFUNC-SQL-VARIADIC-FUNCTIONS"
-><TT
-CLASS="LITERAL"
->VARIADIC</TT
-></A
->
-        aggregate functions (Tom Lane)
+>.
        </P
 ></LI
 ></UL
@@ -2727,8 +2791,8 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN119233"
->E.1.3.8. Server-Side Languages</A
+NAME="AEN119806"
+>E.2.3.8. Server-Side Languages</A
 ></H3
 ><P
 ></P
@@ -2751,23 +2815,24 @@ HREF="pltcl.html"
 HREF="datatype-numeric.html"
 ><TT
 CLASS="TYPE"
->NUMERIC</TT
+>numeric</TT
 ></A
->s to
-       <TT
+>
+       values to <TT
 CLASS="TYPE"
 >decimal</TT
-> values in <A
+> in <A
 HREF="plpython.html"
 >PL/Python</A
 >
        (Szymon Guz, Ronan Dunklau)
       </P
 ><P
->       Previously these were converted to <TT
+>       Previously such values were converted to Python <TT
 CLASS="TYPE"
 >float</TT
->s.
+> values,
+       risking loss of precision.
       </P
 ></LI
 ></UL
@@ -2776,8 +2841,8 @@ CLASS="SECT4"
 ><H4
 CLASS="SECT4"
 ><A
-NAME="AEN119248"
->E.1.3.8.1. <A
+NAME="AEN119821"
+>E.2.3.8.1. <A
 HREF="plpgsql.html"
 >PL/pgSQL</A
 > Server-Side Language</A
@@ -2787,12 +2852,13 @@ HREF="plpgsql.html"
 ><UL
 ><LI
 ><P
->        Add ability to store the PL/PgSQL
-        call stack into a variable using <A
+>        Add ability to retrieve the current PL/PgSQL call stack
+        using <A
 HREF="plpgsql-control-structures.html#PLPGSQL-GET-DIAGNOSTICS-CONTEXT"
 ><TT
-CLASS="LITERAL"
->PG_CONTEXT</TT
+CLASS="COMMAND"
+>GET
+        DIAGNOSTICS</TT
 ></A
 >
         (Pavel Stehule, Stephen Frost)
@@ -2801,20 +2867,17 @@ CLASS="LITERAL"
 ><LI
 ><P
 >        Add option <A
-HREF="plpgsql-statements.html#PLPGSQL-STATEMENTS-ASSIGNMENT"
+HREF="plpgsql-statements.html#PLPGSQL-STATEMENTS-SQL-ONEROW"
 ><TT
 CLASS="OPTION"
 >print_strict_params</TT
 ></A
 >
-        to output parameters passed to queries generating <A
-HREF="plpgsql-statements.html#PLPGSQL-STATEMENTS-SQL-ONEROW"
-><TT
+        to display the parameters passed to a query that violated a
+        <TT
 CLASS="LITERAL"
 >STRICT</TT
-></A
->
-        errors (Marko Tiikkaja)
+> constraint (Marko Tiikkaja)
        </P
 ></LI
 ><LI
@@ -2833,7 +2896,7 @@ CLASS="VARNAME"
         warnings and errors (Marko Tiikkaja, Petr Jelinek)
        </P
 ><P
->        Currently only shadowed variable errors/warnings are available.
+>        Currently only warnings/errors about shadowed variables are available.
        </P
 ></LI
 ></UL
@@ -2844,8 +2907,8 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN119268"
->E.1.3.9. <A
+NAME="AEN119840"
+>E.2.3.9. <A
 HREF="libpq.html"
 ><SPAN
 CLASS="APPLICATION"
@@ -2858,21 +2921,6 @@ CLASS="APPLICATION"
 ><UL
 ><LI
 ><P
->        Add libpq function <A
-HREF="libpq-status.html#LIBPQ-PQHOSTADDR"
-><CODE
-CLASS="FUNCTION"
->PQhostaddr()</CODE
-></A
->
-        to return the server's <ACRONYM
-CLASS="ACRONYM"
->IP</ACRONYM
-> address (Fujii Masao)
-       </P
-></LI
-><LI
-><P
 >        Make libpq's <A
 HREF="libpq-connect.html#LIBPQ-PQCONNDEFAULTS"
 ><CODE
@@ -2880,38 +2928,23 @@ CLASS="FUNCTION"
 >PQconndefaults()</CODE
 ></A
 >
-        ignore invalid service files (Steve Singer, Bruce Momjian)
+        function ignore invalid service files (Steve Singer, Bruce Momjian)
        </P
 ><P
->        Previously it returned NULL.
+>        Previously it returned NULL if an incorrect service file was
+        encountered.
        </P
 ></LI
 ><LI
 ><P
->        Allow libpq to support <ACRONYM
+>        Accept <ACRONYM
 CLASS="ACRONYM"
 >TLS</ACRONYM
-> versions beyond
-        <TT
+> protocol versions beyond <TT
 CLASS="LITERAL"
 >TLSv1</TT
-> (Marko Kreen)
-       </P
-></LI
-><LI
-><P
->        Document that libpq's <A
-HREF="libpq-control.html#LIBPQ-PQCLIENTENCODING"
-><CODE
-CLASS="FUNCTION"
->PQclientEncoding()</CODE
-></A
 >
-        returns <TT
-CLASS="LITERAL"
->-1</TT
-> for an encoding lookup failure (Bruce
-        Momjian)
+        in libpq (Marko Kreen)
        </P
 ></LI
 ></UL
@@ -2921,8 +2954,8 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN119292"
->E.1.3.10. Client Applications</A
+NAME="AEN119854"
+>E.2.3.10. Client Applications</A
 ></H3
 ><P
 ></P
@@ -2935,11 +2968,11 @@ HREF="app-createuser.html"
 CLASS="APPLICATION"
 >createuser</SPAN
 ></A
->
-        <TT
+> option <TT
 CLASS="OPTION"
 >-g</TT
-> to specify role membership (Chistopher Browne)
+>
+        to specify role membership (Chistopher Browne)
        </P
 ></LI
 ><LI
@@ -2963,31 +2996,70 @@ CLASS="OPTION"
 ></LI
 ><LI
 ><P
->        Allow <A
-HREF="pgxlogdump.html"
+>        Make <A
+HREF="app-pgresetxlog.html"
 ><SPAN
 CLASS="APPLICATION"
->pg_xlogdump</SPAN
+>pg_resetxlog</SPAN
 ></A
->
-        to report a live log stream with <TT
+> with option <TT
 CLASS="OPTION"
->--follow</TT
-> (Heikki
-        Linnakangas)
+>-n</TT
+>
+        output current and potentially changed values (Rajeev Rastogi)
        </P
 ></LI
 ><LI
 ><P
->        Have <A
-HREF="app-pgresetxlog.html"
-><TT
-CLASS="COMMAND"
->pg_resetxlog
-        -n</TT
+>        Make <A
+HREF="app-initdb.html"
+>initdb</A
+> throw error for incorrect locale
+        settings, rather than silently falling back to a default choice
+        (Tom Lane)
+       </P
+></LI
+><LI
+><P
+>        Make <A
+HREF="app-pg-ctl.html"
+><SPAN
+CLASS="APPLICATION"
+>pg_ctl</SPAN
 ></A
-> output current and potentially changed values
-        (Rajeev Rastogi)
+> return exit code <TT
+CLASS="LITERAL"
+>4</TT
+> for
+        an inaccessible data directory (Amit Kapila, Bruce Momjian)
+       </P
+><P
+>        This behavior more closely matches the Linux Standard Base
+        (<ACRONYM
+CLASS="ACRONYM"
+>LSB</ACRONYM
+>) Core Specification.
+       </P
+></LI
+><LI
+><P
+>        On Windows, ensure that a non-absolute <TT
+CLASS="OPTION"
+>-D</TT
+> path
+        specification is interpreted relative
+        to <A
+HREF="app-pg-ctl.html"
+><SPAN
+CLASS="APPLICATION"
+>pg_ctl</SPAN
+></A
+>'s current directory
+        (Kumar Rajeev Rastogi)
+       </P
+><P
+>        Previously it would be interpreted relative to whichever directory
+        the underlying Windows service was started in.
        </P
 ></LI
 ><LI
@@ -3004,57 +3076,15 @@ HREF="ecpg.html"
 ></LI
 ><LI
 ><P
->        Have <A
+>        Make <A
 HREF="ecpg.html"
 >ECPG</A
 > properly handle nesting
-        requirements in C and <ACRONYM
+        of C-style comments in both C and <ACRONYM
 CLASS="ACRONYM"
 >SQL</ACRONYM
-> mode for C-style comments
+> text
         (Michael Meskes)
-       </P
-></LI
-><LI
-><P
->        Have <A
-HREF="app-pg-ctl.html"
-><SPAN
-CLASS="APPLICATION"
->pg_ctl</SPAN
-></A
->
-        return <TT
-CLASS="LITERAL"
->4</TT
-> for an inaccessible data directory
-        specification (Amit Kapila, Bruce Momjian)
-       </P
-><P
->        This more closely matches the Linux Standard Base (<ACRONYM
-CLASS="ACRONYM"
->LSB</ACRONYM
->)
-        Core Specification.
-       </P
-></LI
-><LI
-><P
->        On Windows, interpret <A
-HREF="app-pg-ctl.html"
-><SPAN
-CLASS="APPLICATION"
->pg_ctl</SPAN
-></A
->'s non-absolute
-        path <TT
-CLASS="OPTION"
->-D</TT
-> directories relative to <SPAN
-CLASS="APPLICATION"
->pg_ctl</SPAN
->'s
-        current directory (Kumar Rajeev Rastogi)
        </P
 ></LI
 ></UL
@@ -3063,8 +3093,8 @@ CLASS="SECT4"
 ><H4
 CLASS="SECT4"
 ><A
-NAME="AEN119336"
->E.1.3.10.1. <A
+NAME="AEN119892"
+>E.2.3.10.1. <A
 HREF="app-psql.html"
 ><SPAN
 CLASS="APPLICATION"
@@ -3077,23 +3107,10 @@ CLASS="APPLICATION"
 ><UL
 ><LI
 ><P
->        Add ability to wrap long lines in <SPAN
-CLASS="APPLICATION"
->psql</SPAN
->'s
-        <TT
-CLASS="LITERAL"
->expanded</TT
-> mode by using <TT
-CLASS="COMMAND"
->\pset format wrapped</TT
->
-        (Sergey Muraviov)
-       </P
-></LI
-><LI
-><P
->        Suppress "No rows" in <SPAN
+>        Suppress <SPAN
+CLASS="QUOTE"
+>"No rows"</SPAN
+> output in <SPAN
 CLASS="APPLICATION"
 >psql</SPAN
 > <A
@@ -3111,8 +3128,8 @@ CLASS="OPTION"
 >        Allow Control-C to abort <SPAN
 CLASS="APPLICATION"
 >psql</SPAN
-> hung at connection
-        startup (Peter Eisentraut)
+> when it's hung at
+        connection startup (Peter Eisentraut)
        </P
 ></LI
 ></UL
@@ -3121,8 +3138,8 @@ CLASS="SECT5"
 ><H5
 CLASS="SECT5"
 ><A
-NAME="AEN119354"
->E.1.3.10.1.1. <A
+NAME="AEN119905"
+>E.2.3.10.1.1. <A
 HREF="app-psql.html#APP-PSQL-META-COMMANDS"
 >Backslash Commands</A
 ></A
@@ -3132,10 +3149,10 @@ HREF="app-psql.html#APP-PSQL-META-COMMANDS"
 ><UL
 ><LI
 ><P
->         Have <SPAN
+>         Make <SPAN
 CLASS="APPLICATION"
 >psql</SPAN
-> <TT
+>'s <TT
 CLASS="COMMAND"
 >\db+</TT
 > show tablespace options
@@ -3144,22 +3161,16 @@ CLASS="COMMAND"
 ></LI
 ><LI
 ><P
->         Have <SPAN
-CLASS="APPLICATION"
->psql</SPAN
-> <TT
+>         Make <TT
 CLASS="COMMAND"
 >\do+</TT
 > display the functions
-         which implement the operators (Marko Tiikkaja)
+         that implement the operators (Marko Tiikkaja)
         </P
 ></LI
 ><LI
 ><P
->         Have <SPAN
-CLASS="APPLICATION"
->psql</SPAN
-> <TT
+>         Make <TT
 CLASS="COMMAND"
 >\d+</TT
 > output an
@@ -3169,36 +3180,33 @@ CLASS="LITERAL"
 > line only if an <TT
 CLASS="LITERAL"
 >oid</TT
-> column exists in a table
-         (Bruce Momjian)
+> column
+         exists in the table (Bruce Momjian)
         </P
 ><P
 >         Previously, the presence or absence of an <TT
 CLASS="LITERAL"
 >oid</TT
-> column was always
-         reported.
+>
+         column was always reported.
         </P
 ></LI
 ><LI
 ><P
->         Have <TT
+>         Make <TT
 CLASS="COMMAND"
 >\d</TT
 > show disabled system triggers (Bruce
          Momjian)
         </P
 ><P
->         Previously if you disabled all triggers, only user triggers
+>         Previously, if you disabled all triggers, only user triggers
          would show as disabled.
         </P
 ></LI
 ><LI
 ><P
->         Fix <SPAN
-CLASS="APPLICATION"
->psql</SPAN
-> <TT
+>         Fix <TT
 CLASS="COMMAND"
 >\copy</TT
 > to no longer require
@@ -3210,35 +3218,26 @@ CLASS="LITERAL"
 ></LI
 ><LI
 ><P
->         Output the row count at the end of
-         <SPAN
-CLASS="APPLICATION"
->psql</SPAN
-> <TT
+>         Output the row count at the end of <TT
 CLASS="COMMAND"
 >\copy</TT
-> just like <A
-HREF="sql-copy.html"
-><TT
+>, just
+         like <TT
 CLASS="COMMAND"
 >COPY</TT
-></A
-> (Kumar Rajeev Rastogi)
+> already did (Kumar Rajeev Rastogi)
         </P
 ></LI
 ><LI
 ><P
->         Fix <SPAN
-CLASS="APPLICATION"
->psql</SPAN
-> <TT
+>         Fix <TT
 CLASS="COMMAND"
 >\conninfo</TT
 > to display the
          server's <ACRONYM
 CLASS="ACRONYM"
 >IP</ACRONYM
-> address for clients that connect using
+> address for connections using
          <TT
 CLASS="LITERAL"
 >hostaddr</TT
@@ -3257,14 +3256,11 @@ CLASS="ACRONYM"
 ></LI
 ><LI
 ><P
->         Mention the <ACRONYM
+>         Show the <ACRONYM
 CLASS="ACRONYM"
 >SSL</ACRONYM
 > protocol version in
-         <SPAN
-CLASS="APPLICATION"
->psql</SPAN
->'s <TT
+         <TT
 CLASS="COMMAND"
 >\conninfo</TT
 > (Marko Kreen)
@@ -3272,10 +3268,7 @@ CLASS="COMMAND"
 ></LI
 ><LI
 ><P
->         Add <SPAN
-CLASS="APPLICATION"
->psql</SPAN
-> tab completion for <TT
+>         Add tab completion for <TT
 CLASS="COMMAND"
 >\pset</TT
 >
@@ -3284,10 +3277,7 @@ CLASS="COMMAND"
 ></LI
 ><LI
 ><P
->         Allow <SPAN
-CLASS="APPLICATION"
->psql</SPAN
-> <TT
+>         Allow <TT
 CLASS="COMMAND"
 >\pset</TT
 > with no arguments
@@ -3296,17 +3286,15 @@ CLASS="COMMAND"
 ></LI
 ><LI
 ><P
->         In <SPAN
-CLASS="APPLICATION"
->psql</SPAN
->, output the written history file name
-         (<TT
+>         Make <TT
 CLASS="COMMAND"
 >\s</TT
->) without adding an absolute path prefix (Tom Lane)
+> display the name of the history file it wrote
+         without converting it to an absolute path (Tom Lane)
         </P
 ><P
->         The previous output was inconsistent.
+>         The code previously attempted to convert a relative file name to
+         an absolute path for display, but frequently got it wrong.
         </P
 ></LI
 ></UL
@@ -3317,13 +3305,10 @@ CLASS="SECT4"
 ><H4
 CLASS="SECT4"
 ><A
-NAME="AEN119416"
->E.1.3.10.2. <A
+NAME="AEN119957"
+>E.2.3.10.2. <A
 HREF="app-pgdump.html"
-><SPAN
-CLASS="APPLICATION"
->pg_dump</SPAN
-></A
+>pg_dump</A
 ></A
 ></H4
 ><P
@@ -3333,10 +3318,7 @@ CLASS="APPLICATION"
 ><P
 >        Allow <A
 HREF="app-pgrestore.html"
-><SPAN
-CLASS="APPLICATION"
->pg_restore</SPAN
-></A
+>pg_restore</A
 > options
         <TT
 CLASS="OPTION"
@@ -3354,43 +3336,42 @@ CLASS="OPTION"
         to be specified multiple times (Heikki Linnakangas)
        </P
 ><P
->        This allows multiple restore object to be specified.
+>        This allows multiple objects to be restored in one operation.
        </P
 ></LI
 ><LI
 ><P
->        Add <TT
+>        Optionally add <TT
 CLASS="LITERAL"
 >IF EXISTS</TT
-> clauses when removing old objects during
-        dump and restore (Pavel Stehule)
+> clauses to the <TT
+CLASS="COMMAND"
+>DROP</TT
+>
+        commands emitted when removing old objects during a restore (Pavel
+        Stehule)
        </P
 ><P
->        This suppresses errors when removing old objects.
+>        This change prevents unnecessary errors when removing old objects.
         The new <TT
 CLASS="OPTION"
 >--if-exists</TT
-> option to <A
+> option
+        for <A
 HREF="app-pgdump.html"
-><SPAN
-CLASS="APPLICATION"
->pg_dump</SPAN
-></A
+>pg_dump</A
 >, <A
 HREF="app-pg-dumpall.html"
 ><SPAN
 CLASS="APPLICATION"
 >pg_dumpall</SPAN
 ></A
->, and
-        <A
+>,
+        and <A
 HREF="app-pgrestore.html"
-><SPAN
-CLASS="APPLICATION"
->pg_restore</SPAN
-></A
->
-        is only available when <TT
+>pg_restore</A
+> is only available
+        when <TT
 CLASS="OPTION"
 >--clean</TT
 > is also specified.
@@ -3403,13 +3384,10 @@ CLASS="SECT4"
 ><H4
 CLASS="SECT4"
 ><A
-NAME="AEN119442"
->E.1.3.10.3. <A
+NAME="AEN119979"
+>E.2.3.10.3. <A
 HREF="app-pgbasebackup.html"
-><SPAN
-CLASS="APPLICATION"
->pg_basebackup</SPAN
-></A
+>pg_basebackup</A
 ></A
 ></H4
 ><P
@@ -3449,7 +3427,7 @@ CLASS="APPLICATION"
 ></LI
 ><LI
 ><P
->        Allow network-streams base backups to be throttled (Antonin Houska)
+>        Allow network-stream base backups to be throttled (Antonin Houska)
        </P
 ><P
 >        This can be controlled with the <SPAN
@@ -3470,24 +3448,26 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN119462"
->E.1.3.11. Source Code</A
+NAME="AEN119998"
+>E.2.3.11. Source Code</A
 ></H3
 ><P
 ></P
 ><UL
 ><LI
 ><P
->        Improve the way tuples are frozen, to preserve forensic information
+>        Improve the way tuples are frozen to preserve forensic information
         (Robert Haas, Andres Freund)
        </P
 ><P
->        Code that inspects tuple flag bits will need to be modified.
+>        This change removes the main objection to freezing tuples as soon
+        as possible.  Code that inspects tuple flag bits will need to be
+        modified.
        </P
 ></LI
 ><LI
 ><P
->        No longer require function prototypes for function marked with the
+>        No longer require function prototypes for functions marked with the
         <A
 HREF="xfunc-c.html"
 ><CODE
@@ -3498,8 +3478,13 @@ CLASS="FUNCTION"
         macro (Peter Eisentraut)
        </P
 ><P
->        This eliminates needless boilerplate prototypes whose lack
-        generates compiler warnings.
+>        This change eliminates the need to write boilerplate prototypes.
+        Note that the <CODE
+CLASS="FUNCTION"
+>PG_FUNCTION_INFO_V1</CODE
+> macro must appear
+        before the corresponding function definition to avoid compiler
+        warnings.
        </P
 ></LI
 ><LI
@@ -3523,11 +3508,11 @@ CLASS="ACRONYM"
 ></LI
 ><LI
 ><P
->        Add <ACRONYM
+>        Add an <ACRONYM
 CLASS="ACRONYM"
 >API</ACRONYM
-> for memory allocations over one gigabyte (Noah
-        Misch)
+> to allow memory allocations over one gigabyte
+        (Noah Misch)
        </P
 ></LI
 ><LI
@@ -3541,14 +3526,17 @@ CLASS="FUNCTION"
 ></LI
 ><LI
 ><P
->        Add <CODE
+>        Support <CODE
 CLASS="FUNCTION"
 >printf()</CODE
-> modifier "z" to specify <TT
+> size modifier <TT
+CLASS="LITERAL"
+>z</TT
+> to
+        print <TT
 CLASS="TYPE"
 >size_t</TT
->
-        values (Andres Freund)
+> values (Andres Freund)
        </P
 ></LI
 ><LI
@@ -3617,7 +3605,7 @@ CLASS="ACRONYM"
         <TT
 CLASS="OPTION"
 >--disable-spinlocks</TT
-> (Robert Haas)
+> builds (Robert Haas)
        </P
 ></LI
 ><LI
@@ -3640,6 +3628,21 @@ CLASS="ACRONYM"
 >) tests for client
         programs (Peter Eisentraut)
        </P
+><P
+>        Currently, these tests are run by <TT
+CLASS="LITERAL"
+>make check-world</TT
+>
+        only if the <TT
+CLASS="OPTION"
+>--enable-tap-tests</TT
+> option was given
+        to <SPAN
+CLASS="APPLICATION"
+>configure</SPAN
+>.
+        This might become the default behavior in some future release.
+       </P
 ></LI
 ><LI
 ><P
@@ -3650,8 +3653,8 @@ CLASS="OPTION"
         <TT
 CLASS="OPTION"
 >installcheck-tests</TT
-> which allow per-test specification
-        (Andrew Dunstan)
+>, which allow selection of individual
+        tests to be run (Andrew Dunstan)
        </P
 ></LI
 ><LI
@@ -3662,7 +3665,7 @@ CLASS="OPTION"
 > makefile rule (Peter Eisentraut)
        </P
 ><P
->        Its functionality is now done by the default build rules.
+>        The default build rules now include all the formerly-optional tests.
        </P
 ></LI
 ><LI
@@ -3674,7 +3677,7 @@ CLASS="ENVAR"
 CLASS="ACRONYM"
 >PGXS</ACRONYM
 >
-        modules  (C&eacute;dric Villemain, Andrew Dunstan)
+        modules  (C&eacute;dric Villemain, Andrew Dunstan, Peter Eisentraut)
        </P
 ></LI
 ><LI
@@ -3684,7 +3687,10 @@ CLASS="ACRONYM"
 ></LI
 ><LI
 ><P
->        Add configure flag that appends custom text to the
+>        Add a <SPAN
+CLASS="APPLICATION"
+>configure</SPAN
+> flag that appends custom text to the
         <TT
 CLASS="ENVAR"
 >PG_VERSION</TT
@@ -3704,7 +3710,7 @@ CLASS="ACRONYM"
 ></LI
 ><LI
 ><P
->        Various security and sanity fixes reported by the
+>        Fix various minor security and sanity issues reported by the
         <SPAN
 CLASS="PRODUCTNAME"
 >Coverity</SPAN
@@ -3713,16 +3719,20 @@ CLASS="PRODUCTNAME"
 ></LI
 ><LI
 ><P
->        Improve <SPAN
+>        Improve detection of invalid memory usage when testing
+        <SPAN
+CLASS="PRODUCTNAME"
+>PostgreSQL</SPAN
+> with <SPAN
 CLASS="APPLICATION"
 >Valgrind</SPAN
-> detection of invalid memory usage
+>
         (Noah Misch)
        </P
 ></LI
 ><LI
 ><P
->        Improve <SPAN
+>        Improve sample <SPAN
 CLASS="APPLICATION"
 >Emacs</SPAN
 > configuration file
@@ -3743,15 +3753,17 @@ CLASS="FILENAME"
 >        Allow <SPAN
 CLASS="APPLICATION"
 >pgindent</SPAN
-> to be supplied a command-line list
+> to accept a command-line list
         of typedefs (Bruce Momjian)
        </P
+></LI
+><LI
 ><P
->        <SPAN
+>        Make <SPAN
 CLASS="APPLICATION"
->Pgindent</SPAN
-> is also now smarter about blank lines
-        around preprocessor conditionals.
+>pgindent</SPAN
+> smarter about blank lines
+        around preprocessor conditionals (Bruce Momjian)
        </P
 ></LI
 ><LI
@@ -3759,7 +3771,8 @@ CLASS="APPLICATION"
 >        Avoid most uses of <TT
 CLASS="COMMAND"
 >dlltool</TT
-> in <SPAN
+>
+        in <SPAN
 CLASS="PRODUCTNAME"
 >Cygwin</SPAN
 > and
@@ -3771,10 +3784,11 @@ CLASS="PRODUCTNAME"
 ></LI
 ><LI
 ><P
->        Allow client-only installs for <ACRONYM
+>        Support client-only installs in <ACRONYM
 CLASS="ACRONYM"
 >MSVC</ACRONYM
-> (Windows) builds (MauMau)
+> (Windows) builds
+        (MauMau)
        </P
 ></LI
 ></UL
@@ -3784,8 +3798,8 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN119565"
->E.1.3.12. Additional Modules</A
+NAME="AEN120110"
+>E.2.3.12. Additional Modules</A
 ></H3
 ><P
 ></P
@@ -3794,17 +3808,12 @@ NAME="AEN119565"
 ><P
 >        Add <A
 HREF="pgprewarm.html"
-><SPAN
-CLASS="APPLICATION"
->pg_prewarm</SPAN
-></A
->
-        extension to preload relation data into the shared buffer cache
-        (Robert Haas)
+>pg_prewarm</A
+> extension to preload relation data
+        into the shared buffer cache at server start (Robert Haas)
        </P
 ><P
->        This is useful at server start to produce more consistent
-        performance.
+>        This allows reaching full operating performance more quickly.
        </P
 ></LI
 ><LI
@@ -3818,59 +3827,74 @@ CLASS="FUNCTION"
 >gen_random_uuid()</CODE
 > to <A
 HREF="pgcrypto.html"
-><SPAN
-CLASS="APPLICATION"
->pgcrypto</SPAN
-></A
-> (Oskari
-        Saarenmaa)
+>pgcrypto</A
+>
+        (Oskari Saarenmaa)
        </P
 ><P
->        This allows the creation of version 4 <ACRONYM
+>        This allows creation of version 4 <ACRONYM
 CLASS="ACRONYM"
 >UUID</ACRONYM
 >s without
-        requiring the installation of <TT
-CLASS="LITERAL"
->uuid-ossp</TT
+        requiring installation of <A
+HREF="uuid-ossp.html"
+>uuid-ossp</A
 >.
        </P
 ></LI
 ><LI
 ><P
->        Add option to include trigger execution time to <A
-HREF="auto-explain.html"
-><SPAN
+>        Allow <A
+HREF="uuid-ossp.html"
+>uuid-ossp</A
+> to work with
+        the <SPAN
+CLASS="SYSTEMITEM"
+>BSD</SPAN
+> or <SPAN
+CLASS="SYSTEMITEM"
+>e2fsprogs</SPAN
+> UUID libraries,
+        not only the <SPAN
+CLASS="SYSTEMITEM"
+>OSSP</SPAN
+> UUID library (Matteo Beccati)
+       </P
+><P
+>        This improves the <SPAN
 CLASS="APPLICATION"
->auto_explain</SPAN
-></A
->
-        (Horiguchi Kyotaro)
+>uuid-ossp</SPAN
+> module's portability
+        since it no longer has to have the increasingly-obsolete OSSP
+        library.  The module's name is now rather a misnomer, but we won't
+        change it.
+       </P
+></LI
+><LI
+><P
+>        Add option to <A
+HREF="auto-explain.html"
+>auto_explain</A
+> to include trigger
+        execution time (Horiguchi Kyotaro)
        </P
 ></LI
 ><LI
 ><P
 >        Fix <A
 HREF="pgstattuple.html"
-><SPAN
-CLASS="APPLICATION"
->pgstattuple</SPAN
-></A
->
-        to not report rows from uncommitted transactions as dead
-        (Robert Haas)
+>pgstattuple</A
+> to not report rows from
+        uncommitted transactions as dead (Robert Haas)
        </P
 ></LI
 ><LI
 ><P
->        Have <A
+>        Make <A
 HREF="pgstattuple.html"
-><SPAN
-CLASS="APPLICATION"
->pgstattuple</SPAN
-></A
->
-        functions use <TT
+>pgstattuple</A
+> functions
+        use <TT
 CLASS="TYPE"
 >regclass</TT
 >-type arguments (Satoshi Nagayasu)
@@ -3879,46 +3903,53 @@ CLASS="TYPE"
 >        While <TT
 CLASS="TYPE"
 >text</TT
->-type arguments are still supported, they will be
-        removed in a later major release.
+>-type arguments are still supported, they
+        may be removed in a future major release.
        </P
 ></LI
 ><LI
 ><P
 >        Improve consistency of <A
 HREF="pgrowlocks.html"
-><SPAN
-CLASS="APPLICATION"
->pgrowlocks</SPAN
-></A
-> output to
-        honor snapshot rules more consistently (Robert Haas)
+>pgrowlocks</A
+> output to honor
+        snapshot rules more consistently (Robert Haas)
        </P
 ></LI
 ><LI
 ><P
 >        Improve <A
 HREF="pgtrgm.html"
+>pg_trgm</A
+>'s choice of trigrams for indexed
+        regular expression searches (Alexander Korotkov)
+       </P
+><P
+>        This change discourages use of trigrams containing whitespace, which
+        are usually less selective.
+       </P
+></LI
+><LI
+><P
+>        Allow <A
+HREF="pgxlogdump.html"
 ><SPAN
 CLASS="APPLICATION"
->pg_trgm</SPAN
->'s</A
->
-        generation of trigrams for indexed regular expression searches by
-        discouraging the indexing of trigrams containing whitespace (Alexander
-        Korotkov)
+>pg_xlogdump</SPAN
+></A
+> to report a live log stream
+        with <TT
+CLASS="OPTION"
+>--follow</TT
+> (Heikki Linnakangas)
        </P
 ></LI
 ><LI
 ><P
 >        Store <A
 HREF="cube.html"
-><TT
-CLASS="TYPE"
->cube</TT
-></A
-> data more compactly
-        (Stas Kelvich)
+>cube</A
+> data more compactly (Stas Kelvich)
        </P
 ><P
 >        Existing data must be dumped/restored to use the new format.
@@ -3933,20 +3964,20 @@ HREF="vacuumlo.html"
 CLASS="APPLICATION"
 >vacuumlo</SPAN
 ></A
->
-        client-side memory usage by using a cursor (Andrew Dunstan)
+> client-side memory usage by using
+        a cursor (Andrew Dunstan)
        </P
 ></LI
 ><LI
 ><P
->        Dramatically reduce memory consumption in <A
+>        Dramatically reduce memory consumption
+        in <A
 HREF="pgupgrade.html"
 ><SPAN
 CLASS="APPLICATION"
 >pg_upgrade</SPAN
 ></A
-> (Bruce
-        Momjian)
+> (Bruce Momjian)
        </P
 ></LI
 ><LI
@@ -3957,11 +3988,11 @@ HREF="pgupgrade.html"
 CLASS="APPLICATION"
 >pg_upgrade</SPAN
 ></A
->
-        user names (<TT
+>'s user name (<TT
 CLASS="OPTION"
 >-U</TT
->) to analyze scripts (Bruce Momjian)
+>) option to
+        generated analyze scripts (Bruce Momjian)
        </P
 ></LI
 ></UL
@@ -3970,8 +4001,8 @@ CLASS="SECT4"
 ><H4
 CLASS="SECT4"
 ><A
-NAME="AEN119623"
->E.1.3.12.1. <A
+NAME="AEN120170"
+>E.2.3.12.1. <A
 HREF="pgbench.html"
 ><SPAN
 CLASS="APPLICATION"
@@ -3999,33 +4030,35 @@ CLASS="ENVAR"
 ></LI
 ><LI
 ><P
+>        Add long option names to <SPAN
+CLASS="APPLICATION"
+>pgbench</SPAN
+> (Fabien Coelho)
+       </P
+></LI
+><LI
+><P
 >        Add <SPAN
 CLASS="APPLICATION"
 >pgbench</SPAN
-> option (<TT
+> option <TT
 CLASS="OPTION"
 >--rate</TT
->) to control
+> to control
         the transaction rate (Fabien Coelho)
        </P
 ></LI
 ><LI
 ><P
->        Add <TT
+>        Add <SPAN
+CLASS="APPLICATION"
+>pgbench</SPAN
+> option <TT
 CLASS="OPTION"
 >--progress</TT
-> output option to <SPAN
-CLASS="APPLICATION"
->pgbench</SPAN
-> (Fabien Coelho)
-       </P
-></LI
-><LI
-><P
->        Add long options to <SPAN
-CLASS="APPLICATION"
->pgbench</SPAN
-> (Fabien Coelho)
+> to
+        print periodic progress reports
+        (Fabien Coelho)
        </P
 ></LI
 ></UL
@@ -4035,13 +4068,10 @@ CLASS="SECT4"
 ><H4
 CLASS="SECT4"
 ><A
-NAME="AEN119644"
->E.1.3.12.2. <A
+NAME="AEN120190"
+>E.2.3.12.2. <A
 HREF="pgstatstatements.html"
-><SPAN
-CLASS="APPLICATION"
->pg_stat_statements</SPAN
-></A
+>pg_stat_statements</A
 ></A
 ></H4
 ><P
@@ -4049,15 +4079,15 @@ CLASS="APPLICATION"
 ><UL
 ><LI
 ><P
->        Have <SPAN
+>        Make <SPAN
 CLASS="APPLICATION"
 >pg_stat_statements</SPAN
-> use a flat file for query
-        text storage (Peter Geoghegan)
+> use a file, rather than
+        shared memory, for query text storage (Peter Geoghegan)
        </P
 ><P
->        This removes the limitation on query text length, and allows a
-        higher default number of unique statements to be tracked.
+>        This removes the previous limitation on query text length, and
+        allows a higher number of unique statements to be tracked by default.
        </P
 ></LI
 ><LI
@@ -4079,11 +4109,40 @@ CLASS="APPLICATION"
         information except the query text (Peter Geoghegan)
        </P
 ><P
->        This allows monitoring tools to only fetch query text for newly
-        created entries, as reported in <TT
-CLASS="STRUCTFIELD"
->queryid</TT
->.
+>        This allows monitoring tools to fetch query text only for
+        just-created entries, improving performance during repeated querying
+        of the statistics.
+       </P
+></LI
+><LI
+><P
+>        Make <SPAN
+CLASS="APPLICATION"
+>pg_stat_statements</SPAN
+> ignore <TT
+CLASS="COMMAND"
+>DEALLOCATE</TT
+>
+        commands (Fabien Coelho)
+       </P
+><P
+>        It already ignored <TT
+CLASS="COMMAND"
+>PREPARE</TT
+>, as well as planning time in
+        general, so this seems more consistent.
+       </P
+></LI
+><LI
+><P
+>        Save the statistics file into <TT
+CLASS="FILENAME"
+>$PGDATA/pg_stat</TT
+> at server
+        shutdown, rather than <TT
+CLASS="FILENAME"
+>$PGDATA/global</TT
+> (Fujii Masao)
        </P
 ></LI
 ></UL
@@ -4107,7 +4166,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="release.html"
+HREF="release-9-4-1.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -4125,7 +4184,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="release-9-3-5.html"
+HREF="release-9-3-6.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -4135,7 +4194,7 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->Release Notes</TD
+>Release 9.4.1</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
@@ -4149,7 +4208,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Release 9.3.5</TD
+>Release 9.3.6</TD
 ></TR
 ></TABLE
 ></DIV

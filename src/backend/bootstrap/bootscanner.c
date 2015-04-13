@@ -1104,7 +1104,7 @@ case 27:
 YY_RULE_SETUP
 #line 113 "bootscanner.l"
 {
-					yylval.str = pstrdup(MapArrayTypeName(boot_yytext));
+					yylval.str = MapArrayTypeName(boot_yytext);
 					return(ID);
 				}
 	YY_BREAK

@@ -2,12 +2,12 @@
 .\"     Title: initdb
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets v1.76.1 <http://docbook.sf.net/>
-.\"      Date: 2014
-.\"    Manual: PostgreSQL 9.4beta2 Documentation
-.\"    Source: PostgreSQL 9.4beta2
+.\"      Date: 2015
+.\"    Manual: PostgreSQL 9.4.1 Documentation
+.\"    Source: PostgreSQL 9.4.1
 .\"  Language: English
 .\"
-.TH "INITDB" "1" "2014" "PostgreSQL 9.4beta2" "PostgreSQL 9.4beta2 Documentation"
+.TH "INITDB" "1" "2015" "PostgreSQL 9.4.1" "PostgreSQL 9.4.1 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -27,7 +27,6 @@
 .\" -----------------------------------------------------------------
 .\" * MAIN CONTENT STARTS HERE *
 .\" -----------------------------------------------------------------
-.\" initdb
 .SH "NAME"
 initdb \- create a new PostgreSQL database cluster
 .SH "SYNOPSIS"
@@ -306,6 +305,12 @@ command line arguments, and exit\&.
 Specifies the directory where the database cluster is to be stored; can be overridden using the
 \fB\-D\fR
 option\&.
+.RE
+.PP
+\fBTZ\fR
+.RS 4
+Specifies the default time zone of the created database cluster\&. The value should be a full time zone name (see
+Section 8.5.3, \(lqTime Zones\(rq, in the documentation)\&.
 .RE
 .PP
 This utility, like most other
