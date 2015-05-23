@@ -1,3 +1,56 @@
+postgresql-9.4 (9.4.2-0+deb8u1) stable-security; urgency=medium
+
+  * New upstream version.
+
+    + Avoid possible crash when client disconnects just before the
+      authentication timeout expires (Benkocs Norbert Attila)
+
+      If the timeout interrupt fired partway through the session shutdown
+      sequence, SSL-related state would be freed twice, typically causing a
+      crash and hence denial of service to other sessions.  Experimentation
+      shows that an unauthenticated remote attacker could trigger the bug
+      somewhat consistently, hence treat as security issue. (CVE-2015-3165)
+
+    + Improve detection of system-call failures (Noah Misch)
+
+      Our replacement implementation of snprintf() failed to check for errors
+      reported by the underlying system library calls; the main case that
+      might be missed is out-of-memory situations. In the worst case this
+      might lead to information exposure, due to our code assuming that a
+      buffer had been overwritten when it hadn't been. Also, there were a few
+      places in which security-relevant calls of other system library
+      functions did not check for failure.
+
+      It remains possible that some calls of the *printf() family of functions
+      are vulnerable to information disclosure if an out-of-memory error
+      occurs at just the wrong time.  We judge the risk to not be large, but
+      will continue analysis in this area. (CVE-2015-3166)
+
+    + In contrib/pgcrypto, uniformly report decryption failures as Wrong key
+      or corrupt data (Noah Misch)
+
+      Previously, some cases of decryption with an incorrect key could report
+      other error message texts.  It has been shown that such variance in
+      error reports can aid attackers in recovering keys from other systems.
+      While it's unknown whether pgcrypto's specific behaviors are likewise
+      exploitable, it seems better to avoid the risk by using a
+      one-size-fits-all message. (CVE-2015-3167)
+
+    + Protect against wraparound of multixact member IDs
+      (Álvaro Herrera, Robert Haas, Thomas Munro)
+
+      Under certain usage patterns, the existing defenses against this might
+      be insufficient, allowing pg_multixact/members files to be removed too
+      early, resulting in data loss.
+      The fix for this includes modifying the server to fail transactions that
+      would result in overwriting old multixact member ID data, and improving
+      autovacuum to ensure it will act proactively to prevent multixact member
+      ID wraparound, as it does for transaction ID wraparound.
+
+  * Repository moved to git, update Vcs headers.
+
+ -- Christoph Berg <christoph.berg@credativ.de>  Thu, 21 May 2015 15:58:30 +0200
+
 postgresql-9.4 (9.4.1-1) unstable; urgency=medium
 
   * New upstream version.

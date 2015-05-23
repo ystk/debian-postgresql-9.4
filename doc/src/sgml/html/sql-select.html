@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4.1 Documentation"
+TITLE="PostgreSQL 9.4.2 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="SQL Commands"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2015-02-02T20:51:01"></HEAD
+CONTENT="2015-05-19T23:16:15"></HEAD
 ><BODY
 CLASS="REFENTRY"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4.1 Documentation</A
+>PostgreSQL 9.4.2 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -95,7 +95,7 @@ NAME="SQL-SELECT"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN83116"
+NAME="AEN83142"
 ></A
 ><H2
 >Name</H2
@@ -103,7 +103,7 @@ NAME="AEN83116"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN83121"
+NAME="AEN83147"
 ></A
 ><H2
 >Synopsis</H2
@@ -443,7 +443,7 @@ CLASS="REPLACEABLE"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN83182"
+NAME="AEN83208"
 ></A
 ><H2
 >Description</H2
@@ -799,7 +799,7 @@ CLASS="LITERAL"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN83266"
+NAME="AEN83292"
 ></A
 ><H2
 >Parameters</H2
@@ -2158,13 +2158,13 @@ CLASS="REPLACEABLE"
 
 </P><PRE
 CLASS="SYNOPSIS"
->[ RANGE | ROWS ] <TT
+>{ RANGE | ROWS } <TT
 CLASS="REPLACEABLE"
 ><I
 >frame_start</I
 ></TT
 >
-[ RANGE | ROWS ] BETWEEN <TT
+{ RANGE | ROWS } BETWEEN <TT
 CLASS="REPLACEABLE"
 ><I
 >frame_start</I
@@ -3995,7 +3995,7 @@ CLASS="LITERAL"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN84041"
+NAME="AEN84067"
 ></A
 ><H2
 >Examples</H2
@@ -4288,7 +4288,7 @@ FROM manufacturers m LEFT JOIN LATERAL get_product_names(m.id) pname ON true;</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN84083"
+NAME="AEN84109"
 ></A
 ><H2
 >Compatibility</H2
@@ -4303,7 +4303,7 @@ CLASS="COMMAND"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN84087"
+NAME="AEN84113"
 ></A
 ><H3
 >Omitted <TT
@@ -4364,7 +4364,7 @@ CLASS="LITERAL"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN84101"
+NAME="AEN84127"
 ></A
 ><H3
 >Empty <TT
@@ -4392,7 +4392,7 @@ CLASS="LITERAL"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN84108"
+NAME="AEN84134"
 ></A
 ><H3
 >Omitting the <TT
@@ -4441,7 +4441,7 @@ CLASS="LITERAL"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN84120"
+NAME="AEN84146"
 ></A
 ><H3
 ><TT
@@ -4488,7 +4488,7 @@ CLASS="LITERAL"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN84133"
+NAME="AEN84159"
 ></A
 ><H3
 >Function Calls in <TT
@@ -4566,7 +4566,7 @@ CLASS="LITERAL"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN84152"
+NAME="AEN84178"
 ></A
 ><H3
 >Namespace Available to <TT
@@ -4620,7 +4620,7 @@ CLASS="LITERAL"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN84165"
+NAME="AEN84191"
 ></A
 ><H3
 >Functional Dependencies</H3
@@ -4644,7 +4644,7 @@ CLASS="LITERAL"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN84171"
+NAME="AEN84197"
 ></A
 ><H3
 ><TT
@@ -4669,7 +4669,7 @@ CLASS="PRODUCTNAME"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN84177"
+NAME="AEN84203"
 ></A
 ><H3
 ><TT
@@ -4727,7 +4727,7 @@ CLASS="LITERAL"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN84191"
+NAME="AEN84217"
 ></A
 ><H3
 ><TT
@@ -4784,7 +4784,7 @@ CLASS="LITERAL"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN84207"
+NAME="AEN84233"
 ></A
 ><H3
 >Data-Modifying Statements in <TT
@@ -4815,7 +4815,7 @@ CLASS="LITERAL"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN84216"
+NAME="AEN84242"
 ></A
 ><H3
 >Nonstandard Clauses</H3

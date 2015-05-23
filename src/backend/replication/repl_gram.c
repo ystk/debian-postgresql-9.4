@@ -1633,7 +1633,7 @@ yyreduce:
     {
 					StartReplicationCmd *cmd;
 					cmd = makeNode(StartReplicationCmd);
-					cmd->kind = REPLICATION_KIND_LOGICAL;;
+					cmd->kind = REPLICATION_KIND_LOGICAL;
 					cmd->slotname = (yyvsp[(3) - (6)].str);
 					cmd->startpoint = (yyvsp[(5) - (6)].recptr);
 					cmd->options = (yyvsp[(6) - (6)].list);

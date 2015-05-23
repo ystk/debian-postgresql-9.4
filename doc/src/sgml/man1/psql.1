@@ -3,11 +3,11 @@
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets v1.76.1 <http://docbook.sf.net/>
 .\"      Date: 2015
-.\"    Manual: PostgreSQL 9.4.1 Documentation
-.\"    Source: PostgreSQL 9.4.1
+.\"    Manual: PostgreSQL 9.4.2 Documentation
+.\"    Source: PostgreSQL 9.4.2
 .\"  Language: English
 .\"
-.TH "PSQL" "1" "2015" "PostgreSQL 9.4.1" "PostgreSQL 9.4.1 Documentation"
+.TH "PSQL" "1" "2015" "PostgreSQL 9.4.2" "PostgreSQL 9.4.2 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -546,7 +546,7 @@ is currently connected, followed by the string
 .\}
 .nf
 $ \fBpsql testdb\fR
-psql (9\&.4\&.1)
+psql (9\&.4\&.2)
 Type "help" for help\&.
 
 testdb=>
@@ -637,24 +637,46 @@ If the current table output format is unaligned, it is switched to aligned\&. If
 for a more general solution\&.
 .RE
 .PP
-\ec or \econnect [ \fIdbname\fR [ \fIusername\fR ] [ \fIhost\fR ] [ \fIport\fR ] ]
+\ec or \econnect [ \fIdbname\fR [ \fIusername\fR ] [ \fIhost\fR ] [ \fIport\fR ] ] | \fIconninfo\fR
 .RS 4
 Establishes a new connection to a
 PostgreSQL
-server\&. If the new connection is successfully made, the previous connection is closed\&. If any of
+server\&. The connection parameters to use can be specified either using a positional syntax, or using
+conninfo
+connection strings as detailed in
+Section 31.1.1, \(lqConnection Strings\(rq, in the documentation\&.
+.sp
+When using positional parameters, if any of
 \fIdbname\fR,
 \fIusername\fR,
 \fIhost\fR
 or
 \fIport\fR
 are omitted or specified as
-\-, the value of that parameter from the previous connection is used\&. If there is no previous connection, the
+\-, the value of that parameter from the previous connection is used; if there is no previous connection, the
 libpq
-default for the parameter\*(Aqs value is used\&.
+default for the parameter\*(Aqs value is used\&. When using
+conninfo
+strings, no values from the previous connection are used for the new connection\&.
 .sp
-If the connection attempt failed (wrong user name, access denied, etc\&.), the previous connection will only be kept if
+If the new connection is successfully made, the previous connection is closed\&. If the connection attempt failed (wrong user name, access denied, etc\&.), the previous connection will only be kept if
 psql
 is in interactive mode\&. When executing a non\-interactive script, processing will immediately stop with an error\&. This distinction was chosen as a user convenience against typos on the one hand, and a safety mechanism that scripts are not accidentally acting on the wrong database on the other hand\&.
+.sp
+Examples:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+=> \ec mydb myuser host\&.dom 6432
+=> \ec service=foo
+=> \ec "host=localhost port=5432 dbname=mydb connect_timeout=10 sslmode=disable"
+=> \ec postgresql://tom@localhost/mydb?application_name=myapp
+.fi
+.if n \{\
+.RE
+.\}
 .RE
 .PP
 \eC [ \fItitle\fR ]
