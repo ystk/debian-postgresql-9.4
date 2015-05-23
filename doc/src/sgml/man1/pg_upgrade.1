@@ -3,11 +3,11 @@
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets v1.76.1 <http://docbook.sf.net/>
 .\"      Date: 2015
-.\"    Manual: PostgreSQL 9.4.1 Documentation
-.\"    Source: PostgreSQL 9.4.1
+.\"    Manual: PostgreSQL 9.4.2 Documentation
+.\"    Source: PostgreSQL 9.4.2
 .\"  Language: English
 .\"
-.TH "PG_UPGRADE" "1" "2015" "PostgreSQL 9.4.1" "PostgreSQL 9.4.1 Documentation"
+.TH "PG_UPGRADE" "1" "2015" "PostgreSQL 9.4.2" "PostgreSQL 9.4.2 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -305,7 +305,7 @@ Install custom shared object files: Install any custom shared object files (or D
 pgcrypto\&.so, whether they are from
 contrib
 or some other source\&. Do not install the schema definitions, e\&.g\&.
-pgcrypto\&.sql, because these will be upgraded from the old cluster\&.
+pgcrypto\&.sql, because these will be upgraded from the old cluster\&. Also, any custom full text search files (dictionary, synonym, thesaurus, stop words) must also be copied to the new cluster\&.
 .RE
 .sp
 .RS 4

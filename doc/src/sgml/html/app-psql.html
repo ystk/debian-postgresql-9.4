@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4.1 Documentation"
+TITLE="PostgreSQL 9.4.2 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="PostgreSQL Client Applications"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2015-02-02T20:51:01"></HEAD
+CONTENT="2015-05-19T23:16:15"></HEAD
 ><BODY
 CLASS="REFENTRY"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4.1 Documentation</A
+>PostgreSQL 9.4.2 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -98,7 +98,7 @@ CLASS="APPLICATION"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN90143"
+NAME="AEN90169"
 ></A
 ><H2
 >Name</H2
@@ -113,7 +113,7 @@ CLASS="PRODUCTNAME"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN90148"
+NAME="AEN90174"
 ></A
 ><H2
 >Synopsis</H2
@@ -142,7 +142,7 @@ CLASS="REPLACEABLE"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN90157"
+NAME="AEN90183"
 ></A
 ><H2
 >Description</H2
@@ -1204,7 +1204,7 @@ CLASS="APPLICATION"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN90526"
+NAME="AEN90552"
 ></A
 ><H2
 >Exit Status</H2
@@ -1225,7 +1225,7 @@ CLASS="VARNAME"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN90531"
+NAME="AEN90557"
 ></A
 ><H2
 >Usage</H2
@@ -1411,7 +1411,7 @@ CLASS="PROGRAMLISTING"
 CLASS="USERINPUT"
 >psql testdb</KBD
 >
-psql (9.4.1)
+psql (9.4.2)
 Type "help" for help.
 
 testdb=&gt;</PRE
@@ -1669,7 +1669,12 @@ CLASS="REPLACEABLE"
 ><I
 >port</I
 ></TT
-> ] ]</TT
+> ] ] | <TT
+CLASS="REPLACEABLE"
+><I
+>conninfo</I
+></TT
+> </TT
 ></DT
 ><DD
 ><P
@@ -1677,41 +1682,61 @@ CLASS="REPLACEABLE"
 CLASS="PRODUCTNAME"
 >PostgreSQL</SPAN
 >
-        server. If the new connection is successfully made, the
-        previous connection is closed. If any of <TT
+        server.  The connection parameters to use can be specified either
+        using a positional syntax, or using <TT
+CLASS="LITERAL"
+>conninfo</TT
+> connection
+        strings as detailed in <A
+HREF="libpq-connect.html#LIBPQ-CONNSTRING"
+>Section 31.1.1</A
+>.
+        </P
+><P
+>        When using positional parameters, if any of
+        <TT
 CLASS="REPLACEABLE"
 ><I
 >dbname</I
 ></TT
->, <TT
+>,
+        <TT
 CLASS="REPLACEABLE"
 ><I
 >username</I
 ></TT
->, <TT
+>,
+        <TT
 CLASS="REPLACEABLE"
 ><I
 >host</I
 ></TT
-> or <TT
+> or
+        <TT
 CLASS="REPLACEABLE"
 ><I
 >port</I
 ></TT
-> are omitted or specified
-        as <TT
+> are omitted or
+        specified as <TT
 CLASS="LITERAL"
 >-</TT
->, the value of that parameter from the
-        previous connection is used. If there is no previous
-        connection, the <SPAN
+>, the value of that parameter from
+        the previous connection is used; if there is no previous connection,
+        the <SPAN
 CLASS="APPLICATION"
 >libpq</SPAN
-> default for
-        the parameter's value is used.
+> default for the parameter's value
+        is used.  When using <TT
+CLASS="LITERAL"
+>conninfo</TT
+> strings, no values from the
+        previous connection are used for the new connection.
         </P
 ><P
->        If the connection attempt failed (wrong user name, access
+>        If the new connection is successfully made, the previous
+        connection is closed.
+        If the connection attempt failed (wrong user name, access
         denied, etc.), the previous connection will only be kept if
         <SPAN
 CLASS="APPLICATION"
@@ -1723,6 +1748,15 @@ CLASS="APPLICATION"
         mechanism that scripts are not accidentally acting on the
         wrong database on the other hand.
         </P
+><P
+>        Examples:
+        </P
+><PRE
+CLASS="PROGRAMLISTING"
+>=&gt; \c mydb myuser host.dom 6432
+=&gt; \c service=foo
+=&gt; \c "host=localhost port=5432 dbname=mydb connect_timeout=10 sslmode=disable"
+=&gt; \c postgresql://tom@localhost/mydb?application_name=myapp</PRE
 ></DD
 ><DT
 ><TT
@@ -5788,7 +5822,7 @@ CLASS="LITERAL"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN91788"
+NAME="AEN91821"
 ></A
 ><H3
 >Advanced Features</H3
@@ -7099,7 +7133,7 @@ CLASS="APPLICATION"
 ><DIV
 CLASS="REFSECT3"
 ><A
-NAME="AEN92181"
+NAME="AEN92214"
 ></A
 ><H4
 >Command-Line Editing</H4
@@ -7387,7 +7421,7 @@ HREF="libpq-envars.html"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN92280"
+NAME="AEN92313"
 ></A
 ><H2
 >Files</H2
@@ -7535,7 +7569,7 @@ CLASS="ENVAR"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN92321"
+NAME="AEN92354"
 ></A
 ><H2
 >Notes</H2
@@ -7605,7 +7639,7 @@ CLASS="APPLICATION"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN92338"
+NAME="AEN92371"
 ></A
 ><H2
 >Notes for Windows Users</H2
