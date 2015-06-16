@@ -862,7 +862,7 @@ YY_RULE_SETUP
 					litbuf[litbufpos] = '\0';
 					yylval.str = strdup(litbuf);
 					BEGIN(INITIAL);
-					return(string);
+					return(string_literal);
 				}
 	YY_BREAK
 case 11:
