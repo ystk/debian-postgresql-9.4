@@ -1,3 +1,11 @@
+postgresql-9.4 (9.4.4-0+deb8u1) jessie; urgency=medium
+
+  * New upstream version.
+    + Fix possible failure to recover from an inconsistent database state
+    + Fix rare failure to invalidate relation cache init file
+
+ -- Christoph Berg <myon@debian.org>  Thu, 11 Jun 2015 20:35:19 +0200
+
 postgresql-9.4 (9.4.3-0+deb8u1) jessie; urgency=medium
 
   * New upstream version:
