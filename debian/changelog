@@ -1,3 +1,23 @@
+postgresql-9.4 (9.4.5-0+deb8u1) jessie-security; urgency=medium
+
+  * New upstream security release.
+
+    + Guard against stack overflows in json parsing (Oskari Saarenmaa)
+
+      If an application constructs PostgreSQL json or jsonb values from
+      arbitrary user input, the application's users can reliably crash the
+      PostgreSQL server, causing momentary denial of service.  (CVE-2015-5289)
+
+    + Fix contrib/pgcrypto to detect and report too-short crypt() salts
+      (Josh Kupershmidt)
+
+      Certain invalid salt arguments crashed the server or disclosed a few
+      bytes of server memory.  We have not ruled out the viability of attacks
+      that arrange for presence of confidential information in the disclosed
+      bytes, but they seem unlikely.  (CVE-2015-5288)
+
+ -- Christoph Berg <christoph.berg@credativ.de>  Thu, 08 Oct 2015 14:24:00 +0200
+
 postgresql-9.4 (9.4.4-0+deb8u1) jessie; urgency=medium
 
   * New upstream version.
