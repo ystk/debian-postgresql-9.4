@@ -1679,8 +1679,8 @@
 3932	pg_proc	0	key value pairs of a jsonb object
 3209	pg_proc	0	get record fields from a jsonb object
 3475	pg_proc	0	get set of records with fields from a jsonb array of objects
-3490	pg_proc	0	get record fields from a json object
-3491	pg_proc	0	get set of records with fields from a json array of objects
+3490	pg_proc	0	get record fields from a jsonb object
+3491	pg_proc	0	get set of records with fields from a jsonb array of objects
 3210	pg_proc	0	get the type of a jsonb value
 4044	pg_proc	0	less-equal-greater
 4045	pg_proc	0	hash

@@ -1,13 +1,13 @@
 '\" t
 .\"     Title: CREATE TABLE
 .\"    Author: The PostgreSQL Global Development Group
-.\" Generator: DocBook XSL Stylesheets v1.76.1 <http://docbook.sf.net/>
-.\"      Date: 2015
-.\"    Manual: PostgreSQL 9.4.5 Documentation
-.\"    Source: PostgreSQL 9.4.5
+.\" Generator: DocBook XSL Stylesheets v1.78.1 <http://docbook.sf.net/>
+.\"      Date: 2016
+.\"    Manual: PostgreSQL 9.4.6 Documentation
+.\"    Source: PostgreSQL 9.4.6
 .\"  Language: English
 .\"
-.TH "CREATE TABLE" "7" "2015" "PostgreSQL 9.4.5" "PostgreSQL 9.4.5 Documentation"
+.TH "CREATE TABLE" "7" "2016" "PostgreSQL 9.4.6" "PostgreSQL 9.4.6 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -92,14 +92,12 @@ and \fIlike_option\fR is:
 .fi
 .SH "DESCRIPTION"
 .PP
-
 \fBCREATE TABLE\fR
 will create a new, initially empty table in the current database\&. The table will be owned by the user issuing the command\&.
 .PP
 If a schema name is given (for example,
 CREATE TABLE myschema\&.mytable \&.\&.\&.) then the table is created in the specified schema\&. Otherwise it is created in the current schema\&. Temporary tables exist in a special schema, so a schema name cannot be given when creating a temporary table\&. The name of the table must be distinct from the name of any other table, sequence, index, view, or foreign table in the same schema\&.
 .PP
-
 \fBCREATE TABLE\fR
 also automatically creates a data type that represents the composite type corresponding to one row of the table\&. Therefore, tables cannot have the same name as any existing data type in the same schema\&.
 .PP
@@ -332,16 +330,17 @@ PRIMARY KEY (column constraint)
 .br
 PRIMARY KEY ( \fIcolumn_name\fR [, \&.\&.\&. ] ) (table constraint)
 .RS 4
-The primary key constraint specifies that a column or columns of a table can contain only unique (non\-duplicate), nonnull values\&. Technically,
+The
 PRIMARY KEY
-is merely a combination of
+constraint specifies that a column or columns of a table can contain only unique (non\-duplicate), nonnull values\&. Only one primary key can be specified for a table, whether as a column constraint or a table constraint\&.
+.sp
+The primary key constraint should name a set of columns that is different from the set of columns named by any unique constraint defined for the same table\&. (Otherwise, the unique constraint is redundant and will be discarded\&.)
+.sp
+PRIMARY KEY
+enforces the same data constraints as a combination of
 UNIQUE
 and
-NOT NULL, but identifying a set of columns as primary key also provides metadata about the design of the schema, as a primary key implies that other tables can rely on this set of columns as a unique identifier for rows\&.
-.sp
-Only one primary key can be specified for a table, whether as a column constraint or a table constraint\&.
-.sp
-The primary key constraint should name a set of columns that is different from other sets of columns named by any unique constraint defined for the same table\&.
+NOT NULL, but identifying a set of columns as the primary key also provides metadata about the design of the schema, since a primary key implies that other tables can rely on this set of columns as a unique identifier for rows\&.
 .RE
 .PP
 EXCLUDE [ USING \fIindex_method\fR ] ( \fIexclude_element\fR WITH \fIoperator\fR [, \&.\&.\&. ] ) \fIindex_parameters\fR [ WHERE ( \fIpredicate\fR ) ]
@@ -743,7 +742,6 @@ is not recommended for tables with no primary key, since without either an OID o
 .sp .5v
 .RE
 .PP
-
 PostgreSQL
 automatically creates an index for each unique constraint and primary key constraint to enforce uniqueness\&. Thus, it is not necessary to create an index explicitly for primary key columns\&. (See
 CREATE INDEX (\fBCREATE_INDEX\fR(7))
@@ -1108,8 +1106,7 @@ extension\&.
 .SS "NULL \(lqConstraint\(rq"
 .PP
 The
-NULL
-\(lqconstraint\(rq
+NULL\(lqconstraint\(rq
 (actually a non\-constraint) is a
 PostgreSQL
 extension to the SQL standard that is included for compatibility with some other database systems (and for symmetry with the
@@ -1125,7 +1122,6 @@ language extension\&. SQL:1999 and later define single inheritance using a diffe
 PostgreSQL\&.
 .SS "Zero\-column Tables"
 .PP
-
 PostgreSQL
 allows a table of no columns to be created (for example,
 CREATE TABLE foo();)\&. This is an extension from the SQL standard, which does not allow zero\-column tables\&. Zero\-column tables are not in themselves very useful, but disallowing them creates odd special cases for

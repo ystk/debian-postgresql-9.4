@@ -1,13 +1,13 @@
 '\" t
 .\"     Title: pg_ctl
 .\"    Author: The PostgreSQL Global Development Group
-.\" Generator: DocBook XSL Stylesheets v1.76.1 <http://docbook.sf.net/>
-.\"      Date: 2015
-.\"    Manual: PostgreSQL 9.4.5 Documentation
-.\"    Source: PostgreSQL 9.4.5
+.\" Generator: DocBook XSL Stylesheets v1.78.1 <http://docbook.sf.net/>
+.\"      Date: 2016
+.\"    Manual: PostgreSQL 9.4.6 Documentation
+.\"    Source: PostgreSQL 9.4.6
 .\"  Language: English
 .\"
-.TH "PG_CTL" "1" "2015" "PostgreSQL 9.4.5" "PostgreSQL 9.4.5 Documentation"
+.TH "PG_CTL" "1" "2016" "PostgreSQL 9.4.6" "PostgreSQL 9.4.6 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -52,7 +52,6 @@ pg_ctl \- initialize, start, stop, or control a PostgreSQL server
 \fBpg_ctl\fR \fBunregister\fR [\fB\-N\fR\ \fIservicename\fR]
 .SH "DESCRIPTION"
 .PP
-
 pg_ctl
 is a utility for initializing a
 PostgreSQL
@@ -104,7 +103,6 @@ mode does not wait for clients to disconnect and will terminate an online backup
 \(lqImmediate\(rq
 mode will abort all server processes immediately, without a clean shutdown\&. This will lead to a crash\-recovery run on the next restart\&.
 .PP
-
 \fBrestart\fR
 mode effectively executes a stop followed by a start\&. This allows changing the
 \fBpostgres\fR
@@ -112,7 +110,6 @@ command\-line options\&.
 \fBrestart\fR
 might fail if relative paths specified were specified on the command\-line during server start\&.
 .PP
-
 \fBreload\fR
 mode simply sends the
 \fBpostgres\fR
@@ -121,7 +118,6 @@ SIGHUP
 signal, causing it to reread its configuration files (postgresql\&.conf,
 pg_hba\&.conf, etc\&.)\&. This allows changing of configuration\-file options that do not require a complete restart to take effect\&.
 .PP
-
 \fBstatus\fR
 mode checks whether a server is running in the specified data directory\&. If it is, the
 PID
@@ -131,7 +127,6 @@ In
 \fBpromote\fR
 mode, the standby server that is running in the specified data directory is commanded to exit recovery and begin read\-write operations\&.
 .PP
-
 \fBkill\fR
 mode allows you to send a signal to a specified process\&. This is particularly valuable for
 Microsoft Windows
@@ -141,7 +136,6 @@ command\&. Use
 \-\-help
 to see a list of supported signal names\&.
 .PP
-
 \fBregister\fR
 mode allows you to register a system service on
 Microsoft Windows\&. The
@@ -152,7 +146,6 @@ option allows selection of service start type, either
 \(lqdemand\(rq
 (start service on demand)\&.
 .PP
-
 \fBunregister\fR
 mode allows you to unregister a system service on
 Microsoft Windows\&. This undoes the effects of the
@@ -320,7 +313,6 @@ DOMAIN\eusername\&.
 Default data directory location\&.
 .RE
 .PP
-
 \fBpg_ctl\fR, like most other
 PostgreSQL
 utilities, also uses the environment variables supported by

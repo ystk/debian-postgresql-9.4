@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4.5 Documentation"
+TITLE="PostgreSQL 9.4.6 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="Concurrency Control"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2015-10-05T19:28:19"></HEAD
+CONTENT="2016-02-08T21:28:58"></HEAD
 ><BODY
 CLASS="SECT1"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4.5 Documentation</A
+>PostgreSQL 9.4.6 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -557,10 +557,18 @@ CLASS="COMMAND"
          <TT
 CLASS="COMMAND"
 >CLUSTER</TT
->, and <TT
+>, <TT
 CLASS="COMMAND"
 >VACUUM FULL</TT
->
+>,
+         and <TT
+CLASS="COMMAND"
+>REFRESH MATERIALIZED VIEW</TT
+> (without
+         <TT
+CLASS="OPTION"
+>CONCURRENTLY</TT
+>)
          commands. Many forms of <TT
 CLASS="COMMAND"
 >ALTER TABLE</TT

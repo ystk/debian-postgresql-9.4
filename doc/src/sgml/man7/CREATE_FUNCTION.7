@@ -1,13 +1,13 @@
 '\" t
 .\"     Title: CREATE FUNCTION
 .\"    Author: The PostgreSQL Global Development Group
-.\" Generator: DocBook XSL Stylesheets v1.76.1 <http://docbook.sf.net/>
-.\"      Date: 2015
-.\"    Manual: PostgreSQL 9.4.5 Documentation
-.\"    Source: PostgreSQL 9.4.5
+.\" Generator: DocBook XSL Stylesheets v1.78.1 <http://docbook.sf.net/>
+.\"      Date: 2016
+.\"    Manual: PostgreSQL 9.4.6 Documentation
+.\"    Source: PostgreSQL 9.4.6
 .\"  Language: English
 .\"
-.TH "CREATE FUNCTION" "7" "2015" "PostgreSQL 9.4.5" "PostgreSQL 9.4.5 Documentation"
+.TH "CREATE FUNCTION" "7" "2016" "PostgreSQL 9.4.6" "PostgreSQL 9.4.6 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -51,7 +51,6 @@ CREATE [ OR REPLACE ] FUNCTION
 .fi
 .SH "DESCRIPTION"
 .PP
-
 \fBCREATE FUNCTION\fR
 defines a new function\&.
 \fBCREATE OR REPLACE FUNCTION\fR
@@ -236,7 +235,6 @@ Section 35.6, \(lqFunction Volatility Categories\(rq, in the documentation\&.
 .PP
 LEAKPROOF
 .RS 4
-
 LEAKPROOF
 indicates that the function has no side effects\&. It reveals no information about its arguments other than by its return value\&. For example, a function which throws an error message for some argument values but not others, or which includes the argument values in any error message, is not leakproof\&. The query planner may push leakproof functions (but not others) into views created with the
 security_barrier
@@ -366,7 +364,6 @@ Section 35.3, \(lqUser-defined Functions\(rq, in the documentation
 for further information on writing functions\&.
 .SH "OVERLOADING"
 .PP
-
 PostgreSQL
 allows function
 overloading; that is, the same name can be used for several different functions so long as they have distinct input argument types\&. However, the C names of all functions must be different, so you must give overloaded C functions different C names (for example, use the argument types as part of the C names)\&.

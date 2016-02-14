@@ -1,13 +1,13 @@
 '\" t
 .\"     Title: pg_receivexlog
 .\"    Author: The PostgreSQL Global Development Group
-.\" Generator: DocBook XSL Stylesheets v1.76.1 <http://docbook.sf.net/>
-.\"      Date: 2015
-.\"    Manual: PostgreSQL 9.4.5 Documentation
-.\"    Source: PostgreSQL 9.4.5
+.\" Generator: DocBook XSL Stylesheets v1.78.1 <http://docbook.sf.net/>
+.\"      Date: 2016
+.\"    Manual: PostgreSQL 9.4.6 Documentation
+.\"    Source: PostgreSQL 9.4.6
 .\"  Language: English
 .\"
-.TH "PG_RECEIVEXLOG" "1" "2015" "PostgreSQL 9.4.5" "PostgreSQL 9.4.5 Documentation"
+.TH "PG_RECEIVEXLOG" "1" "2016" "PostgreSQL 9.4.6" "PostgreSQL 9.4.6 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -34,14 +34,12 @@ pg_receivexlog \- stream transaction logs from a PostgreSQL server
 \fBpg_receivexlog\fR [\fIoption\fR...]
 .SH "DESCRIPTION"
 .PP
-
 pg_receivexlog
 is used to stream transaction log from a running
 PostgreSQL
 cluster\&. The transaction log is streamed using the streaming replication protocol, and is written to a local directory of files\&. This directory can be used as the archive location for doing a restore using point\-in\-time recovery (see
 Section 24.3, \(lqContinuous Archiving and Point-in-Time Recovery (PITR)\(rq, in the documentation)\&.
 .PP
-
 pg_receivexlog
 streams the transaction log in real time as it\*(Aqs being generated on the server, and does not wait for segments to complete like
 archive_command

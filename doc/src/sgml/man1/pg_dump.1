@@ -1,13 +1,13 @@
 '\" t
 .\"     Title: pg_dump
 .\"    Author: The PostgreSQL Global Development Group
-.\" Generator: DocBook XSL Stylesheets v1.76.1 <http://docbook.sf.net/>
-.\"      Date: 2015
-.\"    Manual: PostgreSQL 9.4.5 Documentation
-.\"    Source: PostgreSQL 9.4.5
+.\" Generator: DocBook XSL Stylesheets v1.78.1 <http://docbook.sf.net/>
+.\"      Date: 2016
+.\"    Manual: PostgreSQL 9.4.6 Documentation
+.\"    Source: PostgreSQL 9.4.6
 .\"  Language: English
 .\"
-.TH "PG_DUMP" "1" "2015" "PostgreSQL 9.4.5" "PostgreSQL 9.4.5 Documentation"
+.TH "PG_DUMP" "1" "2016" "PostgreSQL 9.4.6" "PostgreSQL 9.4.6 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -34,7 +34,6 @@ pg_dump \- extract a PostgreSQL database into a script file or other archive fil
 \fBpg_dump\fR [\fIconnection\-option\fR...] [\fIoption\fR...] [\fIdbname\fR]
 .SH "DESCRIPTION"
 .PP
-
 pg_dump
 is a utility for backing up a
 PostgreSQL
@@ -187,7 +186,7 @@ tar
 .RS 4
 Output a
 \fBtar\fR\-format archive suitable for input into
-pg_restore\&. The tar\-format is compatible with the directory\-format; extracting a tar\-format archive produces a valid directory\-format archive\&. However, the tar\-format does not support compression and has a limit of 8 GB on the size of individual tables\&. Also, the relative order of table data items cannot be changed during restore\&.
+pg_restore\&. The tar format is compatible with the directory format: extracting a tar\-format archive produces a valid directory\-format archive\&. However, the tar format does not support compression\&. Also, when using tar format the relative order of table data items cannot be changed during restore\&.
 .RE
 .RE
 .PP
@@ -748,8 +747,7 @@ to avoid the extra connection attempt\&.
 Specifies a role name to be used to create the dump\&. This option causes
 pg_dump
 to issue a
-\fBSET ROLE\fR
-\fIrolename\fR
+\fBSET ROLE\fR\fIrolename\fR
 command after connecting to the database\&. It is useful when the authenticated user (specified by
 \fB\-U\fR) lacks privileges needed by
 pg_dump, but can switch to a role with the required rights\&. Some installations have a policy against logging in directly as a superuser, and use of this option allows dumps to be made without violating the policy\&.
@@ -777,7 +775,6 @@ libpq
 Section 31.14, \(lqEnvironment Variables\(rq, in the documentation)\&.
 .SH "DIAGNOSTICS"
 .PP
-
 pg_dump
 internally executes
 \fBSELECT\fR
@@ -822,8 +819,6 @@ When a data\-only dump is chosen and the option
 is used,
 pg_dump
 emits commands to disable triggers on user tables before inserting the data, and then commands to re\-enable them after the data has been inserted\&. If the restore is stopped in the middle, the system catalogs might be left in the wrong state\&.
-.PP
-Members of tar archives are limited to a size less than 8 GB\&. (This is an inherent limitation of the tar file format\&.) Therefore this format cannot be used if the textual representation of any one table exceeds that size\&. The total size of a tar archive and any of the other output formats is not limited, except possibly by the operating system\&.
 .PP
 The dump file produced by
 pg_dump

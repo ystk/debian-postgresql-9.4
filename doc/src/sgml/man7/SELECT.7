@@ -1,13 +1,13 @@
 '\" t
 .\"     Title: SELECT
 .\"    Author: The PostgreSQL Global Development Group
-.\" Generator: DocBook XSL Stylesheets v1.76.1 <http://docbook.sf.net/>
-.\"      Date: 2015
-.\"    Manual: PostgreSQL 9.4.5 Documentation
-.\"    Source: PostgreSQL 9.4.5
+.\" Generator: DocBook XSL Stylesheets v1.78.1 <http://docbook.sf.net/>
+.\"      Date: 2016
+.\"    Manual: PostgreSQL 9.4.6 Documentation
+.\"    Source: PostgreSQL 9.4.6
 .\"  Language: English
 .\"
-.TH "SELECT" "7" "2015" "PostgreSQL 9.4.5" "PostgreSQL 9.4.5 Documentation"
+.TH "SELECT" "7" "2016" "PostgreSQL 9.4.6" "PostgreSQL 9.4.6 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -68,7 +68,6 @@ TABLE [ ONLY ] \fItable_name\fR [ * ]
 .fi
 .SH "DESCRIPTION"
 .PP
-
 \fBSELECT\fR
 retrieves rows from zero or more tables\&. The general processing of
 \fBSELECT\fR
@@ -334,7 +333,6 @@ subquery to reference itself by name\&. Such a subquery must have the form
 .RE
 .\}
 .sp
-
 where the recursive self\-reference must appear on the right\-hand side of the
 UNION\&. Only one recursive self\-reference is permitted per query\&. Recursive data\-modifying statements are not supported, but you can use the results of a recursive
 \fBSELECT\fR
@@ -615,8 +613,7 @@ LATERAL
 .RS 4
 The
 LATERAL
-key word can precede a sub\-\fBSELECT\fR
-FROM
+key word can precede a sub\-\fBSELECT\fRFROM
 item\&. This allows the sub\-\fBSELECT\fR
 to refer to columns of
 FROM
@@ -688,7 +685,6 @@ WHERE \fIcondition\fR
 .RE
 .\}
 .sp
-
 where
 \fIcondition\fR
 is any expression that evaluates to a result of type
@@ -709,7 +705,6 @@ GROUP BY \fIexpression\fR [, \&.\&.\&.]
 .RE
 .\}
 .PP
-
 GROUP BY
 will condense into a single row all selected rows that share the same values for the grouped expressions\&.
 \fIexpression\fR
@@ -769,14 +764,12 @@ HAVING \fIcondition\fR
 .RE
 .\}
 .sp
-
 where
 \fIcondition\fR
 is the same as specified for the
 WHERE
 clause\&.
 .PP
-
 HAVING
 eliminates group rows that do not satisfy the condition\&.
 HAVING
@@ -829,7 +822,6 @@ WINDOW \fIwindow_name\fR AS ( \fIwindow_definition\fR ) [, \&.\&.\&.]
 .RE
 .\}
 .sp
-
 where
 \fIwindow_name\fR
 is a name that can be referenced from
@@ -893,7 +885,6 @@ can be one of
 .RE
 .\}
 .sp
-
 where
 \fIframe_start\fR
 and
@@ -914,7 +905,6 @@ UNBOUNDED FOLLOWING
 .RE
 .\}
 .sp
-
 If
 \fIframe_end\fR
 is omitted it defaults to
@@ -954,11 +944,9 @@ RANGE
 mode it means that the frame starts or ends with the current row\*(Aqs first or last peer in the
 ORDER BY
 ordering\&. The
-\fIvalue\fR
-PRECEDING
+\fIvalue\fRPRECEDING
 and
-\fIvalue\fR
-FOLLOWING
+\fIvalue\fRFOLLOWING
 cases are currently only allowed in
 ROWS
 mode\&. They indicate that the frame starts or ends with the row that many rows before or after the current row\&.
@@ -1029,8 +1017,7 @@ has a name\&. In a simple
 this name is just used to label the column for display, but when the
 \fBSELECT\fR
 is a sub\-query of a larger query, the name is seen by the larger query as the column name of the virtual table produced by the sub\-query\&. To specify the name to use for an output column, write
-AS
-\fIoutput_name\fR
+AS\fIoutput_name\fR
 after the column\*(Aqs expression\&. (You can omit
 AS, but only if the desired output name does not match any
 PostgreSQL
@@ -1065,7 +1052,6 @@ is specified, all duplicate rows are removed from the result set (one row is kep
 SELECT ALL
 specifies the opposite: all rows are kept; that is the default\&.
 .PP
-
 SELECT DISTINCT ON ( \fIexpression\fR [, \&.\&.\&.] )
 keeps only the first row of each set of rows where the given expressions evaluate to equal\&. The
 DISTINCT ON
@@ -1335,7 +1321,6 @@ ORDER BY \fIexpression\fR [ ASC | DESC | USING \fIoperator\fR ] [ NULLS { FIRST 
 .RE
 .\}
 .sp
-
 The
 ORDER BY
 clause causes the result rows to be sorted according to the specified expression(s)\&. If two rows are equal according to the leftmost expression, they are compared according to the next expression and so on\&. If they are equal according to all specified expressions, they are returned in an implementation\-dependent order\&.
@@ -1446,7 +1431,6 @@ OFFSET \fIstart\fR
 .RE
 .\}
 .sp
-
 \fIcount\fR
 specifies the maximum number of rows to return, while
 \fIstart\fR
@@ -1479,7 +1463,6 @@ FETCH { FIRST | NEXT } [ \fIcount\fR ] { ROW | ROWS } ONLY
 .RE
 .\}
 .sp
-
 In this syntax, to write anything except a simple integer constant for
 \fIstart\fR
 or
@@ -1530,7 +1513,6 @@ ORDER BY
 to enforce selection of a deterministic subset\&. Again, this is not a bug; determinism of the results is simply not guaranteed in such a case\&.
 .SS "The Locking Clause"
 .PP
-
 FOR UPDATE,
 FOR NO KEY UPDATE,
 FOR SHARE
@@ -1553,7 +1535,6 @@ FOR \fIlock_strength\fR [ OF \fItable_name\fR [, \&.\&.\&.] ] [ NOWAIT ]
 .RE
 .\}
 .sp
-
 where
 \fIlock_strength\fR
 can be one of
@@ -2034,7 +2015,6 @@ Of course, the
 statement is compatible with the SQL standard\&. But there are some extensions and some missing features\&.
 .SS "Omitted FROM Clauses"
 .PP
-
 PostgreSQL
 allows one to omit the
 FROM
@@ -2073,7 +2053,6 @@ SELECT distributors\&.* WHERE distributors\&.name = \*(AqWestward\*(Aq;
 .RE
 .\}
 .sp
-
 PostgreSQL
 releases prior to 8\&.1 would accept queries of this form, and add an implicit entry to the query\*(Aqs
 FROM
@@ -2114,7 +2093,6 @@ SELECT * FROM ONLY (tab1), ONLY (tab2) WHERE \&.\&.\&.\&.
 PostgreSQL
 considers these parentheses to be optional\&.
 .PP
-
 PostgreSQL
 allows a trailing
 *
@@ -2126,7 +2104,6 @@ ONLY
 option\&.)
 .SS "Function Calls in FROM"
 .PP
-
 PostgreSQL
 allows a function call to be written directly as a member of the
 FROM
@@ -2166,7 +2143,6 @@ GROUP BY
 expression the same way SQL:1999 does\&.
 .SS "Functional Dependencies"
 .PP
-
 PostgreSQL
 recognizes functional dependency (allowing columns to be omitted from
 GROUP BY) only when a table\*(Aqs primary key is included in the
@@ -2214,7 +2190,6 @@ NOWAIT
 option, do not appear in the standard\&.
 .SS "Data\-Modifying Statements in WITH"
 .PP
-
 PostgreSQL
 allows
 \fBINSERT\fR,
@@ -2225,10 +2200,8 @@ WITH
 queries\&. This is not found in the SQL standard\&.
 .SS "Nonstandard Clauses"
 .PP
-
 DISTINCT ON ( \&.\&.\&. )
 is an extension of the SQL standard\&.
 .PP
-
 ROWS FROM( \&.\&.\&. )
 is an extension of the SQL standard\&.

@@ -1,13 +1,13 @@
 '\" t
 .\"     Title: pg_resetxlog
 .\"    Author: The PostgreSQL Global Development Group
-.\" Generator: DocBook XSL Stylesheets v1.76.1 <http://docbook.sf.net/>
-.\"      Date: 2015
-.\"    Manual: PostgreSQL 9.4.5 Documentation
-.\"    Source: PostgreSQL 9.4.5
+.\" Generator: DocBook XSL Stylesheets v1.78.1 <http://docbook.sf.net/>
+.\"      Date: 2016
+.\"    Manual: PostgreSQL 9.4.6 Documentation
+.\"    Source: PostgreSQL 9.4.6
 .\"  Language: English
 .\"
-.TH "PG_RESETXLOG" "1" "2015" "PostgreSQL 9.4.5" "PostgreSQL 9.4.5 Documentation"
+.TH "PG_RESETXLOG" "1" "2016" "PostgreSQL 9.4.6" "PostgreSQL 9.4.6 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -34,7 +34,6 @@ pg_resetxlog \- reset the write\-ahead log and other control information of a Po
 \fBpg_resetxlog\fR [\fB\-f\fR] [\fB\-n\fR] [\fB\-o\fR\ \fIoid\fR] [\fB\-x\fR\ \fIxid\fR] [\fB\-e\fR\ \fIxid_epoch\fR] [\fB\-m\fR\ \fImxid\fR,\fImxid\fR] [\fB\-O\fR\ \fImxoff\fR] [\fB\-l\fR\ \fIxlogfile\fR] \fIdatadir\fR
 .SH "DESCRIPTION"
 .PP
-
 \fBpg_resetxlog\fR
 clears the write\-ahead log (WAL) and optionally resets some other control information stored in the
 pg_control
@@ -147,7 +146,6 @@ or higher\&.
 \fBNote\fR
 .ps -1
 .br
-
 \fBpg_resetxlog\fR
 itself looks at the files in
 pg_xlog

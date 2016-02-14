@@ -1305,7 +1305,7 @@ MinGW/Native Windows
 
    To build 64 bit binaries using MinGW, install the 64 bit tool set from
    http://mingw-w64.sourceforge.net/, put its bin directory in the PATH,
-   and run "configure" with the "--host=x86_64-w64-mingw" option.
+   and run "configure" with the "--host=x86_64-w64-mingw32" option.
 
    After you have everything installed, it is suggested that you run psql
    under "CMD.EXE", as the MSYS console has buffering issues.

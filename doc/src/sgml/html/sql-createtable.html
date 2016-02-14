@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4.5 Documentation"
+TITLE="PostgreSQL 9.4.6 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="SQL Commands"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2015-10-05T19:28:19"></HEAD
+CONTENT="2016-02-08T21:28:58"></HEAD
 ><BODY
 CLASS="REFENTRY"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4.5 Documentation</A
+>PostgreSQL 9.4.6 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -95,7 +95,7 @@ NAME="SQL-CREATETABLE"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN75727"
+NAME="AEN75785"
 ></A
 ><H2
 >Name</H2
@@ -103,7 +103,7 @@ NAME="AEN75727"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN75730"
+NAME="AEN75788"
 ></A
 ><H2
 >Synopsis</H2
@@ -555,7 +555,7 @@ CLASS="LITERAL"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN75810"
+NAME="AEN75868"
 ></A
 ><H2
 >Parameters</H2
@@ -1158,32 +1158,35 @@ CLASS="REPLACEABLE"
 > (table constraint)</DT
 ><DD
 ><P
->      The primary key constraint specifies that a column or columns of a table
-      can contain only unique (non-duplicate), nonnull values.
-      Technically, <TT
+>      The <TT
 CLASS="LITERAL"
 >PRIMARY KEY</TT
-> is merely a
-      combination of <TT
+> constraint specifies that a column or
+      columns of a table can contain only unique (non-duplicate), nonnull
+      values. Only one primary key can be specified for a table, whether as a
+      column constraint or a table constraint.
+     </P
+><P
+>      The primary key constraint should name a set of columns that is
+      different from the set of columns named by any unique
+      constraint defined for the same table.  (Otherwise, the unique
+      constraint is redundant and will be discarded.)
+     </P
+><P
+>      <TT
+CLASS="LITERAL"
+>PRIMARY KEY</TT
+> enforces the same data constraints as
+      a combination of <TT
 CLASS="LITERAL"
 >UNIQUE</TT
 > and <TT
 CLASS="LITERAL"
 >NOT NULL</TT
 >, but
-      identifying a set of columns as primary key also provides
-      metadata about the design of the schema, as a primary key
-      implies that other tables
-      can rely on this set of columns as a unique identifier for rows.
-     </P
-><P
->      Only one primary key can be specified for a table, whether as a
-      column constraint or a table constraint.
-     </P
-><P
->      The primary key constraint should name a set of columns that is
-      different from other sets of columns named by any unique
-      constraint defined for the same table.
+      identifying a set of columns as the primary key also provides metadata
+      about the design of the schema, since a primary key implies that other
+      tables can rely on this set of columns as a unique identifier for rows.
      </P
 ></DD
 ><DT
@@ -2627,7 +2630,7 @@ CLASS="ACRONYM"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN76392"
+NAME="AEN76451"
 ></A
 ><H3
 >Temporary Tables</H3
@@ -2726,7 +2729,7 @@ CLASS="LITERAL"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN76415"
+NAME="AEN76474"
 ></A
 ><H3
 >Non-deferred Uniqueness Constraints</H3
@@ -2761,7 +2764,7 @@ CLASS="LITERAL"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN76423"
+NAME="AEN76482"
 ></A
 ><H3
 >Column Check Constraints</H3
@@ -2785,7 +2788,7 @@ CLASS="PRODUCTNAME"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN76429"
+NAME="AEN76488"
 ></A
 ><H3
 ><TT
@@ -2806,7 +2809,7 @@ CLASS="PRODUCTNAME"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN76435"
+NAME="AEN76494"
 ></A
 ><H3
 ><TT
@@ -2840,7 +2843,7 @@ CLASS="LITERAL"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN76444"
+NAME="AEN76503"
 ></A
 ><H3
 >Inheritance</H3
@@ -2865,7 +2868,7 @@ CLASS="PRODUCTNAME"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN76450"
+NAME="AEN76509"
 ></A
 ><H3
 >Zero-column Tables</H3
@@ -2890,7 +2893,7 @@ CLASS="COMMAND"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN76456"
+NAME="AEN76515"
 ></A
 ><H3
 ><TT
@@ -2911,7 +2914,7 @@ CLASS="PRODUCTNAME"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN76462"
+NAME="AEN76521"
 ></A
 ><H3
 >Tablespaces</H3
@@ -2933,7 +2936,7 @@ CLASS="LITERAL"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN76468"
+NAME="AEN76527"
 ></A
 ><H3
 >Typed Tables</H3
@@ -2953,7 +2956,7 @@ CLASS="QUOTE"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN76472"
+NAME="AEN76531"
 ></A
 ><H2
 >See Also</H2

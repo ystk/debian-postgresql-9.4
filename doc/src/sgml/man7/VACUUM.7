@@ -1,13 +1,13 @@
 '\" t
 .\"     Title: VACUUM
 .\"    Author: The PostgreSQL Global Development Group
-.\" Generator: DocBook XSL Stylesheets v1.76.1 <http://docbook.sf.net/>
-.\"      Date: 2015
-.\"    Manual: PostgreSQL 9.4.5 Documentation
-.\"    Source: PostgreSQL 9.4.5
+.\" Generator: DocBook XSL Stylesheets v1.78.1 <http://docbook.sf.net/>
+.\"      Date: 2016
+.\"    Manual: PostgreSQL 9.4.6 Documentation
+.\"    Source: PostgreSQL 9.4.6
 .\"  Language: English
 .\"
-.TH "VACUUM" "7" "2015" "PostgreSQL 9.4.5" "PostgreSQL 9.4.5 Documentation"
+.TH "VACUUM" "7" "2016" "PostgreSQL 9.4.6" "PostgreSQL 9.4.6 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -38,7 +38,6 @@ VACUUM [ FULL ] [ FREEZE ] [ VERBOSE ] ANALYZE [ \fItable_name\fR [ (\fIcolumn_n
 .fi
 .SH "DESCRIPTION"
 .PP
-
 \fBVACUUM\fR
 reclaims storage occupied by dead tuples\&. In normal
 PostgreSQL
@@ -54,7 +53,6 @@ processes every table in the current database that the current user has permissi
 \fBVACUUM\fR
 processes only that table\&.
 .PP
-
 \fBVACUUM ANALYZE\fR
 performs a
 \fBVACUUM\fR
@@ -136,7 +134,6 @@ can only be performed by a superuser\&.)
 \fBVACUUM\fR
 will skip over any tables that the calling user does not have permission to vacuum\&.
 .PP
-
 \fBVACUUM\fR
 cannot be executed inside a transaction block\&.
 .PP
@@ -164,13 +161,11 @@ will usually shrink the table more than a plain
 \fBVACUUM\fR
 would\&.
 .PP
-
 \fBVACUUM\fR
 causes a substantial increase in I/O traffic, which might cause poor performance for other active sessions\&. Therefore, it is sometimes advisable to use the cost\-based vacuum delay feature\&. See
 Section 18.4.4, \(lqCost-based Vacuum Delay\(rq, in the documentation
 for details\&.
 .PP
-
 PostgreSQL
 includes an
 \(lqautovacuum\(rq

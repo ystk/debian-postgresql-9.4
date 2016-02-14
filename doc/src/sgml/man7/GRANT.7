@@ -1,13 +1,13 @@
 '\" t
 .\"     Title: GRANT
 .\"    Author: The PostgreSQL Global Development Group
-.\" Generator: DocBook XSL Stylesheets v1.76.1 <http://docbook.sf.net/>
-.\"      Date: 2015
-.\"    Manual: PostgreSQL 9.4.5 Documentation
-.\"    Source: PostgreSQL 9.4.5
+.\" Generator: DocBook XSL Stylesheets v1.78.1 <http://docbook.sf.net/>
+.\"      Date: 2016
+.\"    Manual: PostgreSQL 9.4.6 Documentation
+.\"    Source: PostgreSQL 9.4.6
 .\"  Language: English
 .\"
-.TH "GRANT" "7" "2015" "PostgreSQL 9.4.5" "PostgreSQL 9.4.5 Documentation"
+.TH "GRANT" "7" "2016" "PostgreSQL 9.4.6" "PostgreSQL 9.4.6 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -334,7 +334,6 @@ or
 \fBREVOKE\fR
 command, the command is performed as though it were issued by the owner of the affected object\&. In particular, privileges granted via such a command will appear to have been granted by the object owner\&. (For role membership, the membership appears to have been granted by the containing role itself\&.)
 .PP
-
 \fBGRANT\fR
 and
 \fBREVOKE\fR
@@ -520,7 +519,6 @@ key word in
 ALL PRIVILEGES
 is required\&. The SQL standard does not support setting the privileges on more than one object per command\&.
 .PP
-
 PostgreSQL
 allows an object owner to revoke his own ordinary privileges: for example, a table owner can make the table read\-only to himself by revoking his own
 INSERT,
