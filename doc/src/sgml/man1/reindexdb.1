@@ -1,13 +1,13 @@
 '\" t
 .\"     Title: reindexdb
 .\"    Author: The PostgreSQL Global Development Group
-.\" Generator: DocBook XSL Stylesheets v1.76.1 <http://docbook.sf.net/>
-.\"      Date: 2015
-.\"    Manual: PostgreSQL 9.4.5 Documentation
-.\"    Source: PostgreSQL 9.4.5
+.\" Generator: DocBook XSL Stylesheets v1.78.1 <http://docbook.sf.net/>
+.\"      Date: 2016
+.\"    Manual: PostgreSQL 9.4.6 Documentation
+.\"    Source: PostgreSQL 9.4.6
 .\"  Language: English
 .\"
-.TH "REINDEXDB" "1" "2015" "PostgreSQL 9.4.5" "PostgreSQL 9.4.5 Documentation"
+.TH "REINDEXDB" "1" "2016" "PostgreSQL 9.4.6" "PostgreSQL 9.4.6 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -38,19 +38,16 @@ reindexdb \- reindex a PostgreSQL database
 \fBreindexdb\fR [\fIconnection\-option\fR...] \fB\-\-system\fR | \fB\-s\fR  [\fIdbname\fR]
 .SH "DESCRIPTION"
 .PP
-
 reindexdb
 is a utility for rebuilding indexes in a
 PostgreSQL
 database\&.
 .PP
-
 reindexdb
 is a wrapper around the SQL command
 \fBREINDEX\fR(7)\&. There is no effective difference between reindexing databases via this utility and via other methods for accessing the server\&.
 .SH "OPTIONS"
 .PP
-
 reindexdb
 accepts the following command\-line arguments:
 .PP
@@ -135,7 +132,6 @@ reindexdb
 command line arguments, and exit\&.
 .RE
 .PP
-
 reindexdb
 also accepts the following command\-line arguments for connection parameters:
 .PP
@@ -224,7 +220,6 @@ libpq
 front\-end library will apply\&.
 .SH "NOTES"
 .PP
-
 reindexdb
 might need to connect several times to the
 PostgreSQL

@@ -1,13 +1,13 @@
 '\" t
 .\"     Title: CREATE INDEX
 .\"    Author: The PostgreSQL Global Development Group
-.\" Generator: DocBook XSL Stylesheets v1.76.1 <http://docbook.sf.net/>
-.\"      Date: 2015
-.\"    Manual: PostgreSQL 9.4.5 Documentation
-.\"    Source: PostgreSQL 9.4.5
+.\" Generator: DocBook XSL Stylesheets v1.78.1 <http://docbook.sf.net/>
+.\"      Date: 2016
+.\"    Manual: PostgreSQL 9.4.6 Documentation
+.\"    Source: PostgreSQL 9.4.6
 .\"  Language: English
 .\"
-.TH "CREATE INDEX" "7" "2015" "PostgreSQL 9.4.5" "PostgreSQL 9.4.5 Documentation"
+.TH "CREATE INDEX" "7" "2016" "PostgreSQL 9.4.6" "PostgreSQL 9.4.6 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -40,7 +40,6 @@ CREATE [ UNIQUE ] INDEX [ CONCURRENTLY ] [ \fIname\fR ] ON \fItable_name\fR [ US
 .fi
 .SH "DESCRIPTION"
 .PP
-
 \fBCREATE INDEX\fR
 constructs an index on the specified column(s) of the specified relation, which can be a table or a materialized view\&. Indexes are primarily used to enhance database performance (though inappropriate use can result in slower performance)\&.
 .PP
@@ -52,7 +51,6 @@ would allow the clause
 WHERE upper(col) = \*(AqJIM\*(Aq
 to use an index\&.
 .PP
-
 PostgreSQL
 provides the index methods B\-tree, hash, GiST, SP\-GiST, and GIN\&. Users can also define their own index methods, but that is fairly complicated\&.
 .PP
@@ -254,7 +252,6 @@ Creating an index can interfere with regular operation of a database\&. Normally
 PostgreSQL
 locks the table to be indexed against writes and performs the entire index build with a single scan of the table\&. Other transactions can still read the table, but if they try to insert, update, or delete rows in the table they will block until the index build is finished\&. This could have a severe effect if the system is a live production database\&. Very large tables can take many hours to be indexed, and even for smaller tables, an index build can lock out writers for periods that are unacceptably long for a production system\&.
 .PP
-
 PostgreSQL
 supports building indexes without locking out writes\&. This method is invoked by specifying the
 CONCURRENTLY
@@ -271,8 +268,7 @@ If a problem arises while scanning the table, such as a deadlock or a uniqueness
 command will fail but leave behind an
 \(lqinvalid\(rq
 index\&. This index will be ignored for querying purposes because it might be incomplete; however it will still consume update overhead\&. The
-psql
-\fB\ed\fR
+psql\fB\ed\fR
 command will report such an index as
 INVALID:
 .sp
@@ -512,7 +508,6 @@ CREATE INDEX CONCURRENTLY sales_quantity_index ON sales_table (quantity);
 .\}
 .SH "COMPATIBILITY"
 .PP
-
 \fBCREATE INDEX\fR
 is a
 PostgreSQL

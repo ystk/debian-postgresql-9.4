@@ -1,13 +1,13 @@
 '\" t
 .\"     Title: LOCK
 .\"    Author: The PostgreSQL Global Development Group
-.\" Generator: DocBook XSL Stylesheets v1.76.1 <http://docbook.sf.net/>
-.\"      Date: 2015
-.\"    Manual: PostgreSQL 9.4.5 Documentation
-.\"    Source: PostgreSQL 9.4.5
+.\" Generator: DocBook XSL Stylesheets v1.78.1 <http://docbook.sf.net/>
+.\"      Date: 2016
+.\"    Manual: PostgreSQL 9.4.6 Documentation
+.\"    Source: PostgreSQL 9.4.6
 .\"  Language: English
 .\"
-.TH "LOCK" "7" "2015" "PostgreSQL 9.4.5" "PostgreSQL 9.4.5 Documentation"
+.TH "LOCK" "7" "2016" "PostgreSQL 9.4.6" "PostgreSQL 9.4.6 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -41,7 +41,6 @@ where \fIlockmode\fR is one of:
 .fi
 .SH "DESCRIPTION"
 .PP
-
 \fBLOCK TABLE\fR
 obtains a table\-level lock, waiting if necessary for any conflicting locks to be released\&. If
 NOWAIT
@@ -140,7 +139,6 @@ should not wait for any conflicting locks to be released: if the specified lock(
 .RE
 .SH "NOTES"
 .PP
-
 LOCK TABLE \&.\&.\&. IN ACCESS SHARE MODE
 requires
 SELECT
@@ -152,7 +150,6 @@ DELETE, or
 TRUNCATE
 privileges\&.
 .PP
-
 \fBLOCK TABLE\fR
 is useless outside a transaction block: the lock would remain held only to the completion of the statement\&. Therefore
 PostgreSQL
@@ -165,7 +162,6 @@ and
 (or
 \fBROLLBACK\fR(7)) to define a transaction block\&.
 .PP
-
 \fBLOCK TABLE\fR
 only deals with table\-level locks, and so the mode names involving
 ROW

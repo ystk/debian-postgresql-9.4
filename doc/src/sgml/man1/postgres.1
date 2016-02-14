@@ -1,13 +1,13 @@
 '\" t
 .\"     Title: postgres
 .\"    Author: The PostgreSQL Global Development Group
-.\" Generator: DocBook XSL Stylesheets v1.76.1 <http://docbook.sf.net/>
-.\"      Date: 2015
-.\"    Manual: PostgreSQL 9.4.5 Documentation
-.\"    Source: PostgreSQL 9.4.5
+.\" Generator: DocBook XSL Stylesheets v1.78.1 <http://docbook.sf.net/>
+.\"      Date: 2016
+.\"    Manual: PostgreSQL 9.4.6 Documentation
+.\"    Source: PostgreSQL 9.4.6
 .\"  Language: English
 .\"
-.TH "POSTGRES" "1" "2015" "PostgreSQL 9.4.5" "PostgreSQL 9.4.5 Documentation"
+.TH "POSTGRES" "1" "2016" "PostgreSQL 9.4.6" "PostgreSQL 9.4.6 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -34,7 +34,6 @@ postgres \- PostgreSQL database server
 \fBpostgres\fR [\fIoption\fR...]
 .SH "DESCRIPTION"
 .PP
-
 \fBpostgres\fR
 is the
 PostgreSQL
@@ -75,7 +74,6 @@ command can also be called in single\-user mode\&. The primary use for this mode
 \fBinitdb\fR(1)\&. Sometimes it is used for debugging or disaster recovery; note that running a single\-user server is not truly suitable for debugging the server, since no realistic interprocess communication and locking will happen\&. When invoked in single\-user mode from the shell, the user can enter queries and the results will be printed to the screen, but in a form that is more useful for developers than end users\&. In the single\-user mode, the session user will be set to the user with ID 1, and implicit superuser powers are granted to this user\&. This user does not actually have to exist, so the single\-user mode can be used to manually recover from certain kinds of accidental damage to the system catalogs\&.
 .SH "OPTIONS"
 .PP
-
 \fBpostgres\fR
 accepts the following command\-line arguments\&. For a detailed discussion of the options consult
 Chapter 18, Server Configuration, in the documentation\&. You can save typing most of these options by setting up a configuration file\&. Some (safe) options can also be set from the connecting client in an application\-dependent way to apply only for that session\&. For example, if the environment variable
@@ -643,6 +641,5 @@ postgresql\&.conf
 than to rely on a command\-line switch to set a parameter\&.
 .SH "SEE ALSO"
 .PP
-
 \fBinitdb\fR(1),
 \fBpg_ctl\fR(1)

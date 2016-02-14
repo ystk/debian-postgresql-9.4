@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4.5 Documentation"
+TITLE="PostgreSQL 9.4.6 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="Data Types"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2015-10-05T19:28:19"></HEAD
+CONTENT="2016-02-08T21:28:58"></HEAD
 ><BODY
 CLASS="SECT1"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4.5 Documentation</A
+>PostgreSQL 9.4.6 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -695,6 +695,55 @@ SELECT '"foo"'::jsonb ? 'foo';</PRE
     unlike arrays they are internally optimized for searching, and do not
     need to be searched linearly.
   </P
+><DIV
+CLASS="TIP"
+><BLOCKQUOTE
+CLASS="TIP"
+><P
+><B
+>Tip: </B
+>    Because JSON containment is nested, an appropriate query can skip
+    explicit selection of sub-objects.  As an example, suppose that we have
+    a <TT
+CLASS="STRUCTFIELD"
+>doc</TT
+> column containing objects at the top level, with
+    most objects containing <TT
+CLASS="LITERAL"
+>tags</TT
+> fields that contain arrays of
+    sub-objects.  This query finds entries in which sub-objects containing
+    both <TT
+CLASS="LITERAL"
+>"term":"paris"</TT
+> and <TT
+CLASS="LITERAL"
+>"term":"food"</TT
+> appear,
+    while ignoring any such keys outside the <TT
+CLASS="LITERAL"
+>tags</TT
+> array:
+</P><PRE
+CLASS="PROGRAMLISTING"
+>SELECT doc-&gt;'site_name' FROM websites
+  WHERE doc @&gt; '{"tags":[{"term":"paris"}, {"term":"food"}]}';</PRE
+><P>
+    One could accomplish the same thing with, say,
+</P><PRE
+CLASS="PROGRAMLISTING"
+>SELECT doc-&gt;'site_name' FROM websites
+  WHERE doc-&gt;'tags' @&gt; '[{"term":"paris"}, {"term":"food"}]';</PRE
+><P>
+    but that approach is less flexible, and often less efficient as well.
+   </P
+><P
+>    On the other hand, the JSON existence operator is not nested: it will
+    only look for the specified key or array element at top level of the
+    JSON value.
+   </P
+></BLOCKQUOTE
+></DIV
 ><P
 >    The various containment and existence operators, along with all other
     JSON operators and functions are documented
@@ -921,8 +970,8 @@ CLASS="LITERAL"
     while the latter creates index items only for each value in the
     data.
     <A
-NAME="AEN7529"
-HREF="#FTN.AEN7529"
+NAME="AEN7541"
+HREF="#FTN.AEN7541"
 ><SPAN
 CLASS="footnote"
 >[1]</SPAN
@@ -1140,8 +1189,8 @@ ALIGN="LEFT"
 VALIGN="TOP"
 WIDTH="5%"
 ><A
-NAME="FTN.AEN7529"
-HREF="datatype-json.html#AEN7529"
+NAME="FTN.AEN7541"
+HREF="datatype-json.html#AEN7541"
 ><SPAN
 CLASS="footnote"
 >[1]</SPAN

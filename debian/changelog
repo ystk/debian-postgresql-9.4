@@ -1,3 +1,18 @@
+postgresql-9.4 (9.4.6-0+deb8u1) jessie-security; urgency=medium
+
+  * New upstream version.
+    + Fix infinite loops and buffer-overrun problems in regular expressions.
+      Very large character ranges in bracket expressions could cause infinite
+      loops in some cases, and memory overwrites in other cases.
+      (CVE-2016-0773)
+    + Fix privilege escalation issue for users of PL/Java. Certain custom
+      configuration settings (GUCs) for PL/Java will now be modifiable only by
+      the database superuser. (CVE-2016-0766)
+    + Users will need to reindex any jsonb_path_ops indexes they have created,
+      in order to fix a persistent issue with missing index entries.
+
+ -- Christoph Berg <christoph.berg@credativ.de>  Thu, 11 Feb 2016 15:17:44 +0100
+
 postgresql-9.4 (9.4.5-0+deb8u1) jessie-security; urgency=medium
 
   * New upstream security release.

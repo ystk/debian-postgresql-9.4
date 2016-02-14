@@ -1,13 +1,13 @@
 '\" t
 .\"     Title: ALTER SEQUENCE
 .\"    Author: The PostgreSQL Global Development Group
-.\" Generator: DocBook XSL Stylesheets v1.76.1 <http://docbook.sf.net/>
-.\"      Date: 2015
-.\"    Manual: PostgreSQL 9.4.5 Documentation
-.\"    Source: PostgreSQL 9.4.5
+.\" Generator: DocBook XSL Stylesheets v1.78.1 <http://docbook.sf.net/>
+.\"      Date: 2016
+.\"    Manual: PostgreSQL 9.4.6 Documentation
+.\"    Source: PostgreSQL 9.4.6
 .\"  Language: English
 .\"
-.TH "ALTER SEQUENCE" "7" "2015" "PostgreSQL 9.4.5" "PostgreSQL 9.4.5 Documentation"
+.TH "ALTER SEQUENCE" "7" "2016" "PostgreSQL 9.4.6" "PostgreSQL 9.4.6 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -44,7 +44,6 @@ ALTER SEQUENCE [ IF EXISTS ] \fIname\fR SET SCHEMA \fInew_schema\fR
 .fi
 .SH "DESCRIPTION"
 .PP
-
 \fBALTER SEQUENCE\fR
 changes the parameters of an existing sequence generator\&. Any parameters not specifically set in the
 \fBALTER SEQUENCE\fR
@@ -201,13 +200,11 @@ RENAME TO, and
 SET SCHEMA
 clauses cause ordinary catalog updates that can be rolled back\&.
 .PP
-
 \fBALTER SEQUENCE\fR
 will not immediately affect
 \fBnextval\fR
 results in backends, other than the current one, that have preallocated (cached) sequence values\&. They will use up all cached values prior to noticing the changed sequence generation parameters\&. The current backend will be affected immediately\&.
 .PP
-
 \fBALTER SEQUENCE\fR
 does not affect the
 \fBcurrval\fR
@@ -236,7 +233,6 @@ ALTER SEQUENCE serial RESTART WITH 105;
 .\}
 .SH "COMPATIBILITY"
 .PP
-
 \fBALTER SEQUENCE\fR
 conforms to the
 SQL

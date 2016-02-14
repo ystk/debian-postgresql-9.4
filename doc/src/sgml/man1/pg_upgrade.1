@@ -1,13 +1,13 @@
 '\" t
 .\"     Title: pg_upgrade
 .\"    Author: The PostgreSQL Global Development Group
-.\" Generator: DocBook XSL Stylesheets v1.76.1 <http://docbook.sf.net/>
-.\"      Date: 2015
-.\"    Manual: PostgreSQL 9.4.5 Documentation
-.\"    Source: PostgreSQL 9.4.5
+.\" Generator: DocBook XSL Stylesheets v1.78.1 <http://docbook.sf.net/>
+.\"      Date: 2016
+.\"    Manual: PostgreSQL 9.4.6 Documentation
+.\"    Source: PostgreSQL 9.4.6
 .\"  Language: English
 .\"
-.TH "PG_UPGRADE" "1" "2015" "PostgreSQL 9.4.5" "PostgreSQL 9.4.5 Documentation"
+.TH "PG_UPGRADE" "1" "2016" "PostgreSQL 9.4.6" "PostgreSQL 9.4.6 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -34,7 +34,6 @@ pg_upgrade \- upgrade a PostgreSQL server instance
 \fBpg_upgrade\fR \fB\-b\fR \fIoldbindir\fR \fB\-B\fR \fInewbindir\fR \fB\-d\fR \fIolddatadir\fR \fB\-D\fR \fInewdatadir\fR [\fIoption\fR...]
 .SH "DESCRIPTION"
 .PP
-
 pg_upgrade
 (formerly called
 pg_migrator) allows data stored in
@@ -50,7 +49,6 @@ uses this fact to perform rapid upgrades by creating new system tables and simpl
 pg_upgrade
 will not be usable for such upgrades\&. (The community will attempt to avoid such situations\&.)
 .PP
-
 pg_upgrade
 does its best to make sure the old and new clusters are binary\-compatible, e\&.g\&. by checking for compatible compile\-time settings, including 32/64\-bit binaries\&. It is important that any external modules are also binary compatible, though this cannot be checked by
 pg_upgrade\&.
@@ -59,7 +57,6 @@ pg_upgrade supports upgrades from 8\&.3\&.X and later to the current major relea
 PostgreSQL, including snapshot and alpha releases\&.
 .SH "OPTIONS"
 .PP
-
 pg_upgrade
 accepts the following command\-line arguments:
 .PP
@@ -316,8 +313,7 @@ pgcrypto\&.sql, because these will be upgraded from the old cluster\&. Also, any
 .sp -1
 .IP "  7." 4.2
 .\}
-Adjust authentication: 
-\fBpg_upgrade\fR
+Adjust authentication: \fBpg_upgrade\fR
 will connect to the old and new servers several times, so you might want to set authentication to
 peer
 in
@@ -585,9 +581,7 @@ with
 .IP \(bu 2.3
 .\}
 If you ran
-\fBpg_upgrade\fR
-\fIwithout\fR
-\fB\-\-link\fR
+\fBpg_upgrade\fR\fIwithout\fR\fB\-\-link\fR
 or did not start the new server, the old cluster was not modified except that, if linking started, a
 \&.old
 suffix was appended to
@@ -600,7 +594,6 @@ $PGDATA/global/pg_control; you can then restart the old cluster\&.
 .RE
 .SH "NOTES"
 .PP
-
 pg_upgrade
 does not support upgrading of databases containing these
 reg*

@@ -1,13 +1,13 @@
 '\" t
 .\"     Title: pg_archivecleanup
 .\"    Author: The PostgreSQL Global Development Group
-.\" Generator: DocBook XSL Stylesheets v1.76.1 <http://docbook.sf.net/>
-.\"      Date: 2015
-.\"    Manual: PostgreSQL 9.4.5 Documentation
-.\"    Source: PostgreSQL 9.4.5
+.\" Generator: DocBook XSL Stylesheets v1.78.1 <http://docbook.sf.net/>
+.\"      Date: 2016
+.\"    Manual: PostgreSQL 9.4.6 Documentation
+.\"    Source: PostgreSQL 9.4.6
 .\"  Language: English
 .\"
-.TH "PG_ARCHIVECLEANUP" "1" "2015" "PostgreSQL 9.4.5" "PostgreSQL 9.4.5 Documentation"
+.TH "PG_ARCHIVECLEANUP" "1" "2016" "PostgreSQL 9.4.6" "PostgreSQL 9.4.6 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -34,7 +34,6 @@ pg_archivecleanup \- clean up PostgreSQL WAL archive files
 \fBpg_archivecleanup\fR [\fIoption\fR...] \fIarchivelocation\fR \fIoldestkeptwalfile\fR
 .SH "DESCRIPTION"
 .PP
-
 pg_archivecleanup
 is designed to be used as an
 archive_cleanup_command
@@ -97,14 +96,12 @@ pg_archivecleanup:  removing file "archive/00000001000000370000000E"
 .RE
 .\}
 .PP
-
 pg_archivecleanup
 assumes that
 \fIarchivelocation\fR
 is a directory readable and writable by the server\-owning user\&.
 .SH "OPTIONS"
 .PP
-
 pg_archivecleanup
 accepts the following command\-line arguments:
 .PP
@@ -146,7 +143,6 @@ command line arguments, and exit\&.
 .RE
 .SH "NOTES"
 .PP
-
 pg_archivecleanup
 is designed to work with
 PostgreSQL
@@ -154,7 +150,6 @@ PostgreSQL
 PostgreSQL
 9\&.0 and later when used as an archive cleanup command\&.
 .PP
-
 pg_archivecleanup
 is written in C and has an easy\-to\-modify source code, with specifically designated sections to modify for your own needs
 .SH "EXAMPLES"
