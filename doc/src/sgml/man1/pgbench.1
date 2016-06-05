@@ -3,11 +3,11 @@
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets v1.78.1 <http://docbook.sf.net/>
 .\"      Date: 2016
-.\"    Manual: PostgreSQL 9.4.6 Documentation
-.\"    Source: PostgreSQL 9.4.6
+.\"    Manual: PostgreSQL 9.4.8 Documentation
+.\"    Source: PostgreSQL 9.4.8
 .\"  Language: English
 .\"
-.TH "PGBENCH" "1" "2016" "PostgreSQL 9.4.6" "PostgreSQL 9.4.6 Documentation"
+.TH "PGBENCH" "1" "2016" "PostgreSQL 9.4.8" "PostgreSQL 9.4.8 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -888,7 +888,7 @@ is a sum of 2nd powers of latencies\&. The last two fields are
 \fImin_lag\fR, and
 \fImax_lag\fR, are only present if the \-\-rate option is used\&. They are calculated from the time each transaction had to wait for the previous one to finish, i\&.e\&. the difference between each transaction\*(Aqs scheduled start time and the time it actually started\&.
 .PP
-Here is example outputs:
+Here is example output:
 .sp
 .if n \{\
 .RS 4
@@ -904,7 +904,7 @@ Here is example outputs:
 .RE
 .\}
 .PP
-Notice that while the plain (unaggregated) log file contains index of the custom script files, the aggregated log does not\&. Therefore if you need per script data, you need to aggregate the data on your own\&.
+Notice that while the plain (unaggregated) log file contains a reference to the custom script files, the aggregated log does not\&. Therefore if you need per script data, you need to aggregate the data on your own\&.
 .SS "Per\-Statement Latencies"
 .PP
 With the
