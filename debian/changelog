@@ -1,3 +1,16 @@
+postgresql-9.4 (9.4.8-0+deb8u1) jessie; urgency=medium
+
+  * New upstream bugfix release.
+
+ -- Christoph Berg <christoph.berg@credativ.de>  Fri, 27 May 2016 14:29:53 +0200
+
+postgresql-9.4 (9.4.7-0+deb8u1) jessie; urgency=medium
+
+  * New upstream bugfix release.
+  * Remove obsolete .bzr-builddeb/default.conf.
+
+ -- Christoph Berg <myon@debian.org>  Sat, 02 Apr 2016 13:22:58 +0200
+
 postgresql-9.4 (9.4.6-0+deb8u1) jessie-security; urgency=medium
 
   * New upstream version.
