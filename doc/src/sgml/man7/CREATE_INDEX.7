@@ -3,11 +3,11 @@
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets v1.78.1 <http://docbook.sf.net/>
 .\"      Date: 2016
-.\"    Manual: PostgreSQL 9.4.8 Documentation
-.\"    Source: PostgreSQL 9.4.8
+.\"    Manual: PostgreSQL 9.4.9 Documentation
+.\"    Source: PostgreSQL 9.4.9
 .\"  Language: English
 .\"
-.TH "CREATE INDEX" "7" "2016" "PostgreSQL 9.4.8" "PostgreSQL 9.4.8 Documentation"
+.TH "CREATE INDEX" "7" "2016" "PostgreSQL 9.4.9" "PostgreSQL 9.4.9 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -359,16 +359,7 @@ behavior, rather than the default
 \(lqnulls sort high\(rq, in queries that depend on indexes to avoid sorting steps\&.
 .PP
 For most index methods, the speed of creating an index is dependent on the setting of
-maintenance_work_mem\&. Larger values will reduce the time needed for index creation, so long as you don\*(Aqt make it larger than the amount of memory really available, which would drive the machine into swapping\&. For hash indexes, the value of
-effective_cache_size
-is also relevant to index creation time:
-PostgreSQL
-will use one of two different hash index creation methods depending on whether the estimated index size is more or less than
-\fIeffective_cache_size\fR\&. For best results, make sure that this parameter is also set to something reflective of available memory, and be careful that the sum of
-\fImaintenance_work_mem\fR
-and
-\fIeffective_cache_size\fR
-is less than the machine\*(Aqs RAM less whatever space is needed by other programs\&.
+maintenance_work_mem\&. Larger values will reduce the time needed for index creation, so long as you don\*(Aqt make it larger than the amount of memory really available, which would drive the machine into swapping\&.
 .PP
 Use
 DROP INDEX (\fBDROP_INDEX\fR(7))

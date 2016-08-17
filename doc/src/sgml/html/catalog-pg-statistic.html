@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4.8 Documentation"
+TITLE="PostgreSQL 9.4.9 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="System Catalogs"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2016-05-09T21:09:37"></HEAD
+CONTENT="2016-08-08T20:48:24"></HEAD
 ><BODY
 CLASS="SECT1"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4.8 Documentation</A
+>PostgreSQL 9.4.9 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -237,7 +237,7 @@ CLASS="STRUCTNAME"
 ><DIV
 CLASS="TABLE"
 ><A
-NAME="AEN99694"
+NAME="AEN99751"
 ></A
 ><P
 ><B
@@ -378,12 +378,12 @@ CLASS="TYPE"
 >The number of distinct nonnull data values in the column.
       A value greater than zero is the actual number of distinct values.
       A value less than zero is the negative of a multiplier for the number
-      of rows in the table; for example, a column in which values appear about
-      twice on the average could be represented by
-      <TT
+      of rows in the table; for example, a column in which about 80% of the
+      values are nonnull and each nonnull value appears about twice on
+      average could be represented by <TT
 CLASS="STRUCTFIELD"
 >stadistinct</TT
-> = -0.5.
+> = -0.4.
       A zero value means the number of distinct values is unknown.
       </TD
 ></TR

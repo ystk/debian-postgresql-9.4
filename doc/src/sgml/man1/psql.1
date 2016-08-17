@@ -3,11 +3,11 @@
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets v1.78.1 <http://docbook.sf.net/>
 .\"      Date: 2016
-.\"    Manual: PostgreSQL 9.4.8 Documentation
-.\"    Source: PostgreSQL 9.4.8
+.\"    Manual: PostgreSQL 9.4.9 Documentation
+.\"    Source: PostgreSQL 9.4.9
 .\"  Language: English
 .\"
-.TH "PSQL" "1" "2016" "PostgreSQL 9.4.8" "PostgreSQL 9.4.8 Documentation"
+.TH "PSQL" "1" "2016" "PostgreSQL 9.4.9" "PostgreSQL 9.4.9 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -545,7 +545,7 @@ is currently connected, followed by the string
 .\}
 .nf
 $ \fBpsql testdb\fR
-psql (9\&.4\&.8)
+psql (9\&.4\&.9)
 Type "help" for help\&.
 
 testdb=>
@@ -636,7 +636,7 @@ If the current table output format is unaligned, it is switched to aligned\&. If
 for a more general solution\&.
 .RE
 .PP
-\ec or \econnect [ \fIdbname\fR [ \fIusername\fR ] [ \fIhost\fR ] [ \fIport\fR ] ] | \fIconninfo\fR
+\ec or \econnect [ \-reuse\-previous=\fIon|off\fR ] [ \fIdbname\fR [ \fIusername\fR ] [ \fIhost\fR ] [ \fIport\fR ] | \fIconninfo\fR ]
 .RS 4
 Establishes a new connection to a
 PostgreSQL
@@ -645,18 +645,23 @@ conninfo
 connection strings as detailed in
 Section 31.1.1, \(lqConnection Strings\(rq, in the documentation\&.
 .sp
-When using positional parameters, if any of
+Where the command omits database name, user, host, or port, the new connection can reuse values from the previous connection\&. By default, values from the previous connection are reused except when processing a
+conninfo
+string\&. Passing a first argument of
+\-reuse\-previous=on
+or
+\-reuse\-previous=off
+overrides that default\&. When the command neither specifies nor reuses a particular parameter, the
+libpq
+default is used\&. Specifying any of
 \fIdbname\fR,
 \fIusername\fR,
 \fIhost\fR
 or
 \fIport\fR
-are omitted or specified as
-\-, the value of that parameter from the previous connection is used; if there is no previous connection, the
-libpq
-default for the parameter\*(Aqs value is used\&. When using
-conninfo
-strings, no values from the previous connection are used for the new connection\&.
+as
+\-
+is equivalent to omitting that parameter\&.
 .sp
 If the new connection is successfully made, the previous connection is closed\&. If the connection attempt failed (wrong user name, access denied, etc\&.), the previous connection will only be kept if
 psql
@@ -2744,9 +2749,9 @@ issues can be customized to your preference\&. The three variables
 \fIPROMPT3\fR
 contain strings and special escape sequences that describe the appearance of the prompt\&. Prompt 1 is the normal prompt that is issued when
 psql
-requests a new command\&. Prompt 2 is issued when more input is expected during command input because the command was not terminated with a semicolon or a quote was not closed\&. Prompt 3 is issued when you run an
-SQL\fBCOPY\fR
-command and you are expected to type in the row values on the terminal\&.
+requests a new command\&. Prompt 2 is issued when more input is expected during command entry, for example because the command was not terminated with a semicolon or a quote was not closed\&. Prompt 3 is issued when you are running an
+SQL\fBCOPY FROM STDIN\fR
+command and you need to type in a row value on the terminal\&.
 .PP
 The value of the selected prompt variable is printed literally, except where a percent sign (%) is encountered\&. Depending on the next character, certain other text is substituted instead\&. Defined substitutions are:
 .PP
@@ -2802,17 +2807,25 @@ If the session user is a database superuser, then a
 In prompt 1 normally
 =, but
 ^
-if in single\-line mode, and
+if in single\-line mode, or
 !
 if the session is disconnected from the database (which can happen if
 \fB\econnect\fR
-fails)\&. In prompt 2 the sequence is replaced by
-\-,
-*, a single quote, a double quote, or a dollar sign, depending on whether
+fails)\&. In prompt 2
+%R
+is replaced by a character that depends on why
 psql
-expects more input because the command wasn\*(Aqt terminated yet, because you are inside a
+expects more input:
+\-
+if the command simply wasn\*(Aqt terminated yet, but
+*
+if there is an unfinished
 /* \&.\&.\&. */
-comment, or because you are inside a quoted or dollar\-escaped string\&. In prompt 3 the sequence doesn\*(Aqt produce anything\&.
+comment, a single quote if there is an unfinished quoted string, a double quote if there is an unfinished quoted identifier, a dollar sign if there is an unfinished dollar\-quoted string, or
+(
+if there is an unmatched left parenthesis\&. In prompt 3
+%R
+doesn\*(Aqt produce anything\&.
 .RE
 .PP
 %x
