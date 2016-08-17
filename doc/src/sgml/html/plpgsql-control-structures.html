@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4.8 Documentation"
+TITLE="PostgreSQL 9.4.9 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="PL/pgSQL - SQL Procedural Language"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2016-05-09T21:09:37"></HEAD
+CONTENT="2016-08-08T20:48:24"></HEAD
 ><BODY
 CLASS="SECT1"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4.8 Documentation</A
+>PostgreSQL 9.4.9 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -141,7 +141,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN60612"
+NAME="AEN60641"
 >40.6.1.1. <TT
 CLASS="COMMAND"
 >RETURN</TT
@@ -241,7 +241,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN60634"
+NAME="AEN60663"
 >40.6.1.2. <TT
 CLASS="COMMAND"
 >RETURN NEXT</TT
@@ -551,21 +551,21 @@ CLASS="COMMAND"
 ><P
 ><TT
 CLASS="LITERAL"
->IF ... THEN</TT
+>IF ... THEN ... END IF</TT
 ></P
 ></LI
 ><LI
 ><P
 ><TT
 CLASS="LITERAL"
->IF ... THEN ... ELSE</TT
+>IF ... THEN ... ELSE ... END IF</TT
 ></P
 ></LI
 ><LI
 ><P
 ><TT
 CLASS="LITERAL"
->IF ... THEN ... ELSIF ... THEN ... ELSE</TT
+>IF ... THEN ... ELSIF ... THEN ... ELSE ... END IF</TT
 ></P
 ></LI
 ></UL
@@ -600,7 +600,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN60719"
+NAME="AEN60748"
 >40.6.2.1. <TT
 CLASS="LITERAL"
 >IF-THEN</TT
@@ -655,7 +655,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN60732"
+NAME="AEN60761"
 >40.6.2.2. <TT
 CLASS="LITERAL"
 >IF-THEN-ELSE</TT
@@ -724,7 +724,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN60745"
+NAME="AEN60774"
 >40.6.2.3. <TT
 CLASS="LITERAL"
 >IF-THEN-ELSIF</TT
@@ -888,7 +888,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN60779"
+NAME="AEN60808"
 >40.6.2.4. Simple <TT
 CLASS="LITERAL"
 >CASE</TT
@@ -1036,7 +1036,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN60811"
+NAME="AEN60840"
 >40.6.2.5. Searched <TT
 CLASS="LITERAL"
 >CASE</TT
@@ -1206,7 +1206,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN60853"
+NAME="AEN60882"
 >40.6.3.1. <TT
 CLASS="LITERAL"
 >LOOP</TT
@@ -1273,7 +1273,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN60869"
+NAME="AEN60898"
 >40.6.3.2. <TT
 CLASS="LITERAL"
 >EXIT</TT
@@ -1410,7 +1410,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN60901"
+NAME="AEN60930"
 >40.6.3.3. <TT
 CLASS="LITERAL"
 >CONTINUE</TT
@@ -1497,7 +1497,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN60923"
+NAME="AEN60952"
 >40.6.3.4. <TT
 CLASS="LITERAL"
 >WHILE</TT
@@ -2565,11 +2565,17 @@ CLASS="REPLACEABLE"
 >item</I
 ></TT
 > is a key word identifying a status
-     value to be assigned to the specified variable (which should be
-     of the right data type to receive it).  The currently available
-     status items are shown in <A
+     value to be assigned to the specified <TT
+CLASS="REPLACEABLE"
+><I
+>variable</I
+></TT
+>
+     (which should be of the right data type to receive it).  The currently
+     available status items are shown
+     in <A
 HREF="plpgsql-control-structures.html#PLPGSQL-EXCEPTION-DIAGNOSTICS-VALUES"
->Table 40-1</A
+>Table 40-2</A
 >.
     </P
 ><DIV
@@ -2579,7 +2585,7 @@ NAME="PLPGSQL-EXCEPTION-DIAGNOSTICS-VALUES"
 ></A
 ><P
 ><B
->Table 40-1. Error Diagnostics Values</B
+>Table 40-2. Error Diagnostics Items</B
 ></P
 ><TABLE
 BORDER="1"
@@ -2602,7 +2608,10 @@ CLASS="LITERAL"
 >RETURNED_SQLSTATE</TT
 ></TD
 ><TD
->text</TD
+><TT
+CLASS="TYPE"
+>text</TT
+></TD
 ><TD
 >the SQLSTATE error code of the exception</TD
 ></TR
@@ -2613,7 +2622,10 @@ CLASS="LITERAL"
 >COLUMN_NAME</TT
 ></TD
 ><TD
->text</TD
+><TT
+CLASS="TYPE"
+>text</TT
+></TD
 ><TD
 >the name of the column related to exception</TD
 ></TR
@@ -2624,7 +2636,10 @@ CLASS="LITERAL"
 >CONSTRAINT_NAME</TT
 ></TD
 ><TD
->text</TD
+><TT
+CLASS="TYPE"
+>text</TT
+></TD
 ><TD
 >the name of the constraint related to exception</TD
 ></TR
@@ -2635,7 +2650,10 @@ CLASS="LITERAL"
 >PG_DATATYPE_NAME</TT
 ></TD
 ><TD
->text</TD
+><TT
+CLASS="TYPE"
+>text</TT
+></TD
 ><TD
 >the name of the data type related to exception</TD
 ></TR
@@ -2646,7 +2664,10 @@ CLASS="LITERAL"
 >MESSAGE_TEXT</TT
 ></TD
 ><TD
->text</TD
+><TT
+CLASS="TYPE"
+>text</TT
+></TD
 ><TD
 >the text of the exception's primary message</TD
 ></TR
@@ -2657,7 +2678,10 @@ CLASS="LITERAL"
 >TABLE_NAME</TT
 ></TD
 ><TD
->text</TD
+><TT
+CLASS="TYPE"
+>text</TT
+></TD
 ><TD
 >the name of the table related to exception</TD
 ></TR
@@ -2668,7 +2692,10 @@ CLASS="LITERAL"
 >SCHEMA_NAME</TT
 ></TD
 ><TD
->text</TD
+><TT
+CLASS="TYPE"
+>text</TT
+></TD
 ><TD
 >the name of the schema related to exception</TD
 ></TR
@@ -2679,7 +2706,10 @@ CLASS="LITERAL"
 >PG_EXCEPTION_DETAIL</TT
 ></TD
 ><TD
->text</TD
+><TT
+CLASS="TYPE"
+>text</TT
+></TD
 ><TD
 >the text of the exception's detail message, if any</TD
 ></TR
@@ -2690,7 +2720,10 @@ CLASS="LITERAL"
 >PG_EXCEPTION_HINT</TT
 ></TD
 ><TD
->text</TD
+><TT
+CLASS="TYPE"
+>text</TT
+></TD
 ><TD
 >the text of the exception's hint message, if any</TD
 ></TR
@@ -2701,9 +2734,16 @@ CLASS="LITERAL"
 >PG_EXCEPTION_CONTEXT</TT
 ></TD
 ><TD
->text</TD
+><TT
+CLASS="TYPE"
+>text</TT
+></TD
 ><TD
->line(s) of text describing the call stack</TD
+>line(s) of text describing the call stack at the time of the
+          exception (see <A
+HREF="plpgsql-control-structures.html#PLPGSQL-CALL-STACK"
+>Section 40.6.7</A
+>)</TD
 ></TR
 ></TBODY
 ></TABLE
@@ -2737,52 +2777,34 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="PLPGSQL-GET-DIAGNOSTICS-CONTEXT"
->40.6.7. Obtaining Current Execution Information</A
+NAME="PLPGSQL-CALL-STACK"
+>40.6.7. Obtaining Execution Location Information</A
 ></H2
 ><P
 >    The <TT
 CLASS="COMMAND"
->GET [<SPAN
-CLASS="OPTIONAL"
-> CURRENT </SPAN
->] DIAGNOSTICS</TT
->
-    command retrieves information about current execution state (whereas
-    the <TT
+>GET DIAGNOSTICS</TT
+> command, previously described
+    in <A
+HREF="plpgsql-statements.html#PLPGSQL-STATEMENTS-DIAGNOSTICS"
+>Section 40.5.5</A
+>, retrieves information
+    about current execution state (whereas the <TT
 CLASS="COMMAND"
->GET STACKED DIAGNOSTICS</TT
-> command discussed above
-    reports information about the execution state as of a previous error).
-    This command has the form:
-   </P
-><PRE
-CLASS="SYNOPSIS"
->GET [<SPAN
-CLASS="OPTIONAL"
-> CURRENT </SPAN
->] DIAGNOSTICS <TT
-CLASS="REPLACEABLE"
-><I
->variable</I
-></TT
-> { = | := } <TT
-CLASS="REPLACEABLE"
-><I
->item</I
-></TT
-> [<SPAN
-CLASS="OPTIONAL"
-> , ... </SPAN
->];</PRE
-><P
->    Currently only one information item is supported.  Status
-    item <TT
+>GET STACKED
+    DIAGNOSTICS</TT
+> command discussed above reports information about
+    the execution state as of a previous error).  Its <TT
 CLASS="LITERAL"
 >PG_CONTEXT</TT
-> will return a text string with line(s) of
-    text describing the call stack.  The first line refers to the
-    current function and currently executing <TT
+>
+    status item is useful for identifying the current execution
+    location.  <TT
+CLASS="LITERAL"
+>PG_CONTEXT</TT
+> returns a text string with line(s)
+    of text describing the call stack.  The first line refers to the current
+    function and currently executing <TT
 CLASS="COMMAND"
 >GET DIAGNOSTICS</TT
 >
@@ -2819,6 +2841,14 @@ CONTEXT:  PL/pgSQL function outer_func() line 3 at RETURN
 (1 row)</PRE
 ><P>
 
+   </P
+><P
+>    <TT
+CLASS="LITERAL"
+>GET STACKED DIAGNOSTICS ... PG_EXCEPTION_CONTEXT</TT
+>
+    returns the same sort of stack trace, but describing the location
+    at which an error was detected, rather than the current location.
    </P
 ></DIV
 ></DIV

@@ -1,3 +1,50 @@
+postgresql-9.4 (9.4.9-0+deb8u1) jessie-security; urgency=medium
+
+  * New upstream security release.
+
+    + Fix possible mis-evaluation of nested CASE-WHEN expressions
+      (Heikki Linnakangas, Michael Paquier, Tom Lane)
+
+      A CASE expression appearing within the test value subexpression of
+      another CASE could become confused about whether its own test value was
+      null or not.  Also, inlining of a SQL function implementing the equality
+      operator used by a CASE expression could result in passing the wrong
+      test value to functions called within a CASE expression in the SQL
+      function's body.  If the test values were of different data types, a
+      crash might result; moreover such situations could be abused to allow
+      disclosure of portions of server memory.  (CVE-2016-5423)
+
+    + Fix client programs' handling of special characters in database and role
+      names (Noah Misch, Nathan Bossart, Michael Paquier)
+
+      Numerous places in vacuumdb and other client programs could become
+      confused by database and role names containing double quotes or
+      backslashes.  Tighten up quoting rules to make that safe. Also, ensure
+      that when a conninfo string is used as a database name parameter to
+      these programs, it is correctly treated as such throughout.
+
+      Fix handling of paired double quotes in psql's \connect and \password
+      commands to match the documentation.
+
+      Introduce a new -reuse-previous option in psql's \connect command to
+      allow explicit control of whether to re-use connection parameters from a
+      previous connection.  (Without this, the choice is based on whether the
+      database name looks like a conninfo string, as before.)  This allows
+      secure handling of database names containing special characters in
+      pg_dumpall scripts.
+
+      pg_dumpall now refuses to deal with database and role names containing
+      carriage returns or newlines, as it seems impractical to quote those
+      characters safely on Windows.  In future we may reject such names on the
+      server side, but that step has not been taken yet.
+
+      These are considered security fixes because crafted object names
+      containing special characters could have been used to execute commands
+      with superuser privileges the next time a superuser executes pg_dumpall
+      or other routine maintenance operations.  (CVE-2016-5424)
+
+ -- Christoph Berg <christoph.berg@credativ.de>  Wed, 10 Aug 2016 13:36:18 +0200
+
 postgresql-9.4 (9.4.8-0+deb8u1) jessie; urgency=medium
 
   * New upstream bugfix release.

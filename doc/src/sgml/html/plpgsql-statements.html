@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4.8 Documentation"
+TITLE="PostgreSQL 9.4.9 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="PL/pgSQL - SQL Procedural Language"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2016-05-09T21:09:37"></HEAD
+CONTENT="2016-08-08T20:48:24"></HEAD
 ><BODY
 CLASS="SECT1"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4.8 Documentation</A
+>PostgreSQL 9.4.9 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -1292,62 +1292,134 @@ CLASS="OPTIONAL"
 >];</PRE
 ><P>
 
-     This command allows retrieval of system status indicators.  Each
+     This command allows retrieval of system status indicators.
      <TT
+CLASS="LITERAL"
+>CURRENT</TT
+> is a noise word (but see also <TT
+CLASS="COMMAND"
+>GET STACKED
+     DIAGNOSTICS</TT
+> in <A
+HREF="plpgsql-control-structures.html#PLPGSQL-EXCEPTION-DIAGNOSTICS"
+>Section 40.6.6.1</A
+>).
+     Each <TT
 CLASS="REPLACEABLE"
 ><I
 >item</I
 ></TT
 > is a key word identifying a status
-     value to be assigned to the specified variable (which should be
-     of the right data type to receive it).  The currently available
-     status items are <TT
-CLASS="VARNAME"
->ROW_COUNT</TT
->, the number of rows
-     processed by the last <ACRONYM
-CLASS="ACRONYM"
->SQL</ACRONYM
-> command sent to
-     the <ACRONYM
-CLASS="ACRONYM"
->SQL</ACRONYM
-> engine, and <TT
-CLASS="VARNAME"
->RESULT_OID</TT
->,
-     the OID of the last row inserted by the most recent
-     <ACRONYM
-CLASS="ACRONYM"
->SQL</ACRONYM
-> command.  Note that <TT
-CLASS="VARNAME"
->RESULT_OID</TT
+     value to be assigned to the specified <TT
+CLASS="REPLACEABLE"
+><I
+>variable</I
+></TT
 >
-     is only useful after an <TT
-CLASS="COMMAND"
->INSERT</TT
-> command into a
-     table containing OIDs.
-     Colon-equal (<TT
+     (which should be of the right data type to receive it).  The currently
+     available status items are shown
+     in <A
+HREF="plpgsql-statements.html#PLPGSQL-CURRENT-DIAGNOSTICS-VALUES"
+>Table 40-1</A
+>.  Colon-equal
+     (<TT
 CLASS="LITERAL"
 >:=</TT
->) can be used instead of SQL-standard
-     <TT
+>) can be used instead of the SQL-standard <TT
 CLASS="LITERAL"
 >=</TT
-> for <TT
-CLASS="COMMAND"
->GET DIAGNOSTICS</TT
->.
-    </P
-><P
->     An example:
+>
+     token.  An example:
 </P><PRE
 CLASS="PROGRAMLISTING"
 >GET DIAGNOSTICS integer_var = ROW_COUNT;</PRE
 ><P>
     </P
+><DIV
+CLASS="TABLE"
+><A
+NAME="PLPGSQL-CURRENT-DIAGNOSTICS-VALUES"
+></A
+><P
+><B
+>Table 40-1. Available Diagnostics Items</B
+></P
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><COL><COL><COL><THEAD
+><TR
+><TH
+>Name</TH
+><TH
+>Type</TH
+><TH
+>Description</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+><TT
+CLASS="VARNAME"
+>ROW_COUNT</TT
+></TD
+><TD
+><TT
+CLASS="TYPE"
+>integer</TT
+></TD
+><TD
+>the number of rows processed by the most
+          recent <ACRONYM
+CLASS="ACRONYM"
+>SQL</ACRONYM
+> command</TD
+></TR
+><TR
+><TD
+><TT
+CLASS="VARNAME"
+>RESULT_OID</TT
+></TD
+><TD
+><TT
+CLASS="TYPE"
+>oid</TT
+></TD
+><TD
+>the OID of the last row inserted by the most
+          recent <ACRONYM
+CLASS="ACRONYM"
+>SQL</ACRONYM
+> command (only useful after
+          an <TT
+CLASS="COMMAND"
+>INSERT</TT
+> command into a table having
+          OIDs)</TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>PG_CONTEXT</TT
+></TD
+><TD
+><TT
+CLASS="TYPE"
+>text</TT
+></TD
+><TD
+>line(s) of text describing the current call stack
+          (see <A
+HREF="plpgsql-control-structures.html#PLPGSQL-CALL-STACK"
+>Section 40.6.7</A
+>)</TD
+></TR
+></TBODY
+></TABLE
+></DIV
 ><P
 >     The second method to determine the effects of a command is to check the
      special variable named <TT

@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4.8 Documentation"
+TITLE="PostgreSQL 9.4.9 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="PostgreSQL Client Applications"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2016-05-09T21:09:37"></HEAD
+CONTENT="2016-08-08T20:48:24"></HEAD
 ><BODY
 CLASS="REFENTRY"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4.8 Documentation</A
+>PostgreSQL 9.4.9 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -98,7 +98,7 @@ CLASS="APPLICATION"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN90289"
+NAME="AEN90341"
 ></A
 ><H2
 >Name</H2
@@ -113,7 +113,7 @@ CLASS="PRODUCTNAME"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN90294"
+NAME="AEN90346"
 ></A
 ><H2
 >Synopsis</H2
@@ -142,7 +142,7 @@ CLASS="REPLACEABLE"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN90303"
+NAME="AEN90355"
 ></A
 ><H2
 >Description</H2
@@ -1213,7 +1213,7 @@ CLASS="APPLICATION"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN90674"
+NAME="AEN90726"
 ></A
 ><H2
 >Exit Status</H2
@@ -1234,7 +1234,7 @@ CLASS="VARNAME"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN90679"
+NAME="AEN90731"
 ></A
 ><H2
 >Usage</H2
@@ -1420,7 +1420,7 @@ CLASS="PROGRAMLISTING"
 CLASS="USERINPUT"
 >psql testdb</KBD
 >
-psql (9.4.8)
+psql (9.4.9)
 Type "help" for help.
 
 testdb=&gt;</PRE
@@ -1655,10 +1655,12 @@ CLASS="LITERAL"
 >\c</TT
 > or <TT
 CLASS="LITERAL"
->\connect</TT
-> <TT
-CLASS="LITERAL"
->[ <TT
+>\connect [ -reuse-previous=<TT
+CLASS="REPLACEABLE"
+><I
+>on|off</I
+></TT
+> ] [ <TT
 CLASS="REPLACEABLE"
 ><I
 >dbname</I
@@ -1678,12 +1680,12 @@ CLASS="REPLACEABLE"
 ><I
 >port</I
 ></TT
-> ] ] | <TT
+> ] | <TT
 CLASS="REPLACEABLE"
 ><I
 >conninfo</I
 ></TT
-> </TT
+> ]</TT
 ></DT
 ><DD
 ><P
@@ -1702,8 +1704,27 @@ HREF="libpq-connect.html#LIBPQ-CONNSTRING"
 >.
         </P
 ><P
->        When using positional parameters, if any of
-        <TT
+>        Where the command omits database name, user, host, or port, the new
+        connection can reuse values from the previous connection.  By default,
+        values from the previous connection are reused except when processing
+        a <TT
+CLASS="LITERAL"
+>conninfo</TT
+> string.  Passing a first argument
+        of <TT
+CLASS="LITERAL"
+>-reuse-previous=on</TT
+>
+        or <TT
+CLASS="LITERAL"
+>-reuse-previous=off</TT
+> overrides that default.
+        When the command neither specifies nor reuses a particular parameter,
+        the <SPAN
+CLASS="APPLICATION"
+>libpq</SPAN
+> default is used.  Specifying any
+        of <TT
 CLASS="REPLACEABLE"
 ><I
 >dbname</I
@@ -1726,21 +1747,11 @@ CLASS="REPLACEABLE"
 ><I
 >port</I
 ></TT
-> are omitted or
-        specified as <TT
+>
+        as <TT
 CLASS="LITERAL"
 >-</TT
->, the value of that parameter from
-        the previous connection is used; if there is no previous connection,
-        the <SPAN
-CLASS="APPLICATION"
->libpq</SPAN
-> default for the parameter's value
-        is used.  When using <TT
-CLASS="LITERAL"
->conninfo</TT
-> strings, no values from the
-        previous connection are used for the new connection.
+> is equivalent to omitting that parameter.
         </P
 ><P
 >        If the new connection is successfully made, the previous
@@ -5849,7 +5860,7 @@ CLASS="LITERAL"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN91947"
+NAME="AEN92001"
 ></A
 ><H3
 >Advanced Features</H3
@@ -6799,17 +6810,18 @@ CLASS="VARNAME"
 CLASS="APPLICATION"
 >psql</SPAN
 > requests a new command. Prompt 2 is
-    issued when more input is expected during command input because the
-    command was not terminated with a semicolon or a quote was not closed.
-    Prompt 3 is issued when you run an <ACRONYM
+    issued when more input is expected during command entry, for example
+    because the command was not terminated with a semicolon or a quote
+    was not closed.
+    Prompt 3 is issued when you are running an <ACRONYM
 CLASS="ACRONYM"
 >SQL</ACRONYM
 >
     <TT
 CLASS="COMMAND"
->COPY</TT
-> command and you are expected to type in the
-    row values on the terminal.
+>COPY FROM STDIN</TT
+> command and you need to type in
+    a row value on the terminal.
     </P
 ><P
 >    The value of the selected prompt variable is printed literally,
@@ -6949,38 +6961,50 @@ CLASS="LITERAL"
 >        In prompt 1 normally <TT
 CLASS="LITERAL"
 >=</TT
->, but <TT
+>,
+        but <TT
 CLASS="LITERAL"
 >^</TT
-> if
-        in single-line mode, and <TT
+> if in single-line mode,
+        or <TT
 CLASS="LITERAL"
 >!</TT
-> if the session is
-        disconnected from the database (which can happen if
-        <TT
+> if the session is disconnected from the
+        database (which can happen if <TT
 CLASS="COMMAND"
 >\connect</TT
-> fails). In prompt 2 the sequence is
-        replaced by <TT
+> fails).
+        In prompt 2 <TT
 CLASS="LITERAL"
->-</TT
->, <TT
-CLASS="LITERAL"
->*</TT
->, a single quote,
-        a double quote, or a dollar sign, depending on whether
-        <SPAN
+>%R</TT
+> is replaced by a character that
+        depends on why <SPAN
 CLASS="APPLICATION"
 >psql</SPAN
-> expects more input because the
-        command wasn't terminated yet, because you are inside a
+> expects more input:
+        <TT
+CLASS="LITERAL"
+>-</TT
+> if the command simply wasn't terminated yet,
+        but <TT
+CLASS="LITERAL"
+>*</TT
+> if there is an unfinished
         <TT
 CLASS="LITERAL"
 >/* ... */</TT
-> comment, or because you are inside
-        a quoted or dollar-escaped string. In prompt 3 the sequence doesn't
-        produce anything.
+> comment,
+        a single quote if there is an unfinished quoted string,
+        a double quote if there is an unfinished quoted identifier,
+        a dollar sign if there is an unfinished dollar-quoted string,
+        or <TT
+CLASS="LITERAL"
+>(</TT
+> if there is an unmatched left parenthesis.
+        In prompt 3 <TT
+CLASS="LITERAL"
+>%R</TT
+> doesn't produce anything.
         </P
 ></DD
 ><DT
@@ -7160,7 +7184,7 @@ CLASS="APPLICATION"
 ><DIV
 CLASS="REFSECT3"
 ><A
-NAME="AEN92340"
+NAME="AEN92397"
 ></A
 ><H4
 >Command-Line Editing</H4
@@ -7448,7 +7472,7 @@ HREF="libpq-envars.html"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN92439"
+NAME="AEN92496"
 ></A
 ><H2
 >Files</H2
@@ -7596,7 +7620,7 @@ CLASS="ENVAR"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN92480"
+NAME="AEN92537"
 ></A
 ><H2
 >Notes</H2
@@ -7666,7 +7690,7 @@ CLASS="APPLICATION"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN92497"
+NAME="AEN92554"
 ></A
 ><H2
 >Notes for Windows Users</H2

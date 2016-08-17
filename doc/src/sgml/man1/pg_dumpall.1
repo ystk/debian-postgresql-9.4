@@ -3,11 +3,11 @@
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets v1.78.1 <http://docbook.sf.net/>
 .\"      Date: 2016
-.\"    Manual: PostgreSQL 9.4.8 Documentation
-.\"    Source: PostgreSQL 9.4.8
+.\"    Manual: PostgreSQL 9.4.9 Documentation
+.\"    Source: PostgreSQL 9.4.9
 .\"  Language: English
 .\"
-.TH "PG_DUMPALL" "1" "2016" "PostgreSQL 9.4.8" "PostgreSQL 9.4.8 Documentation"
+.TH "PG_DUMPALL" "1" "2016" "PostgreSQL 9.4.9" "PostgreSQL 9.4.9 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -260,7 +260,14 @@ Do not dump the contents of unlogged tables\&. This option has no effect on whet
 .PP
 \fB\-\-quote\-all\-identifiers\fR
 .RS 4
-Force quoting of all identifiers\&. This may be useful when dumping a database for migration to a future version that may have introduced additional keywords\&.
+Force quoting of all identifiers\&. This option is recommended when dumping a database from a server whose
+PostgreSQL
+major version is different from
+pg_dumpall\*(Aqs, or when the output is intended to be loaded into a server of a different major version\&. By default,
+pg_dumpall
+quotes only identifiers that are reserved words in its own major version\&. This sometimes results in compatibility issues when dealing with servers of other versions that may have slightly different sets of reserved words\&. Using
+\fB\-\-quote\-all\-identifiers\fR
+prevents such issues, at the price of a harder\-to\-read dump script\&.
 .RE
 .PP
 \fB\-\-use\-set\-session\-authorization\fR

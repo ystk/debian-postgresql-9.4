@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4.8 Documentation"
+TITLE="PostgreSQL 9.4.9 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="PostgreSQL Client Applications"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2016-05-09T21:09:37"></HEAD
+CONTENT="2016-08-08T20:48:24"></HEAD
 ><BODY
 CLASS="REFENTRY"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4.8 Documentation</A
+>PostgreSQL 9.4.9 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -95,7 +95,7 @@ NAME="APP-PGDUMP"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN88048"
+NAME="AEN88090"
 ></A
 ><H2
 >Name</H2
@@ -107,7 +107,7 @@ CLASS="PRODUCTNAME"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN88052"
+NAME="AEN88094"
 ></A
 ><H2
 >Synopsis</H2
@@ -1586,9 +1586,28 @@ CLASS="OPTION"
 ></DT
 ><DD
 ><P
->        Force quoting of all identifiers.  This may be useful when dumping a
-        database for migration to a future version that may have introduced
-        additional keywords.
+>        Force quoting of all identifiers.  This option is recommended when
+        dumping a database from a server whose <SPAN
+CLASS="PRODUCTNAME"
+>PostgreSQL</SPAN
+>
+        major version is different from <SPAN
+CLASS="APPLICATION"
+>pg_dump</SPAN
+>'s, or when
+        the output is intended to be loaded into a server of a different
+        major version.  By default, <SPAN
+CLASS="APPLICATION"
+>pg_dump</SPAN
+> quotes only
+        identifiers that are reserved words in its own major version.
+        This sometimes results in compatibility issues when dealing with
+        servers of other versions that may have slightly different sets
+        of reserved words.  Using <TT
+CLASS="OPTION"
+>--quote-all-identifiers</TT
+> prevents
+        such issues, at the price of a harder-to-read dump script.
        </P
 ></DD
 ><DT
@@ -1966,7 +1985,7 @@ CLASS="APPLICATION"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN88633"
+NAME="AEN88679"
 ></A
 ><H2
 >Environment</H2
@@ -2191,6 +2210,15 @@ CLASS="APPLICATION"
    dump was taken from a server of that version.  Loading a dump file
    into an older server may require manual editing of the dump file
    to remove syntax not understood by the older server.
+   Use of the <TT
+CLASS="OPTION"
+>--quote-all-identifiers</TT
+> option is recommended
+   in cross-version cases, as it can prevent problems arising from varying
+   reserved-word lists in different <SPAN
+CLASS="PRODUCTNAME"
+>PostgreSQL</SPAN
+> versions.
   </P
 ></DIV
 ><DIV
@@ -2427,7 +2455,7 @@ CLASS="USERINPUT"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN88759"
+NAME="AEN88807"
 ></A
 ><H2
 >See Also</H2

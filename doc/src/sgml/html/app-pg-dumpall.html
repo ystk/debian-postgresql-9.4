@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4.8 Documentation"
+TITLE="PostgreSQL 9.4.9 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="PostgreSQL Client Applications"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2016-05-09T21:09:37"></HEAD
+CONTENT="2016-08-08T20:48:24"></HEAD
 ><BODY
 CLASS="REFENTRY"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4.8 Documentation</A
+>PostgreSQL 9.4.9 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -98,7 +98,7 @@ CLASS="APPLICATION"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN88776"
+NAME="AEN88824"
 ></A
 ><H2
 >Name</H2
@@ -109,7 +109,7 @@ CLASS="PRODUCTNAME"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN88780"
+NAME="AEN88828"
 ></A
 ><H2
 >Synopsis</H2
@@ -213,7 +213,7 @@ HREF="libpq-pgpass.html"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN88806"
+NAME="AEN88854"
 ></A
 ><H2
 >Options</H2
@@ -697,9 +697,28 @@ CLASS="OPTION"
 ></DT
 ><DD
 ><P
->        Force quoting of all identifiers.  This may be useful when dumping a
-        database for migration to a future version that may have introduced
-        additional keywords.
+>        Force quoting of all identifiers.  This option is recommended when
+        dumping a database from a server whose <SPAN
+CLASS="PRODUCTNAME"
+>PostgreSQL</SPAN
+>
+        major version is different from <SPAN
+CLASS="APPLICATION"
+>pg_dumpall</SPAN
+>'s, or when
+        the output is intended to be loaded into a server of a different
+        major version.  By default, <SPAN
+CLASS="APPLICATION"
+>pg_dumpall</SPAN
+> quotes only
+        identifiers that are reserved words in its own major version.
+        This sometimes results in compatibility issues when dealing with
+        servers of other versions that may have slightly different sets
+        of reserved words.  Using <TT
+CLASS="OPTION"
+>--quote-all-identifiers</TT
+> prevents
+        such issues, at the price of a harder-to-read dump script.
        </P
 ></DD
 ><DT
@@ -1021,7 +1040,7 @@ CLASS="APPLICATION"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN89104"
+NAME="AEN89156"
 ></A
 ><H2
 >Environment</H2
@@ -1069,7 +1088,7 @@ HREF="libpq-envars.html"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN89122"
+NAME="AEN89174"
 ></A
 ><H2
 >Notes</H2
@@ -1154,7 +1173,7 @@ CLASS="APPLICATION"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN89144"
+NAME="AEN89196"
 ></A
 ><H2
 >See Also</H2

@@ -3,11 +3,11 @@
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets v1.78.1 <http://docbook.sf.net/>
 .\"      Date: 2016
-.\"    Manual: PostgreSQL 9.4.8 Documentation
-.\"    Source: PostgreSQL 9.4.8
+.\"    Manual: PostgreSQL 9.4.9 Documentation
+.\"    Source: PostgreSQL 9.4.9
 .\"  Language: English
 .\"
-.TH "PG_DUMP" "1" "2016" "PostgreSQL 9.4.8" "PostgreSQL 9.4.8 Documentation"
+.TH "PG_DUMP" "1" "2016" "PostgreSQL 9.4.9" "PostgreSQL 9.4.9 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -619,7 +619,14 @@ Do not dump the contents of unlogged tables\&. This option has no effect on whet
 .PP
 \fB\-\-quote\-all\-identifiers\fR
 .RS 4
-Force quoting of all identifiers\&. This may be useful when dumping a database for migration to a future version that may have introduced additional keywords\&.
+Force quoting of all identifiers\&. This option is recommended when dumping a database from a server whose
+PostgreSQL
+major version is different from
+pg_dump\*(Aqs, or when the output is intended to be loaded into a server of a different major version\&. By default,
+pg_dump
+quotes only identifiers that are reserved words in its own major version\&. This sometimes results in compatibility issues when dealing with servers of other versions that may have slightly different sets of reserved words\&. Using
+\fB\-\-quote\-all\-identifiers\fR
+prevents such issues, at the price of a harder\-to\-read dump script\&.
 .RE
 .PP
 \fB\-\-section=\fR\fB\fIsectionname\fR\fR
@@ -850,7 +857,11 @@ pg_dump
 cannot dump from
 PostgreSQL
 servers newer than its own major version; it will refuse to even try, rather than risk making an invalid dump\&. Also, it is not guaranteed that
-pg_dump\*(Aqs output can be loaded into a server of an older major version \(em not even if the dump was taken from a server of that version\&. Loading a dump file into an older server may require manual editing of the dump file to remove syntax not understood by the older server\&.
+pg_dump\*(Aqs output can be loaded into a server of an older major version \(em not even if the dump was taken from a server of that version\&. Loading a dump file into an older server may require manual editing of the dump file to remove syntax not understood by the older server\&. Use of the
+\fB\-\-quote\-all\-identifiers\fR
+option is recommended in cross\-version cases, as it can prevent problems arising from varying reserved\-word lists in different
+PostgreSQL
+versions\&.
 .SH "EXAMPLES"
 .PP
 To dump a database called
