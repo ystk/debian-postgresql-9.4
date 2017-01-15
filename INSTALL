@@ -674,20 +674,20 @@ AGS='-64' ...
                 "msgfmt" program for native language support
 
         PERL
-                Full path to the Perl interpreter. This will be used to
-                determine the dependencies for building PL/Perl.
+                Full path name of the Perl interpreter. This will be used
+                to determine the dependencies for building PL/Perl.
 
         PYTHON
-                Full path to the Python interpreter. This will be used to
-                determine the dependencies for building PL/Python. Also,
-                whether Python 2 or 3 is specified here (or otherwise
-                implicitly chosen) determines which variant of the
-                PL/Python language becomes available. See the PL/Python
-                documentation for more information.
+                Full path name of the Python interpreter. This will be
+                used to determine the dependencies for building PL/Python.
+                Also, whether Python 2 or 3 is specified here (or
+                otherwise implicitly chosen) determines which variant of
+                the PL/Python language becomes available. See the
+                PL/Python documentation for more information.
 
         TCLSH
-                Full path to the Tcl interpreter. This will be used to
-                determine the dependencies for building PL/Tcl, and it
+                Full path name of the Tcl interpreter. This will be used
+                to determine the dependencies for building PL/Tcl, and it
                 will be substituted into Tcl scripts.
 
         XML2_CONFIG
@@ -712,13 +712,13 @@ AGS='-64' ...
 make
        (Remember to use GNU make.) The build will take a few minutes
        depending on your hardware. The last line displayed should be:
-All of PostgreSQL is successfully made. Ready to install.
+All of PostgreSQL successfully made. Ready to install.
        If you want to build everything that can be built, including the
        documentation (HTML and man pages), and the additional modules
        ("contrib"), type instead:
 make world
        The last line displayed should be:
-PostgreSQL, contrib and HTML documentation successfully made. Ready to install.
+PostgreSQL, contrib, and documentation successfully made. Ready to install.
     3. Regression Tests
        If you want to test the newly built server before you install it,
        you can run the regression tests at this point. The regression

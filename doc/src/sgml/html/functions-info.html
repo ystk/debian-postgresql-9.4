@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4.9 Documentation"
+TITLE="PostgreSQL 9.4.10 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="Functions and Operators"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2016-08-08T20:48:24"></HEAD
+CONTENT="2016-10-24T20:32:26"></HEAD
 ><BODY
 CLASS="SECT1"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4.9 Documentation</A
+>PostgreSQL 9.4.10 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -1342,6 +1342,60 @@ CLASS="TYPE"
 CLASS="LITERAL"
 ><CODE
 CLASS="FUNCTION"
+>has_type_privilege</CODE
+>(<TT
+CLASS="PARAMETER"
+>user</TT
+>,
+                                  <TT
+CLASS="PARAMETER"
+>type</TT
+>,
+                                  <TT
+CLASS="PARAMETER"
+>privilege</TT
+>)</TT
+>
+       </TD
+><TD
+><TT
+CLASS="TYPE"
+>boolean</TT
+></TD
+><TD
+>does user have privilege for type</TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+><CODE
+CLASS="FUNCTION"
+>has_type_privilege</CODE
+>(<TT
+CLASS="PARAMETER"
+>type</TT
+>,
+                                  <TT
+CLASS="PARAMETER"
+>privilege</TT
+>)</TT
+>
+       </TD
+><TD
+><TT
+CLASS="TYPE"
+>boolean</TT
+></TD
+><TD
+>does current user have privilege for type</TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+><CODE
+CLASS="FUNCTION"
 >pg_has_role</CODE
 >(<TT
 CLASS="PARAMETER"
@@ -1718,6 +1772,32 @@ CLASS="FUNCTION"
     <TT
 CLASS="LITERAL"
 >CREATE</TT
+>.
+   </P
+><P
+>    <CODE
+CLASS="FUNCTION"
+>has_type_privilege</CODE
+> checks whether a user
+    can access a type in a particular way.
+    Its argument possibilities
+    are analogous to <CODE
+CLASS="FUNCTION"
+>has_table_privilege</CODE
+>.
+    When specifying a type by a text string rather than by OID,
+    the allowed input is the same as for the <TT
+CLASS="TYPE"
+>regtype</TT
+> data type
+    (see <A
+HREF="datatype-oid.html"
+>Section 8.18</A
+>).
+    The desired access privilege type must evaluate to
+    <TT
+CLASS="LITERAL"
+>USAGE</TT
 >.
    </P
 ><P
