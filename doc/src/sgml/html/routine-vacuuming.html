@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4.9 Documentation"
+TITLE="PostgreSQL 9.4.10 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="Routine Database Maintenance Tasks"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2016-08-08T20:48:24"></HEAD
+CONTENT="2016-10-24T20:32:26"></HEAD
 ><BODY
 CLASS="SECT1"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4.9 Documentation</A
+>PostgreSQL 9.4.10 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -664,7 +664,11 @@ NAME="VACUUM-FOR-WRAPAROUND"
 >    <SPAN
 CLASS="PRODUCTNAME"
 >PostgreSQL</SPAN
->'s MVCC transaction semantics
+>'s
+    <A
+HREF="mvcc-intro.html"
+>MVCC</A
+> transaction semantics
     depend on being able to compare transaction ID (<ACRONYM
 CLASS="ACRONYM"
 >XID</ACRONYM
@@ -699,19 +703,10 @@ CLASS="EMPHASIS"
 >frozen</I
 ></SPAN
 >, indicating that
-    they were inserted by a transaction which committed sufficiently far in
-    the past that the effects of the inserting transaction is certain to be
-    visible, from an MVCC perspective, to all current and future transactions.
-    <SPAN
-CLASS="PRODUCTNAME"
->PostgreSQL</SPAN
-> reserves a special XID,
-    <TT
-CLASS="LITERAL"
->FrozenTransactionId</TT
->, which does not follow the normal XID
-    comparison rules and is always considered older
-    than every normal XID. Normal XIDs are
+    they were inserted by a transaction that committed sufficiently far in
+    the past that the effects of the inserting transaction are certain to be
+    visible to all current and future transactions.
+    Normal XIDs are
     compared using modulo-2<SUP
 >32</SUP
 > arithmetic. This means
@@ -732,7 +727,17 @@ CLASS="QUOTE"
     the next two billion transactions, no matter which normal XID we are
     talking about. If the row version still exists after more than two billion
     transactions, it will suddenly appear to be in the future. To
-    prevent this, frozen row versions are treated as if the inserting XID were
+    prevent this, <SPAN
+CLASS="PRODUCTNAME"
+>PostgreSQL</SPAN
+> reserves a special XID,
+    <TT
+CLASS="LITERAL"
+>FrozenTransactionId</TT
+>, which does not follow the normal XID
+    comparison rules and is always considered older
+    than every normal XID.
+    Frozen row versions are treated as if the inserting XID were
     <TT
 CLASS="LITERAL"
 >FrozenTransactionId</TT
@@ -744,12 +749,70 @@ CLASS="QUOTE"
     issues, and so such row versions will be valid until deleted, no matter
     how long that is.
    </P
+><DIV
+CLASS="NOTE"
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>Note: </B
+>     In <SPAN
+CLASS="PRODUCTNAME"
+>PostgreSQL</SPAN
+> versions before 9.4, freezing was
+     implemented by actually replacing a row's insertion XID
+     with <TT
+CLASS="LITERAL"
+>FrozenTransactionId</TT
+>, which was visible in the
+     row's <TT
+CLASS="STRUCTNAME"
+>xmin</TT
+> system column.  Newer versions just set a flag
+     bit, preserving the row's original <TT
+CLASS="STRUCTNAME"
+>xmin</TT
+> for possible
+     forensic use.  However, rows with <TT
+CLASS="STRUCTNAME"
+>xmin</TT
+> equal
+     to <TT
+CLASS="LITERAL"
+>FrozenTransactionId</TT
+> (2) may still be found
+     in databases <SPAN
+CLASS="APPLICATION"
+>pg_upgrade</SPAN
+>'d from pre-9.4 versions.
+    </P
+><P
+>     Also, system catalogs may contain rows with <TT
+CLASS="STRUCTNAME"
+>xmin</TT
+> equal
+     to <TT
+CLASS="LITERAL"
+>BootstrapTransactionId</TT
+> (1), indicating that they were
+     inserted during the first phase of <SPAN
+CLASS="APPLICATION"
+>initdb</SPAN
+>.
+     Like <TT
+CLASS="LITERAL"
+>FrozenTransactionId</TT
+>, this special XID is treated as
+     older than every normal XID.
+    </P
+></BLOCKQUOTE
+></DIV
 ><P
 >    <A
 HREF="runtime-config-client.html#GUC-VACUUM-FREEZE-MIN-AGE"
 >vacuum_freeze_min_age</A
 >
-    controls how old an XID value has to be before its row version will be
+    controls how old an XID value has to be before rows bearing that XID will be
     frozen.  Increasing this setting may avoid unnecessary work if the
     rows that would otherwise be frozen will soon be modified again,
     but decreasing this setting increases

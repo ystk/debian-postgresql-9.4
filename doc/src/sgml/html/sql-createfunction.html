@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4.9 Documentation"
+TITLE="PostgreSQL 9.4.10 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="SQL Commands"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2016-08-08T20:48:24"></HEAD
+CONTENT="2016-10-24T20:32:26"></HEAD
 ><BODY
 CLASS="REFENTRY"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4.9 Documentation</A
+>PostgreSQL 9.4.10 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -95,7 +95,7 @@ NAME="SQL-CREATEFUNCTION"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN73655"
+NAME="AEN73706"
 ></A
 ><H2
 >Name</H2
@@ -103,7 +103,7 @@ NAME="AEN73655"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN73658"
+NAME="AEN73709"
 ></A
 ><H2
 >Synopsis</H2
@@ -312,7 +312,7 @@ CLASS="LITERAL"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN73699"
+NAME="AEN73750"
 ></A
 ><H2
 >Parameters</H2
@@ -882,8 +882,12 @@ CLASS="LITERAL"
        <TT
 CLASS="LITERAL"
 >SET FROM CURRENT</TT
-> saves the session's current value of
-       the parameter as the value to be applied when the function is entered.
+> saves the value of the parameter that
+       is current when <TT
+CLASS="COMMAND"
+>CREATE FUNCTION</TT
+> is executed as the value
+       to be applied when the function is entered.
       </P
 ><P
 >       If a <TT
@@ -1424,7 +1428,7 @@ CLASS="LITERAL"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN74005"
+NAME="AEN74057"
 ></A
 ><H2
 >See Also</H2

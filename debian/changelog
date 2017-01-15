@@ -1,3 +1,28 @@
+postgresql-9.4 (9.4.10-0+deb8u1) jessie; urgency=medium
+
+  * New upstream version.
+
+    If your installation has been affected by the bug described in the first
+    changelog entry below, then after updating you may need to take action to
+    repair corrupted free space maps.
+
+    + Fix WAL-logging of truncation of relation free space maps and visibility
+      maps (Pavan Deolasee, Heikki Linnakangas)
+
+      It was possible for these files to not be correctly restored during
+      crash recovery, or to be written incorrectly on a standby server. Bogus
+      entries in a free space map could lead to attempts to access pages that
+      have been truncated away from the relation itself, typically producing
+      errors like could not read block XXX: read only 0 of 8192 bytes.
+      Checksum failures in the visibility map are also possible, if
+      checksumming is enabled.
+
+      Procedures for determining whether there is a problem and repairing it
+      if so are discussed at
+      https://wiki.postgresql.org/wiki/Free_Space_Map_Problems.
+
+ -- Christoph Berg <christoph.berg@credativ.de>  Wed, 16 Nov 2016 15:39:27 +0100
+
 postgresql-9.4 (9.4.9-0+deb8u1) jessie-security; urgency=medium
 
   * New upstream security release.

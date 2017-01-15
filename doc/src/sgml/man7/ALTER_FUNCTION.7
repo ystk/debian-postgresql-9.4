@@ -3,11 +3,11 @@
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets v1.78.1 <http://docbook.sf.net/>
 .\"      Date: 2016
-.\"    Manual: PostgreSQL 9.4.9 Documentation
-.\"    Source: PostgreSQL 9.4.9
+.\"    Manual: PostgreSQL 9.4.10 Documentation
+.\"    Source: PostgreSQL 9.4.10
 .\"  Language: English
 .\"
-.TH "ALTER FUNCTION" "7" "2016" "PostgreSQL 9.4.9" "PostgreSQL 9.4.9 Documentation"
+.TH "ALTER FUNCTION" "7" "2016" "PostgreSQL 9.4.10" "PostgreSQL 9.4.10 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -190,7 +190,9 @@ is used, the function\-local setting is removed, so that the function executes w
 RESET ALL
 to clear all function\-local settings\&.
 SET FROM CURRENT
-saves the session\*(Aqs current value of the parameter as the value to be applied when the function is entered\&.
+saves the value of the parameter that is current when
+\fBALTER FUNCTION\fR
+is executed as the value to be applied when the function is entered\&.
 .sp
 See
 \fBSET\fR(7)
