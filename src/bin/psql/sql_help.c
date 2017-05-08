@@ -572,8 +572,7 @@ sql_help_ALTER_MATERIALIZED_VIEW(PQExpBuffer buf)
 					  "    SET WITHOUT CLUSTER\n"
 					  "    SET ( %s = %s [, ... ] )\n"
 					  "    RESET ( %s [, ... ] )\n"
-					  "    OWNER TO %s\n"
-					  "    SET TABLESPACE %s",
+					  "    OWNER TO %s",
 					  _("name"),
 					  _("action"),
 					  _("name"),
@@ -599,8 +598,7 @@ sql_help_ALTER_MATERIALIZED_VIEW(PQExpBuffer buf)
 					  _("storage_parameter"),
 					  _("value"),
 					  _("storage_parameter"),
-					  _("new_owner"),
-					  _("new_tablespace"));
+					  _("new_owner"));
 }
 
 void

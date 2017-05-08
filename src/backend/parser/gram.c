@@ -32914,7 +32914,7 @@ yyreduce:
 					n->lateral = true;
 					n->subquery = (yyvsp[-1].node);
 					n->alias = (yyvsp[0].alias);
-					/* same coment as above */
+					/* same comment as above */
 					if ((yyvsp[0].alias) == NULL)
 					{
 						if (IsA((yyvsp[-1].node), SelectStmt) &&
@@ -38185,13 +38185,3 @@ parser_init(base_yy_extra_type *yyext)
 {
 	yyext->parsetree = NIL;		/* in case grammar forgets to set it */
 }
-
-/*
- * Must undefine this stuff before including scan.c, since it has different
- * definitions for these macros.
- */
-#undef yyerror
-#undef yylval
-#undef yylloc
-
-#include "scan.c"
