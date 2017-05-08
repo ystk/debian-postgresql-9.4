@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4.10 Documentation"
+TITLE="PostgreSQL 9.4.11 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="Server Configuration"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2016-10-24T20:32:26"></HEAD
+CONTENT="2017-02-06T22:04:42"></HEAD
 ><BODY
 CLASS="SECT1"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4.10 Documentation</A
+>PostgreSQL 9.4.11 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -892,7 +892,8 @@ CLASS="APPLICATION"
 CLASS="LITERAL"
 >HIGH:MEDIUM:+3DES:!aNULL</TT
 >.  It is usually reasonable,
-        unless you have specific security requirements.
+        unless you have specific security requirements.  This parameter can only
+        be set at server start.
        </P
 ><P
 >        Explanation of the default value:
@@ -1001,7 +1002,8 @@ CLASS="TYPE"
 ><DD
 ><P
 >        Specifies whether to use the server's SSL cipher preferences, rather
-        than the client's.  The default is true.
+        than the client's.  The default is true.  This parameter can only be
+        set at server start.
        </P
 ><P
 >        Older PostgreSQL versions do not have this setting and always use the
@@ -1034,7 +1036,8 @@ CLASS="ACRONYM"
         Curve key.  The default is <TT
 CLASS="LITERAL"
 >prime256v1</TT
->.
+>.  This parameter
+        can only be set at server start.
        </P
 ><P
 >        OpenSSL names for most common curves:

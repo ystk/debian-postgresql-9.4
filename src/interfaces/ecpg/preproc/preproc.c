@@ -141,7 +141,7 @@ vmmerror(int error_code, enum errortype type, const char *error, va_list ap)
 	/* internationalize the error message string */
 	error = _(error);
 
-	fprintf(stderr, "%s:%d: ", input_filename, yylineno);
+	fprintf(stderr, "%s:%d: ", input_filename, base_yylineno);
 
 	switch(type)
 	{
@@ -186,10 +186,10 @@ mmfatal(int error_code, const char *error, ...)
 	vmmerror(error_code, ET_ERROR, error, ap);
 	va_end(ap);
 
-	if (yyin)
-		fclose(yyin);
-	if (yyout)
-		fclose(yyout);
+	if (base_yyin)
+		fclose(base_yyin);
+	if (base_yyout)
+		fclose(base_yyout);
 
 	if (strcmp(output_filename, "-") != 0 && unlink(output_filename) != 0)
 		fprintf(stderr, _("could not remove output file \"%s\"\n"), output_filename);
@@ -264,7 +264,7 @@ make3_str(char *str1, char *str2, char *str3)
 static char *
 make_name(void)
 {
-	return mm_strdup(yytext);
+	return mm_strdup(base_yytext);
 }
 
 static char *
@@ -276,7 +276,7 @@ create_questionmarks(char *name, bool array)
 
 	/* In case we have a struct, we have to print as many "?" as there are attributes in the struct
 	 * An array is only allowed together with an element argument
-	 * This is essantially only used for inserts, but using a struct as input parameter is an error anywhere else
+	 * This is essentially only used for inserts, but using a struct as input parameter is an error anywhere else
 	 * so we don't have to worry here. */
 
 	if (p->type->type == ECPGt_struct || (array && p->type->type == ECPGt_array && p->type->u.element->type == ECPGt_struct))
@@ -27893,7 +27893,7 @@ yyreduce:
 				if (connection)
 					mmerror(PARSE_ERROR, ET_ERROR, "AT option not allowed in CLOSE DATABASE statement");
 
-				fprintf(yyout, "{ ECPGdisconnect(__LINE__, \"CURRENT\");");
+				fprintf(base_yyout, "{ ECPGdisconnect(__LINE__, \"CURRENT\");");
 				whenever_action(2);
 				free((yyvsp[0].str));
 				break;
@@ -28377,7 +28377,7 @@ yyreduce:
   case 110:
 #line 1752 "preproc.y" /* yacc.c:1646  */
     {
-		fprintf(yyout, "{ ECPGtrans(__LINE__, %s, \"%s\");", connection ? connection : "NULL", (yyvsp[0].str));
+		fprintf(base_yyout, "{ ECPGtrans(__LINE__, %s, \"%s\");", connection ? connection : "NULL", (yyvsp[0].str));
 		whenever_action(2);
 		free((yyvsp[0].str));
 	}
@@ -28435,7 +28435,7 @@ yyreduce:
   case 119:
 #line 1774 "preproc.y" /* yacc.c:1646  */
     {
-		fprintf(yyout,"ECPGallocate_desc(__LINE__, %s);",(yyvsp[0].str));
+		fprintf(base_yyout,"ECPGallocate_desc(__LINE__, %s);",(yyvsp[0].str));
 		whenever_action(0);
 		free((yyvsp[0].str));
 	}
@@ -28448,7 +28448,7 @@ yyreduce:
 		if (connection)
 			mmerror(PARSE_ERROR, ET_ERROR, "AT option not allowed in CONNECT statement");
 
-		fprintf(yyout, "{ ECPGconnect(__LINE__, %d, %s, %d); ", compat, (yyvsp[0].str), autocommit);
+		fprintf(base_yyout, "{ ECPGconnect(__LINE__, %d, %s, %d); ", compat, (yyvsp[0].str), autocommit);
 		reset_variables();
 		whenever_action(2);
 		free((yyvsp[0].str));
@@ -28467,7 +28467,7 @@ yyreduce:
   case 122:
 #line 1794 "preproc.y" /* yacc.c:1646  */
     {
-		fprintf(yyout,"ECPGdeallocate_desc(__LINE__, %s);",(yyvsp[0].str));
+		fprintf(base_yyout,"ECPGdeallocate_desc(__LINE__, %s);",(yyvsp[0].str));
 		whenever_action(0);
 		free((yyvsp[0].str));
 	}
@@ -28485,10 +28485,10 @@ yyreduce:
   case 124:
 #line 1804 "preproc.y" /* yacc.c:1646  */
     {
-		fprintf(yyout, "{ ECPGdescribe(__LINE__, %d, %s,", compat, (yyvsp[0].str));
+		fprintf(base_yyout, "{ ECPGdescribe(__LINE__, %d, %s,", compat, (yyvsp[0].str));
 		dump_variables(argsresult, 1);
-		fputs("ECPGt_EORT);", yyout);
-		fprintf(yyout, "}");
+		fputs("ECPGt_EORT);", base_yyout);
+		fprintf(base_yyout, "}");
 		output_line_number();
 
 		free((yyvsp[0].str));
@@ -28502,7 +28502,7 @@ yyreduce:
 		if (connection)
 			mmerror(PARSE_ERROR, ET_ERROR, "AT option not allowed in DISCONNECT statement");
 
-		fprintf(yyout, "{ ECPGdisconnect(__LINE__, %s);",
+		fprintf(base_yyout, "{ ECPGdisconnect(__LINE__, %s);",
 				(yyvsp[0].str) ? (yyvsp[0].str) : "\"CURRENT\"");
 		whenever_action(2);
 		free((yyvsp[0].str));
@@ -28522,11 +28522,11 @@ yyreduce:
 		const char *con = connection ? connection : "NULL";
 
 		if (strcmp((yyvsp[0].str), "all") == 0)
-			fprintf(yyout, "{ ECPGdeallocate_all(__LINE__, %d, %s);", compat, con);
+			fprintf(base_yyout, "{ ECPGdeallocate_all(__LINE__, %d, %s);", compat, con);
 		else if ((yyvsp[0].str)[0] == ':')
-			fprintf(yyout, "{ ECPGdeallocate(__LINE__, %d, %s, %s);", compat, con, (yyvsp[0].str)+1);
+			fprintf(base_yyout, "{ ECPGdeallocate(__LINE__, %d, %s, %s);", compat, con, (yyvsp[0].str)+1);
 		else
-			fprintf(yyout, "{ ECPGdeallocate(__LINE__, %d, %s, \"%s\");", compat, con, (yyvsp[0].str));
+			fprintf(base_yyout, "{ ECPGdeallocate(__LINE__, %d, %s, \"%s\");", compat, con, (yyvsp[0].str));
 
 		whenever_action(2);
 		free((yyvsp[0].str));
@@ -28573,7 +28573,7 @@ yyreduce:
   case 131:
 #line 1863 "preproc.y" /* yacc.c:1646  */
     {
-		fprintf(yyout, "{ ECPGsetcommit(__LINE__, \"%s\", %s);", (yyvsp[0].str), connection ? connection : "NULL");
+		fprintf(base_yyout, "{ ECPGsetcommit(__LINE__, \"%s\", %s);", (yyvsp[0].str), connection ? connection : "NULL");
 		whenever_action(2);
 		free((yyvsp[0].str));
 	}
@@ -28586,7 +28586,7 @@ yyreduce:
 		if (connection)
 			mmerror(PARSE_ERROR, ET_ERROR, "AT option not allowed in SET CONNECTION statement");
 
-		fprintf(yyout, "{ ECPGsetconn(__LINE__, %s);", (yyvsp[0].str));
+		fprintf(base_yyout, "{ ECPGsetconn(__LINE__, %s);", (yyvsp[0].str));
 		whenever_action(2);
 		free((yyvsp[0].str));
 	}
@@ -28620,7 +28620,7 @@ yyreduce:
 		if (connection)
 			mmerror(PARSE_ERROR, ET_ERROR, "AT option not allowed in TYPE statement");
 
-		fprintf(yyout, "%s", (yyvsp[0].str));
+		fprintf(base_yyout, "%s", (yyvsp[0].str));
 		free((yyvsp[0].str));
 		output_line_number();
 	}
@@ -46540,7 +46540,7 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
   case 2369:
 #line 13161 "preproc.y" /* yacc.c:1646  */
     {
-					fprintf(yyout, "%s", (yyvsp[0].str));
+					fprintf(base_yyout, "%s", (yyvsp[0].str));
 					free((yyvsp[0].str));
 					output_line_number();
 				}
@@ -46549,19 +46549,19 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 
   case 2371:
 #line 13167 "preproc.y" /* yacc.c:1646  */
-    { fprintf(yyout, "%s", (yyvsp[0].str)); free((yyvsp[0].str)); }
+    { fprintf(base_yyout, "%s", (yyvsp[0].str)); free((yyvsp[0].str)); }
 #line 46554 "preproc.c" /* yacc.c:1646  */
     break;
 
   case 2372:
 #line 13168 "preproc.y" /* yacc.c:1646  */
-    { fprintf(yyout, "%s", (yyvsp[0].str)); free((yyvsp[0].str)); }
+    { fprintf(base_yyout, "%s", (yyvsp[0].str)); free((yyvsp[0].str)); }
 #line 46560 "preproc.c" /* yacc.c:1646  */
     break;
 
   case 2373:
 #line 13169 "preproc.y" /* yacc.c:1646  */
-    { braces_open++; fputs("{", yyout); }
+    { braces_open++; fputs("{", base_yyout); }
 #line 46566 "preproc.c" /* yacc.c:1646  */
     break;
 
@@ -46575,7 +46575,7 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 				free(current_function);
 				current_function = NULL;
 			}
-			fputs("}", yyout);
+			fputs("}", base_yyout);
 		}
 #line 46581 "preproc.c" /* yacc.c:1646  */
     break;
@@ -47120,14 +47120,14 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 
   case 2432:
 #line 13534 "preproc.y" /* yacc.c:1646  */
-    { fputs("/* exec sql begin declare section */", yyout); }
+    { fputs("/* exec sql begin declare section */", base_yyout); }
 #line 47125 "preproc.c" /* yacc.c:1646  */
     break;
 
   case 2433:
 #line 13536 "preproc.y" /* yacc.c:1646  */
     {
-			fprintf(yyout, "%s/* exec sql end declare section */", (yyvsp[-1].str));
+			fprintf(base_yyout, "%s/* exec sql end declare section */", (yyvsp[-1].str));
 			free((yyvsp[-1].str));
 			output_line_number();
 		}
@@ -47209,7 +47209,7 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
     {
 		add_typedef((yyvsp[-2].str), (yyvsp[-1].index).index1, (yyvsp[-1].index).index2, (yyvsp[-4].type).type_enum, (yyvsp[-4].type).type_dimension, (yyvsp[-4].type).type_index, initializer, *(yyvsp[-3].str) ? 1 : 0);
 
-		fprintf(yyout, "typedef %s %s %s %s;\n", (yyvsp[-4].type).type_str, *(yyvsp[-3].str) ? "*" : "", (yyvsp[-2].str), (yyvsp[-1].index).str);
+		fprintf(base_yyout, "typedef %s %s %s %s;\n", (yyvsp[-4].type).type_str, *(yyvsp[-3].str) ? "*" : "", (yyvsp[-2].str), (yyvsp[-1].index).str);
 		output_line_number();
 		(yyval.str) = mm_strdup("");
 	}
@@ -47604,7 +47604,7 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			free(forward_name);
 			forward_name = NULL;
 
-			/* This is essantially a typedef but needs the keyword struct/union as well.
+			/* This is essentially a typedef but needs the keyword struct/union as well.
 			 * So we create the typedef for each struct definition with symbol */
 			for (ptr = types; ptr != NULL; ptr = ptr->next)
 			{
@@ -50441,18 +50441,10 @@ void base_yyerror(const char *error)
 {
 	/* translator: %s is typically the translation of "syntax error" */
 	mmerror(PARSE_ERROR, ET_ERROR, "%s at or near \"%s\"",
-			_(error), token_start ? token_start : yytext);
+			_(error), token_start ? token_start : base_yytext);
 }
 
 void parser_init(void)
 {
  /* This function is empty. It only exists for compatibility with the backend parser right now. */
 }
-
-/*
- * Must undefine base_yylex before including pgc.c, since we want it
- * to create the function base_yylex not filtered_base_yylex.
- */
-#undef base_yylex
-
-#include "pgc.c"

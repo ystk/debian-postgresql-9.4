@@ -270,7 +270,7 @@ static const struct _helpStruct QL_HELP[] = {
     { "ALTER MATERIALIZED VIEW",
       N_("change the definition of a materialized view"),
       sql_help_ALTER_MATERIALIZED_VIEW,
-      22 },
+      21 },
 
     { "ALTER OPERATOR",
       N_("change the definition of an operator"),

@@ -2,12 +2,12 @@
 .\"     Title: psql
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets v1.78.1 <http://docbook.sf.net/>
-.\"      Date: 2016
-.\"    Manual: PostgreSQL 9.4.10 Documentation
-.\"    Source: PostgreSQL 9.4.10
+.\"      Date: 2017
+.\"    Manual: PostgreSQL 9.4.11 Documentation
+.\"    Source: PostgreSQL 9.4.11
 .\"  Language: English
 .\"
-.TH "PSQL" "1" "2016" "PostgreSQL 9.4.10" "PostgreSQL 9.4.10 Documentation"
+.TH "PSQL" "1" "2017" "PostgreSQL 9.4.11" "PostgreSQL 9.4.11 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -545,7 +545,7 @@ is currently connected, followed by the string
 .\}
 .nf
 $ \fBpsql testdb\fR
-psql (9\&.4\&.10)
+psql (9\&.4\&.11)
 Type "help" for help\&.
 
 testdb=>
@@ -2964,7 +2964,9 @@ format and width for determining if wide output requires the pager or should be 
 If the query results do not fit on the screen, they are piped through this command\&. Typical values are
 more
 or
-less\&. The default is platform\-dependent\&. The use of the pager can be disabled by using the
+less\&. The default is platform\-dependent\&. Use of the pager can be disabled by setting
+\fBPAGER\fR
+to empty, or by using pager\-related options of the
 \fB\epset\fR
 command\&.
 .RE
