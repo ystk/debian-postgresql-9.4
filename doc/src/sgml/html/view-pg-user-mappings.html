@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4.11 Documentation"
+TITLE="PostgreSQL 9.4.12 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="System Catalogs"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2017-02-06T22:04:42"></HEAD
+CONTENT="2017-05-08T21:34:57"></HEAD
 ><BODY
 CLASS="SECT1"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4.11 Documentation</A
+>PostgreSQL 9.4.12 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -118,7 +118,7 @@ CLASS="STRUCTNAME"
 ><DIV
 CLASS="TABLE"
 ><A
-NAME="AEN102964"
+NAME="AEN103010"
 ></A
 ><P
 ><B
@@ -279,8 +279,14 @@ CLASS="TYPE"
 CLASS="QUOTE"
 >"keyword=value"</SPAN
 >
-       strings, if the current user is the owner of the foreign
-       server, else null
+       strings.  This column will show as null unless the current user
+       is the user being mapped, or the mapping is for
+       <TT
+CLASS="LITERAL"
+>PUBLIC</TT
+> and the current user is the server
+       owner, or the current user is a superuser.  The intent is
+       to protect password information stored as user mapping option.
       </TD
 ></TR
 ></TBODY

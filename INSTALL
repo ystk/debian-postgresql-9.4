@@ -694,6 +694,19 @@ AGS='-64' ...
                 "xml2-config" program used to locate the libxml
                 installation.
 
+       Sometimes it is useful to add compiler flags after-the-fact to the
+       set that were chosen by "configure". An important example is that
+       gcc's "-Werror" option cannot be included in the CFLAGS passed to
+       "configure", because it will break many of "configure"'s built-in
+       tests. To add such flags, include them in the COPT environment
+       variable while running "make". The contents of COPT are added to
+       both the CFLAGS and LDFLAGS options set up by "configure". For
+       example, you could do
+make COPT='-Werror'
+       or
+export COPT='-Werror'
+make
+
      Note: When developing code inside the server, it is recommended to
      use the configure options "--enable-cassert" (which turns on many
      run-time error checks) and "--enable-debug" (which improves the
@@ -707,6 +720,11 @@ AGS='-64' ...
      while trying to debug optimized code, recompile the specific files
      of interest with "-O0". An easy way to do this is by passing an
      option to make: "make PROFILE=-O0 file.o".
+     The COPT and PROFILE environment variables are actually handled
+     identically by the PostgreSQL makefiles. Which to use is a matter of
+     preference, but a common habit among developers is to use PROFILE
+     for one-time flag adjustments, while COPT might be kept set all the
+     time.
     2. Build
        To start the build, type:
 make
