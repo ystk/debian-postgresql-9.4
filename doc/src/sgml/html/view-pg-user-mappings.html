@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4.12 Documentation"
+TITLE="PostgreSQL 9.4.13 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="System Catalogs"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2017-05-08T21:34:57"></HEAD
+CONTENT="2017-08-07T21:36:03"></HEAD
 ><BODY
 CLASS="SECT1"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4.12 Documentation</A
+>PostgreSQL 9.4.13 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -118,7 +118,7 @@ CLASS="STRUCTNAME"
 ><DIV
 CLASS="TABLE"
 ><A
-NAME="AEN103010"
+NAME="AEN103017"
 ></A
 ><P
 ><B
@@ -278,20 +278,47 @@ CLASS="TYPE"
 >       User mapping specific options, as <SPAN
 CLASS="QUOTE"
 >"keyword=value"</SPAN
->
-       strings.  This column will show as null unless the current user
-       is the user being mapped, or the mapping is for
-       <TT
-CLASS="LITERAL"
->PUBLIC</TT
-> and the current user is the server
-       owner, or the current user is a superuser.  The intent is
-       to protect password information stored as user mapping option.
+> strings
       </TD
 ></TR
 ></TBODY
 ></TABLE
 ></DIV
+><P
+>   To protect password information stored as a user mapping option,
+   the <TT
+CLASS="STRUCTFIELD"
+>umoptions</TT
+> column will read as null
+   unless one of the following applies:
+   <P
+></P
+></P><UL
+><LI
+><P
+>      current user is the user being mapped, and owns the server or
+      holds <TT
+CLASS="LITERAL"
+>USAGE</TT
+> privilege on it
+     </P
+></LI
+><LI
+><P
+>      current user is the server owner and mapping is for <TT
+CLASS="LITERAL"
+>PUBLIC</TT
+>
+     </P
+></LI
+><LI
+><P
+>      current user is a superuser
+     </P
+></LI
+></UL
+><P>
+  </P
 ></DIV
 ><DIV
 CLASS="NAVFOOTER"

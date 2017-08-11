@@ -2072,9 +2072,13 @@ prog: statements;
 
 
  AlterUserSetStmt:
- ALTER USER RoleId SetResetClause
+ ALTER USER RoleId opt_in_database SetResetClause
  { 
- $$ = cat_str(3,mm_strdup("alter user"),$3,$4);
+ $$ = cat_str(4,mm_strdup("alter user"),$3,$4,$5);
+}
+|  ALTER USER ALL opt_in_database SetResetClause
+ { 
+ $$ = cat_str(3,mm_strdup("alter user all"),$4,$5);
 }
 ;
 
@@ -4011,6 +4015,10 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
  ecpg_fconst
  { 
  $$ = $1;
+}
+|  '+' ecpg_fconst
+ { 
+ $$ = cat_str(2,mm_strdup("+"),$2);
 }
 |  '-' ecpg_fconst
  { 
