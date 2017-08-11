@@ -9,14 +9,14 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4.12 Documentation"
+TITLE="PostgreSQL 9.4.13 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="Release Notes"
 HREF="release.html"><LINK
 REL="PREVIOUS"
-TITLE="Release Notes"
-HREF="release.html"><LINK
+TITLE="Release 9.4.13"
+HREF="release-9-4-13.html"><LINK
 REL="NEXT"
 TITLE="Release 9.4.11"
 HREF="release-9-4-11.html"><LINK
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2017-05-08T21:34:57"></HEAD
+CONTENT="2017-08-07T21:36:03"></HEAD
 ><BODY
 CLASS="SECT1"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4.12 Documentation</A
+>PostgreSQL 9.4.13 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -53,8 +53,8 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="top"
 ><A
-TITLE="Release Notes"
-HREF="release.html"
+TITLE="Release 9.4.13"
+HREF="release-9-4-13.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -93,24 +93,21 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="RELEASE-9-4-12"
->E.1. Release 9.4.12</A
+>E.2. Release 9.4.12</A
 ></H1
 ><DIV
-CLASS="NOTE"
-><BLOCKQUOTE
-CLASS="NOTE"
+CLASS="FORMALPARA"
 ><P
 ><B
->Release Date: </B
+>Release date: </B
 >2017-05-11</P
-></BLOCKQUOTE
 ></DIV
 ><P
 >   This release contains a variety of fixes from 9.4.11.
    For information about new features in the 9.4 major release, see
    <A
 HREF="release-9-4.html"
->Section E.13</A
+>Section E.14</A
 >.
   </P
 ><DIV
@@ -118,8 +115,8 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN119315"
->E.1.1. Migration to Version 9.4.12</A
+NAME="AEN119582"
+>E.2.1. Migration to Version 9.4.12</A
 ></H2
 ><P
 >    A dump/restore is not required for those running 9.4.X.
@@ -139,7 +136,7 @@ CLASS="QUOTE"
 >    Also, if you are upgrading from a version earlier than 9.4.11,
     see <A
 HREF="release-9-4-11.html"
->Section E.2</A
+>Section E.3</A
 >.
    </P
 ></DIV
@@ -148,8 +145,8 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN119323"
->E.1.2. Changes</A
+NAME="AEN119590"
+>E.2.2. Changes</A
 ></H2
 ><P
 ></P
@@ -191,118 +188,12 @@ CLASS="LITERAL"
 ><P
 >      By itself, this patch will only fix the behavior in newly initdb'd
       databases.  If you wish to apply this change in an existing database,
-      you will need to do the following:
+      follow the corrected procedure shown in the changelog entry for
+      CVE-2017-7547, in <A
+HREF="release-9-4-13.html"
+>Section E.1</A
+>.
      </P
-><DIV
-CLASS="PROCEDURE"
-><OL
-TYPE="1"
-><LI
-CLASS="STEP"
-><P
->        Restart the postmaster after adding <TT
-CLASS="LITERAL"
->allow_system_table_mods
-        = true</TT
-> to <TT
-CLASS="FILENAME"
->postgresql.conf</TT
->.  (In versions
-        supporting <TT
-CLASS="COMMAND"
->ALTER SYSTEM</TT
->, you can use that to make the
-        configuration change, but you'll still need a restart.)
-       </P
-></LI
-><LI
-CLASS="STEP"
-><P
->        In <SPAN
-CLASS="emphasis"
-><I
-CLASS="EMPHASIS"
->each</I
-></SPAN
-> database of the cluster,
-        run the following commands as superuser:
-</P><PRE
-CLASS="PROGRAMLISTING"
->SET search_path = pg_catalog;
-CREATE OR REPLACE VIEW pg_user_mappings AS
-    SELECT
-        U.oid       AS umid,
-        S.oid       AS srvid,
-        S.srvname   AS srvname,
-        U.umuser    AS umuser,
-        CASE WHEN U.umuser = 0 THEN
-            'public'
-        ELSE
-            A.rolname
-        END AS usename,
-        CASE WHEN (U.umuser &lt;&gt; 0 AND A.rolname = current_user)
-                    OR (U.umuser = 0 AND pg_has_role(S.srvowner, 'USAGE'))
-                    OR (SELECT rolsuper FROM pg_authid WHERE rolname = current_user)
-                    THEN U.umoptions
-                 ELSE NULL END AS umoptions
-    FROM pg_user_mapping U
-         LEFT JOIN pg_authid A ON (A.oid = U.umuser) JOIN
-        pg_foreign_server S ON (U.umserver = S.oid);</PRE
-><P>
-       </P
-></LI
-><LI
-CLASS="STEP"
-><P
->        Do not forget to include the <TT
-CLASS="LITERAL"
->template0</TT
->
-        and <TT
-CLASS="LITERAL"
->template1</TT
-> databases, or the vulnerability will still
-        exist in databases you create later.  To fix <TT
-CLASS="LITERAL"
->template0</TT
->,
-        you'll need to temporarily make it accept connections.
-        In <SPAN
-CLASS="PRODUCTNAME"
->PostgreSQL</SPAN
-> 9.5 and later, you can use
-</P><PRE
-CLASS="PROGRAMLISTING"
->ALTER DATABASE template0 WITH ALLOW_CONNECTIONS true;</PRE
-><P>
-        and then after fixing <TT
-CLASS="LITERAL"
->template0</TT
->, undo that with
-</P><PRE
-CLASS="PROGRAMLISTING"
->ALTER DATABASE template0 WITH ALLOW_CONNECTIONS false;</PRE
-><P>
-        In prior versions, instead use
-</P><PRE
-CLASS="PROGRAMLISTING"
->UPDATE pg_database SET datallowconn = true WHERE datname = 'template0';
-UPDATE pg_database SET datallowconn = false WHERE datname = 'template0';</PRE
-><P>
-       </P
-></LI
-><LI
-CLASS="STEP"
-><P
->        Finally, remove the <TT
-CLASS="LITERAL"
->allow_system_table_mods</TT
-> configuration
-        setting, and again restart the postmaster.
-       </P
-></LI
-></OL
-></DIV
 ></LI
 ><LI
 ><P
@@ -843,7 +734,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="release.html"
+HREF="release-9-4-13.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -871,7 +762,7 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->Release Notes</TD
+>Release 9.4.13</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"

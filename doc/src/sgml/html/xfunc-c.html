@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4.12 Documentation"
+TITLE="PostgreSQL 9.4.13 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="Extending SQL"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2017-05-08T21:34:57"></HEAD
+CONTENT="2017-08-07T21:36:03"></HEAD
 ><BODY
 CLASS="SECT1"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4.12 Documentation</A
+>PostgreSQL 9.4.13 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -1238,7 +1238,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN56129"
+NAME="AEN56123"
 >35.9.3. Version 0 Calling Conventions</A
 ></H2
 ><P
@@ -1457,7 +1457,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN56156"
+NAME="AEN56150"
 >35.9.4. Version 1 Calling Conventions</A
 ></H2
 ><P
@@ -1824,7 +1824,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN56214"
+NAME="AEN56208"
 >35.9.5. Writing Code</A
 ></H2
 ><P
@@ -2109,7 +2109,7 @@ CLASS="ACRONYM"
 > is
       <TT
 CLASS="OPTION"
->-fpic</TT
+>-fPIC</TT
 >.  To create shared libraries the compiler
       flag is <TT
 CLASS="OPTION"
@@ -2117,7 +2117,7 @@ CLASS="OPTION"
 >.
 </P><PRE
 CLASS="PROGRAMLISTING"
->gcc -fpic -c foo.c
+>gcc -fPIC -c foo.c
 gcc -shared -o foo.so foo.o</PRE
 ><P>
       This is applicable as of version 3.0 of
@@ -2148,7 +2148,7 @@ CLASS="APPLICATION"
 >GCC</SPAN
 > it's <TT
 CLASS="OPTION"
->-fpic</TT
+>-fPIC</TT
 >. The
       linker flag for shared libraries is <TT
 CLASS="OPTION"
@@ -2161,7 +2161,7 @@ CLASS="PROGRAMLISTING"
       or:
 </P><PRE
 CLASS="PROGRAMLISTING"
->gcc -fpic -c foo.c</PRE
+>gcc -fPIC -c foo.c</PRE
 ><P>
       and then:
 </P><PRE
@@ -2193,16 +2193,8 @@ CLASS="ACRONYM"
 > is
       <TT
 CLASS="OPTION"
->-fpic</TT
->.  On some platforms in some situations
-      <TT
-CLASS="OPTION"
 >-fPIC</TT
-> must be used if <TT
-CLASS="OPTION"
->-fpic</TT
->
-      does not work.  Refer to the GCC manual for more information.
+>.
       The compiler flag to create a shared library is
       <TT
 CLASS="OPTION"
@@ -2210,7 +2202,7 @@ CLASS="OPTION"
 >.  A complete example looks like this:
 </P><PRE
 CLASS="PROGRAMLISTING"
->cc -fpic -c foo.c
+>cc -fPIC -c foo.c
 cc -shared -o foo.so foo.o</PRE
 ><P>
      </P
@@ -2245,7 +2237,7 @@ CLASS="ACRONYM"
 > is
       <TT
 CLASS="OPTION"
->-fpic</TT
+>-fPIC</TT
 >.  For <ACRONYM
 CLASS="ACRONYM"
 >ELF</ACRONYM
@@ -2261,7 +2253,7 @@ CLASS="LITERAL"
 > is used.
 </P><PRE
 CLASS="PROGRAMLISTING"
->gcc -fpic -c foo.c
+>gcc -fPIC -c foo.c
 gcc -shared -o foo.so foo.o</PRE
 ><P>
      </P
@@ -2280,7 +2272,7 @@ CLASS="ACRONYM"
 > is
       <TT
 CLASS="OPTION"
->-fpic</TT
+>-fPIC</TT
 >.  <TT
 CLASS="LITERAL"
 >ld -Bshareable</TT
@@ -2288,7 +2280,7 @@ CLASS="LITERAL"
       used to link shared libraries.
 </P><PRE
 CLASS="PROGRAMLISTING"
->gcc -fpic -c foo.c
+>gcc -fPIC -c foo.c
 ld -Bshareable -o foo.so foo.o</PRE
 ><P>
      </P
@@ -2311,7 +2303,7 @@ CLASS="OPTION"
 > with the Sun compiler and
       <TT
 CLASS="OPTION"
->-fpic</TT
+>-fPIC</TT
 > with <SPAN
 CLASS="APPLICATION"
 >GCC</SPAN
@@ -2336,7 +2328,7 @@ cc -G -o foo.so foo.o</PRE
       or
 </P><PRE
 CLASS="PROGRAMLISTING"
->gcc -fpic -c foo.c
+>gcc -fPIC -c foo.c
 gcc -G -o foo.so foo.o</PRE
 ><P>
      </P
@@ -2476,7 +2468,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN56429"
+NAME="AEN56421"
 >35.9.7. Composite-type Arguments</A
 ></H2
 ><P
@@ -2636,7 +2628,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN56453"
+NAME="AEN56445"
 >35.9.8. Returning Rows (Composite Types)</A
 ></H2
 ><P
@@ -3382,7 +3374,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN56576"
+NAME="AEN56568"
 >35.9.10. Polymorphic Arguments and Return Types</A
 ></H2
 ><P
@@ -3656,7 +3648,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN56627"
+NAME="AEN56619"
 >35.9.12. Shared Memory and LWLocks</A
 ></H2
 ><P

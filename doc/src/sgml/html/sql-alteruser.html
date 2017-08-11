@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4.12 Documentation"
+TITLE="PostgreSQL 9.4.13 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="SQL Commands"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2017-05-08T21:34:57"></HEAD
+CONTENT="2017-08-07T21:36:03"></HEAD
 ><BODY
 CLASS="REFENTRY"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4.12 Documentation</A
+>PostgreSQL 9.4.13 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -95,7 +95,7 @@ NAME="SQL-ALTERUSER"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN71150"
+NAME="AEN71149"
 ></A
 ><H2
 >Name</H2
@@ -103,7 +103,7 @@ NAME="AEN71150"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN71153"
+NAME="AEN71152"
 ></A
 ><H2
 >Synopsis</H2
@@ -172,12 +172,17 @@ CLASS="REPLACEABLE"
 ></TT
 >
 
-ALTER USER <TT
+ALTER USER { <TT
 CLASS="REPLACEABLE"
 ><I
 >name</I
 ></TT
-> SET <TT
+> | ALL } [ IN DATABASE <TT
+CLASS="REPLACEABLE"
+><I
+>database_name</I
+></TT
+> ] SET <TT
 CLASS="REPLACEABLE"
 ><I
 >configuration_parameter</I
@@ -188,39 +193,54 @@ CLASS="REPLACEABLE"
 >value</I
 ></TT
 > | DEFAULT }
-ALTER USER <TT
+ALTER USER { <TT
 CLASS="REPLACEABLE"
 ><I
 >name</I
 ></TT
-> SET <TT
+> | ALL } [ IN DATABASE <TT
+CLASS="REPLACEABLE"
+><I
+>database_name</I
+></TT
+> ] SET <TT
 CLASS="REPLACEABLE"
 ><I
 >configuration_parameter</I
 ></TT
 > FROM CURRENT
-ALTER USER <TT
+ALTER USER { <TT
 CLASS="REPLACEABLE"
 ><I
 >name</I
 ></TT
-> RESET <TT
+> | ALL } [ IN DATABASE <TT
+CLASS="REPLACEABLE"
+><I
+>database_name</I
+></TT
+> ] RESET <TT
 CLASS="REPLACEABLE"
 ><I
 >configuration_parameter</I
 ></TT
 >
-ALTER USER <TT
+ALTER USER { <TT
 CLASS="REPLACEABLE"
 ><I
 >name</I
 ></TT
-> RESET ALL</PRE
+> | ALL } [ IN DATABASE <TT
+CLASS="REPLACEABLE"
+><I
+>database_name</I
+></TT
+> ] RESET ALL</PRE
 ></DIV
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN71172"
+NAME="AEN71175"
 ></A
 ><H2
 >Description</H2
@@ -238,7 +258,7 @@ HREF="sql-alterrole.html"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN71177"
+NAME="AEN71180"
 ></A
 ><H2
 >Compatibility</H2
@@ -257,7 +277,7 @@ CLASS="PRODUCTNAME"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN71182"
+NAME="AEN71185"
 ></A
 ><H2
 >See Also</H2

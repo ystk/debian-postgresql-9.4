@@ -68,14 +68,15 @@ make --version
 
      * To build the server programming language PL/Perl you need a full
        Perl installation, including the "libperl" library and the header
-       files. Since PL/Perl will be a shared library, the "libperl"
-       library must be a shared library also on most platforms. This
-       appears to be the default in recent Perl versions, but it was not
-       in earlier versions, and in any case it is the choice of whomever
-       installed Perl at your site. If you intend to make more than
-       incidental use of PL/Perl, you should ensure that the Perl
-       installation was built with the usemultiplicity option enabled
-       (perl -V will show whether this is the case).
+       files. The minimum required version is Perl 5.8.3. Since PL/Perl
+       will be a shared library, the "libperl" library must be a shared
+       library also on most platforms. This appears to be the default in
+       recent Perl versions, but it was not in earlier versions, and in
+       any case it is the choice of whomever installed Perl at your site.
+       If you intend to make more than incidental use of PL/Perl, you
+       should ensure that the Perl installation was built with the
+       usemultiplicity option enabled (perl -V will show whether this is
+       the case).
        If you don't have the shared library but you need one, a message
        like this will appear during the PostgreSQL build to point out this
        fact:
@@ -137,10 +138,10 @@ make --version
        you changed the actual scanner and parser definition files. If you
        need them, be sure to get Flex 2.5.31 or later and Bison 1.875 or
        later. Other lex and yacc programs cannot be used.
-     * Perl 5.8 or later is needed to build from a Git checkout, or if you
-       changed the input files for any of the build steps that use Perl
-       scripts. If building on Windows you will need Perl in any case.
-       Perl is also required to run some test suites.
+     * Perl 5.8.3 or later is needed to build from a Git checkout, or if
+       you changed the input files for any of the build steps that use
+       Perl scripts. If building on Windows you will need Perl in any
+       case. Perl is also required to run some test suites.
 
    If you need to get a GNU package, you can find it at your local GNU
    mirror site (see http://www.gnu.org/order/ftp.html for a list) or at

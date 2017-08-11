@@ -702,7 +702,7 @@ sql_help_ALTER_ROLE(PQExpBuffer buf)
 					  "\n"
 					  "ALTER ROLE %s RENAME TO %s\n"
 					  "\n"
-					  "ALTER ROLE %s [ IN DATABASE %s ] SET %s { TO | = } { %s | DEFAULT }\n"
+					  "ALTER ROLE { %s | ALL } [ IN DATABASE %s ] SET %s { TO | = } { %s | DEFAULT }\n"
 					  "ALTER ROLE { %s | ALL } [ IN DATABASE %s ] SET %s FROM CURRENT\n"
 					  "ALTER ROLE { %s | ALL } [ IN DATABASE %s ] RESET %s\n"
 					  "ALTER ROLE { %s | ALL } [ IN DATABASE %s ] RESET ALL",
@@ -1113,10 +1113,10 @@ sql_help_ALTER_USER(PQExpBuffer buf)
 					  "\n"
 					  "ALTER USER %s RENAME TO %s\n"
 					  "\n"
-					  "ALTER USER %s SET %s { TO | = } { %s | DEFAULT }\n"
-					  "ALTER USER %s SET %s FROM CURRENT\n"
-					  "ALTER USER %s RESET %s\n"
-					  "ALTER USER %s RESET ALL",
+					  "ALTER USER { %s | ALL } [ IN DATABASE %s ] SET %s { TO | = } { %s | DEFAULT }\n"
+					  "ALTER USER { %s | ALL } [ IN DATABASE %s ] SET %s FROM CURRENT\n"
+					  "ALTER USER { %s | ALL } [ IN DATABASE %s ] RESET %s\n"
+					  "ALTER USER { %s | ALL } [ IN DATABASE %s ] RESET ALL",
 					  _("name"),
 					  _("option"),
 					  _("where option can be:"),
@@ -1126,13 +1126,17 @@ sql_help_ALTER_USER(PQExpBuffer buf)
 					  _("name"),
 					  _("new_name"),
 					  _("name"),
+					  _("database_name"),
 					  _("configuration_parameter"),
 					  _("value"),
 					  _("name"),
+					  _("database_name"),
 					  _("configuration_parameter"),
 					  _("name"),
+					  _("database_name"),
 					  _("configuration_parameter"),
-					  _("name"));
+					  _("name"),
+					  _("database_name"));
 }
 
 void
