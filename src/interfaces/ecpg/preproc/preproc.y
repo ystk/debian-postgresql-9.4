@@ -351,7 +351,7 @@ adjust_outofscope_cursor_vars(struct cursor *cur)
 				else
 				{
 					newvar = new_variable(cat_str(4, mm_strdup("("),
-												  mm_strdup(ecpg_type_name(ptr->variable->type->type)),
+												  mm_strdup(ecpg_type_name(ptr->variable->type->u.element->type)),
 												  mm_strdup(" *)(ECPGget_var("),
 												  mm_strdup(var_text)),
 										  ECPGmake_array_type(ECPGmake_simple_type(ptr->variable->type->u.element->type,
@@ -1267,6 +1267,7 @@ add_typedef(char *name, char *dimension, char *length, enum ECPGttype type_enum,
 %type <str> opt_bit_field
 %type <str> opt_connection_name
 %type <str> opt_database_name
+%type <str> opt_ecpg_into
 %type <str> opt_ecpg_fetch_into
 %type <str> opt_ecpg_using
 %type <str> opt_initializer
@@ -8363,7 +8364,7 @@ EXECUTE prepared_name execute_param_clause execute_rest
 
 
  returning_clause:
-RETURNING target_list ecpg_into
+RETURNING target_list opt_ecpg_into
  { 
  $$ = cat_str(2,mm_strdup("returning"),$2);
 }
@@ -15037,14 +15038,17 @@ Iresult:        Iconst				{ $$ = $1; }
                 ;
 
 execute_rest: /* EMPTY */	{ $$ = EMPTY; }
-	| ecpg_using ecpg_into  { $$ = EMPTY; }
+	| ecpg_using opt_ecpg_into  { $$ = EMPTY; }
 	| ecpg_into ecpg_using  { $$ = EMPTY; }
-	| ecpg_using			{ $$ = EMPTY; }
 	| ecpg_into				{ $$ = EMPTY; }
 	;
 
 ecpg_into: INTO into_list	{ $$ = EMPTY; }
 	| into_descriptor		{ $$ = $1; }
+	;
+
+opt_ecpg_into:	/* EMPTY */	{ $$ = EMPTY; }
+	| ecpg_into		{ $$ = $1; }
 	;
 
 ecpg_fetch_into: ecpg_into	{ $$ = $1; }
