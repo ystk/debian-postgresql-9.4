@@ -1,3 +1,24 @@
+postgresql-9.4 (9.4.15-0+deb8u1) jessie-security; urgency=medium
+
+  * New upstream version.
+
+    + Fix crash due to rowtype mismatch in json{b}_populate_recordset()
+      (Michael Paquier, Tom Lane)
+
+      These functions used the result rowtype specified in the FROM ... AS
+      clause without checking that it matched the actual rowtype of the
+      supplied tuple value.  If it didn't, that would usually result in a
+      crash, though disclosure of server memory contents seems possible as
+      well. (CVE-2017-15098)
+
+ -- Christoph Berg <christoph.berg@credativ.de>  Wed, 08 Nov 2017 15:27:38 +0100
+
+postgresql-9.4 (9.4.14-0+deb8u1) jessie; urgency=medium
+
+  * New upstream bugfix release.
+
+ -- Christoph Berg <christoph.berg@credativ.de>  Thu, 05 Oct 2017 10:47:27 +0200
+
 postgresql-9.4 (9.4.13-0+deb8u1) jessie-security; urgency=medium
 
   * New upstream security release.

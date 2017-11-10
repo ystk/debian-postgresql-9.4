@@ -10,8 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libpq (PostgreSQL 9)\n"
 "Report-Msgid-Bugs-To: pgsql-bugs@postgresql.org\n"
-"POT-Creation-Date: 2017-05-26 20:52+0000\n"
-"PO-Revision-Date: 2017-05-27 12:34+0300\n"
+"POT-Creation-Date: 2017-09-27 06:33+0000\n"
+"PO-Revision-Date: 2017-09-21 11:47+0300\n"
+"Last-Translator: Alexander Lakhin <exclusion@gmail.com>\n"
 "Language-Team: Russian <pgsql-ru-general@postgresql.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -19,13 +20,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"Last-Translator: Alexander Lakhin <exclusion@gmail.com>\n"
 
 #: fe-auth.c:148
 msgid "GSSAPI continuation error"
 msgstr "ошибка продолжения в GSSAPI"
 
-#: fe-auth.c:177 fe-auth.c:412
+#: fe-auth.c:177 fe-auth.c:417
 msgid "host name must be specified\n"
 msgstr "требуется указать имя сервера\n"
 
@@ -33,13 +33,13 @@ msgstr "требуется указать имя сервера\n"
 msgid "duplicate GSS authentication request\n"
 msgstr "повторный запрос аутентификации GSS\n"
 
-#: fe-auth.c:197 fe-auth.c:309 fe-auth.c:383 fe-auth.c:418 fe-auth.c:514
-#: fe-auth.c:793 fe-connect.c:707 fe-connect.c:904 fe-connect.c:1080
-#: fe-connect.c:2091 fe-connect.c:3482 fe-connect.c:3734 fe-connect.c:3853
-#: fe-connect.c:4083 fe-connect.c:4163 fe-connect.c:4258 fe-connect.c:4514
-#: fe-connect.c:4542 fe-connect.c:4614 fe-connect.c:4638 fe-connect.c:4656
-#: fe-connect.c:4752 fe-connect.c:5103 fe-connect.c:5253 fe-exec.c:3354
-#: fe-exec.c:3519 fe-lobj.c:896 fe-protocol2.c:1206 fe-protocol3.c:1613
+#: fe-auth.c:197 fe-auth.c:309 fe-auth.c:388 fe-auth.c:423 fe-auth.c:519
+#: fe-auth.c:798 fe-connect.c:767 fe-connect.c:964 fe-connect.c:1140
+#: fe-connect.c:2141 fe-connect.c:3497 fe-connect.c:3749 fe-connect.c:3868
+#: fe-connect.c:4098 fe-connect.c:4178 fe-connect.c:4273 fe-connect.c:4529
+#: fe-connect.c:4557 fe-connect.c:4629 fe-connect.c:4653 fe-connect.c:4671
+#: fe-connect.c:4767 fe-connect.c:5118 fe-connect.c:5268 fe-exec.c:3405
+#: fe-exec.c:3570 fe-lobj.c:896 fe-protocol2.c:1206 fe-protocol3.c:1613
 #: fe-secure.c:779 fe-secure.c:1269
 msgid "out of memory\n"
 msgstr "нехватка памяти\n"
@@ -52,74 +52,78 @@ msgstr "ошибка импорта имени в GSSAPI"
 msgid "SSPI continuation error"
 msgstr "ошибка продолжения в SSPI"
 
-#: fe-auth.c:398
+#: fe-auth.c:378
+msgid "duplicate SSPI authentication request\n"
+msgstr "повторный запрос аутентификации SSPI\n"
+
+#: fe-auth.c:403
 msgid "could not acquire SSPI credentials"
 msgstr "не удалось получить удостоверение SSPI"
 
-#: fe-auth.c:489
+#: fe-auth.c:494
 msgid "SCM_CRED authentication method not supported\n"
 msgstr "аутентификация SCM_CRED не поддерживается\n"
 
-#: fe-auth.c:565
+#: fe-auth.c:570
 msgid "Kerberos 4 authentication not supported\n"
 msgstr "аутентификация Kerberos 4 не поддерживается\n"
 
-#: fe-auth.c:570
+#: fe-auth.c:575
 msgid "Kerberos 5 authentication not supported\n"
 msgstr "аутентификация Kerberos 5 не поддерживается\n"
 
-#: fe-auth.c:641
+#: fe-auth.c:646
 msgid "GSSAPI authentication not supported\n"
 msgstr "аутентификация через GSSAPI не поддерживается\n"
 
-#: fe-auth.c:673
+#: fe-auth.c:678
 msgid "SSPI authentication not supported\n"
 msgstr "аутентификация через SSPI не поддерживается\n"
 
-#: fe-auth.c:681
+#: fe-auth.c:686
 msgid "Crypt authentication not supported\n"
 msgstr "аутентификация Crypt не поддерживается\n"
 
-#: fe-auth.c:716
+#: fe-auth.c:721
 msgid "SCRAM authentication requires libpq version 10 or above\n"
 msgstr "для аутентификации SCRAM требуется libpq версии 10 или новее\n"
 
-#: fe-auth.c:721
+#: fe-auth.c:726
 #, c-format
 msgid "authentication method %u not supported\n"
 msgstr "метод аутентификации %u не поддерживается\n"
 
-#: fe-auth.c:768
+#: fe-auth.c:773
 #, c-format
 msgid "user name lookup failure: error code %lu\n"
 msgstr "распознать имя пользователя не удалось (код ошибки: %lu)\n"
 
-#: fe-auth.c:778 fe-connect.c:2018
+#: fe-auth.c:783 fe-connect.c:2068
 #, c-format
 msgid "could not look up local user ID %d: %s\n"
 msgstr "найти локального пользователя по идентификатору (%d) не удалось: %s\n"
 
-#: fe-auth.c:783 fe-connect.c:2023
+#: fe-auth.c:788 fe-connect.c:2073
 #, c-format
 msgid "local user with ID %d does not exist\n"
 msgstr "локальный пользователь с ID %d не существует\n"
 
-#: fe-connect.c:846
+#: fe-connect.c:906
 #, c-format
 msgid "invalid sslmode value: \"%s\"\n"
 msgstr "неверное значение sslmode: \"%s\"\n"
 
-#: fe-connect.c:867
+#: fe-connect.c:927
 #, c-format
 msgid "sslmode value \"%s\" invalid when SSL support is not compiled in\n"
 msgstr "значение sslmode \"%s\" недопустимо для сборки без поддержки SSL\n"
 
-#: fe-connect.c:1104
+#: fe-connect.c:1164
 #, c-format
 msgid "could not set socket to TCP no delay mode: %s\n"
 msgstr "не удалось перевести сокет в режим TCP-передачи без задержки: %s\n"
 
-#: fe-connect.c:1134
+#: fe-connect.c:1194
 #, c-format
 msgid ""
 "could not connect to server: %s\n"
@@ -130,7 +134,7 @@ msgstr ""
 "\tОн действительно работает локально и принимает\n"
 "\tсоединения через доменный сокет \"%s\"?\n"
 
-#: fe-connect.c:1189
+#: fe-connect.c:1249
 #, c-format
 msgid ""
 "could not connect to server: %s\n"
@@ -141,7 +145,7 @@ msgstr ""
 "\tОн действительно работает по адресу \"%s\" (%s)\n"
 "\t и принимает TCP-соединения (порт %s)?\n"
 
-#: fe-connect.c:1198
+#: fe-connect.c:1258
 #, c-format
 msgid ""
 "could not connect to server: %s\n"
@@ -152,260 +156,240 @@ msgstr ""
 "\tОн действительно работает по адресу \"%s\"\n"
 "\t и принимает TCP-соединения (порт %s)?\n"
 
-#: fe-connect.c:1249
+#: fe-connect.c:1309 fe-connect.c:1341 fe-connect.c:1374 fe-connect.c:1841
 #, c-format
-msgid "setsockopt(TCP_KEEPIDLE) failed: %s\n"
-msgstr "ошибка в setsockopt(TCP_KEEPIDLE): %s\n"
+msgid "setsockopt(%s) failed: %s\n"
+msgstr "ошибка в setsockopt(%s): %s\n"
 
-#: fe-connect.c:1262
-#, c-format
-msgid "setsockopt(TCP_KEEPALIVE) failed: %s\n"
-msgstr "ошибка в setsockopt(TCP_KEEPALIVE): %s\n"
-
-#: fe-connect.c:1294
-#, c-format
-msgid "setsockopt(TCP_KEEPINTVL) failed: %s\n"
-msgstr "ошибка в setsockopt(TCP_KEEPINTVL): %s\n"
-
-#: fe-connect.c:1326
-#, c-format
-msgid "setsockopt(TCP_KEEPCNT) failed: %s\n"
-msgstr "ошибка в setsockopt(TCP_KEEPCNT): %s\n"
-
-#: fe-connect.c:1374
+#: fe-connect.c:1423
 #, c-format
 msgid "WSAIoctl(SIO_KEEPALIVE_VALS) failed: %ui\n"
 msgstr "ошибка в WSAIoctl(SIO_KEEPALIVE_VALS): %ui\n"
 
-#: fe-connect.c:1426
+#: fe-connect.c:1475
 #, c-format
 msgid "invalid port number: \"%s\"\n"
 msgstr "неверный номер порта: \"%s\"\n"
 
-#: fe-connect.c:1459
+#: fe-connect.c:1508
 #, c-format
 msgid "Unix-domain socket path \"%s\" is too long (maximum %d bytes)\n"
 msgstr "длина пути доменного сокета \"%s\" превышает предел (%d байт)\n"
 
-#: fe-connect.c:1478
+#: fe-connect.c:1527
 #, c-format
 msgid "could not translate host name \"%s\" to address: %s\n"
 msgstr "преобразовать имя \"%s\" в адрес не удалось: %s\n"
 
-#: fe-connect.c:1482
+#: fe-connect.c:1531
 #, c-format
 msgid "could not translate Unix-domain socket path \"%s\" to address: %s\n"
 msgstr ""
 "преобразовать путь к доменному сокету UNIX \"%s\" в адрес не удалось: %s\n"
 
-#: fe-connect.c:1687
+#: fe-connect.c:1736
 msgid "invalid connection state, probably indicative of memory corruption\n"
 msgstr "неверное состояние соединения - возможно разрушение памяти\n"
 
-#: fe-connect.c:1727
+#: fe-connect.c:1776
 #, c-format
 msgid "could not create socket: %s\n"
 msgstr "не удалось создать сокет: %s\n"
 
-#: fe-connect.c:1749
+#: fe-connect.c:1798
 #, c-format
 msgid "could not set socket to nonblocking mode: %s\n"
 msgstr "не удалось перевести сокет в неблокирующий режим: %s\n"
 
-#: fe-connect.c:1760
+#: fe-connect.c:1809
 #, c-format
 msgid "could not set socket to close-on-exec mode: %s\n"
 msgstr ""
 "не удалось перевести сокет в режим закрытия при выполнении (close-on-exec): "
 "%s\n"
 
-#: fe-connect.c:1779
+#: fe-connect.c:1828
 msgid "keepalives parameter must be an integer\n"
 msgstr "параметр keepalives должен быть целым числом\n"
 
-#: fe-connect.c:1792
-#, c-format
-msgid "setsockopt(SO_KEEPALIVE) failed: %s\n"
-msgstr "ошибка в setsockopt(SO_KEEPALIVE): %s\n"
-
-#: fe-connect.c:1929
+#: fe-connect.c:1979
 #, c-format
 msgid "could not get socket error status: %s\n"
 msgstr "не удалось получить статус ошибки сокета: %s\n"
 
-#: fe-connect.c:1963
+#: fe-connect.c:2013
 #, c-format
 msgid "could not get client address from socket: %s\n"
 msgstr "не удалось получить адрес клиента из сокета: %s\n"
 
-#: fe-connect.c:2005
+#: fe-connect.c:2055
 msgid "requirepeer parameter is not supported on this platform\n"
 msgstr "параметр requirepeer не поддерживается в этой ОС\n"
 
-#: fe-connect.c:2008
+#: fe-connect.c:2058
 #, c-format
 msgid "could not get peer credentials: %s\n"
 msgstr "не удалось получить учётные данные сервера: %s\n"
 
-#: fe-connect.c:2031
+#: fe-connect.c:2081
 #, c-format
 msgid "requirepeer specifies \"%s\", but actual peer user name is \"%s\"\n"
 msgstr ""
 "requirepeer допускает подключение только к \"%s\", но сервер работает под "
 "именем \"%s\"\n"
 
-#: fe-connect.c:2065
+#: fe-connect.c:2115
 #, c-format
 msgid "could not send SSL negotiation packet: %s\n"
 msgstr "не удалось отправить пакет согласования SSL: %s\n"
 
-#: fe-connect.c:2104
+#: fe-connect.c:2154
 #, c-format
 msgid "could not send startup packet: %s\n"
 msgstr "не удалось отправить стартовый пакет: %s\n"
 
-#: fe-connect.c:2174
+#: fe-connect.c:2224
 msgid "server does not support SSL, but SSL was required\n"
 msgstr "затребовано подключение через SSL, но сервер не поддерживает SSL\n"
 
-#: fe-connect.c:2200
+#: fe-connect.c:2250
 #, c-format
 msgid "received invalid response to SSL negotiation: %c\n"
 msgstr "получен неверный ответ на согласование SSL: %c\n"
 
-#: fe-connect.c:2275 fe-connect.c:2308
+#: fe-connect.c:2325 fe-connect.c:2358
 #, c-format
 msgid "expected authentication request from server, but received %c\n"
 msgstr "ожидался запрос аутентификации от сервера, но получено: %c\n"
 
-#: fe-connect.c:2475
+#: fe-connect.c:2525
 #, c-format
 msgid "out of memory allocating GSSAPI buffer (%d)"
 msgstr "недостаточно памяти для буфера GSSAPI (%d)"
 
-#: fe-connect.c:2560
+#: fe-connect.c:2610
 msgid "unexpected message from server during startup\n"
 msgstr "неожиданное сообщение от сервера в начале работы\n"
 
-#: fe-connect.c:2654
+#: fe-connect.c:2704
 #, c-format
 msgid "invalid connection state %d, probably indicative of memory corruption\n"
 msgstr "неверное состояние соединения %d - возможно разрушение памяти\n"
 
-#: fe-connect.c:3088 fe-connect.c:3148
+#: fe-connect.c:3103 fe-connect.c:3163
 #, c-format
 msgid "PGEventProc \"%s\" failed during PGEVT_CONNRESET event\n"
 msgstr "ошибка в PGEventProc \"%s\" при обработке события PGEVT_CONNRESET\n"
 
-#: fe-connect.c:3495
+#: fe-connect.c:3510
 #, c-format
 msgid "invalid LDAP URL \"%s\": scheme must be ldap://\n"
 msgstr "некорректный адрес LDAP \"%s\": схема должна быть ldap://\n"
 
-#: fe-connect.c:3510
+#: fe-connect.c:3525
 #, c-format
 msgid "invalid LDAP URL \"%s\": missing distinguished name\n"
 msgstr "некорректный адрес LDAP \"%s\": отсутствует уникальное имя\n"
 
-#: fe-connect.c:3521 fe-connect.c:3574
+#: fe-connect.c:3536 fe-connect.c:3589
 #, c-format
 msgid "invalid LDAP URL \"%s\": must have exactly one attribute\n"
 msgstr "некорректный адрес LDAP \"%s\": должен быть только один атрибут\n"
 
-#: fe-connect.c:3531 fe-connect.c:3588
+#: fe-connect.c:3546 fe-connect.c:3603
 #, c-format
 msgid "invalid LDAP URL \"%s\": must have search scope (base/one/sub)\n"
 msgstr ""
 "некорректный адрес LDAP \"%s\": не указана область поиска (base/one/sub)\n"
 
-#: fe-connect.c:3542
+#: fe-connect.c:3557
 #, c-format
 msgid "invalid LDAP URL \"%s\": no filter\n"
 msgstr "некорректный адрес LDAP \"%s\": нет фильтра\n"
 
-#: fe-connect.c:3563
+#: fe-connect.c:3578
 #, c-format
 msgid "invalid LDAP URL \"%s\": invalid port number\n"
 msgstr "некорректный адрес LDAP \"%s\": неверный номер порта\n"
 
-#: fe-connect.c:3597
+#: fe-connect.c:3612
 msgid "could not create LDAP structure\n"
 msgstr "не удалось создать структуру LDAP\n"
 
-#: fe-connect.c:3673
+#: fe-connect.c:3688
 #, c-format
 msgid "lookup on LDAP server failed: %s\n"
 msgstr "ошибка поиска на сервере LDAP: %s\n"
 
-#: fe-connect.c:3684
+#: fe-connect.c:3699
 msgid "more than one entry found on LDAP lookup\n"
 msgstr "при поиске LDAP найдено более одного вхождения\n"
 
-#: fe-connect.c:3685 fe-connect.c:3697
+#: fe-connect.c:3700 fe-connect.c:3712
 msgid "no entry found on LDAP lookup\n"
 msgstr "при поиске LDAP ничего не найдено\n"
 
-#: fe-connect.c:3708 fe-connect.c:3721
+#: fe-connect.c:3723 fe-connect.c:3736
 msgid "attribute has no values on LDAP lookup\n"
 msgstr "атрибут не содержит значений при поиске LDAP\n"
 
-#: fe-connect.c:3773 fe-connect.c:3792 fe-connect.c:4297
+#: fe-connect.c:3788 fe-connect.c:3807 fe-connect.c:4312
 #, c-format
 msgid "missing \"=\" after \"%s\" in connection info string\n"
 msgstr "в строке соединения нет \"=\" после \"%s\"\n"
 
-#: fe-connect.c:3865 fe-connect.c:4482 fe-connect.c:5236
+#: fe-connect.c:3880 fe-connect.c:4497 fe-connect.c:5251
 #, c-format
 msgid "invalid connection option \"%s\"\n"
 msgstr "неверный параметр соединения \"%s\"\n"
 
-#: fe-connect.c:3881 fe-connect.c:4346
+#: fe-connect.c:3896 fe-connect.c:4361
 msgid "unterminated quoted string in connection info string\n"
 msgstr "в строке соединения не хватает закрывающей кавычки\n"
 
-#: fe-connect.c:3921
+#: fe-connect.c:3936
 msgid "could not get home directory to locate service definition file"
 msgstr ""
 "не удалось получить домашний каталог для загрузки файла определений служб"
 
-#: fe-connect.c:3954
+#: fe-connect.c:3969
 #, c-format
 msgid "definition of service \"%s\" not found\n"
 msgstr "определение службы \"%s\" не найдено\n"
 
-#: fe-connect.c:3977
+#: fe-connect.c:3992
 #, c-format
 msgid "service file \"%s\" not found\n"
 msgstr "файл определений служб \"%s\" не найден\n"
 
-#: fe-connect.c:3990
+#: fe-connect.c:4005
 #, c-format
 msgid "line %d too long in service file \"%s\"\n"
 msgstr "слишком длинная строка (%d) в файле определений служб \"%s\"\n"
 
-#: fe-connect.c:4061 fe-connect.c:4095
+#: fe-connect.c:4076 fe-connect.c:4110
 #, c-format
 msgid "syntax error in service file \"%s\", line %d\n"
 msgstr "синтаксическая ошибка в файле определения служб \"%s\" (строка %d)\n"
 
-#: fe-connect.c:4763
+#: fe-connect.c:4778
 #, c-format
 msgid "invalid URI propagated to internal parser routine: \"%s\"\n"
 msgstr "во внутреннюю процедуру разбора строки передан ошибочный URI: \"%s\"\n"
 
-#: fe-connect.c:4833
+#: fe-connect.c:4848
 #, c-format
 msgid ""
 "end of string reached when looking for matching \"]\" in IPv6 host address "
 "in URI: \"%s\"\n"
 msgstr "URI не содержит символ \"]\" после адреса IPv6: \"%s\"\n"
 
-#: fe-connect.c:4840
+#: fe-connect.c:4855
 #, c-format
 msgid "IPv6 host address may not be empty in URI: \"%s\"\n"
 msgstr "IPv6, содержащийся в URI, не может быть пустым: \"%s\"\n"
 
-#: fe-connect.c:4855
+#: fe-connect.c:4870
 #, c-format
 msgid ""
 "unexpected character \"%c\" at position %d in URI (expected \":\" or \"/\"): "
@@ -414,41 +398,41 @@ msgstr ""
 "неожиданный символ \"%c\" в позиции %d в URI (ожидалось \":\" или \"/\"): "
 "\"%s\"\n"
 
-#: fe-connect.c:4969
+#: fe-connect.c:4984
 #, c-format
 msgid "extra key/value separator \"=\" in URI query parameter: \"%s\"\n"
 msgstr "лишний разделитель ключа/значения \"=\" в параметрах URI: \"%s\"\n"
 
-#: fe-connect.c:4989
+#: fe-connect.c:5004
 #, c-format
 msgid "missing key/value separator \"=\" in URI query parameter: \"%s\"\n"
 msgstr "в параметрах URI не хватает разделителя ключа/значения \"=\": \"%s\"\n"
 
-#: fe-connect.c:5059
+#: fe-connect.c:5074
 #, c-format
 msgid "invalid URI query parameter: \"%s\"\n"
 msgstr "неверный параметр в URI: \"%s\"\n"
 
-#: fe-connect.c:5131
+#: fe-connect.c:5146
 #, c-format
 msgid "invalid percent-encoded token: \"%s\"\n"
 msgstr "неверный символ, закодированный с %%: \"%s\"\n"
 
-#: fe-connect.c:5141
+#: fe-connect.c:5156
 #, c-format
 msgid "forbidden value %%00 in percent-encoded value: \"%s\"\n"
 msgstr "недопустимое значение %%00 для символа, закодированного с %%: \"%s\"\n"
 
-#: fe-connect.c:5472
+#: fe-connect.c:5487
 msgid "connection pointer is NULL\n"
 msgstr "нулевой указатель соединения\n"
 
-#: fe-connect.c:5758
+#: fe-connect.c:5773
 #, c-format
 msgid "WARNING: password file \"%s\" is not a plain file\n"
 msgstr "ПРЕДУПРЕЖДЕНИЕ: файл паролей \"%s\" - не обычный файл\n"
 
-#: fe-connect.c:5767
+#: fe-connect.c:5782
 #, c-format
 msgid ""
 "WARNING: password file \"%s\" has group or world access; permissions should "
@@ -457,103 +441,122 @@ msgstr ""
 "ПРЕДУПРЕЖДЕНИЕ: к файлу паролей \"%s\" имеют доступ все или группа; права "
 "должны быть u=rw (0600) или более ограниченные\n"
 
-#: fe-connect.c:5881
+#: fe-connect.c:5896
 #, c-format
 msgid "password retrieved from file \"%s\"\n"
 msgstr "пароль получен из файла \"%s\"\n"
 
-#: fe-exec.c:825
-msgid "NOTICE"
-msgstr "ЗАМЕЧАНИЕ"
-
-#: fe-exec.c:1138 fe-exec.c:1196 fe-exec.c:1242
-msgid "command string is a null pointer\n"
-msgstr "указатель на командную строку нулевой\n"
-
-#: fe-exec.c:1202 fe-exec.c:1248 fe-exec.c:1343
-msgid "number of parameters must be between 0 and 65535\n"
-msgstr "число параметров должно быть от 0 до 65535\n"
-
-#: fe-exec.c:1236 fe-exec.c:1337
-msgid "statement name is a null pointer\n"
-msgstr "указатель на имя оператора нулевой\n"
-
-#: fe-exec.c:1256 fe-exec.c:1419 fe-exec.c:2134 fe-exec.c:2333
-msgid "function requires at least protocol version 3.0\n"
-msgstr "функция требует протокол минимум версии 3.0\n"
-
-#: fe-exec.c:1374
-msgid "no connection to the server\n"
-msgstr "нет соединения с сервером\n"
-
-#: fe-exec.c:1381
-msgid "another command is already in progress\n"
-msgstr "уже выполняется другая команда\n"
-
-#: fe-exec.c:1495
-msgid "length must be given for binary parameter\n"
-msgstr "для двоичного параметра должна быть указана длина\n"
-
-#: fe-exec.c:1764
-#, c-format
-msgid "unexpected asyncStatus: %d\n"
-msgstr "неожиданный asyncStatus: %d\n"
-
-#: fe-exec.c:1784
-#, c-format
-msgid "PGEventProc \"%s\" failed during PGEVT_RESULTCREATE event\n"
-msgstr "ошибка в PGEventProc \"%s\" при обработке события PGEVT_RESULTCREATE\n"
-
-#: fe-exec.c:1944
-msgid "COPY terminated by new PQexec"
-msgstr "операция COPY прервана вызовом PQexec"
-
-#: fe-exec.c:1952
-msgid "COPY IN state must be terminated first\n"
-msgstr "сначала должно завершиться состояние COPY IN\n"
-
-#: fe-exec.c:1972
-msgid "COPY OUT state must be terminated first\n"
-msgstr "сначала должно завершиться состояние COPY OUT\n"
-
-#: fe-exec.c:1980
-msgid "PQexec not allowed during COPY BOTH\n"
-msgstr "вызов PQexec не допускается в процессе COPY BOTH\n"
-
-#: fe-exec.c:2223 fe-exec.c:2290 fe-exec.c:2380 fe-protocol2.c:1352
-#: fe-protocol3.c:1752
-msgid "no COPY in progress\n"
-msgstr "операция COPY не выполняется\n"
-
-#: fe-exec.c:2570
-msgid "connection in wrong state\n"
-msgstr "соединение в неправильном состоянии\n"
-
-#: fe-exec.c:2601
-msgid "invalid ExecStatusType code"
-msgstr "неверный код ExecStatusType"
-
-#: fe-exec.c:2665 fe-exec.c:2688
-#, c-format
-msgid "column number %d is out of range 0..%d"
-msgstr "номер колонки %d вне диапазона 0..%d"
-
-#: fe-exec.c:2681
+#: fe-exec.c:436 fe-exec.c:2732
 #, c-format
 msgid "row number %d is out of range 0..%d"
 msgstr "номер записи %d вне диапазона 0..%d"
 
-#: fe-exec.c:2703
+#: fe-exec.c:497 fe-protocol2.c:503 fe-protocol2.c:538 fe-protocol2.c:1049
+#: fe-protocol3.c:209 fe-protocol3.c:236 fe-protocol3.c:253 fe-protocol3.c:333
+#: fe-protocol3.c:720 fe-protocol3.c:1037
+msgid "out of memory"
+msgstr "нехватка памяти"
+
+#: fe-exec.c:498 fe-protocol2.c:1395 fe-protocol3.c:1821
+#, c-format
+msgid "%s"
+msgstr "%s"
+
+#: fe-exec.c:846
+msgid "NOTICE"
+msgstr "ЗАМЕЧАНИЕ"
+
+#: fe-exec.c:903
+msgid "PGresult cannot support more than INT_MAX tuples"
+msgstr "PGresult не может вместить больше чем INT_MAX кортежей"
+
+#: fe-exec.c:915
+msgid "size_t overflow"
+msgstr "переполнение size_t"
+
+#: fe-exec.c:1189 fe-exec.c:1247 fe-exec.c:1293
+msgid "command string is a null pointer\n"
+msgstr "указатель на командную строку нулевой\n"
+
+#: fe-exec.c:1253 fe-exec.c:1299 fe-exec.c:1394
+msgid "number of parameters must be between 0 and 65535\n"
+msgstr "число параметров должно быть от 0 до 65535\n"
+
+#: fe-exec.c:1287 fe-exec.c:1388
+msgid "statement name is a null pointer\n"
+msgstr "указатель на имя оператора нулевой\n"
+
+#: fe-exec.c:1307 fe-exec.c:1470 fe-exec.c:2185 fe-exec.c:2384
+msgid "function requires at least protocol version 3.0\n"
+msgstr "функция требует протокол минимум версии 3.0\n"
+
+#: fe-exec.c:1425
+msgid "no connection to the server\n"
+msgstr "нет соединения с сервером\n"
+
+#: fe-exec.c:1432
+msgid "another command is already in progress\n"
+msgstr "уже выполняется другая команда\n"
+
+#: fe-exec.c:1546
+msgid "length must be given for binary parameter\n"
+msgstr "для двоичного параметра должна быть указана длина\n"
+
+#: fe-exec.c:1815
+#, c-format
+msgid "unexpected asyncStatus: %d\n"
+msgstr "неожиданный asyncStatus: %d\n"
+
+#: fe-exec.c:1835
+#, c-format
+msgid "PGEventProc \"%s\" failed during PGEVT_RESULTCREATE event\n"
+msgstr "ошибка в PGEventProc \"%s\" при обработке события PGEVT_RESULTCREATE\n"
+
+#: fe-exec.c:1995
+msgid "COPY terminated by new PQexec"
+msgstr "операция COPY прервана вызовом PQexec"
+
+#: fe-exec.c:2003
+msgid "COPY IN state must be terminated first\n"
+msgstr "сначала должно завершиться состояние COPY IN\n"
+
+#: fe-exec.c:2023
+msgid "COPY OUT state must be terminated first\n"
+msgstr "сначала должно завершиться состояние COPY OUT\n"
+
+#: fe-exec.c:2031
+msgid "PQexec not allowed during COPY BOTH\n"
+msgstr "вызов PQexec не допускается в процессе COPY BOTH\n"
+
+#: fe-exec.c:2274 fe-exec.c:2341 fe-exec.c:2431 fe-protocol2.c:1352
+#: fe-protocol3.c:1752
+msgid "no COPY in progress\n"
+msgstr "операция COPY не выполняется\n"
+
+#: fe-exec.c:2621
+msgid "connection in wrong state\n"
+msgstr "соединение в неправильном состоянии\n"
+
+#: fe-exec.c:2652
+msgid "invalid ExecStatusType code"
+msgstr "неверный код ExecStatusType"
+
+#: fe-exec.c:2716 fe-exec.c:2739
+#, c-format
+msgid "column number %d is out of range 0..%d"
+msgstr "номер колонки %d вне диапазона 0..%d"
+
+#: fe-exec.c:2754
 #, c-format
 msgid "parameter number %d is out of range 0..%d"
 msgstr "номер параметра %d вне диапазона 0..%d"
 
-#: fe-exec.c:3013
+#: fe-exec.c:3064
 #, c-format
 msgid "could not interpret result from server: %s"
 msgstr "не удалось интерпретировать ответ сервера: %s"
 
-#: fe-exec.c:3252 fe-exec.c:3336
+#: fe-exec.c:3303 fe-exec.c:3387
 msgid "incomplete multibyte character\n"
 msgstr "неполный многобайтный символ\n"
 
@@ -693,12 +696,6 @@ msgstr "неверное состояние %c - возможно разруше
 msgid "message type 0x%02x arrived from server while idle"
 msgstr "от сервера во время простоя получено сообщение типа 0x%02x"
 
-#: fe-protocol2.c:503 fe-protocol2.c:538 fe-protocol2.c:1049 fe-protocol3.c:209
-#: fe-protocol3.c:236 fe-protocol3.c:253 fe-protocol3.c:333 fe-protocol3.c:720
-#: fe-protocol3.c:1037
-msgid "out of memory"
-msgstr "нехватка памяти"
-
 #: fe-protocol2.c:529
 #, c-format
 msgid "unexpected character %c following empty query response (\"I\" message)"
@@ -730,11 +727,6 @@ msgstr "неожиданный ответ сервера; первый полу�
 #: fe-protocol2.c:762 fe-protocol2.c:937 fe-protocol3.c:627 fe-protocol3.c:841
 msgid "out of memory for query result"
 msgstr "недостаточно памяти для результата запроса"
-
-#: fe-protocol2.c:1395 fe-protocol3.c:1821
-#, c-format
-msgid "%s"
-msgstr "%s"
 
 #: fe-protocol2.c:1407
 #, c-format
@@ -1023,6 +1015,18 @@ msgstr "код ошибки SSL: %lu"
 #, c-format
 msgid "unrecognized socket error: 0x%08X/%d"
 msgstr "нераспознанная ошибка сокета: 0x%08X/%d"
+
+#~ msgid "setsockopt(TCP_KEEPIDLE) failed: %s\n"
+#~ msgstr "ошибка в setsockopt(TCP_KEEPIDLE): %s\n"
+
+#~ msgid "setsockopt(TCP_KEEPALIVE) failed: %s\n"
+#~ msgstr "ошибка в setsockopt(TCP_KEEPALIVE): %s\n"
+
+#~ msgid "setsockopt(TCP_KEEPINTVL) failed: %s\n"
+#~ msgstr "ошибка в setsockopt(TCP_KEEPINTVL): %s\n"
+
+#~ msgid "setsockopt(SO_KEEPALIVE) failed: %s\n"
+#~ msgstr "ошибка в setsockopt(SO_KEEPALIVE): %s\n"
 
 #~ msgid "could not acquire mutex: %s\n"
 #~ msgstr "не удалось заблокировать семафор: %s\n"
