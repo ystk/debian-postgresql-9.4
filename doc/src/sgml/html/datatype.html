@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4.15 Documentation"
+TITLE="PostgreSQL 9.4.18 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="The SQL Language"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2017-11-06T22:35:27"></HEAD
+CONTENT="2018-05-07T21:15:49"></HEAD
 ><BODY
 CLASS="CHAPTER"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4.15 Documentation</A
+>PostgreSQL 9.4.18 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -149,7 +149,7 @@ HREF="datatype-binary.html"
 ><DL
 ><DT
 >8.4.1. <A
-HREF="datatype-binary.html#AEN5568"
+HREF="datatype-binary.html#AEN5588"
 ><TT
 CLASS="TYPE"
 >bytea</TT
@@ -157,7 +157,7 @@ CLASS="TYPE"
 ></DT
 ><DT
 >8.4.2. <A
-HREF="datatype-binary.html#AEN5577"
+HREF="datatype-binary.html#AEN5597"
 ><TT
 CLASS="TYPE"
 >bytea</TT
@@ -213,22 +213,22 @@ HREF="datatype-enum.html"
 ><DL
 ><DT
 >8.7.1. <A
-HREF="datatype-enum.html#AEN6709"
+HREF="datatype-enum.html#AEN6729"
 >Declaration of Enumerated Types</A
 ></DT
 ><DT
 >8.7.2. <A
-HREF="datatype-enum.html#AEN6715"
+HREF="datatype-enum.html#AEN6735"
 >Ordering</A
 ></DT
 ><DT
 >8.7.3. <A
-HREF="datatype-enum.html#AEN6719"
+HREF="datatype-enum.html#AEN6739"
 >Type Safety</A
 ></DT
 ><DT
 >8.7.4. <A
-HREF="datatype-enum.html#AEN6725"
+HREF="datatype-enum.html#AEN6745"
 >Implementation Details</A
 ></DT
 ></DL
@@ -242,7 +242,7 @@ HREF="datatype-geometric.html"
 ><DL
 ><DT
 >8.8.1. <A
-HREF="datatype-geometric.html#AEN6801"
+HREF="datatype-geometric.html#AEN6823"
 >Points</A
 ></DT
 ><DT
@@ -257,12 +257,12 @@ HREF="datatype-geometric.html#DATATYPE-LSEG"
 ></DT
 ><DT
 >8.8.4. <A
-HREF="datatype-geometric.html#AEN6885"
+HREF="datatype-geometric.html#AEN6907"
 >Boxes</A
 ></DT
 ><DT
 >8.8.5. <A
-HREF="datatype-geometric.html#AEN6914"
+HREF="datatype-geometric.html#AEN6936"
 >Paths</A
 ></DT
 ><DT
@@ -371,17 +371,17 @@ CLASS="ACRONYM"
 ><DL
 ><DT
 >8.13.1. <A
-HREF="datatype-xml.html#AEN7337"
+HREF="datatype-xml.html#AEN7359"
 >Creating XML Values</A
 ></DT
 ><DT
 >8.13.2. <A
-HREF="datatype-xml.html#AEN7381"
+HREF="datatype-xml.html#AEN7403"
 >Encoding Handling</A
 ></DT
 ><DT
 >8.13.3. <A
-HREF="datatype-xml.html#AEN7393"
+HREF="datatype-xml.html#AEN7415"
 >Accessing XML Values</A
 ></DT
 ></DL
@@ -477,7 +477,7 @@ HREF="rowtypes.html#ROWTYPES-DECLARING"
 ></DT
 ><DT
 >8.16.2. <A
-HREF="rowtypes.html#AEN7901"
+HREF="rowtypes.html#AEN7923"
 >Constructing Composite Values</A
 ></DT
 ><DT
@@ -487,7 +487,7 @@ HREF="rowtypes.html#ROWTYPES-ACCESSING"
 ></DT
 ><DT
 >8.16.4. <A
-HREF="rowtypes.html#AEN7939"
+HREF="rowtypes.html#AEN7961"
 >Modifying Composite Types</A
 ></DT
 ><DT
@@ -693,7 +693,12 @@ CLASS="REPLACEABLE"
 ><TD
 ><TT
 CLASS="TYPE"
->varbit</TT
+>varbit [ (<TT
+CLASS="REPLACEABLE"
+><I
+>n</I
+></TT
+>) ]</TT
 ></TD
 ><TD
 >variable-length bit string</TD

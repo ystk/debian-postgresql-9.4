@@ -1,3 +1,30 @@
+postgresql-9.4 (9.4.18-0+deb8u1) jessie; urgency=medium
+
+  Some functions were incorrectly not marked as VOLATILE. If you are using any
+  of these functions, consult the release notes for instructions.
+
+    query_to_xml cursor_to_xml cursor_to_xmlschema query_to_xmlschema
+    query_to_xml_and_xmlschema
+
+ -- Christoph Berg <myon@debian.org>  Tue, 08 May 2018 20:37:04 +0200
+
+postgresql-9.4 (9.4.17-0+deb8u1) jessie; urgency=medium
+
+  If you run an installation where the users are mutually trusting or if you
+  maintain an application or extension that is intended for use in arbitrary
+  situations, it is highly recommended that you read the release notes
+  regarding changes around "search_path", and take suitable steps to ensure
+  that your installation or code is secure:
+
+    https://www.postgresql.org/docs/9.4/static/release-9-4-17.html#AEN119496
+
+  In addition, these changes may cause functions used in index expressions or
+  materialized views to fail during auto-analyze or when reloading from a dump.
+  After upgrading, please monitor the server logs for such problems and fix any
+  affected functions.
+
+ -- Christoph Berg <christoph.berg@credativ.de>  Tue, 27 Feb 2018 13:20:55 +0100
+
 postgresql-9.4 (9.4~beta3-1) unstable; urgency=medium
 
   The on-disk format of the PostgreSQL 9.4 data files has changed between

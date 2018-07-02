@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4.15 Documentation"
+TITLE="PostgreSQL 9.4.18 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="Embedded SQL Commands"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2017-11-06T22:35:27"></HEAD
+CONTENT="2018-05-07T21:15:49"></HEAD
 ><BODY
 CLASS="REFENTRY"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4.15 Documentation</A
+>PostgreSQL 9.4.18 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -95,7 +95,7 @@ NAME="ECPG-SQL-WHENEVER"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN48847"
+NAME="AEN48955"
 ></A
 ><H2
 >Name</H2
@@ -103,7 +103,7 @@ NAME="AEN48847"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN48850"
+NAME="AEN48958"
 ></A
 ><H2
 >Synopsis</H2
@@ -119,7 +119,7 @@ CLASS="REPLACEABLE"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN48853"
+NAME="AEN48961"
 ></A
 ><H2
 >Description</H2
@@ -131,7 +131,7 @@ NAME="AEN48853"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN48856"
+NAME="AEN48964"
 ></A
 ><H2
 >Parameters</H2
@@ -146,7 +146,7 @@ HREF="ecpg-errors.html#ECPG-WHENEVER"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN48860"
+NAME="AEN48968"
 ></A
 ><H2
 >Examples</H2
@@ -175,6 +175,7 @@ CLASS="PROGRAMLISTING"
 main(void)
 {
     EXEC SQL CONNECT TO testdb AS con1;
+    EXEC SQL SELECT pg_catalog.set_config('search_path', '', false); EXEC SQL COMMIT;
     EXEC SQL ALLOCATE DESCRIPTOR d;
     EXEC SQL DECLARE cur CURSOR FOR SELECT current_database(), 'hoge', 256;
     EXEC SQL OPEN cur;
@@ -202,7 +203,7 @@ main(void)
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN48866"
+NAME="AEN48974"
 ></A
 ><H2
 >Compatibility</H2
