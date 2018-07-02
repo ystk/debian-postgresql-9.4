@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4.15 Documentation"
+TITLE="PostgreSQL 9.4.18 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="PostgreSQL Client Applications"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2017-11-06T22:35:27"></HEAD
+CONTENT="2018-05-07T21:15:49"></HEAD
 ><BODY
 CLASS="REFENTRY"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4.15 Documentation</A
+>PostgreSQL 9.4.18 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -98,7 +98,7 @@ CLASS="APPLICATION"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN90617"
+NAME="AEN90744"
 ></A
 ><H2
 >Name</H2
@@ -113,7 +113,7 @@ CLASS="PRODUCTNAME"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN90622"
+NAME="AEN90749"
 ></A
 ><H2
 >Synopsis</H2
@@ -142,7 +142,7 @@ CLASS="REPLACEABLE"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN90631"
+NAME="AEN90758"
 ></A
 ><H2
 >Description</H2
@@ -1213,7 +1213,7 @@ CLASS="APPLICATION"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN91002"
+NAME="AEN91129"
 ></A
 ><H2
 >Exit Status</H2
@@ -1234,7 +1234,7 @@ CLASS="VARNAME"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN91007"
+NAME="AEN91134"
 ></A
 ><H2
 >Usage</H2
@@ -1420,7 +1420,7 @@ CLASS="PROGRAMLISTING"
 CLASS="USERINPUT"
 >psql testdb</KBD
 >
-psql (9.4.15)
+psql (9.4.18)
 Type "help" for help.
 
 testdb=&gt;</PRE
@@ -1436,6 +1436,32 @@ CLASS="ACRONYM"
     terminate a command.  Thus commands can be spread over several lines for
     clarity. If the command was sent and executed without error, the results
     of the command are displayed on the screen.
+    </P
+><P
+>    If untrusted users have access to a database that has not adopted a
+    <A
+HREF="ddl-schemas.html#DDL-SCHEMAS-PATTERNS"
+>secure schema usage pattern</A
+>,
+    begin your session by removing publicly-writable schemas
+    from <TT
+CLASS="VARNAME"
+>search_path</TT
+>.  One can
+    add <TT
+CLASS="LITERAL"
+>options=-csearch_path=</TT
+> to the connection string or
+    issue <TT
+CLASS="LITERAL"
+>SELECT pg_catalog.set_config('search_path', '',
+    false)</TT
+> before other SQL commands.  This consideration is not
+    specific to <SPAN
+CLASS="APPLICATION"
+>psql</SPAN
+>; it applies to every interface
+    for executing arbitrary SQL commands.
     </P
 ><P
 >    Whenever a command is executed, <SPAN
@@ -5086,15 +5112,19 @@ CLASS="COMMAND"
 >\C</TT
 >, <TT
 CLASS="COMMAND"
->\H</TT
+>\f</TT
 >,
         <TT
+CLASS="COMMAND"
+>\H</TT
+>, <TT
 CLASS="COMMAND"
 >\t</TT
 >, <TT
 CLASS="COMMAND"
 >\T</TT
->, and <TT
+>,
+        and <TT
 CLASS="COMMAND"
 >\x</TT
 >.
@@ -5862,7 +5892,7 @@ CLASS="LITERAL"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN92277"
+NAME="AEN92411"
 ></A
 ><H3
 >Advanced Features</H3
@@ -7186,7 +7216,7 @@ CLASS="APPLICATION"
 ><DIV
 CLASS="REFSECT3"
 ><A
-NAME="AEN92673"
+NAME="AEN92807"
 ></A
 ><H4
 >Command-Line Editing</H4
@@ -7478,7 +7508,7 @@ HREF="libpq-envars.html"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN92773"
+NAME="AEN92907"
 ></A
 ><H2
 >Files</H2
@@ -7626,7 +7656,7 @@ CLASS="ENVAR"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN92814"
+NAME="AEN92948"
 ></A
 ><H2
 >Notes</H2
@@ -7696,7 +7726,7 @@ CLASS="APPLICATION"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN92831"
+NAME="AEN92965"
 ></A
 ><H2
 >Notes for Windows Users</H2

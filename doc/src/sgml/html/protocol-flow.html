@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4.15 Documentation"
+TITLE="PostgreSQL 9.4.18 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="Frontend/Backend Protocol"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2017-11-06T22:35:27"></HEAD
+CONTENT="2018-05-07T21:15:49"></HEAD
 ><BODY
 CLASS="SECT1"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4.15 Documentation</A
+>PostgreSQL 9.4.18 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -117,7 +117,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN103237"
+NAME="AEN103371"
 >49.2.1. Start-up</A
 ></H2
 ><P
@@ -267,6 +267,22 @@ CLASS="FUNCTION"
         or ErrorResponse to indicate failure.
        </P
 ></DD
+><DT
+>NegotiateProtocolVersion</DT
+><DD
+><P
+>        The server does not support the minor protocol version requested
+        by the client, but does support an earlier version of the protocol;
+        this message indicates the highest supported minor version.  This
+        message will also be sent if the client requested unsupported protocol
+        options (i.e. beginning with <TT
+CLASS="LITERAL"
+>_pq_.</TT
+>) in the
+        startup packet.  This message will be followed by an ErrorResponse or
+        a message indicating the success or failure of authentication.
+       </P
+></DD
 ></DL
 ></DIV
 ><P>
@@ -281,8 +297,10 @@ CLASS="FUNCTION"
     for further messages from the server.  In this phase a backend process
     is being started, and the frontend is just an interested bystander.
     It is still possible for the startup attempt
-    to fail (ErrorResponse), but in the normal case the backend will send
-    some ParameterStatus messages, BackendKeyData, and finally ReadyForQuery.
+    to fail (ErrorResponse) or the server to decline support for the requested
+    minor protocol version (NegotiateProtocolVersion), but in the normal case
+    the backend will send some ParameterStatus messages, BackendKeyData, and
+    finally ReadyForQuery.
    </P
 ><P
 >    During this phase the backend will attempt to apply any additional
@@ -371,7 +389,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN103312"
+NAME="AEN103451"
 >49.2.2. Simple Query</A
 ></H2
 ><P
@@ -888,7 +906,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN103423"
+NAME="AEN103562"
 >49.2.4. Function Call</A
 ></H2
 ><P
@@ -1294,7 +1312,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN103509"
+NAME="AEN103648"
 >49.2.7. Canceling Requests in Progress</A
 ></H2
 ><P
@@ -1357,7 +1375,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN103517"
+NAME="AEN103656"
 >49.2.8. Termination</A
 ></H2
 ><P
@@ -1407,7 +1425,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN103526"
+NAME="AEN103665"
 >49.2.9. <ACRONYM
 CLASS="ACRONYM"
 >SSL</ACRONYM

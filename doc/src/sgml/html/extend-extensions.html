@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4.15 Documentation"
+TITLE="PostgreSQL 9.4.18 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="Extending SQL"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2017-11-06T22:35:27"></HEAD
+CONTENT="2018-05-07T21:15:49"></HEAD
 ><BODY
 CLASS="SECT1"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4.15 Documentation</A
+>PostgreSQL 9.4.18 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -235,8 +235,61 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN57665"
->35.15.1. Extension Files</A
+NAME="EXTEND-EXTENSIONS-STYLE"
+>35.15.1. Defining Extension Objects</A
+></H2
+><P
+>     Widely-distributed extensions should assume little about the database
+     they occupy.  In particular, unless you issued <TT
+CLASS="LITERAL"
+>SET search_path =
+     pg_temp</TT
+>, assume each unqualified name could resolve to an
+     object that a malicious user has defined.  Beware of constructs that
+     depend on <TT
+CLASS="VARNAME"
+>search_path</TT
+> implicitly: <TT
+CLASS="TOKEN"
+>IN</TT
+>
+     and <TT
+CLASS="LITERAL"
+>CASE <TT
+CLASS="REPLACEABLE"
+><I
+>expression</I
+></TT
+> WHEN</TT
+>
+     always select an operator using the search path.  In their place, use
+     <TT
+CLASS="LITERAL"
+>OPERATOR(<TT
+CLASS="REPLACEABLE"
+><I
+>schema</I
+></TT
+>.=) ANY</TT
+>
+     and <TT
+CLASS="LITERAL"
+>CASE WHEN <TT
+CLASS="REPLACEABLE"
+><I
+>expression</I
+></TT
+></TT
+>.
+    </P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN57785"
+>35.15.2. Extension Files</A
 ></H2
 ><P
 >     The <A
@@ -633,8 +686,8 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN57783"
->35.15.2. Extension Relocatability</A
+NAME="AEN57903"
+>35.15.3. Extension Relocatability</A
 ></H2
 ><P
 >     Users often wish to load the objects contained in an extension into a
@@ -809,8 +862,8 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN57824"
->35.15.3. Extension Configuration Tables</A
+NAME="AEN57944"
+>35.15.4. Extension Configuration Tables</A
 ></H2
 ><P
 >     Some extensions include configuration tables, which contain data that
@@ -913,8 +966,8 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN57846"
->35.15.4. Extension Updates</A
+NAME="AEN57966"
+>35.15.5. Extension Updates</A
 ></H2
 ><P
 >     One advantage of the extension mechanism is that it provides convenient
@@ -1166,8 +1219,8 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN57901"
->35.15.5. Extension Example</A
+NAME="AEN58021"
+>35.15.6. Extension Example</A
 ></H2
 ><P
 >     Here is a complete example of an <ACRONYM
@@ -1197,22 +1250,21 @@ CLASS="PROGRAMLISTING"
 
 CREATE TYPE pair AS ( k text, v text );
 
-CREATE OR REPLACE FUNCTION pair(anyelement, text)
-RETURNS pair LANGUAGE SQL AS 'SELECT ROW($1, $2)::pair';
-
-CREATE OR REPLACE FUNCTION pair(text, anyelement)
-RETURNS pair LANGUAGE SQL AS 'SELECT ROW($1, $2)::pair';
-
-CREATE OR REPLACE FUNCTION pair(anyelement, anyelement)
-RETURNS pair LANGUAGE SQL AS 'SELECT ROW($1, $2)::pair';
-
 CREATE OR REPLACE FUNCTION pair(text, text)
-RETURNS pair LANGUAGE SQL AS 'SELECT ROW($1, $2)::pair;';
+RETURNS pair LANGUAGE SQL AS 'SELECT ROW($1, $2)::@extschema@.pair;';
 
-CREATE OPERATOR ~&#62; (LEFTARG = text, RIGHTARG = anyelement, PROCEDURE = pair);
-CREATE OPERATOR ~&#62; (LEFTARG = anyelement, RIGHTARG = text, PROCEDURE = pair);
-CREATE OPERATOR ~&#62; (LEFTARG = anyelement, RIGHTARG = anyelement, PROCEDURE = pair);
-CREATE OPERATOR ~&#62; (LEFTARG = text, RIGHTARG = text, PROCEDURE = pair);</PRE
+CREATE OPERATOR ~&#62; (LEFTARG = text, RIGHTARG = text, PROCEDURE = pair);
+
+-- "SET search_path" is easy to get right, but qualified names perform better.
+CREATE OR REPLACE FUNCTION lower(pair)
+RETURNS pair LANGUAGE SQL
+AS 'SELECT ROW(lower($1.k), lower($1.v))::@extschema@.pair;'
+SET search_path = pg_temp;
+
+CREATE OR REPLACE FUNCTION pair_concat(pair, pair)
+RETURNS pair LANGUAGE SQL
+AS 'SELECT ROW($1.k OPERATOR(pg_catalog.||) $2.k,
+               $1.v OPERATOR(pg_catalog.||) $2.v)::@extschema@.pair;';</PRE
 ><P>
     </P
 ><P
@@ -1226,7 +1278,7 @@ CLASS="PROGRAMLISTING"
 ># pair extension
 comment = 'A key/value pair data type'
 default_version = '1.0'
-relocatable = true</PRE
+relocatable = false</PRE
 ><P>
     </P
 ><P

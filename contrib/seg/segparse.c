@@ -1,8 +1,8 @@
-/* A Bison parser, made by GNU Bison 3.0.2.  */
+/* A Bison parser, made by GNU Bison 3.0.4.  */
 
 /* Bison implementation for Yacc-like parsers in C
 
-   Copyright (C) 1984, 1989-1990, 2000-2013 Free Software Foundation, Inc.
+   Copyright (C) 1984, 1989-1990, 2000-2015 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -44,7 +44,7 @@
 #define YYBISON 1
 
 /* Bison version.  */
-#define YYBISON_VERSION "3.0.2"
+#define YYBISON_VERSION "3.0.4"
 
 /* Skeleton name.  */
 #define YYSKELETON_NAME "yacc.c"
@@ -152,7 +152,7 @@ extern int seg_yydebug;
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-typedef union YYSTYPE YYSTYPE;
+
 union YYSTYPE
 {
 #line 47 "segparse.y" /* yacc.c:355  */
@@ -166,6 +166,8 @@ union YYSTYPE
 
 #line 168 "segparse.c" /* yacc.c:355  */
 };
+
+typedef union YYSTYPE YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define YYSTYPE_IS_DECLARED 1
 #endif
@@ -179,7 +181,7 @@ int seg_yyparse (SEG *result);
 
 /* Copy the second part of user declarations.  */
 
-#line 183 "segparse.c" /* yacc.c:358  */
+#line 185 "segparse.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -1261,7 +1263,7 @@ yyreduce:
 		result->l_ext = '\0';
 		result->u_ext = '\0';
 	}
-#line 1265 "segparse.c" /* yacc.c:1646  */
+#line 1267 "segparse.c" /* yacc.c:1646  */
     break;
 
   case 3:
@@ -1282,7 +1284,7 @@ yyreduce:
 		result->l_ext = ( (yyvsp[-2].bnd).ext ? (yyvsp[-2].bnd).ext : '\0' );
 		result->u_ext = ( (yyvsp[0].bnd).ext ? (yyvsp[0].bnd).ext : '\0' );
 	}
-#line 1286 "segparse.c" /* yacc.c:1646  */
+#line 1288 "segparse.c" /* yacc.c:1646  */
     break;
 
   case 4:
@@ -1295,7 +1297,7 @@ yyreduce:
 		result->l_ext = ( (yyvsp[-1].bnd).ext ? (yyvsp[-1].bnd).ext : '\0' );
 		result->u_ext = '-';
 	}
-#line 1299 "segparse.c" /* yacc.c:1646  */
+#line 1301 "segparse.c" /* yacc.c:1646  */
     break;
 
   case 5:
@@ -1308,7 +1310,7 @@ yyreduce:
 		result->l_ext = '-';
 		result->u_ext = ( (yyvsp[0].bnd).ext ? (yyvsp[0].bnd).ext : '\0' );
 	}
-#line 1312 "segparse.c" /* yacc.c:1646  */
+#line 1314 "segparse.c" /* yacc.c:1646  */
     break;
 
   case 6:
@@ -1318,7 +1320,7 @@ yyreduce:
 		result->l_sigd = result->u_sigd = (yyvsp[0].bnd).sigd;
 		result->l_ext = result->u_ext = ( (yyvsp[0].bnd).ext ? (yyvsp[0].bnd).ext : '\0' );
 	}
-#line 1322 "segparse.c" /* yacc.c:1646  */
+#line 1324 "segparse.c" /* yacc.c:1646  */
     break;
 
   case 7:
@@ -1331,7 +1333,7 @@ yyreduce:
 		(yyval.bnd).sigd = significant_digits((yyvsp[0].text));
 		(yyval.bnd).val = val;
 	}
-#line 1335 "segparse.c" /* yacc.c:1646  */
+#line 1337 "segparse.c" /* yacc.c:1646  */
     break;
 
   case 8:
@@ -1344,7 +1346,7 @@ yyreduce:
 		(yyval.bnd).sigd = significant_digits((yyvsp[0].text));
 		(yyval.bnd).val = val;
 	}
-#line 1348 "segparse.c" /* yacc.c:1646  */
+#line 1350 "segparse.c" /* yacc.c:1646  */
     break;
 
   case 9:
@@ -1357,11 +1359,11 @@ yyreduce:
 		(yyval.bnd).sigd = significant_digits((yyvsp[0].text));
 		(yyval.bnd).val = val;
 	}
-#line 1361 "segparse.c" /* yacc.c:1646  */
+#line 1363 "segparse.c" /* yacc.c:1646  */
     break;
 
 
-#line 1365 "segparse.c" /* yacc.c:1646  */
+#line 1367 "segparse.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
