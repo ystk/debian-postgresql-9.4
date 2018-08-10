@@ -1,3 +1,26 @@
+postgresql-9.4 (9.4.19-0+deb8u1) jessie-security; urgency=medium
+
+  * New upstream version.
+    + Fix failure to reset libpq's state fully between connection attempts
+
+      An unprivileged user of dblink or postgres_fdw could bypass the checks
+      intended to prevent use of server-side credentials, such as a ~/.pgpass
+      file owned by the operating-system user running the server.  Servers
+      allowing peer authentication on local connections are particularly
+      vulnerable.  Other attacks such as SQL injection into a postgres_fdw
+      session are also possible. Attacking postgres_fdw in this way requires
+      the ability to create a foreign server object with selected connection
+      parameters, but any user with access to dblink could exploit the
+      problem. In general, an attacker with the ability to select the
+      connection parameters for a libpq-using application could cause
+      mischief, though other plausible attack scenarios are harder to think
+      of. Our thanks to Andrew Krasichkov for reporting this issue.
+      (CVE-2018-10915)
+
+  * Add new pgtypes header and symbol.
+
+ -- Christoph Berg <christoph.berg@credativ.de>  Mon, 06 Aug 2018 16:14:28 +0200
+
 postgresql-9.4 (9.4.18-0+deb8u1) jessie; urgency=medium
 
   * New upstream version.

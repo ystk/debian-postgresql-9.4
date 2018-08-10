@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4.18 Documentation"
+TITLE="PostgreSQL 9.4.19 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="Additional Supplied Modules"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2018-05-07T21:15:49"></HEAD
+CONTENT="2018-08-06T20:33:28"></HEAD
 ><BODY
 CLASS="SECT1"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4.18 Documentation</A
+>PostgreSQL 9.4.19 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -110,7 +110,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN167773"
+NAME="AEN168045"
 >F.25.1. General Hashing Functions</A
 ></H2
 ><DIV
@@ -118,7 +118,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN167775"
+NAME="AEN168047"
 >F.25.1.1. <CODE
 CLASS="FUNCTION"
 >digest()</CODE
@@ -187,7 +187,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN167795"
+NAME="AEN168067"
 >F.25.1.2. <CODE
 CLASS="FUNCTION"
 >hmac()</CODE
@@ -196,7 +196,7 @@ CLASS="FUNCTION"
 ><PRE
 CLASS="SYNOPSIS"
 >hmac(data text, key text, type text) returns bytea
-hmac(data bytea, key text, type text) returns bytea</PRE
+hmac(data bytea, key bytea, type text) returns bytea</PRE
 ><P
 >    Calculates hashed MAC for <TT
 CLASS="PARAMETER"
@@ -232,7 +232,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN167809"
+NAME="AEN168081"
 >F.25.2. Password Hashing Functions</A
 ></H2
 ><P
@@ -412,7 +412,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN167876"
+NAME="AEN168148"
 >F.25.2.1. <CODE
 CLASS="FUNCTION"
 >crypt()</CODE
@@ -464,7 +464,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN167892"
+NAME="AEN168164"
 >F.25.2.2. <CODE
 CLASS="FUNCTION"
 >gen_salt()</CODE
@@ -867,7 +867,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN168037"
+NAME="AEN168309"
 >F.25.3. PGP Encryption Functions</A
 ></H2
 ><P
@@ -981,7 +981,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN168072"
+NAME="AEN168344"
 >F.25.3.1. <CODE
 CLASS="FUNCTION"
 >pgp_sym_encrypt()</CODE
@@ -1011,7 +1011,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN168084"
+NAME="AEN168356"
 >F.25.3.2. <CODE
 CLASS="FUNCTION"
 >pgp_sym_decrypt()</CODE
@@ -1051,7 +1051,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN168099"
+NAME="AEN168371"
 >F.25.3.3. <CODE
 CLASS="FUNCTION"
 >pgp_pub_encrypt()</CODE
@@ -1084,7 +1084,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN168112"
+NAME="AEN168384"
 >F.25.3.4. <CODE
 CLASS="FUNCTION"
 >pgp_pub_decrypt()</CODE
@@ -1134,7 +1134,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN168129"
+NAME="AEN168401"
 >F.25.3.5. <CODE
 CLASS="FUNCTION"
 >pgp_key_id()</CODE
@@ -1200,7 +1200,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN168150"
+NAME="AEN168422"
 >F.25.3.6. <CODE
 CLASS="FUNCTION"
 >armor()</CODE
@@ -1223,7 +1223,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN168160"
+NAME="AEN168432"
 >F.25.3.7. Options for PGP Functions</A
 ></H3
 ><P
@@ -1259,7 +1259,7 @@ CLASS="SECT4"
 ><H4
 CLASS="SECT4"
 ><A
-NAME="AEN168169"
+NAME="AEN168441"
 >F.25.3.7.1. cipher-algo</A
 ></H4
 ><P
@@ -1282,7 +1282,7 @@ CLASS="SECT4"
 ><H4
 CLASS="SECT4"
 ><A
-NAME="AEN168175"
+NAME="AEN168447"
 >F.25.3.7.2. compress-algo</A
 ></H4
 ><P
@@ -1306,7 +1306,7 @@ CLASS="SECT4"
 ><H4
 CLASS="SECT4"
 ><A
-NAME="AEN168180"
+NAME="AEN168452"
 >F.25.3.7.3. compress-level</A
 ></H4
 ><P
@@ -1324,7 +1324,7 @@ CLASS="SECT4"
 ><H4
 CLASS="SECT4"
 ><A
-NAME="AEN168184"
+NAME="AEN168456"
 >F.25.3.7.4. convert-crlf</A
 ></H4
 ><P
@@ -1360,7 +1360,7 @@ CLASS="SECT4"
 ><H4
 CLASS="SECT4"
 ><A
-NAME="AEN168193"
+NAME="AEN168465"
 >F.25.3.7.5. disable-mdc</A
 ></H4
 ><P
@@ -1380,7 +1380,7 @@ CLASS="SECT4"
 ><H4
 CLASS="SECT4"
 ><A
-NAME="AEN168197"
+NAME="AEN168469"
 >F.25.3.7.6. sess-key</A
 ></H4
 ><P
@@ -1399,7 +1399,7 @@ CLASS="SECT4"
 ><H4
 CLASS="SECT4"
 ><A
-NAME="AEN168201"
+NAME="AEN168473"
 >F.25.3.7.7. s2k-mode</A
 ></H4
 ><P
@@ -1419,7 +1419,7 @@ CLASS="SECT4"
 ><H4
 CLASS="SECT4"
 ><A
-NAME="AEN168205"
+NAME="AEN168477"
 >F.25.3.7.8. s2k-digest-algo</A
 ></H4
 ><P
@@ -1436,7 +1436,7 @@ CLASS="SECT4"
 ><H4
 CLASS="SECT4"
 ><A
-NAME="AEN168209"
+NAME="AEN168481"
 >F.25.3.7.9. s2k-cipher-algo</A
 ></H4
 ><P
@@ -1453,7 +1453,7 @@ CLASS="SECT4"
 ><H4
 CLASS="SECT4"
 ><A
-NAME="AEN168213"
+NAME="AEN168485"
 >F.25.3.7.10. unicode-mode</A
 ></H4
 ><P
@@ -1474,7 +1474,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN168217"
+NAME="AEN168489"
 >F.25.3.8. Generating PGP Keys with GnuPG</A
 ></H3
 ><P
@@ -1553,7 +1553,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN168238"
+NAME="AEN168510"
 >F.25.3.9. Limitations of PGP Code</A
 ></H3
 ><P
@@ -1590,7 +1590,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN168248"
+NAME="AEN168520"
 >F.25.4. Raw Encryption Functions</A
 ></H2
 ><P
@@ -1789,7 +1789,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN168311"
+NAME="AEN168583"
 >F.25.5. Random-Data Functions</A
 ></H2
 ><PRE
@@ -1815,7 +1815,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN168322"
+NAME="AEN168594"
 >F.25.6. Notes</A
 ></H2
 ><DIV
@@ -1823,7 +1823,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN168324"
+NAME="AEN168596"
 >F.25.6.1. Configuration</A
 ></H3
 ><P
@@ -1998,7 +1998,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN168392"
+NAME="AEN168664"
 >F.25.6.2. NULL Handling</A
 ></H3
 ><P
@@ -2011,7 +2011,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN168395"
+NAME="AEN168667"
 >F.25.6.3. Security Limitations</A
 ></H3
 ><P
@@ -2062,7 +2062,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN168409"
+NAME="AEN168681"
 >F.25.6.4. Useful Reading</A
 ></H3
 ><P
@@ -2127,7 +2127,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN168432"
+NAME="AEN168704"
 >F.25.6.5. Technical References</A
 ></H3
 ><P
@@ -2216,7 +2216,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN168464"
+NAME="AEN168736"
 >F.25.7. Author</A
 ></H2
 ><P
@@ -2239,7 +2239,7 @@ CLASS="INFORMALTABLE"
 ><P
 ></P
 ><A
-NAME="AEN168470"
+NAME="AEN168742"
 ></A
 ><TABLE
 BORDER="1"
