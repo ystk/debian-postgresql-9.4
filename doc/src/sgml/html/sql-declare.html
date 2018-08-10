@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4.18 Documentation"
+TITLE="PostgreSQL 9.4.19 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="SQL Commands"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2018-05-07T21:15:49"></HEAD
+CONTENT="2018-08-06T20:33:28"></HEAD
 ><BODY
 CLASS="REFENTRY"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4.18 Documentation</A
+>PostgreSQL 9.4.19 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -95,7 +95,7 @@ NAME="SQL-DECLARE"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN78716"
+NAME="AEN78737"
 ></A
 ><H2
 >Name</H2
@@ -103,7 +103,7 @@ NAME="AEN78716"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN78719"
+NAME="AEN78740"
 ></A
 ><H2
 >Synopsis</H2
@@ -125,7 +125,7 @@ CLASS="REPLACEABLE"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN78723"
+NAME="AEN78744"
 ></A
 ><H2
 >Description</H2
@@ -166,7 +166,7 @@ HREF="plpgsql-cursors.html"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN78732"
+NAME="AEN78753"
 ></A
 ><H2
 >Parameters</H2
@@ -631,7 +631,11 @@ CLASS="LITERAL"
 >).  Cursors
      that are not simply updatable might work, or might not, depending on plan
      choice details; so in the worst case, an application might work in testing
-     and then fail in production.
+     and then fail in production.  If <TT
+CLASS="LITERAL"
+>FOR UPDATE</TT
+> is
+     specified, the cursor is guaranteed to be updatable.
     </P
 ><P
 >     The main reason not to use <TT
@@ -695,7 +699,7 @@ CLASS="STRUCTNAME"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN78864"
+NAME="AEN78886"
 ></A
 ><H2
 >Examples</H2
@@ -715,7 +719,7 @@ HREF="sql-fetch.html"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN78869"
+NAME="AEN78891"
 ></A
 ><H2
 >Compatibility</H2
@@ -754,7 +758,7 @@ CLASS="PRODUCTNAME"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN78879"
+NAME="AEN78901"
 ></A
 ><H2
 >See Also</H2

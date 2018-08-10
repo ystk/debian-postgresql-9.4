@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4.18 Documentation"
+TITLE="PostgreSQL 9.4.19 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="PL/pgSQL - SQL Procedural Language"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2018-05-07T21:15:49"></HEAD
+CONTENT="2018-08-06T20:33:28"></HEAD
 ><BODY
 CLASS="SECT1"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4.18 Documentation</A
+>PostgreSQL 9.4.19 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -305,7 +305,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN61687"
+NAME="AEN61728"
 >40.7.2.1. <TT
 CLASS="COMMAND"
 >OPEN FOR</TT
@@ -393,7 +393,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN61708"
+NAME="AEN61749"
 >40.7.2.2. <TT
 CLASS="COMMAND"
 >OPEN FOR EXECUTE</TT
@@ -659,7 +659,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN61770"
+NAME="AEN61811"
 >40.7.3.1. <TT
 CLASS="LITERAL"
 >FETCH</TT
@@ -772,6 +772,23 @@ CLASS="REPLACEABLE"
 CLASS="LITERAL"
 >NEXT</TT
 >.
+     In the forms using a <TT
+CLASS="REPLACEABLE"
+><I
+>count</I
+></TT
+>,
+     the <TT
+CLASS="REPLACEABLE"
+><I
+>count</I
+></TT
+> can be any integer-valued
+     expression (unlike the SQL <TT
+CLASS="COMMAND"
+>FETCH</TT
+> command,
+     which only allows an integer constant).
      <TT
 CLASS="REPLACEABLE"
 ><I
@@ -812,7 +829,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN61805"
+NAME="AEN61849"
 >40.7.3.2. <TT
 CLASS="LITERAL"
 >MOVE</TT
@@ -858,108 +875,6 @@ CLASS="LITERAL"
      be checked to see whether there was a next row to move to.
     </P
 ><P
->     The <TT
-CLASS="REPLACEABLE"
-><I
->direction</I
-></TT
-> clause can be any of the
-     variants allowed in the SQL <A
-HREF="sql-fetch.html"
->FETCH</A
->
-     command, namely
-     <TT
-CLASS="LITERAL"
->NEXT</TT
->,
-     <TT
-CLASS="LITERAL"
->PRIOR</TT
->,
-     <TT
-CLASS="LITERAL"
->FIRST</TT
->,
-     <TT
-CLASS="LITERAL"
->LAST</TT
->,
-     <TT
-CLASS="LITERAL"
->ABSOLUTE</TT
-> <TT
-CLASS="REPLACEABLE"
-><I
->count</I
-></TT
->,
-     <TT
-CLASS="LITERAL"
->RELATIVE</TT
-> <TT
-CLASS="REPLACEABLE"
-><I
->count</I
-></TT
->,
-     <TT
-CLASS="LITERAL"
->ALL</TT
->,
-     <TT
-CLASS="LITERAL"
->FORWARD</TT
-> [<SPAN
-CLASS="OPTIONAL"
-> <TT
-CLASS="REPLACEABLE"
-><I
->count</I
-></TT
-> | <TT
-CLASS="LITERAL"
->ALL</TT
-> </SPAN
->], or
-     <TT
-CLASS="LITERAL"
->BACKWARD</TT
-> [<SPAN
-CLASS="OPTIONAL"
-> <TT
-CLASS="REPLACEABLE"
-><I
->count</I
-></TT
-> | <TT
-CLASS="LITERAL"
->ALL</TT
-> </SPAN
->].
-     Omitting <TT
-CLASS="REPLACEABLE"
-><I
->direction</I
-></TT
-> is the same
-     as specifying <TT
-CLASS="LITERAL"
->NEXT</TT
->.
-     <TT
-CLASS="REPLACEABLE"
-><I
->direction</I
-></TT
-> values that require moving
-     backward are likely to fail unless the cursor was declared or opened
-     with the <TT
-CLASS="LITERAL"
->SCROLL</TT
-> option.
-    </P
-><P
 >     Examples:
 </P><PRE
 CLASS="PROGRAMLISTING"
@@ -975,7 +890,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN61844"
+NAME="AEN61864"
 >40.7.3.3. <TT
 CLASS="LITERAL"
 >UPDATE/DELETE WHERE CURRENT OF</TT
@@ -1033,7 +948,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN61857"
+NAME="AEN61877"
 >40.7.3.4. <TT
 CLASS="LITERAL"
 >CLOSE</TT
@@ -1068,7 +983,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN61866"
+NAME="AEN61886"
 >40.7.3.5. Returning Cursors</A
 ></H3
 ><P
