@@ -10,7 +10,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4.19 Documentation"
+TITLE="PostgreSQL 9.4.20 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="Installation from Source Code on Windows"
@@ -29,7 +29,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2018-08-06T20:33:28"></HEAD
+CONTENT="2018-11-05T22:04:14"></HEAD
 ><BODY
 CLASS="SECT1"
 ><DIV
@@ -47,7 +47,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4.19 Documentation</A
+>PostgreSQL 9.4.20 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -130,16 +130,43 @@ CLASS="PRODUCTNAME"
 > environment set up, the easiest
   ways are to use the compilers from <SPAN
 CLASS="PRODUCTNAME"
->Visual Studio Express 2013
+>Visual Studio Express 2017
   for Windows Desktop</SPAN
 > or those in the <SPAN
 CLASS="PRODUCTNAME"
 >Windows SDK
-  7.1</SPAN
+  8.1</SPAN
 >, which are both free downloads from Microsoft.
  </P
 ><P
->  PostgreSQL is known to support compilation using the compilers shipped with
+>  Both 32-bit and 64-bit builds are possible with the Microsoft Compiler suite.
+  32-bit PostgreSQL buils are possible with
+  <SPAN
+CLASS="PRODUCTNAME"
+>Visual Studio 2005</SPAN
+> to
+  <SPAN
+CLASS="PRODUCTNAME"
+>Visual Studio 2017</SPAN
+> (including Express editions),
+  as well as standalone Windows SDK releases 6.0 to 8.1.
+  64-bit PostgreSQL builds are supported with
+  <SPAN
+CLASS="PRODUCTNAME"
+>Microsoft Windows SDK</SPAN
+> version 6.0a to 8.1 or
+  <SPAN
+CLASS="PRODUCTNAME"
+>Visual Studio 2008</SPAN
+> and above. Compilation
+  is supported down to <SPAN
+CLASS="PRODUCTNAME"
+>Windows XP</SPAN
+> and
+  <SPAN
+CLASS="PRODUCTNAME"
+>Windows Server 2003</SPAN
+> when building with
   <SPAN
 CLASS="PRODUCTNAME"
 >Visual Studio 2005</SPAN
@@ -147,17 +174,29 @@ CLASS="PRODUCTNAME"
   <SPAN
 CLASS="PRODUCTNAME"
 >Visual Studio 2013</SPAN
-> (including Express editions),
-  as well as standalone Windows SDK releases 6.0 to 7.1.
-  64-bit PostgreSQL builds are only supported with
+>. Building with
   <SPAN
 CLASS="PRODUCTNAME"
->Microsoft Windows SDK</SPAN
-> version 6.0a to 7.1 or
+>Visual Studio 2015</SPAN
+> is supported down to
   <SPAN
 CLASS="PRODUCTNAME"
->Visual Studio 2008</SPAN
-> and above.
+>Windows Vista</SPAN
+> and <SPAN
+CLASS="PRODUCTNAME"
+>Windows Server 2008</SPAN
+>.
+   Building with <SPAN
+CLASS="PRODUCTNAME"
+>Visual Studio 2017</SPAN
+> is supported
+   down to <SPAN
+CLASS="PRODUCTNAME"
+>Windows 7 SP1</SPAN
+> and <SPAN
+CLASS="PRODUCTNAME"
+>Windows Server 2008 R2 SP1</SPAN
+>.
  </P
 ><P
 >  The tools for building using <SPAN
@@ -272,7 +311,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN28268"
+NAME="AEN28306"
 >16.1.1. Requirements</A
 ></H2
 ><P
@@ -433,19 +472,7 @@ TARGET="_top"
       <SPAN
 CLASS="PRODUCTNAME"
 >MinGW</SPAN
-> compiler suite. You can also get
-      <SPAN
-CLASS="PRODUCTNAME"
->msys</SPAN
-> as part of
-      <SPAN
-CLASS="PRODUCTNAME"
->msysGit</SPAN
-> from <A
-HREF="http://git-scm.com/"
-TARGET="_top"
->http://git-scm.com/</A
->.
+> compiler suite.
      </P
 ><P
 >      You will need to add the directory containing
@@ -465,12 +492,7 @@ CLASS="FILENAME"
 CLASS="FILENAME"
 >\msys\1.0\bin</TT
 > subdirectory of your MinGW
-      installation directory. For msysGit, it's the <TT
-CLASS="FILENAME"
->bin</TT
->
-      directory in your Git install directory. Do not add the MinGW compiler
-      tools themselves to PATH.
+      installation directory.
      </P
 ><DIV
 CLASS="NOTE"
@@ -671,7 +693,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN28387"
+NAME="AEN28421"
 >16.1.2. Special Considerations for 64-bit Windows</A
 ></H2
 ><P
@@ -710,7 +732,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN28395"
+NAME="AEN28429"
 >16.1.3. Building</A
 ></H2
 ><P
@@ -776,7 +798,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN28411"
+NAME="AEN28445"
 >16.1.4. Cleaning and Installing</A
 ></H2
 ><P
@@ -834,7 +856,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN28425"
+NAME="AEN28459"
 >16.1.5. Running the Regression Tests</A
 ></H2
 ><P
@@ -958,7 +980,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN28455"
+NAME="AEN28489"
 >16.1.6. Building the Documentation</A
 ></H2
 ><P
