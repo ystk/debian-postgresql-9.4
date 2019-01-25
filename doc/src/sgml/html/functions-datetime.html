@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4.19 Documentation"
+TITLE="PostgreSQL 9.4.20 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="Functions and Operators"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2018-08-06T20:33:28"></HEAD
+CONTENT="2018-11-05T22:04:14"></HEAD
 ><BODY
 CLASS="SECT1"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4.19 Documentation</A
+>PostgreSQL 9.4.20 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -2530,8 +2530,8 @@ CLASS="LITERAL"
 ><P
 >        The seconds field, including fractional parts (0 -
         59<A
-NAME="AEN15017"
-HREF="#FTN.AEN15017"
+NAME="AEN15011"
+HREF="#FTN.AEN15011"
 ><SPAN
 CLASS="footnote"
 >[1]</SPAN
@@ -2989,12 +2989,31 @@ CLASS="LITERAL"
 >    The <TT
 CLASS="LITERAL"
 >AT TIME ZONE</TT
-> construct allows conversions
-    of time stamps to different time zones.  <A
+> converts time
+    stamp <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>without time zone</I
+></SPAN
+> to/from
+    time stamp <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>with time zone</I
+></SPAN
+>, and
+    <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>time</I
+></SPAN
+> values to different time zones. <A
 HREF="functions-datetime.html#FUNCTIONS-DATETIME-ZONECONVERT-TABLE"
 >Table 9-29</A
-> shows its
-    variants.
+> shows its variants.
    </P
 ><DIV
 CLASS="TABLE"
@@ -3122,7 +3141,7 @@ CLASS="REPLACEABLE"
 > can be
     specified either as a text string (e.g., <TT
 CLASS="LITERAL"
->'PST'</TT
+>'America/Los_Angeles'</TT
 >)
     or as an interval (e.g., <TT
 CLASS="LITERAL"
@@ -3137,11 +3156,11 @@ HREF="datatype-datetime.html#DATATYPE-TIMEZONES"
 ><P
 >    Examples (assuming the local time zone is <TT
 CLASS="LITERAL"
->PST8PDT</TT
+>America/Los_Angeles</TT
 >):
 </P><PRE
 CLASS="SCREEN"
->SELECT TIMESTAMP '2001-02-16 20:38:40' AT TIME ZONE 'MST';
+>SELECT TIMESTAMP '2001-02-16 20:38:40' AT TIME ZONE 'America/Denver';
 <I
 CLASS="LINEANNOTATION"
 >Result: </I
@@ -3150,18 +3169,45 @@ CLASS="COMPUTEROUTPUT"
 >2001-02-16 19:38:40-08</SAMP
 >
 
-SELECT TIMESTAMP WITH TIME ZONE '2001-02-16 20:38:40-05' AT TIME ZONE 'MST';
+SELECT TIMESTAMP WITH TIME ZONE '2001-02-16 20:38:40-05' AT TIME ZONE 'America/Denver';
 <I
 CLASS="LINEANNOTATION"
 >Result: </I
 ><SAMP
 CLASS="COMPUTEROUTPUT"
 >2001-02-16 18:38:40</SAMP
+>
+
+SELECT TIMESTAMP '2001-02-16 20:38:40-05' AT TIME ZONE 'Asia/Tokyo' AT TIME ZONE 'America/Chicago';
+<I
+CLASS="LINEANNOTATION"
+>Result: </I
+><SAMP
+CLASS="COMPUTEROUTPUT"
+>2001-02-16 05:38:40</SAMP
 ></PRE
 ><P>
-    The first example takes a time stamp without time zone and interprets it as MST time
-    (UTC-7), which is then converted to PST (UTC-8) for display.  The second example takes
-    a time stamp specified in EST (UTC-5) and converts it to local time in MST (UTC-7).
+    The first example adds a time zone to a value that lacks it, and
+    displays the value using the current <TT
+CLASS="VARNAME"
+>TimeZone</TT
+>
+    setting.  The second example shifts the time stamp with time zone value
+    to the specified time zone, and returns the value without a time zone.
+    This allows storage and display of values different from the current
+    <TT
+CLASS="VARNAME"
+>TimeZone</TT
+> setting.  The third example converts
+    Tokyo time to Chicago time.   Converting <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>time</I
+></SPAN
+>
+    values to other time zones uses the currently active time zone rules
+    since no date is supplied.
    </P
 ><P
 >    The function <TT
@@ -3619,8 +3665,8 @@ ALIGN="LEFT"
 VALIGN="TOP"
 WIDTH="5%"
 ><A
-NAME="FTN.AEN15017"
-HREF="functions-datetime.html#AEN15017"
+NAME="FTN.AEN15011"
+HREF="functions-datetime.html#AEN15011"
 ><SPAN
 CLASS="footnote"
 >[1]</SPAN

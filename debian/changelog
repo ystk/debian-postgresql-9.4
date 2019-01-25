@@ -1,3 +1,9 @@
+postgresql-9.4 (9.4.20-0+deb8u1) jessie-security; urgency=medium
+
+  * New upstream version.
+
+ -- Christoph Berg <christoph.berg@credativ.de>  Fri, 25 Jan 2019 09:12:38 +0100
+
 postgresql-9.4 (9.4.19-0+deb8u1) jessie-security; urgency=medium
 
   * New upstream version.

@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4.19 Documentation"
+TITLE="PostgreSQL 9.4.20 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="Additional Supplied Modules"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2018-08-06T20:33:28"></HEAD
+CONTENT="2018-11-05T22:04:14"></HEAD
 ><BODY
 CLASS="SECT1"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4.19 Documentation</A
+>PostgreSQL 9.4.20 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -121,7 +121,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN171093"
+NAME="AEN171508"
 >F.43.1. Configuration</A
 ></H2
 ><P
@@ -207,7 +207,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN171115"
+NAME="AEN171530"
 >F.43.2. Usage</A
 ></H2
 ><P
@@ -291,7 +291,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN171130"
+NAME="AEN171545"
 >F.43.3. Functions</A
 ></H2
 ><P
@@ -315,16 +315,39 @@ CLASS="REPLACEABLE"
 ><I
 >dictionary</I
 ></TT
+> <TT
+CLASS="TYPE"
+>regdictionary</TT
 >, </SPAN
 >] <TT
 CLASS="REPLACEABLE"
 ><I
 >string</I
 ></TT
+> <TT
+CLASS="TYPE"
+>text</TT
 >) returns <TT
 CLASS="TYPE"
 >text</TT
 ></PRE
+><P
+>  If the <TT
+CLASS="REPLACEABLE"
+><I
+>dictionary</I
+></TT
+> argument is
+  omitted, the text search dictionary named <TT
+CLASS="LITERAL"
+>unaccent</TT
+> and
+  appearing in the same schema as the <CODE
+CLASS="FUNCTION"
+>unaccent()</CODE
+>
+  function itself is used.
+ </P
 ><P
 >  For example:
 </P><PRE
