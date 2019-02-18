@@ -1,3 +1,11 @@
+postgresql-9.4 (9.4.21-0+deb8u1) jessie-security; urgency=medium
+
+  * New upstream version.
+  * Revert upstream patch "Disallow setting client_min_messages higher than
+    ERROR", it causes to much disruption to existing (test) scripts.
+
+ -- Christoph Berg <christoph.berg@credativ.de>  Mon, 18 Feb 2019 12:00:44 +0100
+
 postgresql-9.4 (9.4.20-0+deb8u1) jessie-security; urgency=medium
 
   * New upstream version.

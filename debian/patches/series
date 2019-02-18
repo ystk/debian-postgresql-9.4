@@ -7,3 +7,4 @@
 64-pg_upgrade-sockdir
 70-history
 powerpc-point
+client-min-messages
