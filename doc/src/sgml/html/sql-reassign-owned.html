@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4.21 Documentation"
+TITLE="PostgreSQL 9.4.22 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="SQL Commands"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2019-02-11T21:34:21"></HEAD
+CONTENT="2019-05-06T21:05:29"></HEAD
 ><BODY
 CLASS="REFENTRY"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4.21 Documentation</A
+>PostgreSQL 9.4.22 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -95,7 +95,7 @@ NAME="SQL-REASSIGN-OWNED"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN82947"
+NAME="AEN82944"
 ></A
 ><H2
 >Name</H2
@@ -103,7 +103,7 @@ NAME="AEN82947"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN82950"
+NAME="AEN82947"
 ></A
 ><H2
 >Synopsis</H2
@@ -124,7 +124,7 @@ CLASS="REPLACEABLE"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN82954"
+NAME="AEN82951"
 ></A
 ><H2
 >Description</H2
@@ -151,7 +151,7 @@ CLASS="REPLACEABLE"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN82960"
+NAME="AEN82957"
 ></A
 ><H2
 >Parameters</H2
@@ -199,7 +199,7 @@ CLASS="REPLACEABLE"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN82974"
+NAME="AEN82971"
 ></A
 ><H2
 >Notes</H2
@@ -235,17 +235,22 @@ HREF="sql-drop-owned.html"
 CLASS="COMMAND"
 >REASSIGN OWNED</TT
 > command does not affect any
-   privileges granted to the <TT
+   privileges granted to
+   the <TT
 CLASS="REPLACEABLE"
 ><I
 >old_roles</I
 ></TT
-> for
-   objects that are not owned by them.  Use <TT
+> on objects
+   that are not owned by them.  Likewise, it does not affect default
+   privileges created with <TT
+CLASS="COMMAND"
+>ALTER DEFAULT PRIVILEGES</TT
+>.
+   Use <TT
 CLASS="COMMAND"
 >DROP OWNED</TT
-> to
-   revoke such privileges.
+> to revoke such privileges.
   </P
 ><P
 >   See <A
@@ -257,7 +262,7 @@ HREF="role-removal.html"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN82989"
+NAME="AEN82987"
 ></A
 ><H2
 >Compatibility</H2
@@ -275,7 +280,7 @@ CLASS="PRODUCTNAME"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN82994"
+NAME="AEN82992"
 ></A
 ><H2
 >See Also</H2
