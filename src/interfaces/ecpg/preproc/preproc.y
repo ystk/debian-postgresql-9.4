@@ -2265,7 +2265,14 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
  { 
  $$ = cat_str(2,$1,mm_strdup("to default"));
 }
-|  var_name '=' DEFAULT set_rest_more:
+|  var_name '=' DEFAULT
+ { 
+ $$ = cat_str(2,$1,mm_strdup("= default"));
+}
+;
+
+
+ set_rest_more:
  generic_set
  { 
  $$ = $1;

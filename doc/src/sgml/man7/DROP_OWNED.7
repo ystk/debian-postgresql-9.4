@@ -3,11 +3,11 @@
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
 .\"      Date: 2019
-.\"    Manual: PostgreSQL 9.4.21 Documentation
-.\"    Source: PostgreSQL 9.4.21
+.\"    Manual: PostgreSQL 9.4.22 Documentation
+.\"    Source: PostgreSQL 9.4.22
 .\"  Language: English
 .\"
-.TH "DROP OWNED" "7" "2019" "PostgreSQL 9.4.21" "PostgreSQL 9.4.21 Documentation"
+.TH "DROP OWNED" "7" "2019" "PostgreSQL 9.4.22" "PostgreSQL 9.4.22 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -37,7 +37,7 @@ DROP OWNED BY \fIname\fR [, \&.\&.\&.] [ CASCADE | RESTRICT ]
 .SH "DESCRIPTION"
 .PP
 \fBDROP OWNED\fR
-drops all the objects within the current database that are owned by one of the specified roles\&. Any privileges granted to the given roles on objects in the current database and on shared objects (databases, tablespaces) will also be revoked\&.
+drops all the objects within the current database that are owned by one of the specified roles\&. Any privileges granted to the given roles on objects in the current database or on shared objects (databases, tablespaces) will also be revoked\&.
 .SH "PARAMETERS"
 .PP
 \fIname\fR

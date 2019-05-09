@@ -1,3 +1,9 @@
+postgresql-9.4 (9.4.22-0+deb8u1) jessie-security; urgency=medium
+
+  * New upstream version.
+
+ -- Christoph Berg <myon@debian.org>  Thu, 09 May 2019 10:04:31 +0200
+
 postgresql-9.4 (9.4.21-0+deb8u1) jessie-security; urgency=medium
 
   * New upstream version.
