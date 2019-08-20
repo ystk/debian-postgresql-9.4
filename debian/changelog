@@ -1,3 +1,24 @@
+postgresql-9.4 (9.4.24-0+deb8u1) jessie-security; urgency=medium
+
+  * New upstream security release.
+    + Fixes regression in ALTER TABLE on multiple columns. (Closes: #932247)
+
+    + Require schema qualification to cast to a temporary type when using
+      functional cast syntax (Noah Misch)
+
+      We have long required invocations of temporary functions to explicitly
+      specify the temporary schema, that is pg_temp.func_name(args). Require
+      this as well for casting to temporary types using functional notation,
+      for example pg_temp.type_name(arg). Otherwise it's possible to capture a
+      function call using a temporary object, allowing privilege escalation in
+      much the same ways that we blocked in CVE-2007-2138. (CVE-2019-10208)
+
+  * Move maintainer address to tracker.
+  * On purge, ask the user if they want to remove clusters.
+    (Closes: #911940, #933368)
+
+ -- Christoph Berg <myon@debian.org>  Thu, 08 Aug 2019 16:53:00 +0200
+
 postgresql-9.4 (9.4.22-0+deb8u1) jessie-security; urgency=medium
 
   * New upstream version.
