@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4.24 Documentation"
+TITLE="PostgreSQL 9.4.25 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="GiST Indexes"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2019-08-05T21:34:51"></HEAD
+CONTENT="2019-11-11T22:25:25"></HEAD
 ><BODY
 CLASS="SECT1"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4.24 Documentation</A
+>PostgreSQL 9.4.25 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -766,8 +766,8 @@ my_picksplit(PG_FUNCTION_ARGS)
 
         /*
          * Choose where to put the index entries and update unionL and unionR
-         * accordingly. Append the entries to either v_spl_left or
-         * v_spl_right, and care about the counters.
+         * accordingly. Append the entries to either v-&gt;spl_left or
+         * v-&gt;spl_right, and care about the counters.
          */
 
         if (my_choice_is_left(unionL, curl, unionR, curr))
