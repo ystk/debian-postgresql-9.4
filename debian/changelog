@@ -1,3 +1,11 @@
+postgresql-9.4 (9.4.25-0+deb8u1) jessie-security; urgency=medium
+
+  * New upstream version. This is the next-to-last release of the 9.4 series.
+    Please upgrade to a newer PostgreSQL major version.
+  * Register debconf templates in postinst. (Closes: #935759)
+
+ -- Christoph Berg <myon@debian.org>  Mon, 18 Nov 2019 11:49:49 +0100
+
 postgresql-9.4 (9.4.24-0+deb8u1) jessie-security; urgency=medium
 
   * New upstream security release.

@@ -8,6 +8,12 @@ if [ "$1" = configure ]; then
     . /usr/share/postgresql-common/maintscripts-functions
 
     configure_version $VERSION "$2"
+
+    # jessie's debconf requires registering templates in preinst/postinst, even if we use them in the postrm only
+    if [ -e /usr/share/debconf/confmodule ]; then
+        . /usr/share/debconf/confmodule
+        db_stop
+    fi
 fi
 
 #DEBHELPER#
