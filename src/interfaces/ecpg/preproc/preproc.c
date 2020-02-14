@@ -1,8 +1,9 @@
-/* A Bison parser, made by GNU Bison 3.0.4.  */
+/* A Bison parser, made by GNU Bison 3.3.2.  */
 
 /* Bison implementation for Yacc-like parsers in C
 
-   Copyright (C) 1984, 1989-1990, 2000-2015 Free Software Foundation, Inc.
+   Copyright (C) 1984, 1989-1990, 2000-2015, 2018-2019 Free Software Foundation,
+   Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -40,11 +41,14 @@
    define necessary library symbols; they are noted "INFRINGES ON
    USER NAME SPACE" below.  */
 
+/* Undocumented macros, especially those whose name start with YY_,
+   are private implementation details.  Do not rely on them.  */
+
 /* Identify Bison output.  */
 #define YYBISON 1
 
 /* Bison version.  */
-#define YYBISON_VERSION "3.0.4"
+#define YYBISON_VERSION "3.3.2"
 
 /* Skeleton name.  */
 #define YYSKELETON_NAME "yacc.c"
@@ -70,8 +74,8 @@
 #define yychar          base_yychar
 #define yylloc          base_yylloc
 
-/* Copy the first part of user declarations.  */
-#line 5 "preproc.y" /* yacc.c:339  */
+/* First part of user prologue.  */
+#line 5 "preproc.y" /* yacc.c:337  */
 
 #include "postgres_fe.h"
 
@@ -641,13 +645,16 @@ add_typedef(char *name, char *dimension, char *length, enum ECPGttype type_enum,
 	}
 }
 
-#line 645 "preproc.c" /* yacc.c:339  */
-
+#line 649 "preproc.c" /* yacc.c:337  */
 # ifndef YY_NULLPTR
-#  if defined __cplusplus && 201103L <= __cplusplus
-#   define YY_NULLPTR nullptr
+#  if defined __cplusplus
+#   if 201103L <= __cplusplus
+#    define YY_NULLPTR nullptr
+#   else
+#    define YY_NULLPTR 0
+#   endif
 #  else
-#   define YY_NULLPTR 0
+#   define YY_NULLPTR ((void*)0)
 #  endif
 # endif
 
@@ -1183,7 +1190,7 @@ extern int base_yydebug;
 
 union YYSTYPE
 {
-#line 579 "preproc.y" /* yacc.c:355  */
+#line 579 "preproc.y" /* yacc.c:352  */
 
 	double	dval;
 	char	*str;
@@ -1198,7 +1205,7 @@ union YYSTYPE
 	struct  su_symbol	struct_union;
 	struct	prep		prep;
 
-#line 1202 "preproc.c" /* yacc.c:355  */
+#line 1209 "preproc.c" /* yacc.c:352  */
 };
 
 typedef union YYSTYPE YYSTYPE;
@@ -1227,9 +1234,7 @@ int base_yyparse (void);
 
 #endif /* !YY_BASE_YY_PREPROC_H_INCLUDED  */
 
-/* Copy the second part of user declarations.  */
 
-#line 1233 "preproc.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -1250,13 +1255,13 @@ typedef signed char yytype_int8;
 #ifdef YYTYPE_UINT16
 typedef YYTYPE_UINT16 yytype_uint16;
 #else
-typedef unsigned short int yytype_uint16;
+typedef unsigned short yytype_uint16;
 #endif
 
 #ifdef YYTYPE_INT16
 typedef YYTYPE_INT16 yytype_int16;
 #else
-typedef short int yytype_int16;
+typedef short yytype_int16;
 #endif
 
 #ifndef YYSIZE_T
@@ -1268,7 +1273,7 @@ typedef short int yytype_int16;
 #  include <stddef.h> /* INFRINGES ON USER NAME SPACE */
 #  define YYSIZE_T size_t
 # else
-#  define YYSIZE_T unsigned int
+#  define YYSIZE_T unsigned
 # endif
 #endif
 
@@ -1304,15 +1309,6 @@ typedef short int yytype_int16;
 # define YY_ATTRIBUTE_UNUSED YY_ATTRIBUTE ((__unused__))
 #endif
 
-#if !defined _Noreturn \
-     && (!defined __STDC_VERSION__ || __STDC_VERSION__ < 201112)
-# if defined _MSC_VER && 1200 <= _MSC_VER
-#  define _Noreturn __declspec (noreturn)
-# else
-#  define _Noreturn YY_ATTRIBUTE ((__noreturn__))
-# endif
-#endif
-
 /* Suppress unused-variable warnings by "using" E.  */
 #if ! defined lint || defined __GNUC__
 # define YYUSE(E) ((void) (E))
@@ -1320,7 +1316,7 @@ typedef short int yytype_int16;
 # define YYUSE(E) /* empty */
 #endif
 
-#if defined __GNUC__ && 407 <= __GNUC__ * 100 + __GNUC_MINOR__
+#if defined __GNUC__ && ! defined __ICC && 407 <= __GNUC__ * 100 + __GNUC_MINOR__
 /* Suppress an incorrect diagnostic about yylval being uninitialized.  */
 # define YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN \
     _Pragma ("GCC diagnostic push") \
@@ -1484,16 +1480,16 @@ union yyalloc
 /* YYNSTATES -- Number of states.  */
 #define YYNSTATES  5248
 
-/* YYTRANSLATE[YYX] -- Symbol number corresponding to YYX as returned
-   by yylex, with out-of-bounds checking.  */
 #define YYUNDEFTOK  2
 #define YYMAXUTOK   756
 
+/* YYTRANSLATE(TOKEN-NUM) -- Symbol number corresponding to TOKEN-NUM
+   as returned by yylex, with out-of-bounds checking.  */
 #define YYTRANSLATE(YYX)                                                \
-  ((unsigned int) (YYX) <= YYMAXUTOK ? yytranslate[YYX] : YYUNDEFTOK)
+  ((unsigned) (YYX) <= YYMAXUTOK ? yytranslate[YYX] : YYUNDEFTOK)
 
 /* YYTRANSLATE[TOKEN-NUM] -- Symbol number corresponding to TOKEN-NUM
-   as returned by yylex, without out-of-bounds checking.  */
+   as returned by yylex.  */
 static const yytype_uint16 yytranslate[] =
 {
        0,     2,     2,     2,     2,     2,     2,     2,     2,     2,
@@ -27249,22 +27245,22 @@ static const yytype_uint8 yyr2[] =
 
 #define YYRECOVERING()  (!!yyerrstatus)
 
-#define YYBACKUP(Token, Value)                                  \
-do                                                              \
-  if (yychar == YYEMPTY)                                        \
-    {                                                           \
-      yychar = (Token);                                         \
-      yylval = (Value);                                         \
-      YYPOPSTACK (yylen);                                       \
-      yystate = *yyssp;                                         \
-      goto yybackup;                                            \
-    }                                                           \
-  else                                                          \
-    {                                                           \
-      yyerror (YY_("syntax error: cannot back up")); \
-      YYERROR;                                                  \
-    }                                                           \
-while (0)
+#define YYBACKUP(Token, Value)                                    \
+  do                                                              \
+    if (yychar == YYEMPTY)                                        \
+      {                                                           \
+        yychar = (Token);                                         \
+        yylval = (Value);                                         \
+        YYPOPSTACK (yylen);                                       \
+        yystate = *yyssp;                                         \
+        goto yybackup;                                            \
+      }                                                           \
+    else                                                          \
+      {                                                           \
+        yyerror (YY_("syntax error: cannot back up")); \
+        YYERROR;                                                  \
+      }                                                           \
+  while (0)
 
 /* Error token number */
 #define YYTERROR        1
@@ -27323,10 +27319,10 @@ do {                                            \
 /* Print *YYLOCP on YYO.  Private, do not rely on its existence. */
 
 YY_ATTRIBUTE_UNUSED
-static unsigned
+static int
 yy_location_print_ (FILE *yyo, YYLTYPE const * const yylocp)
 {
-  unsigned res = 0;
+  int res = 0;
   int end_col = 0 != yylocp->last_column ? yylocp->last_column - 1 : 0;
   if (0 <= yylocp->first_line)
     {
@@ -27369,40 +27365,40 @@ do {                                                                      \
 } while (0)
 
 
-/*----------------------------------------.
-| Print this symbol's value on YYOUTPUT.  |
-`----------------------------------------*/
+/*-----------------------------------.
+| Print this symbol's value on YYO.  |
+`-----------------------------------*/
 
 static void
-yy_symbol_value_print (FILE *yyoutput, int yytype, YYSTYPE const * const yyvaluep, YYLTYPE const * const yylocationp)
+yy_symbol_value_print (FILE *yyo, int yytype, YYSTYPE const * const yyvaluep, YYLTYPE const * const yylocationp)
 {
-  FILE *yyo = yyoutput;
-  YYUSE (yyo);
+  FILE *yyoutput = yyo;
+  YYUSE (yyoutput);
   YYUSE (yylocationp);
   if (!yyvaluep)
     return;
 # ifdef YYPRINT
   if (yytype < YYNTOKENS)
-    YYPRINT (yyoutput, yytoknum[yytype], *yyvaluep);
+    YYPRINT (yyo, yytoknum[yytype], *yyvaluep);
 # endif
   YYUSE (yytype);
 }
 
 
-/*--------------------------------.
-| Print this symbol on YYOUTPUT.  |
-`--------------------------------*/
+/*---------------------------.
+| Print this symbol on YYO.  |
+`---------------------------*/
 
 static void
-yy_symbol_print (FILE *yyoutput, int yytype, YYSTYPE const * const yyvaluep, YYLTYPE const * const yylocationp)
+yy_symbol_print (FILE *yyo, int yytype, YYSTYPE const * const yyvaluep, YYLTYPE const * const yylocationp)
 {
-  YYFPRINTF (yyoutput, "%s %s (",
+  YYFPRINTF (yyo, "%s %s (",
              yytype < YYNTOKENS ? "token" : "nterm", yytname[yytype]);
 
-  YY_LOCATION_PRINT (yyoutput, *yylocationp);
-  YYFPRINTF (yyoutput, ": ");
-  yy_symbol_value_print (yyoutput, yytype, yyvaluep, yylocationp);
-  YYFPRINTF (yyoutput, ")");
+  YY_LOCATION_PRINT (yyo, *yylocationp);
+  YYFPRINTF (yyo, ": ");
+  yy_symbol_value_print (yyo, yytype, yyvaluep, yylocationp);
+  YYFPRINTF (yyo, ")");
 }
 
 /*------------------------------------------------------------------.
@@ -27436,7 +27432,7 @@ do {                                                            \
 static void
 yy_reduce_print (yytype_int16 *yyssp, YYSTYPE *yyvsp, YYLTYPE *yylsp, int yyrule)
 {
-  unsigned long int yylno = yyrline[yyrule];
+  unsigned long yylno = yyrline[yyrule];
   int yynrhs = yyr2[yyrule];
   int yyi;
   YYFPRINTF (stderr, "Reducing stack by rule %d (line %lu):\n",
@@ -27447,7 +27443,7 @@ yy_reduce_print (yytype_int16 *yyssp, YYSTYPE *yyvsp, YYLTYPE *yylsp, int yyrule
       YYFPRINTF (stderr, "   $%d = ", yyi + 1);
       yy_symbol_print (stderr,
                        yystos[yyssp[yyi + 1 - yynrhs]],
-                       &(yyvsp[(yyi + 1) - (yynrhs)])
+                       &yyvsp[(yyi + 1) - (yynrhs)]
                        , &(yylsp[(yyi + 1) - (yynrhs)])                       );
       YYFPRINTF (stderr, "\n");
     }
@@ -27551,7 +27547,10 @@ yytnamerr (char *yyres, const char *yystr)
           case '\\':
             if (*++yyp != '\\')
               goto do_not_strip_quotes;
-            /* Fall through.  */
+            else
+              goto append;
+
+          append:
           default:
             if (yyres)
               yyres[yyn] = *yyp;
@@ -27569,7 +27568,7 @@ yytnamerr (char *yyres, const char *yystr)
   if (! yyres)
     return yystrlen (yystr);
 
-  return yystpcpy (yyres, yystr) - yyres;
+  return (YYSIZE_T) (yystpcpy (yyres, yystr) - yyres);
 }
 # endif
 
@@ -27647,10 +27646,10 @@ yysyntax_error (YYSIZE_T *yymsg_alloc, char **yymsg,
                 yyarg[yycount++] = yytname[yyx];
                 {
                   YYSIZE_T yysize1 = yysize + yytnamerr (YY_NULLPTR, yytname[yyx]);
-                  if (! (yysize <= yysize1
-                         && yysize1 <= YYSTACK_ALLOC_MAXIMUM))
+                  if (yysize <= yysize1 && yysize1 <= YYSTACK_ALLOC_MAXIMUM)
+                    yysize = yysize1;
+                  else
                     return 2;
-                  yysize = yysize1;
                 }
               }
         }
@@ -27662,6 +27661,7 @@ yysyntax_error (YYSIZE_T *yymsg_alloc, char **yymsg,
       case N:                               \
         yyformat = S;                       \
       break
+    default: /* Avoid compiler warnings. */
       YYCASE_(0, YY_("syntax error"));
       YYCASE_(1, YY_("syntax error, unexpected %s"));
       YYCASE_(2, YY_("syntax error, unexpected %s, expecting %s"));
@@ -27673,9 +27673,10 @@ yysyntax_error (YYSIZE_T *yymsg_alloc, char **yymsg,
 
   {
     YYSIZE_T yysize1 = yysize + yystrlen (yyformat);
-    if (! (yysize <= yysize1 && yysize1 <= YYSTACK_ALLOC_MAXIMUM))
+    if (yysize <= yysize1 && yysize1 <= YYSTACK_ALLOC_MAXIMUM)
+      yysize = yysize1;
+    else
       return 2;
-    yysize = yysize1;
   }
 
   if (*yymsg_alloc < yysize)
@@ -27820,23 +27821,31 @@ yyparse (void)
   yylsp[0] = yylloc;
   goto yysetstate;
 
+
 /*------------------------------------------------------------.
-| yynewstate -- Push a new state, which is found in yystate.  |
+| yynewstate -- push a new state, which is found in yystate.  |
 `------------------------------------------------------------*/
- yynewstate:
+yynewstate:
   /* In all cases, when you get here, the value and location stacks
      have just been pushed.  So pushing a state here evens the stacks.  */
   yyssp++;
 
- yysetstate:
-  *yyssp = yystate;
+
+/*--------------------------------------------------------------------.
+| yynewstate -- set current state (the top of the stack) to yystate.  |
+`--------------------------------------------------------------------*/
+yysetstate:
+  *yyssp = (yytype_int16) yystate;
 
   if (yyss + yystacksize - 1 <= yyssp)
+#if !defined yyoverflow && !defined YYSTACK_RELOCATE
+    goto yyexhaustedlab;
+#else
     {
       /* Get the current used size of the three stacks, in elements.  */
-      YYSIZE_T yysize = yyssp - yyss + 1;
+      YYSIZE_T yysize = (YYSIZE_T) (yyssp - yyss + 1);
 
-#ifdef yyoverflow
+# if defined yyoverflow
       {
         /* Give user a chance to reallocate the stack.  Use copies of
            these so that the &'s don't force the real ones into
@@ -27854,15 +27863,11 @@ yyparse (void)
                     &yyvs1, yysize * sizeof (*yyvsp),
                     &yyls1, yysize * sizeof (*yylsp),
                     &yystacksize);
-
-        yyls = yyls1;
         yyss = yyss1;
         yyvs = yyvs1;
+        yyls = yyls1;
       }
-#else /* no yyoverflow */
-# ifndef YYSTACK_RELOCATE
-      goto yyexhaustedlab;
-# else
+# else /* defined YYSTACK_RELOCATE */
       /* Extend the stack our own way.  */
       if (YYMAXDEPTH <= yystacksize)
         goto yyexhaustedlab;
@@ -27879,23 +27884,23 @@ yyparse (void)
         YYSTACK_RELOCATE (yyss_alloc, yyss);
         YYSTACK_RELOCATE (yyvs_alloc, yyvs);
         YYSTACK_RELOCATE (yyls_alloc, yyls);
-#  undef YYSTACK_RELOCATE
+# undef YYSTACK_RELOCATE
         if (yyss1 != yyssa)
           YYSTACK_FREE (yyss1);
       }
 # endif
-#endif /* no yyoverflow */
 
       yyssp = yyss + yysize - 1;
       yyvsp = yyvs + yysize - 1;
       yylsp = yyls + yysize - 1;
 
       YYDPRINTF ((stderr, "Stack size increased to %lu\n",
-                  (unsigned long int) yystacksize));
+                  (unsigned long) yystacksize));
 
       if (yyss + yystacksize - 1 <= yyssp)
         YYABORT;
     }
+#endif /* !defined yyoverflow && !defined YYSTACK_RELOCATE */
 
   YYDPRINTF ((stderr, "Entering state %d\n", yystate));
 
@@ -27904,11 +27909,11 @@ yyparse (void)
 
   goto yybackup;
 
+
 /*-----------.
 | yybackup.  |
 `-----------*/
 yybackup:
-
   /* Do appropriate processing given the current state.  Read a
      lookahead token if we need one and don't already have one.  */
 
@@ -27981,7 +27986,7 @@ yydefault:
 
 
 /*-----------------------------.
-| yyreduce -- Do a reduction.  |
+| yyreduce -- do a reduction.  |
 `-----------------------------*/
 yyreduce:
   /* yyn is the number of a rule to reduce with.  */
@@ -27997,187 +28002,188 @@ yyreduce:
      GCC warning that YYVAL may be used uninitialized.  */
   yyval = yyvsp[1-yylen];
 
-  /* Default location.  */
+  /* Default location. */
   YYLLOC_DEFAULT (yyloc, (yylsp - yylen), yylen);
+  yyerror_range[1] = yyloc;
   YY_REDUCE_PRINT (yyn);
   switch (yyn)
     {
         case 3:
-#line 1516 "preproc.y" /* yacc.c:1646  */
+#line 1516 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28009 "preproc.c" /* yacc.c:1646  */
+#line 28015 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 4:
-#line 1518 "preproc.y" /* yacc.c:1646  */
+#line 1518 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28015 "preproc.c" /* yacc.c:1646  */
+#line 28021 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 5:
-#line 1520 "preproc.y" /* yacc.c:1646  */
+#line 1520 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28021 "preproc.c" /* yacc.c:1646  */
+#line 28027 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 6:
-#line 1522 "preproc.y" /* yacc.c:1646  */
+#line 1522 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28027 "preproc.c" /* yacc.c:1646  */
+#line 28033 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 7:
-#line 1524 "preproc.y" /* yacc.c:1646  */
+#line 1524 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28033 "preproc.c" /* yacc.c:1646  */
+#line 28039 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 8:
-#line 1526 "preproc.y" /* yacc.c:1646  */
+#line 1526 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28039 "preproc.c" /* yacc.c:1646  */
+#line 28045 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 9:
-#line 1528 "preproc.y" /* yacc.c:1646  */
+#line 1528 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28045 "preproc.c" /* yacc.c:1646  */
+#line 28051 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 10:
-#line 1530 "preproc.y" /* yacc.c:1646  */
+#line 1530 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28051 "preproc.c" /* yacc.c:1646  */
+#line 28057 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 11:
-#line 1532 "preproc.y" /* yacc.c:1646  */
+#line 1532 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28057 "preproc.c" /* yacc.c:1646  */
+#line 28063 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 12:
-#line 1534 "preproc.y" /* yacc.c:1646  */
+#line 1534 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28063 "preproc.c" /* yacc.c:1646  */
+#line 28069 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 13:
-#line 1536 "preproc.y" /* yacc.c:1646  */
+#line 1536 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28069 "preproc.c" /* yacc.c:1646  */
+#line 28075 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 14:
-#line 1538 "preproc.y" /* yacc.c:1646  */
+#line 1538 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28075 "preproc.c" /* yacc.c:1646  */
+#line 28081 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 15:
-#line 1540 "preproc.y" /* yacc.c:1646  */
+#line 1540 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28081 "preproc.c" /* yacc.c:1646  */
+#line 28087 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 16:
-#line 1542 "preproc.y" /* yacc.c:1646  */
+#line 1542 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28087 "preproc.c" /* yacc.c:1646  */
+#line 28093 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 17:
-#line 1544 "preproc.y" /* yacc.c:1646  */
+#line 1544 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28093 "preproc.c" /* yacc.c:1646  */
+#line 28099 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 18:
-#line 1546 "preproc.y" /* yacc.c:1646  */
+#line 1546 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28099 "preproc.c" /* yacc.c:1646  */
+#line 28105 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 19:
-#line 1548 "preproc.y" /* yacc.c:1646  */
+#line 1548 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28105 "preproc.c" /* yacc.c:1646  */
+#line 28111 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 20:
-#line 1550 "preproc.y" /* yacc.c:1646  */
+#line 1550 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28111 "preproc.c" /* yacc.c:1646  */
+#line 28117 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 21:
-#line 1552 "preproc.y" /* yacc.c:1646  */
+#line 1552 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28117 "preproc.c" /* yacc.c:1646  */
+#line 28123 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 22:
-#line 1554 "preproc.y" /* yacc.c:1646  */
+#line 1554 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28123 "preproc.c" /* yacc.c:1646  */
+#line 28129 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 23:
-#line 1556 "preproc.y" /* yacc.c:1646  */
+#line 1556 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28129 "preproc.c" /* yacc.c:1646  */
+#line 28135 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 24:
-#line 1558 "preproc.y" /* yacc.c:1646  */
+#line 1558 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28135 "preproc.c" /* yacc.c:1646  */
+#line 28141 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 25:
-#line 1560 "preproc.y" /* yacc.c:1646  */
+#line 1560 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28141 "preproc.c" /* yacc.c:1646  */
+#line 28147 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 26:
-#line 1562 "preproc.y" /* yacc.c:1646  */
+#line 1562 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28147 "preproc.c" /* yacc.c:1646  */
+#line 28153 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 27:
-#line 1564 "preproc.y" /* yacc.c:1646  */
+#line 1564 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28153 "preproc.c" /* yacc.c:1646  */
+#line 28159 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 28:
-#line 1566 "preproc.y" /* yacc.c:1646  */
+#line 1566 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28159 "preproc.c" /* yacc.c:1646  */
+#line 28165 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 29:
-#line 1568 "preproc.y" /* yacc.c:1646  */
+#line 1568 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28165 "preproc.c" /* yacc.c:1646  */
+#line 28171 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 30:
-#line 1570 "preproc.y" /* yacc.c:1646  */
+#line 1570 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28171 "preproc.c" /* yacc.c:1646  */
+#line 28177 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 31:
-#line 1572 "preproc.y" /* yacc.c:1646  */
+#line 1572 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28177 "preproc.c" /* yacc.c:1646  */
+#line 28183 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 32:
-#line 1574 "preproc.y" /* yacc.c:1646  */
+#line 1574 "preproc.y" /* yacc.c:1652  */
     {
 		if (INFORMIX_MODE)
 		{
@@ -28195,548 +28201,548 @@ yyreduce:
 
 		output_statement((yyvsp[0].str), 0, ECPGst_normal);
 	}
-#line 28199 "preproc.c" /* yacc.c:1646  */
+#line 28205 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 33:
-#line 1592 "preproc.y" /* yacc.c:1646  */
+#line 1592 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28205 "preproc.c" /* yacc.c:1646  */
+#line 28211 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 34:
-#line 1594 "preproc.y" /* yacc.c:1646  */
+#line 1594 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28211 "preproc.c" /* yacc.c:1646  */
+#line 28217 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 35:
-#line 1596 "preproc.y" /* yacc.c:1646  */
+#line 1596 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28217 "preproc.c" /* yacc.c:1646  */
+#line 28223 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 36:
-#line 1598 "preproc.y" /* yacc.c:1646  */
+#line 1598 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28223 "preproc.c" /* yacc.c:1646  */
+#line 28229 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 37:
-#line 1600 "preproc.y" /* yacc.c:1646  */
+#line 1600 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28229 "preproc.c" /* yacc.c:1646  */
+#line 28235 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 38:
-#line 1602 "preproc.y" /* yacc.c:1646  */
+#line 1602 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28235 "preproc.c" /* yacc.c:1646  */
+#line 28241 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 39:
-#line 1604 "preproc.y" /* yacc.c:1646  */
+#line 1604 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28241 "preproc.c" /* yacc.c:1646  */
+#line 28247 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 40:
-#line 1606 "preproc.y" /* yacc.c:1646  */
+#line 1606 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28247 "preproc.c" /* yacc.c:1646  */
+#line 28253 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 41:
-#line 1608 "preproc.y" /* yacc.c:1646  */
+#line 1608 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28253 "preproc.c" /* yacc.c:1646  */
+#line 28259 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 42:
-#line 1610 "preproc.y" /* yacc.c:1646  */
+#line 1610 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28259 "preproc.c" /* yacc.c:1646  */
+#line 28265 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 43:
-#line 1612 "preproc.y" /* yacc.c:1646  */
+#line 1612 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28265 "preproc.c" /* yacc.c:1646  */
+#line 28271 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 44:
-#line 1614 "preproc.y" /* yacc.c:1646  */
+#line 1614 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28271 "preproc.c" /* yacc.c:1646  */
+#line 28277 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 45:
-#line 1616 "preproc.y" /* yacc.c:1646  */
+#line 1616 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28277 "preproc.c" /* yacc.c:1646  */
+#line 28283 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 46:
-#line 1618 "preproc.y" /* yacc.c:1646  */
+#line 1618 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28283 "preproc.c" /* yacc.c:1646  */
+#line 28289 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 47:
-#line 1620 "preproc.y" /* yacc.c:1646  */
+#line 1620 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28289 "preproc.c" /* yacc.c:1646  */
+#line 28295 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 48:
-#line 1622 "preproc.y" /* yacc.c:1646  */
+#line 1622 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28295 "preproc.c" /* yacc.c:1646  */
+#line 28301 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 49:
-#line 1624 "preproc.y" /* yacc.c:1646  */
+#line 1624 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28301 "preproc.c" /* yacc.c:1646  */
+#line 28307 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 50:
-#line 1626 "preproc.y" /* yacc.c:1646  */
+#line 1626 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28307 "preproc.c" /* yacc.c:1646  */
+#line 28313 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 51:
-#line 1628 "preproc.y" /* yacc.c:1646  */
+#line 1628 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28313 "preproc.c" /* yacc.c:1646  */
+#line 28319 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 52:
-#line 1630 "preproc.y" /* yacc.c:1646  */
+#line 1630 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28319 "preproc.c" /* yacc.c:1646  */
+#line 28325 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 53:
-#line 1632 "preproc.y" /* yacc.c:1646  */
+#line 1632 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28325 "preproc.c" /* yacc.c:1646  */
+#line 28331 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 54:
-#line 1634 "preproc.y" /* yacc.c:1646  */
+#line 1634 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28331 "preproc.c" /* yacc.c:1646  */
+#line 28337 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 55:
-#line 1636 "preproc.y" /* yacc.c:1646  */
+#line 1636 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28337 "preproc.c" /* yacc.c:1646  */
+#line 28343 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 56:
-#line 1638 "preproc.y" /* yacc.c:1646  */
+#line 1638 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28343 "preproc.c" /* yacc.c:1646  */
+#line 28349 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 57:
-#line 1640 "preproc.y" /* yacc.c:1646  */
+#line 1640 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28349 "preproc.c" /* yacc.c:1646  */
+#line 28355 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 58:
-#line 1642 "preproc.y" /* yacc.c:1646  */
+#line 1642 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28355 "preproc.c" /* yacc.c:1646  */
+#line 28361 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 59:
-#line 1644 "preproc.y" /* yacc.c:1646  */
+#line 1644 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28361 "preproc.c" /* yacc.c:1646  */
+#line 28367 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 60:
-#line 1646 "preproc.y" /* yacc.c:1646  */
+#line 1646 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28367 "preproc.c" /* yacc.c:1646  */
+#line 28373 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 61:
-#line 1648 "preproc.y" /* yacc.c:1646  */
+#line 1648 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28373 "preproc.c" /* yacc.c:1646  */
+#line 28379 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 62:
-#line 1650 "preproc.y" /* yacc.c:1646  */
+#line 1650 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28379 "preproc.c" /* yacc.c:1646  */
+#line 28385 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 63:
-#line 1652 "preproc.y" /* yacc.c:1646  */
+#line 1652 "preproc.y" /* yacc.c:1652  */
     {
 		output_deallocate_prepare_statement((yyvsp[0].str));
 	}
-#line 28387 "preproc.c" /* yacc.c:1646  */
+#line 28393 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 64:
-#line 1656 "preproc.y" /* yacc.c:1646  */
+#line 1656 "preproc.y" /* yacc.c:1652  */
     { output_simple_statement((yyvsp[0].str)); }
-#line 28393 "preproc.c" /* yacc.c:1646  */
+#line 28399 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 65:
-#line 1658 "preproc.y" /* yacc.c:1646  */
+#line 1658 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28399 "preproc.c" /* yacc.c:1646  */
+#line 28405 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 66:
-#line 1660 "preproc.y" /* yacc.c:1646  */
+#line 1660 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 1, ECPGst_prepnormal); }
-#line 28405 "preproc.c" /* yacc.c:1646  */
+#line 28411 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 67:
-#line 1662 "preproc.y" /* yacc.c:1646  */
+#line 1662 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 1, ECPGst_normal); }
-#line 28411 "preproc.c" /* yacc.c:1646  */
+#line 28417 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 68:
-#line 1664 "preproc.y" /* yacc.c:1646  */
+#line 1664 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28417 "preproc.c" /* yacc.c:1646  */
+#line 28423 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 69:
-#line 1666 "preproc.y" /* yacc.c:1646  */
+#line 1666 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28423 "preproc.c" /* yacc.c:1646  */
+#line 28429 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 70:
-#line 1668 "preproc.y" /* yacc.c:1646  */
+#line 1668 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28429 "preproc.c" /* yacc.c:1646  */
+#line 28435 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 71:
-#line 1670 "preproc.y" /* yacc.c:1646  */
+#line 1670 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28435 "preproc.c" /* yacc.c:1646  */
+#line 28441 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 72:
-#line 1672 "preproc.y" /* yacc.c:1646  */
+#line 1672 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28441 "preproc.c" /* yacc.c:1646  */
+#line 28447 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 73:
-#line 1674 "preproc.y" /* yacc.c:1646  */
+#line 1674 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28447 "preproc.c" /* yacc.c:1646  */
+#line 28453 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 74:
-#line 1676 "preproc.y" /* yacc.c:1646  */
+#line 1676 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28453 "preproc.c" /* yacc.c:1646  */
+#line 28459 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 75:
-#line 1678 "preproc.y" /* yacc.c:1646  */
+#line 1678 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28459 "preproc.c" /* yacc.c:1646  */
+#line 28465 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 76:
-#line 1680 "preproc.y" /* yacc.c:1646  */
+#line 1680 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28465 "preproc.c" /* yacc.c:1646  */
+#line 28471 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 77:
-#line 1682 "preproc.y" /* yacc.c:1646  */
+#line 1682 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28471 "preproc.c" /* yacc.c:1646  */
+#line 28477 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 78:
-#line 1684 "preproc.y" /* yacc.c:1646  */
+#line 1684 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28477 "preproc.c" /* yacc.c:1646  */
+#line 28483 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 79:
-#line 1686 "preproc.y" /* yacc.c:1646  */
+#line 1686 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28483 "preproc.c" /* yacc.c:1646  */
+#line 28489 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 80:
-#line 1688 "preproc.y" /* yacc.c:1646  */
+#line 1688 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28489 "preproc.c" /* yacc.c:1646  */
+#line 28495 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 81:
-#line 1690 "preproc.y" /* yacc.c:1646  */
+#line 1690 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28495 "preproc.c" /* yacc.c:1646  */
+#line 28501 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 82:
-#line 1692 "preproc.y" /* yacc.c:1646  */
+#line 1692 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28501 "preproc.c" /* yacc.c:1646  */
+#line 28507 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 83:
-#line 1694 "preproc.y" /* yacc.c:1646  */
+#line 1694 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28507 "preproc.c" /* yacc.c:1646  */
+#line 28513 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 84:
-#line 1696 "preproc.y" /* yacc.c:1646  */
+#line 1696 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28513 "preproc.c" /* yacc.c:1646  */
+#line 28519 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 85:
-#line 1698 "preproc.y" /* yacc.c:1646  */
+#line 1698 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28519 "preproc.c" /* yacc.c:1646  */
+#line 28525 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 86:
-#line 1700 "preproc.y" /* yacc.c:1646  */
+#line 1700 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 1, ECPGst_execute); }
-#line 28525 "preproc.c" /* yacc.c:1646  */
+#line 28531 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 87:
-#line 1702 "preproc.y" /* yacc.c:1646  */
+#line 1702 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28531 "preproc.c" /* yacc.c:1646  */
+#line 28537 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 88:
-#line 1704 "preproc.y" /* yacc.c:1646  */
+#line 1704 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 1, ECPGst_normal); }
-#line 28537 "preproc.c" /* yacc.c:1646  */
+#line 28543 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 89:
-#line 1706 "preproc.y" /* yacc.c:1646  */
+#line 1706 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28543 "preproc.c" /* yacc.c:1646  */
+#line 28549 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 90:
-#line 1708 "preproc.y" /* yacc.c:1646  */
+#line 1708 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28549 "preproc.c" /* yacc.c:1646  */
+#line 28555 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 91:
-#line 1710 "preproc.y" /* yacc.c:1646  */
+#line 1710 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28555 "preproc.c" /* yacc.c:1646  */
+#line 28561 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 92:
-#line 1712 "preproc.y" /* yacc.c:1646  */
+#line 1712 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 1, ECPGst_prepnormal); }
-#line 28561 "preproc.c" /* yacc.c:1646  */
+#line 28567 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 93:
-#line 1714 "preproc.y" /* yacc.c:1646  */
+#line 1714 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28567 "preproc.c" /* yacc.c:1646  */
+#line 28573 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 94:
-#line 1716 "preproc.y" /* yacc.c:1646  */
+#line 1716 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28573 "preproc.c" /* yacc.c:1646  */
+#line 28579 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 95:
-#line 1718 "preproc.y" /* yacc.c:1646  */
+#line 1718 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28579 "preproc.c" /* yacc.c:1646  */
+#line 28585 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 96:
-#line 1720 "preproc.y" /* yacc.c:1646  */
+#line 1720 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28585 "preproc.c" /* yacc.c:1646  */
+#line 28591 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 97:
-#line 1722 "preproc.y" /* yacc.c:1646  */
+#line 1722 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28591 "preproc.c" /* yacc.c:1646  */
+#line 28597 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 98:
-#line 1724 "preproc.y" /* yacc.c:1646  */
+#line 1724 "preproc.y" /* yacc.c:1652  */
     {
 		if ((yyvsp[0].prep).type == NULL || strlen((yyvsp[0].prep).type) == 0)
 			output_prepare_statement((yyvsp[0].prep).name, (yyvsp[0].prep).stmt);
 		else
 			output_statement(cat_str(5, mm_strdup("prepare"), (yyvsp[0].prep).name, (yyvsp[0].prep).type, mm_strdup("as"), (yyvsp[0].prep).stmt), 0, ECPGst_normal);
 	}
-#line 28602 "preproc.c" /* yacc.c:1646  */
+#line 28608 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 99:
-#line 1731 "preproc.y" /* yacc.c:1646  */
+#line 1731 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28608 "preproc.c" /* yacc.c:1646  */
+#line 28614 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 100:
-#line 1733 "preproc.y" /* yacc.c:1646  */
+#line 1733 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28614 "preproc.c" /* yacc.c:1646  */
+#line 28620 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 101:
-#line 1735 "preproc.y" /* yacc.c:1646  */
+#line 1735 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28620 "preproc.c" /* yacc.c:1646  */
+#line 28626 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 102:
-#line 1737 "preproc.y" /* yacc.c:1646  */
+#line 1737 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28626 "preproc.c" /* yacc.c:1646  */
+#line 28632 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 103:
-#line 1739 "preproc.y" /* yacc.c:1646  */
+#line 1739 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28632 "preproc.c" /* yacc.c:1646  */
+#line 28638 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 104:
-#line 1741 "preproc.y" /* yacc.c:1646  */
+#line 1741 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28638 "preproc.c" /* yacc.c:1646  */
+#line 28644 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 105:
-#line 1743 "preproc.y" /* yacc.c:1646  */
+#line 1743 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28644 "preproc.c" /* yacc.c:1646  */
+#line 28650 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 106:
-#line 1745 "preproc.y" /* yacc.c:1646  */
+#line 1745 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28650 "preproc.c" /* yacc.c:1646  */
+#line 28656 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 107:
-#line 1747 "preproc.y" /* yacc.c:1646  */
+#line 1747 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28656 "preproc.c" /* yacc.c:1646  */
+#line 28662 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 108:
-#line 1749 "preproc.y" /* yacc.c:1646  */
+#line 1749 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28662 "preproc.c" /* yacc.c:1646  */
+#line 28668 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 109:
-#line 1751 "preproc.y" /* yacc.c:1646  */
+#line 1751 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 1, ECPGst_prepnormal); }
-#line 28668 "preproc.c" /* yacc.c:1646  */
+#line 28674 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 110:
-#line 1753 "preproc.y" /* yacc.c:1646  */
+#line 1753 "preproc.y" /* yacc.c:1652  */
     {
 		fprintf(base_yyout, "{ ECPGtrans(__LINE__, %s, \"%s\");", connection ? connection : "NULL", (yyvsp[0].str));
 		whenever_action(2);
 		free((yyvsp[0].str));
 	}
-#line 28678 "preproc.c" /* yacc.c:1646  */
+#line 28684 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 111:
-#line 1759 "preproc.y" /* yacc.c:1646  */
+#line 1759 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28684 "preproc.c" /* yacc.c:1646  */
+#line 28690 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 112:
-#line 1761 "preproc.y" /* yacc.c:1646  */
+#line 1761 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28690 "preproc.c" /* yacc.c:1646  */
+#line 28696 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 113:
-#line 1763 "preproc.y" /* yacc.c:1646  */
+#line 1763 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 1, ECPGst_prepnormal); }
-#line 28696 "preproc.c" /* yacc.c:1646  */
+#line 28702 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 114:
-#line 1765 "preproc.y" /* yacc.c:1646  */
+#line 1765 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28702 "preproc.c" /* yacc.c:1646  */
+#line 28708 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 115:
-#line 1767 "preproc.y" /* yacc.c:1646  */
+#line 1767 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28708 "preproc.c" /* yacc.c:1646  */
+#line 28714 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 116:
-#line 1769 "preproc.y" /* yacc.c:1646  */
+#line 1769 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28714 "preproc.c" /* yacc.c:1646  */
+#line 28720 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 117:
-#line 1771 "preproc.y" /* yacc.c:1646  */
+#line 1771 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28720 "preproc.c" /* yacc.c:1646  */
+#line 28726 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 118:
-#line 1773 "preproc.y" /* yacc.c:1646  */
+#line 1773 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_normal); }
-#line 28726 "preproc.c" /* yacc.c:1646  */
+#line 28732 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 119:
-#line 1775 "preproc.y" /* yacc.c:1646  */
+#line 1775 "preproc.y" /* yacc.c:1652  */
     {
 		fprintf(base_yyout,"ECPGallocate_desc(__LINE__, %s);",(yyvsp[0].str));
 		whenever_action(0);
 		free((yyvsp[0].str));
 	}
-#line 28736 "preproc.c" /* yacc.c:1646  */
+#line 28742 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 120:
-#line 1781 "preproc.y" /* yacc.c:1646  */
+#line 1781 "preproc.y" /* yacc.c:1652  */
     {
 		if (connection)
 			mmerror(PARSE_ERROR, ET_ERROR, "AT option not allowed in CONNECT statement");
@@ -28746,37 +28752,37 @@ yyreduce:
 		whenever_action(2);
 		free((yyvsp[0].str));
 	}
-#line 28750 "preproc.c" /* yacc.c:1646  */
+#line 28756 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 121:
-#line 1791 "preproc.y" /* yacc.c:1646  */
+#line 1791 "preproc.y" /* yacc.c:1652  */
     {
 		output_simple_statement((yyvsp[0].str));
 	}
-#line 28758 "preproc.c" /* yacc.c:1646  */
+#line 28764 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 122:
-#line 1795 "preproc.y" /* yacc.c:1646  */
+#line 1795 "preproc.y" /* yacc.c:1652  */
     {
 		fprintf(base_yyout,"ECPGdeallocate_desc(__LINE__, %s);",(yyvsp[0].str));
 		whenever_action(0);
 		free((yyvsp[0].str));
 	}
-#line 28768 "preproc.c" /* yacc.c:1646  */
+#line 28774 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 123:
-#line 1801 "preproc.y" /* yacc.c:1646  */
+#line 1801 "preproc.y" /* yacc.c:1652  */
     {
 		output_simple_statement((yyvsp[0].str));
 	}
-#line 28776 "preproc.c" /* yacc.c:1646  */
+#line 28782 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 124:
-#line 1805 "preproc.y" /* yacc.c:1646  */
+#line 1805 "preproc.y" /* yacc.c:1652  */
     {
 		fprintf(base_yyout, "{ ECPGdescribe(__LINE__, %d, %s,", compat, (yyvsp[0].str));
 		dump_variables(argsresult, 1);
@@ -28786,11 +28792,11 @@ yyreduce:
 
 		free((yyvsp[0].str));
 	}
-#line 28790 "preproc.c" /* yacc.c:1646  */
+#line 28796 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 125:
-#line 1815 "preproc.y" /* yacc.c:1646  */
+#line 1815 "preproc.y" /* yacc.c:1652  */
     {
 		if (connection)
 			mmerror(PARSE_ERROR, ET_ERROR, "AT option not allowed in DISCONNECT statement");
@@ -28800,17 +28806,17 @@ yyreduce:
 		whenever_action(2);
 		free((yyvsp[0].str));
 	}
-#line 28804 "preproc.c" /* yacc.c:1646  */
+#line 28810 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 126:
-#line 1824 "preproc.y" /* yacc.c:1646  */
+#line 1824 "preproc.y" /* yacc.c:1652  */
     { output_statement((yyvsp[0].str), 0, ECPGst_exec_immediate); }
-#line 28810 "preproc.c" /* yacc.c:1646  */
+#line 28816 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 127:
-#line 1826 "preproc.y" /* yacc.c:1646  */
+#line 1826 "preproc.y" /* yacc.c:1652  */
     {
 		const char *con = connection ? connection : "NULL";
 
@@ -28824,32 +28830,32 @@ yyreduce:
 		whenever_action(2);
 		free((yyvsp[0].str));
 	}
-#line 28828 "preproc.c" /* yacc.c:1646  */
+#line 28834 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 128:
-#line 1840 "preproc.y" /* yacc.c:1646  */
+#line 1840 "preproc.y" /* yacc.c:1652  */
     {
 		lookup_descriptor((yyvsp[0].descriptor).name, connection);
 		output_get_descr((yyvsp[0].descriptor).name, (yyvsp[0].descriptor).str);
 		free((yyvsp[0].descriptor).name);
 		free((yyvsp[0].descriptor).str);
 	}
-#line 28839 "preproc.c" /* yacc.c:1646  */
+#line 28845 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 129:
-#line 1847 "preproc.y" /* yacc.c:1646  */
+#line 1847 "preproc.y" /* yacc.c:1652  */
     {
 		lookup_descriptor((yyvsp[0].str), connection);
 		output_get_descr_header((yyvsp[0].str));
 		free((yyvsp[0].str));
 	}
-#line 28849 "preproc.c" /* yacc.c:1646  */
+#line 28855 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 130:
-#line 1853 "preproc.y" /* yacc.c:1646  */
+#line 1853 "preproc.y" /* yacc.c:1652  */
     {
 		struct cursor *ptr;
 
@@ -28860,21 +28866,21 @@ yyreduce:
 			ptr->opened = true;
 		}
 	}
-#line 28864 "preproc.c" /* yacc.c:1646  */
+#line 28870 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 131:
-#line 1864 "preproc.y" /* yacc.c:1646  */
+#line 1864 "preproc.y" /* yacc.c:1652  */
     {
 		fprintf(base_yyout, "{ ECPGsetcommit(__LINE__, \"%s\", %s);", (yyvsp[0].str), connection ? connection : "NULL");
 		whenever_action(2);
 		free((yyvsp[0].str));
 	}
-#line 28874 "preproc.c" /* yacc.c:1646  */
+#line 28880 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 132:
-#line 1870 "preproc.y" /* yacc.c:1646  */
+#line 1870 "preproc.y" /* yacc.c:1652  */
     {
 		if (connection)
 			mmerror(PARSE_ERROR, ET_ERROR, "AT option not allowed in SET CONNECTION statement");
@@ -28883,32 +28889,32 @@ yyreduce:
 		whenever_action(2);
 		free((yyvsp[0].str));
 	}
-#line 28887 "preproc.c" /* yacc.c:1646  */
+#line 28893 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 133:
-#line 1879 "preproc.y" /* yacc.c:1646  */
+#line 1879 "preproc.y" /* yacc.c:1652  */
     {
 		lookup_descriptor((yyvsp[0].descriptor).name, connection);
 		output_set_descr((yyvsp[0].descriptor).name, (yyvsp[0].descriptor).str);
 		free((yyvsp[0].descriptor).name);
 		free((yyvsp[0].descriptor).str);
 	}
-#line 28898 "preproc.c" /* yacc.c:1646  */
+#line 28904 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 134:
-#line 1886 "preproc.y" /* yacc.c:1646  */
+#line 1886 "preproc.y" /* yacc.c:1652  */
     {
 		lookup_descriptor((yyvsp[0].str), connection);
 		output_set_descr_header((yyvsp[0].str));
 		free((yyvsp[0].str));
 	}
-#line 28908 "preproc.c" /* yacc.c:1646  */
+#line 28914 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 135:
-#line 1892 "preproc.y" /* yacc.c:1646  */
+#line 1892 "preproc.y" /* yacc.c:1652  */
     {
 		if (connection)
 			mmerror(PARSE_ERROR, ET_ERROR, "AT option not allowed in TYPE statement");
@@ -28917,684 +28923,684 @@ yyreduce:
 		free((yyvsp[0].str));
 		output_line_number();
 	}
-#line 28921 "preproc.c" /* yacc.c:1646  */
+#line 28927 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 136:
-#line 1901 "preproc.y" /* yacc.c:1646  */
+#line 1901 "preproc.y" /* yacc.c:1652  */
     {
 		if (connection)
 			mmerror(PARSE_ERROR, ET_ERROR, "AT option not allowed in VAR statement");
 
 		output_simple_statement((yyvsp[0].str));
 	}
-#line 28932 "preproc.c" /* yacc.c:1646  */
+#line 28938 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 137:
-#line 1908 "preproc.y" /* yacc.c:1646  */
+#line 1908 "preproc.y" /* yacc.c:1652  */
     {
 		if (connection)
 			mmerror(PARSE_ERROR, ET_ERROR, "AT option not allowed in WHENEVER statement");
 
 		output_simple_statement((yyvsp[0].str));
 	}
-#line 28943 "preproc.c" /* yacc.c:1646  */
+#line 28949 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 138:
-#line 1915 "preproc.y" /* yacc.c:1646  */
+#line 1915 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = NULL; }
-#line 28949 "preproc.c" /* yacc.c:1646  */
+#line 28955 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 139:
-#line 1921 "preproc.y" /* yacc.c:1646  */
+#line 1921 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("create role"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 28957 "preproc.c" /* yacc.c:1646  */
+#line 28963 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 140:
-#line 1929 "preproc.y" /* yacc.c:1646  */
+#line 1929 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("with");
 }
-#line 28965 "preproc.c" /* yacc.c:1646  */
+#line 28971 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 141:
-#line 1933 "preproc.y" /* yacc.c:1646  */
+#line 1933 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 28972 "preproc.c" /* yacc.c:1646  */
+#line 28978 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 142:
-#line 1940 "preproc.y" /* yacc.c:1646  */
+#line 1940 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 28980 "preproc.c" /* yacc.c:1646  */
+#line 28986 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 143:
-#line 1944 "preproc.y" /* yacc.c:1646  */
+#line 1944 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 28987 "preproc.c" /* yacc.c:1646  */
+#line 28993 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 144:
-#line 1951 "preproc.y" /* yacc.c:1646  */
+#line 1951 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 28995 "preproc.c" /* yacc.c:1646  */
+#line 29001 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 145:
-#line 1955 "preproc.y" /* yacc.c:1646  */
+#line 1955 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 29002 "preproc.c" /* yacc.c:1646  */
+#line 29008 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 146:
-#line 1962 "preproc.y" /* yacc.c:1646  */
+#line 1962 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("password"),(yyvsp[0].str));
 }
-#line 29010 "preproc.c" /* yacc.c:1646  */
+#line 29016 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 147:
-#line 1966 "preproc.y" /* yacc.c:1646  */
+#line 1966 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("password null");
 }
-#line 29018 "preproc.c" /* yacc.c:1646  */
+#line 29024 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 148:
-#line 1970 "preproc.y" /* yacc.c:1646  */
+#line 1970 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("encrypted password"),(yyvsp[0].str));
 }
-#line 29026 "preproc.c" /* yacc.c:1646  */
+#line 29032 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 149:
-#line 1974 "preproc.y" /* yacc.c:1646  */
+#line 1974 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("unencrypted password"),(yyvsp[0].str));
 }
-#line 29034 "preproc.c" /* yacc.c:1646  */
+#line 29040 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 150:
-#line 1978 "preproc.y" /* yacc.c:1646  */
+#line 1978 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("inherit");
 }
-#line 29042 "preproc.c" /* yacc.c:1646  */
+#line 29048 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 151:
-#line 1982 "preproc.y" /* yacc.c:1646  */
+#line 1982 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("connection limit"),(yyvsp[0].str));
 }
-#line 29050 "preproc.c" /* yacc.c:1646  */
+#line 29056 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 152:
-#line 1986 "preproc.y" /* yacc.c:1646  */
+#line 1986 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("valid until"),(yyvsp[0].str));
 }
-#line 29058 "preproc.c" /* yacc.c:1646  */
+#line 29064 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 153:
-#line 1990 "preproc.y" /* yacc.c:1646  */
+#line 1990 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("user"),(yyvsp[0].str));
 }
-#line 29066 "preproc.c" /* yacc.c:1646  */
+#line 29072 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 154:
-#line 1994 "preproc.y" /* yacc.c:1646  */
+#line 1994 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 29074 "preproc.c" /* yacc.c:1646  */
+#line 29080 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 155:
-#line 2002 "preproc.y" /* yacc.c:1646  */
+#line 2002 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 29082 "preproc.c" /* yacc.c:1646  */
+#line 29088 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 156:
-#line 2006 "preproc.y" /* yacc.c:1646  */
+#line 2006 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("sysid"),(yyvsp[0].str));
 }
-#line 29090 "preproc.c" /* yacc.c:1646  */
+#line 29096 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 157:
-#line 2010 "preproc.y" /* yacc.c:1646  */
+#line 2010 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("admin"),(yyvsp[0].str));
 }
-#line 29098 "preproc.c" /* yacc.c:1646  */
+#line 29104 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 158:
-#line 2014 "preproc.y" /* yacc.c:1646  */
+#line 2014 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("role"),(yyvsp[0].str));
 }
-#line 29106 "preproc.c" /* yacc.c:1646  */
+#line 29112 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 159:
-#line 2018 "preproc.y" /* yacc.c:1646  */
+#line 2018 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("in role"),(yyvsp[0].str));
 }
-#line 29114 "preproc.c" /* yacc.c:1646  */
+#line 29120 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 160:
-#line 2022 "preproc.y" /* yacc.c:1646  */
+#line 2022 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("in group"),(yyvsp[0].str));
 }
-#line 29122 "preproc.c" /* yacc.c:1646  */
+#line 29128 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 161:
-#line 2030 "preproc.y" /* yacc.c:1646  */
+#line 2030 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("create user"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 29130 "preproc.c" /* yacc.c:1646  */
+#line 29136 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 162:
-#line 2038 "preproc.y" /* yacc.c:1646  */
+#line 2038 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter role"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 29138 "preproc.c" /* yacc.c:1646  */
+#line 29144 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 163:
-#line 2046 "preproc.y" /* yacc.c:1646  */
+#line 2046 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 29145 "preproc.c" /* yacc.c:1646  */
+#line 29151 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 164:
-#line 2049 "preproc.y" /* yacc.c:1646  */
+#line 2049 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("in database"),(yyvsp[0].str));
 }
-#line 29153 "preproc.c" /* yacc.c:1646  */
+#line 29159 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 165:
-#line 2057 "preproc.y" /* yacc.c:1646  */
+#line 2057 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter role"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 29161 "preproc.c" /* yacc.c:1646  */
+#line 29167 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 166:
-#line 2061 "preproc.y" /* yacc.c:1646  */
+#line 2061 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("alter role all"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 29169 "preproc.c" /* yacc.c:1646  */
+#line 29175 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 167:
-#line 2069 "preproc.y" /* yacc.c:1646  */
+#line 2069 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter user"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 29177 "preproc.c" /* yacc.c:1646  */
+#line 29183 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 168:
-#line 2077 "preproc.y" /* yacc.c:1646  */
+#line 2077 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter user"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 29185 "preproc.c" /* yacc.c:1646  */
+#line 29191 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 169:
-#line 2081 "preproc.y" /* yacc.c:1646  */
+#line 2081 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("alter user all"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 29193 "preproc.c" /* yacc.c:1646  */
+#line 29199 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 170:
-#line 2089 "preproc.y" /* yacc.c:1646  */
+#line 2089 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("drop role"),(yyvsp[0].str));
 }
-#line 29201 "preproc.c" /* yacc.c:1646  */
+#line 29207 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 171:
-#line 2093 "preproc.y" /* yacc.c:1646  */
+#line 2093 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("drop role if exists"),(yyvsp[0].str));
 }
-#line 29209 "preproc.c" /* yacc.c:1646  */
+#line 29215 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 172:
-#line 2101 "preproc.y" /* yacc.c:1646  */
+#line 2101 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("drop user"),(yyvsp[0].str));
 }
-#line 29217 "preproc.c" /* yacc.c:1646  */
+#line 29223 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 173:
-#line 2105 "preproc.y" /* yacc.c:1646  */
+#line 2105 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("drop user if exists"),(yyvsp[0].str));
 }
-#line 29225 "preproc.c" /* yacc.c:1646  */
+#line 29231 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 174:
-#line 2113 "preproc.y" /* yacc.c:1646  */
+#line 2113 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("create group"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 29233 "preproc.c" /* yacc.c:1646  */
+#line 29239 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 175:
-#line 2121 "preproc.y" /* yacc.c:1646  */
+#line 2121 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("alter group"),(yyvsp[-3].str),(yyvsp[-2].str),mm_strdup("user"),(yyvsp[0].str));
 }
-#line 29241 "preproc.c" /* yacc.c:1646  */
+#line 29247 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 176:
-#line 2129 "preproc.y" /* yacc.c:1646  */
+#line 2129 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("add");
 }
-#line 29249 "preproc.c" /* yacc.c:1646  */
+#line 29255 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 177:
-#line 2133 "preproc.y" /* yacc.c:1646  */
+#line 2133 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("drop");
 }
-#line 29257 "preproc.c" /* yacc.c:1646  */
+#line 29263 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 178:
-#line 2141 "preproc.y" /* yacc.c:1646  */
+#line 2141 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("drop group"),(yyvsp[0].str));
 }
-#line 29265 "preproc.c" /* yacc.c:1646  */
+#line 29271 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 179:
-#line 2145 "preproc.y" /* yacc.c:1646  */
+#line 2145 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("drop group if exists"),(yyvsp[0].str));
 }
-#line 29273 "preproc.c" /* yacc.c:1646  */
+#line 29279 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 180:
-#line 2153 "preproc.y" /* yacc.c:1646  */
+#line 2153 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("create schema"),(yyvsp[-3].str),mm_strdup("authorization"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 29281 "preproc.c" /* yacc.c:1646  */
+#line 29287 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 181:
-#line 2157 "preproc.y" /* yacc.c:1646  */
+#line 2157 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("create schema"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 29289 "preproc.c" /* yacc.c:1646  */
+#line 29295 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 182:
-#line 2161 "preproc.y" /* yacc.c:1646  */
+#line 2161 "preproc.y" /* yacc.c:1652  */
     { 
 mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server");
  (yyval.str) = cat_str(5,mm_strdup("create schema if not exists"),(yyvsp[-3].str),mm_strdup("authorization"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 29298 "preproc.c" /* yacc.c:1646  */
+#line 29304 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 183:
-#line 2166 "preproc.y" /* yacc.c:1646  */
+#line 2166 "preproc.y" /* yacc.c:1652  */
     { 
 mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server");
  (yyval.str) = cat_str(3,mm_strdup("create schema if not exists"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 29307 "preproc.c" /* yacc.c:1646  */
+#line 29313 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 184:
-#line 2175 "preproc.y" /* yacc.c:1646  */
+#line 2175 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 29315 "preproc.c" /* yacc.c:1646  */
+#line 29321 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 185:
-#line 2179 "preproc.y" /* yacc.c:1646  */
+#line 2179 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 29322 "preproc.c" /* yacc.c:1646  */
+#line 29328 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 186:
-#line 2186 "preproc.y" /* yacc.c:1646  */
+#line 2186 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 29330 "preproc.c" /* yacc.c:1646  */
+#line 29336 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 187:
-#line 2190 "preproc.y" /* yacc.c:1646  */
+#line 2190 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 29337 "preproc.c" /* yacc.c:1646  */
+#line 29343 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 188:
-#line 2197 "preproc.y" /* yacc.c:1646  */
+#line 2197 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 29345 "preproc.c" /* yacc.c:1646  */
+#line 29351 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 189:
-#line 2201 "preproc.y" /* yacc.c:1646  */
+#line 2201 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 29353 "preproc.c" /* yacc.c:1646  */
+#line 29359 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 190:
-#line 2205 "preproc.y" /* yacc.c:1646  */
+#line 2205 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 29361 "preproc.c" /* yacc.c:1646  */
+#line 29367 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 191:
-#line 2209 "preproc.y" /* yacc.c:1646  */
+#line 2209 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 29369 "preproc.c" /* yacc.c:1646  */
+#line 29375 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 192:
-#line 2213 "preproc.y" /* yacc.c:1646  */
+#line 2213 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 29377 "preproc.c" /* yacc.c:1646  */
+#line 29383 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 193:
-#line 2217 "preproc.y" /* yacc.c:1646  */
+#line 2217 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 29385 "preproc.c" /* yacc.c:1646  */
+#line 29391 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 194:
-#line 2225 "preproc.y" /* yacc.c:1646  */
+#line 2225 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("set"),(yyvsp[0].str));
 }
-#line 29393 "preproc.c" /* yacc.c:1646  */
+#line 29399 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 195:
-#line 2229 "preproc.y" /* yacc.c:1646  */
+#line 2229 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("set local"),(yyvsp[0].str));
 }
-#line 29401 "preproc.c" /* yacc.c:1646  */
+#line 29407 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 196:
-#line 2233 "preproc.y" /* yacc.c:1646  */
+#line 2233 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("set session"),(yyvsp[0].str));
 }
-#line 29409 "preproc.c" /* yacc.c:1646  */
+#line 29415 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 197:
-#line 2241 "preproc.y" /* yacc.c:1646  */
+#line 2241 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("transaction"),(yyvsp[0].str));
 }
-#line 29417 "preproc.c" /* yacc.c:1646  */
+#line 29423 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 198:
-#line 2245 "preproc.y" /* yacc.c:1646  */
+#line 2245 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("session characteristics as transaction"),(yyvsp[0].str));
 }
-#line 29425 "preproc.c" /* yacc.c:1646  */
+#line 29431 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 199:
-#line 2249 "preproc.y" /* yacc.c:1646  */
+#line 2249 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 29433 "preproc.c" /* yacc.c:1646  */
+#line 29439 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 200:
-#line 2257 "preproc.y" /* yacc.c:1646  */
+#line 2257 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("to"),(yyvsp[0].str));
 }
-#line 29441 "preproc.c" /* yacc.c:1646  */
+#line 29447 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 201:
-#line 2261 "preproc.y" /* yacc.c:1646  */
+#line 2261 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("="),(yyvsp[0].str));
 }
-#line 29449 "preproc.c" /* yacc.c:1646  */
+#line 29455 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 202:
-#line 2265 "preproc.y" /* yacc.c:1646  */
+#line 2265 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-2].str),mm_strdup("to default"));
 }
-#line 29457 "preproc.c" /* yacc.c:1646  */
+#line 29463 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 203:
-#line 2269 "preproc.y" /* yacc.c:1646  */
+#line 2269 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-2].str),mm_strdup("= default"));
 }
-#line 29465 "preproc.c" /* yacc.c:1646  */
+#line 29471 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 204:
-#line 2277 "preproc.y" /* yacc.c:1646  */
+#line 2277 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 29473 "preproc.c" /* yacc.c:1646  */
+#line 29479 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 205:
-#line 2281 "preproc.y" /* yacc.c:1646  */
+#line 2281 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-2].str),mm_strdup("from current"));
 }
-#line 29481 "preproc.c" /* yacc.c:1646  */
+#line 29487 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 206:
-#line 2285 "preproc.y" /* yacc.c:1646  */
+#line 2285 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("time zone"),(yyvsp[0].str));
 }
-#line 29489 "preproc.c" /* yacc.c:1646  */
+#line 29495 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 207:
-#line 2289 "preproc.y" /* yacc.c:1646  */
+#line 2289 "preproc.y" /* yacc.c:1652  */
     { 
 mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server");
  (yyval.str) = cat_str(2,mm_strdup("catalog"),(yyvsp[0].str));
 }
-#line 29498 "preproc.c" /* yacc.c:1646  */
+#line 29504 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 208:
-#line 2294 "preproc.y" /* yacc.c:1646  */
+#line 2294 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("schema"),(yyvsp[0].str));
 }
-#line 29506 "preproc.c" /* yacc.c:1646  */
+#line 29512 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 209:
-#line 2298 "preproc.y" /* yacc.c:1646  */
+#line 2298 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("names"),(yyvsp[0].str));
 }
-#line 29514 "preproc.c" /* yacc.c:1646  */
+#line 29520 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 210:
-#line 2302 "preproc.y" /* yacc.c:1646  */
+#line 2302 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("role"),(yyvsp[0].str));
 }
-#line 29522 "preproc.c" /* yacc.c:1646  */
+#line 29528 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 211:
-#line 2306 "preproc.y" /* yacc.c:1646  */
+#line 2306 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("session authorization"),(yyvsp[0].str));
 }
-#line 29530 "preproc.c" /* yacc.c:1646  */
+#line 29536 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 212:
-#line 2310 "preproc.y" /* yacc.c:1646  */
+#line 2310 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("session authorization default");
 }
-#line 29538 "preproc.c" /* yacc.c:1646  */
+#line 29544 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 213:
-#line 2314 "preproc.y" /* yacc.c:1646  */
+#line 2314 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("xml option"),(yyvsp[0].str));
 }
-#line 29546 "preproc.c" /* yacc.c:1646  */
+#line 29552 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 214:
-#line 2318 "preproc.y" /* yacc.c:1646  */
+#line 2318 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("transaction snapshot"),(yyvsp[0].str));
 }
-#line 29554 "preproc.c" /* yacc.c:1646  */
+#line 29560 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 215:
-#line 2326 "preproc.y" /* yacc.c:1646  */
+#line 2326 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 29562 "preproc.c" /* yacc.c:1646  */
+#line 29568 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 216:
-#line 2330 "preproc.y" /* yacc.c:1646  */
+#line 2330 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("."),(yyvsp[0].str));
 }
-#line 29570 "preproc.c" /* yacc.c:1646  */
+#line 29576 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 217:
-#line 2338 "preproc.y" /* yacc.c:1646  */
+#line 2338 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 29578 "preproc.c" /* yacc.c:1646  */
+#line 29584 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 218:
-#line 2342 "preproc.y" /* yacc.c:1646  */
+#line 2342 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 29586 "preproc.c" /* yacc.c:1646  */
+#line 29592 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 219:
-#line 2350 "preproc.y" /* yacc.c:1646  */
+#line 2350 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 29594 "preproc.c" /* yacc.c:1646  */
+#line 29600 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 220:
-#line 2354 "preproc.y" /* yacc.c:1646  */
+#line 2354 "preproc.y" /* yacc.c:1652  */
     { 
 		if ((yyvsp[0].str)[0] == '$')
 		{
@@ -29604,1128 +29610,1128 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 29608 "preproc.c" /* yacc.c:1646  */
+#line 29614 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 221:
-#line 2368 "preproc.y" /* yacc.c:1646  */
+#line 2368 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("read uncommitted");
 }
-#line 29616 "preproc.c" /* yacc.c:1646  */
+#line 29622 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 222:
-#line 2372 "preproc.y" /* yacc.c:1646  */
+#line 2372 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("read committed");
 }
-#line 29624 "preproc.c" /* yacc.c:1646  */
+#line 29630 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 223:
-#line 2376 "preproc.y" /* yacc.c:1646  */
+#line 2376 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("repeatable read");
 }
-#line 29632 "preproc.c" /* yacc.c:1646  */
+#line 29638 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 224:
-#line 2380 "preproc.y" /* yacc.c:1646  */
+#line 2380 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("serializable");
 }
-#line 29640 "preproc.c" /* yacc.c:1646  */
+#line 29646 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 225:
-#line 2388 "preproc.y" /* yacc.c:1646  */
+#line 2388 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("true");
 }
-#line 29648 "preproc.c" /* yacc.c:1646  */
+#line 29654 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 226:
-#line 2392 "preproc.y" /* yacc.c:1646  */
+#line 2392 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("false");
 }
-#line 29656 "preproc.c" /* yacc.c:1646  */
+#line 29662 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 227:
-#line 2396 "preproc.y" /* yacc.c:1646  */
+#line 2396 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("on");
 }
-#line 29664 "preproc.c" /* yacc.c:1646  */
+#line 29670 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 228:
-#line 2400 "preproc.y" /* yacc.c:1646  */
+#line 2400 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 29672 "preproc.c" /* yacc.c:1646  */
+#line 29678 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 229:
-#line 2408 "preproc.y" /* yacc.c:1646  */
+#line 2408 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 29680 "preproc.c" /* yacc.c:1646  */
+#line 29686 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 230:
-#line 2412 "preproc.y" /* yacc.c:1646  */
+#line 2412 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 29688 "preproc.c" /* yacc.c:1646  */
+#line 29694 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 231:
-#line 2416 "preproc.y" /* yacc.c:1646  */
+#line 2416 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 29696 "preproc.c" /* yacc.c:1646  */
+#line 29702 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 232:
-#line 2420 "preproc.y" /* yacc.c:1646  */
+#line 2420 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,(yyvsp[-5].str),mm_strdup("("),(yyvsp[-3].str),mm_strdup(")"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 29704 "preproc.c" /* yacc.c:1646  */
+#line 29710 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 233:
-#line 2424 "preproc.y" /* yacc.c:1646  */
+#line 2424 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 29712 "preproc.c" /* yacc.c:1646  */
+#line 29718 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 234:
-#line 2428 "preproc.y" /* yacc.c:1646  */
+#line 2428 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("default");
 }
-#line 29720 "preproc.c" /* yacc.c:1646  */
+#line 29726 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 235:
-#line 2432 "preproc.y" /* yacc.c:1646  */
+#line 2432 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("local");
 }
-#line 29728 "preproc.c" /* yacc.c:1646  */
+#line 29734 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 236:
-#line 2440 "preproc.y" /* yacc.c:1646  */
+#line 2440 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 29736 "preproc.c" /* yacc.c:1646  */
+#line 29742 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 237:
-#line 2444 "preproc.y" /* yacc.c:1646  */
+#line 2444 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("default");
 }
-#line 29744 "preproc.c" /* yacc.c:1646  */
+#line 29750 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 238:
-#line 2448 "preproc.y" /* yacc.c:1646  */
+#line 2448 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 29751 "preproc.c" /* yacc.c:1646  */
+#line 29757 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 239:
-#line 2455 "preproc.y" /* yacc.c:1646  */
+#line 2455 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 29759 "preproc.c" /* yacc.c:1646  */
+#line 29765 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 240:
-#line 2459 "preproc.y" /* yacc.c:1646  */
+#line 2459 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 29767 "preproc.c" /* yacc.c:1646  */
+#line 29773 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 241:
-#line 2467 "preproc.y" /* yacc.c:1646  */
+#line 2467 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("reset"),(yyvsp[0].str));
 }
-#line 29775 "preproc.c" /* yacc.c:1646  */
+#line 29781 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 242:
-#line 2475 "preproc.y" /* yacc.c:1646  */
+#line 2475 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 29783 "preproc.c" /* yacc.c:1646  */
+#line 29789 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 243:
-#line 2479 "preproc.y" /* yacc.c:1646  */
+#line 2479 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("time zone");
 }
-#line 29791 "preproc.c" /* yacc.c:1646  */
+#line 29797 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 244:
-#line 2483 "preproc.y" /* yacc.c:1646  */
+#line 2483 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("transaction isolation level");
 }
-#line 29799 "preproc.c" /* yacc.c:1646  */
+#line 29805 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 245:
-#line 2487 "preproc.y" /* yacc.c:1646  */
+#line 2487 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("session authorization");
 }
-#line 29807 "preproc.c" /* yacc.c:1646  */
+#line 29813 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 246:
-#line 2495 "preproc.y" /* yacc.c:1646  */
+#line 2495 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 29815 "preproc.c" /* yacc.c:1646  */
+#line 29821 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 247:
-#line 2499 "preproc.y" /* yacc.c:1646  */
+#line 2499 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("all");
 }
-#line 29823 "preproc.c" /* yacc.c:1646  */
+#line 29829 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 248:
-#line 2507 "preproc.y" /* yacc.c:1646  */
+#line 2507 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("set"),(yyvsp[0].str));
 }
-#line 29831 "preproc.c" /* yacc.c:1646  */
+#line 29837 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 249:
-#line 2511 "preproc.y" /* yacc.c:1646  */
+#line 2511 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 29839 "preproc.c" /* yacc.c:1646  */
+#line 29845 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 250:
-#line 2519 "preproc.y" /* yacc.c:1646  */
+#line 2519 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("set"),(yyvsp[0].str));
 }
-#line 29847 "preproc.c" /* yacc.c:1646  */
+#line 29853 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 251:
-#line 2523 "preproc.y" /* yacc.c:1646  */
+#line 2523 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 29855 "preproc.c" /* yacc.c:1646  */
+#line 29861 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 252:
-#line 2531 "preproc.y" /* yacc.c:1646  */
+#line 2531 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("show"),(yyvsp[-1].str));
 }
-#line 29863 "preproc.c" /* yacc.c:1646  */
+#line 29869 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 253:
-#line 2535 "preproc.y" /* yacc.c:1646  */
+#line 2535 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("show time zone");
 }
-#line 29871 "preproc.c" /* yacc.c:1646  */
+#line 29877 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 254:
-#line 2539 "preproc.y" /* yacc.c:1646  */
+#line 2539 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("show transaction isolation level");
 }
-#line 29879 "preproc.c" /* yacc.c:1646  */
+#line 29885 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 255:
-#line 2543 "preproc.y" /* yacc.c:1646  */
+#line 2543 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("show session authorization");
 }
-#line 29887 "preproc.c" /* yacc.c:1646  */
+#line 29893 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 256:
-#line 2547 "preproc.y" /* yacc.c:1646  */
+#line 2547 "preproc.y" /* yacc.c:1652  */
     {
 		mmerror(PARSE_ERROR, ET_ERROR, "SHOW ALL is not implemented");
 		(yyval.str) = EMPTY;
 	}
-#line 29896 "preproc.c" /* yacc.c:1646  */
+#line 29902 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 257:
-#line 2556 "preproc.y" /* yacc.c:1646  */
+#line 2556 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("set constraints"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 29904 "preproc.c" /* yacc.c:1646  */
+#line 29910 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 258:
-#line 2564 "preproc.y" /* yacc.c:1646  */
+#line 2564 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("all");
 }
-#line 29912 "preproc.c" /* yacc.c:1646  */
+#line 29918 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 259:
-#line 2568 "preproc.y" /* yacc.c:1646  */
+#line 2568 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 29920 "preproc.c" /* yacc.c:1646  */
+#line 29926 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 260:
-#line 2576 "preproc.y" /* yacc.c:1646  */
+#line 2576 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("deferred");
 }
-#line 29928 "preproc.c" /* yacc.c:1646  */
+#line 29934 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 261:
-#line 2580 "preproc.y" /* yacc.c:1646  */
+#line 2580 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("immediate");
 }
-#line 29936 "preproc.c" /* yacc.c:1646  */
+#line 29942 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 262:
-#line 2588 "preproc.y" /* yacc.c:1646  */
+#line 2588 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("checkpoint");
 }
-#line 29944 "preproc.c" /* yacc.c:1646  */
+#line 29950 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 263:
-#line 2596 "preproc.y" /* yacc.c:1646  */
+#line 2596 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("discard all");
 }
-#line 29952 "preproc.c" /* yacc.c:1646  */
+#line 29958 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 264:
-#line 2600 "preproc.y" /* yacc.c:1646  */
+#line 2600 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("discard temp");
 }
-#line 29960 "preproc.c" /* yacc.c:1646  */
+#line 29966 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 265:
-#line 2604 "preproc.y" /* yacc.c:1646  */
+#line 2604 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("discard temporary");
 }
-#line 29968 "preproc.c" /* yacc.c:1646  */
+#line 29974 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 266:
-#line 2608 "preproc.y" /* yacc.c:1646  */
+#line 2608 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("discard plans");
 }
-#line 29976 "preproc.c" /* yacc.c:1646  */
+#line 29982 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 267:
-#line 2612 "preproc.y" /* yacc.c:1646  */
+#line 2612 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("discard sequences");
 }
-#line 29984 "preproc.c" /* yacc.c:1646  */
+#line 29990 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 268:
-#line 2620 "preproc.y" /* yacc.c:1646  */
+#line 2620 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("alter table"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 29992 "preproc.c" /* yacc.c:1646  */
+#line 29998 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 269:
-#line 2624 "preproc.y" /* yacc.c:1646  */
+#line 2624 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("alter table if exists"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 30000 "preproc.c" /* yacc.c:1646  */
+#line 30006 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 270:
-#line 2628 "preproc.y" /* yacc.c:1646  */
+#line 2628 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("alter table all in tablespace"),(yyvsp[-4].str),mm_strdup("set tablespace"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 30008 "preproc.c" /* yacc.c:1646  */
+#line 30014 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 271:
-#line 2632 "preproc.y" /* yacc.c:1646  */
+#line 2632 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(7,mm_strdup("alter table all in tablespace"),(yyvsp[-7].str),mm_strdup("owned by"),(yyvsp[-4].str),mm_strdup("set tablespace"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 30016 "preproc.c" /* yacc.c:1646  */
+#line 30022 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 272:
-#line 2636 "preproc.y" /* yacc.c:1646  */
+#line 2636 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("alter index"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 30024 "preproc.c" /* yacc.c:1646  */
+#line 30030 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 273:
-#line 2640 "preproc.y" /* yacc.c:1646  */
+#line 2640 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("alter index if exists"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 30032 "preproc.c" /* yacc.c:1646  */
+#line 30038 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 274:
-#line 2644 "preproc.y" /* yacc.c:1646  */
+#line 2644 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("alter index all in tablespace"),(yyvsp[-4].str),mm_strdup("set tablespace"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 30040 "preproc.c" /* yacc.c:1646  */
+#line 30046 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 275:
-#line 2648 "preproc.y" /* yacc.c:1646  */
+#line 2648 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(7,mm_strdup("alter index all in tablespace"),(yyvsp[-7].str),mm_strdup("owned by"),(yyvsp[-4].str),mm_strdup("set tablespace"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 30048 "preproc.c" /* yacc.c:1646  */
+#line 30054 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 276:
-#line 2652 "preproc.y" /* yacc.c:1646  */
+#line 2652 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("alter sequence"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 30056 "preproc.c" /* yacc.c:1646  */
+#line 30062 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 277:
-#line 2656 "preproc.y" /* yacc.c:1646  */
+#line 2656 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("alter sequence if exists"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 30064 "preproc.c" /* yacc.c:1646  */
+#line 30070 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 278:
-#line 2660 "preproc.y" /* yacc.c:1646  */
+#line 2660 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("alter view"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 30072 "preproc.c" /* yacc.c:1646  */
+#line 30078 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 279:
-#line 2664 "preproc.y" /* yacc.c:1646  */
+#line 2664 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("alter view if exists"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 30080 "preproc.c" /* yacc.c:1646  */
+#line 30086 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 280:
-#line 2668 "preproc.y" /* yacc.c:1646  */
+#line 2668 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("alter materialized view"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 30088 "preproc.c" /* yacc.c:1646  */
+#line 30094 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 281:
-#line 2672 "preproc.y" /* yacc.c:1646  */
+#line 2672 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("alter materialized view if exists"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 30096 "preproc.c" /* yacc.c:1646  */
+#line 30102 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 282:
-#line 2676 "preproc.y" /* yacc.c:1646  */
+#line 2676 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("alter materialized view all in tablespace"),(yyvsp[-4].str),mm_strdup("set tablespace"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 30104 "preproc.c" /* yacc.c:1646  */
+#line 30110 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 283:
-#line 2680 "preproc.y" /* yacc.c:1646  */
+#line 2680 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(7,mm_strdup("alter materialized view all in tablespace"),(yyvsp[-7].str),mm_strdup("owned by"),(yyvsp[-4].str),mm_strdup("set tablespace"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 30112 "preproc.c" /* yacc.c:1646  */
+#line 30118 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 284:
-#line 2688 "preproc.y" /* yacc.c:1646  */
+#line 2688 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 30120 "preproc.c" /* yacc.c:1646  */
+#line 30126 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 285:
-#line 2692 "preproc.y" /* yacc.c:1646  */
+#line 2692 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 30128 "preproc.c" /* yacc.c:1646  */
+#line 30134 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 286:
-#line 2700 "preproc.y" /* yacc.c:1646  */
+#line 2700 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("add"),(yyvsp[0].str));
 }
-#line 30136 "preproc.c" /* yacc.c:1646  */
+#line 30142 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 287:
-#line 2704 "preproc.y" /* yacc.c:1646  */
+#line 2704 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("add column"),(yyvsp[0].str));
 }
-#line 30144 "preproc.c" /* yacc.c:1646  */
+#line 30150 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 288:
-#line 2708 "preproc.y" /* yacc.c:1646  */
+#line 2708 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 30152 "preproc.c" /* yacc.c:1646  */
+#line 30158 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 289:
-#line 2712 "preproc.y" /* yacc.c:1646  */
+#line 2712 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter"),(yyvsp[-4].str),(yyvsp[-3].str),mm_strdup("drop not null"));
 }
-#line 30160 "preproc.c" /* yacc.c:1646  */
+#line 30166 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 290:
-#line 2716 "preproc.y" /* yacc.c:1646  */
+#line 2716 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter"),(yyvsp[-4].str),(yyvsp[-3].str),mm_strdup("set not null"));
 }
-#line 30168 "preproc.c" /* yacc.c:1646  */
+#line 30174 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 291:
-#line 2720 "preproc.y" /* yacc.c:1646  */
+#line 2720 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("alter"),(yyvsp[-4].str),(yyvsp[-3].str),mm_strdup("set statistics"),(yyvsp[0].str));
 }
-#line 30176 "preproc.c" /* yacc.c:1646  */
+#line 30182 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 292:
-#line 2724 "preproc.y" /* yacc.c:1646  */
+#line 2724 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("alter"),(yyvsp[-3].str),(yyvsp[-2].str),mm_strdup("set"),(yyvsp[0].str));
 }
-#line 30184 "preproc.c" /* yacc.c:1646  */
+#line 30190 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 293:
-#line 2728 "preproc.y" /* yacc.c:1646  */
+#line 2728 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("alter"),(yyvsp[-3].str),(yyvsp[-2].str),mm_strdup("reset"),(yyvsp[0].str));
 }
-#line 30192 "preproc.c" /* yacc.c:1646  */
+#line 30198 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 294:
-#line 2732 "preproc.y" /* yacc.c:1646  */
+#line 2732 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("alter"),(yyvsp[-4].str),(yyvsp[-3].str),mm_strdup("set storage"),(yyvsp[0].str));
 }
-#line 30200 "preproc.c" /* yacc.c:1646  */
+#line 30206 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 295:
-#line 2736 "preproc.y" /* yacc.c:1646  */
+#line 2736 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("drop"),(yyvsp[-4].str),mm_strdup("if exists"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 30208 "preproc.c" /* yacc.c:1646  */
+#line 30214 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 296:
-#line 2740 "preproc.y" /* yacc.c:1646  */
+#line 2740 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("drop"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 30216 "preproc.c" /* yacc.c:1646  */
+#line 30222 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 297:
-#line 2744 "preproc.y" /* yacc.c:1646  */
+#line 2744 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(8,mm_strdup("alter"),(yyvsp[-6].str),(yyvsp[-5].str),(yyvsp[-4].str),mm_strdup("type"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 30224 "preproc.c" /* yacc.c:1646  */
+#line 30230 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 298:
-#line 2748 "preproc.y" /* yacc.c:1646  */
+#line 2748 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 30232 "preproc.c" /* yacc.c:1646  */
+#line 30238 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 299:
-#line 2752 "preproc.y" /* yacc.c:1646  */
+#line 2752 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("add"),(yyvsp[0].str));
 }
-#line 30240 "preproc.c" /* yacc.c:1646  */
+#line 30246 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 300:
-#line 2756 "preproc.y" /* yacc.c:1646  */
+#line 2756 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("alter constraint"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 30248 "preproc.c" /* yacc.c:1646  */
+#line 30254 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 301:
-#line 2760 "preproc.y" /* yacc.c:1646  */
+#line 2760 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("validate constraint"),(yyvsp[0].str));
 }
-#line 30256 "preproc.c" /* yacc.c:1646  */
+#line 30262 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 302:
-#line 2764 "preproc.y" /* yacc.c:1646  */
+#line 2764 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("drop constraint if exists"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 30264 "preproc.c" /* yacc.c:1646  */
+#line 30270 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 303:
-#line 2768 "preproc.y" /* yacc.c:1646  */
+#line 2768 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("drop constraint"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 30272 "preproc.c" /* yacc.c:1646  */
+#line 30278 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 304:
-#line 2772 "preproc.y" /* yacc.c:1646  */
+#line 2772 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("set with oids");
 }
-#line 30280 "preproc.c" /* yacc.c:1646  */
+#line 30286 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 305:
-#line 2776 "preproc.y" /* yacc.c:1646  */
+#line 2776 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("set without oids");
 }
-#line 30288 "preproc.c" /* yacc.c:1646  */
+#line 30294 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 306:
-#line 2780 "preproc.y" /* yacc.c:1646  */
+#line 2780 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("cluster on"),(yyvsp[0].str));
 }
-#line 30296 "preproc.c" /* yacc.c:1646  */
+#line 30302 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 307:
-#line 2784 "preproc.y" /* yacc.c:1646  */
+#line 2784 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("set without cluster");
 }
-#line 30304 "preproc.c" /* yacc.c:1646  */
+#line 30310 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 308:
-#line 2788 "preproc.y" /* yacc.c:1646  */
+#line 2788 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("enable trigger"),(yyvsp[0].str));
 }
-#line 30312 "preproc.c" /* yacc.c:1646  */
+#line 30318 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 309:
-#line 2792 "preproc.y" /* yacc.c:1646  */
+#line 2792 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("enable always trigger"),(yyvsp[0].str));
 }
-#line 30320 "preproc.c" /* yacc.c:1646  */
+#line 30326 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 310:
-#line 2796 "preproc.y" /* yacc.c:1646  */
+#line 2796 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("enable replica trigger"),(yyvsp[0].str));
 }
-#line 30328 "preproc.c" /* yacc.c:1646  */
+#line 30334 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 311:
-#line 2800 "preproc.y" /* yacc.c:1646  */
+#line 2800 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("enable trigger all");
 }
-#line 30336 "preproc.c" /* yacc.c:1646  */
+#line 30342 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 312:
-#line 2804 "preproc.y" /* yacc.c:1646  */
+#line 2804 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("enable trigger user");
 }
-#line 30344 "preproc.c" /* yacc.c:1646  */
+#line 30350 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 313:
-#line 2808 "preproc.y" /* yacc.c:1646  */
+#line 2808 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("disable trigger"),(yyvsp[0].str));
 }
-#line 30352 "preproc.c" /* yacc.c:1646  */
+#line 30358 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 314:
-#line 2812 "preproc.y" /* yacc.c:1646  */
+#line 2812 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("disable trigger all");
 }
-#line 30360 "preproc.c" /* yacc.c:1646  */
+#line 30366 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 315:
-#line 2816 "preproc.y" /* yacc.c:1646  */
+#line 2816 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("disable trigger user");
 }
-#line 30368 "preproc.c" /* yacc.c:1646  */
+#line 30374 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 316:
-#line 2820 "preproc.y" /* yacc.c:1646  */
+#line 2820 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("enable rule"),(yyvsp[0].str));
 }
-#line 30376 "preproc.c" /* yacc.c:1646  */
+#line 30382 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 317:
-#line 2824 "preproc.y" /* yacc.c:1646  */
+#line 2824 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("enable always rule"),(yyvsp[0].str));
 }
-#line 30384 "preproc.c" /* yacc.c:1646  */
+#line 30390 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 318:
-#line 2828 "preproc.y" /* yacc.c:1646  */
+#line 2828 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("enable replica rule"),(yyvsp[0].str));
 }
-#line 30392 "preproc.c" /* yacc.c:1646  */
+#line 30398 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 319:
-#line 2832 "preproc.y" /* yacc.c:1646  */
+#line 2832 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("disable rule"),(yyvsp[0].str));
 }
-#line 30400 "preproc.c" /* yacc.c:1646  */
+#line 30406 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 320:
-#line 2836 "preproc.y" /* yacc.c:1646  */
+#line 2836 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("inherit"),(yyvsp[0].str));
 }
-#line 30408 "preproc.c" /* yacc.c:1646  */
+#line 30414 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 321:
-#line 2840 "preproc.y" /* yacc.c:1646  */
+#line 2840 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("no inherit"),(yyvsp[0].str));
 }
-#line 30416 "preproc.c" /* yacc.c:1646  */
+#line 30422 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 322:
-#line 2844 "preproc.y" /* yacc.c:1646  */
+#line 2844 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("of"),(yyvsp[0].str));
 }
-#line 30424 "preproc.c" /* yacc.c:1646  */
+#line 30430 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 323:
-#line 2848 "preproc.y" /* yacc.c:1646  */
+#line 2848 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("not of");
 }
-#line 30432 "preproc.c" /* yacc.c:1646  */
+#line 30438 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 324:
-#line 2852 "preproc.y" /* yacc.c:1646  */
+#line 2852 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("owner to"),(yyvsp[0].str));
 }
-#line 30440 "preproc.c" /* yacc.c:1646  */
+#line 30446 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 325:
-#line 2856 "preproc.y" /* yacc.c:1646  */
+#line 2856 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("set tablespace"),(yyvsp[0].str));
 }
-#line 30448 "preproc.c" /* yacc.c:1646  */
+#line 30454 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 326:
-#line 2860 "preproc.y" /* yacc.c:1646  */
+#line 2860 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("set"),(yyvsp[0].str));
 }
-#line 30456 "preproc.c" /* yacc.c:1646  */
+#line 30462 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 327:
-#line 2864 "preproc.y" /* yacc.c:1646  */
+#line 2864 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("reset"),(yyvsp[0].str));
 }
-#line 30464 "preproc.c" /* yacc.c:1646  */
+#line 30470 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 328:
-#line 2868 "preproc.y" /* yacc.c:1646  */
+#line 2868 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("replica identity"),(yyvsp[0].str));
 }
-#line 30472 "preproc.c" /* yacc.c:1646  */
+#line 30478 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 329:
-#line 2872 "preproc.y" /* yacc.c:1646  */
+#line 2872 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 30480 "preproc.c" /* yacc.c:1646  */
+#line 30486 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 330:
-#line 2880 "preproc.y" /* yacc.c:1646  */
+#line 2880 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("set default"),(yyvsp[0].str));
 }
-#line 30488 "preproc.c" /* yacc.c:1646  */
+#line 30494 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 331:
-#line 2884 "preproc.y" /* yacc.c:1646  */
+#line 2884 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("drop default");
 }
-#line 30496 "preproc.c" /* yacc.c:1646  */
+#line 30502 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 332:
-#line 2892 "preproc.y" /* yacc.c:1646  */
+#line 2892 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("cascade");
 }
-#line 30504 "preproc.c" /* yacc.c:1646  */
+#line 30510 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 333:
-#line 2896 "preproc.y" /* yacc.c:1646  */
+#line 2896 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("restrict");
 }
-#line 30512 "preproc.c" /* yacc.c:1646  */
+#line 30518 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 334:
-#line 2900 "preproc.y" /* yacc.c:1646  */
+#line 2900 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 30519 "preproc.c" /* yacc.c:1646  */
+#line 30525 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 335:
-#line 2907 "preproc.y" /* yacc.c:1646  */
+#line 2907 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("collate"),(yyvsp[0].str));
 }
-#line 30527 "preproc.c" /* yacc.c:1646  */
+#line 30533 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 336:
-#line 2911 "preproc.y" /* yacc.c:1646  */
+#line 2911 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 30534 "preproc.c" /* yacc.c:1646  */
+#line 30540 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 337:
-#line 2918 "preproc.y" /* yacc.c:1646  */
+#line 2918 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("using"),(yyvsp[0].str));
 }
-#line 30542 "preproc.c" /* yacc.c:1646  */
+#line 30548 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 338:
-#line 2922 "preproc.y" /* yacc.c:1646  */
+#line 2922 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 30549 "preproc.c" /* yacc.c:1646  */
+#line 30555 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 339:
-#line 2929 "preproc.y" /* yacc.c:1646  */
+#line 2929 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("nothing");
 }
-#line 30557 "preproc.c" /* yacc.c:1646  */
+#line 30563 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 340:
-#line 2933 "preproc.y" /* yacc.c:1646  */
+#line 2933 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("full");
 }
-#line 30565 "preproc.c" /* yacc.c:1646  */
+#line 30571 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 341:
-#line 2937 "preproc.y" /* yacc.c:1646  */
+#line 2937 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("default");
 }
-#line 30573 "preproc.c" /* yacc.c:1646  */
+#line 30579 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 342:
-#line 2941 "preproc.y" /* yacc.c:1646  */
+#line 2941 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("using index"),(yyvsp[0].str));
 }
-#line 30581 "preproc.c" /* yacc.c:1646  */
+#line 30587 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 343:
-#line 2949 "preproc.y" /* yacc.c:1646  */
+#line 2949 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 30589 "preproc.c" /* yacc.c:1646  */
+#line 30595 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 344:
-#line 2957 "preproc.y" /* yacc.c:1646  */
+#line 2957 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("with"),(yyvsp[0].str));
 }
-#line 30597 "preproc.c" /* yacc.c:1646  */
+#line 30603 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 345:
-#line 2961 "preproc.y" /* yacc.c:1646  */
+#line 2961 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 30604 "preproc.c" /* yacc.c:1646  */
+#line 30610 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 346:
-#line 2968 "preproc.y" /* yacc.c:1646  */
+#line 2968 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 30612 "preproc.c" /* yacc.c:1646  */
+#line 30618 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 347:
-#line 2972 "preproc.y" /* yacc.c:1646  */
+#line 2972 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 30620 "preproc.c" /* yacc.c:1646  */
+#line 30626 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 348:
-#line 2980 "preproc.y" /* yacc.c:1646  */
+#line 2980 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("="),(yyvsp[0].str));
 }
-#line 30628 "preproc.c" /* yacc.c:1646  */
+#line 30634 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 349:
-#line 2984 "preproc.y" /* yacc.c:1646  */
+#line 2984 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 30636 "preproc.c" /* yacc.c:1646  */
+#line 30642 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 350:
-#line 2988 "preproc.y" /* yacc.c:1646  */
+#line 2988 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,(yyvsp[-4].str),mm_strdup("."),(yyvsp[-2].str),mm_strdup("="),(yyvsp[0].str));
 }
-#line 30644 "preproc.c" /* yacc.c:1646  */
+#line 30650 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 351:
-#line 2992 "preproc.y" /* yacc.c:1646  */
+#line 2992 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("."),(yyvsp[0].str));
 }
-#line 30652 "preproc.c" /* yacc.c:1646  */
+#line 30658 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 352:
-#line 3000 "preproc.y" /* yacc.c:1646  */
+#line 3000 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("alter type"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 30660 "preproc.c" /* yacc.c:1646  */
+#line 30666 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 353:
-#line 3008 "preproc.y" /* yacc.c:1646  */
+#line 3008 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 30668 "preproc.c" /* yacc.c:1646  */
+#line 30674 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 354:
-#line 3012 "preproc.y" /* yacc.c:1646  */
+#line 3012 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 30676 "preproc.c" /* yacc.c:1646  */
+#line 30682 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 355:
-#line 3020 "preproc.y" /* yacc.c:1646  */
+#line 3020 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("add attribute"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 30684 "preproc.c" /* yacc.c:1646  */
+#line 30690 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 356:
-#line 3024 "preproc.y" /* yacc.c:1646  */
+#line 3024 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("drop attribute if exists"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 30692 "preproc.c" /* yacc.c:1646  */
+#line 30698 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 357:
-#line 3028 "preproc.y" /* yacc.c:1646  */
+#line 3028 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("drop attribute"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 30700 "preproc.c" /* yacc.c:1646  */
+#line 30706 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 358:
-#line 3032 "preproc.y" /* yacc.c:1646  */
+#line 3032 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(7,mm_strdup("alter attribute"),(yyvsp[-5].str),(yyvsp[-4].str),mm_strdup("type"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 30708 "preproc.c" /* yacc.c:1646  */
+#line 30714 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 359:
-#line 3040 "preproc.y" /* yacc.c:1646  */
+#line 3040 "preproc.y" /* yacc.c:1652  */
     {
 		char *cursor_marker = (yyvsp[0].str)[0] == ':' ? mm_strdup("$0") : (yyvsp[0].str);
 		(yyval.str) = cat2_str(mm_strdup("close"), cursor_marker);
 	}
-#line 30717 "preproc.c" /* yacc.c:1646  */
+#line 30723 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 360:
-#line 3045 "preproc.y" /* yacc.c:1646  */
+#line 3045 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("close all");
 }
-#line 30725 "preproc.c" /* yacc.c:1646  */
+#line 30731 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 361:
-#line 3053 "preproc.y" /* yacc.c:1646  */
+#line 3053 "preproc.y" /* yacc.c:1652  */
     { 
 			if (strcmp((yyvsp[-5].str), "from") == 0 &&
 			   (strcmp((yyvsp[-4].str), "stdin") == 0 || strcmp((yyvsp[-4].str), "stdout") == 0))
@@ -30733,4108 +30739,4108 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 
  (yyval.str) = cat_str(11,mm_strdup("copy"),(yyvsp[-9].str),(yyvsp[-8].str),(yyvsp[-7].str),(yyvsp[-6].str),(yyvsp[-5].str),(yyvsp[-4].str),(yyvsp[-3].str),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 30737 "preproc.c" /* yacc.c:1646  */
+#line 30743 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 362:
-#line 3061 "preproc.y" /* yacc.c:1646  */
+#line 3061 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(7,mm_strdup("copy"),(yyvsp[-5].str),mm_strdup("to"),(yyvsp[-3].str),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 30745 "preproc.c" /* yacc.c:1646  */
+#line 30751 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 363:
-#line 3069 "preproc.y" /* yacc.c:1646  */
+#line 3069 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("from");
 }
-#line 30753 "preproc.c" /* yacc.c:1646  */
+#line 30759 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 364:
-#line 3073 "preproc.y" /* yacc.c:1646  */
+#line 3073 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("to");
 }
-#line 30761 "preproc.c" /* yacc.c:1646  */
+#line 30767 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 365:
-#line 3081 "preproc.y" /* yacc.c:1646  */
+#line 3081 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("program");
 }
-#line 30769 "preproc.c" /* yacc.c:1646  */
+#line 30775 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 366:
-#line 3085 "preproc.y" /* yacc.c:1646  */
+#line 3085 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 30776 "preproc.c" /* yacc.c:1646  */
+#line 30782 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 367:
-#line 3092 "preproc.y" /* yacc.c:1646  */
+#line 3092 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 30784 "preproc.c" /* yacc.c:1646  */
+#line 30790 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 368:
-#line 3096 "preproc.y" /* yacc.c:1646  */
+#line 3096 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("stdin");
 }
-#line 30792 "preproc.c" /* yacc.c:1646  */
+#line 30798 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 369:
-#line 3100 "preproc.y" /* yacc.c:1646  */
+#line 3100 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("stdout");
 }
-#line 30800 "preproc.c" /* yacc.c:1646  */
+#line 30806 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 370:
-#line 3108 "preproc.y" /* yacc.c:1646  */
+#line 3108 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 30808 "preproc.c" /* yacc.c:1646  */
+#line 30814 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 371:
-#line 3112 "preproc.y" /* yacc.c:1646  */
+#line 3112 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 30816 "preproc.c" /* yacc.c:1646  */
+#line 30822 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 372:
-#line 3120 "preproc.y" /* yacc.c:1646  */
+#line 3120 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 30824 "preproc.c" /* yacc.c:1646  */
+#line 30830 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 373:
-#line 3124 "preproc.y" /* yacc.c:1646  */
+#line 3124 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 30831 "preproc.c" /* yacc.c:1646  */
+#line 30837 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 374:
-#line 3131 "preproc.y" /* yacc.c:1646  */
+#line 3131 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("binary");
 }
-#line 30839 "preproc.c" /* yacc.c:1646  */
+#line 30845 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 375:
-#line 3135 "preproc.y" /* yacc.c:1646  */
+#line 3135 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("oids");
 }
-#line 30847 "preproc.c" /* yacc.c:1646  */
+#line 30853 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 376:
-#line 3139 "preproc.y" /* yacc.c:1646  */
+#line 3139 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("freeze");
 }
-#line 30855 "preproc.c" /* yacc.c:1646  */
+#line 30861 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 377:
-#line 3143 "preproc.y" /* yacc.c:1646  */
+#line 3143 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("delimiter"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 30863 "preproc.c" /* yacc.c:1646  */
+#line 30869 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 378:
-#line 3147 "preproc.y" /* yacc.c:1646  */
+#line 3147 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("null"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 30871 "preproc.c" /* yacc.c:1646  */
+#line 30877 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 379:
-#line 3151 "preproc.y" /* yacc.c:1646  */
+#line 3151 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("csv");
 }
-#line 30879 "preproc.c" /* yacc.c:1646  */
+#line 30885 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 380:
-#line 3155 "preproc.y" /* yacc.c:1646  */
+#line 3155 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("header");
 }
-#line 30887 "preproc.c" /* yacc.c:1646  */
+#line 30893 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 381:
-#line 3159 "preproc.y" /* yacc.c:1646  */
+#line 3159 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("quote"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 30895 "preproc.c" /* yacc.c:1646  */
+#line 30901 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 382:
-#line 3163 "preproc.y" /* yacc.c:1646  */
+#line 3163 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("escape"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 30903 "preproc.c" /* yacc.c:1646  */
+#line 30909 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 383:
-#line 3167 "preproc.y" /* yacc.c:1646  */
+#line 3167 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("force quote"),(yyvsp[0].str));
 }
-#line 30911 "preproc.c" /* yacc.c:1646  */
+#line 30917 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 384:
-#line 3171 "preproc.y" /* yacc.c:1646  */
+#line 3171 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("force quote *");
 }
-#line 30919 "preproc.c" /* yacc.c:1646  */
+#line 30925 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 385:
-#line 3175 "preproc.y" /* yacc.c:1646  */
+#line 3175 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("force not null"),(yyvsp[0].str));
 }
-#line 30927 "preproc.c" /* yacc.c:1646  */
+#line 30933 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 386:
-#line 3179 "preproc.y" /* yacc.c:1646  */
+#line 3179 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("force null"),(yyvsp[0].str));
 }
-#line 30935 "preproc.c" /* yacc.c:1646  */
+#line 30941 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 387:
-#line 3183 "preproc.y" /* yacc.c:1646  */
+#line 3183 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("encoding"),(yyvsp[0].str));
 }
-#line 30943 "preproc.c" /* yacc.c:1646  */
+#line 30949 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 388:
-#line 3191 "preproc.y" /* yacc.c:1646  */
+#line 3191 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("binary");
 }
-#line 30951 "preproc.c" /* yacc.c:1646  */
+#line 30957 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 389:
-#line 3195 "preproc.y" /* yacc.c:1646  */
+#line 3195 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 30958 "preproc.c" /* yacc.c:1646  */
+#line 30964 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 390:
-#line 3202 "preproc.y" /* yacc.c:1646  */
+#line 3202 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("with oids");
 }
-#line 30966 "preproc.c" /* yacc.c:1646  */
+#line 30972 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 391:
-#line 3206 "preproc.y" /* yacc.c:1646  */
+#line 3206 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 30973 "preproc.c" /* yacc.c:1646  */
+#line 30979 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 392:
-#line 3213 "preproc.y" /* yacc.c:1646  */
+#line 3213 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("delimiters"),(yyvsp[0].str));
 }
-#line 30981 "preproc.c" /* yacc.c:1646  */
+#line 30987 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 393:
-#line 3217 "preproc.y" /* yacc.c:1646  */
+#line 3217 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 30988 "preproc.c" /* yacc.c:1646  */
+#line 30994 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 394:
-#line 3224 "preproc.y" /* yacc.c:1646  */
+#line 3224 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("using");
 }
-#line 30996 "preproc.c" /* yacc.c:1646  */
+#line 31002 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 395:
-#line 3228 "preproc.y" /* yacc.c:1646  */
+#line 3228 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 31003 "preproc.c" /* yacc.c:1646  */
+#line 31009 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 396:
-#line 3235 "preproc.y" /* yacc.c:1646  */
+#line 3235 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 31011 "preproc.c" /* yacc.c:1646  */
+#line 31017 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 397:
-#line 3239 "preproc.y" /* yacc.c:1646  */
+#line 3239 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 31019 "preproc.c" /* yacc.c:1646  */
+#line 31025 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 398:
-#line 3247 "preproc.y" /* yacc.c:1646  */
+#line 3247 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 31027 "preproc.c" /* yacc.c:1646  */
+#line 31033 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 399:
-#line 3255 "preproc.y" /* yacc.c:1646  */
+#line 3255 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 31035 "preproc.c" /* yacc.c:1646  */
+#line 31041 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 400:
-#line 3259 "preproc.y" /* yacc.c:1646  */
+#line 3259 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 31043 "preproc.c" /* yacc.c:1646  */
+#line 31049 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 401:
-#line 3263 "preproc.y" /* yacc.c:1646  */
+#line 3263 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("*");
 }
-#line 31051 "preproc.c" /* yacc.c:1646  */
+#line 31057 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 402:
-#line 3267 "preproc.y" /* yacc.c:1646  */
+#line 3267 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 31059 "preproc.c" /* yacc.c:1646  */
+#line 31065 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 403:
-#line 3271 "preproc.y" /* yacc.c:1646  */
+#line 3271 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 31066 "preproc.c" /* yacc.c:1646  */
+#line 31072 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 404:
-#line 3278 "preproc.y" /* yacc.c:1646  */
+#line 3278 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 31074 "preproc.c" /* yacc.c:1646  */
+#line 31080 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 405:
-#line 3282 "preproc.y" /* yacc.c:1646  */
+#line 3282 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 31082 "preproc.c" /* yacc.c:1646  */
+#line 31088 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 406:
-#line 3290 "preproc.y" /* yacc.c:1646  */
+#line 3290 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 31090 "preproc.c" /* yacc.c:1646  */
+#line 31096 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 407:
-#line 3298 "preproc.y" /* yacc.c:1646  */
+#line 3298 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(11,mm_strdup("create"),(yyvsp[-9].str),mm_strdup("table"),(yyvsp[-7].str),mm_strdup("("),(yyvsp[-5].str),mm_strdup(")"),(yyvsp[-3].str),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 31098 "preproc.c" /* yacc.c:1646  */
+#line 31104 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 408:
-#line 3302 "preproc.y" /* yacc.c:1646  */
+#line 3302 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(11,mm_strdup("create"),(yyvsp[-12].str),mm_strdup("table if not exists"),(yyvsp[-7].str),mm_strdup("("),(yyvsp[-5].str),mm_strdup(")"),(yyvsp[-3].str),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 31106 "preproc.c" /* yacc.c:1646  */
+#line 31112 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 409:
-#line 3306 "preproc.y" /* yacc.c:1646  */
+#line 3306 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(10,mm_strdup("create"),(yyvsp[-8].str),mm_strdup("table"),(yyvsp[-6].str),mm_strdup("of"),(yyvsp[-4].str),(yyvsp[-3].str),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 31114 "preproc.c" /* yacc.c:1646  */
+#line 31120 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 410:
-#line 3310 "preproc.y" /* yacc.c:1646  */
+#line 3310 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(10,mm_strdup("create"),(yyvsp[-11].str),mm_strdup("table if not exists"),(yyvsp[-6].str),mm_strdup("of"),(yyvsp[-4].str),(yyvsp[-3].str),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 31122 "preproc.c" /* yacc.c:1646  */
+#line 31128 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 411:
-#line 3318 "preproc.y" /* yacc.c:1646  */
+#line 3318 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("temporary");
 }
-#line 31130 "preproc.c" /* yacc.c:1646  */
+#line 31136 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 412:
-#line 3322 "preproc.y" /* yacc.c:1646  */
+#line 3322 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("temp");
 }
-#line 31138 "preproc.c" /* yacc.c:1646  */
+#line 31144 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 413:
-#line 3326 "preproc.y" /* yacc.c:1646  */
+#line 3326 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("local temporary");
 }
-#line 31146 "preproc.c" /* yacc.c:1646  */
+#line 31152 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 414:
-#line 3330 "preproc.y" /* yacc.c:1646  */
+#line 3330 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("local temp");
 }
-#line 31154 "preproc.c" /* yacc.c:1646  */
+#line 31160 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 415:
-#line 3334 "preproc.y" /* yacc.c:1646  */
+#line 3334 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("global temporary");
 }
-#line 31162 "preproc.c" /* yacc.c:1646  */
+#line 31168 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 416:
-#line 3338 "preproc.y" /* yacc.c:1646  */
+#line 3338 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("global temp");
 }
-#line 31170 "preproc.c" /* yacc.c:1646  */
+#line 31176 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 417:
-#line 3342 "preproc.y" /* yacc.c:1646  */
+#line 3342 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("unlogged");
 }
-#line 31178 "preproc.c" /* yacc.c:1646  */
+#line 31184 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 418:
-#line 3346 "preproc.y" /* yacc.c:1646  */
+#line 3346 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 31185 "preproc.c" /* yacc.c:1646  */
+#line 31191 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 419:
-#line 3353 "preproc.y" /* yacc.c:1646  */
+#line 3353 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 31193 "preproc.c" /* yacc.c:1646  */
+#line 31199 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 420:
-#line 3357 "preproc.y" /* yacc.c:1646  */
+#line 3357 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 31200 "preproc.c" /* yacc.c:1646  */
+#line 31206 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 421:
-#line 3364 "preproc.y" /* yacc.c:1646  */
+#line 3364 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 31208 "preproc.c" /* yacc.c:1646  */
+#line 31214 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 422:
-#line 3368 "preproc.y" /* yacc.c:1646  */
+#line 3368 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 31215 "preproc.c" /* yacc.c:1646  */
+#line 31221 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 423:
-#line 3375 "preproc.y" /* yacc.c:1646  */
+#line 3375 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 31223 "preproc.c" /* yacc.c:1646  */
+#line 31229 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 424:
-#line 3379 "preproc.y" /* yacc.c:1646  */
+#line 3379 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 31231 "preproc.c" /* yacc.c:1646  */
+#line 31237 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 425:
-#line 3387 "preproc.y" /* yacc.c:1646  */
+#line 3387 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 31239 "preproc.c" /* yacc.c:1646  */
+#line 31245 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 426:
-#line 3391 "preproc.y" /* yacc.c:1646  */
+#line 3391 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 31247 "preproc.c" /* yacc.c:1646  */
+#line 31253 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 427:
-#line 3399 "preproc.y" /* yacc.c:1646  */
+#line 3399 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 31255 "preproc.c" /* yacc.c:1646  */
+#line 31261 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 428:
-#line 3403 "preproc.y" /* yacc.c:1646  */
+#line 3403 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 31263 "preproc.c" /* yacc.c:1646  */
+#line 31269 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 429:
-#line 3407 "preproc.y" /* yacc.c:1646  */
+#line 3407 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 31271 "preproc.c" /* yacc.c:1646  */
+#line 31277 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 430:
-#line 3415 "preproc.y" /* yacc.c:1646  */
+#line 3415 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 31279 "preproc.c" /* yacc.c:1646  */
+#line 31285 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 431:
-#line 3419 "preproc.y" /* yacc.c:1646  */
+#line 3419 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 31287 "preproc.c" /* yacc.c:1646  */
+#line 31293 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 432:
-#line 3427 "preproc.y" /* yacc.c:1646  */
+#line 3427 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,(yyvsp[-3].str),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 31295 "preproc.c" /* yacc.c:1646  */
+#line 31301 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 433:
-#line 3435 "preproc.y" /* yacc.c:1646  */
+#line 3435 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-3].str),mm_strdup("with options"),(yyvsp[0].str));
 }
-#line 31303 "preproc.c" /* yacc.c:1646  */
+#line 31309 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 434:
-#line 3443 "preproc.y" /* yacc.c:1646  */
+#line 3443 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 31311 "preproc.c" /* yacc.c:1646  */
+#line 31317 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 435:
-#line 3447 "preproc.y" /* yacc.c:1646  */
+#line 3447 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 31318 "preproc.c" /* yacc.c:1646  */
+#line 31324 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 436:
-#line 3454 "preproc.y" /* yacc.c:1646  */
+#line 3454 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("constraint"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 31326 "preproc.c" /* yacc.c:1646  */
+#line 31332 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 437:
-#line 3458 "preproc.y" /* yacc.c:1646  */
+#line 3458 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 31334 "preproc.c" /* yacc.c:1646  */
+#line 31340 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 438:
-#line 3462 "preproc.y" /* yacc.c:1646  */
+#line 3462 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 31342 "preproc.c" /* yacc.c:1646  */
+#line 31348 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 439:
-#line 3466 "preproc.y" /* yacc.c:1646  */
+#line 3466 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("collate"),(yyvsp[0].str));
 }
-#line 31350 "preproc.c" /* yacc.c:1646  */
+#line 31356 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 440:
-#line 3474 "preproc.y" /* yacc.c:1646  */
+#line 3474 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("not null");
 }
-#line 31358 "preproc.c" /* yacc.c:1646  */
+#line 31364 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 441:
-#line 3478 "preproc.y" /* yacc.c:1646  */
+#line 3478 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("null");
 }
-#line 31366 "preproc.c" /* yacc.c:1646  */
+#line 31372 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 442:
-#line 3482 "preproc.y" /* yacc.c:1646  */
+#line 3482 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("unique"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 31374 "preproc.c" /* yacc.c:1646  */
+#line 31380 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 443:
-#line 3486 "preproc.y" /* yacc.c:1646  */
+#line 3486 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("primary key"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 31382 "preproc.c" /* yacc.c:1646  */
+#line 31388 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 444:
-#line 3490 "preproc.y" /* yacc.c:1646  */
+#line 3490 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("check ("),(yyvsp[-2].str),mm_strdup(")"),(yyvsp[0].str));
 }
-#line 31390 "preproc.c" /* yacc.c:1646  */
+#line 31396 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 445:
-#line 3494 "preproc.y" /* yacc.c:1646  */
+#line 3494 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("default"),(yyvsp[0].str));
 }
-#line 31398 "preproc.c" /* yacc.c:1646  */
+#line 31404 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 446:
-#line 3498 "preproc.y" /* yacc.c:1646  */
+#line 3498 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("references"),(yyvsp[-3].str),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 31406 "preproc.c" /* yacc.c:1646  */
+#line 31412 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 447:
-#line 3506 "preproc.y" /* yacc.c:1646  */
+#line 3506 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("deferrable");
 }
-#line 31414 "preproc.c" /* yacc.c:1646  */
+#line 31420 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 448:
-#line 3510 "preproc.y" /* yacc.c:1646  */
+#line 3510 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("not deferrable");
 }
-#line 31422 "preproc.c" /* yacc.c:1646  */
+#line 31428 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 449:
-#line 3514 "preproc.y" /* yacc.c:1646  */
+#line 3514 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("initially deferred");
 }
-#line 31430 "preproc.c" /* yacc.c:1646  */
+#line 31436 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 450:
-#line 3518 "preproc.y" /* yacc.c:1646  */
+#line 3518 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("initially immediate");
 }
-#line 31438 "preproc.c" /* yacc.c:1646  */
+#line 31444 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 451:
-#line 3526 "preproc.y" /* yacc.c:1646  */
+#line 3526 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("like"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 31446 "preproc.c" /* yacc.c:1646  */
+#line 31452 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 452:
-#line 3534 "preproc.y" /* yacc.c:1646  */
+#line 3534 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("including"),(yyvsp[0].str));
 }
-#line 31454 "preproc.c" /* yacc.c:1646  */
+#line 31460 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 453:
-#line 3538 "preproc.y" /* yacc.c:1646  */
+#line 3538 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("excluding"),(yyvsp[0].str));
 }
-#line 31462 "preproc.c" /* yacc.c:1646  */
+#line 31468 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 454:
-#line 3542 "preproc.y" /* yacc.c:1646  */
+#line 3542 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 31469 "preproc.c" /* yacc.c:1646  */
+#line 31475 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 455:
-#line 3549 "preproc.y" /* yacc.c:1646  */
+#line 3549 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("defaults");
 }
-#line 31477 "preproc.c" /* yacc.c:1646  */
+#line 31483 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 456:
-#line 3553 "preproc.y" /* yacc.c:1646  */
+#line 3553 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("constraints");
 }
-#line 31485 "preproc.c" /* yacc.c:1646  */
+#line 31491 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 457:
-#line 3557 "preproc.y" /* yacc.c:1646  */
+#line 3557 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("indexes");
 }
-#line 31493 "preproc.c" /* yacc.c:1646  */
+#line 31499 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 458:
-#line 3561 "preproc.y" /* yacc.c:1646  */
+#line 3561 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("storage");
 }
-#line 31501 "preproc.c" /* yacc.c:1646  */
+#line 31507 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 459:
-#line 3565 "preproc.y" /* yacc.c:1646  */
+#line 3565 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("comments");
 }
-#line 31509 "preproc.c" /* yacc.c:1646  */
+#line 31515 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 460:
-#line 3569 "preproc.y" /* yacc.c:1646  */
+#line 3569 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("all");
 }
-#line 31517 "preproc.c" /* yacc.c:1646  */
+#line 31523 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 461:
-#line 3577 "preproc.y" /* yacc.c:1646  */
+#line 3577 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("constraint"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 31525 "preproc.c" /* yacc.c:1646  */
+#line 31531 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 462:
-#line 3581 "preproc.y" /* yacc.c:1646  */
+#line 3581 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 31533 "preproc.c" /* yacc.c:1646  */
+#line 31539 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 463:
-#line 3589 "preproc.y" /* yacc.c:1646  */
+#line 3589 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("check ("),(yyvsp[-2].str),mm_strdup(")"),(yyvsp[0].str));
 }
-#line 31541 "preproc.c" /* yacc.c:1646  */
+#line 31547 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 464:
-#line 3593 "preproc.y" /* yacc.c:1646  */
+#line 3593 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,mm_strdup("unique ("),(yyvsp[-4].str),mm_strdup(")"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 31549 "preproc.c" /* yacc.c:1646  */
+#line 31555 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 465:
-#line 3597 "preproc.y" /* yacc.c:1646  */
+#line 3597 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("unique"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 31557 "preproc.c" /* yacc.c:1646  */
+#line 31563 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 466:
-#line 3601 "preproc.y" /* yacc.c:1646  */
+#line 3601 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,mm_strdup("primary key ("),(yyvsp[-4].str),mm_strdup(")"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 31565 "preproc.c" /* yacc.c:1646  */
+#line 31571 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 467:
-#line 3605 "preproc.y" /* yacc.c:1646  */
+#line 3605 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("primary key"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 31573 "preproc.c" /* yacc.c:1646  */
+#line 31579 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 468:
-#line 3609 "preproc.y" /* yacc.c:1646  */
+#line 3609 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(9,mm_strdup("exclude"),(yyvsp[-7].str),mm_strdup("("),(yyvsp[-5].str),mm_strdup(")"),(yyvsp[-3].str),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 31581 "preproc.c" /* yacc.c:1646  */
+#line 31587 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 469:
-#line 3613 "preproc.y" /* yacc.c:1646  */
+#line 3613 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(8,mm_strdup("foreign key ("),(yyvsp[-7].str),mm_strdup(") references"),(yyvsp[-4].str),(yyvsp[-3].str),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 31589 "preproc.c" /* yacc.c:1646  */
+#line 31595 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 470:
-#line 3621 "preproc.y" /* yacc.c:1646  */
+#line 3621 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("no inherit");
 }
-#line 31597 "preproc.c" /* yacc.c:1646  */
+#line 31603 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 471:
-#line 3625 "preproc.y" /* yacc.c:1646  */
+#line 3625 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 31604 "preproc.c" /* yacc.c:1646  */
+#line 31610 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 472:
-#line 3632 "preproc.y" /* yacc.c:1646  */
+#line 3632 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 31612 "preproc.c" /* yacc.c:1646  */
+#line 31618 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 473:
-#line 3636 "preproc.y" /* yacc.c:1646  */
+#line 3636 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 31619 "preproc.c" /* yacc.c:1646  */
+#line 31625 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 474:
-#line 3643 "preproc.y" /* yacc.c:1646  */
+#line 3643 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 31627 "preproc.c" /* yacc.c:1646  */
+#line 31633 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 475:
-#line 3647 "preproc.y" /* yacc.c:1646  */
+#line 3647 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 31635 "preproc.c" /* yacc.c:1646  */
+#line 31641 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 476:
-#line 3655 "preproc.y" /* yacc.c:1646  */
+#line 3655 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 31643 "preproc.c" /* yacc.c:1646  */
+#line 31649 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 477:
-#line 3663 "preproc.y" /* yacc.c:1646  */
+#line 3663 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("match full");
 }
-#line 31651 "preproc.c" /* yacc.c:1646  */
+#line 31657 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 478:
-#line 3667 "preproc.y" /* yacc.c:1646  */
+#line 3667 "preproc.y" /* yacc.c:1652  */
     { 
 mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server");
  (yyval.str) = mm_strdup("match partial");
 }
-#line 31660 "preproc.c" /* yacc.c:1646  */
+#line 31666 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 479:
-#line 3672 "preproc.y" /* yacc.c:1646  */
+#line 3672 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("match simple");
 }
-#line 31668 "preproc.c" /* yacc.c:1646  */
+#line 31674 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 480:
-#line 3676 "preproc.y" /* yacc.c:1646  */
+#line 3676 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 31675 "preproc.c" /* yacc.c:1646  */
+#line 31681 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 481:
-#line 3683 "preproc.y" /* yacc.c:1646  */
+#line 3683 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 31683 "preproc.c" /* yacc.c:1646  */
+#line 31689 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 482:
-#line 3687 "preproc.y" /* yacc.c:1646  */
+#line 3687 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 31691 "preproc.c" /* yacc.c:1646  */
+#line 31697 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 483:
-#line 3695 "preproc.y" /* yacc.c:1646  */
+#line 3695 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("with"),(yyvsp[0].str));
 }
-#line 31699 "preproc.c" /* yacc.c:1646  */
+#line 31705 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 484:
-#line 3699 "preproc.y" /* yacc.c:1646  */
+#line 3699 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,(yyvsp[-5].str),mm_strdup("with operator ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 31707 "preproc.c" /* yacc.c:1646  */
+#line 31713 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 485:
-#line 3707 "preproc.y" /* yacc.c:1646  */
+#line 3707 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("where ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 31715 "preproc.c" /* yacc.c:1646  */
+#line 31721 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 486:
-#line 3711 "preproc.y" /* yacc.c:1646  */
+#line 3711 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 31722 "preproc.c" /* yacc.c:1646  */
+#line 31728 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 487:
-#line 3718 "preproc.y" /* yacc.c:1646  */
+#line 3718 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 31730 "preproc.c" /* yacc.c:1646  */
+#line 31736 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 488:
-#line 3722 "preproc.y" /* yacc.c:1646  */
+#line 3722 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 31738 "preproc.c" /* yacc.c:1646  */
+#line 31744 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 489:
-#line 3726 "preproc.y" /* yacc.c:1646  */
+#line 3726 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 31746 "preproc.c" /* yacc.c:1646  */
+#line 31752 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 490:
-#line 3730 "preproc.y" /* yacc.c:1646  */
+#line 3730 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 31754 "preproc.c" /* yacc.c:1646  */
+#line 31760 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 491:
-#line 3734 "preproc.y" /* yacc.c:1646  */
+#line 3734 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 31761 "preproc.c" /* yacc.c:1646  */
+#line 31767 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 492:
-#line 3741 "preproc.y" /* yacc.c:1646  */
+#line 3741 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("on update"),(yyvsp[0].str));
 }
-#line 31769 "preproc.c" /* yacc.c:1646  */
+#line 31775 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 493:
-#line 3749 "preproc.y" /* yacc.c:1646  */
+#line 3749 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("on delete"),(yyvsp[0].str));
 }
-#line 31777 "preproc.c" /* yacc.c:1646  */
+#line 31783 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 494:
-#line 3757 "preproc.y" /* yacc.c:1646  */
+#line 3757 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("no action");
 }
-#line 31785 "preproc.c" /* yacc.c:1646  */
+#line 31791 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 495:
-#line 3761 "preproc.y" /* yacc.c:1646  */
+#line 3761 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("restrict");
 }
-#line 31793 "preproc.c" /* yacc.c:1646  */
+#line 31799 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 496:
-#line 3765 "preproc.y" /* yacc.c:1646  */
+#line 3765 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("cascade");
 }
-#line 31801 "preproc.c" /* yacc.c:1646  */
+#line 31807 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 497:
-#line 3769 "preproc.y" /* yacc.c:1646  */
+#line 3769 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("set null");
 }
-#line 31809 "preproc.c" /* yacc.c:1646  */
+#line 31815 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 498:
-#line 3773 "preproc.y" /* yacc.c:1646  */
+#line 3773 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("set default");
 }
-#line 31817 "preproc.c" /* yacc.c:1646  */
+#line 31823 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 499:
-#line 3781 "preproc.y" /* yacc.c:1646  */
+#line 3781 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("inherits ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 31825 "preproc.c" /* yacc.c:1646  */
+#line 31831 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 500:
-#line 3785 "preproc.y" /* yacc.c:1646  */
+#line 3785 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 31832 "preproc.c" /* yacc.c:1646  */
+#line 31838 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 501:
-#line 3792 "preproc.y" /* yacc.c:1646  */
+#line 3792 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("with"),(yyvsp[0].str));
 }
-#line 31840 "preproc.c" /* yacc.c:1646  */
+#line 31846 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 502:
-#line 3796 "preproc.y" /* yacc.c:1646  */
+#line 3796 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("with oids");
 }
-#line 31848 "preproc.c" /* yacc.c:1646  */
+#line 31854 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 503:
-#line 3800 "preproc.y" /* yacc.c:1646  */
+#line 3800 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("without oids");
 }
-#line 31856 "preproc.c" /* yacc.c:1646  */
+#line 31862 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 504:
-#line 3804 "preproc.y" /* yacc.c:1646  */
+#line 3804 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 31863 "preproc.c" /* yacc.c:1646  */
+#line 31869 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 505:
-#line 3811 "preproc.y" /* yacc.c:1646  */
+#line 3811 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("on commit drop");
 }
-#line 31871 "preproc.c" /* yacc.c:1646  */
+#line 31877 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 506:
-#line 3815 "preproc.y" /* yacc.c:1646  */
+#line 3815 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("on commit delete rows");
 }
-#line 31879 "preproc.c" /* yacc.c:1646  */
+#line 31885 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 507:
-#line 3819 "preproc.y" /* yacc.c:1646  */
+#line 3819 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("on commit preserve rows");
 }
-#line 31887 "preproc.c" /* yacc.c:1646  */
+#line 31893 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 508:
-#line 3823 "preproc.y" /* yacc.c:1646  */
+#line 3823 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 31894 "preproc.c" /* yacc.c:1646  */
+#line 31900 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 509:
-#line 3830 "preproc.y" /* yacc.c:1646  */
+#line 3830 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("tablespace"),(yyvsp[0].str));
 }
-#line 31902 "preproc.c" /* yacc.c:1646  */
+#line 31908 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 510:
-#line 3834 "preproc.y" /* yacc.c:1646  */
+#line 3834 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 31909 "preproc.c" /* yacc.c:1646  */
+#line 31915 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 511:
-#line 3841 "preproc.y" /* yacc.c:1646  */
+#line 3841 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("using index tablespace"),(yyvsp[0].str));
 }
-#line 31917 "preproc.c" /* yacc.c:1646  */
+#line 31923 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 512:
-#line 3845 "preproc.y" /* yacc.c:1646  */
+#line 3845 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 31924 "preproc.c" /* yacc.c:1646  */
+#line 31930 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 513:
-#line 3852 "preproc.y" /* yacc.c:1646  */
+#line 3852 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("using index"),(yyvsp[0].str));
 }
-#line 31932 "preproc.c" /* yacc.c:1646  */
+#line 31938 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 514:
-#line 3860 "preproc.y" /* yacc.c:1646  */
+#line 3860 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,(yyvsp[-4].str),(yyvsp[-3].str),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 31940 "preproc.c" /* yacc.c:1646  */
+#line 31946 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 515:
-#line 3868 "preproc.y" /* yacc.c:1646  */
+#line 3868 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("with data");
 }
-#line 31948 "preproc.c" /* yacc.c:1646  */
+#line 31954 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 516:
-#line 3872 "preproc.y" /* yacc.c:1646  */
+#line 3872 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("with no data");
 }
-#line 31956 "preproc.c" /* yacc.c:1646  */
+#line 31962 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 517:
-#line 3876 "preproc.y" /* yacc.c:1646  */
+#line 3876 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 31963 "preproc.c" /* yacc.c:1646  */
+#line 31969 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 518:
-#line 3883 "preproc.y" /* yacc.c:1646  */
+#line 3883 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(7,mm_strdup("create"),(yyvsp[-6].str),mm_strdup("materialized view"),(yyvsp[-3].str),mm_strdup("as"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 31971 "preproc.c" /* yacc.c:1646  */
+#line 31977 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 519:
-#line 3891 "preproc.y" /* yacc.c:1646  */
+#line 3891 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,(yyvsp[-3].str),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 31979 "preproc.c" /* yacc.c:1646  */
+#line 31985 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 520:
-#line 3899 "preproc.y" /* yacc.c:1646  */
+#line 3899 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("unlogged");
 }
-#line 31987 "preproc.c" /* yacc.c:1646  */
+#line 31993 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 521:
-#line 3903 "preproc.y" /* yacc.c:1646  */
+#line 3903 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 31994 "preproc.c" /* yacc.c:1646  */
+#line 32000 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 522:
-#line 3910 "preproc.y" /* yacc.c:1646  */
+#line 3910 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("refresh materialized view"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 32002 "preproc.c" /* yacc.c:1646  */
+#line 32008 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 523:
-#line 3918 "preproc.y" /* yacc.c:1646  */
+#line 3918 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("create"),(yyvsp[-3].str),mm_strdup("sequence"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 32010 "preproc.c" /* yacc.c:1646  */
+#line 32016 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 524:
-#line 3926 "preproc.y" /* yacc.c:1646  */
+#line 3926 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("alter sequence"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 32018 "preproc.c" /* yacc.c:1646  */
+#line 32024 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 525:
-#line 3930 "preproc.y" /* yacc.c:1646  */
+#line 3930 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("alter sequence if exists"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 32026 "preproc.c" /* yacc.c:1646  */
+#line 32032 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 526:
-#line 3938 "preproc.y" /* yacc.c:1646  */
+#line 3938 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 32034 "preproc.c" /* yacc.c:1646  */
+#line 32040 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 527:
-#line 3942 "preproc.y" /* yacc.c:1646  */
+#line 3942 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 32041 "preproc.c" /* yacc.c:1646  */
+#line 32047 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 528:
-#line 3949 "preproc.y" /* yacc.c:1646  */
+#line 3949 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 32049 "preproc.c" /* yacc.c:1646  */
+#line 32055 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 529:
-#line 3953 "preproc.y" /* yacc.c:1646  */
+#line 3953 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 32057 "preproc.c" /* yacc.c:1646  */
+#line 32063 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 530:
-#line 3961 "preproc.y" /* yacc.c:1646  */
+#line 3961 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("cache"),(yyvsp[0].str));
 }
-#line 32065 "preproc.c" /* yacc.c:1646  */
+#line 32071 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 531:
-#line 3965 "preproc.y" /* yacc.c:1646  */
+#line 3965 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("cycle");
 }
-#line 32073 "preproc.c" /* yacc.c:1646  */
+#line 32079 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 532:
-#line 3969 "preproc.y" /* yacc.c:1646  */
+#line 3969 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("no cycle");
 }
-#line 32081 "preproc.c" /* yacc.c:1646  */
+#line 32087 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 533:
-#line 3973 "preproc.y" /* yacc.c:1646  */
+#line 3973 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("increment"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 32089 "preproc.c" /* yacc.c:1646  */
+#line 32095 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 534:
-#line 3977 "preproc.y" /* yacc.c:1646  */
+#line 3977 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("maxvalue"),(yyvsp[0].str));
 }
-#line 32097 "preproc.c" /* yacc.c:1646  */
+#line 32103 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 535:
-#line 3981 "preproc.y" /* yacc.c:1646  */
+#line 3981 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("minvalue"),(yyvsp[0].str));
 }
-#line 32105 "preproc.c" /* yacc.c:1646  */
+#line 32111 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 536:
-#line 3985 "preproc.y" /* yacc.c:1646  */
+#line 3985 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("no maxvalue");
 }
-#line 32113 "preproc.c" /* yacc.c:1646  */
+#line 32119 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 537:
-#line 3989 "preproc.y" /* yacc.c:1646  */
+#line 3989 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("no minvalue");
 }
-#line 32121 "preproc.c" /* yacc.c:1646  */
+#line 32127 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 538:
-#line 3993 "preproc.y" /* yacc.c:1646  */
+#line 3993 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("owned by"),(yyvsp[0].str));
 }
-#line 32129 "preproc.c" /* yacc.c:1646  */
+#line 32135 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 539:
-#line 3997 "preproc.y" /* yacc.c:1646  */
+#line 3997 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("start"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 32137 "preproc.c" /* yacc.c:1646  */
+#line 32143 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 540:
-#line 4001 "preproc.y" /* yacc.c:1646  */
+#line 4001 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("restart");
 }
-#line 32145 "preproc.c" /* yacc.c:1646  */
+#line 32151 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 541:
-#line 4005 "preproc.y" /* yacc.c:1646  */
+#line 4005 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("restart"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 32153 "preproc.c" /* yacc.c:1646  */
+#line 32159 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 542:
-#line 4013 "preproc.y" /* yacc.c:1646  */
+#line 4013 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("by");
 }
-#line 32161 "preproc.c" /* yacc.c:1646  */
+#line 32167 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 543:
-#line 4017 "preproc.y" /* yacc.c:1646  */
+#line 4017 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 32168 "preproc.c" /* yacc.c:1646  */
+#line 32174 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 544:
-#line 4024 "preproc.y" /* yacc.c:1646  */
+#line 4024 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 32176 "preproc.c" /* yacc.c:1646  */
+#line 32182 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 545:
-#line 4028 "preproc.y" /* yacc.c:1646  */
+#line 4028 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("+"),(yyvsp[0].str));
 }
-#line 32184 "preproc.c" /* yacc.c:1646  */
+#line 32190 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 546:
-#line 4032 "preproc.y" /* yacc.c:1646  */
+#line 4032 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("-"),(yyvsp[0].str));
 }
-#line 32192 "preproc.c" /* yacc.c:1646  */
+#line 32198 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 547:
-#line 4036 "preproc.y" /* yacc.c:1646  */
+#line 4036 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 32200 "preproc.c" /* yacc.c:1646  */
+#line 32206 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 548:
-#line 4044 "preproc.y" /* yacc.c:1646  */
+#line 4044 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 32208 "preproc.c" /* yacc.c:1646  */
+#line 32214 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 549:
-#line 4048 "preproc.y" /* yacc.c:1646  */
+#line 4048 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 32216 "preproc.c" /* yacc.c:1646  */
+#line 32222 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 550:
-#line 4056 "preproc.y" /* yacc.c:1646  */
+#line 4056 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,mm_strdup("create"),(yyvsp[-4].str),(yyvsp[-3].str),(yyvsp[-2].str),mm_strdup("language"),(yyvsp[0].str));
 }
-#line 32224 "preproc.c" /* yacc.c:1646  */
+#line 32230 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 551:
-#line 4060 "preproc.y" /* yacc.c:1646  */
+#line 4060 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(10,mm_strdup("create"),(yyvsp[-8].str),(yyvsp[-7].str),(yyvsp[-6].str),mm_strdup("language"),(yyvsp[-4].str),mm_strdup("handler"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 32232 "preproc.c" /* yacc.c:1646  */
+#line 32238 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 552:
-#line 4068 "preproc.y" /* yacc.c:1646  */
+#line 4068 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("trusted");
 }
-#line 32240 "preproc.c" /* yacc.c:1646  */
+#line 32246 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 553:
-#line 4072 "preproc.y" /* yacc.c:1646  */
+#line 4072 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 32247 "preproc.c" /* yacc.c:1646  */
+#line 32253 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 554:
-#line 4079 "preproc.y" /* yacc.c:1646  */
+#line 4079 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 32255 "preproc.c" /* yacc.c:1646  */
+#line 32261 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 555:
-#line 4083 "preproc.y" /* yacc.c:1646  */
+#line 4083 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 32263 "preproc.c" /* yacc.c:1646  */
+#line 32269 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 556:
-#line 4091 "preproc.y" /* yacc.c:1646  */
+#line 4091 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("inline"),(yyvsp[0].str));
 }
-#line 32271 "preproc.c" /* yacc.c:1646  */
+#line 32277 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 557:
-#line 4095 "preproc.y" /* yacc.c:1646  */
+#line 4095 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 32278 "preproc.c" /* yacc.c:1646  */
+#line 32284 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 558:
-#line 4102 "preproc.y" /* yacc.c:1646  */
+#line 4102 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("validator"),(yyvsp[0].str));
 }
-#line 32286 "preproc.c" /* yacc.c:1646  */
+#line 32292 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 559:
-#line 4106 "preproc.y" /* yacc.c:1646  */
+#line 4106 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("no validator");
 }
-#line 32294 "preproc.c" /* yacc.c:1646  */
+#line 32300 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 560:
-#line 4114 "preproc.y" /* yacc.c:1646  */
+#line 4114 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 32302 "preproc.c" /* yacc.c:1646  */
+#line 32308 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 561:
-#line 4118 "preproc.y" /* yacc.c:1646  */
+#line 4118 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 32309 "preproc.c" /* yacc.c:1646  */
+#line 32315 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 562:
-#line 4125 "preproc.y" /* yacc.c:1646  */
+#line 4125 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("drop"),(yyvsp[-3].str),mm_strdup("language"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 32317 "preproc.c" /* yacc.c:1646  */
+#line 32323 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 563:
-#line 4129 "preproc.y" /* yacc.c:1646  */
+#line 4129 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("drop"),(yyvsp[-5].str),mm_strdup("language if exists"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 32325 "preproc.c" /* yacc.c:1646  */
+#line 32331 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 564:
-#line 4137 "preproc.y" /* yacc.c:1646  */
+#line 4137 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("procedural");
 }
-#line 32333 "preproc.c" /* yacc.c:1646  */
+#line 32339 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 565:
-#line 4141 "preproc.y" /* yacc.c:1646  */
+#line 4141 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 32340 "preproc.c" /* yacc.c:1646  */
+#line 32346 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 566:
-#line 4148 "preproc.y" /* yacc.c:1646  */
+#line 4148 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,mm_strdup("create tablespace"),(yyvsp[-4].str),(yyvsp[-3].str),mm_strdup("location"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 32348 "preproc.c" /* yacc.c:1646  */
+#line 32354 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 567:
-#line 4156 "preproc.y" /* yacc.c:1646  */
+#line 4156 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("owner"),(yyvsp[0].str));
 }
-#line 32356 "preproc.c" /* yacc.c:1646  */
+#line 32362 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 568:
-#line 4160 "preproc.y" /* yacc.c:1646  */
+#line 4160 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 32363 "preproc.c" /* yacc.c:1646  */
+#line 32369 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 569:
-#line 4167 "preproc.y" /* yacc.c:1646  */
+#line 4167 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("drop tablespace"),(yyvsp[0].str));
 }
-#line 32371 "preproc.c" /* yacc.c:1646  */
+#line 32377 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 570:
-#line 4171 "preproc.y" /* yacc.c:1646  */
+#line 4171 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("drop tablespace if exists"),(yyvsp[0].str));
 }
-#line 32379 "preproc.c" /* yacc.c:1646  */
+#line 32385 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 571:
-#line 4179 "preproc.y" /* yacc.c:1646  */
+#line 4179 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("create extension"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 32387 "preproc.c" /* yacc.c:1646  */
+#line 32393 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 572:
-#line 4183 "preproc.y" /* yacc.c:1646  */
+#line 4183 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("create extension if not exists"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 32395 "preproc.c" /* yacc.c:1646  */
+#line 32401 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 573:
-#line 4191 "preproc.y" /* yacc.c:1646  */
+#line 4191 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 32403 "preproc.c" /* yacc.c:1646  */
+#line 32409 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 574:
-#line 4195 "preproc.y" /* yacc.c:1646  */
+#line 4195 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 32410 "preproc.c" /* yacc.c:1646  */
+#line 32416 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 575:
-#line 4202 "preproc.y" /* yacc.c:1646  */
+#line 4202 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("schema"),(yyvsp[0].str));
 }
-#line 32418 "preproc.c" /* yacc.c:1646  */
+#line 32424 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 576:
-#line 4206 "preproc.y" /* yacc.c:1646  */
+#line 4206 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("version"),(yyvsp[0].str));
 }
-#line 32426 "preproc.c" /* yacc.c:1646  */
+#line 32432 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 577:
-#line 4210 "preproc.y" /* yacc.c:1646  */
+#line 4210 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("from"),(yyvsp[0].str));
 }
-#line 32434 "preproc.c" /* yacc.c:1646  */
+#line 32440 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 578:
-#line 4218 "preproc.y" /* yacc.c:1646  */
+#line 4218 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter extension"),(yyvsp[-2].str),mm_strdup("update"),(yyvsp[0].str));
 }
-#line 32442 "preproc.c" /* yacc.c:1646  */
+#line 32448 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 579:
-#line 4226 "preproc.y" /* yacc.c:1646  */
+#line 4226 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 32450 "preproc.c" /* yacc.c:1646  */
+#line 32456 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 580:
-#line 4230 "preproc.y" /* yacc.c:1646  */
+#line 4230 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 32457 "preproc.c" /* yacc.c:1646  */
+#line 32463 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 581:
-#line 4237 "preproc.y" /* yacc.c:1646  */
+#line 4237 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("to"),(yyvsp[0].str));
 }
-#line 32465 "preproc.c" /* yacc.c:1646  */
+#line 32471 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 582:
-#line 4245 "preproc.y" /* yacc.c:1646  */
+#line 4245 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,mm_strdup("alter extension"),(yyvsp[-4].str),(yyvsp[-3].str),mm_strdup("aggregate"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 32473 "preproc.c" /* yacc.c:1646  */
+#line 32479 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 583:
-#line 4249 "preproc.y" /* yacc.c:1646  */
+#line 4249 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(8,mm_strdup("alter extension"),(yyvsp[-7].str),(yyvsp[-6].str),mm_strdup("cast ("),(yyvsp[-3].str),mm_strdup("as"),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 32481 "preproc.c" /* yacc.c:1646  */
+#line 32487 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 584:
-#line 4253 "preproc.y" /* yacc.c:1646  */
+#line 4253 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("alter extension"),(yyvsp[-3].str),(yyvsp[-2].str),mm_strdup("collation"),(yyvsp[0].str));
 }
-#line 32489 "preproc.c" /* yacc.c:1646  */
+#line 32495 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 585:
-#line 4257 "preproc.y" /* yacc.c:1646  */
+#line 4257 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("alter extension"),(yyvsp[-3].str),(yyvsp[-2].str),mm_strdup("conversion"),(yyvsp[0].str));
 }
-#line 32497 "preproc.c" /* yacc.c:1646  */
+#line 32503 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 586:
-#line 4261 "preproc.y" /* yacc.c:1646  */
+#line 4261 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("alter extension"),(yyvsp[-3].str),(yyvsp[-2].str),mm_strdup("domain"),(yyvsp[0].str));
 }
-#line 32505 "preproc.c" /* yacc.c:1646  */
+#line 32511 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 587:
-#line 4265 "preproc.y" /* yacc.c:1646  */
+#line 4265 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("alter extension"),(yyvsp[-3].str),(yyvsp[-2].str),mm_strdup("function"),(yyvsp[0].str));
 }
-#line 32513 "preproc.c" /* yacc.c:1646  */
+#line 32519 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 588:
-#line 4269 "preproc.y" /* yacc.c:1646  */
+#line 4269 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,mm_strdup("alter extension"),(yyvsp[-4].str),(yyvsp[-3].str),(yyvsp[-2].str),mm_strdup("language"),(yyvsp[0].str));
 }
-#line 32521 "preproc.c" /* yacc.c:1646  */
+#line 32527 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 589:
-#line 4273 "preproc.y" /* yacc.c:1646  */
+#line 4273 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,mm_strdup("alter extension"),(yyvsp[-4].str),(yyvsp[-3].str),mm_strdup("operator"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 32529 "preproc.c" /* yacc.c:1646  */
+#line 32535 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 590:
-#line 4277 "preproc.y" /* yacc.c:1646  */
+#line 4277 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(7,mm_strdup("alter extension"),(yyvsp[-6].str),(yyvsp[-5].str),mm_strdup("operator class"),(yyvsp[-2].str),mm_strdup("using"),(yyvsp[0].str));
 }
-#line 32537 "preproc.c" /* yacc.c:1646  */
+#line 32543 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 591:
-#line 4281 "preproc.y" /* yacc.c:1646  */
+#line 4281 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(7,mm_strdup("alter extension"),(yyvsp[-6].str),(yyvsp[-5].str),mm_strdup("operator family"),(yyvsp[-2].str),mm_strdup("using"),(yyvsp[0].str));
 }
-#line 32545 "preproc.c" /* yacc.c:1646  */
+#line 32551 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 592:
-#line 4285 "preproc.y" /* yacc.c:1646  */
+#line 4285 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("alter extension"),(yyvsp[-3].str),(yyvsp[-2].str),mm_strdup("schema"),(yyvsp[0].str));
 }
-#line 32553 "preproc.c" /* yacc.c:1646  */
+#line 32559 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 593:
-#line 4289 "preproc.y" /* yacc.c:1646  */
+#line 4289 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("alter extension"),(yyvsp[-4].str),(yyvsp[-3].str),mm_strdup("event trigger"),(yyvsp[0].str));
 }
-#line 32561 "preproc.c" /* yacc.c:1646  */
+#line 32567 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 594:
-#line 4293 "preproc.y" /* yacc.c:1646  */
+#line 4293 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("alter extension"),(yyvsp[-3].str),(yyvsp[-2].str),mm_strdup("table"),(yyvsp[0].str));
 }
-#line 32569 "preproc.c" /* yacc.c:1646  */
+#line 32575 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 595:
-#line 4297 "preproc.y" /* yacc.c:1646  */
+#line 4297 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("alter extension"),(yyvsp[-5].str),(yyvsp[-4].str),mm_strdup("text search parser"),(yyvsp[0].str));
 }
-#line 32577 "preproc.c" /* yacc.c:1646  */
+#line 32583 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 596:
-#line 4301 "preproc.y" /* yacc.c:1646  */
+#line 4301 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("alter extension"),(yyvsp[-5].str),(yyvsp[-4].str),mm_strdup("text search dictionary"),(yyvsp[0].str));
 }
-#line 32585 "preproc.c" /* yacc.c:1646  */
+#line 32591 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 597:
-#line 4305 "preproc.y" /* yacc.c:1646  */
+#line 4305 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("alter extension"),(yyvsp[-5].str),(yyvsp[-4].str),mm_strdup("text search template"),(yyvsp[0].str));
 }
-#line 32593 "preproc.c" /* yacc.c:1646  */
+#line 32599 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 598:
-#line 4309 "preproc.y" /* yacc.c:1646  */
+#line 4309 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("alter extension"),(yyvsp[-5].str),(yyvsp[-4].str),mm_strdup("text search configuration"),(yyvsp[0].str));
 }
-#line 32601 "preproc.c" /* yacc.c:1646  */
+#line 32607 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 599:
-#line 4313 "preproc.y" /* yacc.c:1646  */
+#line 4313 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("alter extension"),(yyvsp[-3].str),(yyvsp[-2].str),mm_strdup("sequence"),(yyvsp[0].str));
 }
-#line 32609 "preproc.c" /* yacc.c:1646  */
+#line 32615 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 600:
-#line 4317 "preproc.y" /* yacc.c:1646  */
+#line 4317 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("alter extension"),(yyvsp[-3].str),(yyvsp[-2].str),mm_strdup("view"),(yyvsp[0].str));
 }
-#line 32617 "preproc.c" /* yacc.c:1646  */
+#line 32623 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 601:
-#line 4321 "preproc.y" /* yacc.c:1646  */
+#line 4321 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("alter extension"),(yyvsp[-4].str),(yyvsp[-3].str),mm_strdup("materialized view"),(yyvsp[0].str));
 }
-#line 32625 "preproc.c" /* yacc.c:1646  */
+#line 32631 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 602:
-#line 4325 "preproc.y" /* yacc.c:1646  */
+#line 4325 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("alter extension"),(yyvsp[-4].str),(yyvsp[-3].str),mm_strdup("foreign table"),(yyvsp[0].str));
 }
-#line 32633 "preproc.c" /* yacc.c:1646  */
+#line 32639 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 603:
-#line 4329 "preproc.y" /* yacc.c:1646  */
+#line 4329 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("alter extension"),(yyvsp[-5].str),(yyvsp[-4].str),mm_strdup("foreign data wrapper"),(yyvsp[0].str));
 }
-#line 32641 "preproc.c" /* yacc.c:1646  */
+#line 32647 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 604:
-#line 4333 "preproc.y" /* yacc.c:1646  */
+#line 4333 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("alter extension"),(yyvsp[-3].str),(yyvsp[-2].str),mm_strdup("server"),(yyvsp[0].str));
 }
-#line 32649 "preproc.c" /* yacc.c:1646  */
+#line 32655 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 605:
-#line 4337 "preproc.y" /* yacc.c:1646  */
+#line 4337 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("alter extension"),(yyvsp[-3].str),(yyvsp[-2].str),mm_strdup("type"),(yyvsp[0].str));
 }
-#line 32657 "preproc.c" /* yacc.c:1646  */
+#line 32663 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 606:
-#line 4345 "preproc.y" /* yacc.c:1646  */
+#line 4345 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("create foreign data wrapper"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 32665 "preproc.c" /* yacc.c:1646  */
+#line 32671 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 607:
-#line 4353 "preproc.y" /* yacc.c:1646  */
+#line 4353 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("handler"),(yyvsp[0].str));
 }
-#line 32673 "preproc.c" /* yacc.c:1646  */
+#line 32679 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 608:
-#line 4357 "preproc.y" /* yacc.c:1646  */
+#line 4357 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("no handler");
 }
-#line 32681 "preproc.c" /* yacc.c:1646  */
+#line 32687 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 609:
-#line 4361 "preproc.y" /* yacc.c:1646  */
+#line 4361 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("validator"),(yyvsp[0].str));
 }
-#line 32689 "preproc.c" /* yacc.c:1646  */
+#line 32695 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 610:
-#line 4365 "preproc.y" /* yacc.c:1646  */
+#line 4365 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("no validator");
 }
-#line 32697 "preproc.c" /* yacc.c:1646  */
+#line 32703 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 611:
-#line 4373 "preproc.y" /* yacc.c:1646  */
+#line 4373 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 32705 "preproc.c" /* yacc.c:1646  */
+#line 32711 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 612:
-#line 4377 "preproc.y" /* yacc.c:1646  */
+#line 4377 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 32713 "preproc.c" /* yacc.c:1646  */
+#line 32719 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 613:
-#line 4385 "preproc.y" /* yacc.c:1646  */
+#line 4385 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 32721 "preproc.c" /* yacc.c:1646  */
+#line 32727 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 614:
-#line 4389 "preproc.y" /* yacc.c:1646  */
+#line 4389 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 32728 "preproc.c" /* yacc.c:1646  */
+#line 32734 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 615:
-#line 4396 "preproc.y" /* yacc.c:1646  */
+#line 4396 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("drop foreign data wrapper"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 32736 "preproc.c" /* yacc.c:1646  */
+#line 32742 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 616:
-#line 4400 "preproc.y" /* yacc.c:1646  */
+#line 4400 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("drop foreign data wrapper if exists"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 32744 "preproc.c" /* yacc.c:1646  */
+#line 32750 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 617:
-#line 4408 "preproc.y" /* yacc.c:1646  */
+#line 4408 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter foreign data wrapper"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 32752 "preproc.c" /* yacc.c:1646  */
+#line 32758 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 618:
-#line 4412 "preproc.y" /* yacc.c:1646  */
+#line 4412 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("alter foreign data wrapper"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 32760 "preproc.c" /* yacc.c:1646  */
+#line 32766 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 619:
-#line 4420 "preproc.y" /* yacc.c:1646  */
+#line 4420 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("options ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 32768 "preproc.c" /* yacc.c:1646  */
+#line 32774 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 620:
-#line 4424 "preproc.y" /* yacc.c:1646  */
+#line 4424 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 32775 "preproc.c" /* yacc.c:1646  */
+#line 32781 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 621:
-#line 4431 "preproc.y" /* yacc.c:1646  */
+#line 4431 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 32783 "preproc.c" /* yacc.c:1646  */
+#line 32789 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 622:
-#line 4435 "preproc.y" /* yacc.c:1646  */
+#line 4435 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 32791 "preproc.c" /* yacc.c:1646  */
+#line 32797 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 623:
-#line 4443 "preproc.y" /* yacc.c:1646  */
+#line 4443 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("options ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 32799 "preproc.c" /* yacc.c:1646  */
+#line 32805 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 624:
-#line 4451 "preproc.y" /* yacc.c:1646  */
+#line 4451 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 32807 "preproc.c" /* yacc.c:1646  */
+#line 32813 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 625:
-#line 4455 "preproc.y" /* yacc.c:1646  */
+#line 4455 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 32815 "preproc.c" /* yacc.c:1646  */
+#line 32821 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 626:
-#line 4463 "preproc.y" /* yacc.c:1646  */
+#line 4463 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 32823 "preproc.c" /* yacc.c:1646  */
+#line 32829 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 627:
-#line 4467 "preproc.y" /* yacc.c:1646  */
+#line 4467 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("set"),(yyvsp[0].str));
 }
-#line 32831 "preproc.c" /* yacc.c:1646  */
+#line 32837 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 628:
-#line 4471 "preproc.y" /* yacc.c:1646  */
+#line 4471 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("add"),(yyvsp[0].str));
 }
-#line 32839 "preproc.c" /* yacc.c:1646  */
+#line 32845 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 629:
-#line 4475 "preproc.y" /* yacc.c:1646  */
+#line 4475 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("drop"),(yyvsp[0].str));
 }
-#line 32847 "preproc.c" /* yacc.c:1646  */
+#line 32853 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 630:
-#line 4483 "preproc.y" /* yacc.c:1646  */
+#line 4483 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 32855 "preproc.c" /* yacc.c:1646  */
+#line 32861 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 631:
-#line 4491 "preproc.y" /* yacc.c:1646  */
+#line 4491 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 32863 "preproc.c" /* yacc.c:1646  */
+#line 32869 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 632:
-#line 4499 "preproc.y" /* yacc.c:1646  */
+#line 4499 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 32871 "preproc.c" /* yacc.c:1646  */
+#line 32877 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 633:
-#line 4507 "preproc.y" /* yacc.c:1646  */
+#line 4507 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(7,mm_strdup("create server"),(yyvsp[-7].str),(yyvsp[-6].str),(yyvsp[-5].str),mm_strdup("foreign data wrapper"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 32879 "preproc.c" /* yacc.c:1646  */
+#line 32885 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 634:
-#line 4515 "preproc.y" /* yacc.c:1646  */
+#line 4515 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("type"),(yyvsp[0].str));
 }
-#line 32887 "preproc.c" /* yacc.c:1646  */
+#line 32893 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 635:
-#line 4519 "preproc.y" /* yacc.c:1646  */
+#line 4519 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 32894 "preproc.c" /* yacc.c:1646  */
+#line 32900 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 636:
-#line 4526 "preproc.y" /* yacc.c:1646  */
+#line 4526 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("version"),(yyvsp[0].str));
 }
-#line 32902 "preproc.c" /* yacc.c:1646  */
+#line 32908 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 637:
-#line 4530 "preproc.y" /* yacc.c:1646  */
+#line 4530 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("version null");
 }
-#line 32910 "preproc.c" /* yacc.c:1646  */
+#line 32916 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 638:
-#line 4538 "preproc.y" /* yacc.c:1646  */
+#line 4538 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 32918 "preproc.c" /* yacc.c:1646  */
+#line 32924 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 639:
-#line 4542 "preproc.y" /* yacc.c:1646  */
+#line 4542 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 32925 "preproc.c" /* yacc.c:1646  */
+#line 32931 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 640:
-#line 4549 "preproc.y" /* yacc.c:1646  */
+#line 4549 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("drop server"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 32933 "preproc.c" /* yacc.c:1646  */
+#line 32939 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 641:
-#line 4553 "preproc.y" /* yacc.c:1646  */
+#line 4553 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("drop server if exists"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 32941 "preproc.c" /* yacc.c:1646  */
+#line 32947 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 642:
-#line 4561 "preproc.y" /* yacc.c:1646  */
+#line 4561 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter server"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 32949 "preproc.c" /* yacc.c:1646  */
+#line 32955 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 643:
-#line 4565 "preproc.y" /* yacc.c:1646  */
+#line 4565 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("alter server"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 32957 "preproc.c" /* yacc.c:1646  */
+#line 32963 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 644:
-#line 4569 "preproc.y" /* yacc.c:1646  */
+#line 4569 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("alter server"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 32965 "preproc.c" /* yacc.c:1646  */
+#line 32971 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 645:
-#line 4577 "preproc.y" /* yacc.c:1646  */
+#line 4577 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(7,mm_strdup("create foreign table"),(yyvsp[-6].str),mm_strdup("("),(yyvsp[-4].str),mm_strdup(") server"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 32973 "preproc.c" /* yacc.c:1646  */
+#line 32979 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 646:
-#line 4581 "preproc.y" /* yacc.c:1646  */
+#line 4581 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(7,mm_strdup("create foreign table if not exists"),(yyvsp[-6].str),mm_strdup("("),(yyvsp[-4].str),mm_strdup(") server"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 32981 "preproc.c" /* yacc.c:1646  */
+#line 32987 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 647:
-#line 4589 "preproc.y" /* yacc.c:1646  */
+#line 4589 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("alter foreign table"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 32989 "preproc.c" /* yacc.c:1646  */
+#line 32995 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 648:
-#line 4593 "preproc.y" /* yacc.c:1646  */
+#line 4593 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("alter foreign table if exists"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 32997 "preproc.c" /* yacc.c:1646  */
+#line 33003 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 649:
-#line 4601 "preproc.y" /* yacc.c:1646  */
+#line 4601 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("create user mapping for"),(yyvsp[-3].str),mm_strdup("server"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 33005 "preproc.c" /* yacc.c:1646  */
+#line 33011 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 650:
-#line 4609 "preproc.y" /* yacc.c:1646  */
+#line 4609 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("current_user");
 }
-#line 33013 "preproc.c" /* yacc.c:1646  */
+#line 33019 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 651:
-#line 4613 "preproc.y" /* yacc.c:1646  */
+#line 4613 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("user");
 }
-#line 33021 "preproc.c" /* yacc.c:1646  */
+#line 33027 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 652:
-#line 4617 "preproc.y" /* yacc.c:1646  */
+#line 4617 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 33029 "preproc.c" /* yacc.c:1646  */
+#line 33035 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 653:
-#line 4625 "preproc.y" /* yacc.c:1646  */
+#line 4625 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("drop user mapping for"),(yyvsp[-2].str),mm_strdup("server"),(yyvsp[0].str));
 }
-#line 33037 "preproc.c" /* yacc.c:1646  */
+#line 33043 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 654:
-#line 4629 "preproc.y" /* yacc.c:1646  */
+#line 4629 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("drop user mapping if exists for"),(yyvsp[-2].str),mm_strdup("server"),(yyvsp[0].str));
 }
-#line 33045 "preproc.c" /* yacc.c:1646  */
+#line 33051 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 655:
-#line 4637 "preproc.y" /* yacc.c:1646  */
+#line 4637 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("alter user mapping for"),(yyvsp[-3].str),mm_strdup("server"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 33053 "preproc.c" /* yacc.c:1646  */
+#line 33059 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 656:
-#line 4645 "preproc.y" /* yacc.c:1646  */
+#line 4645 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(13,mm_strdup("create trigger"),(yyvsp[-12].str),(yyvsp[-11].str),(yyvsp[-10].str),mm_strdup("on"),(yyvsp[-8].str),(yyvsp[-7].str),(yyvsp[-6].str),mm_strdup("execute procedure"),(yyvsp[-3].str),mm_strdup("("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 33061 "preproc.c" /* yacc.c:1646  */
+#line 33067 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 657:
-#line 4649 "preproc.y" /* yacc.c:1646  */
+#line 4649 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(15,mm_strdup("create constraint trigger"),(yyvsp[-16].str),mm_strdup("after"),(yyvsp[-14].str),mm_strdup("on"),(yyvsp[-12].str),(yyvsp[-11].str),(yyvsp[-10].str),mm_strdup("for each row"),(yyvsp[-6].str),mm_strdup("execute procedure"),(yyvsp[-3].str),mm_strdup("("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 33069 "preproc.c" /* yacc.c:1646  */
+#line 33075 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 658:
-#line 4657 "preproc.y" /* yacc.c:1646  */
+#line 4657 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("before");
 }
-#line 33077 "preproc.c" /* yacc.c:1646  */
+#line 33083 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 659:
-#line 4661 "preproc.y" /* yacc.c:1646  */
+#line 4661 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("after");
 }
-#line 33085 "preproc.c" /* yacc.c:1646  */
+#line 33091 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 660:
-#line 4665 "preproc.y" /* yacc.c:1646  */
+#line 4665 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("instead of");
 }
-#line 33093 "preproc.c" /* yacc.c:1646  */
+#line 33099 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 661:
-#line 4673 "preproc.y" /* yacc.c:1646  */
+#line 4673 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 33101 "preproc.c" /* yacc.c:1646  */
+#line 33107 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 662:
-#line 4677 "preproc.y" /* yacc.c:1646  */
+#line 4677 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("or"),(yyvsp[0].str));
 }
-#line 33109 "preproc.c" /* yacc.c:1646  */
+#line 33115 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 663:
-#line 4685 "preproc.y" /* yacc.c:1646  */
+#line 4685 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("insert");
 }
-#line 33117 "preproc.c" /* yacc.c:1646  */
+#line 33123 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 664:
-#line 4689 "preproc.y" /* yacc.c:1646  */
+#line 4689 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("delete");
 }
-#line 33125 "preproc.c" /* yacc.c:1646  */
+#line 33131 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 665:
-#line 4693 "preproc.y" /* yacc.c:1646  */
+#line 4693 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("update");
 }
-#line 33133 "preproc.c" /* yacc.c:1646  */
+#line 33139 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 666:
-#line 4697 "preproc.y" /* yacc.c:1646  */
+#line 4697 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("update of"),(yyvsp[0].str));
 }
-#line 33141 "preproc.c" /* yacc.c:1646  */
+#line 33147 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 667:
-#line 4701 "preproc.y" /* yacc.c:1646  */
+#line 4701 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("truncate");
 }
-#line 33149 "preproc.c" /* yacc.c:1646  */
+#line 33155 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 668:
-#line 4709 "preproc.y" /* yacc.c:1646  */
+#line 4709 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("for"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 33157 "preproc.c" /* yacc.c:1646  */
+#line 33163 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 669:
-#line 4713 "preproc.y" /* yacc.c:1646  */
+#line 4713 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 33164 "preproc.c" /* yacc.c:1646  */
+#line 33170 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 670:
-#line 4720 "preproc.y" /* yacc.c:1646  */
+#line 4720 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("each");
 }
-#line 33172 "preproc.c" /* yacc.c:1646  */
+#line 33178 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 671:
-#line 4724 "preproc.y" /* yacc.c:1646  */
+#line 4724 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 33179 "preproc.c" /* yacc.c:1646  */
+#line 33185 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 672:
-#line 4731 "preproc.y" /* yacc.c:1646  */
+#line 4731 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("row");
 }
-#line 33187 "preproc.c" /* yacc.c:1646  */
+#line 33193 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 673:
-#line 4735 "preproc.y" /* yacc.c:1646  */
+#line 4735 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("statement");
 }
-#line 33195 "preproc.c" /* yacc.c:1646  */
+#line 33201 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 674:
-#line 4743 "preproc.y" /* yacc.c:1646  */
+#line 4743 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("when ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 33203 "preproc.c" /* yacc.c:1646  */
+#line 33209 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 675:
-#line 4747 "preproc.y" /* yacc.c:1646  */
+#line 4747 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 33210 "preproc.c" /* yacc.c:1646  */
+#line 33216 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 676:
-#line 4754 "preproc.y" /* yacc.c:1646  */
+#line 4754 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 33218 "preproc.c" /* yacc.c:1646  */
+#line 33224 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 677:
-#line 4758 "preproc.y" /* yacc.c:1646  */
+#line 4758 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 33226 "preproc.c" /* yacc.c:1646  */
+#line 33232 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 678:
-#line 4762 "preproc.y" /* yacc.c:1646  */
+#line 4762 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 33233 "preproc.c" /* yacc.c:1646  */
+#line 33239 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 679:
-#line 4769 "preproc.y" /* yacc.c:1646  */
+#line 4769 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 33241 "preproc.c" /* yacc.c:1646  */
+#line 33247 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 680:
-#line 4773 "preproc.y" /* yacc.c:1646  */
+#line 4773 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 33249 "preproc.c" /* yacc.c:1646  */
+#line 33255 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 681:
-#line 4777 "preproc.y" /* yacc.c:1646  */
+#line 4777 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 33257 "preproc.c" /* yacc.c:1646  */
+#line 33263 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 682:
-#line 4781 "preproc.y" /* yacc.c:1646  */
+#line 4781 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 33265 "preproc.c" /* yacc.c:1646  */
+#line 33271 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 683:
-#line 4789 "preproc.y" /* yacc.c:1646  */
+#line 4789 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("from"),(yyvsp[0].str));
 }
-#line 33273 "preproc.c" /* yacc.c:1646  */
+#line 33279 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 684:
-#line 4793 "preproc.y" /* yacc.c:1646  */
+#line 4793 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 33280 "preproc.c" /* yacc.c:1646  */
+#line 33286 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 685:
-#line 4800 "preproc.y" /* yacc.c:1646  */
+#line 4800 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 33287 "preproc.c" /* yacc.c:1646  */
+#line 33293 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 686:
-#line 4803 "preproc.y" /* yacc.c:1646  */
+#line 4803 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 33295 "preproc.c" /* yacc.c:1646  */
+#line 33301 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 687:
-#line 4811 "preproc.y" /* yacc.c:1646  */
+#line 4811 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("not deferrable");
 }
-#line 33303 "preproc.c" /* yacc.c:1646  */
+#line 33309 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 688:
-#line 4815 "preproc.y" /* yacc.c:1646  */
+#line 4815 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("deferrable");
 }
-#line 33311 "preproc.c" /* yacc.c:1646  */
+#line 33317 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 689:
-#line 4819 "preproc.y" /* yacc.c:1646  */
+#line 4819 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("initially immediate");
 }
-#line 33319 "preproc.c" /* yacc.c:1646  */
+#line 33325 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 690:
-#line 4823 "preproc.y" /* yacc.c:1646  */
+#line 4823 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("initially deferred");
 }
-#line 33327 "preproc.c" /* yacc.c:1646  */
+#line 33333 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 691:
-#line 4827 "preproc.y" /* yacc.c:1646  */
+#line 4827 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("not valid");
 }
-#line 33335 "preproc.c" /* yacc.c:1646  */
+#line 33341 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 692:
-#line 4831 "preproc.y" /* yacc.c:1646  */
+#line 4831 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("no inherit");
 }
-#line 33343 "preproc.c" /* yacc.c:1646  */
+#line 33349 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 693:
-#line 4839 "preproc.y" /* yacc.c:1646  */
+#line 4839 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("drop trigger"),(yyvsp[-3].str),mm_strdup("on"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 33351 "preproc.c" /* yacc.c:1646  */
+#line 33357 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 694:
-#line 4843 "preproc.y" /* yacc.c:1646  */
+#line 4843 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("drop trigger if exists"),(yyvsp[-3].str),mm_strdup("on"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 33359 "preproc.c" /* yacc.c:1646  */
+#line 33365 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 695:
-#line 4851 "preproc.y" /* yacc.c:1646  */
+#line 4851 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(7,mm_strdup("create event trigger"),(yyvsp[-7].str),mm_strdup("on"),(yyvsp[-5].str),mm_strdup("execute procedure"),(yyvsp[-2].str),mm_strdup("( )"));
 }
-#line 33367 "preproc.c" /* yacc.c:1646  */
+#line 33373 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 696:
-#line 4855 "preproc.y" /* yacc.c:1646  */
+#line 4855 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(9,mm_strdup("create event trigger"),(yyvsp[-9].str),mm_strdup("on"),(yyvsp[-7].str),mm_strdup("when"),(yyvsp[-5].str),mm_strdup("execute procedure"),(yyvsp[-2].str),mm_strdup("( )"));
 }
-#line 33375 "preproc.c" /* yacc.c:1646  */
+#line 33381 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 697:
-#line 4863 "preproc.y" /* yacc.c:1646  */
+#line 4863 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 33383 "preproc.c" /* yacc.c:1646  */
+#line 33389 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 698:
-#line 4867 "preproc.y" /* yacc.c:1646  */
+#line 4867 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("and"),(yyvsp[0].str));
 }
-#line 33391 "preproc.c" /* yacc.c:1646  */
+#line 33397 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 699:
-#line 4875 "preproc.y" /* yacc.c:1646  */
+#line 4875 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,(yyvsp[-4].str),mm_strdup("in ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 33399 "preproc.c" /* yacc.c:1646  */
+#line 33405 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 700:
-#line 4883 "preproc.y" /* yacc.c:1646  */
+#line 4883 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("sconst");
 }
-#line 33407 "preproc.c" /* yacc.c:1646  */
+#line 33413 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 701:
-#line 4887 "preproc.y" /* yacc.c:1646  */
+#line 4887 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-2].str),mm_strdup(", sconst"));
 }
-#line 33415 "preproc.c" /* yacc.c:1646  */
+#line 33421 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 702:
-#line 4895 "preproc.y" /* yacc.c:1646  */
+#line 4895 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("alter event trigger"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 33423 "preproc.c" /* yacc.c:1646  */
+#line 33429 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 703:
-#line 4903 "preproc.y" /* yacc.c:1646  */
+#line 4903 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("enable");
 }
-#line 33431 "preproc.c" /* yacc.c:1646  */
+#line 33437 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 704:
-#line 4907 "preproc.y" /* yacc.c:1646  */
+#line 4907 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("enable replica");
 }
-#line 33439 "preproc.c" /* yacc.c:1646  */
+#line 33445 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 705:
-#line 4911 "preproc.y" /* yacc.c:1646  */
+#line 4911 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("enable always");
 }
-#line 33447 "preproc.c" /* yacc.c:1646  */
+#line 33453 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 706:
-#line 4915 "preproc.y" /* yacc.c:1646  */
+#line 4915 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("disable");
 }
-#line 33455 "preproc.c" /* yacc.c:1646  */
+#line 33461 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 707:
-#line 4923 "preproc.y" /* yacc.c:1646  */
+#line 4923 "preproc.y" /* yacc.c:1652  */
     { 
 mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server");
  (yyval.str) = cat_str(6,mm_strdup("create assertion"),(yyvsp[-5].str),mm_strdup("check ("),(yyvsp[-2].str),mm_strdup(")"),(yyvsp[0].str));
 }
-#line 33464 "preproc.c" /* yacc.c:1646  */
+#line 33470 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 708:
-#line 4932 "preproc.y" /* yacc.c:1646  */
+#line 4932 "preproc.y" /* yacc.c:1652  */
     { 
 mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server");
  (yyval.str) = cat_str(3,mm_strdup("drop assertion"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 33473 "preproc.c" /* yacc.c:1646  */
+#line 33479 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 709:
-#line 4941 "preproc.y" /* yacc.c:1646  */
+#line 4941 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("create aggregate"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 33481 "preproc.c" /* yacc.c:1646  */
+#line 33487 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 710:
-#line 4945 "preproc.y" /* yacc.c:1646  */
+#line 4945 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("create aggregate"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 33489 "preproc.c" /* yacc.c:1646  */
+#line 33495 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 711:
-#line 4949 "preproc.y" /* yacc.c:1646  */
+#line 4949 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("create operator"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 33497 "preproc.c" /* yacc.c:1646  */
+#line 33503 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 712:
-#line 4953 "preproc.y" /* yacc.c:1646  */
+#line 4953 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("create type"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 33505 "preproc.c" /* yacc.c:1646  */
+#line 33511 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 713:
-#line 4957 "preproc.y" /* yacc.c:1646  */
+#line 4957 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("create type"),(yyvsp[0].str));
 }
-#line 33513 "preproc.c" /* yacc.c:1646  */
+#line 33519 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 714:
-#line 4961 "preproc.y" /* yacc.c:1646  */
+#line 4961 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("create type"),(yyvsp[-4].str),mm_strdup("as ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 33521 "preproc.c" /* yacc.c:1646  */
+#line 33527 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 715:
-#line 4965 "preproc.y" /* yacc.c:1646  */
+#line 4965 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("create type"),(yyvsp[-5].str),mm_strdup("as enum ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 33529 "preproc.c" /* yacc.c:1646  */
+#line 33535 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 716:
-#line 4969 "preproc.y" /* yacc.c:1646  */
+#line 4969 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("create type"),(yyvsp[-3].str),mm_strdup("as range"),(yyvsp[0].str));
 }
-#line 33537 "preproc.c" /* yacc.c:1646  */
+#line 33543 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 717:
-#line 4973 "preproc.y" /* yacc.c:1646  */
+#line 4973 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("create text search parser"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 33545 "preproc.c" /* yacc.c:1646  */
+#line 33551 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 718:
-#line 4977 "preproc.y" /* yacc.c:1646  */
+#line 4977 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("create text search dictionary"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 33553 "preproc.c" /* yacc.c:1646  */
+#line 33559 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 719:
-#line 4981 "preproc.y" /* yacc.c:1646  */
+#line 4981 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("create text search template"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 33561 "preproc.c" /* yacc.c:1646  */
+#line 33567 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 720:
-#line 4985 "preproc.y" /* yacc.c:1646  */
+#line 4985 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("create text search configuration"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 33569 "preproc.c" /* yacc.c:1646  */
+#line 33575 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 721:
-#line 4989 "preproc.y" /* yacc.c:1646  */
+#line 4989 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("create collation"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 33577 "preproc.c" /* yacc.c:1646  */
+#line 33583 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 722:
-#line 4993 "preproc.y" /* yacc.c:1646  */
+#line 4993 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("create collation"),(yyvsp[-2].str),mm_strdup("from"),(yyvsp[0].str));
 }
-#line 33585 "preproc.c" /* yacc.c:1646  */
+#line 33591 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 723:
-#line 5001 "preproc.y" /* yacc.c:1646  */
+#line 5001 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 33593 "preproc.c" /* yacc.c:1646  */
+#line 33599 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 724:
-#line 5009 "preproc.y" /* yacc.c:1646  */
+#line 5009 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 33601 "preproc.c" /* yacc.c:1646  */
+#line 33607 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 725:
-#line 5013 "preproc.y" /* yacc.c:1646  */
+#line 5013 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 33609 "preproc.c" /* yacc.c:1646  */
+#line 33615 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 726:
-#line 5021 "preproc.y" /* yacc.c:1646  */
+#line 5021 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("="),(yyvsp[0].str));
 }
-#line 33617 "preproc.c" /* yacc.c:1646  */
+#line 33623 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 727:
-#line 5025 "preproc.y" /* yacc.c:1646  */
+#line 5025 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 33625 "preproc.c" /* yacc.c:1646  */
+#line 33631 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 728:
-#line 5033 "preproc.y" /* yacc.c:1646  */
+#line 5033 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 33633 "preproc.c" /* yacc.c:1646  */
+#line 33639 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 729:
-#line 5037 "preproc.y" /* yacc.c:1646  */
+#line 5037 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 33641 "preproc.c" /* yacc.c:1646  */
+#line 33647 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 730:
-#line 5041 "preproc.y" /* yacc.c:1646  */
+#line 5041 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 33649 "preproc.c" /* yacc.c:1646  */
+#line 33655 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 731:
-#line 5045 "preproc.y" /* yacc.c:1646  */
+#line 5045 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 33657 "preproc.c" /* yacc.c:1646  */
+#line 33663 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 732:
-#line 5049 "preproc.y" /* yacc.c:1646  */
+#line 5049 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 33665 "preproc.c" /* yacc.c:1646  */
+#line 33671 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 733:
-#line 5057 "preproc.y" /* yacc.c:1646  */
+#line 5057 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 33673 "preproc.c" /* yacc.c:1646  */
+#line 33679 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 734:
-#line 5065 "preproc.y" /* yacc.c:1646  */
+#line 5065 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 33681 "preproc.c" /* yacc.c:1646  */
+#line 33687 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 735:
-#line 5069 "preproc.y" /* yacc.c:1646  */
+#line 5069 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 33689 "preproc.c" /* yacc.c:1646  */
+#line 33695 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 736:
-#line 5077 "preproc.y" /* yacc.c:1646  */
+#line 5077 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("="),(yyvsp[0].str));
 }
-#line 33697 "preproc.c" /* yacc.c:1646  */
+#line 33703 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 737:
-#line 5085 "preproc.y" /* yacc.c:1646  */
+#line 5085 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 33705 "preproc.c" /* yacc.c:1646  */
+#line 33711 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 738:
-#line 5089 "preproc.y" /* yacc.c:1646  */
+#line 5089 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 33712 "preproc.c" /* yacc.c:1646  */
+#line 33718 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 739:
-#line 5096 "preproc.y" /* yacc.c:1646  */
+#line 5096 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 33720 "preproc.c" /* yacc.c:1646  */
+#line 33726 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 740:
-#line 5100 "preproc.y" /* yacc.c:1646  */
+#line 5100 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 33728 "preproc.c" /* yacc.c:1646  */
+#line 33734 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 741:
-#line 5108 "preproc.y" /* yacc.c:1646  */
+#line 5108 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("alter type"),(yyvsp[-4].str),mm_strdup("add value"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 33736 "preproc.c" /* yacc.c:1646  */
+#line 33742 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 742:
-#line 5112 "preproc.y" /* yacc.c:1646  */
+#line 5112 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(7,mm_strdup("alter type"),(yyvsp[-6].str),mm_strdup("add value"),(yyvsp[-3].str),(yyvsp[-2].str),mm_strdup("before"),(yyvsp[0].str));
 }
-#line 33744 "preproc.c" /* yacc.c:1646  */
+#line 33750 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 743:
-#line 5116 "preproc.y" /* yacc.c:1646  */
+#line 5116 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(7,mm_strdup("alter type"),(yyvsp[-6].str),mm_strdup("add value"),(yyvsp[-3].str),(yyvsp[-2].str),mm_strdup("after"),(yyvsp[0].str));
 }
-#line 33752 "preproc.c" /* yacc.c:1646  */
+#line 33758 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 744:
-#line 5124 "preproc.y" /* yacc.c:1646  */
+#line 5124 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("if not exists");
 }
-#line 33760 "preproc.c" /* yacc.c:1646  */
+#line 33766 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 745:
-#line 5128 "preproc.y" /* yacc.c:1646  */
+#line 5128 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 33767 "preproc.c" /* yacc.c:1646  */
+#line 33773 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 746:
-#line 5135 "preproc.y" /* yacc.c:1646  */
+#line 5135 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(10,mm_strdup("create operator class"),(yyvsp[-9].str),(yyvsp[-8].str),mm_strdup("for type"),(yyvsp[-5].str),mm_strdup("using"),(yyvsp[-3].str),(yyvsp[-2].str),mm_strdup("as"),(yyvsp[0].str));
 }
-#line 33775 "preproc.c" /* yacc.c:1646  */
+#line 33781 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 747:
-#line 5143 "preproc.y" /* yacc.c:1646  */
+#line 5143 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 33783 "preproc.c" /* yacc.c:1646  */
+#line 33789 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 748:
-#line 5147 "preproc.y" /* yacc.c:1646  */
+#line 5147 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 33791 "preproc.c" /* yacc.c:1646  */
+#line 33797 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 749:
-#line 5155 "preproc.y" /* yacc.c:1646  */
+#line 5155 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("operator"),(yyvsp[-3].str),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 33799 "preproc.c" /* yacc.c:1646  */
+#line 33805 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 750:
-#line 5159 "preproc.y" /* yacc.c:1646  */
+#line 5159 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,mm_strdup("operator"),(yyvsp[-4].str),(yyvsp[-3].str),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 33807 "preproc.c" /* yacc.c:1646  */
+#line 33813 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 751:
-#line 5163 "preproc.y" /* yacc.c:1646  */
+#line 5163 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("function"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 33815 "preproc.c" /* yacc.c:1646  */
+#line 33821 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 752:
-#line 5167 "preproc.y" /* yacc.c:1646  */
+#line 5167 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(7,mm_strdup("function"),(yyvsp[-5].str),mm_strdup("("),(yyvsp[-3].str),mm_strdup(")"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 33823 "preproc.c" /* yacc.c:1646  */
+#line 33829 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 753:
-#line 5171 "preproc.y" /* yacc.c:1646  */
+#line 5171 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("storage"),(yyvsp[0].str));
 }
-#line 33831 "preproc.c" /* yacc.c:1646  */
+#line 33837 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 754:
-#line 5179 "preproc.y" /* yacc.c:1646  */
+#line 5179 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("default");
 }
-#line 33839 "preproc.c" /* yacc.c:1646  */
+#line 33845 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 755:
-#line 5183 "preproc.y" /* yacc.c:1646  */
+#line 5183 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 33846 "preproc.c" /* yacc.c:1646  */
+#line 33852 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 756:
-#line 5190 "preproc.y" /* yacc.c:1646  */
+#line 5190 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("family"),(yyvsp[0].str));
 }
-#line 33854 "preproc.c" /* yacc.c:1646  */
+#line 33860 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 757:
-#line 5194 "preproc.y" /* yacc.c:1646  */
+#line 5194 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 33861 "preproc.c" /* yacc.c:1646  */
+#line 33867 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 758:
-#line 5201 "preproc.y" /* yacc.c:1646  */
+#line 5201 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("for search");
 }
-#line 33869 "preproc.c" /* yacc.c:1646  */
+#line 33875 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 759:
-#line 5205 "preproc.y" /* yacc.c:1646  */
+#line 5205 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("for order by"),(yyvsp[0].str));
 }
-#line 33877 "preproc.c" /* yacc.c:1646  */
+#line 33883 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 760:
-#line 5209 "preproc.y" /* yacc.c:1646  */
+#line 5209 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 33884 "preproc.c" /* yacc.c:1646  */
+#line 33890 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 761:
-#line 5216 "preproc.y" /* yacc.c:1646  */
+#line 5216 "preproc.y" /* yacc.c:1652  */
     { 
 mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server");
  (yyval.str) = mm_strdup("recheck");
 }
-#line 33893 "preproc.c" /* yacc.c:1646  */
+#line 33899 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 762:
-#line 5221 "preproc.y" /* yacc.c:1646  */
+#line 5221 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 33900 "preproc.c" /* yacc.c:1646  */
+#line 33906 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 763:
-#line 5228 "preproc.y" /* yacc.c:1646  */
+#line 5228 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("create operator family"),(yyvsp[-2].str),mm_strdup("using"),(yyvsp[0].str));
 }
-#line 33908 "preproc.c" /* yacc.c:1646  */
+#line 33914 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 764:
-#line 5236 "preproc.y" /* yacc.c:1646  */
+#line 5236 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,mm_strdup("alter operator family"),(yyvsp[-4].str),mm_strdup("using"),(yyvsp[-2].str),mm_strdup("add"),(yyvsp[0].str));
 }
-#line 33916 "preproc.c" /* yacc.c:1646  */
+#line 33922 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 765:
-#line 5240 "preproc.y" /* yacc.c:1646  */
+#line 5240 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,mm_strdup("alter operator family"),(yyvsp[-4].str),mm_strdup("using"),(yyvsp[-2].str),mm_strdup("drop"),(yyvsp[0].str));
 }
-#line 33924 "preproc.c" /* yacc.c:1646  */
+#line 33930 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 766:
-#line 5248 "preproc.y" /* yacc.c:1646  */
+#line 5248 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 33932 "preproc.c" /* yacc.c:1646  */
+#line 33938 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 767:
-#line 5252 "preproc.y" /* yacc.c:1646  */
+#line 5252 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 33940 "preproc.c" /* yacc.c:1646  */
+#line 33946 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 768:
-#line 5260 "preproc.y" /* yacc.c:1646  */
+#line 5260 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("operator"),(yyvsp[-3].str),mm_strdup("("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 33948 "preproc.c" /* yacc.c:1646  */
+#line 33954 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 769:
-#line 5264 "preproc.y" /* yacc.c:1646  */
+#line 5264 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("function"),(yyvsp[-3].str),mm_strdup("("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 33956 "preproc.c" /* yacc.c:1646  */
+#line 33962 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 770:
-#line 5272 "preproc.y" /* yacc.c:1646  */
+#line 5272 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("drop operator class"),(yyvsp[-3].str),mm_strdup("using"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 33964 "preproc.c" /* yacc.c:1646  */
+#line 33970 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 771:
-#line 5276 "preproc.y" /* yacc.c:1646  */
+#line 5276 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("drop operator class if exists"),(yyvsp[-3].str),mm_strdup("using"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 33972 "preproc.c" /* yacc.c:1646  */
+#line 33978 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 772:
-#line 5284 "preproc.y" /* yacc.c:1646  */
+#line 5284 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("drop operator family"),(yyvsp[-3].str),mm_strdup("using"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 33980 "preproc.c" /* yacc.c:1646  */
+#line 33986 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 773:
-#line 5288 "preproc.y" /* yacc.c:1646  */
+#line 5288 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("drop operator family if exists"),(yyvsp[-3].str),mm_strdup("using"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 33988 "preproc.c" /* yacc.c:1646  */
+#line 33994 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 774:
-#line 5296 "preproc.y" /* yacc.c:1646  */
+#line 5296 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("drop owned by"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 33996 "preproc.c" /* yacc.c:1646  */
+#line 34002 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 775:
-#line 5304 "preproc.y" /* yacc.c:1646  */
+#line 5304 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("reassign owned by"),(yyvsp[-2].str),mm_strdup("to"),(yyvsp[0].str));
 }
-#line 34004 "preproc.c" /* yacc.c:1646  */
+#line 34010 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 776:
-#line 5312 "preproc.y" /* yacc.c:1646  */
+#line 5312 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("drop"),(yyvsp[-4].str),mm_strdup("if exists"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 34012 "preproc.c" /* yacc.c:1646  */
+#line 34018 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 777:
-#line 5316 "preproc.y" /* yacc.c:1646  */
+#line 5316 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("drop"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 34020 "preproc.c" /* yacc.c:1646  */
+#line 34026 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 778:
-#line 5320 "preproc.y" /* yacc.c:1646  */
+#line 5320 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("drop index concurrently"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 34028 "preproc.c" /* yacc.c:1646  */
+#line 34034 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 779:
-#line 5324 "preproc.y" /* yacc.c:1646  */
+#line 5324 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("drop index concurrently if exists"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 34036 "preproc.c" /* yacc.c:1646  */
+#line 34042 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 780:
-#line 5332 "preproc.y" /* yacc.c:1646  */
+#line 5332 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("table");
 }
-#line 34044 "preproc.c" /* yacc.c:1646  */
+#line 34050 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 781:
-#line 5336 "preproc.y" /* yacc.c:1646  */
+#line 5336 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("sequence");
 }
-#line 34052 "preproc.c" /* yacc.c:1646  */
+#line 34058 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 782:
-#line 5340 "preproc.y" /* yacc.c:1646  */
+#line 5340 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("view");
 }
-#line 34060 "preproc.c" /* yacc.c:1646  */
+#line 34066 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 783:
-#line 5344 "preproc.y" /* yacc.c:1646  */
+#line 5344 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("materialized view");
 }
-#line 34068 "preproc.c" /* yacc.c:1646  */
+#line 34074 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 784:
-#line 5348 "preproc.y" /* yacc.c:1646  */
+#line 5348 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("index");
 }
-#line 34076 "preproc.c" /* yacc.c:1646  */
+#line 34082 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 785:
-#line 5352 "preproc.y" /* yacc.c:1646  */
+#line 5352 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("foreign table");
 }
-#line 34084 "preproc.c" /* yacc.c:1646  */
+#line 34090 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 786:
-#line 5356 "preproc.y" /* yacc.c:1646  */
+#line 5356 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("event trigger");
 }
-#line 34092 "preproc.c" /* yacc.c:1646  */
+#line 34098 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 787:
-#line 5360 "preproc.y" /* yacc.c:1646  */
+#line 5360 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("type");
 }
-#line 34100 "preproc.c" /* yacc.c:1646  */
+#line 34106 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 788:
-#line 5364 "preproc.y" /* yacc.c:1646  */
+#line 5364 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("domain");
 }
-#line 34108 "preproc.c" /* yacc.c:1646  */
+#line 34114 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 789:
-#line 5368 "preproc.y" /* yacc.c:1646  */
+#line 5368 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("collation");
 }
-#line 34116 "preproc.c" /* yacc.c:1646  */
+#line 34122 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 790:
-#line 5372 "preproc.y" /* yacc.c:1646  */
+#line 5372 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("conversion");
 }
-#line 34124 "preproc.c" /* yacc.c:1646  */
+#line 34130 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 791:
-#line 5376 "preproc.y" /* yacc.c:1646  */
+#line 5376 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("schema");
 }
-#line 34132 "preproc.c" /* yacc.c:1646  */
+#line 34138 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 792:
-#line 5380 "preproc.y" /* yacc.c:1646  */
+#line 5380 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("extension");
 }
-#line 34140 "preproc.c" /* yacc.c:1646  */
+#line 34146 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 793:
-#line 5384 "preproc.y" /* yacc.c:1646  */
+#line 5384 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("text search parser");
 }
-#line 34148 "preproc.c" /* yacc.c:1646  */
+#line 34154 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 794:
-#line 5388 "preproc.y" /* yacc.c:1646  */
+#line 5388 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("text search dictionary");
 }
-#line 34156 "preproc.c" /* yacc.c:1646  */
+#line 34162 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 795:
-#line 5392 "preproc.y" /* yacc.c:1646  */
+#line 5392 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("text search template");
 }
-#line 34164 "preproc.c" /* yacc.c:1646  */
+#line 34170 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 796:
-#line 5396 "preproc.y" /* yacc.c:1646  */
+#line 5396 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("text search configuration");
 }
-#line 34172 "preproc.c" /* yacc.c:1646  */
+#line 34178 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 797:
-#line 5404 "preproc.y" /* yacc.c:1646  */
+#line 5404 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 34180 "preproc.c" /* yacc.c:1646  */
+#line 34186 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 798:
-#line 5408 "preproc.y" /* yacc.c:1646  */
+#line 5408 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 34188 "preproc.c" /* yacc.c:1646  */
+#line 34194 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 799:
-#line 5416 "preproc.y" /* yacc.c:1646  */
+#line 5416 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 34196 "preproc.c" /* yacc.c:1646  */
+#line 34202 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 800:
-#line 5420 "preproc.y" /* yacc.c:1646  */
+#line 5420 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 34204 "preproc.c" /* yacc.c:1646  */
+#line 34210 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 801:
-#line 5428 "preproc.y" /* yacc.c:1646  */
+#line 5428 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("."),(yyvsp[0].str));
 }
-#line 34212 "preproc.c" /* yacc.c:1646  */
+#line 34218 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 802:
-#line 5432 "preproc.y" /* yacc.c:1646  */
+#line 5432 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("."),(yyvsp[0].str));
 }
-#line 34220 "preproc.c" /* yacc.c:1646  */
+#line 34226 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 803:
-#line 5440 "preproc.y" /* yacc.c:1646  */
+#line 5440 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("truncate"),(yyvsp[-3].str),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 34228 "preproc.c" /* yacc.c:1646  */
+#line 34234 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 804:
-#line 5448 "preproc.y" /* yacc.c:1646  */
+#line 5448 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("continue identity");
 }
-#line 34236 "preproc.c" /* yacc.c:1646  */
+#line 34242 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 805:
-#line 5452 "preproc.y" /* yacc.c:1646  */
+#line 5452 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("restart identity");
 }
-#line 34244 "preproc.c" /* yacc.c:1646  */
+#line 34250 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 806:
-#line 5456 "preproc.y" /* yacc.c:1646  */
+#line 5456 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 34251 "preproc.c" /* yacc.c:1646  */
+#line 34257 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 807:
-#line 5463 "preproc.y" /* yacc.c:1646  */
+#line 5463 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("comment on"),(yyvsp[-3].str),(yyvsp[-2].str),mm_strdup("is"),(yyvsp[0].str));
 }
-#line 34259 "preproc.c" /* yacc.c:1646  */
+#line 34265 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 808:
-#line 5467 "preproc.y" /* yacc.c:1646  */
+#line 5467 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("comment on aggregate"),(yyvsp[-3].str),(yyvsp[-2].str),mm_strdup("is"),(yyvsp[0].str));
 }
-#line 34267 "preproc.c" /* yacc.c:1646  */
+#line 34273 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 809:
-#line 5471 "preproc.y" /* yacc.c:1646  */
+#line 5471 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("comment on function"),(yyvsp[-3].str),(yyvsp[-2].str),mm_strdup("is"),(yyvsp[0].str));
 }
-#line 34275 "preproc.c" /* yacc.c:1646  */
+#line 34281 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 810:
-#line 5475 "preproc.y" /* yacc.c:1646  */
+#line 5475 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("comment on operator"),(yyvsp[-3].str),(yyvsp[-2].str),mm_strdup("is"),(yyvsp[0].str));
 }
-#line 34283 "preproc.c" /* yacc.c:1646  */
+#line 34289 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 811:
-#line 5479 "preproc.y" /* yacc.c:1646  */
+#line 5479 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,mm_strdup("comment on constraint"),(yyvsp[-4].str),mm_strdup("on"),(yyvsp[-2].str),mm_strdup("is"),(yyvsp[0].str));
 }
-#line 34291 "preproc.c" /* yacc.c:1646  */
+#line 34297 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 812:
-#line 5483 "preproc.y" /* yacc.c:1646  */
+#line 5483 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,mm_strdup("comment on rule"),(yyvsp[-4].str),mm_strdup("on"),(yyvsp[-2].str),mm_strdup("is"),(yyvsp[0].str));
 }
-#line 34299 "preproc.c" /* yacc.c:1646  */
+#line 34305 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 813:
-#line 5487 "preproc.y" /* yacc.c:1646  */
+#line 5487 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("comment on rule"),(yyvsp[-2].str),mm_strdup("is"),(yyvsp[0].str));
 }
-#line 34307 "preproc.c" /* yacc.c:1646  */
+#line 34313 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 814:
-#line 5491 "preproc.y" /* yacc.c:1646  */
+#line 5491 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,mm_strdup("comment on trigger"),(yyvsp[-4].str),mm_strdup("on"),(yyvsp[-2].str),mm_strdup("is"),(yyvsp[0].str));
 }
-#line 34315 "preproc.c" /* yacc.c:1646  */
+#line 34321 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 815:
-#line 5495 "preproc.y" /* yacc.c:1646  */
+#line 5495 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,mm_strdup("comment on operator class"),(yyvsp[-4].str),mm_strdup("using"),(yyvsp[-2].str),mm_strdup("is"),(yyvsp[0].str));
 }
-#line 34323 "preproc.c" /* yacc.c:1646  */
+#line 34329 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 816:
-#line 5499 "preproc.y" /* yacc.c:1646  */
+#line 5499 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,mm_strdup("comment on operator family"),(yyvsp[-4].str),mm_strdup("using"),(yyvsp[-2].str),mm_strdup("is"),(yyvsp[0].str));
 }
-#line 34331 "preproc.c" /* yacc.c:1646  */
+#line 34337 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 817:
-#line 5503 "preproc.y" /* yacc.c:1646  */
+#line 5503 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("comment on large object"),(yyvsp[-2].str),mm_strdup("is"),(yyvsp[0].str));
 }
-#line 34339 "preproc.c" /* yacc.c:1646  */
+#line 34345 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 818:
-#line 5507 "preproc.y" /* yacc.c:1646  */
+#line 5507 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,mm_strdup("comment on cast ("),(yyvsp[-5].str),mm_strdup("as"),(yyvsp[-3].str),mm_strdup(") is"),(yyvsp[0].str));
 }
-#line 34347 "preproc.c" /* yacc.c:1646  */
+#line 34353 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 819:
-#line 5511 "preproc.y" /* yacc.c:1646  */
+#line 5511 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,mm_strdup("comment on"),(yyvsp[-4].str),mm_strdup("language"),(yyvsp[-2].str),mm_strdup("is"),(yyvsp[0].str));
 }
-#line 34355 "preproc.c" /* yacc.c:1646  */
+#line 34361 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 820:
-#line 5519 "preproc.y" /* yacc.c:1646  */
+#line 5519 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("column");
 }
-#line 34363 "preproc.c" /* yacc.c:1646  */
+#line 34369 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 821:
-#line 5523 "preproc.y" /* yacc.c:1646  */
+#line 5523 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("database");
 }
-#line 34371 "preproc.c" /* yacc.c:1646  */
+#line 34377 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 822:
-#line 5527 "preproc.y" /* yacc.c:1646  */
+#line 5527 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("schema");
 }
-#line 34379 "preproc.c" /* yacc.c:1646  */
+#line 34385 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 823:
-#line 5531 "preproc.y" /* yacc.c:1646  */
+#line 5531 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("index");
 }
-#line 34387 "preproc.c" /* yacc.c:1646  */
+#line 34393 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 824:
-#line 5535 "preproc.y" /* yacc.c:1646  */
+#line 5535 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("sequence");
 }
-#line 34395 "preproc.c" /* yacc.c:1646  */
+#line 34401 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 825:
-#line 5539 "preproc.y" /* yacc.c:1646  */
+#line 5539 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("table");
 }
-#line 34403 "preproc.c" /* yacc.c:1646  */
+#line 34409 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 826:
-#line 5543 "preproc.y" /* yacc.c:1646  */
+#line 5543 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("domain");
 }
-#line 34411 "preproc.c" /* yacc.c:1646  */
+#line 34417 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 827:
-#line 5547 "preproc.y" /* yacc.c:1646  */
+#line 5547 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("type");
 }
-#line 34419 "preproc.c" /* yacc.c:1646  */
+#line 34425 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 828:
-#line 5551 "preproc.y" /* yacc.c:1646  */
+#line 5551 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("view");
 }
-#line 34427 "preproc.c" /* yacc.c:1646  */
+#line 34433 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 829:
-#line 5555 "preproc.y" /* yacc.c:1646  */
+#line 5555 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("materialized view");
 }
-#line 34435 "preproc.c" /* yacc.c:1646  */
+#line 34441 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 830:
-#line 5559 "preproc.y" /* yacc.c:1646  */
+#line 5559 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("collation");
 }
-#line 34443 "preproc.c" /* yacc.c:1646  */
+#line 34449 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 831:
-#line 5563 "preproc.y" /* yacc.c:1646  */
+#line 5563 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("conversion");
 }
-#line 34451 "preproc.c" /* yacc.c:1646  */
+#line 34457 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 832:
-#line 5567 "preproc.y" /* yacc.c:1646  */
+#line 5567 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("tablespace");
 }
-#line 34459 "preproc.c" /* yacc.c:1646  */
+#line 34465 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 833:
-#line 5571 "preproc.y" /* yacc.c:1646  */
+#line 5571 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("extension");
 }
-#line 34467 "preproc.c" /* yacc.c:1646  */
+#line 34473 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 834:
-#line 5575 "preproc.y" /* yacc.c:1646  */
+#line 5575 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("role");
 }
-#line 34475 "preproc.c" /* yacc.c:1646  */
+#line 34481 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 835:
-#line 5579 "preproc.y" /* yacc.c:1646  */
+#line 5579 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("foreign table");
 }
-#line 34483 "preproc.c" /* yacc.c:1646  */
+#line 34489 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 836:
-#line 5583 "preproc.y" /* yacc.c:1646  */
+#line 5583 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("server");
 }
-#line 34491 "preproc.c" /* yacc.c:1646  */
+#line 34497 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 837:
-#line 5587 "preproc.y" /* yacc.c:1646  */
+#line 5587 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("foreign data wrapper");
 }
-#line 34499 "preproc.c" /* yacc.c:1646  */
+#line 34505 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 838:
-#line 5591 "preproc.y" /* yacc.c:1646  */
+#line 5591 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("event trigger");
 }
-#line 34507 "preproc.c" /* yacc.c:1646  */
+#line 34513 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 839:
-#line 5595 "preproc.y" /* yacc.c:1646  */
+#line 5595 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("text search configuration");
 }
-#line 34515 "preproc.c" /* yacc.c:1646  */
+#line 34521 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 840:
-#line 5599 "preproc.y" /* yacc.c:1646  */
+#line 5599 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("text search dictionary");
 }
-#line 34523 "preproc.c" /* yacc.c:1646  */
+#line 34529 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 841:
-#line 5603 "preproc.y" /* yacc.c:1646  */
+#line 5603 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("text search parser");
 }
-#line 34531 "preproc.c" /* yacc.c:1646  */
+#line 34537 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 842:
-#line 5607 "preproc.y" /* yacc.c:1646  */
+#line 5607 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("text search template");
 }
-#line 34539 "preproc.c" /* yacc.c:1646  */
+#line 34545 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 843:
-#line 5615 "preproc.y" /* yacc.c:1646  */
+#line 5615 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 34547 "preproc.c" /* yacc.c:1646  */
+#line 34553 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 844:
-#line 5619 "preproc.y" /* yacc.c:1646  */
+#line 5619 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("null");
 }
-#line 34555 "preproc.c" /* yacc.c:1646  */
+#line 34561 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 845:
-#line 5627 "preproc.y" /* yacc.c:1646  */
+#line 5627 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(7,mm_strdup("security label"),(yyvsp[-5].str),mm_strdup("on"),(yyvsp[-3].str),(yyvsp[-2].str),mm_strdup("is"),(yyvsp[0].str));
 }
-#line 34563 "preproc.c" /* yacc.c:1646  */
+#line 34569 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 846:
-#line 5631 "preproc.y" /* yacc.c:1646  */
+#line 5631 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(7,mm_strdup("security label"),(yyvsp[-6].str),mm_strdup("on aggregate"),(yyvsp[-3].str),(yyvsp[-2].str),mm_strdup("is"),(yyvsp[0].str));
 }
-#line 34571 "preproc.c" /* yacc.c:1646  */
+#line 34577 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 847:
-#line 5635 "preproc.y" /* yacc.c:1646  */
+#line 5635 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(7,mm_strdup("security label"),(yyvsp[-6].str),mm_strdup("on function"),(yyvsp[-3].str),(yyvsp[-2].str),mm_strdup("is"),(yyvsp[0].str));
 }
-#line 34579 "preproc.c" /* yacc.c:1646  */
+#line 34585 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 848:
-#line 5639 "preproc.y" /* yacc.c:1646  */
+#line 5639 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,mm_strdup("security label"),(yyvsp[-6].str),mm_strdup("on large object"),(yyvsp[-2].str),mm_strdup("is"),(yyvsp[0].str));
 }
-#line 34587 "preproc.c" /* yacc.c:1646  */
+#line 34593 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 849:
-#line 5643 "preproc.y" /* yacc.c:1646  */
+#line 5643 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(8,mm_strdup("security label"),(yyvsp[-6].str),mm_strdup("on"),(yyvsp[-4].str),mm_strdup("language"),(yyvsp[-2].str),mm_strdup("is"),(yyvsp[0].str));
 }
-#line 34595 "preproc.c" /* yacc.c:1646  */
+#line 34601 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 850:
-#line 5651 "preproc.y" /* yacc.c:1646  */
+#line 5651 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("for"),(yyvsp[0].str));
 }
-#line 34603 "preproc.c" /* yacc.c:1646  */
+#line 34609 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 851:
-#line 5655 "preproc.y" /* yacc.c:1646  */
+#line 5655 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 34610 "preproc.c" /* yacc.c:1646  */
+#line 34616 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 852:
-#line 5662 "preproc.y" /* yacc.c:1646  */
+#line 5662 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("column");
 }
-#line 34618 "preproc.c" /* yacc.c:1646  */
+#line 34624 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 853:
-#line 5666 "preproc.y" /* yacc.c:1646  */
+#line 5666 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("database");
 }
-#line 34626 "preproc.c" /* yacc.c:1646  */
+#line 34632 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 854:
-#line 5670 "preproc.y" /* yacc.c:1646  */
+#line 5670 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("event trigger");
 }
-#line 34634 "preproc.c" /* yacc.c:1646  */
+#line 34640 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 855:
-#line 5674 "preproc.y" /* yacc.c:1646  */
+#line 5674 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("foreign table");
 }
-#line 34642 "preproc.c" /* yacc.c:1646  */
+#line 34648 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 856:
-#line 5678 "preproc.y" /* yacc.c:1646  */
+#line 5678 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("schema");
 }
-#line 34650 "preproc.c" /* yacc.c:1646  */
+#line 34656 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 857:
-#line 5682 "preproc.y" /* yacc.c:1646  */
+#line 5682 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("sequence");
 }
-#line 34658 "preproc.c" /* yacc.c:1646  */
+#line 34664 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 858:
-#line 5686 "preproc.y" /* yacc.c:1646  */
+#line 5686 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("table");
 }
-#line 34666 "preproc.c" /* yacc.c:1646  */
+#line 34672 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 859:
-#line 5690 "preproc.y" /* yacc.c:1646  */
+#line 5690 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("domain");
 }
-#line 34674 "preproc.c" /* yacc.c:1646  */
+#line 34680 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 860:
-#line 5694 "preproc.y" /* yacc.c:1646  */
+#line 5694 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("role");
 }
-#line 34682 "preproc.c" /* yacc.c:1646  */
+#line 34688 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 861:
-#line 5698 "preproc.y" /* yacc.c:1646  */
+#line 5698 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("tablespace");
 }
-#line 34690 "preproc.c" /* yacc.c:1646  */
+#line 34696 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 862:
-#line 5702 "preproc.y" /* yacc.c:1646  */
+#line 5702 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("type");
 }
-#line 34698 "preproc.c" /* yacc.c:1646  */
+#line 34704 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 863:
-#line 5706 "preproc.y" /* yacc.c:1646  */
+#line 5706 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("view");
 }
-#line 34706 "preproc.c" /* yacc.c:1646  */
+#line 34712 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 864:
-#line 5710 "preproc.y" /* yacc.c:1646  */
+#line 5710 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("materialized view");
 }
-#line 34714 "preproc.c" /* yacc.c:1646  */
+#line 34720 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 865:
-#line 5718 "preproc.y" /* yacc.c:1646  */
+#line 5718 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 34722 "preproc.c" /* yacc.c:1646  */
+#line 34728 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 866:
-#line 5722 "preproc.y" /* yacc.c:1646  */
+#line 5722 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("null");
 }
-#line 34730 "preproc.c" /* yacc.c:1646  */
+#line 34736 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 867:
-#line 5730 "preproc.y" /* yacc.c:1646  */
+#line 5730 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("fetch"),(yyvsp[0].str));
 }
-#line 34738 "preproc.c" /* yacc.c:1646  */
+#line 34744 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 868:
-#line 5734 "preproc.y" /* yacc.c:1646  */
+#line 5734 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("move"),(yyvsp[0].str));
 }
-#line 34746 "preproc.c" /* yacc.c:1646  */
+#line 34752 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 869:
-#line 5738 "preproc.y" /* yacc.c:1646  */
+#line 5738 "preproc.y" /* yacc.c:1652  */
     {
 		(yyval.str) = cat2_str(mm_strdup("fetch"), (yyvsp[-1].str));
 	}
-#line 34754 "preproc.c" /* yacc.c:1646  */
+#line 34760 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 870:
-#line 5742 "preproc.y" /* yacc.c:1646  */
+#line 5742 "preproc.y" /* yacc.c:1652  */
     {
 		char *cursor_marker = (yyvsp[-1].str)[0] == ':' ? mm_strdup("$0") : (yyvsp[-1].str);
 		add_additional_variables((yyvsp[-1].str), false);
 		(yyval.str) = cat_str(2, mm_strdup("fetch forward"), cursor_marker);
 	}
-#line 34764 "preproc.c" /* yacc.c:1646  */
+#line 34770 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 871:
-#line 5748 "preproc.y" /* yacc.c:1646  */
+#line 5748 "preproc.y" /* yacc.c:1652  */
     {
 		char *cursor_marker = (yyvsp[-1].str)[0] == ':' ? mm_strdup("$0") : (yyvsp[-1].str);
 		add_additional_variables((yyvsp[-1].str), false);
 		(yyval.str) = cat_str(2, mm_strdup("fetch forward from"), cursor_marker);
 	}
-#line 34774 "preproc.c" /* yacc.c:1646  */
+#line 34780 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 872:
-#line 5754 "preproc.y" /* yacc.c:1646  */
+#line 5754 "preproc.y" /* yacc.c:1652  */
     {
 		char *cursor_marker = (yyvsp[-1].str)[0] == ':' ? mm_strdup("$0") : (yyvsp[-1].str);
 		add_additional_variables((yyvsp[-1].str), false);
 		(yyval.str) = cat_str(2, mm_strdup("fetch backward"), cursor_marker);
 	}
-#line 34784 "preproc.c" /* yacc.c:1646  */
+#line 34790 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 873:
-#line 5760 "preproc.y" /* yacc.c:1646  */
+#line 5760 "preproc.y" /* yacc.c:1652  */
     {
 		char *cursor_marker = (yyvsp[-1].str)[0] == ':' ? mm_strdup("$0") : (yyvsp[-1].str);
 		add_additional_variables((yyvsp[-1].str), false);
 		(yyval.str) = cat_str(2, mm_strdup("fetch backward from"), cursor_marker);
 	}
-#line 34794 "preproc.c" /* yacc.c:1646  */
+#line 34800 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 874:
-#line 5766 "preproc.y" /* yacc.c:1646  */
+#line 5766 "preproc.y" /* yacc.c:1652  */
     {
 		char *cursor_marker = (yyvsp[0].str)[0] == ':' ? mm_strdup("$0") : (yyvsp[0].str);
 		add_additional_variables((yyvsp[0].str), false);
 		(yyval.str) = cat_str(2, mm_strdup("move forward"), cursor_marker);
 	}
-#line 34804 "preproc.c" /* yacc.c:1646  */
+#line 34810 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 875:
-#line 5772 "preproc.y" /* yacc.c:1646  */
+#line 5772 "preproc.y" /* yacc.c:1652  */
     {
 		char *cursor_marker = (yyvsp[0].str)[0] == ':' ? mm_strdup("$0") : (yyvsp[0].str);
 		add_additional_variables((yyvsp[0].str), false);
 		(yyval.str) = cat_str(2, mm_strdup("move forward from"), cursor_marker);
 	}
-#line 34814 "preproc.c" /* yacc.c:1646  */
+#line 34820 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 876:
-#line 5778 "preproc.y" /* yacc.c:1646  */
+#line 5778 "preproc.y" /* yacc.c:1652  */
     {
 		char *cursor_marker = (yyvsp[0].str)[0] == ':' ? mm_strdup("$0") : (yyvsp[0].str);
 		add_additional_variables((yyvsp[0].str), false);
 		(yyval.str) = cat_str(2, mm_strdup("move backward"), cursor_marker);
 	}
-#line 34824 "preproc.c" /* yacc.c:1646  */
+#line 34830 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 877:
-#line 5784 "preproc.y" /* yacc.c:1646  */
+#line 5784 "preproc.y" /* yacc.c:1652  */
     {
 		char *cursor_marker = (yyvsp[0].str)[0] == ':' ? mm_strdup("$0") : (yyvsp[0].str);
 		add_additional_variables((yyvsp[0].str), false);
 		(yyval.str) = cat_str(2, mm_strdup("move backward from"), cursor_marker);
 	}
-#line 34834 "preproc.c" /* yacc.c:1646  */
+#line 34840 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 878:
-#line 5794 "preproc.y" /* yacc.c:1646  */
+#line 5794 "preproc.y" /* yacc.c:1652  */
     { 
 		add_additional_variables((yyvsp[0].str), false);
 		if ((yyvsp[0].str)[0] == ':')
@@ -34845,11 +34851,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 34849 "preproc.c" /* yacc.c:1646  */
+#line 34855 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 879:
-#line 5805 "preproc.y" /* yacc.c:1646  */
+#line 5805 "preproc.y" /* yacc.c:1652  */
     { 
 		add_additional_variables((yyvsp[0].str), false);
 		if ((yyvsp[0].str)[0] == ':')
@@ -34860,11 +34866,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 34864 "preproc.c" /* yacc.c:1646  */
+#line 34870 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 880:
-#line 5816 "preproc.y" /* yacc.c:1646  */
+#line 5816 "preproc.y" /* yacc.c:1652  */
     { 
 		add_additional_variables((yyvsp[0].str), false);
 		if ((yyvsp[0].str)[0] == ':')
@@ -34875,11 +34881,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 
  (yyval.str) = cat_str(3,mm_strdup("next"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 34879 "preproc.c" /* yacc.c:1646  */
+#line 34885 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 881:
-#line 5827 "preproc.y" /* yacc.c:1646  */
+#line 5827 "preproc.y" /* yacc.c:1652  */
     { 
 		add_additional_variables((yyvsp[0].str), false);
 		if ((yyvsp[0].str)[0] == ':')
@@ -34890,11 +34896,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 
  (yyval.str) = cat_str(3,mm_strdup("prior"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 34894 "preproc.c" /* yacc.c:1646  */
+#line 34900 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 882:
-#line 5838 "preproc.y" /* yacc.c:1646  */
+#line 5838 "preproc.y" /* yacc.c:1652  */
     { 
 		add_additional_variables((yyvsp[0].str), false);
 		if ((yyvsp[0].str)[0] == ':')
@@ -34905,11 +34911,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 
  (yyval.str) = cat_str(3,mm_strdup("first"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 34909 "preproc.c" /* yacc.c:1646  */
+#line 34915 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 883:
-#line 5849 "preproc.y" /* yacc.c:1646  */
+#line 5849 "preproc.y" /* yacc.c:1652  */
     { 
 		add_additional_variables((yyvsp[0].str), false);
 		if ((yyvsp[0].str)[0] == ':')
@@ -34920,11 +34926,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 
  (yyval.str) = cat_str(3,mm_strdup("last"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 34924 "preproc.c" /* yacc.c:1646  */
+#line 34930 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 884:
-#line 5860 "preproc.y" /* yacc.c:1646  */
+#line 5860 "preproc.y" /* yacc.c:1652  */
     { 
 		add_additional_variables((yyvsp[0].str), false);
 		if ((yyvsp[0].str)[0] == ':')
@@ -34940,11 +34946,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 
  (yyval.str) = cat_str(4,mm_strdup("absolute"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 34944 "preproc.c" /* yacc.c:1646  */
+#line 34950 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 885:
-#line 5876 "preproc.y" /* yacc.c:1646  */
+#line 5876 "preproc.y" /* yacc.c:1652  */
     { 
 		add_additional_variables((yyvsp[0].str), false);
 		if ((yyvsp[0].str)[0] == ':')
@@ -34960,11 +34966,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 
  (yyval.str) = cat_str(4,mm_strdup("relative"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 34964 "preproc.c" /* yacc.c:1646  */
+#line 34970 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 886:
-#line 5892 "preproc.y" /* yacc.c:1646  */
+#line 5892 "preproc.y" /* yacc.c:1652  */
     { 
 		add_additional_variables((yyvsp[0].str), false);
 		if ((yyvsp[0].str)[0] == ':')
@@ -34980,11 +34986,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 34984 "preproc.c" /* yacc.c:1646  */
+#line 34990 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 887:
-#line 5908 "preproc.y" /* yacc.c:1646  */
+#line 5908 "preproc.y" /* yacc.c:1652  */
     { 
 		add_additional_variables((yyvsp[0].str), false);
 		if ((yyvsp[0].str)[0] == ':')
@@ -34995,11 +35001,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 
  (yyval.str) = cat_str(3,mm_strdup("all"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 34999 "preproc.c" /* yacc.c:1646  */
+#line 35005 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 888:
-#line 5919 "preproc.y" /* yacc.c:1646  */
+#line 5919 "preproc.y" /* yacc.c:1652  */
     { 
 		add_additional_variables((yyvsp[0].str), false);
 		if ((yyvsp[0].str)[0] == ':')
@@ -35015,11 +35021,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 
  (yyval.str) = cat_str(4,mm_strdup("forward"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 35019 "preproc.c" /* yacc.c:1646  */
+#line 35025 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 889:
-#line 5935 "preproc.y" /* yacc.c:1646  */
+#line 5935 "preproc.y" /* yacc.c:1652  */
     { 
 		add_additional_variables((yyvsp[0].str), false);
 		if ((yyvsp[0].str)[0] == ':')
@@ -35030,11 +35036,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 
  (yyval.str) = cat_str(3,mm_strdup("forward all"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 35034 "preproc.c" /* yacc.c:1646  */
+#line 35040 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 890:
-#line 5946 "preproc.y" /* yacc.c:1646  */
+#line 5946 "preproc.y" /* yacc.c:1652  */
     { 
 		add_additional_variables((yyvsp[0].str), false);
 		if ((yyvsp[0].str)[0] == ':')
@@ -35050,11 +35056,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 
  (yyval.str) = cat_str(4,mm_strdup("backward"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 35054 "preproc.c" /* yacc.c:1646  */
+#line 35060 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 891:
-#line 5962 "preproc.y" /* yacc.c:1646  */
+#line 5962 "preproc.y" /* yacc.c:1652  */
     { 
 		add_additional_variables((yyvsp[0].str), false);
 		if ((yyvsp[0].str)[0] == ':')
@@ -35065,3933 +35071,3933 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 
  (yyval.str) = cat_str(3,mm_strdup("backward all"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 35069 "preproc.c" /* yacc.c:1646  */
+#line 35075 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 892:
-#line 5977 "preproc.y" /* yacc.c:1646  */
+#line 5977 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("from");
 }
-#line 35077 "preproc.c" /* yacc.c:1646  */
+#line 35083 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 893:
-#line 5981 "preproc.y" /* yacc.c:1646  */
+#line 5981 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("in");
 }
-#line 35085 "preproc.c" /* yacc.c:1646  */
+#line 35091 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 894:
-#line 5989 "preproc.y" /* yacc.c:1646  */
+#line 5989 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 35093 "preproc.c" /* yacc.c:1646  */
+#line 35099 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 895:
-#line 5993 "preproc.y" /* yacc.c:1646  */
+#line 5993 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 35100 "preproc.c" /* yacc.c:1646  */
+#line 35106 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 896:
-#line 6000 "preproc.y" /* yacc.c:1646  */
+#line 6000 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(7,mm_strdup("grant"),(yyvsp[-5].str),mm_strdup("on"),(yyvsp[-3].str),mm_strdup("to"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 35108 "preproc.c" /* yacc.c:1646  */
+#line 35114 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 897:
-#line 6008 "preproc.y" /* yacc.c:1646  */
+#line 6008 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(7,mm_strdup("revoke"),(yyvsp[-5].str),mm_strdup("on"),(yyvsp[-3].str),mm_strdup("from"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 35116 "preproc.c" /* yacc.c:1646  */
+#line 35122 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 898:
-#line 6012 "preproc.y" /* yacc.c:1646  */
+#line 6012 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(7,mm_strdup("revoke grant option for"),(yyvsp[-5].str),mm_strdup("on"),(yyvsp[-3].str),mm_strdup("from"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 35124 "preproc.c" /* yacc.c:1646  */
+#line 35130 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 899:
-#line 6020 "preproc.y" /* yacc.c:1646  */
+#line 6020 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 35132 "preproc.c" /* yacc.c:1646  */
+#line 35138 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 900:
-#line 6024 "preproc.y" /* yacc.c:1646  */
+#line 6024 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("all");
 }
-#line 35140 "preproc.c" /* yacc.c:1646  */
+#line 35146 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 901:
-#line 6028 "preproc.y" /* yacc.c:1646  */
+#line 6028 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("all privileges");
 }
-#line 35148 "preproc.c" /* yacc.c:1646  */
+#line 35154 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 902:
-#line 6032 "preproc.y" /* yacc.c:1646  */
+#line 6032 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("all ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 35156 "preproc.c" /* yacc.c:1646  */
+#line 35162 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 903:
-#line 6036 "preproc.y" /* yacc.c:1646  */
+#line 6036 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("all privileges ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 35164 "preproc.c" /* yacc.c:1646  */
+#line 35170 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 904:
-#line 6044 "preproc.y" /* yacc.c:1646  */
+#line 6044 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 35172 "preproc.c" /* yacc.c:1646  */
+#line 35178 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 905:
-#line 6048 "preproc.y" /* yacc.c:1646  */
+#line 6048 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 35180 "preproc.c" /* yacc.c:1646  */
+#line 35186 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 906:
-#line 6056 "preproc.y" /* yacc.c:1646  */
+#line 6056 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("select"),(yyvsp[0].str));
 }
-#line 35188 "preproc.c" /* yacc.c:1646  */
+#line 35194 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 907:
-#line 6060 "preproc.y" /* yacc.c:1646  */
+#line 6060 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("references"),(yyvsp[0].str));
 }
-#line 35196 "preproc.c" /* yacc.c:1646  */
+#line 35202 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 908:
-#line 6064 "preproc.y" /* yacc.c:1646  */
+#line 6064 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("create"),(yyvsp[0].str));
 }
-#line 35204 "preproc.c" /* yacc.c:1646  */
+#line 35210 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 909:
-#line 6068 "preproc.y" /* yacc.c:1646  */
+#line 6068 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 35212 "preproc.c" /* yacc.c:1646  */
+#line 35218 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 910:
-#line 6076 "preproc.y" /* yacc.c:1646  */
+#line 6076 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 35220 "preproc.c" /* yacc.c:1646  */
+#line 35226 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 911:
-#line 6080 "preproc.y" /* yacc.c:1646  */
+#line 6080 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("table"),(yyvsp[0].str));
 }
-#line 35228 "preproc.c" /* yacc.c:1646  */
+#line 35234 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 912:
-#line 6084 "preproc.y" /* yacc.c:1646  */
+#line 6084 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("sequence"),(yyvsp[0].str));
 }
-#line 35236 "preproc.c" /* yacc.c:1646  */
+#line 35242 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 913:
-#line 6088 "preproc.y" /* yacc.c:1646  */
+#line 6088 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("foreign data wrapper"),(yyvsp[0].str));
 }
-#line 35244 "preproc.c" /* yacc.c:1646  */
+#line 35250 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 914:
-#line 6092 "preproc.y" /* yacc.c:1646  */
+#line 6092 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("foreign server"),(yyvsp[0].str));
 }
-#line 35252 "preproc.c" /* yacc.c:1646  */
+#line 35258 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 915:
-#line 6096 "preproc.y" /* yacc.c:1646  */
+#line 6096 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("function"),(yyvsp[0].str));
 }
-#line 35260 "preproc.c" /* yacc.c:1646  */
+#line 35266 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 916:
-#line 6100 "preproc.y" /* yacc.c:1646  */
+#line 6100 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("database"),(yyvsp[0].str));
 }
-#line 35268 "preproc.c" /* yacc.c:1646  */
+#line 35274 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 917:
-#line 6104 "preproc.y" /* yacc.c:1646  */
+#line 6104 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("domain"),(yyvsp[0].str));
 }
-#line 35276 "preproc.c" /* yacc.c:1646  */
+#line 35282 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 918:
-#line 6108 "preproc.y" /* yacc.c:1646  */
+#line 6108 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("language"),(yyvsp[0].str));
 }
-#line 35284 "preproc.c" /* yacc.c:1646  */
+#line 35290 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 919:
-#line 6112 "preproc.y" /* yacc.c:1646  */
+#line 6112 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("large object"),(yyvsp[0].str));
 }
-#line 35292 "preproc.c" /* yacc.c:1646  */
+#line 35298 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 920:
-#line 6116 "preproc.y" /* yacc.c:1646  */
+#line 6116 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("schema"),(yyvsp[0].str));
 }
-#line 35300 "preproc.c" /* yacc.c:1646  */
+#line 35306 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 921:
-#line 6120 "preproc.y" /* yacc.c:1646  */
+#line 6120 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("tablespace"),(yyvsp[0].str));
 }
-#line 35308 "preproc.c" /* yacc.c:1646  */
+#line 35314 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 922:
-#line 6124 "preproc.y" /* yacc.c:1646  */
+#line 6124 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("type"),(yyvsp[0].str));
 }
-#line 35316 "preproc.c" /* yacc.c:1646  */
+#line 35322 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 923:
-#line 6128 "preproc.y" /* yacc.c:1646  */
+#line 6128 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("all tables in schema"),(yyvsp[0].str));
 }
-#line 35324 "preproc.c" /* yacc.c:1646  */
+#line 35330 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 924:
-#line 6132 "preproc.y" /* yacc.c:1646  */
+#line 6132 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("all sequences in schema"),(yyvsp[0].str));
 }
-#line 35332 "preproc.c" /* yacc.c:1646  */
+#line 35338 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 925:
-#line 6136 "preproc.y" /* yacc.c:1646  */
+#line 6136 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("all functions in schema"),(yyvsp[0].str));
 }
-#line 35340 "preproc.c" /* yacc.c:1646  */
+#line 35346 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 926:
-#line 6144 "preproc.y" /* yacc.c:1646  */
+#line 6144 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 35348 "preproc.c" /* yacc.c:1646  */
+#line 35354 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 927:
-#line 6148 "preproc.y" /* yacc.c:1646  */
+#line 6148 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 35356 "preproc.c" /* yacc.c:1646  */
+#line 35362 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 928:
-#line 6156 "preproc.y" /* yacc.c:1646  */
+#line 6156 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 35364 "preproc.c" /* yacc.c:1646  */
+#line 35370 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 929:
-#line 6160 "preproc.y" /* yacc.c:1646  */
+#line 6160 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("group"),(yyvsp[0].str));
 }
-#line 35372 "preproc.c" /* yacc.c:1646  */
+#line 35378 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 930:
-#line 6168 "preproc.y" /* yacc.c:1646  */
+#line 6168 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("with grant option");
 }
-#line 35380 "preproc.c" /* yacc.c:1646  */
+#line 35386 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 931:
-#line 6172 "preproc.y" /* yacc.c:1646  */
+#line 6172 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 35387 "preproc.c" /* yacc.c:1646  */
+#line 35393 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 932:
-#line 6179 "preproc.y" /* yacc.c:1646  */
+#line 6179 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 35395 "preproc.c" /* yacc.c:1646  */
+#line 35401 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 933:
-#line 6183 "preproc.y" /* yacc.c:1646  */
+#line 6183 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 35403 "preproc.c" /* yacc.c:1646  */
+#line 35409 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 934:
-#line 6191 "preproc.y" /* yacc.c:1646  */
+#line 6191 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 35411 "preproc.c" /* yacc.c:1646  */
+#line 35417 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 935:
-#line 6199 "preproc.y" /* yacc.c:1646  */
+#line 6199 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,mm_strdup("grant"),(yyvsp[-4].str),mm_strdup("to"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 35419 "preproc.c" /* yacc.c:1646  */
+#line 35425 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 936:
-#line 6207 "preproc.y" /* yacc.c:1646  */
+#line 6207 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,mm_strdup("revoke"),(yyvsp[-4].str),mm_strdup("from"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 35427 "preproc.c" /* yacc.c:1646  */
+#line 35433 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 937:
-#line 6211 "preproc.y" /* yacc.c:1646  */
+#line 6211 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,mm_strdup("revoke admin option for"),(yyvsp[-4].str),mm_strdup("from"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 35435 "preproc.c" /* yacc.c:1646  */
+#line 35441 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 938:
-#line 6219 "preproc.y" /* yacc.c:1646  */
+#line 6219 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("with admin option");
 }
-#line 35443 "preproc.c" /* yacc.c:1646  */
+#line 35449 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 939:
-#line 6223 "preproc.y" /* yacc.c:1646  */
+#line 6223 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 35450 "preproc.c" /* yacc.c:1646  */
+#line 35456 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 940:
-#line 6230 "preproc.y" /* yacc.c:1646  */
+#line 6230 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("granted by"),(yyvsp[0].str));
 }
-#line 35458 "preproc.c" /* yacc.c:1646  */
+#line 35464 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 941:
-#line 6234 "preproc.y" /* yacc.c:1646  */
+#line 6234 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 35465 "preproc.c" /* yacc.c:1646  */
+#line 35471 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 942:
-#line 6241 "preproc.y" /* yacc.c:1646  */
+#line 6241 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("alter default privileges"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 35473 "preproc.c" /* yacc.c:1646  */
+#line 35479 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 943:
-#line 6249 "preproc.y" /* yacc.c:1646  */
+#line 6249 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 35481 "preproc.c" /* yacc.c:1646  */
+#line 35487 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 944:
-#line 6253 "preproc.y" /* yacc.c:1646  */
+#line 6253 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 35488 "preproc.c" /* yacc.c:1646  */
+#line 35494 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 945:
-#line 6260 "preproc.y" /* yacc.c:1646  */
+#line 6260 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("in schema"),(yyvsp[0].str));
 }
-#line 35496 "preproc.c" /* yacc.c:1646  */
+#line 35502 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 946:
-#line 6264 "preproc.y" /* yacc.c:1646  */
+#line 6264 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("for role"),(yyvsp[0].str));
 }
-#line 35504 "preproc.c" /* yacc.c:1646  */
+#line 35510 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 947:
-#line 6268 "preproc.y" /* yacc.c:1646  */
+#line 6268 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("for user"),(yyvsp[0].str));
 }
-#line 35512 "preproc.c" /* yacc.c:1646  */
+#line 35518 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 948:
-#line 6276 "preproc.y" /* yacc.c:1646  */
+#line 6276 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(7,mm_strdup("grant"),(yyvsp[-5].str),mm_strdup("on"),(yyvsp[-3].str),mm_strdup("to"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 35520 "preproc.c" /* yacc.c:1646  */
+#line 35526 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 949:
-#line 6280 "preproc.y" /* yacc.c:1646  */
+#line 6280 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(7,mm_strdup("revoke"),(yyvsp[-5].str),mm_strdup("on"),(yyvsp[-3].str),mm_strdup("from"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 35528 "preproc.c" /* yacc.c:1646  */
+#line 35534 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 950:
-#line 6284 "preproc.y" /* yacc.c:1646  */
+#line 6284 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(7,mm_strdup("revoke grant option for"),(yyvsp[-5].str),mm_strdup("on"),(yyvsp[-3].str),mm_strdup("from"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 35536 "preproc.c" /* yacc.c:1646  */
+#line 35542 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 951:
-#line 6292 "preproc.y" /* yacc.c:1646  */
+#line 6292 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("tables");
 }
-#line 35544 "preproc.c" /* yacc.c:1646  */
+#line 35550 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 952:
-#line 6296 "preproc.y" /* yacc.c:1646  */
+#line 6296 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("functions");
 }
-#line 35552 "preproc.c" /* yacc.c:1646  */
+#line 35558 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 953:
-#line 6300 "preproc.y" /* yacc.c:1646  */
+#line 6300 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("sequences");
 }
-#line 35560 "preproc.c" /* yacc.c:1646  */
+#line 35566 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 954:
-#line 6304 "preproc.y" /* yacc.c:1646  */
+#line 6304 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("types");
 }
-#line 35568 "preproc.c" /* yacc.c:1646  */
+#line 35574 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 955:
-#line 6312 "preproc.y" /* yacc.c:1646  */
+#line 6312 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(14,mm_strdup("create"),(yyvsp[-12].str),mm_strdup("index"),(yyvsp[-10].str),(yyvsp[-9].str),mm_strdup("on"),(yyvsp[-7].str),(yyvsp[-6].str),mm_strdup("("),(yyvsp[-4].str),mm_strdup(")"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 35576 "preproc.c" /* yacc.c:1646  */
+#line 35582 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 956:
-#line 6320 "preproc.y" /* yacc.c:1646  */
+#line 6320 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("unique");
 }
-#line 35584 "preproc.c" /* yacc.c:1646  */
+#line 35590 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 957:
-#line 6324 "preproc.y" /* yacc.c:1646  */
+#line 6324 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 35591 "preproc.c" /* yacc.c:1646  */
+#line 35597 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 958:
-#line 6331 "preproc.y" /* yacc.c:1646  */
+#line 6331 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("concurrently");
 }
-#line 35599 "preproc.c" /* yacc.c:1646  */
+#line 35605 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 959:
-#line 6335 "preproc.y" /* yacc.c:1646  */
+#line 6335 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 35606 "preproc.c" /* yacc.c:1646  */
+#line 35612 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 960:
-#line 6342 "preproc.y" /* yacc.c:1646  */
+#line 6342 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 35614 "preproc.c" /* yacc.c:1646  */
+#line 35620 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 961:
-#line 6346 "preproc.y" /* yacc.c:1646  */
+#line 6346 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 35621 "preproc.c" /* yacc.c:1646  */
+#line 35627 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 962:
-#line 6353 "preproc.y" /* yacc.c:1646  */
+#line 6353 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("using"),(yyvsp[0].str));
 }
-#line 35629 "preproc.c" /* yacc.c:1646  */
+#line 35635 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 963:
-#line 6357 "preproc.y" /* yacc.c:1646  */
+#line 6357 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 35636 "preproc.c" /* yacc.c:1646  */
+#line 35642 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 964:
-#line 6364 "preproc.y" /* yacc.c:1646  */
+#line 6364 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 35644 "preproc.c" /* yacc.c:1646  */
+#line 35650 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 965:
-#line 6368 "preproc.y" /* yacc.c:1646  */
+#line 6368 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 35652 "preproc.c" /* yacc.c:1646  */
+#line 35658 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 966:
-#line 6376 "preproc.y" /* yacc.c:1646  */
+#line 6376 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,(yyvsp[-4].str),(yyvsp[-3].str),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 35660 "preproc.c" /* yacc.c:1646  */
+#line 35666 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 967:
-#line 6380 "preproc.y" /* yacc.c:1646  */
+#line 6380 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,(yyvsp[-4].str),(yyvsp[-3].str),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 35668 "preproc.c" /* yacc.c:1646  */
+#line 35674 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 968:
-#line 6384 "preproc.y" /* yacc.c:1646  */
+#line 6384 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(7,mm_strdup("("),(yyvsp[-5].str),mm_strdup(")"),(yyvsp[-3].str),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 35676 "preproc.c" /* yacc.c:1646  */
+#line 35682 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 969:
-#line 6392 "preproc.y" /* yacc.c:1646  */
+#line 6392 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("collate"),(yyvsp[0].str));
 }
-#line 35684 "preproc.c" /* yacc.c:1646  */
+#line 35690 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 970:
-#line 6396 "preproc.y" /* yacc.c:1646  */
+#line 6396 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 35691 "preproc.c" /* yacc.c:1646  */
+#line 35697 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 971:
-#line 6403 "preproc.y" /* yacc.c:1646  */
+#line 6403 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 35699 "preproc.c" /* yacc.c:1646  */
+#line 35705 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 972:
-#line 6407 "preproc.y" /* yacc.c:1646  */
+#line 6407 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("using"),(yyvsp[0].str));
 }
-#line 35707 "preproc.c" /* yacc.c:1646  */
+#line 35713 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 973:
-#line 6411 "preproc.y" /* yacc.c:1646  */
+#line 6411 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 35714 "preproc.c" /* yacc.c:1646  */
+#line 35720 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 974:
-#line 6418 "preproc.y" /* yacc.c:1646  */
+#line 6418 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("asc");
 }
-#line 35722 "preproc.c" /* yacc.c:1646  */
+#line 35728 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 975:
-#line 6422 "preproc.y" /* yacc.c:1646  */
+#line 6422 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("desc");
 }
-#line 35730 "preproc.c" /* yacc.c:1646  */
+#line 35736 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 976:
-#line 6426 "preproc.y" /* yacc.c:1646  */
+#line 6426 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 35737 "preproc.c" /* yacc.c:1646  */
+#line 35743 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 977:
-#line 6433 "preproc.y" /* yacc.c:1646  */
+#line 6433 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("nulls first");
 }
-#line 35745 "preproc.c" /* yacc.c:1646  */
+#line 35751 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 978:
-#line 6437 "preproc.y" /* yacc.c:1646  */
+#line 6437 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("nulls last");
 }
-#line 35753 "preproc.c" /* yacc.c:1646  */
+#line 35759 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 979:
-#line 6441 "preproc.y" /* yacc.c:1646  */
+#line 6441 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 35760 "preproc.c" /* yacc.c:1646  */
+#line 35766 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 980:
-#line 6448 "preproc.y" /* yacc.c:1646  */
+#line 6448 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(9,mm_strdup("create"),(yyvsp[-7].str),mm_strdup("function"),(yyvsp[-5].str),(yyvsp[-4].str),mm_strdup("returns"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 35768 "preproc.c" /* yacc.c:1646  */
+#line 35774 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 981:
-#line 6452 "preproc.y" /* yacc.c:1646  */
+#line 6452 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(10,mm_strdup("create"),(yyvsp[-10].str),mm_strdup("function"),(yyvsp[-8].str),(yyvsp[-7].str),mm_strdup("returns table ("),(yyvsp[-3].str),mm_strdup(")"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 35776 "preproc.c" /* yacc.c:1646  */
+#line 35782 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 982:
-#line 6456 "preproc.y" /* yacc.c:1646  */
+#line 6456 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(7,mm_strdup("create"),(yyvsp[-5].str),mm_strdup("function"),(yyvsp[-3].str),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 35784 "preproc.c" /* yacc.c:1646  */
+#line 35790 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 983:
-#line 6464 "preproc.y" /* yacc.c:1646  */
+#line 6464 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("or replace");
 }
-#line 35792 "preproc.c" /* yacc.c:1646  */
+#line 35798 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 984:
-#line 6468 "preproc.y" /* yacc.c:1646  */
+#line 6468 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 35799 "preproc.c" /* yacc.c:1646  */
+#line 35805 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 985:
-#line 6475 "preproc.y" /* yacc.c:1646  */
+#line 6475 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 35807 "preproc.c" /* yacc.c:1646  */
+#line 35813 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 986:
-#line 6479 "preproc.y" /* yacc.c:1646  */
+#line 6479 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("( )");
 }
-#line 35815 "preproc.c" /* yacc.c:1646  */
+#line 35821 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 987:
-#line 6487 "preproc.y" /* yacc.c:1646  */
+#line 6487 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 35823 "preproc.c" /* yacc.c:1646  */
+#line 35829 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 988:
-#line 6491 "preproc.y" /* yacc.c:1646  */
+#line 6491 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 35831 "preproc.c" /* yacc.c:1646  */
+#line 35837 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 989:
-#line 6499 "preproc.y" /* yacc.c:1646  */
+#line 6499 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 35839 "preproc.c" /* yacc.c:1646  */
+#line 35845 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 990:
-#line 6503 "preproc.y" /* yacc.c:1646  */
+#line 6503 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("( )");
 }
-#line 35847 "preproc.c" /* yacc.c:1646  */
+#line 35853 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 991:
-#line 6511 "preproc.y" /* yacc.c:1646  */
+#line 6511 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 35855 "preproc.c" /* yacc.c:1646  */
+#line 35861 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 992:
-#line 6515 "preproc.y" /* yacc.c:1646  */
+#line 6515 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 35863 "preproc.c" /* yacc.c:1646  */
+#line 35869 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 993:
-#line 6523 "preproc.y" /* yacc.c:1646  */
+#line 6523 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 35871 "preproc.c" /* yacc.c:1646  */
+#line 35877 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 994:
-#line 6527 "preproc.y" /* yacc.c:1646  */
+#line 6527 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 35879 "preproc.c" /* yacc.c:1646  */
+#line 35885 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 995:
-#line 6531 "preproc.y" /* yacc.c:1646  */
+#line 6531 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 35887 "preproc.c" /* yacc.c:1646  */
+#line 35893 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 996:
-#line 6535 "preproc.y" /* yacc.c:1646  */
+#line 6535 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 35895 "preproc.c" /* yacc.c:1646  */
+#line 35901 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 997:
-#line 6539 "preproc.y" /* yacc.c:1646  */
+#line 6539 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 35903 "preproc.c" /* yacc.c:1646  */
+#line 35909 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 998:
-#line 6547 "preproc.y" /* yacc.c:1646  */
+#line 6547 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("in");
 }
-#line 35911 "preproc.c" /* yacc.c:1646  */
+#line 35917 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 999:
-#line 6551 "preproc.y" /* yacc.c:1646  */
+#line 6551 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("out");
 }
-#line 35919 "preproc.c" /* yacc.c:1646  */
+#line 35925 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1000:
-#line 6555 "preproc.y" /* yacc.c:1646  */
+#line 6555 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("inout");
 }
-#line 35927 "preproc.c" /* yacc.c:1646  */
+#line 35933 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1001:
-#line 6559 "preproc.y" /* yacc.c:1646  */
+#line 6559 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("in out");
 }
-#line 35935 "preproc.c" /* yacc.c:1646  */
+#line 35941 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1002:
-#line 6563 "preproc.y" /* yacc.c:1646  */
+#line 6563 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("variadic");
 }
-#line 35943 "preproc.c" /* yacc.c:1646  */
+#line 35949 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1003:
-#line 6571 "preproc.y" /* yacc.c:1646  */
+#line 6571 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 35951 "preproc.c" /* yacc.c:1646  */
+#line 35957 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1004:
-#line 6579 "preproc.y" /* yacc.c:1646  */
+#line 6579 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 35959 "preproc.c" /* yacc.c:1646  */
+#line 35965 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1005:
-#line 6587 "preproc.y" /* yacc.c:1646  */
+#line 6587 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 35967 "preproc.c" /* yacc.c:1646  */
+#line 35973 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1006:
-#line 6591 "preproc.y" /* yacc.c:1646  */
+#line 6591 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-3].str),(yyvsp[-2].str),mm_strdup("% type"));
 }
-#line 35975 "preproc.c" /* yacc.c:1646  */
+#line 35981 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1007:
-#line 6595 "preproc.y" /* yacc.c:1646  */
+#line 6595 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("setof"),(yyvsp[-3].str),(yyvsp[-2].str),mm_strdup("% type"));
 }
-#line 35983 "preproc.c" /* yacc.c:1646  */
+#line 35989 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1008:
-#line 6603 "preproc.y" /* yacc.c:1646  */
+#line 6603 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 35991 "preproc.c" /* yacc.c:1646  */
+#line 35997 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1009:
-#line 6607 "preproc.y" /* yacc.c:1646  */
+#line 6607 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("default"),(yyvsp[0].str));
 }
-#line 35999 "preproc.c" /* yacc.c:1646  */
+#line 36005 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1010:
-#line 6611 "preproc.y" /* yacc.c:1646  */
+#line 6611 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("="),(yyvsp[0].str));
 }
-#line 36007 "preproc.c" /* yacc.c:1646  */
+#line 36013 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1011:
-#line 6619 "preproc.y" /* yacc.c:1646  */
+#line 6619 "preproc.y" /* yacc.c:1652  */
     { 
 mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server");
  (yyval.str) = (yyvsp[0].str);
 }
-#line 36016 "preproc.c" /* yacc.c:1646  */
+#line 36022 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1012:
-#line 6628 "preproc.y" /* yacc.c:1646  */
+#line 6628 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("( * )");
 }
-#line 36024 "preproc.c" /* yacc.c:1646  */
+#line 36030 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1013:
-#line 6632 "preproc.y" /* yacc.c:1646  */
+#line 6632 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 36032 "preproc.c" /* yacc.c:1646  */
+#line 36038 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1014:
-#line 6636 "preproc.y" /* yacc.c:1646  */
+#line 6636 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("( order by"),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 36040 "preproc.c" /* yacc.c:1646  */
+#line 36046 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1015:
-#line 6640 "preproc.y" /* yacc.c:1646  */
+#line 6640 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("("),(yyvsp[-4].str),mm_strdup("order by"),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 36048 "preproc.c" /* yacc.c:1646  */
+#line 36054 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1016:
-#line 6648 "preproc.y" /* yacc.c:1646  */
+#line 6648 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 36056 "preproc.c" /* yacc.c:1646  */
+#line 36062 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1017:
-#line 6652 "preproc.y" /* yacc.c:1646  */
+#line 6652 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 36064 "preproc.c" /* yacc.c:1646  */
+#line 36070 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1018:
-#line 6660 "preproc.y" /* yacc.c:1646  */
+#line 6660 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 36072 "preproc.c" /* yacc.c:1646  */
+#line 36078 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1019:
-#line 6664 "preproc.y" /* yacc.c:1646  */
+#line 6664 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 36080 "preproc.c" /* yacc.c:1646  */
+#line 36086 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1020:
-#line 6672 "preproc.y" /* yacc.c:1646  */
+#line 6672 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("called on null input");
 }
-#line 36088 "preproc.c" /* yacc.c:1646  */
+#line 36094 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1021:
-#line 6676 "preproc.y" /* yacc.c:1646  */
+#line 6676 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("returns null on null input");
 }
-#line 36096 "preproc.c" /* yacc.c:1646  */
+#line 36102 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1022:
-#line 6680 "preproc.y" /* yacc.c:1646  */
+#line 6680 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("strict");
 }
-#line 36104 "preproc.c" /* yacc.c:1646  */
+#line 36110 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1023:
-#line 6684 "preproc.y" /* yacc.c:1646  */
+#line 6684 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("immutable");
 }
-#line 36112 "preproc.c" /* yacc.c:1646  */
+#line 36118 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1024:
-#line 6688 "preproc.y" /* yacc.c:1646  */
+#line 6688 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("stable");
 }
-#line 36120 "preproc.c" /* yacc.c:1646  */
+#line 36126 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1025:
-#line 6692 "preproc.y" /* yacc.c:1646  */
+#line 6692 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("volatile");
 }
-#line 36128 "preproc.c" /* yacc.c:1646  */
+#line 36134 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1026:
-#line 6696 "preproc.y" /* yacc.c:1646  */
+#line 6696 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("external security definer");
 }
-#line 36136 "preproc.c" /* yacc.c:1646  */
+#line 36142 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1027:
-#line 6700 "preproc.y" /* yacc.c:1646  */
+#line 6700 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("external security invoker");
 }
-#line 36144 "preproc.c" /* yacc.c:1646  */
+#line 36150 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1028:
-#line 6704 "preproc.y" /* yacc.c:1646  */
+#line 6704 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("security definer");
 }
-#line 36152 "preproc.c" /* yacc.c:1646  */
+#line 36158 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1029:
-#line 6708 "preproc.y" /* yacc.c:1646  */
+#line 6708 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("security invoker");
 }
-#line 36160 "preproc.c" /* yacc.c:1646  */
+#line 36166 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1030:
-#line 6712 "preproc.y" /* yacc.c:1646  */
+#line 6712 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("leakproof");
 }
-#line 36168 "preproc.c" /* yacc.c:1646  */
+#line 36174 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1031:
-#line 6716 "preproc.y" /* yacc.c:1646  */
+#line 6716 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("not leakproof");
 }
-#line 36176 "preproc.c" /* yacc.c:1646  */
+#line 36182 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1032:
-#line 6720 "preproc.y" /* yacc.c:1646  */
+#line 6720 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("cost"),(yyvsp[0].str));
 }
-#line 36184 "preproc.c" /* yacc.c:1646  */
+#line 36190 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1033:
-#line 6724 "preproc.y" /* yacc.c:1646  */
+#line 6724 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("rows"),(yyvsp[0].str));
 }
-#line 36192 "preproc.c" /* yacc.c:1646  */
+#line 36198 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1034:
-#line 6728 "preproc.y" /* yacc.c:1646  */
+#line 6728 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 36200 "preproc.c" /* yacc.c:1646  */
+#line 36206 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1035:
-#line 6736 "preproc.y" /* yacc.c:1646  */
+#line 6736 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("as"),(yyvsp[0].str));
 }
-#line 36208 "preproc.c" /* yacc.c:1646  */
+#line 36214 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1036:
-#line 6740 "preproc.y" /* yacc.c:1646  */
+#line 6740 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("language"),(yyvsp[0].str));
 }
-#line 36216 "preproc.c" /* yacc.c:1646  */
+#line 36222 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1037:
-#line 6744 "preproc.y" /* yacc.c:1646  */
+#line 6744 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("window");
 }
-#line 36224 "preproc.c" /* yacc.c:1646  */
+#line 36230 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1038:
-#line 6748 "preproc.y" /* yacc.c:1646  */
+#line 6748 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 36232 "preproc.c" /* yacc.c:1646  */
+#line 36238 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1039:
-#line 6756 "preproc.y" /* yacc.c:1646  */
+#line 6756 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 36240 "preproc.c" /* yacc.c:1646  */
+#line 36246 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1040:
-#line 6760 "preproc.y" /* yacc.c:1646  */
+#line 6760 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 36248 "preproc.c" /* yacc.c:1646  */
+#line 36254 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1041:
-#line 6768 "preproc.y" /* yacc.c:1646  */
+#line 6768 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("with"),(yyvsp[0].str));
 }
-#line 36256 "preproc.c" /* yacc.c:1646  */
+#line 36262 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1042:
-#line 6772 "preproc.y" /* yacc.c:1646  */
+#line 6772 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 36263 "preproc.c" /* yacc.c:1646  */
+#line 36269 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1043:
-#line 6779 "preproc.y" /* yacc.c:1646  */
+#line 6779 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 36271 "preproc.c" /* yacc.c:1646  */
+#line 36277 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1044:
-#line 6787 "preproc.y" /* yacc.c:1646  */
+#line 6787 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 36279 "preproc.c" /* yacc.c:1646  */
+#line 36285 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1045:
-#line 6791 "preproc.y" /* yacc.c:1646  */
+#line 6791 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 36287 "preproc.c" /* yacc.c:1646  */
+#line 36293 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1046:
-#line 6799 "preproc.y" /* yacc.c:1646  */
+#line 6799 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter function"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 36295 "preproc.c" /* yacc.c:1646  */
+#line 36301 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1047:
-#line 6807 "preproc.y" /* yacc.c:1646  */
+#line 6807 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 36303 "preproc.c" /* yacc.c:1646  */
+#line 36309 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1048:
-#line 6811 "preproc.y" /* yacc.c:1646  */
+#line 6811 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 36311 "preproc.c" /* yacc.c:1646  */
+#line 36317 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1049:
-#line 6819 "preproc.y" /* yacc.c:1646  */
+#line 6819 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("restrict");
 }
-#line 36319 "preproc.c" /* yacc.c:1646  */
+#line 36325 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1050:
-#line 6823 "preproc.y" /* yacc.c:1646  */
+#line 6823 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 36326 "preproc.c" /* yacc.c:1646  */
+#line 36332 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1051:
-#line 6830 "preproc.y" /* yacc.c:1646  */
+#line 6830 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("drop function"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 36334 "preproc.c" /* yacc.c:1646  */
+#line 36340 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1052:
-#line 6834 "preproc.y" /* yacc.c:1646  */
+#line 6834 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("drop function if exists"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 36342 "preproc.c" /* yacc.c:1646  */
+#line 36348 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1053:
-#line 6842 "preproc.y" /* yacc.c:1646  */
+#line 6842 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("drop aggregate"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 36350 "preproc.c" /* yacc.c:1646  */
+#line 36356 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1054:
-#line 6846 "preproc.y" /* yacc.c:1646  */
+#line 6846 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("drop aggregate if exists"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 36358 "preproc.c" /* yacc.c:1646  */
+#line 36364 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1055:
-#line 6854 "preproc.y" /* yacc.c:1646  */
+#line 6854 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("drop operator"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 36366 "preproc.c" /* yacc.c:1646  */
+#line 36372 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1056:
-#line 6858 "preproc.y" /* yacc.c:1646  */
+#line 6858 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("drop operator if exists"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 36374 "preproc.c" /* yacc.c:1646  */
+#line 36380 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1057:
-#line 6866 "preproc.y" /* yacc.c:1646  */
+#line 6866 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 36382 "preproc.c" /* yacc.c:1646  */
+#line 36388 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1058:
-#line 6870 "preproc.y" /* yacc.c:1646  */
+#line 6870 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("("),(yyvsp[-3].str),mm_strdup(","),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 36390 "preproc.c" /* yacc.c:1646  */
+#line 36396 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1059:
-#line 6874 "preproc.y" /* yacc.c:1646  */
+#line 6874 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("( none ,"),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 36398 "preproc.c" /* yacc.c:1646  */
+#line 36404 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1060:
-#line 6878 "preproc.y" /* yacc.c:1646  */
+#line 6878 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("("),(yyvsp[-3].str),mm_strdup(", none )"));
 }
-#line 36406 "preproc.c" /* yacc.c:1646  */
+#line 36412 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1061:
-#line 6886 "preproc.y" /* yacc.c:1646  */
+#line 6886 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 36414 "preproc.c" /* yacc.c:1646  */
+#line 36420 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1062:
-#line 6890 "preproc.y" /* yacc.c:1646  */
+#line 6890 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("."),(yyvsp[0].str));
 }
-#line 36422 "preproc.c" /* yacc.c:1646  */
+#line 36428 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1063:
-#line 6898 "preproc.y" /* yacc.c:1646  */
+#line 6898 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("do"),(yyvsp[0].str));
 }
-#line 36430 "preproc.c" /* yacc.c:1646  */
+#line 36436 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1064:
-#line 6906 "preproc.y" /* yacc.c:1646  */
+#line 6906 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 36438 "preproc.c" /* yacc.c:1646  */
+#line 36444 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1065:
-#line 6910 "preproc.y" /* yacc.c:1646  */
+#line 6910 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 36446 "preproc.c" /* yacc.c:1646  */
+#line 36452 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1066:
-#line 6918 "preproc.y" /* yacc.c:1646  */
+#line 6918 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 36454 "preproc.c" /* yacc.c:1646  */
+#line 36460 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1067:
-#line 6922 "preproc.y" /* yacc.c:1646  */
+#line 6922 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("language"),(yyvsp[0].str));
 }
-#line 36462 "preproc.c" /* yacc.c:1646  */
+#line 36468 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1068:
-#line 6930 "preproc.y" /* yacc.c:1646  */
+#line 6930 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(7,mm_strdup("create cast ("),(yyvsp[-7].str),mm_strdup("as"),(yyvsp[-5].str),mm_strdup(") with function"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 36470 "preproc.c" /* yacc.c:1646  */
+#line 36476 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1069:
-#line 6934 "preproc.y" /* yacc.c:1646  */
+#line 6934 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,mm_strdup("create cast ("),(yyvsp[-6].str),mm_strdup("as"),(yyvsp[-4].str),mm_strdup(") without function"),(yyvsp[0].str));
 }
-#line 36478 "preproc.c" /* yacc.c:1646  */
+#line 36484 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1070:
-#line 6938 "preproc.y" /* yacc.c:1646  */
+#line 6938 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,mm_strdup("create cast ("),(yyvsp[-6].str),mm_strdup("as"),(yyvsp[-4].str),mm_strdup(") with inout"),(yyvsp[0].str));
 }
-#line 36486 "preproc.c" /* yacc.c:1646  */
+#line 36492 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1071:
-#line 6946 "preproc.y" /* yacc.c:1646  */
+#line 6946 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("as implicit");
 }
-#line 36494 "preproc.c" /* yacc.c:1646  */
+#line 36500 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1072:
-#line 6950 "preproc.y" /* yacc.c:1646  */
+#line 6950 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("as assignment");
 }
-#line 36502 "preproc.c" /* yacc.c:1646  */
+#line 36508 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1073:
-#line 6954 "preproc.y" /* yacc.c:1646  */
+#line 6954 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 36509 "preproc.c" /* yacc.c:1646  */
+#line 36515 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1074:
-#line 6961 "preproc.y" /* yacc.c:1646  */
+#line 6961 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(8,mm_strdup("drop cast"),(yyvsp[-6].str),mm_strdup("("),(yyvsp[-4].str),mm_strdup("as"),(yyvsp[-2].str),mm_strdup(")"),(yyvsp[0].str));
 }
-#line 36517 "preproc.c" /* yacc.c:1646  */
+#line 36523 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1075:
-#line 6969 "preproc.y" /* yacc.c:1646  */
+#line 6969 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("if exists");
 }
-#line 36525 "preproc.c" /* yacc.c:1646  */
+#line 36531 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1076:
-#line 6973 "preproc.y" /* yacc.c:1646  */
+#line 6973 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 36532 "preproc.c" /* yacc.c:1646  */
+#line 36538 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1077:
-#line 6980 "preproc.y" /* yacc.c:1646  */
+#line 6980 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("reindex"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 36540 "preproc.c" /* yacc.c:1646  */
+#line 36546 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1078:
-#line 6984 "preproc.y" /* yacc.c:1646  */
+#line 6984 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("reindex system"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 36548 "preproc.c" /* yacc.c:1646  */
+#line 36554 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1079:
-#line 6988 "preproc.y" /* yacc.c:1646  */
+#line 6988 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("reindex database"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 36556 "preproc.c" /* yacc.c:1646  */
+#line 36562 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1080:
-#line 6996 "preproc.y" /* yacc.c:1646  */
+#line 6996 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("index");
 }
-#line 36564 "preproc.c" /* yacc.c:1646  */
+#line 36570 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1081:
-#line 7000 "preproc.y" /* yacc.c:1646  */
+#line 7000 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("table");
 }
-#line 36572 "preproc.c" /* yacc.c:1646  */
+#line 36578 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1082:
-#line 7008 "preproc.y" /* yacc.c:1646  */
+#line 7008 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("force");
 }
-#line 36580 "preproc.c" /* yacc.c:1646  */
+#line 36586 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1083:
-#line 7012 "preproc.y" /* yacc.c:1646  */
+#line 7012 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 36587 "preproc.c" /* yacc.c:1646  */
+#line 36593 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1084:
-#line 7019 "preproc.y" /* yacc.c:1646  */
+#line 7019 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter tablespace"),(yyvsp[-2].str),mm_strdup("set"),(yyvsp[0].str));
 }
-#line 36595 "preproc.c" /* yacc.c:1646  */
+#line 36601 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1085:
-#line 7023 "preproc.y" /* yacc.c:1646  */
+#line 7023 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter tablespace"),(yyvsp[-2].str),mm_strdup("reset"),(yyvsp[0].str));
 }
-#line 36603 "preproc.c" /* yacc.c:1646  */
+#line 36609 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1086:
-#line 7031 "preproc.y" /* yacc.c:1646  */
+#line 7031 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("alter aggregate"),(yyvsp[-4].str),(yyvsp[-3].str),mm_strdup("rename to"),(yyvsp[0].str));
 }
-#line 36611 "preproc.c" /* yacc.c:1646  */
+#line 36617 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1087:
-#line 7035 "preproc.y" /* yacc.c:1646  */
+#line 7035 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter collation"),(yyvsp[-3].str),mm_strdup("rename to"),(yyvsp[0].str));
 }
-#line 36619 "preproc.c" /* yacc.c:1646  */
+#line 36625 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1088:
-#line 7039 "preproc.y" /* yacc.c:1646  */
+#line 7039 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter conversion"),(yyvsp[-3].str),mm_strdup("rename to"),(yyvsp[0].str));
 }
-#line 36627 "preproc.c" /* yacc.c:1646  */
+#line 36633 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1089:
-#line 7043 "preproc.y" /* yacc.c:1646  */
+#line 7043 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter database"),(yyvsp[-3].str),mm_strdup("rename to"),(yyvsp[0].str));
 }
-#line 36635 "preproc.c" /* yacc.c:1646  */
+#line 36641 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1090:
-#line 7047 "preproc.y" /* yacc.c:1646  */
+#line 7047 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter domain"),(yyvsp[-3].str),mm_strdup("rename to"),(yyvsp[0].str));
 }
-#line 36643 "preproc.c" /* yacc.c:1646  */
+#line 36649 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1091:
-#line 7051 "preproc.y" /* yacc.c:1646  */
+#line 7051 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,mm_strdup("alter domain"),(yyvsp[-5].str),mm_strdup("rename constraint"),(yyvsp[-2].str),mm_strdup("to"),(yyvsp[0].str));
 }
-#line 36651 "preproc.c" /* yacc.c:1646  */
+#line 36657 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1092:
-#line 7055 "preproc.y" /* yacc.c:1646  */
+#line 7055 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter foreign data wrapper"),(yyvsp[-3].str),mm_strdup("rename to"),(yyvsp[0].str));
 }
-#line 36659 "preproc.c" /* yacc.c:1646  */
+#line 36665 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1093:
-#line 7059 "preproc.y" /* yacc.c:1646  */
+#line 7059 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter function"),(yyvsp[-3].str),mm_strdup("rename to"),(yyvsp[0].str));
 }
-#line 36667 "preproc.c" /* yacc.c:1646  */
+#line 36673 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1094:
-#line 7063 "preproc.y" /* yacc.c:1646  */
+#line 7063 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter group"),(yyvsp[-3].str),mm_strdup("rename to"),(yyvsp[0].str));
 }
-#line 36675 "preproc.c" /* yacc.c:1646  */
+#line 36681 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1095:
-#line 7067 "preproc.y" /* yacc.c:1646  */
+#line 7067 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,mm_strdup("alter"),(yyvsp[-5].str),mm_strdup("language"),(yyvsp[-3].str),mm_strdup("rename to"),(yyvsp[0].str));
 }
-#line 36683 "preproc.c" /* yacc.c:1646  */
+#line 36689 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1096:
-#line 7071 "preproc.y" /* yacc.c:1646  */
+#line 7071 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,mm_strdup("alter operator class"),(yyvsp[-5].str),mm_strdup("using"),(yyvsp[-3].str),mm_strdup("rename to"),(yyvsp[0].str));
 }
-#line 36691 "preproc.c" /* yacc.c:1646  */
+#line 36697 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1097:
-#line 7075 "preproc.y" /* yacc.c:1646  */
+#line 7075 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,mm_strdup("alter operator family"),(yyvsp[-5].str),mm_strdup("using"),(yyvsp[-3].str),mm_strdup("rename to"),(yyvsp[0].str));
 }
-#line 36699 "preproc.c" /* yacc.c:1646  */
+#line 36705 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1098:
-#line 7079 "preproc.y" /* yacc.c:1646  */
+#line 7079 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter schema"),(yyvsp[-3].str),mm_strdup("rename to"),(yyvsp[0].str));
 }
-#line 36707 "preproc.c" /* yacc.c:1646  */
+#line 36713 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1099:
-#line 7083 "preproc.y" /* yacc.c:1646  */
+#line 7083 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter server"),(yyvsp[-3].str),mm_strdup("rename to"),(yyvsp[0].str));
 }
-#line 36715 "preproc.c" /* yacc.c:1646  */
+#line 36721 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1100:
-#line 7087 "preproc.y" /* yacc.c:1646  */
+#line 7087 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter table"),(yyvsp[-3].str),mm_strdup("rename to"),(yyvsp[0].str));
 }
-#line 36723 "preproc.c" /* yacc.c:1646  */
+#line 36729 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1101:
-#line 7091 "preproc.y" /* yacc.c:1646  */
+#line 7091 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter table if exists"),(yyvsp[-3].str),mm_strdup("rename to"),(yyvsp[0].str));
 }
-#line 36731 "preproc.c" /* yacc.c:1646  */
+#line 36737 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1102:
-#line 7095 "preproc.y" /* yacc.c:1646  */
+#line 7095 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter sequence"),(yyvsp[-3].str),mm_strdup("rename to"),(yyvsp[0].str));
 }
-#line 36739 "preproc.c" /* yacc.c:1646  */
+#line 36745 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1103:
-#line 7099 "preproc.y" /* yacc.c:1646  */
+#line 7099 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter sequence if exists"),(yyvsp[-3].str),mm_strdup("rename to"),(yyvsp[0].str));
 }
-#line 36747 "preproc.c" /* yacc.c:1646  */
+#line 36753 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1104:
-#line 7103 "preproc.y" /* yacc.c:1646  */
+#line 7103 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter view"),(yyvsp[-3].str),mm_strdup("rename to"),(yyvsp[0].str));
 }
-#line 36755 "preproc.c" /* yacc.c:1646  */
+#line 36761 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1105:
-#line 7107 "preproc.y" /* yacc.c:1646  */
+#line 7107 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter view if exists"),(yyvsp[-3].str),mm_strdup("rename to"),(yyvsp[0].str));
 }
-#line 36763 "preproc.c" /* yacc.c:1646  */
+#line 36769 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1106:
-#line 7111 "preproc.y" /* yacc.c:1646  */
+#line 7111 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter materialized view"),(yyvsp[-3].str),mm_strdup("rename to"),(yyvsp[0].str));
 }
-#line 36771 "preproc.c" /* yacc.c:1646  */
+#line 36777 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1107:
-#line 7115 "preproc.y" /* yacc.c:1646  */
+#line 7115 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter materialized view if exists"),(yyvsp[-3].str),mm_strdup("rename to"),(yyvsp[0].str));
 }
-#line 36779 "preproc.c" /* yacc.c:1646  */
+#line 36785 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1108:
-#line 7119 "preproc.y" /* yacc.c:1646  */
+#line 7119 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter index"),(yyvsp[-3].str),mm_strdup("rename to"),(yyvsp[0].str));
 }
-#line 36787 "preproc.c" /* yacc.c:1646  */
+#line 36793 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1109:
-#line 7123 "preproc.y" /* yacc.c:1646  */
+#line 7123 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter index if exists"),(yyvsp[-3].str),mm_strdup("rename to"),(yyvsp[0].str));
 }
-#line 36795 "preproc.c" /* yacc.c:1646  */
+#line 36801 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1110:
-#line 7127 "preproc.y" /* yacc.c:1646  */
+#line 7127 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter foreign table"),(yyvsp[-3].str),mm_strdup("rename to"),(yyvsp[0].str));
 }
-#line 36803 "preproc.c" /* yacc.c:1646  */
+#line 36809 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1111:
-#line 7131 "preproc.y" /* yacc.c:1646  */
+#line 7131 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter foreign table if exists"),(yyvsp[-3].str),mm_strdup("rename to"),(yyvsp[0].str));
 }
-#line 36811 "preproc.c" /* yacc.c:1646  */
+#line 36817 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1112:
-#line 7135 "preproc.y" /* yacc.c:1646  */
+#line 7135 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(7,mm_strdup("alter table"),(yyvsp[-5].str),mm_strdup("rename"),(yyvsp[-3].str),(yyvsp[-2].str),mm_strdup("to"),(yyvsp[0].str));
 }
-#line 36819 "preproc.c" /* yacc.c:1646  */
+#line 36825 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1113:
-#line 7139 "preproc.y" /* yacc.c:1646  */
+#line 7139 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(7,mm_strdup("alter table if exists"),(yyvsp[-5].str),mm_strdup("rename"),(yyvsp[-3].str),(yyvsp[-2].str),mm_strdup("to"),(yyvsp[0].str));
 }
-#line 36827 "preproc.c" /* yacc.c:1646  */
+#line 36833 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1114:
-#line 7143 "preproc.y" /* yacc.c:1646  */
+#line 7143 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(7,mm_strdup("alter materialized view"),(yyvsp[-5].str),mm_strdup("rename"),(yyvsp[-3].str),(yyvsp[-2].str),mm_strdup("to"),(yyvsp[0].str));
 }
-#line 36835 "preproc.c" /* yacc.c:1646  */
+#line 36841 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1115:
-#line 7147 "preproc.y" /* yacc.c:1646  */
+#line 7147 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(7,mm_strdup("alter materialized view if exists"),(yyvsp[-5].str),mm_strdup("rename"),(yyvsp[-3].str),(yyvsp[-2].str),mm_strdup("to"),(yyvsp[0].str));
 }
-#line 36843 "preproc.c" /* yacc.c:1646  */
+#line 36849 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1116:
-#line 7151 "preproc.y" /* yacc.c:1646  */
+#line 7151 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,mm_strdup("alter table"),(yyvsp[-5].str),mm_strdup("rename constraint"),(yyvsp[-2].str),mm_strdup("to"),(yyvsp[0].str));
 }
-#line 36851 "preproc.c" /* yacc.c:1646  */
+#line 36857 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1117:
-#line 7155 "preproc.y" /* yacc.c:1646  */
+#line 7155 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(7,mm_strdup("alter foreign table"),(yyvsp[-5].str),mm_strdup("rename"),(yyvsp[-3].str),(yyvsp[-2].str),mm_strdup("to"),(yyvsp[0].str));
 }
-#line 36859 "preproc.c" /* yacc.c:1646  */
+#line 36865 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1118:
-#line 7159 "preproc.y" /* yacc.c:1646  */
+#line 7159 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(7,mm_strdup("alter foreign table if exists"),(yyvsp[-5].str),mm_strdup("rename"),(yyvsp[-3].str),(yyvsp[-2].str),mm_strdup("to"),(yyvsp[0].str));
 }
-#line 36867 "preproc.c" /* yacc.c:1646  */
+#line 36873 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1119:
-#line 7163 "preproc.y" /* yacc.c:1646  */
+#line 7163 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,mm_strdup("alter rule"),(yyvsp[-5].str),mm_strdup("on"),(yyvsp[-3].str),mm_strdup("rename to"),(yyvsp[0].str));
 }
-#line 36875 "preproc.c" /* yacc.c:1646  */
+#line 36881 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1120:
-#line 7167 "preproc.y" /* yacc.c:1646  */
+#line 7167 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,mm_strdup("alter trigger"),(yyvsp[-5].str),mm_strdup("on"),(yyvsp[-3].str),mm_strdup("rename to"),(yyvsp[0].str));
 }
-#line 36883 "preproc.c" /* yacc.c:1646  */
+#line 36889 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1121:
-#line 7171 "preproc.y" /* yacc.c:1646  */
+#line 7171 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter event trigger"),(yyvsp[-3].str),mm_strdup("rename to"),(yyvsp[0].str));
 }
-#line 36891 "preproc.c" /* yacc.c:1646  */
+#line 36897 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1122:
-#line 7175 "preproc.y" /* yacc.c:1646  */
+#line 7175 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter role"),(yyvsp[-3].str),mm_strdup("rename to"),(yyvsp[0].str));
 }
-#line 36899 "preproc.c" /* yacc.c:1646  */
+#line 36905 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1123:
-#line 7179 "preproc.y" /* yacc.c:1646  */
+#line 7179 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter user"),(yyvsp[-3].str),mm_strdup("rename to"),(yyvsp[0].str));
 }
-#line 36907 "preproc.c" /* yacc.c:1646  */
+#line 36913 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1124:
-#line 7183 "preproc.y" /* yacc.c:1646  */
+#line 7183 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter tablespace"),(yyvsp[-3].str),mm_strdup("rename to"),(yyvsp[0].str));
 }
-#line 36915 "preproc.c" /* yacc.c:1646  */
+#line 36921 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1125:
-#line 7187 "preproc.y" /* yacc.c:1646  */
+#line 7187 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter text search parser"),(yyvsp[-3].str),mm_strdup("rename to"),(yyvsp[0].str));
 }
-#line 36923 "preproc.c" /* yacc.c:1646  */
+#line 36929 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1126:
-#line 7191 "preproc.y" /* yacc.c:1646  */
+#line 7191 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter text search dictionary"),(yyvsp[-3].str),mm_strdup("rename to"),(yyvsp[0].str));
 }
-#line 36931 "preproc.c" /* yacc.c:1646  */
+#line 36937 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1127:
-#line 7195 "preproc.y" /* yacc.c:1646  */
+#line 7195 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter text search template"),(yyvsp[-3].str),mm_strdup("rename to"),(yyvsp[0].str));
 }
-#line 36939 "preproc.c" /* yacc.c:1646  */
+#line 36945 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1128:
-#line 7199 "preproc.y" /* yacc.c:1646  */
+#line 7199 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter text search configuration"),(yyvsp[-3].str),mm_strdup("rename to"),(yyvsp[0].str));
 }
-#line 36947 "preproc.c" /* yacc.c:1646  */
+#line 36953 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1129:
-#line 7203 "preproc.y" /* yacc.c:1646  */
+#line 7203 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter type"),(yyvsp[-3].str),mm_strdup("rename to"),(yyvsp[0].str));
 }
-#line 36955 "preproc.c" /* yacc.c:1646  */
+#line 36961 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1130:
-#line 7207 "preproc.y" /* yacc.c:1646  */
+#line 7207 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(7,mm_strdup("alter type"),(yyvsp[-6].str),mm_strdup("rename attribute"),(yyvsp[-3].str),mm_strdup("to"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 36963 "preproc.c" /* yacc.c:1646  */
+#line 36969 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1131:
-#line 7215 "preproc.y" /* yacc.c:1646  */
+#line 7215 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("column");
 }
-#line 36971 "preproc.c" /* yacc.c:1646  */
+#line 36977 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1132:
-#line 7219 "preproc.y" /* yacc.c:1646  */
+#line 7219 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 36978 "preproc.c" /* yacc.c:1646  */
+#line 36984 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1133:
-#line 7226 "preproc.y" /* yacc.c:1646  */
+#line 7226 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("set data");
 }
-#line 36986 "preproc.c" /* yacc.c:1646  */
+#line 36992 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1134:
-#line 7230 "preproc.y" /* yacc.c:1646  */
+#line 7230 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 36993 "preproc.c" /* yacc.c:1646  */
+#line 36999 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1135:
-#line 7237 "preproc.y" /* yacc.c:1646  */
+#line 7237 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("alter aggregate"),(yyvsp[-4].str),(yyvsp[-3].str),mm_strdup("set schema"),(yyvsp[0].str));
 }
-#line 37001 "preproc.c" /* yacc.c:1646  */
+#line 37007 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1136:
-#line 7241 "preproc.y" /* yacc.c:1646  */
+#line 7241 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter collation"),(yyvsp[-3].str),mm_strdup("set schema"),(yyvsp[0].str));
 }
-#line 37009 "preproc.c" /* yacc.c:1646  */
+#line 37015 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1137:
-#line 7245 "preproc.y" /* yacc.c:1646  */
+#line 7245 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter conversion"),(yyvsp[-3].str),mm_strdup("set schema"),(yyvsp[0].str));
 }
-#line 37017 "preproc.c" /* yacc.c:1646  */
+#line 37023 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1138:
-#line 7249 "preproc.y" /* yacc.c:1646  */
+#line 7249 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter domain"),(yyvsp[-3].str),mm_strdup("set schema"),(yyvsp[0].str));
 }
-#line 37025 "preproc.c" /* yacc.c:1646  */
+#line 37031 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1139:
-#line 7253 "preproc.y" /* yacc.c:1646  */
+#line 7253 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter extension"),(yyvsp[-3].str),mm_strdup("set schema"),(yyvsp[0].str));
 }
-#line 37033 "preproc.c" /* yacc.c:1646  */
+#line 37039 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1140:
-#line 7257 "preproc.y" /* yacc.c:1646  */
+#line 7257 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter function"),(yyvsp[-3].str),mm_strdup("set schema"),(yyvsp[0].str));
 }
-#line 37041 "preproc.c" /* yacc.c:1646  */
+#line 37047 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1141:
-#line 7261 "preproc.y" /* yacc.c:1646  */
+#line 7261 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("alter operator"),(yyvsp[-4].str),(yyvsp[-3].str),mm_strdup("set schema"),(yyvsp[0].str));
 }
-#line 37049 "preproc.c" /* yacc.c:1646  */
+#line 37055 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1142:
-#line 7265 "preproc.y" /* yacc.c:1646  */
+#line 7265 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,mm_strdup("alter operator class"),(yyvsp[-5].str),mm_strdup("using"),(yyvsp[-3].str),mm_strdup("set schema"),(yyvsp[0].str));
 }
-#line 37057 "preproc.c" /* yacc.c:1646  */
+#line 37063 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1143:
-#line 7269 "preproc.y" /* yacc.c:1646  */
+#line 7269 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,mm_strdup("alter operator family"),(yyvsp[-5].str),mm_strdup("using"),(yyvsp[-3].str),mm_strdup("set schema"),(yyvsp[0].str));
 }
-#line 37065 "preproc.c" /* yacc.c:1646  */
+#line 37071 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1144:
-#line 7273 "preproc.y" /* yacc.c:1646  */
+#line 7273 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter table"),(yyvsp[-3].str),mm_strdup("set schema"),(yyvsp[0].str));
 }
-#line 37073 "preproc.c" /* yacc.c:1646  */
+#line 37079 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1145:
-#line 7277 "preproc.y" /* yacc.c:1646  */
+#line 7277 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter table if exists"),(yyvsp[-3].str),mm_strdup("set schema"),(yyvsp[0].str));
 }
-#line 37081 "preproc.c" /* yacc.c:1646  */
+#line 37087 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1146:
-#line 7281 "preproc.y" /* yacc.c:1646  */
+#line 7281 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter text search parser"),(yyvsp[-3].str),mm_strdup("set schema"),(yyvsp[0].str));
 }
-#line 37089 "preproc.c" /* yacc.c:1646  */
+#line 37095 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1147:
-#line 7285 "preproc.y" /* yacc.c:1646  */
+#line 7285 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter text search dictionary"),(yyvsp[-3].str),mm_strdup("set schema"),(yyvsp[0].str));
 }
-#line 37097 "preproc.c" /* yacc.c:1646  */
+#line 37103 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1148:
-#line 7289 "preproc.y" /* yacc.c:1646  */
+#line 7289 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter text search template"),(yyvsp[-3].str),mm_strdup("set schema"),(yyvsp[0].str));
 }
-#line 37105 "preproc.c" /* yacc.c:1646  */
+#line 37111 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1149:
-#line 7293 "preproc.y" /* yacc.c:1646  */
+#line 7293 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter text search configuration"),(yyvsp[-3].str),mm_strdup("set schema"),(yyvsp[0].str));
 }
-#line 37113 "preproc.c" /* yacc.c:1646  */
+#line 37119 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1150:
-#line 7297 "preproc.y" /* yacc.c:1646  */
+#line 7297 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter sequence"),(yyvsp[-3].str),mm_strdup("set schema"),(yyvsp[0].str));
 }
-#line 37121 "preproc.c" /* yacc.c:1646  */
+#line 37127 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1151:
-#line 7301 "preproc.y" /* yacc.c:1646  */
+#line 7301 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter sequence if exists"),(yyvsp[-3].str),mm_strdup("set schema"),(yyvsp[0].str));
 }
-#line 37129 "preproc.c" /* yacc.c:1646  */
+#line 37135 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1152:
-#line 7305 "preproc.y" /* yacc.c:1646  */
+#line 7305 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter view"),(yyvsp[-3].str),mm_strdup("set schema"),(yyvsp[0].str));
 }
-#line 37137 "preproc.c" /* yacc.c:1646  */
+#line 37143 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1153:
-#line 7309 "preproc.y" /* yacc.c:1646  */
+#line 7309 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter view if exists"),(yyvsp[-3].str),mm_strdup("set schema"),(yyvsp[0].str));
 }
-#line 37145 "preproc.c" /* yacc.c:1646  */
+#line 37151 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1154:
-#line 7313 "preproc.y" /* yacc.c:1646  */
+#line 7313 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter materialized view"),(yyvsp[-3].str),mm_strdup("set schema"),(yyvsp[0].str));
 }
-#line 37153 "preproc.c" /* yacc.c:1646  */
+#line 37159 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1155:
-#line 7317 "preproc.y" /* yacc.c:1646  */
+#line 7317 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter materialized view if exists"),(yyvsp[-3].str),mm_strdup("set schema"),(yyvsp[0].str));
 }
-#line 37161 "preproc.c" /* yacc.c:1646  */
+#line 37167 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1156:
-#line 7321 "preproc.y" /* yacc.c:1646  */
+#line 7321 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter foreign table"),(yyvsp[-3].str),mm_strdup("set schema"),(yyvsp[0].str));
 }
-#line 37169 "preproc.c" /* yacc.c:1646  */
+#line 37175 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1157:
-#line 7325 "preproc.y" /* yacc.c:1646  */
+#line 7325 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter foreign table if exists"),(yyvsp[-3].str),mm_strdup("set schema"),(yyvsp[0].str));
 }
-#line 37177 "preproc.c" /* yacc.c:1646  */
+#line 37183 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1158:
-#line 7329 "preproc.y" /* yacc.c:1646  */
+#line 7329 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter type"),(yyvsp[-3].str),mm_strdup("set schema"),(yyvsp[0].str));
 }
-#line 37185 "preproc.c" /* yacc.c:1646  */
+#line 37191 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1159:
-#line 7337 "preproc.y" /* yacc.c:1646  */
+#line 7337 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("alter aggregate"),(yyvsp[-4].str),(yyvsp[-3].str),mm_strdup("owner to"),(yyvsp[0].str));
 }
-#line 37193 "preproc.c" /* yacc.c:1646  */
+#line 37199 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1160:
-#line 7341 "preproc.y" /* yacc.c:1646  */
+#line 7341 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter collation"),(yyvsp[-3].str),mm_strdup("owner to"),(yyvsp[0].str));
 }
-#line 37201 "preproc.c" /* yacc.c:1646  */
+#line 37207 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1161:
-#line 7345 "preproc.y" /* yacc.c:1646  */
+#line 7345 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter conversion"),(yyvsp[-3].str),mm_strdup("owner to"),(yyvsp[0].str));
 }
-#line 37209 "preproc.c" /* yacc.c:1646  */
+#line 37215 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1162:
-#line 7349 "preproc.y" /* yacc.c:1646  */
+#line 7349 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter database"),(yyvsp[-3].str),mm_strdup("owner to"),(yyvsp[0].str));
 }
-#line 37217 "preproc.c" /* yacc.c:1646  */
+#line 37223 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1163:
-#line 7353 "preproc.y" /* yacc.c:1646  */
+#line 7353 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter domain"),(yyvsp[-3].str),mm_strdup("owner to"),(yyvsp[0].str));
 }
-#line 37225 "preproc.c" /* yacc.c:1646  */
+#line 37231 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1164:
-#line 7357 "preproc.y" /* yacc.c:1646  */
+#line 7357 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter function"),(yyvsp[-3].str),mm_strdup("owner to"),(yyvsp[0].str));
 }
-#line 37233 "preproc.c" /* yacc.c:1646  */
+#line 37239 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1165:
-#line 7361 "preproc.y" /* yacc.c:1646  */
+#line 7361 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,mm_strdup("alter"),(yyvsp[-5].str),mm_strdup("language"),(yyvsp[-3].str),mm_strdup("owner to"),(yyvsp[0].str));
 }
-#line 37241 "preproc.c" /* yacc.c:1646  */
+#line 37247 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1166:
-#line 7365 "preproc.y" /* yacc.c:1646  */
+#line 7365 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter large object"),(yyvsp[-3].str),mm_strdup("owner to"),(yyvsp[0].str));
 }
-#line 37249 "preproc.c" /* yacc.c:1646  */
+#line 37255 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1167:
-#line 7369 "preproc.y" /* yacc.c:1646  */
+#line 7369 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("alter operator"),(yyvsp[-4].str),(yyvsp[-3].str),mm_strdup("owner to"),(yyvsp[0].str));
 }
-#line 37257 "preproc.c" /* yacc.c:1646  */
+#line 37263 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1168:
-#line 7373 "preproc.y" /* yacc.c:1646  */
+#line 7373 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,mm_strdup("alter operator class"),(yyvsp[-5].str),mm_strdup("using"),(yyvsp[-3].str),mm_strdup("owner to"),(yyvsp[0].str));
 }
-#line 37265 "preproc.c" /* yacc.c:1646  */
+#line 37271 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1169:
-#line 7377 "preproc.y" /* yacc.c:1646  */
+#line 7377 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,mm_strdup("alter operator family"),(yyvsp[-5].str),mm_strdup("using"),(yyvsp[-3].str),mm_strdup("owner to"),(yyvsp[0].str));
 }
-#line 37273 "preproc.c" /* yacc.c:1646  */
+#line 37279 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1170:
-#line 7381 "preproc.y" /* yacc.c:1646  */
+#line 7381 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter schema"),(yyvsp[-3].str),mm_strdup("owner to"),(yyvsp[0].str));
 }
-#line 37281 "preproc.c" /* yacc.c:1646  */
+#line 37287 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1171:
-#line 7385 "preproc.y" /* yacc.c:1646  */
+#line 7385 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter type"),(yyvsp[-3].str),mm_strdup("owner to"),(yyvsp[0].str));
 }
-#line 37289 "preproc.c" /* yacc.c:1646  */
+#line 37295 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1172:
-#line 7389 "preproc.y" /* yacc.c:1646  */
+#line 7389 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter tablespace"),(yyvsp[-3].str),mm_strdup("owner to"),(yyvsp[0].str));
 }
-#line 37297 "preproc.c" /* yacc.c:1646  */
+#line 37303 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1173:
-#line 7393 "preproc.y" /* yacc.c:1646  */
+#line 7393 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter text search dictionary"),(yyvsp[-3].str),mm_strdup("owner to"),(yyvsp[0].str));
 }
-#line 37305 "preproc.c" /* yacc.c:1646  */
+#line 37311 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1174:
-#line 7397 "preproc.y" /* yacc.c:1646  */
+#line 7397 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter text search configuration"),(yyvsp[-3].str),mm_strdup("owner to"),(yyvsp[0].str));
 }
-#line 37313 "preproc.c" /* yacc.c:1646  */
+#line 37319 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1175:
-#line 7401 "preproc.y" /* yacc.c:1646  */
+#line 7401 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter foreign data wrapper"),(yyvsp[-3].str),mm_strdup("owner to"),(yyvsp[0].str));
 }
-#line 37321 "preproc.c" /* yacc.c:1646  */
+#line 37327 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1176:
-#line 7405 "preproc.y" /* yacc.c:1646  */
+#line 7405 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter server"),(yyvsp[-3].str),mm_strdup("owner to"),(yyvsp[0].str));
 }
-#line 37329 "preproc.c" /* yacc.c:1646  */
+#line 37335 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1177:
-#line 7409 "preproc.y" /* yacc.c:1646  */
+#line 7409 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter event trigger"),(yyvsp[-3].str),mm_strdup("owner to"),(yyvsp[0].str));
 }
-#line 37337 "preproc.c" /* yacc.c:1646  */
+#line 37343 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1178:
-#line 7417 "preproc.y" /* yacc.c:1646  */
+#line 7417 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(12,mm_strdup("create"),(yyvsp[-11].str),mm_strdup("rule"),(yyvsp[-9].str),mm_strdup("as on"),(yyvsp[-6].str),mm_strdup("to"),(yyvsp[-4].str),(yyvsp[-3].str),mm_strdup("do"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 37345 "preproc.c" /* yacc.c:1646  */
+#line 37351 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1179:
-#line 7425 "preproc.y" /* yacc.c:1646  */
+#line 7425 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("nothing");
 }
-#line 37353 "preproc.c" /* yacc.c:1646  */
+#line 37359 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1180:
-#line 7429 "preproc.y" /* yacc.c:1646  */
+#line 7429 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 37361 "preproc.c" /* yacc.c:1646  */
+#line 37367 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1181:
-#line 7433 "preproc.y" /* yacc.c:1646  */
+#line 7433 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 37369 "preproc.c" /* yacc.c:1646  */
+#line 37375 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1182:
-#line 7441 "preproc.y" /* yacc.c:1646  */
+#line 7441 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(";"),(yyvsp[0].str));
 }
-#line 37377 "preproc.c" /* yacc.c:1646  */
+#line 37383 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1183:
-#line 7445 "preproc.y" /* yacc.c:1646  */
+#line 7445 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 37385 "preproc.c" /* yacc.c:1646  */
+#line 37391 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1184:
-#line 7453 "preproc.y" /* yacc.c:1646  */
+#line 7453 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 37393 "preproc.c" /* yacc.c:1646  */
+#line 37399 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1185:
-#line 7457 "preproc.y" /* yacc.c:1646  */
+#line 7457 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 37401 "preproc.c" /* yacc.c:1646  */
+#line 37407 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1186:
-#line 7461 "preproc.y" /* yacc.c:1646  */
+#line 7461 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 37409 "preproc.c" /* yacc.c:1646  */
+#line 37415 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1187:
-#line 7465 "preproc.y" /* yacc.c:1646  */
+#line 7465 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 37417 "preproc.c" /* yacc.c:1646  */
+#line 37423 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1188:
-#line 7469 "preproc.y" /* yacc.c:1646  */
+#line 7469 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 37425 "preproc.c" /* yacc.c:1646  */
+#line 37431 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1189:
-#line 7477 "preproc.y" /* yacc.c:1646  */
+#line 7477 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 37433 "preproc.c" /* yacc.c:1646  */
+#line 37439 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1190:
-#line 7481 "preproc.y" /* yacc.c:1646  */
+#line 7481 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 37440 "preproc.c" /* yacc.c:1646  */
+#line 37446 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1191:
-#line 7488 "preproc.y" /* yacc.c:1646  */
+#line 7488 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("select");
 }
-#line 37448 "preproc.c" /* yacc.c:1646  */
+#line 37454 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1192:
-#line 7492 "preproc.y" /* yacc.c:1646  */
+#line 7492 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("update");
 }
-#line 37456 "preproc.c" /* yacc.c:1646  */
+#line 37462 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1193:
-#line 7496 "preproc.y" /* yacc.c:1646  */
+#line 7496 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("delete");
 }
-#line 37464 "preproc.c" /* yacc.c:1646  */
+#line 37470 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1194:
-#line 7500 "preproc.y" /* yacc.c:1646  */
+#line 7500 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("insert");
 }
-#line 37472 "preproc.c" /* yacc.c:1646  */
+#line 37478 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1195:
-#line 7508 "preproc.y" /* yacc.c:1646  */
+#line 7508 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("instead");
 }
-#line 37480 "preproc.c" /* yacc.c:1646  */
+#line 37486 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1196:
-#line 7512 "preproc.y" /* yacc.c:1646  */
+#line 7512 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("also");
 }
-#line 37488 "preproc.c" /* yacc.c:1646  */
+#line 37494 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1197:
-#line 7516 "preproc.y" /* yacc.c:1646  */
+#line 7516 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 37495 "preproc.c" /* yacc.c:1646  */
+#line 37501 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1198:
-#line 7523 "preproc.y" /* yacc.c:1646  */
+#line 7523 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("drop rule"),(yyvsp[-3].str),mm_strdup("on"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 37503 "preproc.c" /* yacc.c:1646  */
+#line 37509 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1199:
-#line 7527 "preproc.y" /* yacc.c:1646  */
+#line 7527 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("drop rule if exists"),(yyvsp[-3].str),mm_strdup("on"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 37511 "preproc.c" /* yacc.c:1646  */
+#line 37517 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1200:
-#line 7535 "preproc.y" /* yacc.c:1646  */
+#line 7535 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("notify"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 37519 "preproc.c" /* yacc.c:1646  */
+#line 37525 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1201:
-#line 7543 "preproc.y" /* yacc.c:1646  */
+#line 7543 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup(","),(yyvsp[0].str));
 }
-#line 37527 "preproc.c" /* yacc.c:1646  */
+#line 37533 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1202:
-#line 7547 "preproc.y" /* yacc.c:1646  */
+#line 7547 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 37534 "preproc.c" /* yacc.c:1646  */
+#line 37540 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1203:
-#line 7554 "preproc.y" /* yacc.c:1646  */
+#line 7554 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("listen"),(yyvsp[0].str));
 }
-#line 37542 "preproc.c" /* yacc.c:1646  */
+#line 37548 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1204:
-#line 7562 "preproc.y" /* yacc.c:1646  */
+#line 7562 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("unlisten"),(yyvsp[0].str));
 }
-#line 37550 "preproc.c" /* yacc.c:1646  */
+#line 37556 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1205:
-#line 7566 "preproc.y" /* yacc.c:1646  */
+#line 7566 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("unlisten *");
 }
-#line 37558 "preproc.c" /* yacc.c:1646  */
+#line 37564 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1206:
-#line 7574 "preproc.y" /* yacc.c:1646  */
+#line 7574 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("abort"),(yyvsp[0].str));
 }
-#line 37566 "preproc.c" /* yacc.c:1646  */
+#line 37572 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1207:
-#line 7578 "preproc.y" /* yacc.c:1646  */
+#line 7578 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("begin"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 37574 "preproc.c" /* yacc.c:1646  */
+#line 37580 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1208:
-#line 7582 "preproc.y" /* yacc.c:1646  */
+#line 7582 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("start transaction"),(yyvsp[0].str));
 }
-#line 37582 "preproc.c" /* yacc.c:1646  */
+#line 37588 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1209:
-#line 7586 "preproc.y" /* yacc.c:1646  */
+#line 7586 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("commit"),(yyvsp[0].str));
 }
-#line 37590 "preproc.c" /* yacc.c:1646  */
+#line 37596 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1210:
-#line 7590 "preproc.y" /* yacc.c:1646  */
+#line 7590 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("end"),(yyvsp[0].str));
 }
-#line 37598 "preproc.c" /* yacc.c:1646  */
+#line 37604 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1211:
-#line 7594 "preproc.y" /* yacc.c:1646  */
+#line 7594 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("rollback"),(yyvsp[0].str));
 }
-#line 37606 "preproc.c" /* yacc.c:1646  */
+#line 37612 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1212:
-#line 7598 "preproc.y" /* yacc.c:1646  */
+#line 7598 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("savepoint"),(yyvsp[0].str));
 }
-#line 37614 "preproc.c" /* yacc.c:1646  */
+#line 37620 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1213:
-#line 7602 "preproc.y" /* yacc.c:1646  */
+#line 7602 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("release savepoint"),(yyvsp[0].str));
 }
-#line 37622 "preproc.c" /* yacc.c:1646  */
+#line 37628 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1214:
-#line 7606 "preproc.y" /* yacc.c:1646  */
+#line 7606 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("release"),(yyvsp[0].str));
 }
-#line 37630 "preproc.c" /* yacc.c:1646  */
+#line 37636 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1215:
-#line 7610 "preproc.y" /* yacc.c:1646  */
+#line 7610 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("rollback"),(yyvsp[-3].str),mm_strdup("to savepoint"),(yyvsp[0].str));
 }
-#line 37638 "preproc.c" /* yacc.c:1646  */
+#line 37644 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1216:
-#line 7614 "preproc.y" /* yacc.c:1646  */
+#line 7614 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("rollback"),(yyvsp[-2].str),mm_strdup("to"),(yyvsp[0].str));
 }
-#line 37646 "preproc.c" /* yacc.c:1646  */
+#line 37652 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1217:
-#line 7618 "preproc.y" /* yacc.c:1646  */
+#line 7618 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("prepare transaction"),(yyvsp[0].str));
 }
-#line 37654 "preproc.c" /* yacc.c:1646  */
+#line 37660 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1218:
-#line 7622 "preproc.y" /* yacc.c:1646  */
+#line 7622 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("commit prepared"),(yyvsp[0].str));
 }
-#line 37662 "preproc.c" /* yacc.c:1646  */
+#line 37668 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1219:
-#line 7626 "preproc.y" /* yacc.c:1646  */
+#line 7626 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("rollback prepared"),(yyvsp[0].str));
 }
-#line 37670 "preproc.c" /* yacc.c:1646  */
+#line 37676 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1220:
-#line 7634 "preproc.y" /* yacc.c:1646  */
+#line 7634 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("work");
 }
-#line 37678 "preproc.c" /* yacc.c:1646  */
+#line 37684 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1221:
-#line 7638 "preproc.y" /* yacc.c:1646  */
+#line 7638 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("transaction");
 }
-#line 37686 "preproc.c" /* yacc.c:1646  */
+#line 37692 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1222:
-#line 7642 "preproc.y" /* yacc.c:1646  */
+#line 7642 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 37693 "preproc.c" /* yacc.c:1646  */
+#line 37699 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1223:
-#line 7649 "preproc.y" /* yacc.c:1646  */
+#line 7649 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("isolation level"),(yyvsp[0].str));
 }
-#line 37701 "preproc.c" /* yacc.c:1646  */
+#line 37707 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1224:
-#line 7653 "preproc.y" /* yacc.c:1646  */
+#line 7653 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("read only");
 }
-#line 37709 "preproc.c" /* yacc.c:1646  */
+#line 37715 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1225:
-#line 7657 "preproc.y" /* yacc.c:1646  */
+#line 7657 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("read write");
 }
-#line 37717 "preproc.c" /* yacc.c:1646  */
+#line 37723 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1226:
-#line 7661 "preproc.y" /* yacc.c:1646  */
+#line 7661 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("deferrable");
 }
-#line 37725 "preproc.c" /* yacc.c:1646  */
+#line 37731 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1227:
-#line 7665 "preproc.y" /* yacc.c:1646  */
+#line 7665 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("not deferrable");
 }
-#line 37733 "preproc.c" /* yacc.c:1646  */
+#line 37739 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1228:
-#line 7673 "preproc.y" /* yacc.c:1646  */
+#line 7673 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 37741 "preproc.c" /* yacc.c:1646  */
+#line 37747 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1229:
-#line 7677 "preproc.y" /* yacc.c:1646  */
+#line 7677 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 37749 "preproc.c" /* yacc.c:1646  */
+#line 37755 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1230:
-#line 7681 "preproc.y" /* yacc.c:1646  */
+#line 7681 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 37757 "preproc.c" /* yacc.c:1646  */
+#line 37763 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1231:
-#line 7689 "preproc.y" /* yacc.c:1646  */
+#line 7689 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 37765 "preproc.c" /* yacc.c:1646  */
+#line 37771 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1232:
-#line 7693 "preproc.y" /* yacc.c:1646  */
+#line 7693 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 37772 "preproc.c" /* yacc.c:1646  */
+#line 37778 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1233:
-#line 7700 "preproc.y" /* yacc.c:1646  */
+#line 7700 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(9,mm_strdup("create"),(yyvsp[-7].str),mm_strdup("view"),(yyvsp[-5].str),(yyvsp[-4].str),(yyvsp[-3].str),mm_strdup("as"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 37780 "preproc.c" /* yacc.c:1646  */
+#line 37786 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1234:
-#line 7704 "preproc.y" /* yacc.c:1646  */
+#line 7704 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(9,mm_strdup("create or replace"),(yyvsp[-7].str),mm_strdup("view"),(yyvsp[-5].str),(yyvsp[-4].str),(yyvsp[-3].str),mm_strdup("as"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 37788 "preproc.c" /* yacc.c:1646  */
+#line 37794 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1235:
-#line 7708 "preproc.y" /* yacc.c:1646  */
+#line 7708 "preproc.y" /* yacc.c:1652  */
     { 
 mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server");
  (yyval.str) = cat_str(11,mm_strdup("create"),(yyvsp[-10].str),mm_strdup("recursive view"),(yyvsp[-7].str),mm_strdup("("),(yyvsp[-5].str),mm_strdup(")"),(yyvsp[-3].str),mm_strdup("as"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 37797 "preproc.c" /* yacc.c:1646  */
+#line 37803 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1236:
-#line 7713 "preproc.y" /* yacc.c:1646  */
+#line 7713 "preproc.y" /* yacc.c:1652  */
     { 
 mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server");
  (yyval.str) = cat_str(11,mm_strdup("create or replace"),(yyvsp[-10].str),mm_strdup("recursive view"),(yyvsp[-7].str),mm_strdup("("),(yyvsp[-5].str),mm_strdup(")"),(yyvsp[-3].str),mm_strdup("as"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 37806 "preproc.c" /* yacc.c:1646  */
+#line 37812 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1237:
-#line 7722 "preproc.y" /* yacc.c:1646  */
+#line 7722 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("with check option");
 }
-#line 37814 "preproc.c" /* yacc.c:1646  */
+#line 37820 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1238:
-#line 7726 "preproc.y" /* yacc.c:1646  */
+#line 7726 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("with cascaded check option");
 }
-#line 37822 "preproc.c" /* yacc.c:1646  */
+#line 37828 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1239:
-#line 7730 "preproc.y" /* yacc.c:1646  */
+#line 7730 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("with local check option");
 }
-#line 37830 "preproc.c" /* yacc.c:1646  */
+#line 37836 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1240:
-#line 7734 "preproc.y" /* yacc.c:1646  */
+#line 7734 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 37837 "preproc.c" /* yacc.c:1646  */
+#line 37843 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1241:
-#line 7741 "preproc.y" /* yacc.c:1646  */
+#line 7741 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("load"),(yyvsp[0].str));
 }
-#line 37845 "preproc.c" /* yacc.c:1646  */
+#line 37851 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1242:
-#line 7749 "preproc.y" /* yacc.c:1646  */
+#line 7749 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("create database"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 37853 "preproc.c" /* yacc.c:1646  */
+#line 37859 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1243:
-#line 7757 "preproc.y" /* yacc.c:1646  */
+#line 7757 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 37861 "preproc.c" /* yacc.c:1646  */
+#line 37867 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1244:
-#line 7761 "preproc.y" /* yacc.c:1646  */
+#line 7761 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 37868 "preproc.c" /* yacc.c:1646  */
+#line 37874 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1245:
-#line 7768 "preproc.y" /* yacc.c:1646  */
+#line 7768 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("tablespace"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 37876 "preproc.c" /* yacc.c:1646  */
+#line 37882 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1246:
-#line 7772 "preproc.y" /* yacc.c:1646  */
+#line 7772 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("tablespace"),(yyvsp[-1].str),mm_strdup("default"));
 }
-#line 37884 "preproc.c" /* yacc.c:1646  */
+#line 37890 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1247:
-#line 7776 "preproc.y" /* yacc.c:1646  */
+#line 7776 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("location"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 37892 "preproc.c" /* yacc.c:1646  */
+#line 37898 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1248:
-#line 7780 "preproc.y" /* yacc.c:1646  */
+#line 7780 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("location"),(yyvsp[-1].str),mm_strdup("default"));
 }
-#line 37900 "preproc.c" /* yacc.c:1646  */
+#line 37906 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1249:
-#line 7784 "preproc.y" /* yacc.c:1646  */
+#line 7784 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("template"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 37908 "preproc.c" /* yacc.c:1646  */
+#line 37914 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1250:
-#line 7788 "preproc.y" /* yacc.c:1646  */
+#line 7788 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("template"),(yyvsp[-1].str),mm_strdup("default"));
 }
-#line 37916 "preproc.c" /* yacc.c:1646  */
+#line 37922 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1251:
-#line 7792 "preproc.y" /* yacc.c:1646  */
+#line 7792 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("encoding"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 37924 "preproc.c" /* yacc.c:1646  */
+#line 37930 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1252:
-#line 7796 "preproc.y" /* yacc.c:1646  */
+#line 7796 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("encoding"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 37932 "preproc.c" /* yacc.c:1646  */
+#line 37938 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1253:
-#line 7800 "preproc.y" /* yacc.c:1646  */
+#line 7800 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("encoding"),(yyvsp[-1].str),mm_strdup("default"));
 }
-#line 37940 "preproc.c" /* yacc.c:1646  */
+#line 37946 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1254:
-#line 7804 "preproc.y" /* yacc.c:1646  */
+#line 7804 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("lc_collate"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 37948 "preproc.c" /* yacc.c:1646  */
+#line 37954 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1255:
-#line 7808 "preproc.y" /* yacc.c:1646  */
+#line 7808 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("lc_collate"),(yyvsp[-1].str),mm_strdup("default"));
 }
-#line 37956 "preproc.c" /* yacc.c:1646  */
+#line 37962 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1256:
-#line 7812 "preproc.y" /* yacc.c:1646  */
+#line 7812 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("lc_ctype"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 37964 "preproc.c" /* yacc.c:1646  */
+#line 37970 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1257:
-#line 7816 "preproc.y" /* yacc.c:1646  */
+#line 7816 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("lc_ctype"),(yyvsp[-1].str),mm_strdup("default"));
 }
-#line 37972 "preproc.c" /* yacc.c:1646  */
+#line 37978 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1258:
-#line 7820 "preproc.y" /* yacc.c:1646  */
+#line 7820 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("connection limit"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 37980 "preproc.c" /* yacc.c:1646  */
+#line 37986 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1259:
-#line 7824 "preproc.y" /* yacc.c:1646  */
+#line 7824 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("owner"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 37988 "preproc.c" /* yacc.c:1646  */
+#line 37994 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1260:
-#line 7828 "preproc.y" /* yacc.c:1646  */
+#line 7828 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("owner"),(yyvsp[-1].str),mm_strdup("default"));
 }
-#line 37996 "preproc.c" /* yacc.c:1646  */
+#line 38002 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1261:
-#line 7836 "preproc.y" /* yacc.c:1646  */
+#line 7836 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("=");
 }
-#line 38004 "preproc.c" /* yacc.c:1646  */
+#line 38010 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1262:
-#line 7840 "preproc.y" /* yacc.c:1646  */
+#line 7840 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 38011 "preproc.c" /* yacc.c:1646  */
+#line 38017 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1263:
-#line 7847 "preproc.y" /* yacc.c:1646  */
+#line 7847 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter database"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 38019 "preproc.c" /* yacc.c:1646  */
+#line 38025 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1264:
-#line 7851 "preproc.y" /* yacc.c:1646  */
+#line 7851 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter database"),(yyvsp[-3].str),mm_strdup("set tablespace"),(yyvsp[0].str));
 }
-#line 38027 "preproc.c" /* yacc.c:1646  */
+#line 38033 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1265:
-#line 7859 "preproc.y" /* yacc.c:1646  */
+#line 7859 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("alter database"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 38035 "preproc.c" /* yacc.c:1646  */
+#line 38041 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1266:
-#line 7867 "preproc.y" /* yacc.c:1646  */
+#line 7867 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 38043 "preproc.c" /* yacc.c:1646  */
+#line 38049 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1267:
-#line 7871 "preproc.y" /* yacc.c:1646  */
+#line 7871 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 38050 "preproc.c" /* yacc.c:1646  */
+#line 38056 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1268:
-#line 7878 "preproc.y" /* yacc.c:1646  */
+#line 7878 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("connection limit"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 38058 "preproc.c" /* yacc.c:1646  */
+#line 38064 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1269:
-#line 7886 "preproc.y" /* yacc.c:1646  */
+#line 7886 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("drop database"),(yyvsp[0].str));
 }
-#line 38066 "preproc.c" /* yacc.c:1646  */
+#line 38072 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1270:
-#line 7890 "preproc.y" /* yacc.c:1646  */
+#line 7890 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("drop database if exists"),(yyvsp[0].str));
 }
-#line 38074 "preproc.c" /* yacc.c:1646  */
+#line 38080 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1271:
-#line 7898 "preproc.y" /* yacc.c:1646  */
+#line 7898 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("alter system set"),(yyvsp[0].str));
 }
-#line 38082 "preproc.c" /* yacc.c:1646  */
+#line 38088 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1272:
-#line 7902 "preproc.y" /* yacc.c:1646  */
+#line 7902 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("alter system reset"),(yyvsp[0].str));
 }
-#line 38090 "preproc.c" /* yacc.c:1646  */
+#line 38096 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1273:
-#line 7910 "preproc.y" /* yacc.c:1646  */
+#line 7910 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("create domain"),(yyvsp[-3].str),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 38098 "preproc.c" /* yacc.c:1646  */
+#line 38104 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1274:
-#line 7918 "preproc.y" /* yacc.c:1646  */
+#line 7918 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("alter domain"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 38106 "preproc.c" /* yacc.c:1646  */
+#line 38112 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1275:
-#line 7922 "preproc.y" /* yacc.c:1646  */
+#line 7922 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("alter domain"),(yyvsp[-3].str),mm_strdup("drop not null"));
 }
-#line 38114 "preproc.c" /* yacc.c:1646  */
+#line 38120 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1276:
-#line 7926 "preproc.y" /* yacc.c:1646  */
+#line 7926 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("alter domain"),(yyvsp[-3].str),mm_strdup("set not null"));
 }
-#line 38122 "preproc.c" /* yacc.c:1646  */
+#line 38128 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1277:
-#line 7930 "preproc.y" /* yacc.c:1646  */
+#line 7930 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter domain"),(yyvsp[-2].str),mm_strdup("add"),(yyvsp[0].str));
 }
-#line 38130 "preproc.c" /* yacc.c:1646  */
+#line 38136 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1278:
-#line 7934 "preproc.y" /* yacc.c:1646  */
+#line 7934 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("alter domain"),(yyvsp[-4].str),mm_strdup("drop constraint"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 38138 "preproc.c" /* yacc.c:1646  */
+#line 38144 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1279:
-#line 7938 "preproc.y" /* yacc.c:1646  */
+#line 7938 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("alter domain"),(yyvsp[-6].str),mm_strdup("drop constraint if exists"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 38146 "preproc.c" /* yacc.c:1646  */
+#line 38152 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1280:
-#line 7942 "preproc.y" /* yacc.c:1646  */
+#line 7942 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter domain"),(yyvsp[-3].str),mm_strdup("validate constraint"),(yyvsp[0].str));
 }
-#line 38154 "preproc.c" /* yacc.c:1646  */
+#line 38160 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1281:
-#line 7950 "preproc.y" /* yacc.c:1646  */
+#line 7950 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("as");
 }
-#line 38162 "preproc.c" /* yacc.c:1646  */
+#line 38168 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1282:
-#line 7954 "preproc.y" /* yacc.c:1646  */
+#line 7954 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 38169 "preproc.c" /* yacc.c:1646  */
+#line 38175 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1283:
-#line 7961 "preproc.y" /* yacc.c:1646  */
+#line 7961 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("alter text search dictionary"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 38177 "preproc.c" /* yacc.c:1646  */
+#line 38183 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1284:
-#line 7969 "preproc.y" /* yacc.c:1646  */
+#line 7969 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,mm_strdup("alter text search configuration"),(yyvsp[-6].str),mm_strdup("add mapping for"),(yyvsp[-2].str),mm_strdup("with"),(yyvsp[0].str));
 }
-#line 38185 "preproc.c" /* yacc.c:1646  */
+#line 38191 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1285:
-#line 7973 "preproc.y" /* yacc.c:1646  */
+#line 7973 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,mm_strdup("alter text search configuration"),(yyvsp[-6].str),mm_strdup("alter mapping for"),(yyvsp[-2].str),mm_strdup("with"),(yyvsp[0].str));
 }
-#line 38193 "preproc.c" /* yacc.c:1646  */
+#line 38199 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1286:
-#line 7977 "preproc.y" /* yacc.c:1646  */
+#line 7977 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,mm_strdup("alter text search configuration"),(yyvsp[-6].str),mm_strdup("alter mapping replace"),(yyvsp[-2].str),mm_strdup("with"),(yyvsp[0].str));
 }
-#line 38201 "preproc.c" /* yacc.c:1646  */
+#line 38207 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1287:
-#line 7981 "preproc.y" /* yacc.c:1646  */
+#line 7981 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(8,mm_strdup("alter text search configuration"),(yyvsp[-8].str),mm_strdup("alter mapping for"),(yyvsp[-4].str),mm_strdup("replace"),(yyvsp[-2].str),mm_strdup("with"),(yyvsp[0].str));
 }
-#line 38209 "preproc.c" /* yacc.c:1646  */
+#line 38215 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1288:
-#line 7985 "preproc.y" /* yacc.c:1646  */
+#line 7985 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter text search configuration"),(yyvsp[-4].str),mm_strdup("drop mapping for"),(yyvsp[0].str));
 }
-#line 38217 "preproc.c" /* yacc.c:1646  */
+#line 38223 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1289:
-#line 7989 "preproc.y" /* yacc.c:1646  */
+#line 7989 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("alter text search configuration"),(yyvsp[-6].str),mm_strdup("drop mapping if exists for"),(yyvsp[0].str));
 }
-#line 38225 "preproc.c" /* yacc.c:1646  */
+#line 38231 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1290:
-#line 7997 "preproc.y" /* yacc.c:1646  */
+#line 7997 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(10,mm_strdup("create"),(yyvsp[-8].str),mm_strdup("conversion"),(yyvsp[-6].str),mm_strdup("for"),(yyvsp[-4].str),mm_strdup("to"),(yyvsp[-2].str),mm_strdup("from"),(yyvsp[0].str));
 }
-#line 38233 "preproc.c" /* yacc.c:1646  */
+#line 38239 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1291:
-#line 8005 "preproc.y" /* yacc.c:1646  */
+#line 8005 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("cluster"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 38241 "preproc.c" /* yacc.c:1646  */
+#line 38247 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1292:
-#line 8009 "preproc.y" /* yacc.c:1646  */
+#line 8009 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("cluster"),(yyvsp[0].str));
 }
-#line 38249 "preproc.c" /* yacc.c:1646  */
+#line 38255 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1293:
-#line 8013 "preproc.y" /* yacc.c:1646  */
+#line 8013 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("cluster"),(yyvsp[-3].str),(yyvsp[-2].str),mm_strdup("on"),(yyvsp[0].str));
 }
-#line 38257 "preproc.c" /* yacc.c:1646  */
+#line 38263 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1294:
-#line 8021 "preproc.y" /* yacc.c:1646  */
+#line 8021 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("using"),(yyvsp[0].str));
 }
-#line 38265 "preproc.c" /* yacc.c:1646  */
+#line 38271 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1295:
-#line 8025 "preproc.y" /* yacc.c:1646  */
+#line 8025 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 38272 "preproc.c" /* yacc.c:1646  */
+#line 38278 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1296:
-#line 8032 "preproc.y" /* yacc.c:1646  */
+#line 8032 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("vacuum"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 38280 "preproc.c" /* yacc.c:1646  */
+#line 38286 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1297:
-#line 8036 "preproc.y" /* yacc.c:1646  */
+#line 8036 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("vacuum"),(yyvsp[-3].str),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 38288 "preproc.c" /* yacc.c:1646  */
+#line 38294 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1298:
-#line 8040 "preproc.y" /* yacc.c:1646  */
+#line 8040 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("vacuum"),(yyvsp[-3].str),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 38296 "preproc.c" /* yacc.c:1646  */
+#line 38302 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1299:
-#line 8044 "preproc.y" /* yacc.c:1646  */
+#line 8044 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("vacuum ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 38304 "preproc.c" /* yacc.c:1646  */
+#line 38310 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1300:
-#line 8048 "preproc.y" /* yacc.c:1646  */
+#line 8048 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("vacuum ("),(yyvsp[-3].str),mm_strdup(")"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 38312 "preproc.c" /* yacc.c:1646  */
+#line 38318 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1301:
-#line 8056 "preproc.y" /* yacc.c:1646  */
+#line 8056 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 38320 "preproc.c" /* yacc.c:1646  */
+#line 38326 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1302:
-#line 8060 "preproc.y" /* yacc.c:1646  */
+#line 8060 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 38328 "preproc.c" /* yacc.c:1646  */
+#line 38334 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1303:
-#line 8068 "preproc.y" /* yacc.c:1646  */
+#line 8068 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 38336 "preproc.c" /* yacc.c:1646  */
+#line 38342 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1304:
-#line 8072 "preproc.y" /* yacc.c:1646  */
+#line 8072 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("verbose");
 }
-#line 38344 "preproc.c" /* yacc.c:1646  */
+#line 38350 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1305:
-#line 8076 "preproc.y" /* yacc.c:1646  */
+#line 8076 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("freeze");
 }
-#line 38352 "preproc.c" /* yacc.c:1646  */
+#line 38358 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1306:
-#line 8080 "preproc.y" /* yacc.c:1646  */
+#line 8080 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("full");
 }
-#line 38360 "preproc.c" /* yacc.c:1646  */
+#line 38366 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1307:
-#line 8088 "preproc.y" /* yacc.c:1646  */
+#line 8088 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 38368 "preproc.c" /* yacc.c:1646  */
+#line 38374 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1308:
-#line 8092 "preproc.y" /* yacc.c:1646  */
+#line 8092 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,(yyvsp[-3].str),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 38376 "preproc.c" /* yacc.c:1646  */
+#line 38382 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1309:
-#line 8100 "preproc.y" /* yacc.c:1646  */
+#line 8100 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("analyze");
 }
-#line 38384 "preproc.c" /* yacc.c:1646  */
+#line 38390 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1310:
-#line 8104 "preproc.y" /* yacc.c:1646  */
+#line 8104 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("analyse");
 }
-#line 38392 "preproc.c" /* yacc.c:1646  */
+#line 38398 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1311:
-#line 8112 "preproc.y" /* yacc.c:1646  */
+#line 8112 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("verbose");
 }
-#line 38400 "preproc.c" /* yacc.c:1646  */
+#line 38406 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1312:
-#line 8116 "preproc.y" /* yacc.c:1646  */
+#line 8116 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 38407 "preproc.c" /* yacc.c:1646  */
+#line 38413 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1313:
-#line 8123 "preproc.y" /* yacc.c:1646  */
+#line 8123 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("full");
 }
-#line 38415 "preproc.c" /* yacc.c:1646  */
+#line 38421 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1314:
-#line 8127 "preproc.y" /* yacc.c:1646  */
+#line 8127 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 38422 "preproc.c" /* yacc.c:1646  */
+#line 38428 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1315:
-#line 8134 "preproc.y" /* yacc.c:1646  */
+#line 8134 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("freeze");
 }
-#line 38430 "preproc.c" /* yacc.c:1646  */
+#line 38436 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1316:
-#line 8138 "preproc.y" /* yacc.c:1646  */
+#line 8138 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 38437 "preproc.c" /* yacc.c:1646  */
+#line 38443 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1317:
-#line 8145 "preproc.y" /* yacc.c:1646  */
+#line 8145 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 38445 "preproc.c" /* yacc.c:1646  */
+#line 38451 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1318:
-#line 8149 "preproc.y" /* yacc.c:1646  */
+#line 8149 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 38452 "preproc.c" /* yacc.c:1646  */
+#line 38458 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1319:
-#line 8156 "preproc.y" /* yacc.c:1646  */
+#line 8156 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("explain"),(yyvsp[0].str));
 }
-#line 38460 "preproc.c" /* yacc.c:1646  */
+#line 38466 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1320:
-#line 8160 "preproc.y" /* yacc.c:1646  */
+#line 8160 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("explain"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 38468 "preproc.c" /* yacc.c:1646  */
+#line 38474 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1321:
-#line 8164 "preproc.y" /* yacc.c:1646  */
+#line 8164 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("explain verbose"),(yyvsp[0].str));
 }
-#line 38476 "preproc.c" /* yacc.c:1646  */
+#line 38482 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1322:
-#line 8168 "preproc.y" /* yacc.c:1646  */
+#line 8168 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("explain ("),(yyvsp[-2].str),mm_strdup(")"),(yyvsp[0].str));
 }
-#line 38484 "preproc.c" /* yacc.c:1646  */
+#line 38490 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1323:
-#line 8176 "preproc.y" /* yacc.c:1646  */
+#line 8176 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 38492 "preproc.c" /* yacc.c:1646  */
+#line 38498 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1324:
-#line 8180 "preproc.y" /* yacc.c:1646  */
+#line 8180 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 38500 "preproc.c" /* yacc.c:1646  */
+#line 38506 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1325:
-#line 8184 "preproc.y" /* yacc.c:1646  */
+#line 8184 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 38508 "preproc.c" /* yacc.c:1646  */
+#line 38514 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1326:
-#line 8188 "preproc.y" /* yacc.c:1646  */
+#line 8188 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 38516 "preproc.c" /* yacc.c:1646  */
+#line 38522 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1327:
-#line 8192 "preproc.y" /* yacc.c:1646  */
+#line 8192 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 38524 "preproc.c" /* yacc.c:1646  */
+#line 38530 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1328:
-#line 8196 "preproc.y" /* yacc.c:1646  */
+#line 8196 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 38532 "preproc.c" /* yacc.c:1646  */
+#line 38538 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1329:
-#line 8200 "preproc.y" /* yacc.c:1646  */
+#line 8200 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 38540 "preproc.c" /* yacc.c:1646  */
+#line 38546 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1330:
-#line 8204 "preproc.y" /* yacc.c:1646  */
+#line 8204 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 38548 "preproc.c" /* yacc.c:1646  */
+#line 38554 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1331:
-#line 8208 "preproc.y" /* yacc.c:1646  */
+#line 8208 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 38556 "preproc.c" /* yacc.c:1646  */
+#line 38562 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1332:
-#line 8216 "preproc.y" /* yacc.c:1646  */
+#line 8216 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 38564 "preproc.c" /* yacc.c:1646  */
+#line 38570 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1333:
-#line 8220 "preproc.y" /* yacc.c:1646  */
+#line 8220 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 38572 "preproc.c" /* yacc.c:1646  */
+#line 38578 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1334:
-#line 8228 "preproc.y" /* yacc.c:1646  */
+#line 8228 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 38580 "preproc.c" /* yacc.c:1646  */
+#line 38586 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1335:
-#line 8236 "preproc.y" /* yacc.c:1646  */
+#line 8236 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 38588 "preproc.c" /* yacc.c:1646  */
+#line 38594 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1336:
-#line 8240 "preproc.y" /* yacc.c:1646  */
+#line 8240 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 38596 "preproc.c" /* yacc.c:1646  */
+#line 38602 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1337:
-#line 8248 "preproc.y" /* yacc.c:1646  */
+#line 8248 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 38604 "preproc.c" /* yacc.c:1646  */
+#line 38610 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1338:
-#line 8252 "preproc.y" /* yacc.c:1646  */
+#line 8252 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 38612 "preproc.c" /* yacc.c:1646  */
+#line 38618 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1339:
-#line 8256 "preproc.y" /* yacc.c:1646  */
+#line 8256 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 38619 "preproc.c" /* yacc.c:1646  */
+#line 38625 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1340:
-#line 8263 "preproc.y" /* yacc.c:1646  */
+#line 8263 "preproc.y" /* yacc.c:1652  */
     {
 		(yyval.prep).name = (yyvsp[-3].str);
 		(yyval.prep).type = (yyvsp[-2].str);
 		(yyval.prep).stmt = cat_str(3, mm_strdup("\""), (yyvsp[0].str), mm_strdup("\""));
 	}
-#line 38629 "preproc.c" /* yacc.c:1646  */
+#line 38635 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1341:
-#line 8269 "preproc.y" /* yacc.c:1646  */
+#line 8269 "preproc.y" /* yacc.c:1652  */
     {
 		(yyval.prep).name = (yyvsp[-2].str);
 		(yyval.prep).type = NULL;
 		(yyval.prep).stmt = (yyvsp[0].str);
 	}
-#line 38639 "preproc.c" /* yacc.c:1646  */
+#line 38645 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1342:
-#line 8279 "preproc.y" /* yacc.c:1646  */
+#line 8279 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 38647 "preproc.c" /* yacc.c:1646  */
+#line 38653 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1343:
-#line 8283 "preproc.y" /* yacc.c:1646  */
+#line 8283 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 38654 "preproc.c" /* yacc.c:1646  */
+#line 38660 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1344:
-#line 8290 "preproc.y" /* yacc.c:1646  */
+#line 8290 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 38662 "preproc.c" /* yacc.c:1646  */
+#line 38668 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1345:
-#line 8294 "preproc.y" /* yacc.c:1646  */
+#line 8294 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 38670 "preproc.c" /* yacc.c:1646  */
+#line 38676 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1346:
-#line 8298 "preproc.y" /* yacc.c:1646  */
+#line 8298 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 38678 "preproc.c" /* yacc.c:1646  */
+#line 38684 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1347:
-#line 8302 "preproc.y" /* yacc.c:1646  */
+#line 8302 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 38686 "preproc.c" /* yacc.c:1646  */
+#line 38692 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1348:
-#line 8310 "preproc.y" /* yacc.c:1646  */
+#line 8310 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[-2].str); }
-#line 38692 "preproc.c" /* yacc.c:1646  */
+#line 38698 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1349:
-#line 8312 "preproc.y" /* yacc.c:1646  */
+#line 8312 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(8,mm_strdup("create"),(yyvsp[-7].str),mm_strdup("table"),(yyvsp[-5].str),mm_strdup("as execute"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 38700 "preproc.c" /* yacc.c:1646  */
+#line 38706 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1350:
-#line 8320 "preproc.y" /* yacc.c:1646  */
+#line 8320 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 38708 "preproc.c" /* yacc.c:1646  */
+#line 38714 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1351:
-#line 8324 "preproc.y" /* yacc.c:1646  */
+#line 8324 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 38715 "preproc.c" /* yacc.c:1646  */
+#line 38721 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1352:
-#line 8331 "preproc.y" /* yacc.c:1646  */
+#line 8331 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,(yyvsp[-5].str),mm_strdup("insert into"),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 38723 "preproc.c" /* yacc.c:1646  */
+#line 38729 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1353:
-#line 8339 "preproc.y" /* yacc.c:1646  */
+#line 8339 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 38731 "preproc.c" /* yacc.c:1646  */
+#line 38737 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1354:
-#line 8343 "preproc.y" /* yacc.c:1646  */
+#line 8343 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("("),(yyvsp[-2].str),mm_strdup(")"),(yyvsp[0].str));
 }
-#line 38739 "preproc.c" /* yacc.c:1646  */
+#line 38745 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1355:
-#line 8347 "preproc.y" /* yacc.c:1646  */
+#line 8347 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("default values");
 }
-#line 38747 "preproc.c" /* yacc.c:1646  */
+#line 38753 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1356:
-#line 8355 "preproc.y" /* yacc.c:1646  */
+#line 8355 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 38755 "preproc.c" /* yacc.c:1646  */
+#line 38761 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1357:
-#line 8359 "preproc.y" /* yacc.c:1646  */
+#line 8359 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 38763 "preproc.c" /* yacc.c:1646  */
+#line 38769 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1358:
-#line 8367 "preproc.y" /* yacc.c:1646  */
+#line 8367 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 38771 "preproc.c" /* yacc.c:1646  */
+#line 38777 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1359:
-#line 8375 "preproc.y" /* yacc.c:1646  */
+#line 8375 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("returning"),(yyvsp[-1].str));
 }
-#line 38779 "preproc.c" /* yacc.c:1646  */
+#line 38785 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1360:
-#line 8379 "preproc.y" /* yacc.c:1646  */
+#line 8379 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 38786 "preproc.c" /* yacc.c:1646  */
+#line 38792 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1361:
-#line 8386 "preproc.y" /* yacc.c:1646  */
+#line 8386 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,(yyvsp[-6].str),mm_strdup("delete from"),(yyvsp[-3].str),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 38794 "preproc.c" /* yacc.c:1646  */
+#line 38800 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1362:
-#line 8394 "preproc.y" /* yacc.c:1646  */
+#line 8394 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("using"),(yyvsp[0].str));
 }
-#line 38802 "preproc.c" /* yacc.c:1646  */
+#line 38808 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1363:
-#line 8398 "preproc.y" /* yacc.c:1646  */
+#line 8398 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 38809 "preproc.c" /* yacc.c:1646  */
+#line 38815 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1364:
-#line 8405 "preproc.y" /* yacc.c:1646  */
+#line 8405 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("lock"),(yyvsp[-3].str),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 38817 "preproc.c" /* yacc.c:1646  */
+#line 38823 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1365:
-#line 8413 "preproc.y" /* yacc.c:1646  */
+#line 8413 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("in"),(yyvsp[-1].str),mm_strdup("mode"));
 }
-#line 38825 "preproc.c" /* yacc.c:1646  */
+#line 38831 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1366:
-#line 8417 "preproc.y" /* yacc.c:1646  */
+#line 8417 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 38832 "preproc.c" /* yacc.c:1646  */
+#line 38838 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1367:
-#line 8424 "preproc.y" /* yacc.c:1646  */
+#line 8424 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("access share");
 }
-#line 38840 "preproc.c" /* yacc.c:1646  */
+#line 38846 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1368:
-#line 8428 "preproc.y" /* yacc.c:1646  */
+#line 8428 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("row share");
 }
-#line 38848 "preproc.c" /* yacc.c:1646  */
+#line 38854 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1369:
-#line 8432 "preproc.y" /* yacc.c:1646  */
+#line 8432 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("row exclusive");
 }
-#line 38856 "preproc.c" /* yacc.c:1646  */
+#line 38862 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1370:
-#line 8436 "preproc.y" /* yacc.c:1646  */
+#line 8436 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("share update exclusive");
 }
-#line 38864 "preproc.c" /* yacc.c:1646  */
+#line 38870 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1371:
-#line 8440 "preproc.y" /* yacc.c:1646  */
+#line 8440 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("share");
 }
-#line 38872 "preproc.c" /* yacc.c:1646  */
+#line 38878 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1372:
-#line 8444 "preproc.y" /* yacc.c:1646  */
+#line 8444 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("share row exclusive");
 }
-#line 38880 "preproc.c" /* yacc.c:1646  */
+#line 38886 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1373:
-#line 8448 "preproc.y" /* yacc.c:1646  */
+#line 8448 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("exclusive");
 }
-#line 38888 "preproc.c" /* yacc.c:1646  */
+#line 38894 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1374:
-#line 8452 "preproc.y" /* yacc.c:1646  */
+#line 8452 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("access exclusive");
 }
-#line 38896 "preproc.c" /* yacc.c:1646  */
+#line 38902 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1375:
-#line 8460 "preproc.y" /* yacc.c:1646  */
+#line 8460 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("nowait");
 }
-#line 38904 "preproc.c" /* yacc.c:1646  */
+#line 38910 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1376:
-#line 8464 "preproc.y" /* yacc.c:1646  */
+#line 8464 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 38911 "preproc.c" /* yacc.c:1646  */
+#line 38917 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1377:
-#line 8471 "preproc.y" /* yacc.c:1646  */
+#line 8471 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(8,(yyvsp[-7].str),mm_strdup("update"),(yyvsp[-5].str),mm_strdup("set"),(yyvsp[-3].str),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 38919 "preproc.c" /* yacc.c:1646  */
+#line 38925 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1378:
-#line 8479 "preproc.y" /* yacc.c:1646  */
+#line 8479 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 38927 "preproc.c" /* yacc.c:1646  */
+#line 38933 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1379:
-#line 8483 "preproc.y" /* yacc.c:1646  */
+#line 8483 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 38935 "preproc.c" /* yacc.c:1646  */
+#line 38941 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1380:
-#line 8491 "preproc.y" /* yacc.c:1646  */
+#line 8491 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 38943 "preproc.c" /* yacc.c:1646  */
+#line 38949 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1381:
-#line 8495 "preproc.y" /* yacc.c:1646  */
+#line 8495 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 38951 "preproc.c" /* yacc.c:1646  */
+#line 38957 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1382:
-#line 8503 "preproc.y" /* yacc.c:1646  */
+#line 8503 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("="),(yyvsp[0].str));
 }
-#line 38959 "preproc.c" /* yacc.c:1646  */
+#line 38965 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1383:
-#line 8511 "preproc.y" /* yacc.c:1646  */
+#line 8511 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("("),(yyvsp[-3].str),mm_strdup(") ="),(yyvsp[0].str));
 }
-#line 38967 "preproc.c" /* yacc.c:1646  */
+#line 38973 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1384:
-#line 8519 "preproc.y" /* yacc.c:1646  */
+#line 8519 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 38975 "preproc.c" /* yacc.c:1646  */
+#line 38981 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1385:
-#line 8527 "preproc.y" /* yacc.c:1646  */
+#line 8527 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 38983 "preproc.c" /* yacc.c:1646  */
+#line 38989 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1386:
-#line 8531 "preproc.y" /* yacc.c:1646  */
+#line 8531 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 38991 "preproc.c" /* yacc.c:1646  */
+#line 38997 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1387:
-#line 8539 "preproc.y" /* yacc.c:1646  */
+#line 8539 "preproc.y" /* yacc.c:1652  */
     {
 		struct cursor *ptr, *this;
 		char *cursor_marker = (yyvsp[-5].str)[0] == ':' ? mm_strdup("$0") : mm_strdup((yyvsp[-5].str));
@@ -39040,19 +39046,19 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 		else
 			(yyval.str) = cat2_str(adjust_outofscope_cursor_vars(this), comment);
 	}
-#line 39044 "preproc.c" /* yacc.c:1646  */
+#line 39050 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1388:
-#line 8592 "preproc.y" /* yacc.c:1646  */
+#line 8592 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 39052 "preproc.c" /* yacc.c:1646  */
+#line 39058 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1389:
-#line 8596 "preproc.y" /* yacc.c:1646  */
+#line 8596 "preproc.y" /* yacc.c:1652  */
     {
 			char *curname = mm_alloc(strlen((yyvsp[0].str)) + 2);
 			sprintf(curname, ":%s", (yyvsp[0].str));
@@ -39060,1404 +39066,1404 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			(yyvsp[0].str) = curname;
 			(yyval.str) = (yyvsp[0].str);
 		}
-#line 39064 "preproc.c" /* yacc.c:1646  */
+#line 39070 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1390:
-#line 8608 "preproc.y" /* yacc.c:1646  */
+#line 8608 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 39071 "preproc.c" /* yacc.c:1646  */
+#line 39077 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1391:
-#line 8611 "preproc.y" /* yacc.c:1646  */
+#line 8611 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-2].str),mm_strdup("no scroll"));
 }
-#line 39079 "preproc.c" /* yacc.c:1646  */
+#line 39085 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1392:
-#line 8615 "preproc.y" /* yacc.c:1646  */
+#line 8615 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),mm_strdup("scroll"));
 }
-#line 39087 "preproc.c" /* yacc.c:1646  */
+#line 39093 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1393:
-#line 8619 "preproc.y" /* yacc.c:1646  */
+#line 8619 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),mm_strdup("binary"));
 }
-#line 39095 "preproc.c" /* yacc.c:1646  */
+#line 39101 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1394:
-#line 8623 "preproc.y" /* yacc.c:1646  */
+#line 8623 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),mm_strdup("insensitive"));
 }
-#line 39103 "preproc.c" /* yacc.c:1646  */
+#line 39109 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1395:
-#line 8631 "preproc.y" /* yacc.c:1646  */
+#line 8631 "preproc.y" /* yacc.c:1652  */
     {
 		if (compat == ECPG_COMPAT_INFORMIX_SE && autocommit)
 			(yyval.str) = mm_strdup("with hold");
 		else
 			(yyval.str) = EMPTY;
 	}
-#line 39114 "preproc.c" /* yacc.c:1646  */
+#line 39120 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1396:
-#line 8638 "preproc.y" /* yacc.c:1646  */
+#line 8638 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("with hold");
 }
-#line 39122 "preproc.c" /* yacc.c:1646  */
+#line 39128 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1397:
-#line 8642 "preproc.y" /* yacc.c:1646  */
+#line 8642 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("without hold");
 }
-#line 39130 "preproc.c" /* yacc.c:1646  */
+#line 39136 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1398:
-#line 8650 "preproc.y" /* yacc.c:1646  */
+#line 8650 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 39138 "preproc.c" /* yacc.c:1646  */
+#line 39144 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1399:
-#line 8654 "preproc.y" /* yacc.c:1646  */
+#line 8654 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 39146 "preproc.c" /* yacc.c:1646  */
+#line 39152 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1400:
-#line 8662 "preproc.y" /* yacc.c:1646  */
+#line 8662 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 39154 "preproc.c" /* yacc.c:1646  */
+#line 39160 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1401:
-#line 8666 "preproc.y" /* yacc.c:1646  */
+#line 8666 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 39162 "preproc.c" /* yacc.c:1646  */
+#line 39168 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1402:
-#line 8674 "preproc.y" /* yacc.c:1646  */
+#line 8674 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 39170 "preproc.c" /* yacc.c:1646  */
+#line 39176 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1403:
-#line 8678 "preproc.y" /* yacc.c:1646  */
+#line 8678 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 39178 "preproc.c" /* yacc.c:1646  */
+#line 39184 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1404:
-#line 8682 "preproc.y" /* yacc.c:1646  */
+#line 8682 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,(yyvsp[-3].str),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 39186 "preproc.c" /* yacc.c:1646  */
+#line 39192 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1405:
-#line 8686 "preproc.y" /* yacc.c:1646  */
+#line 8686 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,(yyvsp[-3].str),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 39194 "preproc.c" /* yacc.c:1646  */
+#line 39200 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1406:
-#line 8690 "preproc.y" /* yacc.c:1646  */
+#line 8690 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 39202 "preproc.c" /* yacc.c:1646  */
+#line 39208 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1407:
-#line 8694 "preproc.y" /* yacc.c:1646  */
+#line 8694 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 39210 "preproc.c" /* yacc.c:1646  */
+#line 39216 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1408:
-#line 8698 "preproc.y" /* yacc.c:1646  */
+#line 8698 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,(yyvsp[-4].str),(yyvsp[-3].str),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 39218 "preproc.c" /* yacc.c:1646  */
+#line 39224 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1409:
-#line 8702 "preproc.y" /* yacc.c:1646  */
+#line 8702 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,(yyvsp[-4].str),(yyvsp[-3].str),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 39226 "preproc.c" /* yacc.c:1646  */
+#line 39232 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1410:
-#line 8710 "preproc.y" /* yacc.c:1646  */
+#line 8710 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 39234 "preproc.c" /* yacc.c:1646  */
+#line 39240 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1411:
-#line 8714 "preproc.y" /* yacc.c:1646  */
+#line 8714 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 39242 "preproc.c" /* yacc.c:1646  */
+#line 39248 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1412:
-#line 8722 "preproc.y" /* yacc.c:1646  */
+#line 8722 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(9,mm_strdup("select"),(yyvsp[-7].str),(yyvsp[-6].str),(yyvsp[-5].str),(yyvsp[-4].str),(yyvsp[-3].str),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 39250 "preproc.c" /* yacc.c:1646  */
+#line 39256 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1413:
-#line 8726 "preproc.y" /* yacc.c:1646  */
+#line 8726 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 39258 "preproc.c" /* yacc.c:1646  */
+#line 39264 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1414:
-#line 8730 "preproc.y" /* yacc.c:1646  */
+#line 8730 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("table"),(yyvsp[0].str));
 }
-#line 39266 "preproc.c" /* yacc.c:1646  */
+#line 39272 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1415:
-#line 8734 "preproc.y" /* yacc.c:1646  */
+#line 8734 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,(yyvsp[-3].str),mm_strdup("union"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 39274 "preproc.c" /* yacc.c:1646  */
+#line 39280 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1416:
-#line 8738 "preproc.y" /* yacc.c:1646  */
+#line 8738 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,(yyvsp[-3].str),mm_strdup("intersect"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 39282 "preproc.c" /* yacc.c:1646  */
+#line 39288 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1417:
-#line 8742 "preproc.y" /* yacc.c:1646  */
+#line 8742 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,(yyvsp[-3].str),mm_strdup("except"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 39290 "preproc.c" /* yacc.c:1646  */
+#line 39296 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1418:
-#line 8750 "preproc.y" /* yacc.c:1646  */
+#line 8750 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("with"),(yyvsp[0].str));
 }
-#line 39298 "preproc.c" /* yacc.c:1646  */
+#line 39304 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1419:
-#line 8754 "preproc.y" /* yacc.c:1646  */
+#line 8754 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("with recursive"),(yyvsp[0].str));
 }
-#line 39306 "preproc.c" /* yacc.c:1646  */
+#line 39312 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1420:
-#line 8762 "preproc.y" /* yacc.c:1646  */
+#line 8762 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 39314 "preproc.c" /* yacc.c:1646  */
+#line 39320 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1421:
-#line 8766 "preproc.y" /* yacc.c:1646  */
+#line 8766 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 39322 "preproc.c" /* yacc.c:1646  */
+#line 39328 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1422:
-#line 8774 "preproc.y" /* yacc.c:1646  */
+#line 8774 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,(yyvsp[-5].str),(yyvsp[-4].str),mm_strdup("as ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 39330 "preproc.c" /* yacc.c:1646  */
+#line 39336 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1423:
-#line 8782 "preproc.y" /* yacc.c:1646  */
+#line 8782 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 39338 "preproc.c" /* yacc.c:1646  */
+#line 39344 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1424:
-#line 8786 "preproc.y" /* yacc.c:1646  */
+#line 8786 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 39345 "preproc.c" /* yacc.c:1646  */
+#line 39351 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1425:
-#line 8793 "preproc.y" /* yacc.c:1646  */
+#line 8793 "preproc.y" /* yacc.c:1652  */
     {
 						FoundInto = 1;
 						(yyval.str)= cat2_str(mm_strdup("into"), (yyvsp[0].str));
 					}
-#line 39354 "preproc.c" /* yacc.c:1646  */
+#line 39360 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1426:
-#line 8797 "preproc.y" /* yacc.c:1646  */
+#line 8797 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = EMPTY; }
-#line 39360 "preproc.c" /* yacc.c:1646  */
+#line 39366 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1427:
-#line 8799 "preproc.y" /* yacc.c:1646  */
+#line 8799 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 39367 "preproc.c" /* yacc.c:1646  */
+#line 39373 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1428:
-#line 8806 "preproc.y" /* yacc.c:1646  */
+#line 8806 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("temporary"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 39375 "preproc.c" /* yacc.c:1646  */
+#line 39381 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1429:
-#line 8810 "preproc.y" /* yacc.c:1646  */
+#line 8810 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("temp"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 39383 "preproc.c" /* yacc.c:1646  */
+#line 39389 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1430:
-#line 8814 "preproc.y" /* yacc.c:1646  */
+#line 8814 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("local temporary"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 39391 "preproc.c" /* yacc.c:1646  */
+#line 39397 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1431:
-#line 8818 "preproc.y" /* yacc.c:1646  */
+#line 8818 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("local temp"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 39399 "preproc.c" /* yacc.c:1646  */
+#line 39405 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1432:
-#line 8822 "preproc.y" /* yacc.c:1646  */
+#line 8822 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("global temporary"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 39407 "preproc.c" /* yacc.c:1646  */
+#line 39413 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1433:
-#line 8826 "preproc.y" /* yacc.c:1646  */
+#line 8826 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("global temp"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 39415 "preproc.c" /* yacc.c:1646  */
+#line 39421 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1434:
-#line 8830 "preproc.y" /* yacc.c:1646  */
+#line 8830 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("unlogged"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 39423 "preproc.c" /* yacc.c:1646  */
+#line 39429 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1435:
-#line 8834 "preproc.y" /* yacc.c:1646  */
+#line 8834 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("table"),(yyvsp[0].str));
 }
-#line 39431 "preproc.c" /* yacc.c:1646  */
+#line 39437 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1436:
-#line 8838 "preproc.y" /* yacc.c:1646  */
+#line 8838 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 39439 "preproc.c" /* yacc.c:1646  */
+#line 39445 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1437:
-#line 8846 "preproc.y" /* yacc.c:1646  */
+#line 8846 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("table");
 }
-#line 39447 "preproc.c" /* yacc.c:1646  */
+#line 39453 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1438:
-#line 8850 "preproc.y" /* yacc.c:1646  */
+#line 8850 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 39454 "preproc.c" /* yacc.c:1646  */
+#line 39460 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1439:
-#line 8857 "preproc.y" /* yacc.c:1646  */
+#line 8857 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("all");
 }
-#line 39462 "preproc.c" /* yacc.c:1646  */
+#line 39468 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1440:
-#line 8861 "preproc.y" /* yacc.c:1646  */
+#line 8861 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("distinct");
 }
-#line 39470 "preproc.c" /* yacc.c:1646  */
+#line 39476 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1441:
-#line 8865 "preproc.y" /* yacc.c:1646  */
+#line 8865 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 39477 "preproc.c" /* yacc.c:1646  */
+#line 39483 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1442:
-#line 8872 "preproc.y" /* yacc.c:1646  */
+#line 8872 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("distinct");
 }
-#line 39485 "preproc.c" /* yacc.c:1646  */
+#line 39491 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1443:
-#line 8876 "preproc.y" /* yacc.c:1646  */
+#line 8876 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("distinct on ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 39493 "preproc.c" /* yacc.c:1646  */
+#line 39499 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1444:
-#line 8880 "preproc.y" /* yacc.c:1646  */
+#line 8880 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("all");
 }
-#line 39501 "preproc.c" /* yacc.c:1646  */
+#line 39507 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1445:
-#line 8884 "preproc.y" /* yacc.c:1646  */
+#line 8884 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 39508 "preproc.c" /* yacc.c:1646  */
+#line 39514 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1446:
-#line 8891 "preproc.y" /* yacc.c:1646  */
+#line 8891 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 39516 "preproc.c" /* yacc.c:1646  */
+#line 39522 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1447:
-#line 8895 "preproc.y" /* yacc.c:1646  */
+#line 8895 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 39523 "preproc.c" /* yacc.c:1646  */
+#line 39529 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1448:
-#line 8902 "preproc.y" /* yacc.c:1646  */
+#line 8902 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("order by"),(yyvsp[0].str));
 }
-#line 39531 "preproc.c" /* yacc.c:1646  */
+#line 39537 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1449:
-#line 8910 "preproc.y" /* yacc.c:1646  */
+#line 8910 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 39539 "preproc.c" /* yacc.c:1646  */
+#line 39545 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1450:
-#line 8914 "preproc.y" /* yacc.c:1646  */
+#line 8914 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 39547 "preproc.c" /* yacc.c:1646  */
+#line 39553 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1451:
-#line 8922 "preproc.y" /* yacc.c:1646  */
+#line 8922 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,(yyvsp[-3].str),mm_strdup("using"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 39555 "preproc.c" /* yacc.c:1646  */
+#line 39561 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1452:
-#line 8926 "preproc.y" /* yacc.c:1646  */
+#line 8926 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 39563 "preproc.c" /* yacc.c:1646  */
+#line 39569 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1453:
-#line 8934 "preproc.y" /* yacc.c:1646  */
+#line 8934 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 39571 "preproc.c" /* yacc.c:1646  */
+#line 39577 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1454:
-#line 8938 "preproc.y" /* yacc.c:1646  */
+#line 8938 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 39579 "preproc.c" /* yacc.c:1646  */
+#line 39585 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1455:
-#line 8942 "preproc.y" /* yacc.c:1646  */
+#line 8942 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 39587 "preproc.c" /* yacc.c:1646  */
+#line 39593 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1456:
-#line 8946 "preproc.y" /* yacc.c:1646  */
+#line 8946 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 39595 "preproc.c" /* yacc.c:1646  */
+#line 39601 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1457:
-#line 8954 "preproc.y" /* yacc.c:1646  */
+#line 8954 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 39603 "preproc.c" /* yacc.c:1646  */
+#line 39609 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1458:
-#line 8958 "preproc.y" /* yacc.c:1646  */
+#line 8958 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 39610 "preproc.c" /* yacc.c:1646  */
+#line 39616 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1459:
-#line 8965 "preproc.y" /* yacc.c:1646  */
+#line 8965 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("limit"),(yyvsp[0].str));
 }
-#line 39618 "preproc.c" /* yacc.c:1646  */
+#line 39624 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1460:
-#line 8969 "preproc.y" /* yacc.c:1646  */
+#line 8969 "preproc.y" /* yacc.c:1652  */
     {
 		mmerror(PARSE_ERROR, ET_WARNING, "no longer supported LIMIT #,# syntax passed to server");
 		(yyval.str) = cat_str(4, mm_strdup("limit"), (yyvsp[-2].str), mm_strdup(","), (yyvsp[0].str));
 	}
-#line 39627 "preproc.c" /* yacc.c:1646  */
+#line 39633 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1461:
-#line 8974 "preproc.y" /* yacc.c:1646  */
+#line 8974 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("fetch"),(yyvsp[-3].str),(yyvsp[-2].str),(yyvsp[-1].str),mm_strdup("only"));
 }
-#line 39635 "preproc.c" /* yacc.c:1646  */
+#line 39641 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1462:
-#line 8978 "preproc.y" /* yacc.c:1646  */
+#line 8978 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("fetch"),(yyvsp[-2].str),(yyvsp[-1].str),mm_strdup("only"));
 }
-#line 39643 "preproc.c" /* yacc.c:1646  */
+#line 39649 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1463:
-#line 8986 "preproc.y" /* yacc.c:1646  */
+#line 8986 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("offset"),(yyvsp[0].str));
 }
-#line 39651 "preproc.c" /* yacc.c:1646  */
+#line 39657 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1464:
-#line 8990 "preproc.y" /* yacc.c:1646  */
+#line 8990 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("offset"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 39659 "preproc.c" /* yacc.c:1646  */
+#line 39665 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1465:
-#line 8998 "preproc.y" /* yacc.c:1646  */
+#line 8998 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 39667 "preproc.c" /* yacc.c:1646  */
+#line 39673 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1466:
-#line 9002 "preproc.y" /* yacc.c:1646  */
+#line 9002 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("all");
 }
-#line 39675 "preproc.c" /* yacc.c:1646  */
+#line 39681 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1467:
-#line 9010 "preproc.y" /* yacc.c:1646  */
+#line 9010 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 39683 "preproc.c" /* yacc.c:1646  */
+#line 39689 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1468:
-#line 9018 "preproc.y" /* yacc.c:1646  */
+#line 9018 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 39691 "preproc.c" /* yacc.c:1646  */
+#line 39697 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1469:
-#line 9022 "preproc.y" /* yacc.c:1646  */
+#line 9022 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("+"),(yyvsp[0].str));
 }
-#line 39699 "preproc.c" /* yacc.c:1646  */
+#line 39705 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1470:
-#line 9026 "preproc.y" /* yacc.c:1646  */
+#line 9026 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("-"),(yyvsp[0].str));
 }
-#line 39707 "preproc.c" /* yacc.c:1646  */
+#line 39713 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1471:
-#line 9034 "preproc.y" /* yacc.c:1646  */
+#line 9034 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 39715 "preproc.c" /* yacc.c:1646  */
+#line 39721 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1472:
-#line 9038 "preproc.y" /* yacc.c:1646  */
+#line 9038 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 39723 "preproc.c" /* yacc.c:1646  */
+#line 39729 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1473:
-#line 9046 "preproc.y" /* yacc.c:1646  */
+#line 9046 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("row");
 }
-#line 39731 "preproc.c" /* yacc.c:1646  */
+#line 39737 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1474:
-#line 9050 "preproc.y" /* yacc.c:1646  */
+#line 9050 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("rows");
 }
-#line 39739 "preproc.c" /* yacc.c:1646  */
+#line 39745 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1475:
-#line 9058 "preproc.y" /* yacc.c:1646  */
+#line 9058 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("first");
 }
-#line 39747 "preproc.c" /* yacc.c:1646  */
+#line 39753 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1476:
-#line 9062 "preproc.y" /* yacc.c:1646  */
+#line 9062 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("next");
 }
-#line 39755 "preproc.c" /* yacc.c:1646  */
+#line 39761 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1477:
-#line 9070 "preproc.y" /* yacc.c:1646  */
+#line 9070 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("group by"),(yyvsp[0].str));
 }
-#line 39763 "preproc.c" /* yacc.c:1646  */
+#line 39769 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1478:
-#line 9074 "preproc.y" /* yacc.c:1646  */
+#line 9074 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 39770 "preproc.c" /* yacc.c:1646  */
+#line 39776 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1479:
-#line 9081 "preproc.y" /* yacc.c:1646  */
+#line 9081 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("having"),(yyvsp[0].str));
 }
-#line 39778 "preproc.c" /* yacc.c:1646  */
+#line 39784 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1480:
-#line 9085 "preproc.y" /* yacc.c:1646  */
+#line 9085 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 39785 "preproc.c" /* yacc.c:1646  */
+#line 39791 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1481:
-#line 9092 "preproc.y" /* yacc.c:1646  */
+#line 9092 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 39793 "preproc.c" /* yacc.c:1646  */
+#line 39799 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1482:
-#line 9096 "preproc.y" /* yacc.c:1646  */
+#line 9096 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("for read only");
 }
-#line 39801 "preproc.c" /* yacc.c:1646  */
+#line 39807 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1483:
-#line 9104 "preproc.y" /* yacc.c:1646  */
+#line 9104 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 39809 "preproc.c" /* yacc.c:1646  */
+#line 39815 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1484:
-#line 9108 "preproc.y" /* yacc.c:1646  */
+#line 9108 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 39816 "preproc.c" /* yacc.c:1646  */
+#line 39822 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1485:
-#line 9115 "preproc.y" /* yacc.c:1646  */
+#line 9115 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 39824 "preproc.c" /* yacc.c:1646  */
+#line 39830 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1486:
-#line 9119 "preproc.y" /* yacc.c:1646  */
+#line 9119 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 39832 "preproc.c" /* yacc.c:1646  */
+#line 39838 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1487:
-#line 9127 "preproc.y" /* yacc.c:1646  */
+#line 9127 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 39840 "preproc.c" /* yacc.c:1646  */
+#line 39846 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1488:
-#line 9135 "preproc.y" /* yacc.c:1646  */
+#line 9135 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("for update");
 }
-#line 39848 "preproc.c" /* yacc.c:1646  */
+#line 39854 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1489:
-#line 9139 "preproc.y" /* yacc.c:1646  */
+#line 9139 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("for no key update");
 }
-#line 39856 "preproc.c" /* yacc.c:1646  */
+#line 39862 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1490:
-#line 9143 "preproc.y" /* yacc.c:1646  */
+#line 9143 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("for share");
 }
-#line 39864 "preproc.c" /* yacc.c:1646  */
+#line 39870 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1491:
-#line 9147 "preproc.y" /* yacc.c:1646  */
+#line 9147 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("for key share");
 }
-#line 39872 "preproc.c" /* yacc.c:1646  */
+#line 39878 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1492:
-#line 9155 "preproc.y" /* yacc.c:1646  */
+#line 9155 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("of"),(yyvsp[0].str));
 }
-#line 39880 "preproc.c" /* yacc.c:1646  */
+#line 39886 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1493:
-#line 9159 "preproc.y" /* yacc.c:1646  */
+#line 9159 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 39887 "preproc.c" /* yacc.c:1646  */
+#line 39893 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1494:
-#line 9166 "preproc.y" /* yacc.c:1646  */
+#line 9166 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("values"),(yyvsp[0].str));
 }
-#line 39895 "preproc.c" /* yacc.c:1646  */
+#line 39901 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1495:
-#line 9170 "preproc.y" /* yacc.c:1646  */
+#line 9170 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 39903 "preproc.c" /* yacc.c:1646  */
+#line 39909 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1496:
-#line 9178 "preproc.y" /* yacc.c:1646  */
+#line 9178 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("from"),(yyvsp[0].str));
 }
-#line 39911 "preproc.c" /* yacc.c:1646  */
+#line 39917 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1497:
-#line 9182 "preproc.y" /* yacc.c:1646  */
+#line 9182 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 39918 "preproc.c" /* yacc.c:1646  */
+#line 39924 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1498:
-#line 9189 "preproc.y" /* yacc.c:1646  */
+#line 9189 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 39926 "preproc.c" /* yacc.c:1646  */
+#line 39932 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1499:
-#line 9193 "preproc.y" /* yacc.c:1646  */
+#line 9193 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 39934 "preproc.c" /* yacc.c:1646  */
+#line 39940 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1500:
-#line 9201 "preproc.y" /* yacc.c:1646  */
+#line 9201 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 39942 "preproc.c" /* yacc.c:1646  */
+#line 39948 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1501:
-#line 9205 "preproc.y" /* yacc.c:1646  */
+#line 9205 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 39950 "preproc.c" /* yacc.c:1646  */
+#line 39956 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1502:
-#line 9209 "preproc.y" /* yacc.c:1646  */
+#line 9209 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("lateral"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 39958 "preproc.c" /* yacc.c:1646  */
+#line 39964 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1503:
-#line 9213 "preproc.y" /* yacc.c:1646  */
+#line 9213 "preproc.y" /* yacc.c:1652  */
     { 
 	if ((yyvsp[0].str) == NULL)
 		mmerror(PARSE_ERROR, ET_ERROR, "subquery in FROM must have an alias");
 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 39969 "preproc.c" /* yacc.c:1646  */
+#line 39975 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1504:
-#line 9220 "preproc.y" /* yacc.c:1646  */
+#line 9220 "preproc.y" /* yacc.c:1652  */
     { 
 	if ((yyvsp[0].str) == NULL)
 		mmerror(PARSE_ERROR, ET_ERROR, "subquery in FROM must have an alias");
 
  (yyval.str) = cat_str(3,mm_strdup("lateral"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 39980 "preproc.c" /* yacc.c:1646  */
+#line 39986 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1505:
-#line 9227 "preproc.y" /* yacc.c:1646  */
+#line 9227 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 39988 "preproc.c" /* yacc.c:1646  */
+#line 39994 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1506:
-#line 9231 "preproc.y" /* yacc.c:1646  */
+#line 9231 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("("),(yyvsp[-2].str),mm_strdup(")"),(yyvsp[0].str));
 }
-#line 39996 "preproc.c" /* yacc.c:1646  */
+#line 40002 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1507:
-#line 9239 "preproc.y" /* yacc.c:1646  */
+#line 9239 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 40004 "preproc.c" /* yacc.c:1646  */
+#line 40010 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1508:
-#line 9243 "preproc.y" /* yacc.c:1646  */
+#line 9243 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-3].str),mm_strdup("cross join"),(yyvsp[0].str));
 }
-#line 40012 "preproc.c" /* yacc.c:1646  */
+#line 40018 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1509:
-#line 9247 "preproc.y" /* yacc.c:1646  */
+#line 9247 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,(yyvsp[-4].str),(yyvsp[-3].str),mm_strdup("join"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 40020 "preproc.c" /* yacc.c:1646  */
+#line 40026 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1510:
-#line 9251 "preproc.y" /* yacc.c:1646  */
+#line 9251 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,(yyvsp[-3].str),mm_strdup("join"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 40028 "preproc.c" /* yacc.c:1646  */
+#line 40034 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1511:
-#line 9255 "preproc.y" /* yacc.c:1646  */
+#line 9255 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,(yyvsp[-4].str),mm_strdup("natural"),(yyvsp[-2].str),mm_strdup("join"),(yyvsp[0].str));
 }
-#line 40036 "preproc.c" /* yacc.c:1646  */
+#line 40042 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1512:
-#line 9259 "preproc.y" /* yacc.c:1646  */
+#line 9259 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-3].str),mm_strdup("natural join"),(yyvsp[0].str));
 }
-#line 40044 "preproc.c" /* yacc.c:1646  */
+#line 40050 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1513:
-#line 9267 "preproc.y" /* yacc.c:1646  */
+#line 9267 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("as"),(yyvsp[-3].str),mm_strdup("("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 40052 "preproc.c" /* yacc.c:1646  */
+#line 40058 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1514:
-#line 9271 "preproc.y" /* yacc.c:1646  */
+#line 9271 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("as"),(yyvsp[0].str));
 }
-#line 40060 "preproc.c" /* yacc.c:1646  */
+#line 40066 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1515:
-#line 9275 "preproc.y" /* yacc.c:1646  */
+#line 9275 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,(yyvsp[-3].str),mm_strdup("("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 40068 "preproc.c" /* yacc.c:1646  */
+#line 40074 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1516:
-#line 9279 "preproc.y" /* yacc.c:1646  */
+#line 9279 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 40076 "preproc.c" /* yacc.c:1646  */
+#line 40082 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1517:
-#line 9287 "preproc.y" /* yacc.c:1646  */
+#line 9287 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 40084 "preproc.c" /* yacc.c:1646  */
+#line 40090 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1518:
-#line 9291 "preproc.y" /* yacc.c:1646  */
+#line 9291 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 40091 "preproc.c" /* yacc.c:1646  */
+#line 40097 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1519:
-#line 9298 "preproc.y" /* yacc.c:1646  */
+#line 9298 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 40099 "preproc.c" /* yacc.c:1646  */
+#line 40105 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1520:
-#line 9302 "preproc.y" /* yacc.c:1646  */
+#line 9302 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("as ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 40107 "preproc.c" /* yacc.c:1646  */
+#line 40113 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1521:
-#line 9306 "preproc.y" /* yacc.c:1646  */
+#line 9306 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("as"),(yyvsp[-3].str),mm_strdup("("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 40115 "preproc.c" /* yacc.c:1646  */
+#line 40121 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1522:
-#line 9310 "preproc.y" /* yacc.c:1646  */
+#line 9310 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,(yyvsp[-3].str),mm_strdup("("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 40123 "preproc.c" /* yacc.c:1646  */
+#line 40129 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1523:
-#line 9314 "preproc.y" /* yacc.c:1646  */
+#line 9314 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 40130 "preproc.c" /* yacc.c:1646  */
+#line 40136 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1524:
-#line 9321 "preproc.y" /* yacc.c:1646  */
+#line 9321 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("full"),(yyvsp[0].str));
 }
-#line 40138 "preproc.c" /* yacc.c:1646  */
+#line 40144 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1525:
-#line 9325 "preproc.y" /* yacc.c:1646  */
+#line 9325 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("left"),(yyvsp[0].str));
 }
-#line 40146 "preproc.c" /* yacc.c:1646  */
+#line 40152 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1526:
-#line 9329 "preproc.y" /* yacc.c:1646  */
+#line 9329 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("right"),(yyvsp[0].str));
 }
-#line 40154 "preproc.c" /* yacc.c:1646  */
+#line 40160 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1527:
-#line 9333 "preproc.y" /* yacc.c:1646  */
+#line 9333 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("inner");
 }
-#line 40162 "preproc.c" /* yacc.c:1646  */
+#line 40168 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1528:
-#line 9341 "preproc.y" /* yacc.c:1646  */
+#line 9341 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("outer");
 }
-#line 40170 "preproc.c" /* yacc.c:1646  */
+#line 40176 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1529:
-#line 9345 "preproc.y" /* yacc.c:1646  */
+#line 9345 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 40177 "preproc.c" /* yacc.c:1646  */
+#line 40183 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1530:
-#line 9352 "preproc.y" /* yacc.c:1646  */
+#line 9352 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("using ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 40185 "preproc.c" /* yacc.c:1646  */
+#line 40191 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1531:
-#line 9356 "preproc.y" /* yacc.c:1646  */
+#line 9356 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("on"),(yyvsp[0].str));
 }
-#line 40193 "preproc.c" /* yacc.c:1646  */
+#line 40199 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1532:
-#line 9364 "preproc.y" /* yacc.c:1646  */
+#line 9364 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 40201 "preproc.c" /* yacc.c:1646  */
+#line 40207 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1533:
-#line 9368 "preproc.y" /* yacc.c:1646  */
+#line 9368 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),mm_strdup("*"));
 }
-#line 40209 "preproc.c" /* yacc.c:1646  */
+#line 40215 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1534:
-#line 9372 "preproc.y" /* yacc.c:1646  */
+#line 9372 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("only"),(yyvsp[0].str));
 }
-#line 40217 "preproc.c" /* yacc.c:1646  */
+#line 40223 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1535:
-#line 9376 "preproc.y" /* yacc.c:1646  */
+#line 9376 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("only ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 40225 "preproc.c" /* yacc.c:1646  */
+#line 40231 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1536:
-#line 9384 "preproc.y" /* yacc.c:1646  */
+#line 9384 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 40233 "preproc.c" /* yacc.c:1646  */
+#line 40239 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1537:
-#line 9388 "preproc.y" /* yacc.c:1646  */
+#line 9388 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 40241 "preproc.c" /* yacc.c:1646  */
+#line 40247 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1538:
-#line 9396 "preproc.y" /* yacc.c:1646  */
+#line 9396 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 40249 "preproc.c" /* yacc.c:1646  */
+#line 40255 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1539:
-#line 9400 "preproc.y" /* yacc.c:1646  */
+#line 9400 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 40257 "preproc.c" /* yacc.c:1646  */
+#line 40263 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1540:
-#line 9404 "preproc.y" /* yacc.c:1646  */
+#line 9404 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("as"),(yyvsp[0].str));
 }
-#line 40265 "preproc.c" /* yacc.c:1646  */
+#line 40271 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1541:
-#line 9412 "preproc.y" /* yacc.c:1646  */
+#line 9412 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 40273 "preproc.c" /* yacc.c:1646  */
+#line 40279 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1542:
-#line 9416 "preproc.y" /* yacc.c:1646  */
+#line 9416 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("rows from ("),(yyvsp[-2].str),mm_strdup(")"),(yyvsp[0].str));
 }
-#line 40281 "preproc.c" /* yacc.c:1646  */
+#line 40287 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1543:
-#line 9424 "preproc.y" /* yacc.c:1646  */
+#line 9424 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 40289 "preproc.c" /* yacc.c:1646  */
+#line 40295 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1544:
-#line 9432 "preproc.y" /* yacc.c:1646  */
+#line 9432 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 40297 "preproc.c" /* yacc.c:1646  */
+#line 40303 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1545:
-#line 9436 "preproc.y" /* yacc.c:1646  */
+#line 9436 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 40305 "preproc.c" /* yacc.c:1646  */
+#line 40311 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1546:
-#line 9444 "preproc.y" /* yacc.c:1646  */
+#line 9444 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("as ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 40313 "preproc.c" /* yacc.c:1646  */
+#line 40319 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1547:
-#line 9448 "preproc.y" /* yacc.c:1646  */
+#line 9448 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 40320 "preproc.c" /* yacc.c:1646  */
+#line 40326 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1548:
-#line 9455 "preproc.y" /* yacc.c:1646  */
+#line 9455 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("with ordinality");
 }
-#line 40328 "preproc.c" /* yacc.c:1646  */
+#line 40334 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1549:
-#line 9459 "preproc.y" /* yacc.c:1646  */
+#line 9459 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 40335 "preproc.c" /* yacc.c:1646  */
+#line 40341 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1550:
-#line 9466 "preproc.y" /* yacc.c:1646  */
+#line 9466 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("where"),(yyvsp[0].str));
 }
-#line 40343 "preproc.c" /* yacc.c:1646  */
+#line 40349 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1551:
-#line 9470 "preproc.y" /* yacc.c:1646  */
+#line 9470 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 40350 "preproc.c" /* yacc.c:1646  */
+#line 40356 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1552:
-#line 9477 "preproc.y" /* yacc.c:1646  */
+#line 9477 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("where"),(yyvsp[0].str));
 }
-#line 40358 "preproc.c" /* yacc.c:1646  */
+#line 40364 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1553:
-#line 9481 "preproc.y" /* yacc.c:1646  */
+#line 9481 "preproc.y" /* yacc.c:1652  */
     {
 		char *cursor_marker = (yyvsp[0].str)[0] == ':' ? mm_strdup("$0") : (yyvsp[0].str);
 		(yyval.str) = cat_str(2,mm_strdup("where current of"), cursor_marker);
 	}
-#line 40367 "preproc.c" /* yacc.c:1646  */
+#line 40373 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1554:
-#line 9486 "preproc.y" /* yacc.c:1646  */
+#line 9486 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 40374 "preproc.c" /* yacc.c:1646  */
+#line 40380 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1555:
-#line 9493 "preproc.y" /* yacc.c:1646  */
+#line 9493 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 40382 "preproc.c" /* yacc.c:1646  */
+#line 40388 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1556:
-#line 9497 "preproc.y" /* yacc.c:1646  */
+#line 9497 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 40389 "preproc.c" /* yacc.c:1646  */
+#line 40395 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1557:
-#line 9504 "preproc.y" /* yacc.c:1646  */
+#line 9504 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 40397 "preproc.c" /* yacc.c:1646  */
+#line 40403 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1558:
-#line 9508 "preproc.y" /* yacc.c:1646  */
+#line 9508 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 40405 "preproc.c" /* yacc.c:1646  */
+#line 40411 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1559:
-#line 9516 "preproc.y" /* yacc.c:1646  */
+#line 9516 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 40413 "preproc.c" /* yacc.c:1646  */
+#line 40419 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1560:
-#line 9524 "preproc.y" /* yacc.c:1646  */
+#line 9524 "preproc.y" /* yacc.c:1652  */
     {	(yyval.str) = cat2_str((yyvsp[-1].str), (yyvsp[0].index).str); }
-#line 40419 "preproc.c" /* yacc.c:1646  */
+#line 40425 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1561:
-#line 9526 "preproc.y" /* yacc.c:1646  */
+#line 9526 "preproc.y" /* yacc.c:1652  */
     {	(yyval.str) = cat_str(3, mm_strdup("setof"), (yyvsp[-1].str), (yyvsp[0].index).str); }
-#line 40425 "preproc.c" /* yacc.c:1646  */
+#line 40431 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1562:
-#line 9528 "preproc.y" /* yacc.c:1646  */
+#line 9528 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,(yyvsp[-4].str),mm_strdup("array ["),(yyvsp[-1].str),mm_strdup("]"));
 }
-#line 40433 "preproc.c" /* yacc.c:1646  */
+#line 40439 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1563:
-#line 9532 "preproc.y" /* yacc.c:1646  */
+#line 9532 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("setof"),(yyvsp[-4].str),mm_strdup("array ["),(yyvsp[-1].str),mm_strdup("]"));
 }
-#line 40441 "preproc.c" /* yacc.c:1646  */
+#line 40447 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1564:
-#line 9536 "preproc.y" /* yacc.c:1646  */
+#line 9536 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),mm_strdup("array"));
 }
-#line 40449 "preproc.c" /* yacc.c:1646  */
+#line 40455 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1565:
-#line 9540 "preproc.y" /* yacc.c:1646  */
+#line 9540 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("setof"),(yyvsp[-1].str),mm_strdup("array"));
 }
-#line 40457 "preproc.c" /* yacc.c:1646  */
+#line 40463 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1566:
-#line 9548 "preproc.y" /* yacc.c:1646  */
+#line 9548 "preproc.y" /* yacc.c:1652  */
     {
 		(yyval.index).index1 = (yyvsp[-2].index).index1;
 		(yyval.index).index2 = (yyvsp[-2].index).index2;
@@ -40467,11 +40473,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			(yyval.index).index2 = mm_strdup("0");
 		(yyval.index).str = cat_str(2, (yyvsp[-2].index).str, mm_strdup("[]"));
 	}
-#line 40471 "preproc.c" /* yacc.c:1646  */
+#line 40477 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1567:
-#line 9558 "preproc.y" /* yacc.c:1646  */
+#line 9558 "preproc.y" /* yacc.c:1652  */
     {
 		(yyval.index).index1 = (yyvsp[-3].index).index1;
 		(yyval.index).index2 = (yyvsp[-3].index).index2;
@@ -40481,6426 +40487,6426 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			(yyval.index).index2 = mm_strdup((yyvsp[-1].str));
 		(yyval.index).str = cat_str(4, (yyvsp[-3].index).str, mm_strdup("["), (yyvsp[-1].str), mm_strdup("]"));
 	}
-#line 40485 "preproc.c" /* yacc.c:1646  */
+#line 40491 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1568:
-#line 9568 "preproc.y" /* yacc.c:1646  */
+#line 9568 "preproc.y" /* yacc.c:1652  */
     {
 		(yyval.index).index1 = mm_strdup("-1");
 		(yyval.index).index2 = mm_strdup("-1");
 		(yyval.index).str= EMPTY;
 	}
-#line 40495 "preproc.c" /* yacc.c:1646  */
+#line 40501 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1569:
-#line 9578 "preproc.y" /* yacc.c:1646  */
+#line 9578 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 40503 "preproc.c" /* yacc.c:1646  */
+#line 40509 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1570:
-#line 9582 "preproc.y" /* yacc.c:1646  */
+#line 9582 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 40511 "preproc.c" /* yacc.c:1646  */
+#line 40517 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1571:
-#line 9586 "preproc.y" /* yacc.c:1646  */
+#line 9586 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 40519 "preproc.c" /* yacc.c:1646  */
+#line 40525 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1572:
-#line 9590 "preproc.y" /* yacc.c:1646  */
+#line 9590 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 40527 "preproc.c" /* yacc.c:1646  */
+#line 40533 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1573:
-#line 9594 "preproc.y" /* yacc.c:1646  */
+#line 9594 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 40535 "preproc.c" /* yacc.c:1646  */
+#line 40541 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1574:
-#line 9598 "preproc.y" /* yacc.c:1646  */
+#line 9598 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 40543 "preproc.c" /* yacc.c:1646  */
+#line 40549 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1575:
-#line 9602 "preproc.y" /* yacc.c:1646  */
+#line 9602 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,(yyvsp[-4].str),mm_strdup("("),(yyvsp[-2].str),mm_strdup(")"),(yyvsp[0].str));
 }
-#line 40551 "preproc.c" /* yacc.c:1646  */
+#line 40557 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1576:
-#line 9610 "preproc.y" /* yacc.c:1646  */
+#line 9610 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 40559 "preproc.c" /* yacc.c:1646  */
+#line 40565 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1577:
-#line 9614 "preproc.y" /* yacc.c:1646  */
+#line 9614 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 40567 "preproc.c" /* yacc.c:1646  */
+#line 40573 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1578:
-#line 9618 "preproc.y" /* yacc.c:1646  */
+#line 9618 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 40575 "preproc.c" /* yacc.c:1646  */
+#line 40581 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1579:
-#line 9622 "preproc.y" /* yacc.c:1646  */
+#line 9622 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 40583 "preproc.c" /* yacc.c:1646  */
+#line 40589 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1580:
-#line 9630 "preproc.y" /* yacc.c:1646  */
+#line 9630 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 40591 "preproc.c" /* yacc.c:1646  */
+#line 40597 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1581:
-#line 9634 "preproc.y" /* yacc.c:1646  */
+#line 9634 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 40599 "preproc.c" /* yacc.c:1646  */
+#line 40605 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1582:
-#line 9642 "preproc.y" /* yacc.c:1646  */
+#line 9642 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 40607 "preproc.c" /* yacc.c:1646  */
+#line 40613 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1583:
-#line 9646 "preproc.y" /* yacc.c:1646  */
+#line 9646 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 40614 "preproc.c" /* yacc.c:1646  */
+#line 40620 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1584:
-#line 9653 "preproc.y" /* yacc.c:1646  */
+#line 9653 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("int");
 }
-#line 40622 "preproc.c" /* yacc.c:1646  */
+#line 40628 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1585:
-#line 9657 "preproc.y" /* yacc.c:1646  */
+#line 9657 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("integer");
 }
-#line 40630 "preproc.c" /* yacc.c:1646  */
+#line 40636 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1586:
-#line 9661 "preproc.y" /* yacc.c:1646  */
+#line 9661 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("smallint");
 }
-#line 40638 "preproc.c" /* yacc.c:1646  */
+#line 40644 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1587:
-#line 9665 "preproc.y" /* yacc.c:1646  */
+#line 9665 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("bigint");
 }
-#line 40646 "preproc.c" /* yacc.c:1646  */
+#line 40652 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1588:
-#line 9669 "preproc.y" /* yacc.c:1646  */
+#line 9669 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("real");
 }
-#line 40654 "preproc.c" /* yacc.c:1646  */
+#line 40660 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1589:
-#line 9673 "preproc.y" /* yacc.c:1646  */
+#line 9673 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("float"),(yyvsp[0].str));
 }
-#line 40662 "preproc.c" /* yacc.c:1646  */
+#line 40668 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1590:
-#line 9677 "preproc.y" /* yacc.c:1646  */
+#line 9677 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("double precision");
 }
-#line 40670 "preproc.c" /* yacc.c:1646  */
+#line 40676 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1591:
-#line 9681 "preproc.y" /* yacc.c:1646  */
+#line 9681 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("decimal"),(yyvsp[0].str));
 }
-#line 40678 "preproc.c" /* yacc.c:1646  */
+#line 40684 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1592:
-#line 9685 "preproc.y" /* yacc.c:1646  */
+#line 9685 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("dec"),(yyvsp[0].str));
 }
-#line 40686 "preproc.c" /* yacc.c:1646  */
+#line 40692 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1593:
-#line 9689 "preproc.y" /* yacc.c:1646  */
+#line 9689 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("numeric"),(yyvsp[0].str));
 }
-#line 40694 "preproc.c" /* yacc.c:1646  */
+#line 40700 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1594:
-#line 9693 "preproc.y" /* yacc.c:1646  */
+#line 9693 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("boolean");
 }
-#line 40702 "preproc.c" /* yacc.c:1646  */
+#line 40708 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1595:
-#line 9701 "preproc.y" /* yacc.c:1646  */
+#line 9701 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 40710 "preproc.c" /* yacc.c:1646  */
+#line 40716 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1596:
-#line 9705 "preproc.y" /* yacc.c:1646  */
+#line 9705 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 40717 "preproc.c" /* yacc.c:1646  */
+#line 40723 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1597:
-#line 9712 "preproc.y" /* yacc.c:1646  */
+#line 9712 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 40725 "preproc.c" /* yacc.c:1646  */
+#line 40731 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1598:
-#line 9716 "preproc.y" /* yacc.c:1646  */
+#line 9716 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 40733 "preproc.c" /* yacc.c:1646  */
+#line 40739 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1599:
-#line 9724 "preproc.y" /* yacc.c:1646  */
+#line 9724 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 40741 "preproc.c" /* yacc.c:1646  */
+#line 40747 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1600:
-#line 9728 "preproc.y" /* yacc.c:1646  */
+#line 9728 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 40749 "preproc.c" /* yacc.c:1646  */
+#line 40755 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1601:
-#line 9736 "preproc.y" /* yacc.c:1646  */
+#line 9736 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("bit"),(yyvsp[-3].str),mm_strdup("("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 40757 "preproc.c" /* yacc.c:1646  */
+#line 40763 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1602:
-#line 9744 "preproc.y" /* yacc.c:1646  */
+#line 9744 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("bit"),(yyvsp[0].str));
 }
-#line 40765 "preproc.c" /* yacc.c:1646  */
+#line 40771 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1603:
-#line 9752 "preproc.y" /* yacc.c:1646  */
+#line 9752 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 40773 "preproc.c" /* yacc.c:1646  */
+#line 40779 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1604:
-#line 9756 "preproc.y" /* yacc.c:1646  */
+#line 9756 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 40781 "preproc.c" /* yacc.c:1646  */
+#line 40787 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1605:
-#line 9764 "preproc.y" /* yacc.c:1646  */
+#line 9764 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 40789 "preproc.c" /* yacc.c:1646  */
+#line 40795 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1606:
-#line 9768 "preproc.y" /* yacc.c:1646  */
+#line 9768 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 40797 "preproc.c" /* yacc.c:1646  */
+#line 40803 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1607:
-#line 9776 "preproc.y" /* yacc.c:1646  */
+#line 9776 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,(yyvsp[-4].str),mm_strdup("("),(yyvsp[-2].str),mm_strdup(")"),(yyvsp[0].str));
 }
-#line 40805 "preproc.c" /* yacc.c:1646  */
+#line 40811 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1608:
-#line 9784 "preproc.y" /* yacc.c:1646  */
+#line 9784 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 40813 "preproc.c" /* yacc.c:1646  */
+#line 40819 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1609:
-#line 9792 "preproc.y" /* yacc.c:1646  */
+#line 9792 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("character"),(yyvsp[0].str));
 }
-#line 40821 "preproc.c" /* yacc.c:1646  */
+#line 40827 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1610:
-#line 9796 "preproc.y" /* yacc.c:1646  */
+#line 9796 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("char"),(yyvsp[0].str));
 }
-#line 40829 "preproc.c" /* yacc.c:1646  */
+#line 40835 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1611:
-#line 9800 "preproc.y" /* yacc.c:1646  */
+#line 9800 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("varchar");
 }
-#line 40837 "preproc.c" /* yacc.c:1646  */
+#line 40843 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1612:
-#line 9804 "preproc.y" /* yacc.c:1646  */
+#line 9804 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("national character"),(yyvsp[0].str));
 }
-#line 40845 "preproc.c" /* yacc.c:1646  */
+#line 40851 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1613:
-#line 9808 "preproc.y" /* yacc.c:1646  */
+#line 9808 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("national char"),(yyvsp[0].str));
 }
-#line 40853 "preproc.c" /* yacc.c:1646  */
+#line 40859 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1614:
-#line 9812 "preproc.y" /* yacc.c:1646  */
+#line 9812 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("nchar"),(yyvsp[0].str));
 }
-#line 40861 "preproc.c" /* yacc.c:1646  */
+#line 40867 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1615:
-#line 9820 "preproc.y" /* yacc.c:1646  */
+#line 9820 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("varying");
 }
-#line 40869 "preproc.c" /* yacc.c:1646  */
+#line 40875 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1616:
-#line 9824 "preproc.y" /* yacc.c:1646  */
+#line 9824 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 40876 "preproc.c" /* yacc.c:1646  */
+#line 40882 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1617:
-#line 9831 "preproc.y" /* yacc.c:1646  */
+#line 9831 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("character set"),(yyvsp[0].str));
 }
-#line 40884 "preproc.c" /* yacc.c:1646  */
+#line 40890 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1618:
-#line 9835 "preproc.y" /* yacc.c:1646  */
+#line 9835 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 40891 "preproc.c" /* yacc.c:1646  */
+#line 40897 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1619:
-#line 9842 "preproc.y" /* yacc.c:1646  */
+#line 9842 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("timestamp ("),(yyvsp[-2].str),mm_strdup(")"),(yyvsp[0].str));
 }
-#line 40899 "preproc.c" /* yacc.c:1646  */
+#line 40905 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1620:
-#line 9846 "preproc.y" /* yacc.c:1646  */
+#line 9846 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("timestamp"),(yyvsp[0].str));
 }
-#line 40907 "preproc.c" /* yacc.c:1646  */
+#line 40913 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1621:
-#line 9850 "preproc.y" /* yacc.c:1646  */
+#line 9850 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("time ("),(yyvsp[-2].str),mm_strdup(")"),(yyvsp[0].str));
 }
-#line 40915 "preproc.c" /* yacc.c:1646  */
+#line 40921 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1622:
-#line 9854 "preproc.y" /* yacc.c:1646  */
+#line 9854 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("time"),(yyvsp[0].str));
 }
-#line 40923 "preproc.c" /* yacc.c:1646  */
+#line 40929 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1623:
-#line 9862 "preproc.y" /* yacc.c:1646  */
+#line 9862 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("interval");
 }
-#line 40931 "preproc.c" /* yacc.c:1646  */
+#line 40937 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1624:
-#line 9870 "preproc.y" /* yacc.c:1646  */
+#line 9870 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("with time zone");
 }
-#line 40939 "preproc.c" /* yacc.c:1646  */
+#line 40945 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1625:
-#line 9874 "preproc.y" /* yacc.c:1646  */
+#line 9874 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("without time zone");
 }
-#line 40947 "preproc.c" /* yacc.c:1646  */
+#line 40953 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1626:
-#line 9878 "preproc.y" /* yacc.c:1646  */
+#line 9878 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 40954 "preproc.c" /* yacc.c:1646  */
+#line 40960 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1627:
-#line 9885 "preproc.y" /* yacc.c:1646  */
+#line 9885 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("year");
 }
-#line 40962 "preproc.c" /* yacc.c:1646  */
+#line 40968 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1628:
-#line 9889 "preproc.y" /* yacc.c:1646  */
+#line 9889 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("month");
 }
-#line 40970 "preproc.c" /* yacc.c:1646  */
+#line 40976 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1629:
-#line 9893 "preproc.y" /* yacc.c:1646  */
+#line 9893 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("day");
 }
-#line 40978 "preproc.c" /* yacc.c:1646  */
+#line 40984 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1630:
-#line 9897 "preproc.y" /* yacc.c:1646  */
+#line 9897 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("hour");
 }
-#line 40986 "preproc.c" /* yacc.c:1646  */
+#line 40992 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1631:
-#line 9901 "preproc.y" /* yacc.c:1646  */
+#line 9901 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("minute");
 }
-#line 40994 "preproc.c" /* yacc.c:1646  */
+#line 41000 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1632:
-#line 9905 "preproc.y" /* yacc.c:1646  */
+#line 9905 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 41002 "preproc.c" /* yacc.c:1646  */
+#line 41008 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1633:
-#line 9909 "preproc.y" /* yacc.c:1646  */
+#line 9909 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("year to month");
 }
-#line 41010 "preproc.c" /* yacc.c:1646  */
+#line 41016 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1634:
-#line 9913 "preproc.y" /* yacc.c:1646  */
+#line 9913 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("day to hour");
 }
-#line 41018 "preproc.c" /* yacc.c:1646  */
+#line 41024 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1635:
-#line 9917 "preproc.y" /* yacc.c:1646  */
+#line 9917 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("day to minute");
 }
-#line 41026 "preproc.c" /* yacc.c:1646  */
+#line 41032 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1636:
-#line 9921 "preproc.y" /* yacc.c:1646  */
+#line 9921 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("day to"),(yyvsp[0].str));
 }
-#line 41034 "preproc.c" /* yacc.c:1646  */
+#line 41040 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1637:
-#line 9925 "preproc.y" /* yacc.c:1646  */
+#line 9925 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("hour to minute");
 }
-#line 41042 "preproc.c" /* yacc.c:1646  */
+#line 41048 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1638:
-#line 9929 "preproc.y" /* yacc.c:1646  */
+#line 9929 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("hour to"),(yyvsp[0].str));
 }
-#line 41050 "preproc.c" /* yacc.c:1646  */
+#line 41056 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1639:
-#line 9933 "preproc.y" /* yacc.c:1646  */
+#line 9933 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("minute to"),(yyvsp[0].str));
 }
-#line 41058 "preproc.c" /* yacc.c:1646  */
+#line 41064 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1640:
-#line 9937 "preproc.y" /* yacc.c:1646  */
+#line 9937 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 41065 "preproc.c" /* yacc.c:1646  */
+#line 41071 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1641:
-#line 9944 "preproc.y" /* yacc.c:1646  */
+#line 9944 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("second");
 }
-#line 41073 "preproc.c" /* yacc.c:1646  */
+#line 41079 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1642:
-#line 9948 "preproc.y" /* yacc.c:1646  */
+#line 9948 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("second ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 41081 "preproc.c" /* yacc.c:1646  */
+#line 41087 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1643:
-#line 9956 "preproc.y" /* yacc.c:1646  */
+#line 9956 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 41089 "preproc.c" /* yacc.c:1646  */
+#line 41095 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1644:
-#line 9960 "preproc.y" /* yacc.c:1646  */
+#line 9960 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("::"),(yyvsp[0].str));
 }
-#line 41097 "preproc.c" /* yacc.c:1646  */
+#line 41103 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1645:
-#line 9964 "preproc.y" /* yacc.c:1646  */
+#line 9964 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("collate"),(yyvsp[0].str));
 }
-#line 41105 "preproc.c" /* yacc.c:1646  */
+#line 41111 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1646:
-#line 9968 "preproc.y" /* yacc.c:1646  */
+#line 9968 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-4].str),mm_strdup("at time zone"),(yyvsp[0].str));
 }
-#line 41113 "preproc.c" /* yacc.c:1646  */
+#line 41119 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1647:
-#line 9972 "preproc.y" /* yacc.c:1646  */
+#line 9972 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("+"),(yyvsp[0].str));
 }
-#line 41121 "preproc.c" /* yacc.c:1646  */
+#line 41127 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1648:
-#line 9976 "preproc.y" /* yacc.c:1646  */
+#line 9976 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("-"),(yyvsp[0].str));
 }
-#line 41129 "preproc.c" /* yacc.c:1646  */
+#line 41135 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1649:
-#line 9980 "preproc.y" /* yacc.c:1646  */
+#line 9980 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("+"),(yyvsp[0].str));
 }
-#line 41137 "preproc.c" /* yacc.c:1646  */
+#line 41143 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1650:
-#line 9984 "preproc.y" /* yacc.c:1646  */
+#line 9984 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("-"),(yyvsp[0].str));
 }
-#line 41145 "preproc.c" /* yacc.c:1646  */
+#line 41151 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1651:
-#line 9988 "preproc.y" /* yacc.c:1646  */
+#line 9988 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("*"),(yyvsp[0].str));
 }
-#line 41153 "preproc.c" /* yacc.c:1646  */
+#line 41159 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1652:
-#line 9992 "preproc.y" /* yacc.c:1646  */
+#line 9992 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("/"),(yyvsp[0].str));
 }
-#line 41161 "preproc.c" /* yacc.c:1646  */
+#line 41167 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1653:
-#line 9996 "preproc.y" /* yacc.c:1646  */
+#line 9996 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("%"),(yyvsp[0].str));
 }
-#line 41169 "preproc.c" /* yacc.c:1646  */
+#line 41175 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1654:
-#line 10000 "preproc.y" /* yacc.c:1646  */
+#line 10000 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("^"),(yyvsp[0].str));
 }
-#line 41177 "preproc.c" /* yacc.c:1646  */
+#line 41183 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1655:
-#line 10004 "preproc.y" /* yacc.c:1646  */
+#line 10004 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("<"),(yyvsp[0].str));
 }
-#line 41185 "preproc.c" /* yacc.c:1646  */
+#line 41191 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1656:
-#line 10008 "preproc.y" /* yacc.c:1646  */
+#line 10008 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(">"),(yyvsp[0].str));
 }
-#line 41193 "preproc.c" /* yacc.c:1646  */
+#line 41199 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1657:
-#line 10012 "preproc.y" /* yacc.c:1646  */
+#line 10012 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("="),(yyvsp[0].str));
 }
-#line 41201 "preproc.c" /* yacc.c:1646  */
+#line 41207 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1658:
-#line 10016 "preproc.y" /* yacc.c:1646  */
+#line 10016 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 41209 "preproc.c" /* yacc.c:1646  */
+#line 41215 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1659:
-#line 10020 "preproc.y" /* yacc.c:1646  */
+#line 10020 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 41217 "preproc.c" /* yacc.c:1646  */
+#line 41223 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1660:
-#line 10024 "preproc.y" /* yacc.c:1646  */
+#line 10024 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 41225 "preproc.c" /* yacc.c:1646  */
+#line 41231 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1661:
-#line 10028 "preproc.y" /* yacc.c:1646  */
+#line 10028 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("and"),(yyvsp[0].str));
 }
-#line 41233 "preproc.c" /* yacc.c:1646  */
+#line 41239 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1662:
-#line 10032 "preproc.y" /* yacc.c:1646  */
+#line 10032 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("or"),(yyvsp[0].str));
 }
-#line 41241 "preproc.c" /* yacc.c:1646  */
+#line 41247 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1663:
-#line 10036 "preproc.y" /* yacc.c:1646  */
+#line 10036 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("not"),(yyvsp[0].str));
 }
-#line 41249 "preproc.c" /* yacc.c:1646  */
+#line 41255 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1664:
-#line 10040 "preproc.y" /* yacc.c:1646  */
+#line 10040 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("like"),(yyvsp[0].str));
 }
-#line 41257 "preproc.c" /* yacc.c:1646  */
+#line 41263 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1665:
-#line 10044 "preproc.y" /* yacc.c:1646  */
+#line 10044 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,(yyvsp[-4].str),mm_strdup("like"),(yyvsp[-2].str),mm_strdup("escape"),(yyvsp[0].str));
 }
-#line 41265 "preproc.c" /* yacc.c:1646  */
+#line 41271 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1666:
-#line 10048 "preproc.y" /* yacc.c:1646  */
+#line 10048 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-3].str),mm_strdup("not like"),(yyvsp[0].str));
 }
-#line 41273 "preproc.c" /* yacc.c:1646  */
+#line 41279 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1667:
-#line 10052 "preproc.y" /* yacc.c:1646  */
+#line 10052 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,(yyvsp[-5].str),mm_strdup("not like"),(yyvsp[-2].str),mm_strdup("escape"),(yyvsp[0].str));
 }
-#line 41281 "preproc.c" /* yacc.c:1646  */
+#line 41287 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1668:
-#line 10056 "preproc.y" /* yacc.c:1646  */
+#line 10056 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("ilike"),(yyvsp[0].str));
 }
-#line 41289 "preproc.c" /* yacc.c:1646  */
+#line 41295 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1669:
-#line 10060 "preproc.y" /* yacc.c:1646  */
+#line 10060 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,(yyvsp[-4].str),mm_strdup("ilike"),(yyvsp[-2].str),mm_strdup("escape"),(yyvsp[0].str));
 }
-#line 41297 "preproc.c" /* yacc.c:1646  */
+#line 41303 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1670:
-#line 10064 "preproc.y" /* yacc.c:1646  */
+#line 10064 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-3].str),mm_strdup("not ilike"),(yyvsp[0].str));
 }
-#line 41305 "preproc.c" /* yacc.c:1646  */
+#line 41311 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1671:
-#line 10068 "preproc.y" /* yacc.c:1646  */
+#line 10068 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,(yyvsp[-5].str),mm_strdup("not ilike"),(yyvsp[-2].str),mm_strdup("escape"),(yyvsp[0].str));
 }
-#line 41313 "preproc.c" /* yacc.c:1646  */
+#line 41319 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1672:
-#line 10072 "preproc.y" /* yacc.c:1646  */
+#line 10072 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-3].str),mm_strdup("similar to"),(yyvsp[0].str));
 }
-#line 41321 "preproc.c" /* yacc.c:1646  */
+#line 41327 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1673:
-#line 10076 "preproc.y" /* yacc.c:1646  */
+#line 10076 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,(yyvsp[-5].str),mm_strdup("similar to"),(yyvsp[-2].str),mm_strdup("escape"),(yyvsp[0].str));
 }
-#line 41329 "preproc.c" /* yacc.c:1646  */
+#line 41335 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1674:
-#line 10080 "preproc.y" /* yacc.c:1646  */
+#line 10080 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-4].str),mm_strdup("not similar to"),(yyvsp[0].str));
 }
-#line 41337 "preproc.c" /* yacc.c:1646  */
+#line 41343 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1675:
-#line 10084 "preproc.y" /* yacc.c:1646  */
+#line 10084 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,(yyvsp[-6].str),mm_strdup("not similar to"),(yyvsp[-2].str),mm_strdup("escape"),(yyvsp[0].str));
 }
-#line 41345 "preproc.c" /* yacc.c:1646  */
+#line 41351 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1676:
-#line 10088 "preproc.y" /* yacc.c:1646  */
+#line 10088 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-2].str),mm_strdup("is null"));
 }
-#line 41353 "preproc.c" /* yacc.c:1646  */
+#line 41359 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1677:
-#line 10092 "preproc.y" /* yacc.c:1646  */
+#line 10092 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),mm_strdup("isnull"));
 }
-#line 41361 "preproc.c" /* yacc.c:1646  */
+#line 41367 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1678:
-#line 10096 "preproc.y" /* yacc.c:1646  */
+#line 10096 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-3].str),mm_strdup("is not null"));
 }
-#line 41369 "preproc.c" /* yacc.c:1646  */
+#line 41375 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1679:
-#line 10100 "preproc.y" /* yacc.c:1646  */
+#line 10100 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),mm_strdup("notnull"));
 }
-#line 41377 "preproc.c" /* yacc.c:1646  */
+#line 41383 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1680:
-#line 10104 "preproc.y" /* yacc.c:1646  */
+#line 10104 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("overlaps"),(yyvsp[0].str));
 }
-#line 41385 "preproc.c" /* yacc.c:1646  */
+#line 41391 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1681:
-#line 10108 "preproc.y" /* yacc.c:1646  */
+#line 10108 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-2].str),mm_strdup("is true"));
 }
-#line 41393 "preproc.c" /* yacc.c:1646  */
+#line 41399 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1682:
-#line 10112 "preproc.y" /* yacc.c:1646  */
+#line 10112 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-3].str),mm_strdup("is not true"));
 }
-#line 41401 "preproc.c" /* yacc.c:1646  */
+#line 41407 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1683:
-#line 10116 "preproc.y" /* yacc.c:1646  */
+#line 10116 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-2].str),mm_strdup("is false"));
 }
-#line 41409 "preproc.c" /* yacc.c:1646  */
+#line 41415 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1684:
-#line 10120 "preproc.y" /* yacc.c:1646  */
+#line 10120 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-3].str),mm_strdup("is not false"));
 }
-#line 41417 "preproc.c" /* yacc.c:1646  */
+#line 41423 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1685:
-#line 10124 "preproc.y" /* yacc.c:1646  */
+#line 10124 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-2].str),mm_strdup("is unknown"));
 }
-#line 41425 "preproc.c" /* yacc.c:1646  */
+#line 41431 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1686:
-#line 10128 "preproc.y" /* yacc.c:1646  */
+#line 10128 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-3].str),mm_strdup("is not unknown"));
 }
-#line 41433 "preproc.c" /* yacc.c:1646  */
+#line 41439 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1687:
-#line 10132 "preproc.y" /* yacc.c:1646  */
+#line 10132 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-4].str),mm_strdup("is distinct from"),(yyvsp[0].str));
 }
-#line 41441 "preproc.c" /* yacc.c:1646  */
+#line 41447 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1688:
-#line 10136 "preproc.y" /* yacc.c:1646  */
+#line 10136 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-5].str),mm_strdup("is not distinct from"),(yyvsp[0].str));
 }
-#line 41449 "preproc.c" /* yacc.c:1646  */
+#line 41455 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1689:
-#line 10140 "preproc.y" /* yacc.c:1646  */
+#line 10140 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,(yyvsp[-5].str),mm_strdup("is of ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 41457 "preproc.c" /* yacc.c:1646  */
+#line 41463 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1690:
-#line 10144 "preproc.y" /* yacc.c:1646  */
+#line 10144 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,(yyvsp[-6].str),mm_strdup("is not of ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 41465 "preproc.c" /* yacc.c:1646  */
+#line 41471 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1691:
-#line 10148 "preproc.y" /* yacc.c:1646  */
+#line 10148 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,(yyvsp[-5].str),mm_strdup("between"),(yyvsp[-3].str),(yyvsp[-2].str),mm_strdup("and"),(yyvsp[0].str));
 }
-#line 41473 "preproc.c" /* yacc.c:1646  */
+#line 41479 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1692:
-#line 10152 "preproc.y" /* yacc.c:1646  */
+#line 10152 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,(yyvsp[-6].str),mm_strdup("not between"),(yyvsp[-3].str),(yyvsp[-2].str),mm_strdup("and"),(yyvsp[0].str));
 }
-#line 41481 "preproc.c" /* yacc.c:1646  */
+#line 41487 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1693:
-#line 10156 "preproc.y" /* yacc.c:1646  */
+#line 10156 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,(yyvsp[-5].str),mm_strdup("between symmetric"),(yyvsp[-2].str),mm_strdup("and"),(yyvsp[0].str));
 }
-#line 41489 "preproc.c" /* yacc.c:1646  */
+#line 41495 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1694:
-#line 10160 "preproc.y" /* yacc.c:1646  */
+#line 10160 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,(yyvsp[-6].str),mm_strdup("not between symmetric"),(yyvsp[-2].str),mm_strdup("and"),(yyvsp[0].str));
 }
-#line 41497 "preproc.c" /* yacc.c:1646  */
+#line 41503 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1695:
-#line 10164 "preproc.y" /* yacc.c:1646  */
+#line 10164 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("in"),(yyvsp[0].str));
 }
-#line 41505 "preproc.c" /* yacc.c:1646  */
+#line 41511 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1696:
-#line 10168 "preproc.y" /* yacc.c:1646  */
+#line 10168 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-3].str),mm_strdup("not in"),(yyvsp[0].str));
 }
-#line 41513 "preproc.c" /* yacc.c:1646  */
+#line 41519 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1697:
-#line 10172 "preproc.y" /* yacc.c:1646  */
+#line 10172 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,(yyvsp[-3].str),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 41521 "preproc.c" /* yacc.c:1646  */
+#line 41527 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1698:
-#line 10176 "preproc.y" /* yacc.c:1646  */
+#line 10176 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,(yyvsp[-5].str),(yyvsp[-4].str),(yyvsp[-3].str),mm_strdup("("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 41529 "preproc.c" /* yacc.c:1646  */
+#line 41535 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1699:
-#line 10180 "preproc.y" /* yacc.c:1646  */
+#line 10180 "preproc.y" /* yacc.c:1652  */
     { 
 mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server");
  (yyval.str) = cat_str(2,mm_strdup("unique"),(yyvsp[0].str));
 }
-#line 41538 "preproc.c" /* yacc.c:1646  */
+#line 41544 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1700:
-#line 10185 "preproc.y" /* yacc.c:1646  */
+#line 10185 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-2].str),mm_strdup("is document"));
 }
-#line 41546 "preproc.c" /* yacc.c:1646  */
+#line 41552 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1701:
-#line 10189 "preproc.y" /* yacc.c:1646  */
+#line 10189 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-3].str),mm_strdup("is not document"));
 }
-#line 41554 "preproc.c" /* yacc.c:1646  */
+#line 41560 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1702:
-#line 10197 "preproc.y" /* yacc.c:1646  */
+#line 10197 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 41562 "preproc.c" /* yacc.c:1646  */
+#line 41568 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1703:
-#line 10201 "preproc.y" /* yacc.c:1646  */
+#line 10201 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("::"),(yyvsp[0].str));
 }
-#line 41570 "preproc.c" /* yacc.c:1646  */
+#line 41576 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1704:
-#line 10205 "preproc.y" /* yacc.c:1646  */
+#line 10205 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("+"),(yyvsp[0].str));
 }
-#line 41578 "preproc.c" /* yacc.c:1646  */
+#line 41584 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1705:
-#line 10209 "preproc.y" /* yacc.c:1646  */
+#line 10209 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("-"),(yyvsp[0].str));
 }
-#line 41586 "preproc.c" /* yacc.c:1646  */
+#line 41592 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1706:
-#line 10213 "preproc.y" /* yacc.c:1646  */
+#line 10213 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("+"),(yyvsp[0].str));
 }
-#line 41594 "preproc.c" /* yacc.c:1646  */
+#line 41600 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1707:
-#line 10217 "preproc.y" /* yacc.c:1646  */
+#line 10217 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("-"),(yyvsp[0].str));
 }
-#line 41602 "preproc.c" /* yacc.c:1646  */
+#line 41608 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1708:
-#line 10221 "preproc.y" /* yacc.c:1646  */
+#line 10221 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("*"),(yyvsp[0].str));
 }
-#line 41610 "preproc.c" /* yacc.c:1646  */
+#line 41616 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1709:
-#line 10225 "preproc.y" /* yacc.c:1646  */
+#line 10225 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("/"),(yyvsp[0].str));
 }
-#line 41618 "preproc.c" /* yacc.c:1646  */
+#line 41624 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1710:
-#line 10229 "preproc.y" /* yacc.c:1646  */
+#line 10229 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("%"),(yyvsp[0].str));
 }
-#line 41626 "preproc.c" /* yacc.c:1646  */
+#line 41632 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1711:
-#line 10233 "preproc.y" /* yacc.c:1646  */
+#line 10233 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("^"),(yyvsp[0].str));
 }
-#line 41634 "preproc.c" /* yacc.c:1646  */
+#line 41640 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1712:
-#line 10237 "preproc.y" /* yacc.c:1646  */
+#line 10237 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("<"),(yyvsp[0].str));
 }
-#line 41642 "preproc.c" /* yacc.c:1646  */
+#line 41648 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1713:
-#line 10241 "preproc.y" /* yacc.c:1646  */
+#line 10241 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(">"),(yyvsp[0].str));
 }
-#line 41650 "preproc.c" /* yacc.c:1646  */
+#line 41656 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1714:
-#line 10245 "preproc.y" /* yacc.c:1646  */
+#line 10245 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("="),(yyvsp[0].str));
 }
-#line 41658 "preproc.c" /* yacc.c:1646  */
+#line 41664 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1715:
-#line 10249 "preproc.y" /* yacc.c:1646  */
+#line 10249 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 41666 "preproc.c" /* yacc.c:1646  */
+#line 41672 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1716:
-#line 10253 "preproc.y" /* yacc.c:1646  */
+#line 10253 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 41674 "preproc.c" /* yacc.c:1646  */
+#line 41680 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1717:
-#line 10257 "preproc.y" /* yacc.c:1646  */
+#line 10257 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 41682 "preproc.c" /* yacc.c:1646  */
+#line 41688 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1718:
-#line 10261 "preproc.y" /* yacc.c:1646  */
+#line 10261 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-4].str),mm_strdup("is distinct from"),(yyvsp[0].str));
 }
-#line 41690 "preproc.c" /* yacc.c:1646  */
+#line 41696 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1719:
-#line 10265 "preproc.y" /* yacc.c:1646  */
+#line 10265 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-5].str),mm_strdup("is not distinct from"),(yyvsp[0].str));
 }
-#line 41698 "preproc.c" /* yacc.c:1646  */
+#line 41704 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1720:
-#line 10269 "preproc.y" /* yacc.c:1646  */
+#line 10269 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,(yyvsp[-5].str),mm_strdup("is of ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 41706 "preproc.c" /* yacc.c:1646  */
+#line 41712 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1721:
-#line 10273 "preproc.y" /* yacc.c:1646  */
+#line 10273 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,(yyvsp[-6].str),mm_strdup("is not of ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 41714 "preproc.c" /* yacc.c:1646  */
+#line 41720 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1722:
-#line 10277 "preproc.y" /* yacc.c:1646  */
+#line 10277 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-2].str),mm_strdup("is document"));
 }
-#line 41722 "preproc.c" /* yacc.c:1646  */
+#line 41728 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1723:
-#line 10281 "preproc.y" /* yacc.c:1646  */
+#line 10281 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-3].str),mm_strdup("is not document"));
 }
-#line 41730 "preproc.c" /* yacc.c:1646  */
+#line 41736 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1724:
-#line 10289 "preproc.y" /* yacc.c:1646  */
+#line 10289 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 41738 "preproc.c" /* yacc.c:1646  */
+#line 41744 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1725:
-#line 10293 "preproc.y" /* yacc.c:1646  */
+#line 10293 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 41746 "preproc.c" /* yacc.c:1646  */
+#line 41752 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1726:
-#line 10297 "preproc.y" /* yacc.c:1646  */
+#line 10297 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 41754 "preproc.c" /* yacc.c:1646  */
+#line 41760 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1727:
-#line 10301 "preproc.y" /* yacc.c:1646  */
+#line 10301 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("("),(yyvsp[-2].str),mm_strdup(")"),(yyvsp[0].str));
 }
-#line 41762 "preproc.c" /* yacc.c:1646  */
+#line 41768 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1728:
-#line 10305 "preproc.y" /* yacc.c:1646  */
+#line 10305 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 41770 "preproc.c" /* yacc.c:1646  */
+#line 41776 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1729:
-#line 10309 "preproc.y" /* yacc.c:1646  */
+#line 10309 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 41778 "preproc.c" /* yacc.c:1646  */
+#line 41784 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1730:
-#line 10313 "preproc.y" /* yacc.c:1646  */
+#line 10313 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 41786 "preproc.c" /* yacc.c:1646  */
+#line 41792 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1731:
-#line 10317 "preproc.y" /* yacc.c:1646  */
+#line 10317 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 41794 "preproc.c" /* yacc.c:1646  */
+#line 41800 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1732:
-#line 10321 "preproc.y" /* yacc.c:1646  */
+#line 10321 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("exists"),(yyvsp[0].str));
 }
-#line 41802 "preproc.c" /* yacc.c:1646  */
+#line 41808 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1733:
-#line 10325 "preproc.y" /* yacc.c:1646  */
+#line 10325 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("array"),(yyvsp[0].str));
 }
-#line 41810 "preproc.c" /* yacc.c:1646  */
+#line 41816 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1734:
-#line 10329 "preproc.y" /* yacc.c:1646  */
+#line 10329 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("array"),(yyvsp[0].str));
 }
-#line 41818 "preproc.c" /* yacc.c:1646  */
+#line 41824 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1735:
-#line 10333 "preproc.y" /* yacc.c:1646  */
+#line 10333 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 41826 "preproc.c" /* yacc.c:1646  */
+#line 41832 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1736:
-#line 10341 "preproc.y" /* yacc.c:1646  */
+#line 10341 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-2].str),mm_strdup("( )"));
 }
-#line 41834 "preproc.c" /* yacc.c:1646  */
+#line 41840 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1737:
-#line 10345 "preproc.y" /* yacc.c:1646  */
+#line 10345 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,(yyvsp[-4].str),mm_strdup("("),(yyvsp[-2].str),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 41842 "preproc.c" /* yacc.c:1646  */
+#line 41848 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1738:
-#line 10349 "preproc.y" /* yacc.c:1646  */
+#line 10349 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,(yyvsp[-5].str),mm_strdup("( variadic"),(yyvsp[-2].str),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 41850 "preproc.c" /* yacc.c:1646  */
+#line 41856 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1739:
-#line 10353 "preproc.y" /* yacc.c:1646  */
+#line 10353 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(7,(yyvsp[-7].str),mm_strdup("("),(yyvsp[-5].str),mm_strdup(", variadic"),(yyvsp[-2].str),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 41858 "preproc.c" /* yacc.c:1646  */
+#line 41864 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1740:
-#line 10357 "preproc.y" /* yacc.c:1646  */
+#line 10357 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,(yyvsp[-5].str),mm_strdup("( all"),(yyvsp[-2].str),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 41866 "preproc.c" /* yacc.c:1646  */
+#line 41872 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1741:
-#line 10361 "preproc.y" /* yacc.c:1646  */
+#line 10361 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,(yyvsp[-5].str),mm_strdup("( distinct"),(yyvsp[-2].str),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 41874 "preproc.c" /* yacc.c:1646  */
+#line 41880 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1742:
-#line 10365 "preproc.y" /* yacc.c:1646  */
+#line 10365 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-3].str),mm_strdup("( * )"));
 }
-#line 41882 "preproc.c" /* yacc.c:1646  */
+#line 41888 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1743:
-#line 10373 "preproc.y" /* yacc.c:1646  */
+#line 10373 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,(yyvsp[-3].str),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 41890 "preproc.c" /* yacc.c:1646  */
+#line 41896 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1744:
-#line 10377 "preproc.y" /* yacc.c:1646  */
+#line 10377 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 41898 "preproc.c" /* yacc.c:1646  */
+#line 41904 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1745:
-#line 10385 "preproc.y" /* yacc.c:1646  */
+#line 10385 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 41906 "preproc.c" /* yacc.c:1646  */
+#line 41912 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1746:
-#line 10389 "preproc.y" /* yacc.c:1646  */
+#line 10389 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 41914 "preproc.c" /* yacc.c:1646  */
+#line 41920 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1747:
-#line 10397 "preproc.y" /* yacc.c:1646  */
+#line 10397 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("collation for ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 41922 "preproc.c" /* yacc.c:1646  */
+#line 41928 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1748:
-#line 10401 "preproc.y" /* yacc.c:1646  */
+#line 10401 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("current_date");
 }
-#line 41930 "preproc.c" /* yacc.c:1646  */
+#line 41936 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1749:
-#line 10405 "preproc.y" /* yacc.c:1646  */
+#line 10405 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("current_time");
 }
-#line 41938 "preproc.c" /* yacc.c:1646  */
+#line 41944 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1750:
-#line 10409 "preproc.y" /* yacc.c:1646  */
+#line 10409 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("current_time ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 41946 "preproc.c" /* yacc.c:1646  */
+#line 41952 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1751:
-#line 10413 "preproc.y" /* yacc.c:1646  */
+#line 10413 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("current_timestamp");
 }
-#line 41954 "preproc.c" /* yacc.c:1646  */
+#line 41960 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1752:
-#line 10417 "preproc.y" /* yacc.c:1646  */
+#line 10417 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("current_timestamp ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 41962 "preproc.c" /* yacc.c:1646  */
+#line 41968 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1753:
-#line 10421 "preproc.y" /* yacc.c:1646  */
+#line 10421 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("localtime");
 }
-#line 41970 "preproc.c" /* yacc.c:1646  */
+#line 41976 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1754:
-#line 10425 "preproc.y" /* yacc.c:1646  */
+#line 10425 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("localtime ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 41978 "preproc.c" /* yacc.c:1646  */
+#line 41984 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1755:
-#line 10429 "preproc.y" /* yacc.c:1646  */
+#line 10429 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("localtimestamp");
 }
-#line 41986 "preproc.c" /* yacc.c:1646  */
+#line 41992 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1756:
-#line 10433 "preproc.y" /* yacc.c:1646  */
+#line 10433 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("localtimestamp ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 41994 "preproc.c" /* yacc.c:1646  */
+#line 42000 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1757:
-#line 10437 "preproc.y" /* yacc.c:1646  */
+#line 10437 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("current_role");
 }
-#line 42002 "preproc.c" /* yacc.c:1646  */
+#line 42008 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1758:
-#line 10441 "preproc.y" /* yacc.c:1646  */
+#line 10441 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("current_user");
 }
-#line 42010 "preproc.c" /* yacc.c:1646  */
+#line 42016 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1759:
-#line 10445 "preproc.y" /* yacc.c:1646  */
+#line 10445 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("session_user");
 }
-#line 42018 "preproc.c" /* yacc.c:1646  */
+#line 42024 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1760:
-#line 10449 "preproc.y" /* yacc.c:1646  */
+#line 10449 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("user");
 }
-#line 42026 "preproc.c" /* yacc.c:1646  */
+#line 42032 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1761:
-#line 10453 "preproc.y" /* yacc.c:1646  */
+#line 10453 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("current_catalog");
 }
-#line 42034 "preproc.c" /* yacc.c:1646  */
+#line 42040 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1762:
-#line 10457 "preproc.y" /* yacc.c:1646  */
+#line 10457 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("current_schema");
 }
-#line 42042 "preproc.c" /* yacc.c:1646  */
+#line 42048 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1763:
-#line 10461 "preproc.y" /* yacc.c:1646  */
+#line 10461 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("cast ("),(yyvsp[-3].str),mm_strdup("as"),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 42050 "preproc.c" /* yacc.c:1646  */
+#line 42056 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1764:
-#line 10465 "preproc.y" /* yacc.c:1646  */
+#line 10465 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("extract ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 42058 "preproc.c" /* yacc.c:1646  */
+#line 42064 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1765:
-#line 10469 "preproc.y" /* yacc.c:1646  */
+#line 10469 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("overlay ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 42066 "preproc.c" /* yacc.c:1646  */
+#line 42072 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1766:
-#line 10473 "preproc.y" /* yacc.c:1646  */
+#line 10473 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("position ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 42074 "preproc.c" /* yacc.c:1646  */
+#line 42080 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1767:
-#line 10477 "preproc.y" /* yacc.c:1646  */
+#line 10477 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("substring ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 42082 "preproc.c" /* yacc.c:1646  */
+#line 42088 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1768:
-#line 10481 "preproc.y" /* yacc.c:1646  */
+#line 10481 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("treat ("),(yyvsp[-3].str),mm_strdup("as"),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 42090 "preproc.c" /* yacc.c:1646  */
+#line 42096 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1769:
-#line 10485 "preproc.y" /* yacc.c:1646  */
+#line 10485 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("trim ( both"),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 42098 "preproc.c" /* yacc.c:1646  */
+#line 42104 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1770:
-#line 10489 "preproc.y" /* yacc.c:1646  */
+#line 10489 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("trim ( leading"),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 42106 "preproc.c" /* yacc.c:1646  */
+#line 42112 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1771:
-#line 10493 "preproc.y" /* yacc.c:1646  */
+#line 10493 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("trim ( trailing"),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 42114 "preproc.c" /* yacc.c:1646  */
+#line 42120 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1772:
-#line 10497 "preproc.y" /* yacc.c:1646  */
+#line 10497 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("trim ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 42122 "preproc.c" /* yacc.c:1646  */
+#line 42128 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1773:
-#line 10501 "preproc.y" /* yacc.c:1646  */
+#line 10501 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("nullif ("),(yyvsp[-3].str),mm_strdup(","),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 42130 "preproc.c" /* yacc.c:1646  */
+#line 42136 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1774:
-#line 10505 "preproc.y" /* yacc.c:1646  */
+#line 10505 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("coalesce ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 42138 "preproc.c" /* yacc.c:1646  */
+#line 42144 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1775:
-#line 10509 "preproc.y" /* yacc.c:1646  */
+#line 10509 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("greatest ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 42146 "preproc.c" /* yacc.c:1646  */
+#line 42152 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1776:
-#line 10513 "preproc.y" /* yacc.c:1646  */
+#line 10513 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("least ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 42154 "preproc.c" /* yacc.c:1646  */
+#line 42160 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1777:
-#line 10517 "preproc.y" /* yacc.c:1646  */
+#line 10517 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("xmlconcat ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 42162 "preproc.c" /* yacc.c:1646  */
+#line 42168 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1778:
-#line 10521 "preproc.y" /* yacc.c:1646  */
+#line 10521 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("xmlelement ( name"),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 42170 "preproc.c" /* yacc.c:1646  */
+#line 42176 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1779:
-#line 10525 "preproc.y" /* yacc.c:1646  */
+#line 10525 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("xmlelement ( name"),(yyvsp[-3].str),mm_strdup(","),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 42178 "preproc.c" /* yacc.c:1646  */
+#line 42184 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1780:
-#line 10529 "preproc.y" /* yacc.c:1646  */
+#line 10529 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("xmlelement ( name"),(yyvsp[-3].str),mm_strdup(","),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 42186 "preproc.c" /* yacc.c:1646  */
+#line 42192 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1781:
-#line 10533 "preproc.y" /* yacc.c:1646  */
+#line 10533 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(7,mm_strdup("xmlelement ( name"),(yyvsp[-5].str),mm_strdup(","),(yyvsp[-3].str),mm_strdup(","),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 42194 "preproc.c" /* yacc.c:1646  */
+#line 42200 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1782:
-#line 10537 "preproc.y" /* yacc.c:1646  */
+#line 10537 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("xmlexists ("),(yyvsp[-2].str),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 42202 "preproc.c" /* yacc.c:1646  */
+#line 42208 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1783:
-#line 10541 "preproc.y" /* yacc.c:1646  */
+#line 10541 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("xmlforest ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 42210 "preproc.c" /* yacc.c:1646  */
+#line 42216 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1784:
-#line 10545 "preproc.y" /* yacc.c:1646  */
+#line 10545 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("xmlparse ("),(yyvsp[-3].str),(yyvsp[-2].str),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 42218 "preproc.c" /* yacc.c:1646  */
+#line 42224 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1785:
-#line 10549 "preproc.y" /* yacc.c:1646  */
+#line 10549 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("xmlpi ( name"),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 42226 "preproc.c" /* yacc.c:1646  */
+#line 42232 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1786:
-#line 10553 "preproc.y" /* yacc.c:1646  */
+#line 10553 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("xmlpi ( name"),(yyvsp[-3].str),mm_strdup(","),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 42234 "preproc.c" /* yacc.c:1646  */
+#line 42240 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1787:
-#line 10557 "preproc.y" /* yacc.c:1646  */
+#line 10557 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,mm_strdup("xmlroot ("),(yyvsp[-4].str),mm_strdup(","),(yyvsp[-2].str),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 42242 "preproc.c" /* yacc.c:1646  */
+#line 42248 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1788:
-#line 10561 "preproc.y" /* yacc.c:1646  */
+#line 10561 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,mm_strdup("xmlserialize ("),(yyvsp[-4].str),(yyvsp[-3].str),mm_strdup("as"),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 42250 "preproc.c" /* yacc.c:1646  */
+#line 42256 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1789:
-#line 10569 "preproc.y" /* yacc.c:1646  */
+#line 10569 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("version"),(yyvsp[0].str));
 }
-#line 42258 "preproc.c" /* yacc.c:1646  */
+#line 42264 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1790:
-#line 10573 "preproc.y" /* yacc.c:1646  */
+#line 10573 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("version no value");
 }
-#line 42266 "preproc.c" /* yacc.c:1646  */
+#line 42272 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1791:
-#line 10581 "preproc.y" /* yacc.c:1646  */
+#line 10581 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup(", standalone yes");
 }
-#line 42274 "preproc.c" /* yacc.c:1646  */
+#line 42280 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1792:
-#line 10585 "preproc.y" /* yacc.c:1646  */
+#line 10585 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup(", standalone no");
 }
-#line 42282 "preproc.c" /* yacc.c:1646  */
+#line 42288 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1793:
-#line 10589 "preproc.y" /* yacc.c:1646  */
+#line 10589 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup(", standalone no value");
 }
-#line 42290 "preproc.c" /* yacc.c:1646  */
+#line 42296 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1794:
-#line 10593 "preproc.y" /* yacc.c:1646  */
+#line 10593 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 42297 "preproc.c" /* yacc.c:1646  */
+#line 42303 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1795:
-#line 10600 "preproc.y" /* yacc.c:1646  */
+#line 10600 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("xmlattributes ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 42305 "preproc.c" /* yacc.c:1646  */
+#line 42311 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1796:
-#line 10608 "preproc.y" /* yacc.c:1646  */
+#line 10608 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 42313 "preproc.c" /* yacc.c:1646  */
+#line 42319 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1797:
-#line 10612 "preproc.y" /* yacc.c:1646  */
+#line 10612 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 42321 "preproc.c" /* yacc.c:1646  */
+#line 42327 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1798:
-#line 10620 "preproc.y" /* yacc.c:1646  */
+#line 10620 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("as"),(yyvsp[0].str));
 }
-#line 42329 "preproc.c" /* yacc.c:1646  */
+#line 42335 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1799:
-#line 10624 "preproc.y" /* yacc.c:1646  */
+#line 10624 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 42337 "preproc.c" /* yacc.c:1646  */
+#line 42343 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1800:
-#line 10632 "preproc.y" /* yacc.c:1646  */
+#line 10632 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("document");
 }
-#line 42345 "preproc.c" /* yacc.c:1646  */
+#line 42351 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1801:
-#line 10636 "preproc.y" /* yacc.c:1646  */
+#line 10636 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("content");
 }
-#line 42353 "preproc.c" /* yacc.c:1646  */
+#line 42359 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1802:
-#line 10644 "preproc.y" /* yacc.c:1646  */
+#line 10644 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("preserve whitespace");
 }
-#line 42361 "preproc.c" /* yacc.c:1646  */
+#line 42367 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1803:
-#line 10648 "preproc.y" /* yacc.c:1646  */
+#line 10648 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("strip whitespace");
 }
-#line 42369 "preproc.c" /* yacc.c:1646  */
+#line 42375 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1804:
-#line 10652 "preproc.y" /* yacc.c:1646  */
+#line 10652 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 42376 "preproc.c" /* yacc.c:1646  */
+#line 42382 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1805:
-#line 10659 "preproc.y" /* yacc.c:1646  */
+#line 10659 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("passing"),(yyvsp[0].str));
 }
-#line 42384 "preproc.c" /* yacc.c:1646  */
+#line 42390 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1806:
-#line 10663 "preproc.y" /* yacc.c:1646  */
+#line 10663 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("passing"),(yyvsp[-2].str),mm_strdup("by ref"));
 }
-#line 42392 "preproc.c" /* yacc.c:1646  */
+#line 42398 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1807:
-#line 10667 "preproc.y" /* yacc.c:1646  */
+#line 10667 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("passing by ref"),(yyvsp[0].str));
 }
-#line 42400 "preproc.c" /* yacc.c:1646  */
+#line 42406 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1808:
-#line 10671 "preproc.y" /* yacc.c:1646  */
+#line 10671 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("passing by ref"),(yyvsp[-2].str),mm_strdup("by ref"));
 }
-#line 42408 "preproc.c" /* yacc.c:1646  */
+#line 42414 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1809:
-#line 10679 "preproc.y" /* yacc.c:1646  */
+#line 10679 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("within group ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 42416 "preproc.c" /* yacc.c:1646  */
+#line 42422 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1810:
-#line 10683 "preproc.y" /* yacc.c:1646  */
+#line 10683 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 42423 "preproc.c" /* yacc.c:1646  */
+#line 42429 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1811:
-#line 10690 "preproc.y" /* yacc.c:1646  */
+#line 10690 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("filter ( where"),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 42431 "preproc.c" /* yacc.c:1646  */
+#line 42437 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1812:
-#line 10694 "preproc.y" /* yacc.c:1646  */
+#line 10694 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 42438 "preproc.c" /* yacc.c:1646  */
+#line 42444 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1813:
-#line 10701 "preproc.y" /* yacc.c:1646  */
+#line 10701 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("window"),(yyvsp[0].str));
 }
-#line 42446 "preproc.c" /* yacc.c:1646  */
+#line 42452 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1814:
-#line 10705 "preproc.y" /* yacc.c:1646  */
+#line 10705 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 42453 "preproc.c" /* yacc.c:1646  */
+#line 42459 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1815:
-#line 10712 "preproc.y" /* yacc.c:1646  */
+#line 10712 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 42461 "preproc.c" /* yacc.c:1646  */
+#line 42467 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1816:
-#line 10716 "preproc.y" /* yacc.c:1646  */
+#line 10716 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 42469 "preproc.c" /* yacc.c:1646  */
+#line 42475 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1817:
-#line 10724 "preproc.y" /* yacc.c:1646  */
+#line 10724 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("as"),(yyvsp[0].str));
 }
-#line 42477 "preproc.c" /* yacc.c:1646  */
+#line 42483 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1818:
-#line 10732 "preproc.y" /* yacc.c:1646  */
+#line 10732 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("over"),(yyvsp[0].str));
 }
-#line 42485 "preproc.c" /* yacc.c:1646  */
+#line 42491 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1819:
-#line 10736 "preproc.y" /* yacc.c:1646  */
+#line 10736 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("over"),(yyvsp[0].str));
 }
-#line 42493 "preproc.c" /* yacc.c:1646  */
+#line 42499 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1820:
-#line 10740 "preproc.y" /* yacc.c:1646  */
+#line 10740 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 42500 "preproc.c" /* yacc.c:1646  */
+#line 42506 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1821:
-#line 10747 "preproc.y" /* yacc.c:1646  */
+#line 10747 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,mm_strdup("("),(yyvsp[-4].str),(yyvsp[-3].str),(yyvsp[-2].str),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 42508 "preproc.c" /* yacc.c:1646  */
+#line 42514 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1822:
-#line 10755 "preproc.y" /* yacc.c:1646  */
+#line 10755 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 42516 "preproc.c" /* yacc.c:1646  */
+#line 42522 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1823:
-#line 10759 "preproc.y" /* yacc.c:1646  */
+#line 10759 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 42523 "preproc.c" /* yacc.c:1646  */
+#line 42529 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1824:
-#line 10766 "preproc.y" /* yacc.c:1646  */
+#line 10766 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("partition by"),(yyvsp[0].str));
 }
-#line 42531 "preproc.c" /* yacc.c:1646  */
+#line 42537 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1825:
-#line 10770 "preproc.y" /* yacc.c:1646  */
+#line 10770 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 42538 "preproc.c" /* yacc.c:1646  */
+#line 42544 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1826:
-#line 10777 "preproc.y" /* yacc.c:1646  */
+#line 10777 "preproc.y" /* yacc.c:1652  */
     { 
 mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server");
  (yyval.str) = cat_str(2,mm_strdup("range"),(yyvsp[0].str));
 }
-#line 42547 "preproc.c" /* yacc.c:1646  */
+#line 42553 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1827:
-#line 10782 "preproc.y" /* yacc.c:1646  */
+#line 10782 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("rows"),(yyvsp[0].str));
 }
-#line 42555 "preproc.c" /* yacc.c:1646  */
+#line 42561 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1828:
-#line 10786 "preproc.y" /* yacc.c:1646  */
+#line 10786 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 42562 "preproc.c" /* yacc.c:1646  */
+#line 42568 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1829:
-#line 10793 "preproc.y" /* yacc.c:1646  */
+#line 10793 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 42570 "preproc.c" /* yacc.c:1646  */
+#line 42576 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1830:
-#line 10797 "preproc.y" /* yacc.c:1646  */
+#line 10797 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("between"),(yyvsp[-2].str),mm_strdup("and"),(yyvsp[0].str));
 }
-#line 42578 "preproc.c" /* yacc.c:1646  */
+#line 42584 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1831:
-#line 10805 "preproc.y" /* yacc.c:1646  */
+#line 10805 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("unbounded preceding");
 }
-#line 42586 "preproc.c" /* yacc.c:1646  */
+#line 42592 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1832:
-#line 10809 "preproc.y" /* yacc.c:1646  */
+#line 10809 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("unbounded following");
 }
-#line 42594 "preproc.c" /* yacc.c:1646  */
+#line 42600 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1833:
-#line 10813 "preproc.y" /* yacc.c:1646  */
+#line 10813 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("current row");
 }
-#line 42602 "preproc.c" /* yacc.c:1646  */
+#line 42608 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1834:
-#line 10817 "preproc.y" /* yacc.c:1646  */
+#line 10817 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),mm_strdup("preceding"));
 }
-#line 42610 "preproc.c" /* yacc.c:1646  */
+#line 42616 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1835:
-#line 10821 "preproc.y" /* yacc.c:1646  */
+#line 10821 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),mm_strdup("following"));
 }
-#line 42618 "preproc.c" /* yacc.c:1646  */
+#line 42624 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1836:
-#line 10829 "preproc.y" /* yacc.c:1646  */
+#line 10829 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("row ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 42626 "preproc.c" /* yacc.c:1646  */
+#line 42632 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1837:
-#line 10833 "preproc.y" /* yacc.c:1646  */
+#line 10833 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("row ( )");
 }
-#line 42634 "preproc.c" /* yacc.c:1646  */
+#line 42640 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1838:
-#line 10837 "preproc.y" /* yacc.c:1646  */
+#line 10837 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("("),(yyvsp[-3].str),mm_strdup(","),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 42642 "preproc.c" /* yacc.c:1646  */
+#line 42648 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1839:
-#line 10845 "preproc.y" /* yacc.c:1646  */
+#line 10845 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("any");
 }
-#line 42650 "preproc.c" /* yacc.c:1646  */
+#line 42656 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1840:
-#line 10849 "preproc.y" /* yacc.c:1646  */
+#line 10849 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("some");
 }
-#line 42658 "preproc.c" /* yacc.c:1646  */
+#line 42664 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1841:
-#line 10853 "preproc.y" /* yacc.c:1646  */
+#line 10853 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("all");
 }
-#line 42666 "preproc.c" /* yacc.c:1646  */
+#line 42672 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1842:
-#line 10861 "preproc.y" /* yacc.c:1646  */
+#line 10861 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 42674 "preproc.c" /* yacc.c:1646  */
+#line 42680 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1843:
-#line 10865 "preproc.y" /* yacc.c:1646  */
+#line 10865 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 42682 "preproc.c" /* yacc.c:1646  */
+#line 42688 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1844:
-#line 10873 "preproc.y" /* yacc.c:1646  */
+#line 10873 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("+");
 }
-#line 42690 "preproc.c" /* yacc.c:1646  */
+#line 42696 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1845:
-#line 10877 "preproc.y" /* yacc.c:1646  */
+#line 10877 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("-");
 }
-#line 42698 "preproc.c" /* yacc.c:1646  */
+#line 42704 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1846:
-#line 10881 "preproc.y" /* yacc.c:1646  */
+#line 10881 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("*");
 }
-#line 42706 "preproc.c" /* yacc.c:1646  */
+#line 42712 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1847:
-#line 10885 "preproc.y" /* yacc.c:1646  */
+#line 10885 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("/");
 }
-#line 42714 "preproc.c" /* yacc.c:1646  */
+#line 42720 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1848:
-#line 10889 "preproc.y" /* yacc.c:1646  */
+#line 10889 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("%");
 }
-#line 42722 "preproc.c" /* yacc.c:1646  */
+#line 42728 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1849:
-#line 10893 "preproc.y" /* yacc.c:1646  */
+#line 10893 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("^");
 }
-#line 42730 "preproc.c" /* yacc.c:1646  */
+#line 42736 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1850:
-#line 10897 "preproc.y" /* yacc.c:1646  */
+#line 10897 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("<");
 }
-#line 42738 "preproc.c" /* yacc.c:1646  */
+#line 42744 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1851:
-#line 10901 "preproc.y" /* yacc.c:1646  */
+#line 10901 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup(">");
 }
-#line 42746 "preproc.c" /* yacc.c:1646  */
+#line 42752 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1852:
-#line 10905 "preproc.y" /* yacc.c:1646  */
+#line 10905 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("=");
 }
-#line 42754 "preproc.c" /* yacc.c:1646  */
+#line 42760 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1853:
-#line 10913 "preproc.y" /* yacc.c:1646  */
+#line 10913 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 42762 "preproc.c" /* yacc.c:1646  */
+#line 42768 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1854:
-#line 10917 "preproc.y" /* yacc.c:1646  */
+#line 10917 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("operator ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 42770 "preproc.c" /* yacc.c:1646  */
+#line 42776 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1855:
-#line 10925 "preproc.y" /* yacc.c:1646  */
+#line 10925 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 42778 "preproc.c" /* yacc.c:1646  */
+#line 42784 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1856:
-#line 10929 "preproc.y" /* yacc.c:1646  */
+#line 10929 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("operator ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 42786 "preproc.c" /* yacc.c:1646  */
+#line 42792 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1857:
-#line 10937 "preproc.y" /* yacc.c:1646  */
+#line 10937 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 42794 "preproc.c" /* yacc.c:1646  */
+#line 42800 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1858:
-#line 10941 "preproc.y" /* yacc.c:1646  */
+#line 10941 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("operator ("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 42802 "preproc.c" /* yacc.c:1646  */
+#line 42808 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1859:
-#line 10945 "preproc.y" /* yacc.c:1646  */
+#line 10945 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("like");
 }
-#line 42810 "preproc.c" /* yacc.c:1646  */
+#line 42816 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1860:
-#line 10949 "preproc.y" /* yacc.c:1646  */
+#line 10949 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("not like");
 }
-#line 42818 "preproc.c" /* yacc.c:1646  */
+#line 42824 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1861:
-#line 10953 "preproc.y" /* yacc.c:1646  */
+#line 10953 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("ilike");
 }
-#line 42826 "preproc.c" /* yacc.c:1646  */
+#line 42832 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1862:
-#line 10957 "preproc.y" /* yacc.c:1646  */
+#line 10957 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("not ilike");
 }
-#line 42834 "preproc.c" /* yacc.c:1646  */
+#line 42840 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1863:
-#line 10965 "preproc.y" /* yacc.c:1646  */
+#line 10965 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 42842 "preproc.c" /* yacc.c:1646  */
+#line 42848 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1864:
-#line 10969 "preproc.y" /* yacc.c:1646  */
+#line 10969 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 42850 "preproc.c" /* yacc.c:1646  */
+#line 42856 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1865:
-#line 10977 "preproc.y" /* yacc.c:1646  */
+#line 10977 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 42858 "preproc.c" /* yacc.c:1646  */
+#line 42864 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1866:
-#line 10981 "preproc.y" /* yacc.c:1646  */
+#line 10981 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 42866 "preproc.c" /* yacc.c:1646  */
+#line 42872 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1867:
-#line 10989 "preproc.y" /* yacc.c:1646  */
+#line 10989 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 42874 "preproc.c" /* yacc.c:1646  */
+#line 42880 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1868:
-#line 10993 "preproc.y" /* yacc.c:1646  */
+#line 10993 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(":="),(yyvsp[0].str));
 }
-#line 42882 "preproc.c" /* yacc.c:1646  */
+#line 42888 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1869:
-#line 11001 "preproc.y" /* yacc.c:1646  */
+#line 11001 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 42890 "preproc.c" /* yacc.c:1646  */
+#line 42896 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1870:
-#line 11005 "preproc.y" /* yacc.c:1646  */
+#line 11005 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 42898 "preproc.c" /* yacc.c:1646  */
+#line 42904 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1871:
-#line 11013 "preproc.y" /* yacc.c:1646  */
+#line 11013 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("["),(yyvsp[-1].str),mm_strdup("]"));
 }
-#line 42906 "preproc.c" /* yacc.c:1646  */
+#line 42912 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1872:
-#line 11017 "preproc.y" /* yacc.c:1646  */
+#line 11017 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("["),(yyvsp[-1].str),mm_strdup("]"));
 }
-#line 42914 "preproc.c" /* yacc.c:1646  */
+#line 42920 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1873:
-#line 11021 "preproc.y" /* yacc.c:1646  */
+#line 11021 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("[ ]");
 }
-#line 42922 "preproc.c" /* yacc.c:1646  */
+#line 42928 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1874:
-#line 11029 "preproc.y" /* yacc.c:1646  */
+#line 11029 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 42930 "preproc.c" /* yacc.c:1646  */
+#line 42936 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1875:
-#line 11033 "preproc.y" /* yacc.c:1646  */
+#line 11033 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 42938 "preproc.c" /* yacc.c:1646  */
+#line 42944 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1876:
-#line 11041 "preproc.y" /* yacc.c:1646  */
+#line 11041 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("from"),(yyvsp[0].str));
 }
-#line 42946 "preproc.c" /* yacc.c:1646  */
+#line 42952 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1877:
-#line 11045 "preproc.y" /* yacc.c:1646  */
+#line 11045 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 42953 "preproc.c" /* yacc.c:1646  */
+#line 42959 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1878:
-#line 11052 "preproc.y" /* yacc.c:1646  */
+#line 11052 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 42961 "preproc.c" /* yacc.c:1646  */
+#line 42967 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1879:
-#line 11056 "preproc.y" /* yacc.c:1646  */
+#line 11056 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("year");
 }
-#line 42969 "preproc.c" /* yacc.c:1646  */
+#line 42975 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1880:
-#line 11060 "preproc.y" /* yacc.c:1646  */
+#line 11060 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("month");
 }
-#line 42977 "preproc.c" /* yacc.c:1646  */
+#line 42983 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1881:
-#line 11064 "preproc.y" /* yacc.c:1646  */
+#line 11064 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("day");
 }
-#line 42985 "preproc.c" /* yacc.c:1646  */
+#line 42991 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1882:
-#line 11068 "preproc.y" /* yacc.c:1646  */
+#line 11068 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("hour");
 }
-#line 42993 "preproc.c" /* yacc.c:1646  */
+#line 42999 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1883:
-#line 11072 "preproc.y" /* yacc.c:1646  */
+#line 11072 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("minute");
 }
-#line 43001 "preproc.c" /* yacc.c:1646  */
+#line 43007 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1884:
-#line 11076 "preproc.y" /* yacc.c:1646  */
+#line 11076 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("second");
 }
-#line 43009 "preproc.c" /* yacc.c:1646  */
+#line 43015 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1885:
-#line 11080 "preproc.y" /* yacc.c:1646  */
+#line 11080 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 43017 "preproc.c" /* yacc.c:1646  */
+#line 43023 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1886:
-#line 11088 "preproc.y" /* yacc.c:1646  */
+#line 11088 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,(yyvsp[-3].str),(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 43025 "preproc.c" /* yacc.c:1646  */
+#line 43031 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1887:
-#line 11092 "preproc.y" /* yacc.c:1646  */
+#line 11092 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 43033 "preproc.c" /* yacc.c:1646  */
+#line 43039 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1888:
-#line 11100 "preproc.y" /* yacc.c:1646  */
+#line 11100 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("placing"),(yyvsp[0].str));
 }
-#line 43041 "preproc.c" /* yacc.c:1646  */
+#line 43047 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1889:
-#line 11108 "preproc.y" /* yacc.c:1646  */
+#line 11108 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("in"),(yyvsp[0].str));
 }
-#line 43049 "preproc.c" /* yacc.c:1646  */
+#line 43055 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1890:
-#line 11112 "preproc.y" /* yacc.c:1646  */
+#line 11112 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 43056 "preproc.c" /* yacc.c:1646  */
+#line 43062 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1891:
-#line 11119 "preproc.y" /* yacc.c:1646  */
+#line 11119 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 43064 "preproc.c" /* yacc.c:1646  */
+#line 43070 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1892:
-#line 11123 "preproc.y" /* yacc.c:1646  */
+#line 11123 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 43072 "preproc.c" /* yacc.c:1646  */
+#line 43078 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1893:
-#line 11127 "preproc.y" /* yacc.c:1646  */
+#line 11127 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 43080 "preproc.c" /* yacc.c:1646  */
+#line 43086 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1894:
-#line 11131 "preproc.y" /* yacc.c:1646  */
+#line 11131 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 43088 "preproc.c" /* yacc.c:1646  */
+#line 43094 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1895:
-#line 11135 "preproc.y" /* yacc.c:1646  */
+#line 11135 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 43096 "preproc.c" /* yacc.c:1646  */
+#line 43102 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1896:
-#line 11139 "preproc.y" /* yacc.c:1646  */
+#line 11139 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 43103 "preproc.c" /* yacc.c:1646  */
+#line 43109 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1897:
-#line 11146 "preproc.y" /* yacc.c:1646  */
+#line 11146 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("from"),(yyvsp[0].str));
 }
-#line 43111 "preproc.c" /* yacc.c:1646  */
+#line 43117 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1898:
-#line 11154 "preproc.y" /* yacc.c:1646  */
+#line 11154 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("for"),(yyvsp[0].str));
 }
-#line 43119 "preproc.c" /* yacc.c:1646  */
+#line 43125 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1899:
-#line 11162 "preproc.y" /* yacc.c:1646  */
+#line 11162 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("from"),(yyvsp[0].str));
 }
-#line 43127 "preproc.c" /* yacc.c:1646  */
+#line 43133 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1900:
-#line 11166 "preproc.y" /* yacc.c:1646  */
+#line 11166 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("from"),(yyvsp[0].str));
 }
-#line 43135 "preproc.c" /* yacc.c:1646  */
+#line 43141 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1901:
-#line 11170 "preproc.y" /* yacc.c:1646  */
+#line 11170 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 43143 "preproc.c" /* yacc.c:1646  */
+#line 43149 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1902:
-#line 11178 "preproc.y" /* yacc.c:1646  */
+#line 11178 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 43151 "preproc.c" /* yacc.c:1646  */
+#line 43157 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1903:
-#line 11182 "preproc.y" /* yacc.c:1646  */
+#line 11182 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 43159 "preproc.c" /* yacc.c:1646  */
+#line 43165 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1904:
-#line 11190 "preproc.y" /* yacc.c:1646  */
+#line 11190 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("case"),(yyvsp[-3].str),(yyvsp[-2].str),(yyvsp[-1].str),mm_strdup("end"));
 }
-#line 43167 "preproc.c" /* yacc.c:1646  */
+#line 43173 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1905:
-#line 11198 "preproc.y" /* yacc.c:1646  */
+#line 11198 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 43175 "preproc.c" /* yacc.c:1646  */
+#line 43181 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1906:
-#line 11202 "preproc.y" /* yacc.c:1646  */
+#line 11202 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 43183 "preproc.c" /* yacc.c:1646  */
+#line 43189 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1907:
-#line 11210 "preproc.y" /* yacc.c:1646  */
+#line 11210 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(4,mm_strdup("when"),(yyvsp[-2].str),mm_strdup("then"),(yyvsp[0].str));
 }
-#line 43191 "preproc.c" /* yacc.c:1646  */
+#line 43197 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1908:
-#line 11218 "preproc.y" /* yacc.c:1646  */
+#line 11218 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("else"),(yyvsp[0].str));
 }
-#line 43199 "preproc.c" /* yacc.c:1646  */
+#line 43205 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1909:
-#line 11222 "preproc.y" /* yacc.c:1646  */
+#line 11222 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 43206 "preproc.c" /* yacc.c:1646  */
+#line 43212 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1910:
-#line 11229 "preproc.y" /* yacc.c:1646  */
+#line 11229 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 43214 "preproc.c" /* yacc.c:1646  */
+#line 43220 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1911:
-#line 11233 "preproc.y" /* yacc.c:1646  */
+#line 11233 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 43221 "preproc.c" /* yacc.c:1646  */
+#line 43227 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1912:
-#line 11240 "preproc.y" /* yacc.c:1646  */
+#line 11240 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 43229 "preproc.c" /* yacc.c:1646  */
+#line 43235 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1913:
-#line 11244 "preproc.y" /* yacc.c:1646  */
+#line 11244 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 43237 "preproc.c" /* yacc.c:1646  */
+#line 43243 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1914:
-#line 11252 "preproc.y" /* yacc.c:1646  */
+#line 11252 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("."),(yyvsp[0].str));
 }
-#line 43245 "preproc.c" /* yacc.c:1646  */
+#line 43251 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1915:
-#line 11256 "preproc.y" /* yacc.c:1646  */
+#line 11256 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup(". *");
 }
-#line 43253 "preproc.c" /* yacc.c:1646  */
+#line 43259 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1916:
-#line 11260 "preproc.y" /* yacc.c:1646  */
+#line 11260 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("["),(yyvsp[-1].str),mm_strdup("]"));
 }
-#line 43261 "preproc.c" /* yacc.c:1646  */
+#line 43267 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1917:
-#line 11264 "preproc.y" /* yacc.c:1646  */
+#line 11264 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(5,mm_strdup("["),(yyvsp[-3].str),mm_strdup(":"),(yyvsp[-1].str),mm_strdup("]"));
 }
-#line 43269 "preproc.c" /* yacc.c:1646  */
+#line 43275 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1918:
-#line 11272 "preproc.y" /* yacc.c:1646  */
+#line 11272 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 43277 "preproc.c" /* yacc.c:1646  */
+#line 43283 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1919:
-#line 11276 "preproc.y" /* yacc.c:1646  */
+#line 11276 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 43285 "preproc.c" /* yacc.c:1646  */
+#line 43291 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1920:
-#line 11284 "preproc.y" /* yacc.c:1646  */
+#line 11284 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 43292 "preproc.c" /* yacc.c:1646  */
+#line 43298 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1921:
-#line 11287 "preproc.y" /* yacc.c:1646  */
+#line 11287 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 43300 "preproc.c" /* yacc.c:1646  */
+#line 43306 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1922:
-#line 11295 "preproc.y" /* yacc.c:1646  */
+#line 11295 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("asymmetric");
 }
-#line 43308 "preproc.c" /* yacc.c:1646  */
+#line 43314 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1923:
-#line 11299 "preproc.y" /* yacc.c:1646  */
+#line 11299 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 43315 "preproc.c" /* yacc.c:1646  */
+#line 43321 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1924:
-#line 11306 "preproc.y" /* yacc.c:1646  */
+#line 11306 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 43323 "preproc.c" /* yacc.c:1646  */
+#line 43329 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1925:
-#line 11310 "preproc.y" /* yacc.c:1646  */
+#line 11310 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("default");
 }
-#line 43331 "preproc.c" /* yacc.c:1646  */
+#line 43337 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1926:
-#line 11318 "preproc.y" /* yacc.c:1646  */
+#line 11318 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 43339 "preproc.c" /* yacc.c:1646  */
+#line 43345 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1927:
-#line 11322 "preproc.y" /* yacc.c:1646  */
+#line 11322 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 43347 "preproc.c" /* yacc.c:1646  */
+#line 43353 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1928:
-#line 11330 "preproc.y" /* yacc.c:1646  */
+#line 11330 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,mm_strdup("("),(yyvsp[-1].str),mm_strdup(")"));
 }
-#line 43355 "preproc.c" /* yacc.c:1646  */
+#line 43361 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1929:
-#line 11338 "preproc.y" /* yacc.c:1646  */
+#line 11338 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 43363 "preproc.c" /* yacc.c:1646  */
+#line 43369 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1930:
-#line 11342 "preproc.y" /* yacc.c:1646  */
+#line 11342 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str)=EMPTY; }
-#line 43370 "preproc.c" /* yacc.c:1646  */
+#line 43376 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1931:
-#line 11349 "preproc.y" /* yacc.c:1646  */
+#line 11349 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 43378 "preproc.c" /* yacc.c:1646  */
+#line 43384 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1932:
-#line 11353 "preproc.y" /* yacc.c:1646  */
+#line 11353 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 43386 "preproc.c" /* yacc.c:1646  */
+#line 43392 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1933:
-#line 11361 "preproc.y" /* yacc.c:1646  */
+#line 11361 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup("as"),(yyvsp[0].str));
 }
-#line 43394 "preproc.c" /* yacc.c:1646  */
+#line 43400 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1934:
-#line 11365 "preproc.y" /* yacc.c:1646  */
+#line 11365 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 43402 "preproc.c" /* yacc.c:1646  */
+#line 43408 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1935:
-#line 11369 "preproc.y" /* yacc.c:1646  */
+#line 11369 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 43410 "preproc.c" /* yacc.c:1646  */
+#line 43416 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1936:
-#line 11373 "preproc.y" /* yacc.c:1646  */
+#line 11373 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("*");
 }
-#line 43418 "preproc.c" /* yacc.c:1646  */
+#line 43424 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1937:
-#line 11381 "preproc.y" /* yacc.c:1646  */
+#line 11381 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 43426 "preproc.c" /* yacc.c:1646  */
+#line 43432 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1938:
-#line 11385 "preproc.y" /* yacc.c:1646  */
+#line 11385 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 43434 "preproc.c" /* yacc.c:1646  */
+#line 43440 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1939:
-#line 11393 "preproc.y" /* yacc.c:1646  */
+#line 11393 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 43442 "preproc.c" /* yacc.c:1646  */
+#line 43448 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1940:
-#line 11397 "preproc.y" /* yacc.c:1646  */
+#line 11397 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 43450 "preproc.c" /* yacc.c:1646  */
+#line 43456 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1941:
-#line 11405 "preproc.y" /* yacc.c:1646  */
+#line 11405 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 43458 "preproc.c" /* yacc.c:1646  */
+#line 43464 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1942:
-#line 11409 "preproc.y" /* yacc.c:1646  */
+#line 11409 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 43466 "preproc.c" /* yacc.c:1646  */
+#line 43472 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1943:
-#line 11417 "preproc.y" /* yacc.c:1646  */
+#line 11417 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 43474 "preproc.c" /* yacc.c:1646  */
+#line 43480 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1944:
-#line 11425 "preproc.y" /* yacc.c:1646  */
+#line 11425 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 43482 "preproc.c" /* yacc.c:1646  */
+#line 43488 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1945:
-#line 11433 "preproc.y" /* yacc.c:1646  */
+#line 11433 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 43490 "preproc.c" /* yacc.c:1646  */
+#line 43496 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1946:
-#line 11441 "preproc.y" /* yacc.c:1646  */
+#line 11441 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 43498 "preproc.c" /* yacc.c:1646  */
+#line 43504 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1947:
-#line 11449 "preproc.y" /* yacc.c:1646  */
+#line 11449 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 43506 "preproc.c" /* yacc.c:1646  */
+#line 43512 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1948:
-#line 11457 "preproc.y" /* yacc.c:1646  */
+#line 11457 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 43514 "preproc.c" /* yacc.c:1646  */
+#line 43520 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1949:
-#line 11465 "preproc.y" /* yacc.c:1646  */
+#line 11465 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 43522 "preproc.c" /* yacc.c:1646  */
+#line 43528 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1950:
-#line 11469 "preproc.y" /* yacc.c:1646  */
+#line 11469 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 43530 "preproc.c" /* yacc.c:1646  */
+#line 43536 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1951:
-#line 11477 "preproc.y" /* yacc.c:1646  */
+#line 11477 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 43538 "preproc.c" /* yacc.c:1646  */
+#line 43544 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1952:
-#line 11481 "preproc.y" /* yacc.c:1646  */
+#line 11481 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 43546 "preproc.c" /* yacc.c:1646  */
+#line 43552 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1953:
-#line 11485 "preproc.y" /* yacc.c:1646  */
+#line 11485 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 43554 "preproc.c" /* yacc.c:1646  */
+#line 43560 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1954:
-#line 11489 "preproc.y" /* yacc.c:1646  */
+#line 11489 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 43562 "preproc.c" /* yacc.c:1646  */
+#line 43568 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1955:
-#line 11493 "preproc.y" /* yacc.c:1646  */
+#line 11493 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("xconst");
 }
-#line 43570 "preproc.c" /* yacc.c:1646  */
+#line 43576 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1956:
-#line 11497 "preproc.y" /* yacc.c:1646  */
+#line 11497 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 43578 "preproc.c" /* yacc.c:1646  */
+#line 43584 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1957:
-#line 11501 "preproc.y" /* yacc.c:1646  */
+#line 11501 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,(yyvsp[-5].str),mm_strdup("("),(yyvsp[-3].str),(yyvsp[-2].str),mm_strdup(")"),(yyvsp[0].str));
 }
-#line 43586 "preproc.c" /* yacc.c:1646  */
+#line 43592 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1958:
-#line 11505 "preproc.y" /* yacc.c:1646  */
+#line 11505 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 43594 "preproc.c" /* yacc.c:1646  */
+#line 43600 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1959:
-#line 11509 "preproc.y" /* yacc.c:1646  */
+#line 11509 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 43602 "preproc.c" /* yacc.c:1646  */
+#line 43608 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1960:
-#line 11513 "preproc.y" /* yacc.c:1646  */
+#line 11513 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(6,(yyvsp[-5].str),mm_strdup("("),(yyvsp[-3].str),mm_strdup(")"),(yyvsp[-1].str),(yyvsp[0].str));
 }
-#line 43610 "preproc.c" /* yacc.c:1646  */
+#line 43616 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1961:
-#line 11517 "preproc.y" /* yacc.c:1646  */
+#line 11517 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("true");
 }
-#line 43618 "preproc.c" /* yacc.c:1646  */
+#line 43624 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1962:
-#line 11521 "preproc.y" /* yacc.c:1646  */
+#line 11521 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("false");
 }
-#line 43626 "preproc.c" /* yacc.c:1646  */
+#line 43632 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1963:
-#line 11525 "preproc.y" /* yacc.c:1646  */
+#line 11525 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("null");
 }
-#line 43634 "preproc.c" /* yacc.c:1646  */
+#line 43640 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1964:
-#line 11528 "preproc.y" /* yacc.c:1646  */
+#line 11528 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 43640 "preproc.c" /* yacc.c:1646  */
+#line 43646 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1965:
-#line 11529 "preproc.y" /* yacc.c:1646  */
+#line 11529 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 43646 "preproc.c" /* yacc.c:1646  */
+#line 43652 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1966:
-#line 11535 "preproc.y" /* yacc.c:1646  */
+#line 11535 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = make_name(); }
-#line 43652 "preproc.c" /* yacc.c:1646  */
+#line 43658 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1967:
-#line 11541 "preproc.y" /* yacc.c:1646  */
+#line 11541 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 43660 "preproc.c" /* yacc.c:1646  */
+#line 43666 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1968:
-#line 11549 "preproc.y" /* yacc.c:1646  */
+#line 11549 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 43668 "preproc.c" /* yacc.c:1646  */
+#line 43674 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1969:
-#line 11553 "preproc.y" /* yacc.c:1646  */
+#line 11553 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(3,(yyvsp[-2].str),mm_strdup(","),(yyvsp[0].str));
 }
-#line 43676 "preproc.c" /* yacc.c:1646  */
+#line 43682 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1970:
-#line 11561 "preproc.y" /* yacc.c:1646  */
+#line 11561 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 43684 "preproc.c" /* yacc.c:1646  */
+#line 43690 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1971:
-#line 11564 "preproc.y" /* yacc.c:1646  */
+#line 11564 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 43690 "preproc.c" /* yacc.c:1646  */
+#line 43696 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1972:
-#line 11566 "preproc.y" /* yacc.c:1646  */
+#line 11566 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("+"),(yyvsp[0].str));
 }
-#line 43698 "preproc.c" /* yacc.c:1646  */
+#line 43704 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1973:
-#line 11570 "preproc.y" /* yacc.c:1646  */
+#line 11570 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = cat_str(2,mm_strdup("-"),(yyvsp[0].str));
 }
-#line 43706 "preproc.c" /* yacc.c:1646  */
+#line 43712 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1974:
-#line 11578 "preproc.y" /* yacc.c:1646  */
+#line 11578 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 43714 "preproc.c" /* yacc.c:1646  */
+#line 43720 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1975:
-#line 11582 "preproc.y" /* yacc.c:1646  */
+#line 11582 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 43722 "preproc.c" /* yacc.c:1646  */
+#line 43728 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1976:
-#line 11586 "preproc.y" /* yacc.c:1646  */
+#line 11586 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 43730 "preproc.c" /* yacc.c:1646  */
+#line 43736 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1977:
-#line 11590 "preproc.y" /* yacc.c:1646  */
+#line 11590 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = (yyvsp[0].str);
 }
-#line 43738 "preproc.c" /* yacc.c:1646  */
+#line 43744 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1978:
-#line 11598 "preproc.y" /* yacc.c:1646  */
+#line 11598 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("abort");
 }
-#line 43746 "preproc.c" /* yacc.c:1646  */
+#line 43752 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1979:
-#line 11602 "preproc.y" /* yacc.c:1646  */
+#line 11602 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("absolute");
 }
-#line 43754 "preproc.c" /* yacc.c:1646  */
+#line 43760 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1980:
-#line 11606 "preproc.y" /* yacc.c:1646  */
+#line 11606 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("access");
 }
-#line 43762 "preproc.c" /* yacc.c:1646  */
+#line 43768 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1981:
-#line 11610 "preproc.y" /* yacc.c:1646  */
+#line 11610 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("action");
 }
-#line 43770 "preproc.c" /* yacc.c:1646  */
+#line 43776 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1982:
-#line 11614 "preproc.y" /* yacc.c:1646  */
+#line 11614 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("add");
 }
-#line 43778 "preproc.c" /* yacc.c:1646  */
+#line 43784 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1983:
-#line 11618 "preproc.y" /* yacc.c:1646  */
+#line 11618 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("admin");
 }
-#line 43786 "preproc.c" /* yacc.c:1646  */
+#line 43792 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1984:
-#line 11622 "preproc.y" /* yacc.c:1646  */
+#line 11622 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("after");
 }
-#line 43794 "preproc.c" /* yacc.c:1646  */
+#line 43800 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1985:
-#line 11626 "preproc.y" /* yacc.c:1646  */
+#line 11626 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("aggregate");
 }
-#line 43802 "preproc.c" /* yacc.c:1646  */
+#line 43808 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1986:
-#line 11630 "preproc.y" /* yacc.c:1646  */
+#line 11630 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("also");
 }
-#line 43810 "preproc.c" /* yacc.c:1646  */
+#line 43816 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1987:
-#line 11634 "preproc.y" /* yacc.c:1646  */
+#line 11634 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("alter");
 }
-#line 43818 "preproc.c" /* yacc.c:1646  */
+#line 43824 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1988:
-#line 11638 "preproc.y" /* yacc.c:1646  */
+#line 11638 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("always");
 }
-#line 43826 "preproc.c" /* yacc.c:1646  */
+#line 43832 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1989:
-#line 11642 "preproc.y" /* yacc.c:1646  */
+#line 11642 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("assertion");
 }
-#line 43834 "preproc.c" /* yacc.c:1646  */
+#line 43840 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1990:
-#line 11646 "preproc.y" /* yacc.c:1646  */
+#line 11646 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("assignment");
 }
-#line 43842 "preproc.c" /* yacc.c:1646  */
+#line 43848 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1991:
-#line 11650 "preproc.y" /* yacc.c:1646  */
+#line 11650 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("at");
 }
-#line 43850 "preproc.c" /* yacc.c:1646  */
+#line 43856 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1992:
-#line 11654 "preproc.y" /* yacc.c:1646  */
+#line 11654 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("attribute");
 }
-#line 43858 "preproc.c" /* yacc.c:1646  */
+#line 43864 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1993:
-#line 11658 "preproc.y" /* yacc.c:1646  */
+#line 11658 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("backward");
 }
-#line 43866 "preproc.c" /* yacc.c:1646  */
+#line 43872 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1994:
-#line 11662 "preproc.y" /* yacc.c:1646  */
+#line 11662 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("before");
 }
-#line 43874 "preproc.c" /* yacc.c:1646  */
+#line 43880 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1995:
-#line 11666 "preproc.y" /* yacc.c:1646  */
+#line 11666 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("begin");
 }
-#line 43882 "preproc.c" /* yacc.c:1646  */
+#line 43888 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1996:
-#line 11670 "preproc.y" /* yacc.c:1646  */
+#line 11670 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("by");
 }
-#line 43890 "preproc.c" /* yacc.c:1646  */
+#line 43896 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1997:
-#line 11674 "preproc.y" /* yacc.c:1646  */
+#line 11674 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("cache");
 }
-#line 43898 "preproc.c" /* yacc.c:1646  */
+#line 43904 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1998:
-#line 11678 "preproc.y" /* yacc.c:1646  */
+#line 11678 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("called");
 }
-#line 43906 "preproc.c" /* yacc.c:1646  */
+#line 43912 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 1999:
-#line 11682 "preproc.y" /* yacc.c:1646  */
+#line 11682 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("cascade");
 }
-#line 43914 "preproc.c" /* yacc.c:1646  */
+#line 43920 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2000:
-#line 11686 "preproc.y" /* yacc.c:1646  */
+#line 11686 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("cascaded");
 }
-#line 43922 "preproc.c" /* yacc.c:1646  */
+#line 43928 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2001:
-#line 11690 "preproc.y" /* yacc.c:1646  */
+#line 11690 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("catalog");
 }
-#line 43930 "preproc.c" /* yacc.c:1646  */
+#line 43936 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2002:
-#line 11694 "preproc.y" /* yacc.c:1646  */
+#line 11694 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("chain");
 }
-#line 43938 "preproc.c" /* yacc.c:1646  */
+#line 43944 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2003:
-#line 11698 "preproc.y" /* yacc.c:1646  */
+#line 11698 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("characteristics");
 }
-#line 43946 "preproc.c" /* yacc.c:1646  */
+#line 43952 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2004:
-#line 11702 "preproc.y" /* yacc.c:1646  */
+#line 11702 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("checkpoint");
 }
-#line 43954 "preproc.c" /* yacc.c:1646  */
+#line 43960 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2005:
-#line 11706 "preproc.y" /* yacc.c:1646  */
+#line 11706 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("class");
 }
-#line 43962 "preproc.c" /* yacc.c:1646  */
+#line 43968 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2006:
-#line 11710 "preproc.y" /* yacc.c:1646  */
+#line 11710 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("close");
 }
-#line 43970 "preproc.c" /* yacc.c:1646  */
+#line 43976 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2007:
-#line 11714 "preproc.y" /* yacc.c:1646  */
+#line 11714 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("cluster");
 }
-#line 43978 "preproc.c" /* yacc.c:1646  */
+#line 43984 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2008:
-#line 11718 "preproc.y" /* yacc.c:1646  */
+#line 11718 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("comment");
 }
-#line 43986 "preproc.c" /* yacc.c:1646  */
+#line 43992 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2009:
-#line 11722 "preproc.y" /* yacc.c:1646  */
+#line 11722 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("comments");
 }
-#line 43994 "preproc.c" /* yacc.c:1646  */
+#line 44000 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2010:
-#line 11726 "preproc.y" /* yacc.c:1646  */
+#line 11726 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("commit");
 }
-#line 44002 "preproc.c" /* yacc.c:1646  */
+#line 44008 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2011:
-#line 11730 "preproc.y" /* yacc.c:1646  */
+#line 11730 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("committed");
 }
-#line 44010 "preproc.c" /* yacc.c:1646  */
+#line 44016 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2012:
-#line 11734 "preproc.y" /* yacc.c:1646  */
+#line 11734 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("configuration");
 }
-#line 44018 "preproc.c" /* yacc.c:1646  */
+#line 44024 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2013:
-#line 11738 "preproc.y" /* yacc.c:1646  */
+#line 11738 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("constraints");
 }
-#line 44026 "preproc.c" /* yacc.c:1646  */
+#line 44032 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2014:
-#line 11742 "preproc.y" /* yacc.c:1646  */
+#line 11742 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("content");
 }
-#line 44034 "preproc.c" /* yacc.c:1646  */
+#line 44040 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2015:
-#line 11746 "preproc.y" /* yacc.c:1646  */
+#line 11746 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("continue");
 }
-#line 44042 "preproc.c" /* yacc.c:1646  */
+#line 44048 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2016:
-#line 11750 "preproc.y" /* yacc.c:1646  */
+#line 11750 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("conversion");
 }
-#line 44050 "preproc.c" /* yacc.c:1646  */
+#line 44056 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2017:
-#line 11754 "preproc.y" /* yacc.c:1646  */
+#line 11754 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("copy");
 }
-#line 44058 "preproc.c" /* yacc.c:1646  */
+#line 44064 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2018:
-#line 11758 "preproc.y" /* yacc.c:1646  */
+#line 11758 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("cost");
 }
-#line 44066 "preproc.c" /* yacc.c:1646  */
+#line 44072 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2019:
-#line 11762 "preproc.y" /* yacc.c:1646  */
+#line 11762 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("csv");
 }
-#line 44074 "preproc.c" /* yacc.c:1646  */
+#line 44080 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2020:
-#line 11766 "preproc.y" /* yacc.c:1646  */
+#line 11766 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("cursor");
 }
-#line 44082 "preproc.c" /* yacc.c:1646  */
+#line 44088 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2021:
-#line 11770 "preproc.y" /* yacc.c:1646  */
+#line 11770 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("cycle");
 }
-#line 44090 "preproc.c" /* yacc.c:1646  */
+#line 44096 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2022:
-#line 11774 "preproc.y" /* yacc.c:1646  */
+#line 11774 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("data");
 }
-#line 44098 "preproc.c" /* yacc.c:1646  */
+#line 44104 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2023:
-#line 11778 "preproc.y" /* yacc.c:1646  */
+#line 11778 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("database");
 }
-#line 44106 "preproc.c" /* yacc.c:1646  */
+#line 44112 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2024:
-#line 11782 "preproc.y" /* yacc.c:1646  */
+#line 11782 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("deallocate");
 }
-#line 44114 "preproc.c" /* yacc.c:1646  */
+#line 44120 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2025:
-#line 11786 "preproc.y" /* yacc.c:1646  */
+#line 11786 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("declare");
 }
-#line 44122 "preproc.c" /* yacc.c:1646  */
+#line 44128 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2026:
-#line 11790 "preproc.y" /* yacc.c:1646  */
+#line 11790 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("defaults");
 }
-#line 44130 "preproc.c" /* yacc.c:1646  */
+#line 44136 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2027:
-#line 11794 "preproc.y" /* yacc.c:1646  */
+#line 11794 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("deferred");
 }
-#line 44138 "preproc.c" /* yacc.c:1646  */
+#line 44144 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2028:
-#line 11798 "preproc.y" /* yacc.c:1646  */
+#line 11798 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("definer");
 }
-#line 44146 "preproc.c" /* yacc.c:1646  */
+#line 44152 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2029:
-#line 11802 "preproc.y" /* yacc.c:1646  */
+#line 11802 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("delete");
 }
-#line 44154 "preproc.c" /* yacc.c:1646  */
+#line 44160 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2030:
-#line 11806 "preproc.y" /* yacc.c:1646  */
+#line 11806 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("delimiter");
 }
-#line 44162 "preproc.c" /* yacc.c:1646  */
+#line 44168 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2031:
-#line 11810 "preproc.y" /* yacc.c:1646  */
+#line 11810 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("delimiters");
 }
-#line 44170 "preproc.c" /* yacc.c:1646  */
+#line 44176 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2032:
-#line 11814 "preproc.y" /* yacc.c:1646  */
+#line 11814 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("dictionary");
 }
-#line 44178 "preproc.c" /* yacc.c:1646  */
+#line 44184 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2033:
-#line 11818 "preproc.y" /* yacc.c:1646  */
+#line 11818 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("disable");
 }
-#line 44186 "preproc.c" /* yacc.c:1646  */
+#line 44192 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2034:
-#line 11822 "preproc.y" /* yacc.c:1646  */
+#line 11822 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("discard");
 }
-#line 44194 "preproc.c" /* yacc.c:1646  */
+#line 44200 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2035:
-#line 11826 "preproc.y" /* yacc.c:1646  */
+#line 11826 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("document");
 }
-#line 44202 "preproc.c" /* yacc.c:1646  */
+#line 44208 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2036:
-#line 11830 "preproc.y" /* yacc.c:1646  */
+#line 11830 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("domain");
 }
-#line 44210 "preproc.c" /* yacc.c:1646  */
+#line 44216 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2037:
-#line 11834 "preproc.y" /* yacc.c:1646  */
+#line 11834 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("double");
 }
-#line 44218 "preproc.c" /* yacc.c:1646  */
+#line 44224 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2038:
-#line 11838 "preproc.y" /* yacc.c:1646  */
+#line 11838 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("drop");
 }
-#line 44226 "preproc.c" /* yacc.c:1646  */
+#line 44232 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2039:
-#line 11842 "preproc.y" /* yacc.c:1646  */
+#line 11842 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("each");
 }
-#line 44234 "preproc.c" /* yacc.c:1646  */
+#line 44240 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2040:
-#line 11846 "preproc.y" /* yacc.c:1646  */
+#line 11846 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("enable");
 }
-#line 44242 "preproc.c" /* yacc.c:1646  */
+#line 44248 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2041:
-#line 11850 "preproc.y" /* yacc.c:1646  */
+#line 11850 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("encoding");
 }
-#line 44250 "preproc.c" /* yacc.c:1646  */
+#line 44256 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2042:
-#line 11854 "preproc.y" /* yacc.c:1646  */
+#line 11854 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("encrypted");
 }
-#line 44258 "preproc.c" /* yacc.c:1646  */
+#line 44264 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2043:
-#line 11858 "preproc.y" /* yacc.c:1646  */
+#line 11858 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("enum");
 }
-#line 44266 "preproc.c" /* yacc.c:1646  */
+#line 44272 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2044:
-#line 11862 "preproc.y" /* yacc.c:1646  */
+#line 11862 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("escape");
 }
-#line 44274 "preproc.c" /* yacc.c:1646  */
+#line 44280 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2045:
-#line 11866 "preproc.y" /* yacc.c:1646  */
+#line 11866 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("event");
 }
-#line 44282 "preproc.c" /* yacc.c:1646  */
+#line 44288 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2046:
-#line 11870 "preproc.y" /* yacc.c:1646  */
+#line 11870 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("exclude");
 }
-#line 44290 "preproc.c" /* yacc.c:1646  */
+#line 44296 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2047:
-#line 11874 "preproc.y" /* yacc.c:1646  */
+#line 11874 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("excluding");
 }
-#line 44298 "preproc.c" /* yacc.c:1646  */
+#line 44304 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2048:
-#line 11878 "preproc.y" /* yacc.c:1646  */
+#line 11878 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("exclusive");
 }
-#line 44306 "preproc.c" /* yacc.c:1646  */
+#line 44312 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2049:
-#line 11882 "preproc.y" /* yacc.c:1646  */
+#line 11882 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("execute");
 }
-#line 44314 "preproc.c" /* yacc.c:1646  */
+#line 44320 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2050:
-#line 11886 "preproc.y" /* yacc.c:1646  */
+#line 11886 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("explain");
 }
-#line 44322 "preproc.c" /* yacc.c:1646  */
+#line 44328 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2051:
-#line 11890 "preproc.y" /* yacc.c:1646  */
+#line 11890 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("extension");
 }
-#line 44330 "preproc.c" /* yacc.c:1646  */
+#line 44336 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2052:
-#line 11894 "preproc.y" /* yacc.c:1646  */
+#line 11894 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("external");
 }
-#line 44338 "preproc.c" /* yacc.c:1646  */
+#line 44344 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2053:
-#line 11898 "preproc.y" /* yacc.c:1646  */
+#line 11898 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("family");
 }
-#line 44346 "preproc.c" /* yacc.c:1646  */
+#line 44352 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2054:
-#line 11902 "preproc.y" /* yacc.c:1646  */
+#line 11902 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("filter");
 }
-#line 44354 "preproc.c" /* yacc.c:1646  */
+#line 44360 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2055:
-#line 11906 "preproc.y" /* yacc.c:1646  */
+#line 11906 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("first");
 }
-#line 44362 "preproc.c" /* yacc.c:1646  */
+#line 44368 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2056:
-#line 11910 "preproc.y" /* yacc.c:1646  */
+#line 11910 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("following");
 }
-#line 44370 "preproc.c" /* yacc.c:1646  */
+#line 44376 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2057:
-#line 11914 "preproc.y" /* yacc.c:1646  */
+#line 11914 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("force");
 }
-#line 44378 "preproc.c" /* yacc.c:1646  */
+#line 44384 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2058:
-#line 11918 "preproc.y" /* yacc.c:1646  */
+#line 11918 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("forward");
 }
-#line 44386 "preproc.c" /* yacc.c:1646  */
+#line 44392 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2059:
-#line 11922 "preproc.y" /* yacc.c:1646  */
+#line 11922 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("function");
 }
-#line 44394 "preproc.c" /* yacc.c:1646  */
+#line 44400 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2060:
-#line 11926 "preproc.y" /* yacc.c:1646  */
+#line 11926 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("functions");
 }
-#line 44402 "preproc.c" /* yacc.c:1646  */
+#line 44408 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2061:
-#line 11930 "preproc.y" /* yacc.c:1646  */
+#line 11930 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("global");
 }
-#line 44410 "preproc.c" /* yacc.c:1646  */
+#line 44416 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2062:
-#line 11934 "preproc.y" /* yacc.c:1646  */
+#line 11934 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("granted");
 }
-#line 44418 "preproc.c" /* yacc.c:1646  */
+#line 44424 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2063:
-#line 11938 "preproc.y" /* yacc.c:1646  */
+#line 11938 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("handler");
 }
-#line 44426 "preproc.c" /* yacc.c:1646  */
+#line 44432 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2064:
-#line 11942 "preproc.y" /* yacc.c:1646  */
+#line 11942 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("header");
 }
-#line 44434 "preproc.c" /* yacc.c:1646  */
+#line 44440 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2065:
-#line 11946 "preproc.y" /* yacc.c:1646  */
+#line 11946 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("hold");
 }
-#line 44442 "preproc.c" /* yacc.c:1646  */
+#line 44448 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2066:
-#line 11950 "preproc.y" /* yacc.c:1646  */
+#line 11950 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("identity");
 }
-#line 44450 "preproc.c" /* yacc.c:1646  */
+#line 44456 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2067:
-#line 11954 "preproc.y" /* yacc.c:1646  */
+#line 11954 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("if");
 }
-#line 44458 "preproc.c" /* yacc.c:1646  */
+#line 44464 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2068:
-#line 11958 "preproc.y" /* yacc.c:1646  */
+#line 11958 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("immediate");
 }
-#line 44466 "preproc.c" /* yacc.c:1646  */
+#line 44472 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2069:
-#line 11962 "preproc.y" /* yacc.c:1646  */
+#line 11962 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("immutable");
 }
-#line 44474 "preproc.c" /* yacc.c:1646  */
+#line 44480 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2070:
-#line 11966 "preproc.y" /* yacc.c:1646  */
+#line 11966 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("implicit");
 }
-#line 44482 "preproc.c" /* yacc.c:1646  */
+#line 44488 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2071:
-#line 11970 "preproc.y" /* yacc.c:1646  */
+#line 11970 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("including");
 }
-#line 44490 "preproc.c" /* yacc.c:1646  */
+#line 44496 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2072:
-#line 11974 "preproc.y" /* yacc.c:1646  */
+#line 11974 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("increment");
 }
-#line 44498 "preproc.c" /* yacc.c:1646  */
+#line 44504 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2073:
-#line 11978 "preproc.y" /* yacc.c:1646  */
+#line 11978 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("index");
 }
-#line 44506 "preproc.c" /* yacc.c:1646  */
+#line 44512 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2074:
-#line 11982 "preproc.y" /* yacc.c:1646  */
+#line 11982 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("indexes");
 }
-#line 44514 "preproc.c" /* yacc.c:1646  */
+#line 44520 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2075:
-#line 11986 "preproc.y" /* yacc.c:1646  */
+#line 11986 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("inherit");
 }
-#line 44522 "preproc.c" /* yacc.c:1646  */
+#line 44528 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2076:
-#line 11990 "preproc.y" /* yacc.c:1646  */
+#line 11990 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("inherits");
 }
-#line 44530 "preproc.c" /* yacc.c:1646  */
+#line 44536 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2077:
-#line 11994 "preproc.y" /* yacc.c:1646  */
+#line 11994 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("inline");
 }
-#line 44538 "preproc.c" /* yacc.c:1646  */
+#line 44544 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2078:
-#line 11998 "preproc.y" /* yacc.c:1646  */
+#line 11998 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("insensitive");
 }
-#line 44546 "preproc.c" /* yacc.c:1646  */
+#line 44552 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2079:
-#line 12002 "preproc.y" /* yacc.c:1646  */
+#line 12002 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("insert");
 }
-#line 44554 "preproc.c" /* yacc.c:1646  */
+#line 44560 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2080:
-#line 12006 "preproc.y" /* yacc.c:1646  */
+#line 12006 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("instead");
 }
-#line 44562 "preproc.c" /* yacc.c:1646  */
+#line 44568 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2081:
-#line 12010 "preproc.y" /* yacc.c:1646  */
+#line 12010 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("invoker");
 }
-#line 44570 "preproc.c" /* yacc.c:1646  */
+#line 44576 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2082:
-#line 12014 "preproc.y" /* yacc.c:1646  */
+#line 12014 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("isolation");
 }
-#line 44578 "preproc.c" /* yacc.c:1646  */
+#line 44584 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2083:
-#line 12018 "preproc.y" /* yacc.c:1646  */
+#line 12018 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("key");
 }
-#line 44586 "preproc.c" /* yacc.c:1646  */
+#line 44592 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2084:
-#line 12022 "preproc.y" /* yacc.c:1646  */
+#line 12022 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("label");
 }
-#line 44594 "preproc.c" /* yacc.c:1646  */
+#line 44600 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2085:
-#line 12026 "preproc.y" /* yacc.c:1646  */
+#line 12026 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("language");
 }
-#line 44602 "preproc.c" /* yacc.c:1646  */
+#line 44608 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2086:
-#line 12030 "preproc.y" /* yacc.c:1646  */
+#line 12030 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("large");
 }
-#line 44610 "preproc.c" /* yacc.c:1646  */
+#line 44616 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2087:
-#line 12034 "preproc.y" /* yacc.c:1646  */
+#line 12034 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("last");
 }
-#line 44618 "preproc.c" /* yacc.c:1646  */
+#line 44624 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2088:
-#line 12038 "preproc.y" /* yacc.c:1646  */
+#line 12038 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("lc_collate");
 }
-#line 44626 "preproc.c" /* yacc.c:1646  */
+#line 44632 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2089:
-#line 12042 "preproc.y" /* yacc.c:1646  */
+#line 12042 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("lc_ctype");
 }
-#line 44634 "preproc.c" /* yacc.c:1646  */
+#line 44640 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2090:
-#line 12046 "preproc.y" /* yacc.c:1646  */
+#line 12046 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("leakproof");
 }
-#line 44642 "preproc.c" /* yacc.c:1646  */
+#line 44648 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2091:
-#line 12050 "preproc.y" /* yacc.c:1646  */
+#line 12050 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("level");
 }
-#line 44650 "preproc.c" /* yacc.c:1646  */
+#line 44656 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2092:
-#line 12054 "preproc.y" /* yacc.c:1646  */
+#line 12054 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("listen");
 }
-#line 44658 "preproc.c" /* yacc.c:1646  */
+#line 44664 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2093:
-#line 12058 "preproc.y" /* yacc.c:1646  */
+#line 12058 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("load");
 }
-#line 44666 "preproc.c" /* yacc.c:1646  */
+#line 44672 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2094:
-#line 12062 "preproc.y" /* yacc.c:1646  */
+#line 12062 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("local");
 }
-#line 44674 "preproc.c" /* yacc.c:1646  */
+#line 44680 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2095:
-#line 12066 "preproc.y" /* yacc.c:1646  */
+#line 12066 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("location");
 }
-#line 44682 "preproc.c" /* yacc.c:1646  */
+#line 44688 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2096:
-#line 12070 "preproc.y" /* yacc.c:1646  */
+#line 12070 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("lock");
 }
-#line 44690 "preproc.c" /* yacc.c:1646  */
+#line 44696 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2097:
-#line 12074 "preproc.y" /* yacc.c:1646  */
+#line 12074 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("mapping");
 }
-#line 44698 "preproc.c" /* yacc.c:1646  */
+#line 44704 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2098:
-#line 12078 "preproc.y" /* yacc.c:1646  */
+#line 12078 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("match");
 }
-#line 44706 "preproc.c" /* yacc.c:1646  */
+#line 44712 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2099:
-#line 12082 "preproc.y" /* yacc.c:1646  */
+#line 12082 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("materialized");
 }
-#line 44714 "preproc.c" /* yacc.c:1646  */
+#line 44720 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2100:
-#line 12086 "preproc.y" /* yacc.c:1646  */
+#line 12086 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("maxvalue");
 }
-#line 44722 "preproc.c" /* yacc.c:1646  */
+#line 44728 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2101:
-#line 12090 "preproc.y" /* yacc.c:1646  */
+#line 12090 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("minvalue");
 }
-#line 44730 "preproc.c" /* yacc.c:1646  */
+#line 44736 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2102:
-#line 12094 "preproc.y" /* yacc.c:1646  */
+#line 12094 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("mode");
 }
-#line 44738 "preproc.c" /* yacc.c:1646  */
+#line 44744 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2103:
-#line 12098 "preproc.y" /* yacc.c:1646  */
+#line 12098 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("move");
 }
-#line 44746 "preproc.c" /* yacc.c:1646  */
+#line 44752 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2104:
-#line 12102 "preproc.y" /* yacc.c:1646  */
+#line 12102 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("name");
 }
-#line 44754 "preproc.c" /* yacc.c:1646  */
+#line 44760 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2105:
-#line 12106 "preproc.y" /* yacc.c:1646  */
+#line 12106 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("names");
 }
-#line 44762 "preproc.c" /* yacc.c:1646  */
+#line 44768 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2106:
-#line 12110 "preproc.y" /* yacc.c:1646  */
+#line 12110 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("next");
 }
-#line 44770 "preproc.c" /* yacc.c:1646  */
+#line 44776 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2107:
-#line 12114 "preproc.y" /* yacc.c:1646  */
+#line 12114 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("no");
 }
-#line 44778 "preproc.c" /* yacc.c:1646  */
+#line 44784 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2108:
-#line 12118 "preproc.y" /* yacc.c:1646  */
+#line 12118 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("nothing");
 }
-#line 44786 "preproc.c" /* yacc.c:1646  */
+#line 44792 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2109:
-#line 12122 "preproc.y" /* yacc.c:1646  */
+#line 12122 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("notify");
 }
-#line 44794 "preproc.c" /* yacc.c:1646  */
+#line 44800 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2110:
-#line 12126 "preproc.y" /* yacc.c:1646  */
+#line 12126 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("nowait");
 }
-#line 44802 "preproc.c" /* yacc.c:1646  */
+#line 44808 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2111:
-#line 12130 "preproc.y" /* yacc.c:1646  */
+#line 12130 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("nulls");
 }
-#line 44810 "preproc.c" /* yacc.c:1646  */
+#line 44816 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2112:
-#line 12134 "preproc.y" /* yacc.c:1646  */
+#line 12134 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("object");
 }
-#line 44818 "preproc.c" /* yacc.c:1646  */
+#line 44824 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2113:
-#line 12138 "preproc.y" /* yacc.c:1646  */
+#line 12138 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("of");
 }
-#line 44826 "preproc.c" /* yacc.c:1646  */
+#line 44832 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2114:
-#line 12142 "preproc.y" /* yacc.c:1646  */
+#line 12142 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("off");
 }
-#line 44834 "preproc.c" /* yacc.c:1646  */
+#line 44840 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2115:
-#line 12146 "preproc.y" /* yacc.c:1646  */
+#line 12146 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("oids");
 }
-#line 44842 "preproc.c" /* yacc.c:1646  */
+#line 44848 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2116:
-#line 12150 "preproc.y" /* yacc.c:1646  */
+#line 12150 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("operator");
 }
-#line 44850 "preproc.c" /* yacc.c:1646  */
+#line 44856 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2117:
-#line 12154 "preproc.y" /* yacc.c:1646  */
+#line 12154 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("option");
 }
-#line 44858 "preproc.c" /* yacc.c:1646  */
+#line 44864 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2118:
-#line 12158 "preproc.y" /* yacc.c:1646  */
+#line 12158 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("options");
 }
-#line 44866 "preproc.c" /* yacc.c:1646  */
+#line 44872 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2119:
-#line 12162 "preproc.y" /* yacc.c:1646  */
+#line 12162 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("ordinality");
 }
-#line 44874 "preproc.c" /* yacc.c:1646  */
+#line 44880 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2120:
-#line 12166 "preproc.y" /* yacc.c:1646  */
+#line 12166 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("over");
 }
-#line 44882 "preproc.c" /* yacc.c:1646  */
+#line 44888 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2121:
-#line 12170 "preproc.y" /* yacc.c:1646  */
+#line 12170 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("owned");
 }
-#line 44890 "preproc.c" /* yacc.c:1646  */
+#line 44896 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2122:
-#line 12174 "preproc.y" /* yacc.c:1646  */
+#line 12174 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("owner");
 }
-#line 44898 "preproc.c" /* yacc.c:1646  */
+#line 44904 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2123:
-#line 12178 "preproc.y" /* yacc.c:1646  */
+#line 12178 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("parser");
 }
-#line 44906 "preproc.c" /* yacc.c:1646  */
+#line 44912 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2124:
-#line 12182 "preproc.y" /* yacc.c:1646  */
+#line 12182 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("partial");
 }
-#line 44914 "preproc.c" /* yacc.c:1646  */
+#line 44920 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2125:
-#line 12186 "preproc.y" /* yacc.c:1646  */
+#line 12186 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("partition");
 }
-#line 44922 "preproc.c" /* yacc.c:1646  */
+#line 44928 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2126:
-#line 12190 "preproc.y" /* yacc.c:1646  */
+#line 12190 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("passing");
 }
-#line 44930 "preproc.c" /* yacc.c:1646  */
+#line 44936 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2127:
-#line 12194 "preproc.y" /* yacc.c:1646  */
+#line 12194 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("password");
 }
-#line 44938 "preproc.c" /* yacc.c:1646  */
+#line 44944 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2128:
-#line 12198 "preproc.y" /* yacc.c:1646  */
+#line 12198 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("plans");
 }
-#line 44946 "preproc.c" /* yacc.c:1646  */
+#line 44952 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2129:
-#line 12202 "preproc.y" /* yacc.c:1646  */
+#line 12202 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("preceding");
 }
-#line 44954 "preproc.c" /* yacc.c:1646  */
+#line 44960 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2130:
-#line 12206 "preproc.y" /* yacc.c:1646  */
+#line 12206 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("prepare");
 }
-#line 44962 "preproc.c" /* yacc.c:1646  */
+#line 44968 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2131:
-#line 12210 "preproc.y" /* yacc.c:1646  */
+#line 12210 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("prepared");
 }
-#line 44970 "preproc.c" /* yacc.c:1646  */
+#line 44976 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2132:
-#line 12214 "preproc.y" /* yacc.c:1646  */
+#line 12214 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("preserve");
 }
-#line 44978 "preproc.c" /* yacc.c:1646  */
+#line 44984 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2133:
-#line 12218 "preproc.y" /* yacc.c:1646  */
+#line 12218 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("prior");
 }
-#line 44986 "preproc.c" /* yacc.c:1646  */
+#line 44992 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2134:
-#line 12222 "preproc.y" /* yacc.c:1646  */
+#line 12222 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("privileges");
 }
-#line 44994 "preproc.c" /* yacc.c:1646  */
+#line 45000 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2135:
-#line 12226 "preproc.y" /* yacc.c:1646  */
+#line 12226 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("procedural");
 }
-#line 45002 "preproc.c" /* yacc.c:1646  */
+#line 45008 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2136:
-#line 12230 "preproc.y" /* yacc.c:1646  */
+#line 12230 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("procedure");
 }
-#line 45010 "preproc.c" /* yacc.c:1646  */
+#line 45016 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2137:
-#line 12234 "preproc.y" /* yacc.c:1646  */
+#line 12234 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("program");
 }
-#line 45018 "preproc.c" /* yacc.c:1646  */
+#line 45024 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2138:
-#line 12238 "preproc.y" /* yacc.c:1646  */
+#line 12238 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("quote");
 }
-#line 45026 "preproc.c" /* yacc.c:1646  */
+#line 45032 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2139:
-#line 12242 "preproc.y" /* yacc.c:1646  */
+#line 12242 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("range");
 }
-#line 45034 "preproc.c" /* yacc.c:1646  */
+#line 45040 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2140:
-#line 12246 "preproc.y" /* yacc.c:1646  */
+#line 12246 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("read");
 }
-#line 45042 "preproc.c" /* yacc.c:1646  */
+#line 45048 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2141:
-#line 12250 "preproc.y" /* yacc.c:1646  */
+#line 12250 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("reassign");
 }
-#line 45050 "preproc.c" /* yacc.c:1646  */
+#line 45056 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2142:
-#line 12254 "preproc.y" /* yacc.c:1646  */
+#line 12254 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("recheck");
 }
-#line 45058 "preproc.c" /* yacc.c:1646  */
+#line 45064 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2143:
-#line 12258 "preproc.y" /* yacc.c:1646  */
+#line 12258 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("recursive");
 }
-#line 45066 "preproc.c" /* yacc.c:1646  */
+#line 45072 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2144:
-#line 12262 "preproc.y" /* yacc.c:1646  */
+#line 12262 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("ref");
 }
-#line 45074 "preproc.c" /* yacc.c:1646  */
+#line 45080 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2145:
-#line 12266 "preproc.y" /* yacc.c:1646  */
+#line 12266 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("refresh");
 }
-#line 45082 "preproc.c" /* yacc.c:1646  */
+#line 45088 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2146:
-#line 12270 "preproc.y" /* yacc.c:1646  */
+#line 12270 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("reindex");
 }
-#line 45090 "preproc.c" /* yacc.c:1646  */
+#line 45096 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2147:
-#line 12274 "preproc.y" /* yacc.c:1646  */
+#line 12274 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("relative");
 }
-#line 45098 "preproc.c" /* yacc.c:1646  */
+#line 45104 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2148:
-#line 12278 "preproc.y" /* yacc.c:1646  */
+#line 12278 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("release");
 }
-#line 45106 "preproc.c" /* yacc.c:1646  */
+#line 45112 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2149:
-#line 12282 "preproc.y" /* yacc.c:1646  */
+#line 12282 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("rename");
 }
-#line 45114 "preproc.c" /* yacc.c:1646  */
+#line 45120 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2150:
-#line 12286 "preproc.y" /* yacc.c:1646  */
+#line 12286 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("repeatable");
 }
-#line 45122 "preproc.c" /* yacc.c:1646  */
+#line 45128 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2151:
-#line 12290 "preproc.y" /* yacc.c:1646  */
+#line 12290 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("replace");
 }
-#line 45130 "preproc.c" /* yacc.c:1646  */
+#line 45136 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2152:
-#line 12294 "preproc.y" /* yacc.c:1646  */
+#line 12294 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("replica");
 }
-#line 45138 "preproc.c" /* yacc.c:1646  */
+#line 45144 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2153:
-#line 12298 "preproc.y" /* yacc.c:1646  */
+#line 12298 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("reset");
 }
-#line 45146 "preproc.c" /* yacc.c:1646  */
+#line 45152 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2154:
-#line 12302 "preproc.y" /* yacc.c:1646  */
+#line 12302 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("restart");
 }
-#line 45154 "preproc.c" /* yacc.c:1646  */
+#line 45160 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2155:
-#line 12306 "preproc.y" /* yacc.c:1646  */
+#line 12306 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("restrict");
 }
-#line 45162 "preproc.c" /* yacc.c:1646  */
+#line 45168 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2156:
-#line 12310 "preproc.y" /* yacc.c:1646  */
+#line 12310 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("returns");
 }
-#line 45170 "preproc.c" /* yacc.c:1646  */
+#line 45176 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2157:
-#line 12314 "preproc.y" /* yacc.c:1646  */
+#line 12314 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("revoke");
 }
-#line 45178 "preproc.c" /* yacc.c:1646  */
+#line 45184 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2158:
-#line 12318 "preproc.y" /* yacc.c:1646  */
+#line 12318 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("role");
 }
-#line 45186 "preproc.c" /* yacc.c:1646  */
+#line 45192 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2159:
-#line 12322 "preproc.y" /* yacc.c:1646  */
+#line 12322 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("rollback");
 }
-#line 45194 "preproc.c" /* yacc.c:1646  */
+#line 45200 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2160:
-#line 12326 "preproc.y" /* yacc.c:1646  */
+#line 12326 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("rows");
 }
-#line 45202 "preproc.c" /* yacc.c:1646  */
+#line 45208 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2161:
-#line 12330 "preproc.y" /* yacc.c:1646  */
+#line 12330 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("rule");
 }
-#line 45210 "preproc.c" /* yacc.c:1646  */
+#line 45216 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2162:
-#line 12334 "preproc.y" /* yacc.c:1646  */
+#line 12334 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("savepoint");
 }
-#line 45218 "preproc.c" /* yacc.c:1646  */
+#line 45224 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2163:
-#line 12338 "preproc.y" /* yacc.c:1646  */
+#line 12338 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("schema");
 }
-#line 45226 "preproc.c" /* yacc.c:1646  */
+#line 45232 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2164:
-#line 12342 "preproc.y" /* yacc.c:1646  */
+#line 12342 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("scroll");
 }
-#line 45234 "preproc.c" /* yacc.c:1646  */
+#line 45240 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2165:
-#line 12346 "preproc.y" /* yacc.c:1646  */
+#line 12346 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("search");
 }
-#line 45242 "preproc.c" /* yacc.c:1646  */
+#line 45248 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2166:
-#line 12350 "preproc.y" /* yacc.c:1646  */
+#line 12350 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("security");
 }
-#line 45250 "preproc.c" /* yacc.c:1646  */
+#line 45256 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2167:
-#line 12354 "preproc.y" /* yacc.c:1646  */
+#line 12354 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("sequence");
 }
-#line 45258 "preproc.c" /* yacc.c:1646  */
+#line 45264 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2168:
-#line 12358 "preproc.y" /* yacc.c:1646  */
+#line 12358 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("sequences");
 }
-#line 45266 "preproc.c" /* yacc.c:1646  */
+#line 45272 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2169:
-#line 12362 "preproc.y" /* yacc.c:1646  */
+#line 12362 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("serializable");
 }
-#line 45274 "preproc.c" /* yacc.c:1646  */
+#line 45280 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2170:
-#line 12366 "preproc.y" /* yacc.c:1646  */
+#line 12366 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("server");
 }
-#line 45282 "preproc.c" /* yacc.c:1646  */
+#line 45288 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2171:
-#line 12370 "preproc.y" /* yacc.c:1646  */
+#line 12370 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("session");
 }
-#line 45290 "preproc.c" /* yacc.c:1646  */
+#line 45296 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2172:
-#line 12374 "preproc.y" /* yacc.c:1646  */
+#line 12374 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("set");
 }
-#line 45298 "preproc.c" /* yacc.c:1646  */
+#line 45304 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2173:
-#line 12378 "preproc.y" /* yacc.c:1646  */
+#line 12378 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("share");
 }
-#line 45306 "preproc.c" /* yacc.c:1646  */
+#line 45312 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2174:
-#line 12382 "preproc.y" /* yacc.c:1646  */
+#line 12382 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("show");
 }
-#line 45314 "preproc.c" /* yacc.c:1646  */
+#line 45320 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2175:
-#line 12386 "preproc.y" /* yacc.c:1646  */
+#line 12386 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("simple");
 }
-#line 45322 "preproc.c" /* yacc.c:1646  */
+#line 45328 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2176:
-#line 12390 "preproc.y" /* yacc.c:1646  */
+#line 12390 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("snapshot");
 }
-#line 45330 "preproc.c" /* yacc.c:1646  */
+#line 45336 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2177:
-#line 12394 "preproc.y" /* yacc.c:1646  */
+#line 12394 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("stable");
 }
-#line 45338 "preproc.c" /* yacc.c:1646  */
+#line 45344 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2178:
-#line 12398 "preproc.y" /* yacc.c:1646  */
+#line 12398 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("standalone");
 }
-#line 45346 "preproc.c" /* yacc.c:1646  */
+#line 45352 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2179:
-#line 12402 "preproc.y" /* yacc.c:1646  */
+#line 12402 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("start");
 }
-#line 45354 "preproc.c" /* yacc.c:1646  */
+#line 45360 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2180:
-#line 12406 "preproc.y" /* yacc.c:1646  */
+#line 12406 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("statement");
 }
-#line 45362 "preproc.c" /* yacc.c:1646  */
+#line 45368 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2181:
-#line 12410 "preproc.y" /* yacc.c:1646  */
+#line 12410 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("statistics");
 }
-#line 45370 "preproc.c" /* yacc.c:1646  */
+#line 45376 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2182:
-#line 12414 "preproc.y" /* yacc.c:1646  */
+#line 12414 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("stdin");
 }
-#line 45378 "preproc.c" /* yacc.c:1646  */
+#line 45384 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2183:
-#line 12418 "preproc.y" /* yacc.c:1646  */
+#line 12418 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("stdout");
 }
-#line 45386 "preproc.c" /* yacc.c:1646  */
+#line 45392 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2184:
-#line 12422 "preproc.y" /* yacc.c:1646  */
+#line 12422 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("storage");
 }
-#line 45394 "preproc.c" /* yacc.c:1646  */
+#line 45400 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2185:
-#line 12426 "preproc.y" /* yacc.c:1646  */
+#line 12426 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("strict");
 }
-#line 45402 "preproc.c" /* yacc.c:1646  */
+#line 45408 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2186:
-#line 12430 "preproc.y" /* yacc.c:1646  */
+#line 12430 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("strip");
 }
-#line 45410 "preproc.c" /* yacc.c:1646  */
+#line 45416 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2187:
-#line 12434 "preproc.y" /* yacc.c:1646  */
+#line 12434 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("sysid");
 }
-#line 45418 "preproc.c" /* yacc.c:1646  */
+#line 45424 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2188:
-#line 12438 "preproc.y" /* yacc.c:1646  */
+#line 12438 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("system");
 }
-#line 45426 "preproc.c" /* yacc.c:1646  */
+#line 45432 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2189:
-#line 12442 "preproc.y" /* yacc.c:1646  */
+#line 12442 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("tables");
 }
-#line 45434 "preproc.c" /* yacc.c:1646  */
+#line 45440 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2190:
-#line 12446 "preproc.y" /* yacc.c:1646  */
+#line 12446 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("tablespace");
 }
-#line 45442 "preproc.c" /* yacc.c:1646  */
+#line 45448 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2191:
-#line 12450 "preproc.y" /* yacc.c:1646  */
+#line 12450 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("temp");
 }
-#line 45450 "preproc.c" /* yacc.c:1646  */
+#line 45456 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2192:
-#line 12454 "preproc.y" /* yacc.c:1646  */
+#line 12454 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("template");
 }
-#line 45458 "preproc.c" /* yacc.c:1646  */
+#line 45464 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2193:
-#line 12458 "preproc.y" /* yacc.c:1646  */
+#line 12458 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("temporary");
 }
-#line 45466 "preproc.c" /* yacc.c:1646  */
+#line 45472 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2194:
-#line 12462 "preproc.y" /* yacc.c:1646  */
+#line 12462 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("text");
 }
-#line 45474 "preproc.c" /* yacc.c:1646  */
+#line 45480 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2195:
-#line 12466 "preproc.y" /* yacc.c:1646  */
+#line 12466 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("transaction");
 }
-#line 45482 "preproc.c" /* yacc.c:1646  */
+#line 45488 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2196:
-#line 12470 "preproc.y" /* yacc.c:1646  */
+#line 12470 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("trigger");
 }
-#line 45490 "preproc.c" /* yacc.c:1646  */
+#line 45496 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2197:
-#line 12474 "preproc.y" /* yacc.c:1646  */
+#line 12474 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("truncate");
 }
-#line 45498 "preproc.c" /* yacc.c:1646  */
+#line 45504 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2198:
-#line 12478 "preproc.y" /* yacc.c:1646  */
+#line 12478 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("trusted");
 }
-#line 45506 "preproc.c" /* yacc.c:1646  */
+#line 45512 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2199:
-#line 12482 "preproc.y" /* yacc.c:1646  */
+#line 12482 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("type");
 }
-#line 45514 "preproc.c" /* yacc.c:1646  */
+#line 45520 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2200:
-#line 12486 "preproc.y" /* yacc.c:1646  */
+#line 12486 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("types");
 }
-#line 45522 "preproc.c" /* yacc.c:1646  */
+#line 45528 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2201:
-#line 12490 "preproc.y" /* yacc.c:1646  */
+#line 12490 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("unbounded");
 }
-#line 45530 "preproc.c" /* yacc.c:1646  */
+#line 45536 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2202:
-#line 12494 "preproc.y" /* yacc.c:1646  */
+#line 12494 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("uncommitted");
 }
-#line 45538 "preproc.c" /* yacc.c:1646  */
+#line 45544 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2203:
-#line 12498 "preproc.y" /* yacc.c:1646  */
+#line 12498 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("unencrypted");
 }
-#line 45546 "preproc.c" /* yacc.c:1646  */
+#line 45552 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2204:
-#line 12502 "preproc.y" /* yacc.c:1646  */
+#line 12502 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("unknown");
 }
-#line 45554 "preproc.c" /* yacc.c:1646  */
+#line 45560 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2205:
-#line 12506 "preproc.y" /* yacc.c:1646  */
+#line 12506 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("unlisten");
 }
-#line 45562 "preproc.c" /* yacc.c:1646  */
+#line 45568 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2206:
-#line 12510 "preproc.y" /* yacc.c:1646  */
+#line 12510 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("unlogged");
 }
-#line 45570 "preproc.c" /* yacc.c:1646  */
+#line 45576 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2207:
-#line 12514 "preproc.y" /* yacc.c:1646  */
+#line 12514 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("until");
 }
-#line 45578 "preproc.c" /* yacc.c:1646  */
+#line 45584 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2208:
-#line 12518 "preproc.y" /* yacc.c:1646  */
+#line 12518 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("update");
 }
-#line 45586 "preproc.c" /* yacc.c:1646  */
+#line 45592 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2209:
-#line 12522 "preproc.y" /* yacc.c:1646  */
+#line 12522 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("vacuum");
 }
-#line 45594 "preproc.c" /* yacc.c:1646  */
+#line 45600 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2210:
-#line 12526 "preproc.y" /* yacc.c:1646  */
+#line 12526 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("valid");
 }
-#line 45602 "preproc.c" /* yacc.c:1646  */
+#line 45608 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2211:
-#line 12530 "preproc.y" /* yacc.c:1646  */
+#line 12530 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("validate");
 }
-#line 45610 "preproc.c" /* yacc.c:1646  */
+#line 45616 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2212:
-#line 12534 "preproc.y" /* yacc.c:1646  */
+#line 12534 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("validator");
 }
-#line 45618 "preproc.c" /* yacc.c:1646  */
+#line 45624 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2213:
-#line 12538 "preproc.y" /* yacc.c:1646  */
+#line 12538 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("value");
 }
-#line 45626 "preproc.c" /* yacc.c:1646  */
+#line 45632 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2214:
-#line 12542 "preproc.y" /* yacc.c:1646  */
+#line 12542 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("varying");
 }
-#line 45634 "preproc.c" /* yacc.c:1646  */
+#line 45640 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2215:
-#line 12546 "preproc.y" /* yacc.c:1646  */
+#line 12546 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("version");
 }
-#line 45642 "preproc.c" /* yacc.c:1646  */
+#line 45648 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2216:
-#line 12550 "preproc.y" /* yacc.c:1646  */
+#line 12550 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("view");
 }
-#line 45650 "preproc.c" /* yacc.c:1646  */
+#line 45656 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2217:
-#line 12554 "preproc.y" /* yacc.c:1646  */
+#line 12554 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("views");
 }
-#line 45658 "preproc.c" /* yacc.c:1646  */
+#line 45664 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2218:
-#line 12558 "preproc.y" /* yacc.c:1646  */
+#line 12558 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("volatile");
 }
-#line 45666 "preproc.c" /* yacc.c:1646  */
+#line 45672 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2219:
-#line 12562 "preproc.y" /* yacc.c:1646  */
+#line 12562 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("whitespace");
 }
-#line 45674 "preproc.c" /* yacc.c:1646  */
+#line 45680 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2220:
-#line 12566 "preproc.y" /* yacc.c:1646  */
+#line 12566 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("within");
 }
-#line 45682 "preproc.c" /* yacc.c:1646  */
+#line 45688 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2221:
-#line 12570 "preproc.y" /* yacc.c:1646  */
+#line 12570 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("without");
 }
-#line 45690 "preproc.c" /* yacc.c:1646  */
+#line 45696 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2222:
-#line 12574 "preproc.y" /* yacc.c:1646  */
+#line 12574 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("work");
 }
-#line 45698 "preproc.c" /* yacc.c:1646  */
+#line 45704 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2223:
-#line 12578 "preproc.y" /* yacc.c:1646  */
+#line 12578 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("wrapper");
 }
-#line 45706 "preproc.c" /* yacc.c:1646  */
+#line 45712 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2224:
-#line 12582 "preproc.y" /* yacc.c:1646  */
+#line 12582 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("write");
 }
-#line 45714 "preproc.c" /* yacc.c:1646  */
+#line 45720 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2225:
-#line 12586 "preproc.y" /* yacc.c:1646  */
+#line 12586 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("xml");
 }
-#line 45722 "preproc.c" /* yacc.c:1646  */
+#line 45728 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2226:
-#line 12590 "preproc.y" /* yacc.c:1646  */
+#line 12590 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("yes");
 }
-#line 45730 "preproc.c" /* yacc.c:1646  */
+#line 45736 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2227:
-#line 12594 "preproc.y" /* yacc.c:1646  */
+#line 12594 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("zone");
 }
-#line 45738 "preproc.c" /* yacc.c:1646  */
+#line 45744 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2228:
-#line 12602 "preproc.y" /* yacc.c:1646  */
+#line 12602 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("between");
 }
-#line 45746 "preproc.c" /* yacc.c:1646  */
+#line 45752 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2229:
-#line 12606 "preproc.y" /* yacc.c:1646  */
+#line 12606 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("bigint");
 }
-#line 45754 "preproc.c" /* yacc.c:1646  */
+#line 45760 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2230:
-#line 12610 "preproc.y" /* yacc.c:1646  */
+#line 12610 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("bit");
 }
-#line 45762 "preproc.c" /* yacc.c:1646  */
+#line 45768 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2231:
-#line 12614 "preproc.y" /* yacc.c:1646  */
+#line 12614 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("boolean");
 }
-#line 45770 "preproc.c" /* yacc.c:1646  */
+#line 45776 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2232:
-#line 12618 "preproc.y" /* yacc.c:1646  */
+#line 12618 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("character");
 }
-#line 45778 "preproc.c" /* yacc.c:1646  */
+#line 45784 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2233:
-#line 12622 "preproc.y" /* yacc.c:1646  */
+#line 12622 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("coalesce");
 }
-#line 45786 "preproc.c" /* yacc.c:1646  */
+#line 45792 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2234:
-#line 12626 "preproc.y" /* yacc.c:1646  */
+#line 12626 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("dec");
 }
-#line 45794 "preproc.c" /* yacc.c:1646  */
+#line 45800 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2235:
-#line 12630 "preproc.y" /* yacc.c:1646  */
+#line 12630 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("decimal");
 }
-#line 45802 "preproc.c" /* yacc.c:1646  */
+#line 45808 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2236:
-#line 12634 "preproc.y" /* yacc.c:1646  */
+#line 12634 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("exists");
 }
-#line 45810 "preproc.c" /* yacc.c:1646  */
+#line 45816 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2237:
-#line 12638 "preproc.y" /* yacc.c:1646  */
+#line 12638 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("extract");
 }
-#line 45818 "preproc.c" /* yacc.c:1646  */
+#line 45824 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2238:
-#line 12642 "preproc.y" /* yacc.c:1646  */
+#line 12642 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("float");
 }
-#line 45826 "preproc.c" /* yacc.c:1646  */
+#line 45832 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2239:
-#line 12646 "preproc.y" /* yacc.c:1646  */
+#line 12646 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("greatest");
 }
-#line 45834 "preproc.c" /* yacc.c:1646  */
+#line 45840 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2240:
-#line 12650 "preproc.y" /* yacc.c:1646  */
+#line 12650 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("inout");
 }
-#line 45842 "preproc.c" /* yacc.c:1646  */
+#line 45848 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2241:
-#line 12654 "preproc.y" /* yacc.c:1646  */
+#line 12654 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("integer");
 }
-#line 45850 "preproc.c" /* yacc.c:1646  */
+#line 45856 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2242:
-#line 12658 "preproc.y" /* yacc.c:1646  */
+#line 12658 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("interval");
 }
-#line 45858 "preproc.c" /* yacc.c:1646  */
+#line 45864 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2243:
-#line 12662 "preproc.y" /* yacc.c:1646  */
+#line 12662 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("least");
 }
-#line 45866 "preproc.c" /* yacc.c:1646  */
+#line 45872 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2244:
-#line 12666 "preproc.y" /* yacc.c:1646  */
+#line 12666 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("national");
 }
-#line 45874 "preproc.c" /* yacc.c:1646  */
+#line 45880 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2245:
-#line 12670 "preproc.y" /* yacc.c:1646  */
+#line 12670 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("nchar");
 }
-#line 45882 "preproc.c" /* yacc.c:1646  */
+#line 45888 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2246:
-#line 12674 "preproc.y" /* yacc.c:1646  */
+#line 12674 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("none");
 }
-#line 45890 "preproc.c" /* yacc.c:1646  */
+#line 45896 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2247:
-#line 12678 "preproc.y" /* yacc.c:1646  */
+#line 12678 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("nullif");
 }
-#line 45898 "preproc.c" /* yacc.c:1646  */
+#line 45904 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2248:
-#line 12682 "preproc.y" /* yacc.c:1646  */
+#line 12682 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("numeric");
 }
-#line 45906 "preproc.c" /* yacc.c:1646  */
+#line 45912 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2249:
-#line 12686 "preproc.y" /* yacc.c:1646  */
+#line 12686 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("out");
 }
-#line 45914 "preproc.c" /* yacc.c:1646  */
+#line 45920 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2250:
-#line 12690 "preproc.y" /* yacc.c:1646  */
+#line 12690 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("overlay");
 }
-#line 45922 "preproc.c" /* yacc.c:1646  */
+#line 45928 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2251:
-#line 12694 "preproc.y" /* yacc.c:1646  */
+#line 12694 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("position");
 }
-#line 45930 "preproc.c" /* yacc.c:1646  */
+#line 45936 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2252:
-#line 12698 "preproc.y" /* yacc.c:1646  */
+#line 12698 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("precision");
 }
-#line 45938 "preproc.c" /* yacc.c:1646  */
+#line 45944 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2253:
-#line 12702 "preproc.y" /* yacc.c:1646  */
+#line 12702 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("real");
 }
-#line 45946 "preproc.c" /* yacc.c:1646  */
+#line 45952 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2254:
-#line 12706 "preproc.y" /* yacc.c:1646  */
+#line 12706 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("row");
 }
-#line 45954 "preproc.c" /* yacc.c:1646  */
+#line 45960 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2255:
-#line 12710 "preproc.y" /* yacc.c:1646  */
+#line 12710 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("setof");
 }
-#line 45962 "preproc.c" /* yacc.c:1646  */
+#line 45968 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2256:
-#line 12714 "preproc.y" /* yacc.c:1646  */
+#line 12714 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("smallint");
 }
-#line 45970 "preproc.c" /* yacc.c:1646  */
+#line 45976 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2257:
-#line 12718 "preproc.y" /* yacc.c:1646  */
+#line 12718 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("substring");
 }
-#line 45978 "preproc.c" /* yacc.c:1646  */
+#line 45984 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2258:
-#line 12722 "preproc.y" /* yacc.c:1646  */
+#line 12722 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("time");
 }
-#line 45986 "preproc.c" /* yacc.c:1646  */
+#line 45992 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2259:
-#line 12726 "preproc.y" /* yacc.c:1646  */
+#line 12726 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("timestamp");
 }
-#line 45994 "preproc.c" /* yacc.c:1646  */
+#line 46000 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2260:
-#line 12730 "preproc.y" /* yacc.c:1646  */
+#line 12730 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("treat");
 }
-#line 46002 "preproc.c" /* yacc.c:1646  */
+#line 46008 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2261:
-#line 12734 "preproc.y" /* yacc.c:1646  */
+#line 12734 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("trim");
 }
-#line 46010 "preproc.c" /* yacc.c:1646  */
+#line 46016 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2262:
-#line 12738 "preproc.y" /* yacc.c:1646  */
+#line 12738 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("varchar");
 }
-#line 46018 "preproc.c" /* yacc.c:1646  */
+#line 46024 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2263:
-#line 12742 "preproc.y" /* yacc.c:1646  */
+#line 12742 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("xmlattributes");
 }
-#line 46026 "preproc.c" /* yacc.c:1646  */
+#line 46032 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2264:
-#line 12746 "preproc.y" /* yacc.c:1646  */
+#line 12746 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("xmlconcat");
 }
-#line 46034 "preproc.c" /* yacc.c:1646  */
+#line 46040 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2265:
-#line 12750 "preproc.y" /* yacc.c:1646  */
+#line 12750 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("xmlelement");
 }
-#line 46042 "preproc.c" /* yacc.c:1646  */
+#line 46048 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2266:
-#line 12754 "preproc.y" /* yacc.c:1646  */
+#line 12754 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("xmlexists");
 }
-#line 46050 "preproc.c" /* yacc.c:1646  */
+#line 46056 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2267:
-#line 12758 "preproc.y" /* yacc.c:1646  */
+#line 12758 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("xmlforest");
 }
-#line 46058 "preproc.c" /* yacc.c:1646  */
+#line 46064 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2268:
-#line 12762 "preproc.y" /* yacc.c:1646  */
+#line 12762 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("xmlparse");
 }
-#line 46066 "preproc.c" /* yacc.c:1646  */
+#line 46072 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2269:
-#line 12766 "preproc.y" /* yacc.c:1646  */
+#line 12766 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("xmlpi");
 }
-#line 46074 "preproc.c" /* yacc.c:1646  */
+#line 46080 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2270:
-#line 12770 "preproc.y" /* yacc.c:1646  */
+#line 12770 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("xmlroot");
 }
-#line 46082 "preproc.c" /* yacc.c:1646  */
+#line 46088 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2271:
-#line 12774 "preproc.y" /* yacc.c:1646  */
+#line 12774 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("xmlserialize");
 }
-#line 46090 "preproc.c" /* yacc.c:1646  */
+#line 46096 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2272:
-#line 12782 "preproc.y" /* yacc.c:1646  */
+#line 12782 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("authorization");
 }
-#line 46098 "preproc.c" /* yacc.c:1646  */
+#line 46104 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2273:
-#line 12786 "preproc.y" /* yacc.c:1646  */
+#line 12786 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("binary");
 }
-#line 46106 "preproc.c" /* yacc.c:1646  */
+#line 46112 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2274:
-#line 12790 "preproc.y" /* yacc.c:1646  */
+#line 12790 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("collation");
 }
-#line 46114 "preproc.c" /* yacc.c:1646  */
+#line 46120 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2275:
-#line 12794 "preproc.y" /* yacc.c:1646  */
+#line 12794 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("concurrently");
 }
-#line 46122 "preproc.c" /* yacc.c:1646  */
+#line 46128 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2276:
-#line 12798 "preproc.y" /* yacc.c:1646  */
+#line 12798 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("cross");
 }
-#line 46130 "preproc.c" /* yacc.c:1646  */
+#line 46136 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2277:
-#line 12802 "preproc.y" /* yacc.c:1646  */
+#line 12802 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("current_schema");
 }
-#line 46138 "preproc.c" /* yacc.c:1646  */
+#line 46144 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2278:
-#line 12806 "preproc.y" /* yacc.c:1646  */
+#line 12806 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("freeze");
 }
-#line 46146 "preproc.c" /* yacc.c:1646  */
+#line 46152 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2279:
-#line 12810 "preproc.y" /* yacc.c:1646  */
+#line 12810 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("full");
 }
-#line 46154 "preproc.c" /* yacc.c:1646  */
+#line 46160 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2280:
-#line 12814 "preproc.y" /* yacc.c:1646  */
+#line 12814 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("ilike");
 }
-#line 46162 "preproc.c" /* yacc.c:1646  */
+#line 46168 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2281:
-#line 12818 "preproc.y" /* yacc.c:1646  */
+#line 12818 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("inner");
 }
-#line 46170 "preproc.c" /* yacc.c:1646  */
+#line 46176 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2282:
-#line 12822 "preproc.y" /* yacc.c:1646  */
+#line 12822 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("is");
 }
-#line 46178 "preproc.c" /* yacc.c:1646  */
+#line 46184 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2283:
-#line 12826 "preproc.y" /* yacc.c:1646  */
+#line 12826 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("isnull");
 }
-#line 46186 "preproc.c" /* yacc.c:1646  */
+#line 46192 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2284:
-#line 12830 "preproc.y" /* yacc.c:1646  */
+#line 12830 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("join");
 }
-#line 46194 "preproc.c" /* yacc.c:1646  */
+#line 46200 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2285:
-#line 12834 "preproc.y" /* yacc.c:1646  */
+#line 12834 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("left");
 }
-#line 46202 "preproc.c" /* yacc.c:1646  */
+#line 46208 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2286:
-#line 12838 "preproc.y" /* yacc.c:1646  */
+#line 12838 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("like");
 }
-#line 46210 "preproc.c" /* yacc.c:1646  */
+#line 46216 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2287:
-#line 12842 "preproc.y" /* yacc.c:1646  */
+#line 12842 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("natural");
 }
-#line 46218 "preproc.c" /* yacc.c:1646  */
+#line 46224 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2288:
-#line 12846 "preproc.y" /* yacc.c:1646  */
+#line 12846 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("notnull");
 }
-#line 46226 "preproc.c" /* yacc.c:1646  */
+#line 46232 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2289:
-#line 12850 "preproc.y" /* yacc.c:1646  */
+#line 12850 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("outer");
 }
-#line 46234 "preproc.c" /* yacc.c:1646  */
+#line 46240 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2290:
-#line 12854 "preproc.y" /* yacc.c:1646  */
+#line 12854 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("overlaps");
 }
-#line 46242 "preproc.c" /* yacc.c:1646  */
+#line 46248 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2291:
-#line 12858 "preproc.y" /* yacc.c:1646  */
+#line 12858 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("right");
 }
-#line 46250 "preproc.c" /* yacc.c:1646  */
+#line 46256 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2292:
-#line 12862 "preproc.y" /* yacc.c:1646  */
+#line 12862 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("similar");
 }
-#line 46258 "preproc.c" /* yacc.c:1646  */
+#line 46264 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2293:
-#line 12866 "preproc.y" /* yacc.c:1646  */
+#line 12866 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("verbose");
 }
-#line 46266 "preproc.c" /* yacc.c:1646  */
+#line 46272 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2294:
-#line 12874 "preproc.y" /* yacc.c:1646  */
+#line 12874 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("all");
 }
-#line 46274 "preproc.c" /* yacc.c:1646  */
+#line 46280 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2295:
-#line 12878 "preproc.y" /* yacc.c:1646  */
+#line 12878 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("analyse");
 }
-#line 46282 "preproc.c" /* yacc.c:1646  */
+#line 46288 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2296:
-#line 12882 "preproc.y" /* yacc.c:1646  */
+#line 12882 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("analyze");
 }
-#line 46290 "preproc.c" /* yacc.c:1646  */
+#line 46296 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2297:
-#line 12886 "preproc.y" /* yacc.c:1646  */
+#line 12886 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("and");
 }
-#line 46298 "preproc.c" /* yacc.c:1646  */
+#line 46304 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2298:
-#line 12890 "preproc.y" /* yacc.c:1646  */
+#line 12890 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("any");
 }
-#line 46306 "preproc.c" /* yacc.c:1646  */
+#line 46312 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2299:
-#line 12894 "preproc.y" /* yacc.c:1646  */
+#line 12894 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("array");
 }
-#line 46314 "preproc.c" /* yacc.c:1646  */
+#line 46320 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2300:
-#line 12898 "preproc.y" /* yacc.c:1646  */
+#line 12898 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("as");
 }
-#line 46322 "preproc.c" /* yacc.c:1646  */
+#line 46328 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2301:
-#line 12902 "preproc.y" /* yacc.c:1646  */
+#line 12902 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("asc");
 }
-#line 46330 "preproc.c" /* yacc.c:1646  */
+#line 46336 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2302:
-#line 12906 "preproc.y" /* yacc.c:1646  */
+#line 12906 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("asymmetric");
 }
-#line 46338 "preproc.c" /* yacc.c:1646  */
+#line 46344 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2303:
-#line 12910 "preproc.y" /* yacc.c:1646  */
+#line 12910 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("both");
 }
-#line 46346 "preproc.c" /* yacc.c:1646  */
+#line 46352 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2304:
-#line 12914 "preproc.y" /* yacc.c:1646  */
+#line 12914 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("case");
 }
-#line 46354 "preproc.c" /* yacc.c:1646  */
+#line 46360 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2305:
-#line 12918 "preproc.y" /* yacc.c:1646  */
+#line 12918 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("cast");
 }
-#line 46362 "preproc.c" /* yacc.c:1646  */
+#line 46368 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2306:
-#line 12922 "preproc.y" /* yacc.c:1646  */
+#line 12922 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("check");
 }
-#line 46370 "preproc.c" /* yacc.c:1646  */
+#line 46376 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2307:
-#line 12926 "preproc.y" /* yacc.c:1646  */
+#line 12926 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("collate");
 }
-#line 46378 "preproc.c" /* yacc.c:1646  */
+#line 46384 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2308:
-#line 12930 "preproc.y" /* yacc.c:1646  */
+#line 12930 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("column");
 }
-#line 46386 "preproc.c" /* yacc.c:1646  */
+#line 46392 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2309:
-#line 12934 "preproc.y" /* yacc.c:1646  */
+#line 12934 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("constraint");
 }
-#line 46394 "preproc.c" /* yacc.c:1646  */
+#line 46400 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2310:
-#line 12938 "preproc.y" /* yacc.c:1646  */
+#line 12938 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("create");
 }
-#line 46402 "preproc.c" /* yacc.c:1646  */
+#line 46408 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2311:
-#line 12942 "preproc.y" /* yacc.c:1646  */
+#line 12942 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("current_catalog");
 }
-#line 46410 "preproc.c" /* yacc.c:1646  */
+#line 46416 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2312:
-#line 12946 "preproc.y" /* yacc.c:1646  */
+#line 12946 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("current_date");
 }
-#line 46418 "preproc.c" /* yacc.c:1646  */
+#line 46424 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2313:
-#line 12950 "preproc.y" /* yacc.c:1646  */
+#line 12950 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("current_role");
 }
-#line 46426 "preproc.c" /* yacc.c:1646  */
+#line 46432 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2314:
-#line 12954 "preproc.y" /* yacc.c:1646  */
+#line 12954 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("current_time");
 }
-#line 46434 "preproc.c" /* yacc.c:1646  */
+#line 46440 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2315:
-#line 12958 "preproc.y" /* yacc.c:1646  */
+#line 12958 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("current_timestamp");
 }
-#line 46442 "preproc.c" /* yacc.c:1646  */
+#line 46448 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2316:
-#line 12962 "preproc.y" /* yacc.c:1646  */
+#line 12962 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("current_user");
 }
-#line 46450 "preproc.c" /* yacc.c:1646  */
+#line 46456 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2317:
-#line 12966 "preproc.y" /* yacc.c:1646  */
+#line 12966 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("default");
 }
-#line 46458 "preproc.c" /* yacc.c:1646  */
+#line 46464 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2318:
-#line 12970 "preproc.y" /* yacc.c:1646  */
+#line 12970 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("deferrable");
 }
-#line 46466 "preproc.c" /* yacc.c:1646  */
+#line 46472 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2319:
-#line 12974 "preproc.y" /* yacc.c:1646  */
+#line 12974 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("desc");
 }
-#line 46474 "preproc.c" /* yacc.c:1646  */
+#line 46480 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2320:
-#line 12978 "preproc.y" /* yacc.c:1646  */
+#line 12978 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("distinct");
 }
-#line 46482 "preproc.c" /* yacc.c:1646  */
+#line 46488 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2321:
-#line 12982 "preproc.y" /* yacc.c:1646  */
+#line 12982 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("do");
 }
-#line 46490 "preproc.c" /* yacc.c:1646  */
+#line 46496 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2322:
-#line 12986 "preproc.y" /* yacc.c:1646  */
+#line 12986 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("else");
 }
-#line 46498 "preproc.c" /* yacc.c:1646  */
+#line 46504 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2323:
-#line 12990 "preproc.y" /* yacc.c:1646  */
+#line 12990 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("end");
 }
-#line 46506 "preproc.c" /* yacc.c:1646  */
+#line 46512 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2324:
-#line 12994 "preproc.y" /* yacc.c:1646  */
+#line 12994 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("except");
 }
-#line 46514 "preproc.c" /* yacc.c:1646  */
+#line 46520 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2325:
-#line 12998 "preproc.y" /* yacc.c:1646  */
+#line 12998 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("false");
 }
-#line 46522 "preproc.c" /* yacc.c:1646  */
+#line 46528 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2326:
-#line 13002 "preproc.y" /* yacc.c:1646  */
+#line 13002 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("fetch");
 }
-#line 46530 "preproc.c" /* yacc.c:1646  */
+#line 46536 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2327:
-#line 13006 "preproc.y" /* yacc.c:1646  */
+#line 13006 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("for");
 }
-#line 46538 "preproc.c" /* yacc.c:1646  */
+#line 46544 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2328:
-#line 13010 "preproc.y" /* yacc.c:1646  */
+#line 13010 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("foreign");
 }
-#line 46546 "preproc.c" /* yacc.c:1646  */
+#line 46552 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2329:
-#line 13014 "preproc.y" /* yacc.c:1646  */
+#line 13014 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("from");
 }
-#line 46554 "preproc.c" /* yacc.c:1646  */
+#line 46560 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2330:
-#line 13018 "preproc.y" /* yacc.c:1646  */
+#line 13018 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("grant");
 }
-#line 46562 "preproc.c" /* yacc.c:1646  */
+#line 46568 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2331:
-#line 13022 "preproc.y" /* yacc.c:1646  */
+#line 13022 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("group");
 }
-#line 46570 "preproc.c" /* yacc.c:1646  */
+#line 46576 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2332:
-#line 13026 "preproc.y" /* yacc.c:1646  */
+#line 13026 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("having");
 }
-#line 46578 "preproc.c" /* yacc.c:1646  */
+#line 46584 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2333:
-#line 13030 "preproc.y" /* yacc.c:1646  */
+#line 13030 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("in");
 }
-#line 46586 "preproc.c" /* yacc.c:1646  */
+#line 46592 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2334:
-#line 13034 "preproc.y" /* yacc.c:1646  */
+#line 13034 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("initially");
 }
-#line 46594 "preproc.c" /* yacc.c:1646  */
+#line 46600 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2335:
-#line 13038 "preproc.y" /* yacc.c:1646  */
+#line 13038 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("intersect");
 }
-#line 46602 "preproc.c" /* yacc.c:1646  */
+#line 46608 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2336:
-#line 13042 "preproc.y" /* yacc.c:1646  */
+#line 13042 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("into");
 }
-#line 46610 "preproc.c" /* yacc.c:1646  */
+#line 46616 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2337:
-#line 13046 "preproc.y" /* yacc.c:1646  */
+#line 13046 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("lateral");
 }
-#line 46618 "preproc.c" /* yacc.c:1646  */
+#line 46624 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2338:
-#line 13050 "preproc.y" /* yacc.c:1646  */
+#line 13050 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("leading");
 }
-#line 46626 "preproc.c" /* yacc.c:1646  */
+#line 46632 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2339:
-#line 13054 "preproc.y" /* yacc.c:1646  */
+#line 13054 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("limit");
 }
-#line 46634 "preproc.c" /* yacc.c:1646  */
+#line 46640 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2340:
-#line 13058 "preproc.y" /* yacc.c:1646  */
+#line 13058 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("localtime");
 }
-#line 46642 "preproc.c" /* yacc.c:1646  */
+#line 46648 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2341:
-#line 13062 "preproc.y" /* yacc.c:1646  */
+#line 13062 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("localtimestamp");
 }
-#line 46650 "preproc.c" /* yacc.c:1646  */
+#line 46656 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2342:
-#line 13066 "preproc.y" /* yacc.c:1646  */
+#line 13066 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("not");
 }
-#line 46658 "preproc.c" /* yacc.c:1646  */
+#line 46664 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2343:
-#line 13070 "preproc.y" /* yacc.c:1646  */
+#line 13070 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("null");
 }
-#line 46666 "preproc.c" /* yacc.c:1646  */
+#line 46672 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2344:
-#line 13074 "preproc.y" /* yacc.c:1646  */
+#line 13074 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("offset");
 }
-#line 46674 "preproc.c" /* yacc.c:1646  */
+#line 46680 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2345:
-#line 13078 "preproc.y" /* yacc.c:1646  */
+#line 13078 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("on");
 }
-#line 46682 "preproc.c" /* yacc.c:1646  */
+#line 46688 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2346:
-#line 13082 "preproc.y" /* yacc.c:1646  */
+#line 13082 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("only");
 }
-#line 46690 "preproc.c" /* yacc.c:1646  */
+#line 46696 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2347:
-#line 13086 "preproc.y" /* yacc.c:1646  */
+#line 13086 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("or");
 }
-#line 46698 "preproc.c" /* yacc.c:1646  */
+#line 46704 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2348:
-#line 13090 "preproc.y" /* yacc.c:1646  */
+#line 13090 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("order");
 }
-#line 46706 "preproc.c" /* yacc.c:1646  */
+#line 46712 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2349:
-#line 13094 "preproc.y" /* yacc.c:1646  */
+#line 13094 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("placing");
 }
-#line 46714 "preproc.c" /* yacc.c:1646  */
+#line 46720 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2350:
-#line 13098 "preproc.y" /* yacc.c:1646  */
+#line 13098 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("primary");
 }
-#line 46722 "preproc.c" /* yacc.c:1646  */
+#line 46728 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2351:
-#line 13102 "preproc.y" /* yacc.c:1646  */
+#line 13102 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("references");
 }
-#line 46730 "preproc.c" /* yacc.c:1646  */
+#line 46736 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2352:
-#line 13106 "preproc.y" /* yacc.c:1646  */
+#line 13106 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("returning");
 }
-#line 46738 "preproc.c" /* yacc.c:1646  */
+#line 46744 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2353:
-#line 13110 "preproc.y" /* yacc.c:1646  */
+#line 13110 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("select");
 }
-#line 46746 "preproc.c" /* yacc.c:1646  */
+#line 46752 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2354:
-#line 13114 "preproc.y" /* yacc.c:1646  */
+#line 13114 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("session_user");
 }
-#line 46754 "preproc.c" /* yacc.c:1646  */
+#line 46760 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2355:
-#line 13118 "preproc.y" /* yacc.c:1646  */
+#line 13118 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("some");
 }
-#line 46762 "preproc.c" /* yacc.c:1646  */
+#line 46768 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2356:
-#line 13122 "preproc.y" /* yacc.c:1646  */
+#line 13122 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("symmetric");
 }
-#line 46770 "preproc.c" /* yacc.c:1646  */
+#line 46776 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2357:
-#line 13126 "preproc.y" /* yacc.c:1646  */
+#line 13126 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("table");
 }
-#line 46778 "preproc.c" /* yacc.c:1646  */
+#line 46784 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2358:
-#line 13130 "preproc.y" /* yacc.c:1646  */
+#line 13130 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("then");
 }
-#line 46786 "preproc.c" /* yacc.c:1646  */
+#line 46792 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2359:
-#line 13134 "preproc.y" /* yacc.c:1646  */
+#line 13134 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("trailing");
 }
-#line 46794 "preproc.c" /* yacc.c:1646  */
+#line 46800 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2360:
-#line 13138 "preproc.y" /* yacc.c:1646  */
+#line 13138 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("true");
 }
-#line 46802 "preproc.c" /* yacc.c:1646  */
+#line 46808 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2361:
-#line 13142 "preproc.y" /* yacc.c:1646  */
+#line 13142 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("unique");
 }
-#line 46810 "preproc.c" /* yacc.c:1646  */
+#line 46816 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2362:
-#line 13146 "preproc.y" /* yacc.c:1646  */
+#line 13146 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("user");
 }
-#line 46818 "preproc.c" /* yacc.c:1646  */
+#line 46824 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2363:
-#line 13150 "preproc.y" /* yacc.c:1646  */
+#line 13150 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("using");
 }
-#line 46826 "preproc.c" /* yacc.c:1646  */
+#line 46832 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2364:
-#line 13154 "preproc.y" /* yacc.c:1646  */
+#line 13154 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("variadic");
 }
-#line 46834 "preproc.c" /* yacc.c:1646  */
+#line 46840 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2365:
-#line 13158 "preproc.y" /* yacc.c:1646  */
+#line 13158 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("when");
 }
-#line 46842 "preproc.c" /* yacc.c:1646  */
+#line 46848 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2366:
-#line 13162 "preproc.y" /* yacc.c:1646  */
+#line 13162 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("where");
 }
-#line 46850 "preproc.c" /* yacc.c:1646  */
+#line 46856 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2367:
-#line 13166 "preproc.y" /* yacc.c:1646  */
+#line 13166 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("window");
 }
-#line 46858 "preproc.c" /* yacc.c:1646  */
+#line 46864 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2368:
-#line 13170 "preproc.y" /* yacc.c:1646  */
+#line 13170 "preproc.y" /* yacc.c:1652  */
     { 
  (yyval.str) = mm_strdup("with");
 }
-#line 46866 "preproc.c" /* yacc.c:1646  */
+#line 46872 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2371:
-#line 13183 "preproc.y" /* yacc.c:1646  */
+#line 13183 "preproc.y" /* yacc.c:1652  */
     { connection = NULL; }
-#line 46872 "preproc.c" /* yacc.c:1646  */
+#line 46878 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2373:
-#line 13186 "preproc.y" /* yacc.c:1646  */
+#line 13186 "preproc.y" /* yacc.c:1652  */
     {
 					fprintf(base_yyout, "%s", (yyvsp[0].str));
 					free((yyvsp[0].str));
 					output_line_number();
 				}
-#line 46882 "preproc.c" /* yacc.c:1646  */
+#line 46888 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2375:
-#line 13192 "preproc.y" /* yacc.c:1646  */
+#line 13192 "preproc.y" /* yacc.c:1652  */
     { fprintf(base_yyout, "%s", (yyvsp[0].str)); free((yyvsp[0].str)); }
-#line 46888 "preproc.c" /* yacc.c:1646  */
+#line 46894 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2376:
-#line 13193 "preproc.y" /* yacc.c:1646  */
+#line 13193 "preproc.y" /* yacc.c:1652  */
     { fprintf(base_yyout, "%s", (yyvsp[0].str)); free((yyvsp[0].str)); }
-#line 46894 "preproc.c" /* yacc.c:1646  */
+#line 46900 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2377:
-#line 13194 "preproc.y" /* yacc.c:1646  */
+#line 13194 "preproc.y" /* yacc.c:1652  */
     { braces_open++; fputs("{", base_yyout); }
-#line 46900 "preproc.c" /* yacc.c:1646  */
+#line 46906 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2378:
-#line 13196 "preproc.y" /* yacc.c:1646  */
+#line 13196 "preproc.y" /* yacc.c:1652  */
     {
 			remove_typedefs(braces_open);
 			remove_variables(braces_open--);
@@ -46911,28 +46917,28 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			}
 			fputs("}", base_yyout);
 		}
-#line 46915 "preproc.c" /* yacc.c:1646  */
+#line 46921 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2379:
-#line 13208 "preproc.y" /* yacc.c:1646  */
+#line 13208 "preproc.y" /* yacc.c:1652  */
     {FoundInto = 0;}
-#line 46921 "preproc.c" /* yacc.c:1646  */
+#line 46927 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2380:
-#line 13209 "preproc.y" /* yacc.c:1646  */
+#line 13209 "preproc.y" /* yacc.c:1652  */
     {
 			if (FoundInto == 1)
 				mmerror(PARSE_ERROR, ET_ERROR, "CREATE TABLE AS cannot specify INTO");
 
 			(yyval.str) = cat_str(6, mm_strdup("create"), (yyvsp[-6].str), mm_strdup("table"), (yyvsp[-4].str), mm_strdup("as"), (yyvsp[-1].str));
 		}
-#line 46932 "preproc.c" /* yacc.c:1646  */
+#line 46938 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2381:
-#line 13218 "preproc.y" /* yacc.c:1646  */
+#line 13218 "preproc.y" /* yacc.c:1652  */
     {
 			connection = (yyvsp[0].str);
 			/*
@@ -46942,35 +46948,35 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			if (argsinsert != NULL)
 				argsinsert = NULL;
 		}
-#line 46946 "preproc.c" /* yacc.c:1646  */
+#line 46952 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2382:
-#line 13233 "preproc.y" /* yacc.c:1646  */
+#line 13233 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = cat_str(5, (yyvsp[-2].str), mm_strdup(","), (yyvsp[0].str), mm_strdup(","), (yyvsp[-1].str)); }
-#line 46952 "preproc.c" /* yacc.c:1646  */
+#line 46958 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2383:
-#line 13235 "preproc.y" /* yacc.c:1646  */
+#line 13235 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("NULL, NULL, NULL, \"DEFAULT\""); }
-#line 46958 "preproc.c" /* yacc.c:1646  */
+#line 46964 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2384:
-#line 13238 "preproc.y" /* yacc.c:1646  */
+#line 13238 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = cat_str(3, mm_strdup("NULL,"), (yyvsp[0].str), mm_strdup(", NULL")); }
-#line 46964 "preproc.c" /* yacc.c:1646  */
+#line 46970 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2385:
-#line 13240 "preproc.y" /* yacc.c:1646  */
+#line 13240 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = cat2_str((yyvsp[0].str), mm_strdup(", NULL, NULL, NULL")); }
-#line 46970 "preproc.c" /* yacc.c:1646  */
+#line 46976 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2386:
-#line 13244 "preproc.y" /* yacc.c:1646  */
+#line 13244 "preproc.y" /* yacc.c:1652  */
     {
 			/* old style: dbname[@server][:port] */
 			if (strlen((yyvsp[-1].str)) > 0 && *((yyvsp[-1].str)) != '@')
@@ -46982,11 +46988,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			else
 				(yyval.str) = make3_str(mm_strdup("\""), make3_str((yyvsp[-2].str), (yyvsp[-1].str), (yyvsp[0].str)), mm_strdup("\""));
 		}
-#line 46986 "preproc.c" /* yacc.c:1646  */
+#line 46992 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2387:
-#line 13256 "preproc.y" /* yacc.c:1646  */
+#line 13256 "preproc.y" /* yacc.c:1652  */
     {
 			/* new style: <tcp|unix>:postgresql://server[:port][/dbname] */
 			if (strncmp((yyvsp[-6].str), "unix:postgresql", strlen("unix:postgresql")) != 0 && strncmp((yyvsp[-6].str), "tcp:postgresql", strlen("tcp:postgresql")) != 0)
@@ -47002,19 +47008,19 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 
 			(yyval.str) = make3_str(make3_str(mm_strdup("\""), (yyvsp[-6].str), mm_strdup(":")), (yyvsp[-4].str), make3_str(make3_str((yyvsp[-3].str), mm_strdup("/"), (yyvsp[-1].str)), (yyvsp[0].str), mm_strdup("\"")));
 		}
-#line 47006 "preproc.c" /* yacc.c:1646  */
+#line 47012 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2388:
-#line 13272 "preproc.y" /* yacc.c:1646  */
+#line 13272 "preproc.y" /* yacc.c:1652  */
     {
 			(yyval.str) = (yyvsp[0].str);
 		}
-#line 47014 "preproc.c" /* yacc.c:1646  */
+#line 47020 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2389:
-#line 13276 "preproc.y" /* yacc.c:1646  */
+#line 13276 "preproc.y" /* yacc.c:1652  */
     {
 			/* We can only process double quoted strings not single quotes ones,
 			 * so we change the quotes.
@@ -47023,23 +47029,23 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			(yyvsp[0].str)[strlen((yyvsp[0].str))-1] = '\"';
 			(yyval.str) = (yyvsp[0].str);
 		}
-#line 47027 "preproc.c" /* yacc.c:1646  */
+#line 47033 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2390:
-#line 13286 "preproc.y" /* yacc.c:1646  */
+#line 13286 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 47033 "preproc.c" /* yacc.c:1646  */
+#line 47039 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2391:
-#line 13287 "preproc.y" /* yacc.c:1646  */
+#line 13287 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = EMPTY; }
-#line 47039 "preproc.c" /* yacc.c:1646  */
+#line 47045 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2392:
-#line 13291 "preproc.y" /* yacc.c:1646  */
+#line 13291 "preproc.y" /* yacc.c:1652  */
     {
 			if (strcmp((yyvsp[0].str), "postgresql") != 0 && strcmp((yyvsp[0].str), "postgres") != 0)
 				mmerror(PARSE_ERROR, ET_ERROR, "expected \"postgresql\", found \"%s\"", (yyvsp[0].str));
@@ -47049,134 +47055,134 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 
 			(yyval.str) = make3_str((yyvsp[-1].str), mm_strdup(":"), (yyvsp[0].str));
 		}
-#line 47053 "preproc.c" /* yacc.c:1646  */
+#line 47059 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2393:
-#line 13303 "preproc.y" /* yacc.c:1646  */
+#line 13303 "preproc.y" /* yacc.c:1652  */
     {
 			if (strcmp((yyvsp[-1].str), "@") != 0 && strcmp((yyvsp[-1].str), "//") != 0)
 				mmerror(PARSE_ERROR, ET_ERROR, "expected \"@\" or \"://\", found \"%s\"", (yyvsp[-1].str));
 
 			(yyval.str) = make2_str((yyvsp[-1].str), (yyvsp[0].str));
 		}
-#line 47064 "preproc.c" /* yacc.c:1646  */
+#line 47070 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2394:
-#line 13311 "preproc.y" /* yacc.c:1646  */
+#line 13311 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 47070 "preproc.c" /* yacc.c:1646  */
+#line 47076 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2395:
-#line 13312 "preproc.y" /* yacc.c:1646  */
+#line 13312 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = EMPTY; }
-#line 47076 "preproc.c" /* yacc.c:1646  */
+#line 47082 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2396:
-#line 13315 "preproc.y" /* yacc.c:1646  */
+#line 13315 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 47082 "preproc.c" /* yacc.c:1646  */
+#line 47088 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2397:
-#line 13316 "preproc.y" /* yacc.c:1646  */
+#line 13316 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = make3_str((yyvsp[-2].str), mm_strdup("."), (yyvsp[0].str)); }
-#line 47088 "preproc.c" /* yacc.c:1646  */
+#line 47094 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2398:
-#line 13317 "preproc.y" /* yacc.c:1646  */
+#line 13317 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = make_name(); }
-#line 47094 "preproc.c" /* yacc.c:1646  */
+#line 47100 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2399:
-#line 13320 "preproc.y" /* yacc.c:1646  */
+#line 13320 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = make2_str(mm_strdup(":"), (yyvsp[0].str)); }
-#line 47100 "preproc.c" /* yacc.c:1646  */
+#line 47106 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2400:
-#line 13321 "preproc.y" /* yacc.c:1646  */
+#line 13321 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = EMPTY; }
-#line 47106 "preproc.c" /* yacc.c:1646  */
+#line 47112 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2401:
-#line 13324 "preproc.y" /* yacc.c:1646  */
+#line 13324 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 47112 "preproc.c" /* yacc.c:1646  */
+#line 47118 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2402:
-#line 13325 "preproc.y" /* yacc.c:1646  */
+#line 13325 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("NULL"); }
-#line 47118 "preproc.c" /* yacc.c:1646  */
+#line 47124 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2403:
-#line 13328 "preproc.y" /* yacc.c:1646  */
+#line 13328 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 47124 "preproc.c" /* yacc.c:1646  */
+#line 47130 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2404:
-#line 13329 "preproc.y" /* yacc.c:1646  */
+#line 13329 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("NULL, NULL"); }
-#line 47130 "preproc.c" /* yacc.c:1646  */
+#line 47136 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2405:
-#line 13333 "preproc.y" /* yacc.c:1646  */
+#line 13333 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = cat2_str((yyvsp[0].str), mm_strdup(", NULL")); }
-#line 47136 "preproc.c" /* yacc.c:1646  */
+#line 47142 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2406:
-#line 13335 "preproc.y" /* yacc.c:1646  */
+#line 13335 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = cat_str(3, (yyvsp[-2].str), mm_strdup(","), (yyvsp[0].str)); }
-#line 47142 "preproc.c" /* yacc.c:1646  */
+#line 47148 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2407:
-#line 13337 "preproc.y" /* yacc.c:1646  */
+#line 13337 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = cat_str(3, (yyvsp[-3].str), mm_strdup(","), (yyvsp[0].str)); }
-#line 47148 "preproc.c" /* yacc.c:1646  */
+#line 47154 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2408:
-#line 13339 "preproc.y" /* yacc.c:1646  */
+#line 13339 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = cat_str(3, (yyvsp[-2].str), mm_strdup(","), (yyvsp[0].str)); }
-#line 47154 "preproc.c" /* yacc.c:1646  */
+#line 47160 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2409:
-#line 13343 "preproc.y" /* yacc.c:1646  */
+#line 13343 "preproc.y" /* yacc.c:1652  */
     {
 			if ((yyvsp[0].str)[0] == '\"')
 				(yyval.str) = (yyvsp[0].str);
 			else
 				(yyval.str) = make3_str(mm_strdup("\""), (yyvsp[0].str), mm_strdup("\""));
 		}
-#line 47165 "preproc.c" /* yacc.c:1646  */
+#line 47171 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2410:
-#line 13350 "preproc.y" /* yacc.c:1646  */
+#line 13350 "preproc.y" /* yacc.c:1652  */
     {
 			if ((yyvsp[0].str)[0] == '\"')
 				(yyval.str) = (yyvsp[0].str);
 			else
 				(yyval.str) = make3_str(mm_strdup("\""), (yyvsp[0].str), mm_strdup("\""));
 		}
-#line 47176 "preproc.c" /* yacc.c:1646  */
+#line 47182 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2411:
-#line 13357 "preproc.y" /* yacc.c:1646  */
+#line 13357 "preproc.y" /* yacc.c:1652  */
     {
 			enum ECPGttype type = argsinsert->variable->type->type;
 
@@ -47190,11 +47196,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			else
 				(yyval.str) = mm_strdup(argsinsert->variable->name);
 		}
-#line 47194 "preproc.c" /* yacc.c:1646  */
+#line 47200 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2412:
-#line 13373 "preproc.y" /* yacc.c:1646  */
+#line 13373 "preproc.y" /* yacc.c:1652  */
     {
 			/* check if we have a string variable */
 			struct variable *p = find_variable((yyvsp[0].str));
@@ -47226,11 +47232,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 				}
 			}
 		}
-#line 47230 "preproc.c" /* yacc.c:1646  */
+#line 47236 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2413:
-#line 13407 "preproc.y" /* yacc.c:1646  */
+#line 13407 "preproc.y" /* yacc.c:1652  */
     {
 			if (strlen((yyvsp[-1].str)) == 0)
 				mmerror(PARSE_ERROR, ET_ERROR, "incomplete statement");
@@ -47240,25 +47246,25 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 
 			(yyval.str) = make2_str(mm_strdup("?"), (yyvsp[0].str));
 		}
-#line 47244 "preproc.c" /* yacc.c:1646  */
+#line 47250 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2414:
-#line 13416 "preproc.y" /* yacc.c:1646  */
+#line 13416 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = EMPTY; }
-#line 47250 "preproc.c" /* yacc.c:1646  */
+#line 47256 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2415:
-#line 13420 "preproc.y" /* yacc.c:1646  */
+#line 13420 "preproc.y" /* yacc.c:1652  */
     {
 				(yyval.str) = make2_str((yyvsp[-1].str), (yyvsp[0].str));
 			}
-#line 47258 "preproc.c" /* yacc.c:1646  */
+#line 47264 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2416:
-#line 13424 "preproc.y" /* yacc.c:1646  */
+#line 13424 "preproc.y" /* yacc.c:1652  */
     {
 				if (strlen((yyvsp[-1].str)) == 0)
 					mmerror(PARSE_ERROR, ET_ERROR, "incomplete statement");
@@ -47268,35 +47274,35 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 
 				(yyval.str) = cat_str(3, make2_str((yyvsp[-3].str), (yyvsp[-2].str)), (yyvsp[-1].str), (yyvsp[0].str));
 			}
-#line 47272 "preproc.c" /* yacc.c:1646  */
+#line 47278 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2417:
-#line 13436 "preproc.y" /* yacc.c:1646  */
+#line 13436 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = EMPTY; }
-#line 47278 "preproc.c" /* yacc.c:1646  */
+#line 47284 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2418:
-#line 13438 "preproc.y" /* yacc.c:1646  */
+#line 13438 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = make2_str(mm_strdup("="), (yyvsp[0].str)); }
-#line 47284 "preproc.c" /* yacc.c:1646  */
+#line 47290 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2419:
-#line 13440 "preproc.y" /* yacc.c:1646  */
+#line 13440 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = make2_str(mm_strdup("="), (yyvsp[0].str)); }
-#line 47290 "preproc.c" /* yacc.c:1646  */
+#line 47296 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2420:
-#line 13442 "preproc.y" /* yacc.c:1646  */
+#line 13442 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = make2_str(mm_strdup("="), (yyvsp[0].str)); }
-#line 47296 "preproc.c" /* yacc.c:1646  */
+#line 47302 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2421:
-#line 13446 "preproc.y" /* yacc.c:1646  */
+#line 13446 "preproc.y" /* yacc.c:1652  */
     {
 			if ((yyvsp[0].str)[0] == '\"' && (yyvsp[0].str)[strlen((yyvsp[0].str))-1] == '\"') /* already quoted? */
 				(yyval.str) = (yyvsp[0].str);
@@ -47310,17 +47316,17 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 				(yyval.str) = make3_str(mm_strdup("\""), (yyvsp[0].str), mm_strdup("\""));
 			}
 		}
-#line 47314 "preproc.c" /* yacc.c:1646  */
+#line 47320 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2422:
-#line 13459 "preproc.y" /* yacc.c:1646  */
+#line 13459 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 47320 "preproc.c" /* yacc.c:1646  */
+#line 47326 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2423:
-#line 13467 "preproc.y" /* yacc.c:1646  */
+#line 13467 "preproc.y" /* yacc.c:1652  */
     {
 			struct cursor *ptr, *this;
 			char *cursor_marker = (yyvsp[-5].str)[0] == ':' ? mm_strdup("$0") : mm_strdup((yyvsp[-5].str));
@@ -47379,167 +47385,167 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			else
 				(yyval.str) = cat2_str(adjust_outofscope_cursor_vars(this), comment);
 		}
-#line 47383 "preproc.c" /* yacc.c:1646  */
+#line 47389 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2424:
-#line 13528 "preproc.y" /* yacc.c:1646  */
+#line 13528 "preproc.y" /* yacc.c:1652  */
     {
 			  /* execute immediate means prepare the statement and
 			   * immediately execute it */
 			  (yyval.str) = (yyvsp[0].str);
 			}
-#line 47393 "preproc.c" /* yacc.c:1646  */
+#line 47399 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2426:
-#line 13538 "preproc.y" /* yacc.c:1646  */
+#line 13538 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 47399 "preproc.c" /* yacc.c:1646  */
+#line 47405 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2427:
-#line 13539 "preproc.y" /* yacc.c:1646  */
+#line 13539 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 47405 "preproc.c" /* yacc.c:1646  */
+#line 47411 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2428:
-#line 13542 "preproc.y" /* yacc.c:1646  */
+#line 13542 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 47411 "preproc.c" /* yacc.c:1646  */
+#line 47417 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2429:
-#line 13544 "preproc.y" /* yacc.c:1646  */
+#line 13544 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 47417 "preproc.c" /* yacc.c:1646  */
+#line 47423 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2430:
-#line 13545 "preproc.y" /* yacc.c:1646  */
+#line 13545 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = EMPTY; }
-#line 47423 "preproc.c" /* yacc.c:1646  */
+#line 47429 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2431:
-#line 13548 "preproc.y" /* yacc.c:1646  */
+#line 13548 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 47429 "preproc.c" /* yacc.c:1646  */
+#line 47435 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2432:
-#line 13549 "preproc.y" /* yacc.c:1646  */
+#line 13549 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("year to minute"); }
-#line 47435 "preproc.c" /* yacc.c:1646  */
+#line 47441 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2433:
-#line 13550 "preproc.y" /* yacc.c:1646  */
+#line 13550 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("year to second"); }
-#line 47441 "preproc.c" /* yacc.c:1646  */
+#line 47447 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2434:
-#line 13551 "preproc.y" /* yacc.c:1646  */
+#line 13551 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("day to day"); }
-#line 47447 "preproc.c" /* yacc.c:1646  */
+#line 47453 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2435:
-#line 13552 "preproc.y" /* yacc.c:1646  */
+#line 13552 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("month to month"); }
-#line 47453 "preproc.c" /* yacc.c:1646  */
+#line 47459 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2436:
-#line 13559 "preproc.y" /* yacc.c:1646  */
+#line 13559 "preproc.y" /* yacc.c:1652  */
     { fputs("/* exec sql begin declare section */", base_yyout); }
-#line 47459 "preproc.c" /* yacc.c:1646  */
+#line 47465 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2437:
-#line 13561 "preproc.y" /* yacc.c:1646  */
+#line 13561 "preproc.y" /* yacc.c:1652  */
     {
 			fprintf(base_yyout, "%s/* exec sql end declare section */", (yyvsp[-1].str));
 			free((yyvsp[-1].str));
 			output_line_number();
 		}
-#line 47469 "preproc.c" /* yacc.c:1646  */
+#line 47475 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2438:
-#line 13568 "preproc.y" /* yacc.c:1646  */
+#line 13568 "preproc.y" /* yacc.c:1652  */
     {}
-#line 47475 "preproc.c" /* yacc.c:1646  */
+#line 47481 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2439:
-#line 13570 "preproc.y" /* yacc.c:1646  */
+#line 13570 "preproc.y" /* yacc.c:1652  */
     {}
-#line 47481 "preproc.c" /* yacc.c:1646  */
+#line 47487 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2440:
-#line 13572 "preproc.y" /* yacc.c:1646  */
+#line 13572 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = EMPTY; }
-#line 47487 "preproc.c" /* yacc.c:1646  */
+#line 47493 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2441:
-#line 13573 "preproc.y" /* yacc.c:1646  */
+#line 13573 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 47493 "preproc.c" /* yacc.c:1646  */
+#line 47499 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2442:
-#line 13576 "preproc.y" /* yacc.c:1646  */
+#line 13576 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 47499 "preproc.c" /* yacc.c:1646  */
+#line 47505 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2443:
-#line 13577 "preproc.y" /* yacc.c:1646  */
+#line 13577 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 47505 "preproc.c" /* yacc.c:1646  */
+#line 47511 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2444:
-#line 13578 "preproc.y" /* yacc.c:1646  */
+#line 13578 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = cat2_str((yyvsp[-1].str), (yyvsp[0].str)); }
-#line 47511 "preproc.c" /* yacc.c:1646  */
+#line 47517 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2445:
-#line 13579 "preproc.y" /* yacc.c:1646  */
+#line 13579 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = cat2_str((yyvsp[-1].str), (yyvsp[0].str)); }
-#line 47517 "preproc.c" /* yacc.c:1646  */
+#line 47523 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2446:
-#line 13582 "preproc.y" /* yacc.c:1646  */
+#line 13582 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 47523 "preproc.c" /* yacc.c:1646  */
+#line 47529 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2447:
-#line 13583 "preproc.y" /* yacc.c:1646  */
+#line 13583 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = cat2_str((yyvsp[-1].str), (yyvsp[0].str)); }
-#line 47529 "preproc.c" /* yacc.c:1646  */
+#line 47535 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2448:
-#line 13587 "preproc.y" /* yacc.c:1646  */
+#line 13587 "preproc.y" /* yacc.c:1652  */
     {
 		/* reset this variable so we see if there was */
 		/* an initializer specified */
 		initializer = 0;
 	}
-#line 47539 "preproc.c" /* yacc.c:1646  */
+#line 47545 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2449:
-#line 13593 "preproc.y" /* yacc.c:1646  */
+#line 13593 "preproc.y" /* yacc.c:1652  */
     {
 		add_typedef((yyvsp[-2].str), (yyvsp[-1].index).index1, (yyvsp[-1].index).index2, (yyvsp[-4].type).type_enum, (yyvsp[-4].type).type_dimension, (yyvsp[-4].type).type_index, initializer, *(yyvsp[-3].str) ? 1 : 0);
 
@@ -47547,11 +47553,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 		output_line_number();
 		(yyval.str) = mm_strdup("");
 	}
-#line 47551 "preproc.c" /* yacc.c:1646  */
+#line 47557 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2450:
-#line 13603 "preproc.y" /* yacc.c:1646  */
+#line 13603 "preproc.y" /* yacc.c:1652  */
     {
 			actual_type[struct_level].type_enum = (yyvsp[0].type).type_enum;
 			actual_type[struct_level].type_str = (yyvsp[0].type).type_str;
@@ -47561,19 +47567,19 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 
 			actual_startline[struct_level] = hashline_number();
 		}
-#line 47565 "preproc.c" /* yacc.c:1646  */
+#line 47571 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2451:
-#line 13613 "preproc.y" /* yacc.c:1646  */
+#line 13613 "preproc.y" /* yacc.c:1652  */
     {
 			(yyval.str) = cat_str(5, actual_startline[struct_level], (yyvsp[-4].str), (yyvsp[-3].type).type_str, (yyvsp[-1].str), mm_strdup(";\n"));
 		}
-#line 47573 "preproc.c" /* yacc.c:1646  */
+#line 47579 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2452:
-#line 13617 "preproc.y" /* yacc.c:1646  */
+#line 13617 "preproc.y" /* yacc.c:1652  */
     {
 			actual_type[struct_level].type_enum = (yyvsp[0].type).type_enum;
 			actual_type[struct_level].type_str = (yyvsp[0].type).type_str;
@@ -47583,93 +47589,93 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 
 			actual_startline[struct_level] = hashline_number();
 		}
-#line 47587 "preproc.c" /* yacc.c:1646  */
+#line 47593 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2453:
-#line 13627 "preproc.y" /* yacc.c:1646  */
+#line 13627 "preproc.y" /* yacc.c:1652  */
     {
 			(yyval.str) = cat_str(4, actual_startline[struct_level], (yyvsp[-3].type).type_str, (yyvsp[-1].str), mm_strdup(";\n"));
 		}
-#line 47595 "preproc.c" /* yacc.c:1646  */
+#line 47601 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2454:
-#line 13631 "preproc.y" /* yacc.c:1646  */
+#line 13631 "preproc.y" /* yacc.c:1652  */
     {
 			(yyval.str) = cat2_str((yyvsp[-1].str), mm_strdup(";"));
 		}
-#line 47603 "preproc.c" /* yacc.c:1646  */
+#line 47609 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2455:
-#line 13636 "preproc.y" /* yacc.c:1646  */
+#line 13636 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) =cat2_str(mm_strdup(":"), (yyvsp[0].str)); }
-#line 47609 "preproc.c" /* yacc.c:1646  */
+#line 47615 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2456:
-#line 13637 "preproc.y" /* yacc.c:1646  */
+#line 13637 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = EMPTY; }
-#line 47615 "preproc.c" /* yacc.c:1646  */
+#line 47621 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2457:
-#line 13641 "preproc.y" /* yacc.c:1646  */
+#line 13641 "preproc.y" /* yacc.c:1652  */
     {(yyval.str) = cat2_str ((yyvsp[-1].str), (yyvsp[0].str)); }
-#line 47621 "preproc.c" /* yacc.c:1646  */
+#line 47627 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2458:
-#line 13642 "preproc.y" /* yacc.c:1646  */
+#line 13642 "preproc.y" /* yacc.c:1652  */
     {(yyval.str) = (yyvsp[0].str); }
-#line 47627 "preproc.c" /* yacc.c:1646  */
+#line 47633 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2459:
-#line 13643 "preproc.y" /* yacc.c:1646  */
+#line 13643 "preproc.y" /* yacc.c:1652  */
     {(yyval.str) = (yyvsp[0].str); }
-#line 47633 "preproc.c" /* yacc.c:1646  */
+#line 47639 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2460:
-#line 13646 "preproc.y" /* yacc.c:1646  */
+#line 13646 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("extern"); }
-#line 47639 "preproc.c" /* yacc.c:1646  */
+#line 47645 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2461:
-#line 13647 "preproc.y" /* yacc.c:1646  */
+#line 13647 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("static"); }
-#line 47645 "preproc.c" /* yacc.c:1646  */
+#line 47651 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2462:
-#line 13648 "preproc.y" /* yacc.c:1646  */
+#line 13648 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("register"); }
-#line 47651 "preproc.c" /* yacc.c:1646  */
+#line 47657 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2463:
-#line 13649 "preproc.y" /* yacc.c:1646  */
+#line 13649 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("auto"); }
-#line 47657 "preproc.c" /* yacc.c:1646  */
+#line 47663 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2464:
-#line 13652 "preproc.y" /* yacc.c:1646  */
+#line 13652 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("const"); }
-#line 47663 "preproc.c" /* yacc.c:1646  */
+#line 47669 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2465:
-#line 13653 "preproc.y" /* yacc.c:1646  */
+#line 13653 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("volatile"); }
-#line 47669 "preproc.c" /* yacc.c:1646  */
+#line 47675 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2466:
-#line 13657 "preproc.y" /* yacc.c:1646  */
+#line 13657 "preproc.y" /* yacc.c:1652  */
     {
 			(yyval.type).type_enum = (yyvsp[0].type_enum);
 			(yyval.type).type_str = mm_strdup(ecpg_type_name((yyvsp[0].type_enum)));
@@ -47677,11 +47683,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			(yyval.type).type_index = mm_strdup("-1");
 			(yyval.type).type_sizeof = NULL;
 		}
-#line 47681 "preproc.c" /* yacc.c:1646  */
+#line 47687 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2467:
-#line 13665 "preproc.y" /* yacc.c:1646  */
+#line 13665 "preproc.y" /* yacc.c:1652  */
     {
 			(yyval.type).type_str = (yyvsp[0].str);
 			(yyval.type).type_dimension = mm_strdup("-1");
@@ -47698,11 +47704,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 				(yyval.type).type_sizeof = NULL;
 			}
 		}
-#line 47702 "preproc.c" /* yacc.c:1646  */
+#line 47708 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2468:
-#line 13682 "preproc.y" /* yacc.c:1646  */
+#line 13682 "preproc.y" /* yacc.c:1652  */
     {
 			(yyval.type).type_str = (yyvsp[0].str);
 			(yyval.type).type_enum = ECPGt_int;
@@ -47710,11 +47716,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			(yyval.type).type_index = mm_strdup("-1");
 			(yyval.type).type_sizeof = NULL;
 		}
-#line 47714 "preproc.c" /* yacc.c:1646  */
+#line 47720 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2469:
-#line 13690 "preproc.y" /* yacc.c:1646  */
+#line 13690 "preproc.y" /* yacc.c:1652  */
     {
 			if (strcmp((yyvsp[-4].str), "numeric") == 0)
 			{
@@ -47737,11 +47743,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			(yyval.type).type_index = mm_strdup("-1");
 			(yyval.type).type_sizeof = NULL;
 		}
-#line 47741 "preproc.c" /* yacc.c:1646  */
+#line 47747 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2470:
-#line 13713 "preproc.y" /* yacc.c:1646  */
+#line 13713 "preproc.y" /* yacc.c:1652  */
     {
 			if (strlen((yyvsp[0].str)) != 0 && strcmp ((yyvsp[-1].str), "datetime") != 0 && strcmp ((yyvsp[-1].str), "interval") != 0)
 				mmerror (PARSE_ERROR, ET_ERROR, "interval specification not allowed here");
@@ -47847,11 +47853,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 				struct_member_list[struct_level] = ECPGstruct_member_dup(this->struct_member_list);
 			}
 		}
-#line 47851 "preproc.c" /* yacc.c:1646  */
+#line 47857 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2471:
-#line 13819 "preproc.y" /* yacc.c:1646  */
+#line 13819 "preproc.y" /* yacc.c:1652  */
     {
 			/* this is for named structs/unions */
 			char *name;
@@ -47883,46 +47889,46 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 				struct_member_list[struct_level] = NULL;
 			}
 		}
-#line 47887 "preproc.c" /* yacc.c:1646  */
+#line 47893 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2472:
-#line 13853 "preproc.y" /* yacc.c:1646  */
+#line 13853 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = cat_str(3, mm_strdup("enum"), (yyvsp[-1].str), (yyvsp[0].str)); }
-#line 47893 "preproc.c" /* yacc.c:1646  */
+#line 47899 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2473:
-#line 13855 "preproc.y" /* yacc.c:1646  */
+#line 13855 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = cat2_str(mm_strdup("enum"), (yyvsp[0].str)); }
-#line 47899 "preproc.c" /* yacc.c:1646  */
+#line 47905 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2474:
-#line 13857 "preproc.y" /* yacc.c:1646  */
+#line 13857 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = cat2_str(mm_strdup("enum"), (yyvsp[0].str)); }
-#line 47905 "preproc.c" /* yacc.c:1646  */
+#line 47911 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2475:
-#line 13861 "preproc.y" /* yacc.c:1646  */
+#line 13861 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = cat_str(3, mm_strdup("{"), (yyvsp[-1].str), mm_strdup("}")); }
-#line 47911 "preproc.c" /* yacc.c:1646  */
+#line 47917 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2476:
-#line 13864 "preproc.y" /* yacc.c:1646  */
+#line 13864 "preproc.y" /* yacc.c:1652  */
     {
 			struct_member_list[struct_level++] = NULL;
 			if (struct_level >= STRUCT_DEPTH)
 				 mmerror(PARSE_ERROR, ET_ERROR, "too many levels in nested structure/union definition");
 			forward_name = mm_strdup((yyvsp[0].struct_union).symbol);
 		}
-#line 47922 "preproc.c" /* yacc.c:1646  */
+#line 47928 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2477:
-#line 13871 "preproc.y" /* yacc.c:1646  */
+#line 13871 "preproc.y" /* yacc.c:1652  */
     {
 			struct typedefs *ptr, *this;
 			struct this_type su_type;
@@ -47964,122 +47970,122 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			types = this;
 			(yyval.str) = cat_str(4, su_type.type_str, mm_strdup("{"), (yyvsp[-1].str), mm_strdup("}"));
 		}
-#line 47968 "preproc.c" /* yacc.c:1646  */
+#line 47974 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2478:
-#line 13914 "preproc.y" /* yacc.c:1646  */
+#line 13914 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 47974 "preproc.c" /* yacc.c:1646  */
+#line 47980 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2479:
-#line 13916 "preproc.y" /* yacc.c:1646  */
+#line 13916 "preproc.y" /* yacc.c:1652  */
     {
 			struct_member_list[struct_level++] = NULL;
 			if (struct_level >= STRUCT_DEPTH)
 				 mmerror(PARSE_ERROR, ET_ERROR, "too many levels in nested structure/union definition");
 		}
-#line 47984 "preproc.c" /* yacc.c:1646  */
+#line 47990 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2480:
-#line 13922 "preproc.y" /* yacc.c:1646  */
+#line 13922 "preproc.y" /* yacc.c:1652  */
     {
 			ECPGfree_struct_member(struct_member_list[struct_level]);
 			struct_member_list[struct_level] = NULL;
 			struct_level--;
 			(yyval.str) = cat_str(4, (yyvsp[-4].str), mm_strdup("{"), (yyvsp[-1].str), mm_strdup("}"));
 		}
-#line 47995 "preproc.c" /* yacc.c:1646  */
+#line 48001 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2481:
-#line 13931 "preproc.y" /* yacc.c:1646  */
+#line 13931 "preproc.y" /* yacc.c:1652  */
     {
 			(yyval.struct_union).su = mm_strdup("struct");
 			(yyval.struct_union).symbol = (yyvsp[0].str);
 			ECPGstruct_sizeof = cat_str(3, mm_strdup("sizeof("), cat2_str(mm_strdup((yyval.struct_union).su), mm_strdup((yyval.struct_union).symbol)), mm_strdup(")"));
 		}
-#line 48005 "preproc.c" /* yacc.c:1646  */
+#line 48011 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2482:
-#line 13937 "preproc.y" /* yacc.c:1646  */
+#line 13937 "preproc.y" /* yacc.c:1652  */
     {
 			(yyval.struct_union).su = mm_strdup("union");
 			(yyval.struct_union).symbol = (yyvsp[0].str);
 		}
-#line 48014 "preproc.c" /* yacc.c:1646  */
+#line 48020 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2483:
-#line 13944 "preproc.y" /* yacc.c:1646  */
+#line 13944 "preproc.y" /* yacc.c:1652  */
     {
 			ECPGstruct_sizeof = mm_strdup(""); /* This must not be NULL to distinguish from simple types. */
 			(yyval.str) = mm_strdup("struct");
 		}
-#line 48023 "preproc.c" /* yacc.c:1646  */
+#line 48029 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2484:
-#line 13949 "preproc.y" /* yacc.c:1646  */
+#line 13949 "preproc.y" /* yacc.c:1652  */
     {
 			(yyval.str) = mm_strdup("union");
 		}
-#line 48031 "preproc.c" /* yacc.c:1646  */
+#line 48037 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2485:
-#line 13954 "preproc.y" /* yacc.c:1646  */
+#line 13954 "preproc.y" /* yacc.c:1652  */
     { (yyval.type_enum)=(yyvsp[0].type_enum); }
-#line 48037 "preproc.c" /* yacc.c:1646  */
+#line 48043 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2486:
-#line 13955 "preproc.y" /* yacc.c:1646  */
+#line 13955 "preproc.y" /* yacc.c:1652  */
     { (yyval.type_enum)=(yyvsp[0].type_enum); }
-#line 48043 "preproc.c" /* yacc.c:1646  */
+#line 48049 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2487:
-#line 13958 "preproc.y" /* yacc.c:1646  */
+#line 13958 "preproc.y" /* yacc.c:1652  */
     { (yyval.type_enum) = ECPGt_unsigned_short; }
-#line 48049 "preproc.c" /* yacc.c:1646  */
+#line 48055 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2488:
-#line 13959 "preproc.y" /* yacc.c:1646  */
+#line 13959 "preproc.y" /* yacc.c:1652  */
     { (yyval.type_enum) = ECPGt_unsigned_short; }
-#line 48055 "preproc.c" /* yacc.c:1646  */
+#line 48061 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2489:
-#line 13960 "preproc.y" /* yacc.c:1646  */
+#line 13960 "preproc.y" /* yacc.c:1652  */
     { (yyval.type_enum) = ECPGt_unsigned_int; }
-#line 48061 "preproc.c" /* yacc.c:1646  */
+#line 48067 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2490:
-#line 13961 "preproc.y" /* yacc.c:1646  */
+#line 13961 "preproc.y" /* yacc.c:1652  */
     { (yyval.type_enum) = ECPGt_unsigned_int; }
-#line 48067 "preproc.c" /* yacc.c:1646  */
+#line 48073 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2491:
-#line 13962 "preproc.y" /* yacc.c:1646  */
+#line 13962 "preproc.y" /* yacc.c:1652  */
     { (yyval.type_enum) = ECPGt_unsigned_long; }
-#line 48073 "preproc.c" /* yacc.c:1646  */
+#line 48079 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2492:
-#line 13963 "preproc.y" /* yacc.c:1646  */
+#line 13963 "preproc.y" /* yacc.c:1652  */
     { (yyval.type_enum) = ECPGt_unsigned_long; }
-#line 48079 "preproc.c" /* yacc.c:1646  */
+#line 48085 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2493:
-#line 13965 "preproc.y" /* yacc.c:1646  */
+#line 13965 "preproc.y" /* yacc.c:1652  */
     {
 #ifdef HAVE_LONG_LONG_INT
 			(yyval.type_enum) = ECPGt_unsigned_long_long;
@@ -48087,11 +48093,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			(yyval.type_enum) = ECPGt_unsigned_long;
 #endif
 		}
-#line 48091 "preproc.c" /* yacc.c:1646  */
+#line 48097 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2494:
-#line 13973 "preproc.y" /* yacc.c:1646  */
+#line 13973 "preproc.y" /* yacc.c:1652  */
     {
 #ifdef HAVE_LONG_LONG_INT
 			(yyval.type_enum) = ECPGt_unsigned_long_long;
@@ -48099,47 +48105,47 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			(yyval.type_enum) = ECPGt_unsigned_long;
 #endif
 		}
-#line 48103 "preproc.c" /* yacc.c:1646  */
+#line 48109 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2495:
-#line 13980 "preproc.y" /* yacc.c:1646  */
+#line 13980 "preproc.y" /* yacc.c:1652  */
     { (yyval.type_enum) = ECPGt_unsigned_char; }
-#line 48109 "preproc.c" /* yacc.c:1646  */
+#line 48115 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2496:
-#line 13983 "preproc.y" /* yacc.c:1646  */
+#line 13983 "preproc.y" /* yacc.c:1652  */
     { (yyval.type_enum) = ECPGt_short; }
-#line 48115 "preproc.c" /* yacc.c:1646  */
+#line 48121 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2497:
-#line 13984 "preproc.y" /* yacc.c:1646  */
+#line 13984 "preproc.y" /* yacc.c:1652  */
     { (yyval.type_enum) = ECPGt_short; }
-#line 48121 "preproc.c" /* yacc.c:1646  */
+#line 48127 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2498:
-#line 13985 "preproc.y" /* yacc.c:1646  */
+#line 13985 "preproc.y" /* yacc.c:1652  */
     { (yyval.type_enum) = ECPGt_int; }
-#line 48127 "preproc.c" /* yacc.c:1646  */
+#line 48133 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2499:
-#line 13986 "preproc.y" /* yacc.c:1646  */
+#line 13986 "preproc.y" /* yacc.c:1652  */
     { (yyval.type_enum) = ECPGt_long; }
-#line 48133 "preproc.c" /* yacc.c:1646  */
+#line 48139 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2500:
-#line 13987 "preproc.y" /* yacc.c:1646  */
+#line 13987 "preproc.y" /* yacc.c:1652  */
     { (yyval.type_enum) = ECPGt_long; }
-#line 48139 "preproc.c" /* yacc.c:1646  */
+#line 48145 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2501:
-#line 13989 "preproc.y" /* yacc.c:1646  */
+#line 13989 "preproc.y" /* yacc.c:1652  */
     {
 #ifdef HAVE_LONG_LONG_INT
 			(yyval.type_enum) = ECPGt_long_long;
@@ -48147,11 +48153,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			(yyval.type_enum) = ECPGt_long;
 #endif
 		}
-#line 48151 "preproc.c" /* yacc.c:1646  */
+#line 48157 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2502:
-#line 13997 "preproc.y" /* yacc.c:1646  */
+#line 13997 "preproc.y" /* yacc.c:1652  */
     {
 #ifdef HAVE_LONG_LONG_INT
 			(yyval.type_enum) = ECPGt_long_long;
@@ -48159,46 +48165,46 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			(yyval.type_enum) = ECPGt_long;
 #endif
 		}
-#line 48163 "preproc.c" /* yacc.c:1646  */
+#line 48169 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2503:
-#line 14004 "preproc.y" /* yacc.c:1646  */
+#line 14004 "preproc.y" /* yacc.c:1652  */
     { (yyval.type_enum) = ECPGt_bool; }
-#line 48169 "preproc.c" /* yacc.c:1646  */
+#line 48175 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2504:
-#line 14005 "preproc.y" /* yacc.c:1646  */
+#line 14005 "preproc.y" /* yacc.c:1652  */
     { (yyval.type_enum) = ECPGt_char; }
-#line 48175 "preproc.c" /* yacc.c:1646  */
+#line 48181 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2505:
-#line 14006 "preproc.y" /* yacc.c:1646  */
+#line 14006 "preproc.y" /* yacc.c:1652  */
     { (yyval.type_enum) = ECPGt_double; }
-#line 48181 "preproc.c" /* yacc.c:1646  */
+#line 48187 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2508:
-#line 14014 "preproc.y" /* yacc.c:1646  */
+#line 14014 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 48187 "preproc.c" /* yacc.c:1646  */
+#line 48193 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2509:
-#line 14016 "preproc.y" /* yacc.c:1646  */
+#line 14016 "preproc.y" /* yacc.c:1652  */
     {
 			if (actual_type[struct_level].type_enum == ECPGt_varchar)
 				(yyval.str) = cat_str(3, (yyvsp[-2].str), mm_strdup(";"), (yyvsp[0].str));
 			else
 				(yyval.str) = cat_str(3, (yyvsp[-2].str), mm_strdup(","), (yyvsp[0].str));
 		}
-#line 48198 "preproc.c" /* yacc.c:1646  */
+#line 48204 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2510:
-#line 14025 "preproc.y" /* yacc.c:1646  */
+#line 14025 "preproc.y" /* yacc.c:1652  */
     {
 			struct ECPGtype * type;
 			char *dimension = (yyvsp[-2].index).index1;	/* dimension of array */
@@ -48283,292 +48289,292 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 
 			free((yyvsp[-3].str));
 		}
-#line 48287 "preproc.c" /* yacc.c:1646  */
+#line 48293 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2511:
-#line 14112 "preproc.y" /* yacc.c:1646  */
+#line 14112 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = EMPTY; }
-#line 48293 "preproc.c" /* yacc.c:1646  */
+#line 48299 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2512:
-#line 14114 "preproc.y" /* yacc.c:1646  */
+#line 14114 "preproc.y" /* yacc.c:1652  */
     {
 			initializer = 1;
 			(yyval.str) = cat2_str(mm_strdup("="), (yyvsp[0].str));
 		}
-#line 48302 "preproc.c" /* yacc.c:1646  */
+#line 48308 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2513:
-#line 14120 "preproc.y" /* yacc.c:1646  */
+#line 14120 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = EMPTY; }
-#line 48308 "preproc.c" /* yacc.c:1646  */
+#line 48314 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2514:
-#line 14121 "preproc.y" /* yacc.c:1646  */
+#line 14121 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("*"); }
-#line 48314 "preproc.c" /* yacc.c:1646  */
+#line 48320 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2515:
-#line 14122 "preproc.y" /* yacc.c:1646  */
+#line 14122 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("**"); }
-#line 48320 "preproc.c" /* yacc.c:1646  */
+#line 48326 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2516:
-#line 14129 "preproc.y" /* yacc.c:1646  */
+#line 14129 "preproc.y" /* yacc.c:1652  */
     {
 			/* this is only supported for compatibility */
 			(yyval.str) = cat_str(3, mm_strdup("/* declare statement"), (yyvsp[0].str), mm_strdup("*/"));
 		}
-#line 48329 "preproc.c" /* yacc.c:1646  */
+#line 48335 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2517:
-#line 14137 "preproc.y" /* yacc.c:1646  */
+#line 14137 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 48335 "preproc.c" /* yacc.c:1646  */
+#line 48341 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2518:
-#line 14140 "preproc.y" /* yacc.c:1646  */
+#line 14140 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 48341 "preproc.c" /* yacc.c:1646  */
+#line 48347 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2519:
-#line 14141 "preproc.y" /* yacc.c:1646  */
+#line 14141 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("\"CURRENT\""); }
-#line 48347 "preproc.c" /* yacc.c:1646  */
+#line 48353 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2520:
-#line 14142 "preproc.y" /* yacc.c:1646  */
+#line 14142 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("\"ALL\""); }
-#line 48353 "preproc.c" /* yacc.c:1646  */
+#line 48359 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2521:
-#line 14143 "preproc.y" /* yacc.c:1646  */
+#line 14143 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("\"CURRENT\""); }
-#line 48359 "preproc.c" /* yacc.c:1646  */
+#line 48365 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2522:
-#line 14146 "preproc.y" /* yacc.c:1646  */
+#line 14146 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = make3_str(mm_strdup("\""), (yyvsp[0].str), mm_strdup("\"")); }
-#line 48365 "preproc.c" /* yacc.c:1646  */
+#line 48371 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2523:
-#line 14147 "preproc.y" /* yacc.c:1646  */
+#line 14147 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("\"DEFAULT\""); }
-#line 48371 "preproc.c" /* yacc.c:1646  */
+#line 48377 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2524:
-#line 14148 "preproc.y" /* yacc.c:1646  */
+#line 14148 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 48377 "preproc.c" /* yacc.c:1646  */
+#line 48383 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2525:
-#line 14152 "preproc.y" /* yacc.c:1646  */
+#line 14152 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 48383 "preproc.c" /* yacc.c:1646  */
+#line 48389 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2526:
-#line 14154 "preproc.y" /* yacc.c:1646  */
+#line 14154 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = make3_str(mm_strdup("\""), (yyvsp[0].str), mm_strdup("\"")); }
-#line 48389 "preproc.c" /* yacc.c:1646  */
+#line 48395 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2527:
-#line 14161 "preproc.y" /* yacc.c:1646  */
+#line 14161 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 48395 "preproc.c" /* yacc.c:1646  */
+#line 48401 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2528:
-#line 14162 "preproc.y" /* yacc.c:1646  */
+#line 14162 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("all"); }
-#line 48401 "preproc.c" /* yacc.c:1646  */
+#line 48407 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2529:
-#line 14169 "preproc.y" /* yacc.c:1646  */
+#line 14169 "preproc.y" /* yacc.c:1652  */
     {
 			if ((yyvsp[-1].str)[0] == ':')
 				remove_variable_from_list(&argsinsert, find_variable((yyvsp[-1].str) + 1));
 			(yyval.str) = (yyvsp[-1].str);
 		}
-#line 48411 "preproc.c" /* yacc.c:1646  */
+#line 48417 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2530:
-#line 14176 "preproc.y" /* yacc.c:1646  */
+#line 14176 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = EMPTY; }
-#line 48417 "preproc.c" /* yacc.c:1646  */
+#line 48423 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2531:
-#line 14177 "preproc.y" /* yacc.c:1646  */
+#line 14177 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 48423 "preproc.c" /* yacc.c:1646  */
+#line 48429 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2532:
-#line 14180 "preproc.y" /* yacc.c:1646  */
+#line 14180 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = EMPTY; }
-#line 48429 "preproc.c" /* yacc.c:1646  */
+#line 48435 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2533:
-#line 14181 "preproc.y" /* yacc.c:1646  */
+#line 14181 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 48435 "preproc.c" /* yacc.c:1646  */
+#line 48441 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2534:
-#line 14185 "preproc.y" /* yacc.c:1646  */
+#line 14185 "preproc.y" /* yacc.c:1652  */
     {
 			add_variable_to_head(&argsinsert, descriptor_variable((yyvsp[0].str),0), &no_indicator);
 			(yyval.str) = EMPTY;
 		}
-#line 48444 "preproc.c" /* yacc.c:1646  */
+#line 48450 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2535:
-#line 14190 "preproc.y" /* yacc.c:1646  */
+#line 14190 "preproc.y" /* yacc.c:1652  */
     {
 			add_variable_to_head(&argsinsert, sqlda_variable((yyvsp[0].str)), &no_indicator);
 			(yyval.str) = EMPTY;
 		}
-#line 48453 "preproc.c" /* yacc.c:1646  */
+#line 48459 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2536:
-#line 14197 "preproc.y" /* yacc.c:1646  */
+#line 14197 "preproc.y" /* yacc.c:1652  */
     {
 			add_variable_to_head(&argsresult, descriptor_variable((yyvsp[0].str),1), &no_indicator);
 			(yyval.str) = EMPTY;
 		}
-#line 48462 "preproc.c" /* yacc.c:1646  */
+#line 48468 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2537:
-#line 14202 "preproc.y" /* yacc.c:1646  */
+#line 14202 "preproc.y" /* yacc.c:1652  */
     {
 			add_variable_to_head(&argsresult, sqlda_variable((yyvsp[0].str)), &no_indicator);
 			(yyval.str) = EMPTY;
 		}
-#line 48471 "preproc.c" /* yacc.c:1646  */
+#line 48477 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2538:
-#line 14209 "preproc.y" /* yacc.c:1646  */
+#line 14209 "preproc.y" /* yacc.c:1652  */
     {
 			add_variable_to_head(&argsresult, sqlda_variable((yyvsp[0].str)), &no_indicator);
 			(yyval.str) = EMPTY;
 		}
-#line 48480 "preproc.c" /* yacc.c:1646  */
+#line 48486 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2541:
-#line 14218 "preproc.y" /* yacc.c:1646  */
+#line 14218 "preproc.y" /* yacc.c:1652  */
     {
 			char *length = mm_alloc(32);
 
 			sprintf(length, "%d", (int) strlen((yyvsp[0].str)));
 			add_variable_to_head(&argsinsert, new_variable((yyvsp[0].str), ECPGmake_simple_type(ECPGt_const, length, 0), 0), &no_indicator);
 		}
-#line 48491 "preproc.c" /* yacc.c:1646  */
+#line 48497 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2542:
-#line 14224 "preproc.y" /* yacc.c:1646  */
+#line 14224 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = EMPTY; }
-#line 48497 "preproc.c" /* yacc.c:1646  */
+#line 48503 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2543:
-#line 14225 "preproc.y" /* yacc.c:1646  */
+#line 14225 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = EMPTY; }
-#line 48503 "preproc.c" /* yacc.c:1646  */
+#line 48509 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2544:
-#line 14228 "preproc.y" /* yacc.c:1646  */
+#line 14228 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 48509 "preproc.c" /* yacc.c:1646  */
+#line 48515 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2545:
-#line 14229 "preproc.y" /* yacc.c:1646  */
+#line 14229 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = cat_str(2, mm_strdup("+"), (yyvsp[0].str)); }
-#line 48515 "preproc.c" /* yacc.c:1646  */
+#line 48521 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2546:
-#line 14230 "preproc.y" /* yacc.c:1646  */
+#line 14230 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = cat_str(2, mm_strdup("-"), (yyvsp[0].str)); }
-#line 48521 "preproc.c" /* yacc.c:1646  */
+#line 48527 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2547:
-#line 14231 "preproc.y" /* yacc.c:1646  */
+#line 14231 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 48527 "preproc.c" /* yacc.c:1646  */
+#line 48533 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2548:
-#line 14232 "preproc.y" /* yacc.c:1646  */
+#line 14232 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = cat_str(2, mm_strdup("+"), (yyvsp[0].str)); }
-#line 48533 "preproc.c" /* yacc.c:1646  */
+#line 48539 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2549:
-#line 14233 "preproc.y" /* yacc.c:1646  */
+#line 14233 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = cat_str(2, mm_strdup("-"), (yyvsp[0].str)); }
-#line 48539 "preproc.c" /* yacc.c:1646  */
+#line 48545 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2550:
-#line 14234 "preproc.y" /* yacc.c:1646  */
+#line 14234 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 48545 "preproc.c" /* yacc.c:1646  */
+#line 48551 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2551:
-#line 14235 "preproc.y" /* yacc.c:1646  */
+#line 14235 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 48551 "preproc.c" /* yacc.c:1646  */
+#line 48557 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2552:
-#line 14236 "preproc.y" /* yacc.c:1646  */
+#line 14236 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 48557 "preproc.c" /* yacc.c:1646  */
+#line 48563 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2553:
-#line 14243 "preproc.y" /* yacc.c:1646  */
+#line 14243 "preproc.y" /* yacc.c:1652  */
     {
 		const char *con = connection ? connection : "NULL";
 		mmerror(PARSE_ERROR, ET_WARNING, "using unsupported DESCRIBE statement");
 		(yyval.str) = (char *) mm_alloc(sizeof("1, , ") + strlen(con) + strlen((yyvsp[-1].str)));
 		sprintf((yyval.str), "1, %s, %s", con, (yyvsp[-1].str));
 	}
-#line 48568 "preproc.c" /* yacc.c:1646  */
+#line 48574 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2554:
-#line 14250 "preproc.y" /* yacc.c:1646  */
+#line 14250 "preproc.y" /* yacc.c:1652  */
     {
 		const char *con = connection ? connection : "NULL";
 		struct variable *var;
@@ -48580,98 +48586,98 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 		(yyval.str) = (char *) mm_alloc(sizeof("0, , ") + strlen(con) + strlen((yyvsp[-1].str)));
 		sprintf((yyval.str), "0, %s, %s", con, (yyvsp[-1].str));
 	}
-#line 48584 "preproc.c" /* yacc.c:1646  */
+#line 48590 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2555:
-#line 14262 "preproc.y" /* yacc.c:1646  */
+#line 14262 "preproc.y" /* yacc.c:1652  */
     {
 		const char *con = connection ? connection : "NULL";
 		(yyval.str) = (char *) mm_alloc(sizeof("0, , ") + strlen(con) + strlen((yyvsp[-1].str)));
 		sprintf((yyval.str), "0, %s, %s", con, (yyvsp[-1].str));
 	}
-#line 48594 "preproc.c" /* yacc.c:1646  */
+#line 48600 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2556:
-#line 14268 "preproc.y" /* yacc.c:1646  */
+#line 14268 "preproc.y" /* yacc.c:1652  */
     {
 		const char *con = connection ? connection : "NULL";
 		mmerror(PARSE_ERROR, ET_WARNING, "using unsupported DESCRIBE statement");
 		(yyval.str) = (char *) mm_alloc(sizeof("1, , ") + strlen(con) + strlen((yyvsp[-1].str)));
 		sprintf((yyval.str), "1, %s, %s", con, (yyvsp[-1].str));
 	}
-#line 48605 "preproc.c" /* yacc.c:1646  */
+#line 48611 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2557:
-#line 14275 "preproc.y" /* yacc.c:1646  */
+#line 14275 "preproc.y" /* yacc.c:1652  */
     {
 		const char *con = connection ? connection : "NULL";
 		(yyval.str) = (char *) mm_alloc(sizeof("0, , ") + strlen(con) + strlen((yyvsp[-1].str)));
 		sprintf((yyval.str), "0, %s, %s", con, (yyvsp[-1].str));
 	}
-#line 48615 "preproc.c" /* yacc.c:1646  */
+#line 48621 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2558:
-#line 14282 "preproc.y" /* yacc.c:1646  */
+#line 14282 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("output"); }
-#line 48621 "preproc.c" /* yacc.c:1646  */
+#line 48627 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2559:
-#line 14283 "preproc.y" /* yacc.c:1646  */
+#line 14283 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = EMPTY; }
-#line 48627 "preproc.c" /* yacc.c:1646  */
+#line 48633 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2560:
-#line 14296 "preproc.y" /* yacc.c:1646  */
+#line 14296 "preproc.y" /* yacc.c:1652  */
     {
 			add_descriptor((yyvsp[0].str),connection);
 			(yyval.str) = (yyvsp[0].str);
 		}
-#line 48636 "preproc.c" /* yacc.c:1646  */
+#line 48642 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2561:
-#line 14307 "preproc.y" /* yacc.c:1646  */
+#line 14307 "preproc.y" /* yacc.c:1652  */
     {
 			drop_descriptor((yyvsp[0].str),connection);
 			(yyval.str) = (yyvsp[0].str);
 		}
-#line 48645 "preproc.c" /* yacc.c:1646  */
+#line 48651 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2562:
-#line 14318 "preproc.y" /* yacc.c:1646  */
+#line 14318 "preproc.y" /* yacc.c:1652  */
     {  (yyval.str) = (yyvsp[-1].str); }
-#line 48651 "preproc.c" /* yacc.c:1646  */
+#line 48657 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2565:
-#line 14326 "preproc.y" /* yacc.c:1646  */
+#line 14326 "preproc.y" /* yacc.c:1652  */
     { push_assignment((yyvsp[-2].str), (yyvsp[0].dtype_enum)); }
-#line 48657 "preproc.c" /* yacc.c:1646  */
+#line 48663 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2566:
-#line 14331 "preproc.y" /* yacc.c:1646  */
+#line 14331 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[-1].str); }
-#line 48663 "preproc.c" /* yacc.c:1646  */
+#line 48669 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2569:
-#line 14339 "preproc.y" /* yacc.c:1646  */
+#line 14339 "preproc.y" /* yacc.c:1652  */
     {
 			push_assignment((yyvsp[0].str), (yyvsp[-2].dtype_enum));
 		}
-#line 48671 "preproc.c" /* yacc.c:1646  */
+#line 48677 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2570:
-#line 14345 "preproc.y" /* yacc.c:1646  */
+#line 14345 "preproc.y" /* yacc.c:1652  */
     {
 			char *length = mm_alloc(sizeof(int) * CHAR_BIT * 10 / 3);
 
@@ -48679,51 +48685,51 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			new_variable((yyvsp[0].str), ECPGmake_simple_type(ECPGt_const, length, 0), 0);
 			(yyval.str) = (yyvsp[0].str);
 		}
-#line 48683 "preproc.c" /* yacc.c:1646  */
+#line 48689 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2571:
-#line 14353 "preproc.y" /* yacc.c:1646  */
+#line 14353 "preproc.y" /* yacc.c:1652  */
     {
 			(yyval.str) = (yyvsp[0].str);
 		}
-#line 48691 "preproc.c" /* yacc.c:1646  */
+#line 48697 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2572:
-#line 14358 "preproc.y" /* yacc.c:1646  */
+#line 14358 "preproc.y" /* yacc.c:1652  */
     { (yyval.dtype_enum) = ECPGd_count; }
-#line 48697 "preproc.c" /* yacc.c:1646  */
+#line 48703 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2573:
-#line 14366 "preproc.y" /* yacc.c:1646  */
+#line 14366 "preproc.y" /* yacc.c:1652  */
     {  (yyval.descriptor).str = (yyvsp[-1].str); (yyval.descriptor).name = (yyvsp[-3].str); }
-#line 48703 "preproc.c" /* yacc.c:1646  */
+#line 48709 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2576:
-#line 14373 "preproc.y" /* yacc.c:1646  */
+#line 14373 "preproc.y" /* yacc.c:1652  */
     { push_assignment((yyvsp[-2].str), (yyvsp[0].dtype_enum)); }
-#line 48709 "preproc.c" /* yacc.c:1646  */
+#line 48715 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2577:
-#line 14377 "preproc.y" /* yacc.c:1646  */
+#line 14377 "preproc.y" /* yacc.c:1652  */
     {  (yyval.descriptor).str = (yyvsp[-1].str); (yyval.descriptor).name = (yyvsp[-3].str); }
-#line 48715 "preproc.c" /* yacc.c:1646  */
+#line 48721 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2580:
-#line 14385 "preproc.y" /* yacc.c:1646  */
+#line 14385 "preproc.y" /* yacc.c:1652  */
     {
 			push_assignment((yyvsp[0].str), (yyvsp[-2].dtype_enum));
 		}
-#line 48723 "preproc.c" /* yacc.c:1646  */
+#line 48729 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2581:
-#line 14391 "preproc.y" /* yacc.c:1646  */
+#line 14391 "preproc.y" /* yacc.c:1652  */
     {
 			char *length = mm_alloc(sizeof(int) * CHAR_BIT * 10 / 3);
 
@@ -48731,19 +48737,19 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			new_variable((yyvsp[0].str), ECPGmake_simple_type(ECPGt_const, length, 0), 0);
 			(yyval.str) = (yyvsp[0].str);
 		}
-#line 48735 "preproc.c" /* yacc.c:1646  */
+#line 48741 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2582:
-#line 14400 "preproc.y" /* yacc.c:1646  */
+#line 14400 "preproc.y" /* yacc.c:1652  */
     {
 			(yyval.str) = (yyvsp[0].str);
 		}
-#line 48743 "preproc.c" /* yacc.c:1646  */
+#line 48749 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2583:
-#line 14405 "preproc.y" /* yacc.c:1646  */
+#line 14405 "preproc.y" /* yacc.c:1652  */
     {
 			char *length = mm_alloc(sizeof(int) * CHAR_BIT * 10 / 3);
 			char *var = cat2_str(mm_strdup("-"), (yyvsp[0].str));
@@ -48752,11 +48758,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			new_variable(var, ECPGmake_simple_type(ECPGt_const, length, 0), 0);
 			(yyval.str) = var;
 		}
-#line 48756 "preproc.c" /* yacc.c:1646  */
+#line 48762 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2584:
-#line 14415 "preproc.y" /* yacc.c:1646  */
+#line 14415 "preproc.y" /* yacc.c:1652  */
     {
 			char *length = mm_alloc(sizeof(int) * CHAR_BIT * 10 / 3);
 			char *var = cat2_str(mm_strdup("-"), (yyvsp[0].str));
@@ -48765,11 +48771,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			new_variable(var, ECPGmake_simple_type(ECPGt_const, length, 0), 0);
 			(yyval.str) = var;
 		}
-#line 48769 "preproc.c" /* yacc.c:1646  */
+#line 48775 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2585:
-#line 14425 "preproc.y" /* yacc.c:1646  */
+#line 14425 "preproc.y" /* yacc.c:1652  */
     {
 			char *length = mm_alloc(sizeof(int) * CHAR_BIT * 10 / 3);
 			char *var = (yyvsp[0].str) + 1;
@@ -48779,153 +48785,153 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			new_variable(var, ECPGmake_simple_type(ECPGt_const, length, 0), 0);
 			(yyval.str) = var;
 		}
-#line 48783 "preproc.c" /* yacc.c:1646  */
+#line 48789 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2586:
-#line 14436 "preproc.y" /* yacc.c:1646  */
+#line 14436 "preproc.y" /* yacc.c:1652  */
     { (yyval.dtype_enum) = ECPGd_cardinality; }
-#line 48789 "preproc.c" /* yacc.c:1646  */
+#line 48795 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2587:
-#line 14437 "preproc.y" /* yacc.c:1646  */
+#line 14437 "preproc.y" /* yacc.c:1652  */
     { (yyval.dtype_enum) = ECPGd_data; }
-#line 48795 "preproc.c" /* yacc.c:1646  */
+#line 48801 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2588:
-#line 14438 "preproc.y" /* yacc.c:1646  */
+#line 14438 "preproc.y" /* yacc.c:1652  */
     { (yyval.dtype_enum) = ECPGd_di_code; }
-#line 48801 "preproc.c" /* yacc.c:1646  */
+#line 48807 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2589:
-#line 14439 "preproc.y" /* yacc.c:1646  */
+#line 14439 "preproc.y" /* yacc.c:1652  */
     { (yyval.dtype_enum) = ECPGd_di_precision; }
-#line 48807 "preproc.c" /* yacc.c:1646  */
+#line 48813 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2590:
-#line 14440 "preproc.y" /* yacc.c:1646  */
+#line 14440 "preproc.y" /* yacc.c:1652  */
     { (yyval.dtype_enum) = ECPGd_indicator; }
-#line 48813 "preproc.c" /* yacc.c:1646  */
+#line 48819 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2591:
-#line 14441 "preproc.y" /* yacc.c:1646  */
+#line 14441 "preproc.y" /* yacc.c:1652  */
     { (yyval.dtype_enum) = ECPGd_key_member; }
-#line 48819 "preproc.c" /* yacc.c:1646  */
+#line 48825 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2592:
-#line 14442 "preproc.y" /* yacc.c:1646  */
+#line 14442 "preproc.y" /* yacc.c:1652  */
     { (yyval.dtype_enum) = ECPGd_length; }
-#line 48825 "preproc.c" /* yacc.c:1646  */
+#line 48831 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2593:
-#line 14443 "preproc.y" /* yacc.c:1646  */
+#line 14443 "preproc.y" /* yacc.c:1652  */
     { (yyval.dtype_enum) = ECPGd_name; }
-#line 48831 "preproc.c" /* yacc.c:1646  */
+#line 48837 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2594:
-#line 14444 "preproc.y" /* yacc.c:1646  */
+#line 14444 "preproc.y" /* yacc.c:1652  */
     { (yyval.dtype_enum) = ECPGd_nullable; }
-#line 48837 "preproc.c" /* yacc.c:1646  */
+#line 48843 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2595:
-#line 14445 "preproc.y" /* yacc.c:1646  */
+#line 14445 "preproc.y" /* yacc.c:1652  */
     { (yyval.dtype_enum) = ECPGd_octet; }
-#line 48843 "preproc.c" /* yacc.c:1646  */
+#line 48849 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2596:
-#line 14446 "preproc.y" /* yacc.c:1646  */
+#line 14446 "preproc.y" /* yacc.c:1652  */
     { (yyval.dtype_enum) = ECPGd_precision; }
-#line 48849 "preproc.c" /* yacc.c:1646  */
+#line 48855 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2597:
-#line 14447 "preproc.y" /* yacc.c:1646  */
+#line 14447 "preproc.y" /* yacc.c:1652  */
     { (yyval.dtype_enum) = ECPGd_length; }
-#line 48855 "preproc.c" /* yacc.c:1646  */
+#line 48861 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2598:
-#line 14448 "preproc.y" /* yacc.c:1646  */
+#line 14448 "preproc.y" /* yacc.c:1652  */
     { (yyval.dtype_enum) = ECPGd_ret_octet; }
-#line 48861 "preproc.c" /* yacc.c:1646  */
+#line 48867 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2599:
-#line 14449 "preproc.y" /* yacc.c:1646  */
+#line 14449 "preproc.y" /* yacc.c:1652  */
     { (yyval.dtype_enum) = ECPGd_scale; }
-#line 48867 "preproc.c" /* yacc.c:1646  */
+#line 48873 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2600:
-#line 14450 "preproc.y" /* yacc.c:1646  */
+#line 14450 "preproc.y" /* yacc.c:1652  */
     { (yyval.dtype_enum) = ECPGd_type; }
-#line 48873 "preproc.c" /* yacc.c:1646  */
+#line 48879 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2601:
-#line 14457 "preproc.y" /* yacc.c:1646  */
+#line 14457 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 48879 "preproc.c" /* yacc.c:1646  */
+#line 48885 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2602:
-#line 14458 "preproc.y" /* yacc.c:1646  */
+#line 14458 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 48885 "preproc.c" /* yacc.c:1646  */
+#line 48891 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2603:
-#line 14461 "preproc.y" /* yacc.c:1646  */
+#line 14461 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("on"); }
-#line 48891 "preproc.c" /* yacc.c:1646  */
+#line 48897 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2604:
-#line 14462 "preproc.y" /* yacc.c:1646  */
+#line 14462 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("off"); }
-#line 48897 "preproc.c" /* yacc.c:1646  */
+#line 48903 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2605:
-#line 14469 "preproc.y" /* yacc.c:1646  */
+#line 14469 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 48903 "preproc.c" /* yacc.c:1646  */
+#line 48909 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2606:
-#line 14470 "preproc.y" /* yacc.c:1646  */
+#line 14470 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 48909 "preproc.c" /* yacc.c:1646  */
+#line 48915 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2607:
-#line 14471 "preproc.y" /* yacc.c:1646  */
+#line 14471 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 48915 "preproc.c" /* yacc.c:1646  */
+#line 48921 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2608:
-#line 14478 "preproc.y" /* yacc.c:1646  */
+#line 14478 "preproc.y" /* yacc.c:1652  */
     {
 			/* reset this variable so we see if there was */
 			/* an initializer specified */
 			initializer = 0;
 		}
-#line 48925 "preproc.c" /* yacc.c:1646  */
+#line 48931 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2609:
-#line 14484 "preproc.y" /* yacc.c:1646  */
+#line 14484 "preproc.y" /* yacc.c:1652  */
     {
 			add_typedef((yyvsp[-4].str), (yyvsp[-1].index).index1, (yyvsp[-1].index).index2, (yyvsp[-2].type).type_enum, (yyvsp[-2].type).type_dimension, (yyvsp[-2].type).type_index, initializer, *(yyvsp[0].str) ? 1 : 0);
 
@@ -48934,33 +48940,33 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			else
 				(yyval.str) = cat_str(6, mm_strdup("typedef "), mm_strdup((yyvsp[-2].type).type_str), *(yyvsp[0].str)?mm_strdup("*"):mm_strdup(""), mm_strdup((yyvsp[-4].str)), mm_strdup((yyvsp[-1].index).str), mm_strdup(";"));
 		}
-#line 48938 "preproc.c" /* yacc.c:1646  */
+#line 48944 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2610:
-#line 14494 "preproc.y" /* yacc.c:1646  */
+#line 14494 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("reference"); }
-#line 48944 "preproc.c" /* yacc.c:1646  */
+#line 48950 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2611:
-#line 14495 "preproc.y" /* yacc.c:1646  */
+#line 14495 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = EMPTY; }
-#line 48950 "preproc.c" /* yacc.c:1646  */
+#line 48956 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2612:
-#line 14502 "preproc.y" /* yacc.c:1646  */
+#line 14502 "preproc.y" /* yacc.c:1652  */
     {
 			/* reset this variable so we see if there was */
 			/* an initializer specified */
 			initializer = 0;
 		}
-#line 48960 "preproc.c" /* yacc.c:1646  */
+#line 48966 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2613:
-#line 14508 "preproc.y" /* yacc.c:1646  */
+#line 14508 "preproc.y" /* yacc.c:1652  */
     {
 			struct variable *p = find_variable((yyvsp[-4].str));
 			char *dimension = (yyvsp[-1].index).index1;
@@ -49018,746 +49024,746 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 
 			(yyval.str) = cat_str(7, mm_strdup("/* exec sql var"), mm_strdup((yyvsp[-4].str)), mm_strdup("is"), mm_strdup((yyvsp[-2].type).type_str), mm_strdup((yyvsp[-1].index).str), (yyvsp[0].str), mm_strdup("*/"));
 		}
-#line 49022 "preproc.c" /* yacc.c:1646  */
+#line 49028 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2614:
-#line 14572 "preproc.y" /* yacc.c:1646  */
+#line 14572 "preproc.y" /* yacc.c:1652  */
     {
 			when_error.code = (yyvsp[0].action).code;
 			when_error.command = (yyvsp[0].action).command;
 			(yyval.str) = cat_str(3, mm_strdup("/* exec sql whenever sqlerror "), (yyvsp[0].action).str, mm_strdup("; */"));
 		}
-#line 49032 "preproc.c" /* yacc.c:1646  */
+#line 49038 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2615:
-#line 14578 "preproc.y" /* yacc.c:1646  */
+#line 14578 "preproc.y" /* yacc.c:1652  */
     {
 			when_nf.code = (yyvsp[0].action).code;
 			when_nf.command = (yyvsp[0].action).command;
 			(yyval.str) = cat_str(3, mm_strdup("/* exec sql whenever not found "), (yyvsp[0].action).str, mm_strdup("; */"));
 		}
-#line 49042 "preproc.c" /* yacc.c:1646  */
+#line 49048 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2616:
-#line 14584 "preproc.y" /* yacc.c:1646  */
+#line 14584 "preproc.y" /* yacc.c:1652  */
     {
 			when_warn.code = (yyvsp[0].action).code;
 			when_warn.command = (yyvsp[0].action).command;
 			(yyval.str) = cat_str(3, mm_strdup("/* exec sql whenever sql_warning "), (yyvsp[0].action).str, mm_strdup("; */"));
 		}
-#line 49052 "preproc.c" /* yacc.c:1646  */
+#line 49058 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2617:
-#line 14592 "preproc.y" /* yacc.c:1646  */
+#line 14592 "preproc.y" /* yacc.c:1652  */
     {
 			(yyval.action).code = W_NOTHING;
 			(yyval.action).command = NULL;
 			(yyval.action).str = mm_strdup("continue");
 		}
-#line 49062 "preproc.c" /* yacc.c:1646  */
+#line 49068 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2618:
-#line 14598 "preproc.y" /* yacc.c:1646  */
+#line 14598 "preproc.y" /* yacc.c:1652  */
     {
 			(yyval.action).code = W_SQLPRINT;
 			(yyval.action).command = NULL;
 			(yyval.action).str = mm_strdup("sqlprint");
 		}
-#line 49072 "preproc.c" /* yacc.c:1646  */
+#line 49078 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2619:
-#line 14604 "preproc.y" /* yacc.c:1646  */
+#line 14604 "preproc.y" /* yacc.c:1652  */
     {
 			(yyval.action).code = W_STOP;
 			(yyval.action).command = NULL;
 			(yyval.action).str = mm_strdup("stop");
 		}
-#line 49082 "preproc.c" /* yacc.c:1646  */
+#line 49088 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2620:
-#line 14610 "preproc.y" /* yacc.c:1646  */
+#line 14610 "preproc.y" /* yacc.c:1652  */
     {
 			(yyval.action).code = W_GOTO;
 			(yyval.action).command = mm_strdup((yyvsp[0].str));
 			(yyval.action).str = cat2_str(mm_strdup("goto "), (yyvsp[0].str));
 		}
-#line 49092 "preproc.c" /* yacc.c:1646  */
+#line 49098 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2621:
-#line 14616 "preproc.y" /* yacc.c:1646  */
+#line 14616 "preproc.y" /* yacc.c:1652  */
     {
 			(yyval.action).code = W_GOTO;
 			(yyval.action).command = mm_strdup((yyvsp[0].str));
 			(yyval.action).str = cat2_str(mm_strdup("goto "), (yyvsp[0].str));
 		}
-#line 49102 "preproc.c" /* yacc.c:1646  */
+#line 49108 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2622:
-#line 14622 "preproc.y" /* yacc.c:1646  */
+#line 14622 "preproc.y" /* yacc.c:1652  */
     {
 			(yyval.action).code = W_DO;
 			(yyval.action).command = cat_str(4, (yyvsp[-3].str), mm_strdup("("), (yyvsp[-1].str), mm_strdup(")"));
 			(yyval.action).str = cat2_str(mm_strdup("do"), mm_strdup((yyval.action).command));
 		}
-#line 49112 "preproc.c" /* yacc.c:1646  */
+#line 49118 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2623:
-#line 14628 "preproc.y" /* yacc.c:1646  */
+#line 14628 "preproc.y" /* yacc.c:1652  */
     {
 			(yyval.action).code = W_BREAK;
 			(yyval.action).command = NULL;
 			(yyval.action).str = mm_strdup("break");
 		}
-#line 49122 "preproc.c" /* yacc.c:1646  */
+#line 49128 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2624:
-#line 14634 "preproc.y" /* yacc.c:1646  */
+#line 14634 "preproc.y" /* yacc.c:1652  */
     {
 			(yyval.action).code = W_DO;
 			(yyval.action).command = cat_str(4, (yyvsp[-3].str), mm_strdup("("), (yyvsp[-1].str), mm_strdup(")"));
 			(yyval.action).str = cat2_str(mm_strdup("call"), mm_strdup((yyval.action).command));
 		}
-#line 49132 "preproc.c" /* yacc.c:1646  */
+#line 49138 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2625:
-#line 14640 "preproc.y" /* yacc.c:1646  */
+#line 14640 "preproc.y" /* yacc.c:1652  */
     {
 			(yyval.action).code = W_DO;
 			(yyval.action).command = cat2_str((yyvsp[0].str), mm_strdup("()"));
 			(yyval.action).str = cat2_str(mm_strdup("call"), mm_strdup((yyval.action).command));
 		}
-#line 49142 "preproc.c" /* yacc.c:1646  */
+#line 49148 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2626:
-#line 14650 "preproc.y" /* yacc.c:1646  */
+#line 14650 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 49148 "preproc.c" /* yacc.c:1646  */
+#line 49154 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2627:
-#line 14651 "preproc.y" /* yacc.c:1646  */
+#line 14651 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 49154 "preproc.c" /* yacc.c:1646  */
+#line 49160 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2628:
-#line 14654 "preproc.y" /* yacc.c:1646  */
+#line 14654 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("break"); }
-#line 49160 "preproc.c" /* yacc.c:1646  */
+#line 49166 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2629:
-#line 14655 "preproc.y" /* yacc.c:1646  */
+#line 14655 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("call"); }
-#line 49166 "preproc.c" /* yacc.c:1646  */
+#line 49172 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2630:
-#line 14656 "preproc.y" /* yacc.c:1646  */
+#line 14656 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("cardinality"); }
-#line 49172 "preproc.c" /* yacc.c:1646  */
+#line 49178 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2631:
-#line 14657 "preproc.y" /* yacc.c:1646  */
+#line 14657 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("count"); }
-#line 49178 "preproc.c" /* yacc.c:1646  */
+#line 49184 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2632:
-#line 14658 "preproc.y" /* yacc.c:1646  */
+#line 14658 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("datetime_interval_code"); }
-#line 49184 "preproc.c" /* yacc.c:1646  */
+#line 49190 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2633:
-#line 14659 "preproc.y" /* yacc.c:1646  */
+#line 14659 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("datetime_interval_precision"); }
-#line 49190 "preproc.c" /* yacc.c:1646  */
+#line 49196 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2634:
-#line 14660 "preproc.y" /* yacc.c:1646  */
+#line 14660 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("found"); }
-#line 49196 "preproc.c" /* yacc.c:1646  */
+#line 49202 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2635:
-#line 14661 "preproc.y" /* yacc.c:1646  */
+#line 14661 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("go"); }
-#line 49202 "preproc.c" /* yacc.c:1646  */
+#line 49208 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2636:
-#line 14662 "preproc.y" /* yacc.c:1646  */
+#line 14662 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("goto"); }
-#line 49208 "preproc.c" /* yacc.c:1646  */
+#line 49214 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2637:
-#line 14663 "preproc.y" /* yacc.c:1646  */
+#line 14663 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("identified"); }
-#line 49214 "preproc.c" /* yacc.c:1646  */
+#line 49220 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2638:
-#line 14664 "preproc.y" /* yacc.c:1646  */
+#line 14664 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("indicator"); }
-#line 49220 "preproc.c" /* yacc.c:1646  */
+#line 49226 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2639:
-#line 14665 "preproc.y" /* yacc.c:1646  */
+#line 14665 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("key_member"); }
-#line 49226 "preproc.c" /* yacc.c:1646  */
+#line 49232 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2640:
-#line 14666 "preproc.y" /* yacc.c:1646  */
+#line 14666 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("length"); }
-#line 49232 "preproc.c" /* yacc.c:1646  */
+#line 49238 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2641:
-#line 14667 "preproc.y" /* yacc.c:1646  */
+#line 14667 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("nullable"); }
-#line 49238 "preproc.c" /* yacc.c:1646  */
+#line 49244 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2642:
-#line 14668 "preproc.y" /* yacc.c:1646  */
+#line 14668 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("octet_length"); }
-#line 49244 "preproc.c" /* yacc.c:1646  */
+#line 49250 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2643:
-#line 14669 "preproc.y" /* yacc.c:1646  */
+#line 14669 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("returned_length"); }
-#line 49250 "preproc.c" /* yacc.c:1646  */
+#line 49256 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2644:
-#line 14670 "preproc.y" /* yacc.c:1646  */
+#line 14670 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("returned_octet_length"); }
-#line 49256 "preproc.c" /* yacc.c:1646  */
+#line 49262 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2645:
-#line 14671 "preproc.y" /* yacc.c:1646  */
+#line 14671 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("scale"); }
-#line 49262 "preproc.c" /* yacc.c:1646  */
+#line 49268 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2646:
-#line 14672 "preproc.y" /* yacc.c:1646  */
+#line 14672 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("section"); }
-#line 49268 "preproc.c" /* yacc.c:1646  */
+#line 49274 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2647:
-#line 14673 "preproc.y" /* yacc.c:1646  */
+#line 14673 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("sql"); }
-#line 49274 "preproc.c" /* yacc.c:1646  */
+#line 49280 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2648:
-#line 14674 "preproc.y" /* yacc.c:1646  */
+#line 14674 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("sqlerror"); }
-#line 49280 "preproc.c" /* yacc.c:1646  */
+#line 49286 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2649:
-#line 14675 "preproc.y" /* yacc.c:1646  */
+#line 14675 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("sqlprint"); }
-#line 49286 "preproc.c" /* yacc.c:1646  */
+#line 49292 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2650:
-#line 14676 "preproc.y" /* yacc.c:1646  */
+#line 14676 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("sqlwarning"); }
-#line 49292 "preproc.c" /* yacc.c:1646  */
+#line 49298 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2651:
-#line 14677 "preproc.y" /* yacc.c:1646  */
+#line 14677 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("stop"); }
-#line 49298 "preproc.c" /* yacc.c:1646  */
+#line 49304 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2652:
-#line 14680 "preproc.y" /* yacc.c:1646  */
+#line 14680 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("connect"); }
-#line 49304 "preproc.c" /* yacc.c:1646  */
+#line 49310 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2653:
-#line 14681 "preproc.y" /* yacc.c:1646  */
+#line 14681 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("describe"); }
-#line 49310 "preproc.c" /* yacc.c:1646  */
+#line 49316 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2654:
-#line 14682 "preproc.y" /* yacc.c:1646  */
+#line 14682 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("disconnect"); }
-#line 49316 "preproc.c" /* yacc.c:1646  */
+#line 49322 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2655:
-#line 14683 "preproc.y" /* yacc.c:1646  */
+#line 14683 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("open"); }
-#line 49322 "preproc.c" /* yacc.c:1646  */
+#line 49328 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2656:
-#line 14684 "preproc.y" /* yacc.c:1646  */
+#line 14684 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("var"); }
-#line 49328 "preproc.c" /* yacc.c:1646  */
+#line 49334 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2657:
-#line 14685 "preproc.y" /* yacc.c:1646  */
+#line 14685 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("whenever"); }
-#line 49334 "preproc.c" /* yacc.c:1646  */
+#line 49340 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2658:
-#line 14689 "preproc.y" /* yacc.c:1646  */
+#line 14689 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("bool"); }
-#line 49340 "preproc.c" /* yacc.c:1646  */
+#line 49346 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2659:
-#line 14690 "preproc.y" /* yacc.c:1646  */
+#line 14690 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("long"); }
-#line 49346 "preproc.c" /* yacc.c:1646  */
+#line 49352 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2660:
-#line 14691 "preproc.y" /* yacc.c:1646  */
+#line 14691 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("output"); }
-#line 49352 "preproc.c" /* yacc.c:1646  */
+#line 49358 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2661:
-#line 14692 "preproc.y" /* yacc.c:1646  */
+#line 14692 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("short"); }
-#line 49358 "preproc.c" /* yacc.c:1646  */
+#line 49364 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2662:
-#line 14693 "preproc.y" /* yacc.c:1646  */
+#line 14693 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("struct"); }
-#line 49364 "preproc.c" /* yacc.c:1646  */
+#line 49370 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2663:
-#line 14694 "preproc.y" /* yacc.c:1646  */
+#line 14694 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("signed"); }
-#line 49370 "preproc.c" /* yacc.c:1646  */
+#line 49376 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2664:
-#line 14695 "preproc.y" /* yacc.c:1646  */
+#line 14695 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("unsigned"); }
-#line 49376 "preproc.c" /* yacc.c:1646  */
+#line 49382 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2665:
-#line 14698 "preproc.y" /* yacc.c:1646  */
+#line 14698 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 49382 "preproc.c" /* yacc.c:1646  */
+#line 49388 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2666:
-#line 14701 "preproc.y" /* yacc.c:1646  */
+#line 14701 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 49388 "preproc.c" /* yacc.c:1646  */
+#line 49394 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2667:
-#line 14702 "preproc.y" /* yacc.c:1646  */
+#line 14702 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 49394 "preproc.c" /* yacc.c:1646  */
+#line 49400 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2668:
-#line 14703 "preproc.y" /* yacc.c:1646  */
+#line 14703 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 49400 "preproc.c" /* yacc.c:1646  */
+#line 49406 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2669:
-#line 14704 "preproc.y" /* yacc.c:1646  */
+#line 14704 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 49406 "preproc.c" /* yacc.c:1646  */
+#line 49412 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2670:
-#line 14705 "preproc.y" /* yacc.c:1646  */
+#line 14705 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 49412 "preproc.c" /* yacc.c:1646  */
+#line 49418 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2671:
-#line 14706 "preproc.y" /* yacc.c:1646  */
+#line 14706 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 49418 "preproc.c" /* yacc.c:1646  */
+#line 49424 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2672:
-#line 14707 "preproc.y" /* yacc.c:1646  */
+#line 14707 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("char"); }
-#line 49424 "preproc.c" /* yacc.c:1646  */
+#line 49430 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2673:
-#line 14708 "preproc.y" /* yacc.c:1646  */
+#line 14708 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("values"); }
-#line 49430 "preproc.c" /* yacc.c:1646  */
+#line 49436 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2674:
-#line 14721 "preproc.y" /* yacc.c:1646  */
+#line 14721 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 49436 "preproc.c" /* yacc.c:1646  */
+#line 49442 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2675:
-#line 14722 "preproc.y" /* yacc.c:1646  */
+#line 14722 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 49442 "preproc.c" /* yacc.c:1646  */
+#line 49448 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2676:
-#line 14723 "preproc.y" /* yacc.c:1646  */
+#line 14723 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 49448 "preproc.c" /* yacc.c:1646  */
+#line 49454 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2677:
-#line 14724 "preproc.y" /* yacc.c:1646  */
+#line 14724 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 49454 "preproc.c" /* yacc.c:1646  */
+#line 49460 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2678:
-#line 14725 "preproc.y" /* yacc.c:1646  */
+#line 14725 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 49460 "preproc.c" /* yacc.c:1646  */
+#line 49466 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2679:
-#line 14726 "preproc.y" /* yacc.c:1646  */
+#line 14726 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("char"); }
-#line 49466 "preproc.c" /* yacc.c:1646  */
+#line 49472 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2680:
-#line 14727 "preproc.y" /* yacc.c:1646  */
+#line 14727 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("values"); }
-#line 49472 "preproc.c" /* yacc.c:1646  */
+#line 49478 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2681:
-#line 14732 "preproc.y" /* yacc.c:1646  */
+#line 14732 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 49478 "preproc.c" /* yacc.c:1646  */
+#line 49484 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2682:
-#line 14733 "preproc.y" /* yacc.c:1646  */
+#line 14733 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 49484 "preproc.c" /* yacc.c:1646  */
+#line 49490 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2683:
-#line 14734 "preproc.y" /* yacc.c:1646  */
+#line 14734 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 49490 "preproc.c" /* yacc.c:1646  */
+#line 49496 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2684:
-#line 14735 "preproc.y" /* yacc.c:1646  */
+#line 14735 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 49496 "preproc.c" /* yacc.c:1646  */
+#line 49502 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2685:
-#line 14736 "preproc.y" /* yacc.c:1646  */
+#line 14736 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 49502 "preproc.c" /* yacc.c:1646  */
+#line 49508 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2686:
-#line 14737 "preproc.y" /* yacc.c:1646  */
+#line 14737 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 49508 "preproc.c" /* yacc.c:1646  */
+#line 49514 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2687:
-#line 14743 "preproc.y" /* yacc.c:1646  */
+#line 14743 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 49514 "preproc.c" /* yacc.c:1646  */
+#line 49520 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2688:
-#line 14744 "preproc.y" /* yacc.c:1646  */
+#line 14744 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 49520 "preproc.c" /* yacc.c:1646  */
+#line 49526 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2689:
-#line 14745 "preproc.y" /* yacc.c:1646  */
+#line 14745 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("char"); }
-#line 49526 "preproc.c" /* yacc.c:1646  */
+#line 49532 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2690:
-#line 14746 "preproc.y" /* yacc.c:1646  */
+#line 14746 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("current"); }
-#line 49532 "preproc.c" /* yacc.c:1646  */
+#line 49538 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2691:
-#line 14747 "preproc.y" /* yacc.c:1646  */
+#line 14747 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("input"); }
-#line 49538 "preproc.c" /* yacc.c:1646  */
+#line 49544 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2692:
-#line 14748 "preproc.y" /* yacc.c:1646  */
+#line 14748 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("int"); }
-#line 49544 "preproc.c" /* yacc.c:1646  */
+#line 49550 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2693:
-#line 14749 "preproc.y" /* yacc.c:1646  */
+#line 14749 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("to"); }
-#line 49550 "preproc.c" /* yacc.c:1646  */
+#line 49556 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2694:
-#line 14750 "preproc.y" /* yacc.c:1646  */
+#line 14750 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("union"); }
-#line 49556 "preproc.c" /* yacc.c:1646  */
+#line 49562 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2695:
-#line 14751 "preproc.y" /* yacc.c:1646  */
+#line 14751 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("values"); }
-#line 49562 "preproc.c" /* yacc.c:1646  */
+#line 49568 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2696:
-#line 14752 "preproc.y" /* yacc.c:1646  */
+#line 14752 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 49568 "preproc.c" /* yacc.c:1646  */
+#line 49574 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2697:
-#line 14753 "preproc.y" /* yacc.c:1646  */
+#line 14753 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 49574 "preproc.c" /* yacc.c:1646  */
+#line 49580 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2698:
-#line 14756 "preproc.y" /* yacc.c:1646  */
+#line 14756 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 49580 "preproc.c" /* yacc.c:1646  */
+#line 49586 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2699:
-#line 14757 "preproc.y" /* yacc.c:1646  */
+#line 14757 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 49586 "preproc.c" /* yacc.c:1646  */
+#line 49592 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2700:
-#line 14758 "preproc.y" /* yacc.c:1646  */
+#line 14758 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 49592 "preproc.c" /* yacc.c:1646  */
+#line 49598 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2701:
-#line 14759 "preproc.y" /* yacc.c:1646  */
+#line 14759 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 49598 "preproc.c" /* yacc.c:1646  */
+#line 49604 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2702:
-#line 14760 "preproc.y" /* yacc.c:1646  */
+#line 14760 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("connection"); }
-#line 49604 "preproc.c" /* yacc.c:1646  */
+#line 49610 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2703:
-#line 14763 "preproc.y" /* yacc.c:1646  */
+#line 14763 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 49610 "preproc.c" /* yacc.c:1646  */
+#line 49616 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2704:
-#line 14764 "preproc.y" /* yacc.c:1646  */
+#line 14764 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 49616 "preproc.c" /* yacc.c:1646  */
+#line 49622 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2705:
-#line 14765 "preproc.y" /* yacc.c:1646  */
+#line 14765 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 49622 "preproc.c" /* yacc.c:1646  */
+#line 49628 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2706:
-#line 14766 "preproc.y" /* yacc.c:1646  */
+#line 14766 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 49628 "preproc.c" /* yacc.c:1646  */
+#line 49634 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2707:
-#line 14769 "preproc.y" /* yacc.c:1646  */
+#line 14769 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("auto"); }
-#line 49634 "preproc.c" /* yacc.c:1646  */
+#line 49640 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2708:
-#line 14770 "preproc.y" /* yacc.c:1646  */
+#line 14770 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("const"); }
-#line 49640 "preproc.c" /* yacc.c:1646  */
+#line 49646 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2709:
-#line 14771 "preproc.y" /* yacc.c:1646  */
+#line 14771 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("extern"); }
-#line 49646 "preproc.c" /* yacc.c:1646  */
+#line 49652 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2710:
-#line 14772 "preproc.y" /* yacc.c:1646  */
+#line 14772 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("register"); }
-#line 49652 "preproc.c" /* yacc.c:1646  */
+#line 49658 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2711:
-#line 14773 "preproc.y" /* yacc.c:1646  */
+#line 14773 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("static"); }
-#line 49658 "preproc.c" /* yacc.c:1646  */
+#line 49664 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2712:
-#line 14774 "preproc.y" /* yacc.c:1646  */
+#line 14774 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("typedef"); }
-#line 49664 "preproc.c" /* yacc.c:1646  */
+#line 49670 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2713:
-#line 14775 "preproc.y" /* yacc.c:1646  */
+#line 14775 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("volatile"); }
-#line 49670 "preproc.c" /* yacc.c:1646  */
+#line 49676 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2714:
-#line 14792 "preproc.y" /* yacc.c:1646  */
+#line 14792 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 49676 "preproc.c" /* yacc.c:1646  */
+#line 49682 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2715:
-#line 14793 "preproc.y" /* yacc.c:1646  */
+#line 14793 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 49682 "preproc.c" /* yacc.c:1646  */
+#line 49688 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2716:
-#line 14794 "preproc.y" /* yacc.c:1646  */
+#line 14794 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("connection"); }
-#line 49688 "preproc.c" /* yacc.c:1646  */
+#line 49694 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2717:
-#line 14797 "preproc.y" /* yacc.c:1646  */
+#line 14797 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("day"); }
-#line 49694 "preproc.c" /* yacc.c:1646  */
+#line 49700 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2718:
-#line 14798 "preproc.y" /* yacc.c:1646  */
+#line 14798 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("hour"); }
-#line 49700 "preproc.c" /* yacc.c:1646  */
+#line 49706 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2719:
-#line 14799 "preproc.y" /* yacc.c:1646  */
+#line 14799 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("minute"); }
-#line 49706 "preproc.c" /* yacc.c:1646  */
+#line 49712 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2720:
-#line 14800 "preproc.y" /* yacc.c:1646  */
+#line 14800 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("month"); }
-#line 49712 "preproc.c" /* yacc.c:1646  */
+#line 49718 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2721:
-#line 14801 "preproc.y" /* yacc.c:1646  */
+#line 14801 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("second"); }
-#line 49718 "preproc.c" /* yacc.c:1646  */
+#line 49724 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2722:
-#line 14802 "preproc.y" /* yacc.c:1646  */
+#line 14802 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("year"); }
-#line 49724 "preproc.c" /* yacc.c:1646  */
+#line 49730 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2725:
-#line 14809 "preproc.y" /* yacc.c:1646  */
+#line 14809 "preproc.y" /* yacc.c:1652  */
     {
 				reset_variables();
 				pacounter = 1;
 			}
-#line 49733 "preproc.c" /* yacc.c:1646  */
+#line 49739 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2726:
-#line 14815 "preproc.y" /* yacc.c:1646  */
+#line 14815 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = EMPTY; }
-#line 49739 "preproc.c" /* yacc.c:1646  */
+#line 49745 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2727:
-#line 14816 "preproc.y" /* yacc.c:1646  */
+#line 14816 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 49745 "preproc.c" /* yacc.c:1646  */
+#line 49751 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2728:
-#line 14820 "preproc.y" /* yacc.c:1646  */
+#line 14820 "preproc.y" /* yacc.c:1652  */
     { add_variable_to_head(&argsresult, find_variable((yyvsp[-1].str)), find_variable((yyvsp[0].str))); }
-#line 49751 "preproc.c" /* yacc.c:1646  */
+#line 49757 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2729:
-#line 14822 "preproc.y" /* yacc.c:1646  */
+#line 14822 "preproc.y" /* yacc.c:1652  */
     { add_variable_to_head(&argsresult, find_variable((yyvsp[0].str)), &no_indicator); }
-#line 49757 "preproc.c" /* yacc.c:1646  */
+#line 49763 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2730:
-#line 14827 "preproc.y" /* yacc.c:1646  */
+#line 14827 "preproc.y" /* yacc.c:1652  */
     {
 			if (find_variable((yyvsp[0].str))->type->type == ECPGt_array)
 				mmerror(PARSE_ERROR, ET_ERROR, "arrays of indicators are not allowed on input");
@@ -49765,11 +49771,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			add_variable_to_head(&argsinsert, find_variable((yyvsp[-1].str)), find_variable((yyvsp[0].str)));
 			(yyval.str) = create_questionmarks((yyvsp[-1].str), false);
 		}
-#line 49769 "preproc.c" /* yacc.c:1646  */
+#line 49775 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2731:
-#line 14837 "preproc.y" /* yacc.c:1646  */
+#line 14837 "preproc.y" /* yacc.c:1652  */
     {
 			char *ptr = strstr((yyvsp[0].str), ".arr");
 
@@ -49778,38 +49784,38 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			add_variable_to_head(&argsinsert, find_variable((yyvsp[0].str)), &no_indicator);
 			(yyval.str) = (yyvsp[0].str);
 		}
-#line 49782 "preproc.c" /* yacc.c:1646  */
+#line 49788 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2732:
-#line 14848 "preproc.y" /* yacc.c:1646  */
+#line 14848 "preproc.y" /* yacc.c:1652  */
     {
 			add_variable_to_head(&argsinsert, find_variable((yyvsp[0].str)), &no_indicator);
 			(yyval.str) = create_questionmarks((yyvsp[0].str), false);
 		}
-#line 49791 "preproc.c" /* yacc.c:1646  */
+#line 49797 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2733:
-#line 14854 "preproc.y" /* yacc.c:1646  */
+#line 14854 "preproc.y" /* yacc.c:1652  */
     { check_indicator((find_variable((yyvsp[0].str)))->type); (yyval.str) = (yyvsp[0].str); }
-#line 49797 "preproc.c" /* yacc.c:1646  */
+#line 49803 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2734:
-#line 14855 "preproc.y" /* yacc.c:1646  */
+#line 14855 "preproc.y" /* yacc.c:1652  */
     { check_indicator((find_variable((yyvsp[0].str)))->type); (yyval.str) = (yyvsp[0].str); }
-#line 49803 "preproc.c" /* yacc.c:1646  */
+#line 49809 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2735:
-#line 14856 "preproc.y" /* yacc.c:1646  */
+#line 14856 "preproc.y" /* yacc.c:1652  */
     { check_indicator((find_variable((yyvsp[0].str)))->type); (yyval.str) = (yyvsp[0].str); }
-#line 49809 "preproc.c" /* yacc.c:1646  */
+#line 49815 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2736:
-#line 14860 "preproc.y" /* yacc.c:1646  */
+#line 14860 "preproc.y" /* yacc.c:1652  */
     {
 			/* As long as multidimensional arrays are not implemented we have to check for those here */
 			char *ptr = (yyvsp[0].str);
@@ -49840,29 +49846,29 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			}
 			(yyval.str) = (yyvsp[0].str);
 		}
-#line 49844 "preproc.c" /* yacc.c:1646  */
+#line 49850 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2737:
-#line 14892 "preproc.y" /* yacc.c:1646  */
+#line 14892 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = make_name(); }
-#line 49850 "preproc.c" /* yacc.c:1646  */
+#line 49856 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2738:
-#line 14894 "preproc.y" /* yacc.c:1646  */
+#line 14894 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = make_name(); }
-#line 49856 "preproc.c" /* yacc.c:1646  */
+#line 49862 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2739:
-#line 14896 "preproc.y" /* yacc.c:1646  */
+#line 14896 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = make_name(); }
-#line 49862 "preproc.c" /* yacc.c:1646  */
+#line 49868 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2740:
-#line 14900 "preproc.y" /* yacc.c:1646  */
+#line 14900 "preproc.y" /* yacc.c:1652  */
     {
 			/* could have been input as '' or $$ */
 			(yyval.str) = (char *)mm_alloc(strlen((yyvsp[0].str)) + 3);
@@ -49872,11 +49878,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			(yyval.str)[strlen((yyvsp[0].str))+2]='\0';
 			free((yyvsp[0].str));
 		}
-#line 49876 "preproc.c" /* yacc.c:1646  */
+#line 49882 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2741:
-#line 14910 "preproc.y" /* yacc.c:1646  */
+#line 14910 "preproc.y" /* yacc.c:1652  */
     {
 			(yyval.str) = (char *)mm_alloc(strlen((yyvsp[0].str)) + 4);
 			(yyval.str)[0]='E';
@@ -49886,11 +49892,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			(yyval.str)[strlen((yyvsp[0].str))+3]='\0';
 			free((yyvsp[0].str));
 		}
-#line 49890 "preproc.c" /* yacc.c:1646  */
+#line 49896 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2742:
-#line 14920 "preproc.y" /* yacc.c:1646  */
+#line 14920 "preproc.y" /* yacc.c:1652  */
     {
 			(yyval.str) = (char *)mm_alloc(strlen((yyvsp[0].str)) + 4);
 			(yyval.str)[0]='N';
@@ -49900,621 +49906,621 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			(yyval.str)[strlen((yyvsp[0].str))+3]='\0';
 			free((yyvsp[0].str));
 		}
-#line 49904 "preproc.c" /* yacc.c:1646  */
+#line 49910 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2743:
-#line 14929 "preproc.y" /* yacc.c:1646  */
+#line 14929 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 49910 "preproc.c" /* yacc.c:1646  */
+#line 49916 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2744:
-#line 14930 "preproc.y" /* yacc.c:1646  */
+#line 14930 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 49916 "preproc.c" /* yacc.c:1646  */
+#line 49922 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2745:
-#line 14933 "preproc.y" /* yacc.c:1646  */
+#line 14933 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = make_name(); }
-#line 49922 "preproc.c" /* yacc.c:1646  */
+#line 49928 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2746:
-#line 14935 "preproc.y" /* yacc.c:1646  */
+#line 14935 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = make_name(); }
-#line 49928 "preproc.c" /* yacc.c:1646  */
+#line 49934 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2747:
-#line 14936 "preproc.y" /* yacc.c:1646  */
+#line 14936 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = make3_str(mm_strdup("\""), (yyvsp[0].str), mm_strdup("\"")); }
-#line 49934 "preproc.c" /* yacc.c:1646  */
+#line 49940 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2748:
-#line 14937 "preproc.y" /* yacc.c:1646  */
+#line 14937 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 49940 "preproc.c" /* yacc.c:1646  */
+#line 49946 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2749:
-#line 14941 "preproc.y" /* yacc.c:1646  */
+#line 14941 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = make3_str(mm_strdup("\""), (yyvsp[0].str), mm_strdup("\"")); }
-#line 49946 "preproc.c" /* yacc.c:1646  */
+#line 49952 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2750:
-#line 14943 "preproc.y" /* yacc.c:1646  */
+#line 14943 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = make3_str(mm_strdup("("), (yyvsp[0].str), mm_strdup(")")); }
-#line 49952 "preproc.c" /* yacc.c:1646  */
+#line 49958 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2751:
-#line 14950 "preproc.y" /* yacc.c:1646  */
+#line 14950 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 49958 "preproc.c" /* yacc.c:1646  */
+#line 49964 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2752:
-#line 14951 "preproc.y" /* yacc.c:1646  */
+#line 14951 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("()"); }
-#line 49964 "preproc.c" /* yacc.c:1646  */
+#line 49970 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2753:
-#line 14953 "preproc.y" /* yacc.c:1646  */
+#line 14953 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = cat_str(3, mm_strdup("("), (yyvsp[-1].str), mm_strdup(")")); }
-#line 49970 "preproc.c" /* yacc.c:1646  */
+#line 49976 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2754:
-#line 14956 "preproc.y" /* yacc.c:1646  */
+#line 14956 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 49976 "preproc.c" /* yacc.c:1646  */
+#line 49982 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2755:
-#line 14958 "preproc.y" /* yacc.c:1646  */
+#line 14958 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = cat2_str((yyvsp[-1].str), (yyvsp[0].str)); }
-#line 49982 "preproc.c" /* yacc.c:1646  */
+#line 49988 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2756:
-#line 14961 "preproc.y" /* yacc.c:1646  */
+#line 14961 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 49988 "preproc.c" /* yacc.c:1646  */
+#line 49994 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2757:
-#line 14962 "preproc.y" /* yacc.c:1646  */
+#line 14962 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = cat_str(3, (yyvsp[-2].str), mm_strdup(","), (yyvsp[0].str)); }
-#line 49994 "preproc.c" /* yacc.c:1646  */
+#line 50000 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2758:
-#line 14965 "preproc.y" /* yacc.c:1646  */
+#line 14965 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 50000 "preproc.c" /* yacc.c:1646  */
+#line 50006 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2759:
-#line 14966 "preproc.y" /* yacc.c:1646  */
+#line 14966 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = cat_str(3, mm_strdup("{"), (yyvsp[-1].str), mm_strdup("}")); }
-#line 50006 "preproc.c" /* yacc.c:1646  */
+#line 50012 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2760:
-#line 14969 "preproc.y" /* yacc.c:1646  */
+#line 14969 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 50012 "preproc.c" /* yacc.c:1646  */
+#line 50018 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2761:
-#line 14970 "preproc.y" /* yacc.c:1646  */
+#line 14970 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("("); }
-#line 50018 "preproc.c" /* yacc.c:1646  */
+#line 50024 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2762:
-#line 14971 "preproc.y" /* yacc.c:1646  */
+#line 14971 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup(")"); }
-#line 50024 "preproc.c" /* yacc.c:1646  */
+#line 50030 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2763:
-#line 14972 "preproc.y" /* yacc.c:1646  */
+#line 14972 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup(","); }
-#line 50030 "preproc.c" /* yacc.c:1646  */
+#line 50036 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2764:
-#line 14973 "preproc.y" /* yacc.c:1646  */
+#line 14973 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup(";"); }
-#line 50036 "preproc.c" /* yacc.c:1646  */
+#line 50042 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2765:
-#line 14976 "preproc.y" /* yacc.c:1646  */
+#line 14976 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 50042 "preproc.c" /* yacc.c:1646  */
+#line 50048 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2766:
-#line 14977 "preproc.y" /* yacc.c:1646  */
+#line 14977 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 50048 "preproc.c" /* yacc.c:1646  */
+#line 50054 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2767:
-#line 14978 "preproc.y" /* yacc.c:1646  */
+#line 14978 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 50054 "preproc.c" /* yacc.c:1646  */
+#line 50060 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2768:
-#line 14979 "preproc.y" /* yacc.c:1646  */
+#line 14979 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 50060 "preproc.c" /* yacc.c:1646  */
+#line 50066 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2769:
-#line 14980 "preproc.y" /* yacc.c:1646  */
+#line 14980 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("*"); }
-#line 50066 "preproc.c" /* yacc.c:1646  */
+#line 50072 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2770:
-#line 14981 "preproc.y" /* yacc.c:1646  */
+#line 14981 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("+"); }
-#line 50072 "preproc.c" /* yacc.c:1646  */
+#line 50078 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2771:
-#line 14982 "preproc.y" /* yacc.c:1646  */
+#line 14982 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("-"); }
-#line 50078 "preproc.c" /* yacc.c:1646  */
+#line 50084 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2772:
-#line 14983 "preproc.y" /* yacc.c:1646  */
+#line 14983 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("/"); }
-#line 50084 "preproc.c" /* yacc.c:1646  */
+#line 50090 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2773:
-#line 14984 "preproc.y" /* yacc.c:1646  */
+#line 14984 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("%"); }
-#line 50090 "preproc.c" /* yacc.c:1646  */
+#line 50096 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2774:
-#line 14985 "preproc.y" /* yacc.c:1646  */
+#line 14985 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("NULL"); }
-#line 50096 "preproc.c" /* yacc.c:1646  */
+#line 50102 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2775:
-#line 14986 "preproc.y" /* yacc.c:1646  */
+#line 14986 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("+="); }
-#line 50102 "preproc.c" /* yacc.c:1646  */
+#line 50108 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2776:
-#line 14987 "preproc.y" /* yacc.c:1646  */
+#line 14987 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("&&"); }
-#line 50108 "preproc.c" /* yacc.c:1646  */
+#line 50114 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2777:
-#line 14988 "preproc.y" /* yacc.c:1646  */
+#line 14988 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = make_name(); }
-#line 50114 "preproc.c" /* yacc.c:1646  */
+#line 50120 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2778:
-#line 14989 "preproc.y" /* yacc.c:1646  */
+#line 14989 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("auto"); }
-#line 50120 "preproc.c" /* yacc.c:1646  */
+#line 50126 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2779:
-#line 14990 "preproc.y" /* yacc.c:1646  */
+#line 14990 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("const"); }
-#line 50126 "preproc.c" /* yacc.c:1646  */
+#line 50132 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2780:
-#line 14991 "preproc.y" /* yacc.c:1646  */
+#line 14991 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("--"); }
-#line 50132 "preproc.c" /* yacc.c:1646  */
+#line 50138 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2781:
-#line 14992 "preproc.y" /* yacc.c:1646  */
+#line 14992 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("/="); }
-#line 50138 "preproc.c" /* yacc.c:1646  */
+#line 50144 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2782:
-#line 14993 "preproc.y" /* yacc.c:1646  */
+#line 14993 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup(".*"); }
-#line 50144 "preproc.c" /* yacc.c:1646  */
+#line 50150 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2783:
-#line 14994 "preproc.y" /* yacc.c:1646  */
+#line 14994 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("=="); }
-#line 50150 "preproc.c" /* yacc.c:1646  */
+#line 50156 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2784:
-#line 14995 "preproc.y" /* yacc.c:1646  */
+#line 14995 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("extern"); }
-#line 50156 "preproc.c" /* yacc.c:1646  */
+#line 50162 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2785:
-#line 14996 "preproc.y" /* yacc.c:1646  */
+#line 14996 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("++"); }
-#line 50162 "preproc.c" /* yacc.c:1646  */
+#line 50168 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2786:
-#line 14997 "preproc.y" /* yacc.c:1646  */
+#line 14997 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("<<"); }
-#line 50168 "preproc.c" /* yacc.c:1646  */
+#line 50174 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2787:
-#line 14998 "preproc.y" /* yacc.c:1646  */
+#line 14998 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("->"); }
-#line 50174 "preproc.c" /* yacc.c:1646  */
+#line 50180 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2788:
-#line 14999 "preproc.y" /* yacc.c:1646  */
+#line 14999 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("->*"); }
-#line 50180 "preproc.c" /* yacc.c:1646  */
+#line 50186 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2789:
-#line 15000 "preproc.y" /* yacc.c:1646  */
+#line 15000 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("%="); }
-#line 50186 "preproc.c" /* yacc.c:1646  */
+#line 50192 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2790:
-#line 15001 "preproc.y" /* yacc.c:1646  */
+#line 15001 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("*="); }
-#line 50192 "preproc.c" /* yacc.c:1646  */
+#line 50198 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2791:
-#line 15002 "preproc.y" /* yacc.c:1646  */
+#line 15002 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("!="); }
-#line 50198 "preproc.c" /* yacc.c:1646  */
+#line 50204 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2792:
-#line 15003 "preproc.y" /* yacc.c:1646  */
+#line 15003 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("||"); }
-#line 50204 "preproc.c" /* yacc.c:1646  */
+#line 50210 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2793:
-#line 15004 "preproc.y" /* yacc.c:1646  */
+#line 15004 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("register"); }
-#line 50210 "preproc.c" /* yacc.c:1646  */
+#line 50216 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2794:
-#line 15005 "preproc.y" /* yacc.c:1646  */
+#line 15005 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup(">>"); }
-#line 50216 "preproc.c" /* yacc.c:1646  */
+#line 50222 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2795:
-#line 15006 "preproc.y" /* yacc.c:1646  */
+#line 15006 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("static"); }
-#line 50222 "preproc.c" /* yacc.c:1646  */
+#line 50228 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2796:
-#line 15007 "preproc.y" /* yacc.c:1646  */
+#line 15007 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("-="); }
-#line 50228 "preproc.c" /* yacc.c:1646  */
+#line 50234 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2797:
-#line 15008 "preproc.y" /* yacc.c:1646  */
+#line 15008 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("typedef"); }
-#line 50234 "preproc.c" /* yacc.c:1646  */
+#line 50240 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2798:
-#line 15009 "preproc.y" /* yacc.c:1646  */
+#line 15009 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("volatile"); }
-#line 50240 "preproc.c" /* yacc.c:1646  */
+#line 50246 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2799:
-#line 15010 "preproc.y" /* yacc.c:1646  */
+#line 15010 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("bool"); }
-#line 50246 "preproc.c" /* yacc.c:1646  */
+#line 50252 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2800:
-#line 15011 "preproc.y" /* yacc.c:1646  */
+#line 15011 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("enum"); }
-#line 50252 "preproc.c" /* yacc.c:1646  */
+#line 50258 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2801:
-#line 15012 "preproc.y" /* yacc.c:1646  */
+#line 15012 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("hour"); }
-#line 50258 "preproc.c" /* yacc.c:1646  */
+#line 50264 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2802:
-#line 15013 "preproc.y" /* yacc.c:1646  */
+#line 15013 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("int"); }
-#line 50264 "preproc.c" /* yacc.c:1646  */
+#line 50270 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2803:
-#line 15014 "preproc.y" /* yacc.c:1646  */
+#line 15014 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("long"); }
-#line 50270 "preproc.c" /* yacc.c:1646  */
+#line 50276 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2804:
-#line 15015 "preproc.y" /* yacc.c:1646  */
+#line 15015 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("minute"); }
-#line 50276 "preproc.c" /* yacc.c:1646  */
+#line 50282 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2805:
-#line 15016 "preproc.y" /* yacc.c:1646  */
+#line 15016 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("month"); }
-#line 50282 "preproc.c" /* yacc.c:1646  */
+#line 50288 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2806:
-#line 15017 "preproc.y" /* yacc.c:1646  */
+#line 15017 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("second"); }
-#line 50288 "preproc.c" /* yacc.c:1646  */
+#line 50294 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2807:
-#line 15018 "preproc.y" /* yacc.c:1646  */
+#line 15018 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("short"); }
-#line 50294 "preproc.c" /* yacc.c:1646  */
+#line 50300 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2808:
-#line 15019 "preproc.y" /* yacc.c:1646  */
+#line 15019 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("signed"); }
-#line 50300 "preproc.c" /* yacc.c:1646  */
+#line 50306 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2809:
-#line 15020 "preproc.y" /* yacc.c:1646  */
+#line 15020 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("struct"); }
-#line 50306 "preproc.c" /* yacc.c:1646  */
+#line 50312 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2810:
-#line 15021 "preproc.y" /* yacc.c:1646  */
+#line 15021 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("unsigned"); }
-#line 50312 "preproc.c" /* yacc.c:1646  */
+#line 50318 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2811:
-#line 15022 "preproc.y" /* yacc.c:1646  */
+#line 15022 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("year"); }
-#line 50318 "preproc.c" /* yacc.c:1646  */
+#line 50324 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2812:
-#line 15023 "preproc.y" /* yacc.c:1646  */
+#line 15023 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("char"); }
-#line 50324 "preproc.c" /* yacc.c:1646  */
+#line 50330 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2813:
-#line 15024 "preproc.y" /* yacc.c:1646  */
+#line 15024 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("float"); }
-#line 50330 "preproc.c" /* yacc.c:1646  */
+#line 50336 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2814:
-#line 15025 "preproc.y" /* yacc.c:1646  */
+#line 15025 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("to"); }
-#line 50336 "preproc.c" /* yacc.c:1646  */
+#line 50342 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2815:
-#line 15026 "preproc.y" /* yacc.c:1646  */
+#line 15026 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("union"); }
-#line 50342 "preproc.c" /* yacc.c:1646  */
+#line 50348 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2816:
-#line 15027 "preproc.y" /* yacc.c:1646  */
+#line 15027 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("varchar"); }
-#line 50348 "preproc.c" /* yacc.c:1646  */
+#line 50354 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2817:
-#line 15028 "preproc.y" /* yacc.c:1646  */
+#line 15028 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("["); }
-#line 50354 "preproc.c" /* yacc.c:1646  */
+#line 50360 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2818:
-#line 15029 "preproc.y" /* yacc.c:1646  */
+#line 15029 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("]"); }
-#line 50360 "preproc.c" /* yacc.c:1646  */
+#line 50366 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2819:
-#line 15030 "preproc.y" /* yacc.c:1646  */
+#line 15030 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("="); }
-#line 50366 "preproc.c" /* yacc.c:1646  */
+#line 50372 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2820:
-#line 15031 "preproc.y" /* yacc.c:1646  */
+#line 15031 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup(":"); }
-#line 50372 "preproc.c" /* yacc.c:1646  */
+#line 50378 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2821:
-#line 15034 "preproc.y" /* yacc.c:1646  */
+#line 15034 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 50378 "preproc.c" /* yacc.c:1646  */
+#line 50384 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2822:
-#line 15035 "preproc.y" /* yacc.c:1646  */
+#line 15035 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 50384 "preproc.c" /* yacc.c:1646  */
+#line 50390 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2823:
-#line 15036 "preproc.y" /* yacc.c:1646  */
+#line 15036 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("all"); }
-#line 50390 "preproc.c" /* yacc.c:1646  */
+#line 50396 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2824:
-#line 15037 "preproc.y" /* yacc.c:1646  */
+#line 15037 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = mm_strdup("all"); }
-#line 50396 "preproc.c" /* yacc.c:1646  */
+#line 50402 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2825:
-#line 15040 "preproc.y" /* yacc.c:1646  */
+#line 15040 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 50402 "preproc.c" /* yacc.c:1646  */
+#line 50408 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2826:
-#line 15041 "preproc.y" /* yacc.c:1646  */
+#line 15041 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = cat_str(3, mm_strdup("("), (yyvsp[-1].str), mm_strdup(")")); }
-#line 50408 "preproc.c" /* yacc.c:1646  */
+#line 50414 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2827:
-#line 15042 "preproc.y" /* yacc.c:1646  */
+#line 15042 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = cat_str(3, (yyvsp[-2].str), mm_strdup("+"), (yyvsp[0].str)); }
-#line 50414 "preproc.c" /* yacc.c:1646  */
+#line 50420 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2828:
-#line 15043 "preproc.y" /* yacc.c:1646  */
+#line 15043 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = cat_str(3, (yyvsp[-2].str), mm_strdup("-"), (yyvsp[0].str)); }
-#line 50420 "preproc.c" /* yacc.c:1646  */
+#line 50426 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2829:
-#line 15044 "preproc.y" /* yacc.c:1646  */
+#line 15044 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = cat_str(3, (yyvsp[-2].str), mm_strdup("*"), (yyvsp[0].str)); }
-#line 50426 "preproc.c" /* yacc.c:1646  */
+#line 50432 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2830:
-#line 15045 "preproc.y" /* yacc.c:1646  */
+#line 15045 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = cat_str(3, (yyvsp[-2].str), mm_strdup("/"), (yyvsp[0].str)); }
-#line 50432 "preproc.c" /* yacc.c:1646  */
+#line 50438 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2831:
-#line 15046 "preproc.y" /* yacc.c:1646  */
+#line 15046 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = cat_str(3, (yyvsp[-2].str), mm_strdup("%"), (yyvsp[0].str)); }
-#line 50438 "preproc.c" /* yacc.c:1646  */
+#line 50444 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2832:
-#line 15047 "preproc.y" /* yacc.c:1646  */
+#line 15047 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 50444 "preproc.c" /* yacc.c:1646  */
+#line 50450 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2833:
-#line 15048 "preproc.y" /* yacc.c:1646  */
+#line 15048 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 50450 "preproc.c" /* yacc.c:1646  */
+#line 50456 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2834:
-#line 15049 "preproc.y" /* yacc.c:1646  */
+#line 15049 "preproc.y" /* yacc.c:1652  */
     { if (pg_strcasecmp((yyvsp[-3].str), "sizeof") != 0)
 							mmerror(PARSE_ERROR, ET_ERROR, "operator not allowed in variable definition");
 						  else
 							(yyval.str) = cat_str(4, (yyvsp[-3].str), mm_strdup("("), (yyvsp[-1].type).type_str, mm_strdup(")"));
 						}
-#line 50460 "preproc.c" /* yacc.c:1646  */
+#line 50466 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2835:
-#line 15056 "preproc.y" /* yacc.c:1646  */
+#line 15056 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = EMPTY; }
-#line 50466 "preproc.c" /* yacc.c:1646  */
+#line 50472 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2836:
-#line 15057 "preproc.y" /* yacc.c:1646  */
+#line 15057 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = EMPTY; }
-#line 50472 "preproc.c" /* yacc.c:1646  */
+#line 50478 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2837:
-#line 15058 "preproc.y" /* yacc.c:1646  */
+#line 15058 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = EMPTY; }
-#line 50478 "preproc.c" /* yacc.c:1646  */
+#line 50484 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2838:
-#line 15059 "preproc.y" /* yacc.c:1646  */
+#line 15059 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = EMPTY; }
-#line 50484 "preproc.c" /* yacc.c:1646  */
+#line 50490 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2839:
-#line 15062 "preproc.y" /* yacc.c:1646  */
+#line 15062 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = EMPTY; }
-#line 50490 "preproc.c" /* yacc.c:1646  */
+#line 50496 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2840:
-#line 15063 "preproc.y" /* yacc.c:1646  */
+#line 15063 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 50496 "preproc.c" /* yacc.c:1646  */
+#line 50502 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2841:
-#line 15066 "preproc.y" /* yacc.c:1646  */
+#line 15066 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = EMPTY; }
-#line 50502 "preproc.c" /* yacc.c:1646  */
+#line 50508 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2842:
-#line 15067 "preproc.y" /* yacc.c:1646  */
+#line 15067 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 50508 "preproc.c" /* yacc.c:1646  */
+#line 50514 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2843:
-#line 15070 "preproc.y" /* yacc.c:1646  */
+#line 15070 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 50514 "preproc.c" /* yacc.c:1646  */
+#line 50520 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2844:
-#line 15072 "preproc.y" /* yacc.c:1646  */
+#line 15072 "preproc.y" /* yacc.c:1652  */
     {
 		struct variable *var;
 
@@ -50523,23 +50529,23 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 		add_variable_to_head(&argsresult, var, &no_indicator);
 		(yyval.str) = (yyvsp[0].str);
 	}
-#line 50527 "preproc.c" /* yacc.c:1646  */
+#line 50533 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2845:
-#line 15082 "preproc.y" /* yacc.c:1646  */
+#line 15082 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = EMPTY; }
-#line 50533 "preproc.c" /* yacc.c:1646  */
+#line 50539 "preproc.c" /* yacc.c:1652  */
     break;
 
   case 2846:
-#line 15083 "preproc.y" /* yacc.c:1646  */
+#line 15083 "preproc.y" /* yacc.c:1652  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 50539 "preproc.c" /* yacc.c:1646  */
+#line 50545 "preproc.c" /* yacc.c:1652  */
     break;
 
 
-#line 50543 "preproc.c" /* yacc.c:1646  */
+#line 50549 "preproc.c" /* yacc.c:1652  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -50565,14 +50571,13 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
   /* Now 'shift' the result of the reduction.  Determine what state
      that goes to, based on the state we popped back to and the rule
      number reduced by.  */
-
-  yyn = yyr1[yyn];
-
-  yystate = yypgoto[yyn - YYNTOKENS] + *yyssp;
-  if (0 <= yystate && yystate <= YYLAST && yycheck[yystate] == *yyssp)
-    yystate = yytable[yystate];
-  else
-    yystate = yydefgoto[yyn - YYNTOKENS];
+  {
+    const int yylhs = yyr1[yyn] - YYNTOKENS;
+    const int yyi = yypgoto[yylhs] + *yyssp;
+    yystate = (0 <= yyi && yyi <= YYLAST && yycheck[yyi] == *yyssp
+               ? yytable[yyi]
+               : yydefgoto[yylhs]);
+  }
 
   goto yynewstate;
 
@@ -50655,14 +50660,11 @@ yyerrlab:
 | yyerrorlab -- error raised explicitly by YYERROR.  |
 `---------------------------------------------------*/
 yyerrorlab:
+  /* Pacify compilers when the user code never invokes YYERROR and the
+     label yyerrorlab therefore never appears in user code.  */
+  if (0)
+    YYERROR;
 
-  /* Pacify compilers like GCC when the user code never invokes
-     YYERROR and the label yyerrorlab therefore never appears in user
-     code.  */
-  if (/*CONSTCOND*/ 0)
-     goto yyerrorlab;
-
-  yyerror_range[1] = yylsp[1-yylen];
   /* Do not reclaim the symbols of the rule whose action triggered
      this YYERROR.  */
   YYPOPSTACK (yylen);
@@ -50728,12 +50730,14 @@ yyacceptlab:
   yyresult = 0;
   goto yyreturn;
 
+
 /*-----------------------------------.
 | yyabortlab -- YYABORT comes here.  |
 `-----------------------------------*/
 yyabortlab:
   yyresult = 1;
   goto yyreturn;
+
 
 #if !defined yyoverflow || YYERROR_VERBOSE
 /*-------------------------------------------------.
@@ -50745,6 +50749,10 @@ yyexhaustedlab:
   /* Fall through.  */
 #endif
 
+
+/*-----------------------------------------------------.
+| yyreturn -- parsing is finished, return the result.  |
+`-----------------------------------------------------*/
 yyreturn:
   if (yychar != YYEMPTY)
     {
@@ -50774,7 +50782,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 15086 "preproc.y" /* yacc.c:1906  */
+#line 15086 "preproc.y" /* yacc.c:1918  */
 
 
 void base_yyerror(const char *error)

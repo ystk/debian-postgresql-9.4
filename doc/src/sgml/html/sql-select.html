@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4.25 Documentation"
+TITLE="PostgreSQL 9.4.26 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="SQL Commands"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2019-11-11T22:25:25"></HEAD
+CONTENT="2020-02-10T22:37:16"></HEAD
 ><BODY
 CLASS="REFENTRY"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4.25 Documentation</A
+>PostgreSQL 9.4.26 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -95,7 +95,7 @@ NAME="SQL-SELECT"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN83910"
+NAME="AEN83976"
 ></A
 ><H2
 >Name</H2
@@ -103,7 +103,7 @@ NAME="AEN83910"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN83915"
+NAME="AEN83981"
 ></A
 ><H2
 >Synopsis</H2
@@ -443,7 +443,7 @@ CLASS="REPLACEABLE"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN83976"
+NAME="AEN84042"
 ></A
 ><H2
 >Description</H2
@@ -799,7 +799,7 @@ CLASS="LITERAL"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN84060"
+NAME="AEN84126"
 ></A
 ><H2
 >Parameters</H2
@@ -965,6 +965,25 @@ CLASS="LITERAL"
     In particular, data-modifying statements are guaranteed to be
     executed once and only once, regardless of whether the primary query
     reads all or any of their output.
+   </P
+><P
+>    When there are multiple queries in the <TT
+CLASS="LITERAL"
+>WITH</TT
+>
+    clause, <TT
+CLASS="LITERAL"
+>RECURSIVE</TT
+> should be written only once,
+    immediately after <TT
+CLASS="LITERAL"
+>WITH</TT
+>.  It applies to all queries
+    in the <TT
+CLASS="LITERAL"
+>WITH</TT
+> clause, though it has no effect on
+    queries that do not use recursion or forward references.
    </P
 ><P
 >    The primary query and the <TT
@@ -4009,7 +4028,7 @@ CLASS="LITERAL"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN84838"
+NAME="AEN84909"
 ></A
 ><H2
 >Examples</H2
@@ -4302,7 +4321,7 @@ FROM manufacturers m LEFT JOIN LATERAL get_product_names(m.id) pname ON true;</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN84880"
+NAME="AEN84951"
 ></A
 ><H2
 >Compatibility</H2
@@ -4317,7 +4336,7 @@ CLASS="COMMAND"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN84884"
+NAME="AEN84955"
 ></A
 ><H3
 >Omitted <TT
@@ -4378,7 +4397,7 @@ CLASS="LITERAL"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN84898"
+NAME="AEN84969"
 ></A
 ><H3
 >Empty <TT
@@ -4406,7 +4425,7 @@ CLASS="LITERAL"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN84905"
+NAME="AEN84976"
 ></A
 ><H3
 >Omitting the <TT
@@ -4455,7 +4474,7 @@ CLASS="LITERAL"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN84917"
+NAME="AEN84988"
 ></A
 ><H3
 ><TT
@@ -4502,7 +4521,7 @@ CLASS="LITERAL"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN84930"
+NAME="AEN85001"
 ></A
 ><H3
 >Function Calls in <TT
@@ -4580,7 +4599,7 @@ CLASS="LITERAL"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN84949"
+NAME="AEN85020"
 ></A
 ><H3
 >Namespace Available to <TT
@@ -4634,7 +4653,7 @@ CLASS="LITERAL"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN84962"
+NAME="AEN85033"
 ></A
 ><H3
 >Functional Dependencies</H3
@@ -4658,7 +4677,7 @@ CLASS="LITERAL"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN84968"
+NAME="AEN85039"
 ></A
 ><H3
 ><TT
@@ -4683,7 +4702,7 @@ CLASS="PRODUCTNAME"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN84974"
+NAME="AEN85045"
 ></A
 ><H3
 ><TT
@@ -4741,7 +4760,7 @@ CLASS="LITERAL"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN84988"
+NAME="AEN85059"
 ></A
 ><H3
 ><TT
@@ -4798,7 +4817,7 @@ CLASS="LITERAL"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN85004"
+NAME="AEN85075"
 ></A
 ><H3
 >Data-Modifying Statements in <TT
@@ -4829,7 +4848,7 @@ CLASS="LITERAL"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN85013"
+NAME="AEN85084"
 ></A
 ><H3
 >Nonstandard Clauses</H3
