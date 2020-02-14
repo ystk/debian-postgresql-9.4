@@ -9,7 +9,7 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REV="MADE"
 HREF="mailto:pgsql-docs@postgresql.org"><LINK
 REL="HOME"
-TITLE="PostgreSQL 9.4.25 Documentation"
+TITLE="PostgreSQL 9.4.26 Documentation"
 HREF="index.html"><LINK
 REL="UP"
 TITLE="SQL Commands"
@@ -26,7 +26,7 @@ HREF="stylesheet.css"><META
 HTTP-EQUIV="Content-Type"
 CONTENT="text/html; charset=ISO-8859-1"><META
 NAME="creation"
-CONTENT="2019-11-11T22:25:25"></HEAD
+CONTENT="2020-02-10T22:37:16"></HEAD
 ><BODY
 CLASS="REFENTRY"
 ><DIV
@@ -44,7 +44,7 @@ ALIGN="center"
 VALIGN="bottom"
 ><A
 HREF="index.html"
->PostgreSQL 9.4.25 Documentation</A
+>PostgreSQL 9.4.26 Documentation</A
 ></TH
 ></TR
 ><TR
@@ -95,7 +95,7 @@ NAME="SQL-COPY"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN72404"
+NAME="AEN72453"
 ></A
 ><H2
 >Name</H2
@@ -103,7 +103,7 @@ NAME="AEN72404"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN72407"
+NAME="AEN72456"
 ></A
 ><H2
 >Synopsis</H2
@@ -261,7 +261,7 @@ CLASS="REPLACEABLE"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN72434"
+NAME="AEN72483"
 ></A
 ><H2
 >Description</H2
@@ -305,17 +305,20 @@ CLASS="COMMAND"
 > query.
   </P
 ><P
->   If a list of columns is specified, <TT
+>   If a column list is specified, <TT
 CLASS="COMMAND"
->COPY</TT
-> will
-   only copy the data in the specified columns to or from the file.
-   If there are any columns in the table that are not in the column list,
-   <TT
+>COPY TO</TT
+> copies only
+   the data in the specified columns to the file.  For <TT
 CLASS="COMMAND"
->COPY FROM</TT
-> will insert the default values for
-   those columns.
+>COPY
+   FROM</TT
+>, each field in the file is inserted, in order, into the
+   specified column.  Table columns not specified in the <TT
+CLASS="COMMAND"
+>COPY
+   FROM</TT
+> column list will receive their default values.
   </P
 ><P
 >   <TT
@@ -357,7 +360,7 @@ CLASS="LITERAL"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN72456"
+NAME="AEN72506"
 ></A
 ><H2
 >Parameters</H2
@@ -810,7 +813,7 @@ CLASS="REPLACEABLE"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN72607"
+NAME="AEN72657"
 ></A
 ><H2
 >Outputs</H2
@@ -868,7 +871,7 @@ CLASS="LITERAL"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN72620"
+NAME="AEN72670"
 ></A
 ><H2
 >Notes</H2
@@ -1126,14 +1129,14 @@ CLASS="LITERAL"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN72683"
+NAME="AEN72733"
 ></A
 ><H2
 >File Formats</H2
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN72685"
+NAME="AEN72735"
 ></A
 ><H3
 >Text Format</H3
@@ -1224,7 +1227,7 @@ CLASS="INFORMALTABLE"
 ><P
 ></P
 ><A
-NAME="AEN72705"
+NAME="AEN72755"
 ></A
 ><TABLE
 BORDER="1"
@@ -1426,7 +1429,7 @@ CLASS="COMMAND"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN72768"
+NAME="AEN72818"
 ></A
 ><H3
 >CSV Format</H3
@@ -1627,7 +1630,7 @@ CLASS="COMMAND"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN72814"
+NAME="AEN72864"
 ></A
 ><H3
 >Binary Format</H3
@@ -1683,7 +1686,7 @@ CLASS="PRODUCTNAME"
 ><DIV
 CLASS="REFSECT3"
 ><A
-NAME="AEN72827"
+NAME="AEN72877"
 ></A
 ><H4
 >File Header</H4
@@ -1776,7 +1779,7 @@ is left for a later release.
 ><DIV
 CLASS="REFSECT3"
 ><A
-NAME="AEN72853"
+NAME="AEN72903"
 ></A
 ><H4
 >Tuples</H4
@@ -1828,7 +1831,7 @@ OIDs to be shown as null if that ever proves desirable.
 ><DIV
 CLASS="REFSECT3"
 ><A
-NAME="AEN72864"
+NAME="AEN72914"
 ></A
 ><H4
 >File Trailer</H4
@@ -1847,7 +1850,7 @@ NAME="AEN72864"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN72868"
+NAME="AEN72918"
 ></A
 ><H2
 >Examples</H2
@@ -1938,7 +1941,7 @@ CLASS="PROGRAMLISTING"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN72889"
+NAME="AEN72939"
 ></A
 ><H2
 >Compatibility</H2
