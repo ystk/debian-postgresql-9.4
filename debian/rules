@@ -1,4 +1,9 @@
 #!/usr/bin/make -f
+
+# Work around ELTS build host configuration, which appears to default to en_US.UTF-8
+# though that locale does not seem to be available in the build chroots
+export LANG = C.UTF-8
+
 ifneq ($(shell which tclsh8.6),)
 TCL_VER := 8.6
 else
